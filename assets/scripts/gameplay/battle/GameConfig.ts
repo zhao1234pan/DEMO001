@@ -3,7 +3,7 @@ export const GAME_CONFIG = {
   designHeight: 1334,
   prototypeLayoutWidth: 390,
   prototypeLayoutHeight: 700,
-  maxWaves: 10,
+  maxLevels: 10,
   initialCoins: 260,
   initialLives: 15,
   rewardAdUnitId: "replace-with-douyin-ad-unit-id",
@@ -25,9 +25,9 @@ export interface TowerConfig {
 }
 
 export const TOWER_CONFIG: Record<TowerKind, TowerConfig> = {
-  sprout: { name: "嫩芽", cost: 80, color: "#65bd67", range: 92, rate: 0.75, damage: 15, shotColor: "#f3f06a" },
-  frost: { name: "露珠", cost: 110, color: "#58bcd6", range: 82, rate: 1.15, damage: 9, shotColor: "#d8fbff", slow: true },
-  bloom: { name: "花炮", cost: 150, color: "#e789a8", range: 105, rate: 1.65, damage: 29, shotColor: "#ffb2cb", splash: 42 },
+  sprout: { name: "豆包", cost: 80, color: "#d59b58", range: 92, rate: 0.75, damage: 15, shotColor: "#ffe072" },
+  frost: { name: "棉棉", cost: 110, color: "#d6c2e9", range: 82, rate: 1.15, damage: 9, shotColor: "#e8f8ff", slow: true },
+  bloom: { name: "布丁", cost: 150, color: "#e9aa62", range: 105, rate: 1.65, damage: 29, shotColor: "#ffbd72", splash: 42 },
 };
 
 export const PATH_POINTS: ReadonlyArray<readonly [number, number]> = [
@@ -36,6 +36,6 @@ export const PATH_POINTS: ReadonlyArray<readonly [number, number]> = [
 ];
 
 export const TOWER_SPOTS: ReadonlyArray<readonly [number, number]> = [
-  [48, 206], [156, 176], [248, 178], [346, 211], [218, 310],
-  [51, 336], [347, 340], [61, 446], [188, 432], [278, 430], [354, 551],
+  [48, 206], [248, 178], [218, 310],
+  [51, 336], [188, 432], [354, 538],
 ];
