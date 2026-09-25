@@ -4,8 +4,6 @@ export const GAME_CONFIG = {
   prototypeLayoutWidth: 390,
   prototypeLayoutHeight: 700,
   maxLevels: 10,
-  initialCoins: 260,
-  initialLives: 15,
   rewardAdUnitId: "replace-with-douyin-ad-unit-id",
 } as const;
 
@@ -24,18 +22,26 @@ export interface TowerConfig {
   splash?: number;
 }
 
+// 一级店员先按“单体效率、控制价值、群体效率”分工；升级倍率由 GameRoot 统一计算，
+// 防止某名店员只靠基础面板就同时压过另外两种定位。
 export const TOWER_CONFIG: Record<TowerKind, TowerConfig> = {
-  sprout: { name: "豆包", cost: 80, color: "#d59b58", range: 92, rate: 0.75, damage: 15, shotColor: "#ffe072" },
-  frost: { name: "棉棉", cost: 110, color: "#d6c2e9", range: 82, rate: 1.15, damage: 9, shotColor: "#e8f8ff", slow: true },
-  bloom: { name: "布丁", cost: 150, color: "#e9aa62", range: 105, rate: 1.65, damage: 29, shotColor: "#ffbd72", splash: 42 },
+  sprout: { name: "豆包", cost: 85, color: "#d59b58", range: 88, rate: 0.72, damage: 12, shotColor: "#ffe072" },
+  frost: { name: "棉棉", cost: 110, color: "#d6c2e9", range: 86, rate: 1.08, damage: 8, shotColor: "#e8f8ff", slow: true },
+  bloom: { name: "布丁", cost: 150, color: "#e9aa62", range: 100, rate: 1.52, damage: 23, shotColor: "#ffbd72", splash: 38 },
 };
 
-export const PATH_POINTS: ReadonlyArray<readonly [number, number]> = [
-  [-20, 142], [92, 142], [92, 245], [292, 245], [292, 365],
-  [112, 365], [112, 492], [332, 492], [414, 492],
-];
+export interface EnemyConfig {
+  hp: number;
+  speed: number;
+  reward: number;
+  radius: number;
+  color: string;
+  damage: number;
+}
 
-export const TOWER_SPOTS: ReadonlyArray<readonly [number, number]> = [
-  [48, 206], [248, 178], [218, 310],
-  [51, 336], [188, 432], [354, 538],
-];
+// 敌人基础值不含关卡和波次倍率。奖励刻意低于旧原型，避免前两波滚出过量经济。
+export const ENEMY_CONFIG: Record<EnemyKind, EnemyConfig> = {
+  normal: { hp: 58, speed: 38, reward: 8, radius: 15, color: "#9a77bd", damage: 1 },
+  swift: { hp: 44, speed: 62, reward: 11, radius: 13, color: "#e5aa54", damage: 1 },
+  tank: { hp: 190, speed: 25, reward: 22, radius: 19, color: "#8a705c", damage: 2 },
+};

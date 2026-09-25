@@ -20,7 +20,7 @@ MVP 入口组件，负责游戏状态、波次、寻路、战斗、输入和程�
 
 ### `assets/scripts/gameplay/battle/LevelConfig.ts`
 
-保存 10 个关卡的初始零钱、耐久、可用店员、敌人倍率和 3～5 波敌人编排。玩法通过 `getLevelConfig` 读取关卡，不在输入或渲染逻辑中散落关卡判断；内容量继续增长时再迁移到 JSON 或可编辑配置资源。
+保存 10 个关卡各自的路线折点、塔位、初始零钱、耐久、可用店员、敌人生命/速度倍率和 3～5 波敌人编排。玩法通过 `getLevelConfig` 读取关卡，不在输入或渲染逻辑中散落关卡判断；内容量继续增长时再迁移到 JSON 或可编辑配置资源。
 
 ### `assets/scripts/services/PlatformService.ts`
 
