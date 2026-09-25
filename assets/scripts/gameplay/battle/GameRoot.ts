@@ -98,7 +98,7 @@ export class GameRoot extends Component {
   }
 
   private createLabels(): void {
-    this.makeLabel("title", "守护芽芽", 18, 74, 23, 112, 30, "#fff9df", HorizontalTextAlignment.LEFT);
+    this.makeLabel("title", "叮咚！夜班开始", 14, 90, 23, 150, 30, "#fff9df", HorizontalTextAlignment.LEFT);
     this.makeLabel("wave", "", 13, 76, 50, 116, 24, "#aee3bd", HorizontalTextAlignment.LEFT);
     this.makeLabel("coin", "", 16, 220, 34, 56, 36, "#fff9df");
     this.makeLabel("lives", "", 16, 306, 34, 46, 36, "#fff9df");

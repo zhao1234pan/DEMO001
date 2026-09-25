@@ -10,6 +10,7 @@
 - 抖音构建产物包含 `game.js`、`game.json`、`project.config.json`，方向为 `portrait`，验证包约 3.19 MiB。
 - 构建产物使用 750 × 1334 设计分辨率，启动场景为 `assets/scenes/battle/scn_battle.scene`。
 - 构建场景正确包含 `GameRoot` 组件，不存在缺失脚本。
+- 《叮咚！夜班开始》名称更新后重新通过 TypeScript、Web Mobile 与抖音小游戏构建；产物包含新首屏标题，抖音工程名为 `ding-dong-night-shift`。
 
 自动检查使用的临时配置、日志和 Web 构建产物位于 `G:\gptwork`，不属于项目仓库。
 
