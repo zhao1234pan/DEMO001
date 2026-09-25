@@ -1,8 +1,10 @@
 # 守护芽芽
 
-原创竖屏轻塔防小游戏，使用 Cocos Creator 3.8.8 开发，目标平台为抖音小游戏，商业模式为 IAA。
+以“森林夜班便利店”为世界观主题的原创竖屏动物轻塔防小游戏，使用 Cocos Creator 3.8.8 开发，目标平台为抖音小游戏，商业模式为 IAA。
 
 > “守护芽芽”是当前工作名。项目只借鉴塔防品类的基础机制，不使用《保卫萝卜》的名称、角色、美术、关卡或音频素材。
+
+世界观、角色方向和美术基调见 [世界观文档](./docs/WORLD_BUILDING.md)。
 
 ## 环境
 
@@ -50,6 +52,7 @@ settings/                 # 需要纳入 Git 的 Cocos 项目设置
 ## 文档维护约定
 
 - 功能或规则变化：同步修改 `docs/PRODUCT.md`。
+- 世界观、角色或叙事变化：同步修改 `docs/WORLD_BUILDING.md`。
 - 目录、模块或依赖变化：同步修改 `docs/ARCHITECTURE.md`。
 - 分辨率、UI、资源或命名规则变化：同步修改 `docs/PROJECT_STANDARDS.md`。
 - 抖音能力或提审要求变化：同步修改 `docs/DOUYIN_RELEASE.md`。
