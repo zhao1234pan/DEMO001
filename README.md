@@ -5,6 +5,7 @@
 > 《叮咚！夜班开始》是当前确定的游戏名称，“守护芽芽”为早期工程代号。项目只借鉴塔防品类的基础机制，不使用《保卫萝卜》的名称、角色、美术、关卡或音频素材。
 
 世界观、角色方向和美术基调见 [世界观文档](./docs/WORLD_BUILDING.md)。
+轻量塔防循环、店员扩展、道具和首版范围见 [核心玩法设计](./docs/GAMEPLAY.md)。
 
 ## 环境
 
@@ -53,6 +54,7 @@ settings/                 # 需要纳入 Git 的 Cocos 项目设置
 
 - 功能或规则变化：同步修改 `docs/PRODUCT.md`。
 - 世界观、角色或叙事变化：同步修改 `docs/WORLD_BUILDING.md`。
+- 核心循环、关卡、店员、敌人或道具变化：同步修改 `docs/GAMEPLAY.md`。
 - 目录、模块或依赖变化：同步修改 `docs/ARCHITECTURE.md`。
 - 分辨率、UI、资源或命名规则变化：同步修改 `docs/PROJECT_STANDARDS.md`。
 - 抖音能力或提审要求变化：同步修改 `docs/DOUYIN_RELEASE.md`。
