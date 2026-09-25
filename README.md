@@ -51,3 +51,8 @@ settings/                 # 需要纳入 Git 的 Cocos 项目设置
 ## Git
 
 项目应提交 `assets/`、`settings/`、`docs/`、`package.json` 和 `tsconfig.json`。不要提交 `library/`、`temp/`、`local/`、`build/`、`profiles/`、`native/engine/` 等生成或本机配置文件。
+
+- 远端仓库：<https://github.com/zhao1234pan/DEMO001>
+- 默认分支：`main`
+- Fork 客户端直接打开 `G:\DEMO001` 即可查看本地与远端版本记录。
+- 详细提交与同步规则见 [docs/GIT_WORKFLOW.md](./docs/GIT_WORKFLOW.md)。
