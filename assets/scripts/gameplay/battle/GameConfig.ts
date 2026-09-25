@@ -1,6 +1,8 @@
 export const GAME_CONFIG = {
-  designWidth: 390,
-  designHeight: 700,
+  designWidth: 750,
+  designHeight: 1334,
+  prototypeLayoutWidth: 390,
+  prototypeLayoutHeight: 700,
   maxWaves: 10,
   initialCoins: 260,
   initialLives: 15,

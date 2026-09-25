@@ -8,7 +8,7 @@
 
 - 项目目录：`G:\DEMO001`
 - Cocos Creator：`F:\cocos2d\Creator\3.8.8\CocosCreator.exe`
-- 设计分辨率：390 × 700，竖屏，适配宽度
+- 设计分辨率：750 × 1334，竖屏，固定宽度、动态高度
 - 语言：TypeScript
 
 ## 打开项目
@@ -16,7 +16,7 @@
 1. 启动 Cocos Dashboard。
 2. 选择“导入项目”，目录指向 `G:\DEMO001`。
 3. 使用 Cocos Creator 3.8.8 打开。
-4. 打开 `assets/scenes/main.scene`，点击预览。
+4. 打开 `assets/scenes/battle/scn_battle.scene`，点击预览。
 
 ## 当前 MVP
 
@@ -31,22 +31,34 @@
 
 ```text
 assets/
-  scenes/                 # Cocos 场景
-  scripts/game/           # 核心玩法与配置
-  scripts/platform/       # 抖音/预览环境能力适配
+  scenes/battle/          # 战斗场景
+  scripts/gameplay/       # 玩法代码
+  scripts/services/       # 存档、平台等业务服务
+  scripts/platform/       # 平台 API 适配，业务层不得直接调用 tt.*
+  prefabs/                # 防御塔、敌人、投射物、特效与 UI 预制体
+  art/                    # 运行时美术、图集、动画和字体
+  audio/                  # BGM、音效与语音
+  data/                   # 关卡、数值、本地化和默认配置
+  bundles/                # 通用、章节和音频分包
+source_assets/            # PSD/AI/AEP/母带等生产源文件
 docs/                     # 产品、架构、发布与计划文档
 settings/                 # 需要纳入 Git 的 Cocos 项目设置
 ```
+
+完整的分辨率、UI、目录、命名、图集、音频和性能规则见 [项目规范](./docs/PROJECT_STANDARDS.md)。
 
 ## 文档维护约定
 
 - 功能或规则变化：同步修改 `docs/PRODUCT.md`。
 - 目录、模块或依赖变化：同步修改 `docs/ARCHITECTURE.md`。
+- 分辨率、UI、资源或命名规则变化：同步修改 `docs/PROJECT_STANDARDS.md`。
 - 抖音能力或提审要求变化：同步修改 `docs/DOUYIN_RELEASE.md`。
 - 里程碑变化：同步修改 `docs/ROADMAP.md`。
 - 每个可交付版本：更新 `CHANGELOG.md`。
+- 每次跨电脑开发开始前阅读 `docs/PROJECT_STATUS.md`，结束前更新任务记录并推送分支。
 
 当前自动检查和人工验收方法见 [docs/TESTING.md](./docs/TESTING.md)。
+两台电脑与 Codex 的协作方式见 [开发协作规范](./docs/DEVELOPMENT_WORKFLOW.md)；当前进度以 [项目状态](./docs/PROJECT_STATUS.md) 为准。
 
 ## Git
 

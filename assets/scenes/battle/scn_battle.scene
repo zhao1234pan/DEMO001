@@ -1,7 +1,7 @@
 [
   {
     "__type__": "cc.SceneAsset",
-    "_name": "main",
+    "_name": "scn_battle",
     "_objFlags": 0,
     "_native": "",
     "scene": {
@@ -10,7 +10,7 @@
   },
   {
     "__type__": "cc.Scene",
-    "_name": "main",
+    "_name": "scn_battle",
     "_objFlags": 0,
     "_parent": null,
     "_children": [
@@ -57,8 +57,8 @@
     "_prefab": null,
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": 195,
-      "y": 350,
+      "x": 375,
+      "y": 667,
       "z": 0
     },
     "_lrot": {
@@ -139,7 +139,7 @@
     "_priority": 0,
     "_fov": 45,
     "_fovAxis": 0,
-    "_orthoHeight": 350,
+    "_orthoHeight": 667,
     "_near": 0,
     "_far": 2000,
     "_color": {
@@ -178,8 +178,8 @@
     "__prefab": null,
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 390,
-      "height": 700
+      "width": 750,
+      "height": 1334
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",

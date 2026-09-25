@@ -4,11 +4,13 @@ import {
   VerticalTextAlignment, view,
 } from "cc";
 import { GAME_CONFIG, PATH_POINTS, TOWER_CONFIG, TOWER_SPOTS, EnemyKind, TowerKind } from "./GameConfig";
-import { PlatformService } from "../platform/PlatformService";
+import { PlatformService } from "../../services/PlatformService";
 
 const { ccclass } = _decorator;
-const W = GAME_CONFIG.designWidth;
-const H = GAME_CONFIG.designHeight;
+const DESIGN_W = GAME_CONFIG.designWidth;
+const DESIGN_H = GAME_CONFIG.designHeight;
+const W = GAME_CONFIG.prototypeLayoutWidth;
+const H = GAME_CONFIG.prototypeLayoutHeight;
 const PANEL_Y = 590;
 const KINDS: TowerKind[] = ["sprout", "frost", "bloom"];
 
@@ -29,6 +31,7 @@ interface Particle { x: number; y: number; vx: number; vy: number; size: number;
 
 @ccclass("GameRoot")
 export class GameRoot extends Component {
+  private contentRoot!: Node;
   private staticG!: Graphics;
   private dynamicG!: Graphics;
   private labels = new Map<string, Label>();
@@ -56,9 +59,14 @@ export class GameRoot extends Component {
   private readonly hideHandler = (): void => { this.paused = true; };
 
   onLoad(): void {
-    view.setDesignResolutionSize(W, H, ResolutionPolicy.FIXED_WIDTH);
+    view.setDesignResolutionSize(DESIGN_W, DESIGN_H, ResolutionPolicy.FIXED_WIDTH);
     const transform = this.node.getComponent(UITransform) ?? this.node.addComponent(UITransform);
-    transform.setContentSize(W, H);
+    transform.setContentSize(DESIGN_W, DESIGN_H);
+    this.contentRoot = new Node("PrototypeContent");
+    this.contentRoot.layer = Layers.Enum.UI_2D;
+    this.contentRoot.addComponent(UITransform).setContentSize(W, H);
+    this.contentRoot.setScale(DESIGN_W / W, DESIGN_H / H, 1);
+    this.node.addChild(this.contentRoot);
     this.staticG = this.createGraphics("StaticMap");
     this.dynamicG = this.createGraphics("DynamicGame");
     this.createLabels();
@@ -84,7 +92,7 @@ export class GameRoot extends Component {
     node.layer = Layers.Enum.UI_2D;
     node.setPosition(-W / 2, H / 2);
     node.setScale(1, -1, 1);
-    this.node.addChild(node);
+    this.contentRoot.addChild(node);
     node.addComponent(UITransform).setContentSize(W, H);
     return node.addComponent(Graphics);
   }
@@ -116,7 +124,7 @@ export class GameRoot extends Component {
     const node = new Node(key);
     node.layer = Layers.Enum.UI_2D;
     node.setPosition(x - W / 2, H / 2 - y);
-    this.node.addChild(node);
+    this.contentRoot.addChild(node);
     node.addComponent(UITransform).setContentSize(width, height);
     const label = node.addComponent(Label);
     label.string = value; label.fontSize = size; label.lineHeight = size + 5; label.color = this.color(hex);
@@ -423,7 +431,9 @@ export class GameRoot extends Component {
   private onTouchEnd(event: EventTouch): void {
     const point = event.getUILocation();
     const local = this.node.getComponent(UITransform)!.convertToNodeSpaceAR(new Vec3(point.x, point.y));
-    this.handlePress(local.x + W / 2, H / 2 - local.y);
+    const designX = local.x + DESIGN_W / 2;
+    const designY = DESIGN_H / 2 - local.y;
+    this.handlePress(designX * W / DESIGN_W, designY * H / DESIGN_H);
   }
 
   private handlePress(x: number, y: number): void {
