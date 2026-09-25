@@ -17,6 +17,9 @@ const H = GAME_CONFIG.prototypeLayoutHeight;
 // 底部 68 像素只保留三个救援道具；建造和升级改为跟随塔位的上下文操作。
 const PANEL_Y = 632;
 const KINDS: TowerKind[] = ["sprout", "frost", "bloom"];
+type GameSpeed = 1 | 2 | 3;
+// 正式局内倍速档位按固定顺序循环，避免出现不受数值验证覆盖的任意倍率。
+const GAME_SPEEDS: readonly GameSpeed[] = [1, 2, 3];
 type PropKind = "freeze" | "clear" | "cash";
 const PROP_KINDS: PropKind[] = ["freeze", "clear", "cash"];
 
@@ -48,6 +51,7 @@ export class GameRoot extends Component {
   private wave: number = 0;
   private inWave = false;
   private paused = false;
+  private gameSpeed: GameSpeed = 1;
   private screen: "playing" | "win" | "lose" = "playing";
   private revived = false;
   private selectedTower: Tower | null = null;
@@ -84,6 +88,8 @@ export class GameRoot extends Component {
     this.staticG = this.createGraphics("StaticMap");
     this.dynamicG = this.createGraphics("DynamicGame");
     this.createLabels();
+    const savedSpeed = PlatformService.getNumber("night_store_game_speed", 1);
+    this.gameSpeed = savedSpeed === 2 || savedSpeed === 3 ? savedSpeed : 1;
     this.currentLevelId = Math.max(1, Math.min(GAME_CONFIG.maxLevels, PlatformService.getNumber("night_store_unlocked_level", 1)));
     this.resetLevel(this.currentLevelId);
     this.node.on(Node.EventType.TOUCH_END, this.onTouchEnd, this);
@@ -96,8 +102,13 @@ export class GameRoot extends Component {
   }
 
   update(dt: number): void {
-    dt = Math.min(dt, 0.033);
-    if (!this.paused && !this.adRequesting && this.screen === "playing") this.updateGame(dt);
+    // 先限制单帧追赶时间，再把倍速后的游戏时间拆成稳定小步长，避免低帧率或三倍速时穿透目标。
+    let remainingGameTime = Math.min(dt, 0.1) * this.gameSpeed;
+    while (remainingGameTime > 0 && !this.paused && !this.adRequesting && this.screen === "playing") {
+      const step = Math.min(remainingGameTime, 0.033);
+      this.updateGame(step);
+      remainingGameTime -= step;
+    }
     this.render();
   }
 
@@ -115,9 +126,10 @@ export class GameRoot extends Component {
     this.makeLabel("title", "叮咚！夜班开始", 14, 82, 21, 150, 28, "#fff9df", HorizontalTextAlignment.LEFT);
     this.makeLabel("level", "", 12, 65, 50, 110, 22, "#aee3bd", HorizontalTextAlignment.LEFT);
     this.makeLabel("wave", "", 12, 145, 50, 70, 22, "#aee3bd");
-    this.makeLabel("coin", "", 16, 236, 34, 70, 36, "#fff9df");
-    this.makeLabel("lives", "", 16, 310, 34, 54, 36, "#fff9df");
-    this.makeLabel("pause", "Ⅱ", 18, 360, 34, 40, 40, "#fff9df");
+    this.makeLabel("coin", "", 15, 228, 34, 64, 36, "#fff9df");
+    this.makeLabel("lives", "", 15, 292, 34, 50, 36, "#fff9df");
+    this.makeLabel("speed", "×1", 12, 338, 34, 34, 36, "#fff9df");
+    this.makeLabel("pause", "Ⅱ", 17, 372, 34, 34, 36, "#fff9df");
     KINDS.forEach((kind) => {
       this.makeLabel(`build-${kind}`, TOWER_CONFIG[kind].name, 10, 0, 0, 52, 16, "#17352e");
       this.makeLabel(`build-cost-${kind}`, `●${TOWER_CONFIG[kind].cost}`, 9, 0, 0, 52, 14, "#8c6a24");
@@ -240,8 +252,8 @@ export class GameRoot extends Component {
 
   private drawPanels(g: Graphics): void {
     g.fillColor = this.color("#17352e"); g.rect(0, 0, W, 72); g.fill(); g.rect(0, PANEL_Y, W, H - PANEL_Y); g.fill();
-    this.box(g, 198, 13, 75, 42, 14, "#ffffff", 0.1); this.box(g, 276, 13, 58, 42, 14, "#ffffff", 0.1);
-    this.disc(g, 360, 34, 20, "#ffffff", 0.12);
+    this.box(g, 194, 13, 68, 42, 14, "#ffffff", 0.1); this.box(g, 265, 13, 55, 42, 14, "#ffffff", 0.1);
+    this.disc(g, 338, 34, 18, "#ffffff", 0.12); this.disc(g, 372, 34, 18, "#ffffff", 0.12);
     this.box(g, 12, 642, 114, 48, 12, "#5797b5");
     this.box(g, 138, 642, 114, 48, 12, "#d46f62");
     this.box(g, 264, 642, 114, 48, 12, "#d5a748");
@@ -317,7 +329,8 @@ export class GameRoot extends Component {
   private syncLabels(): void {
     this.setLabel("level", `第 ${this.level.id} 关`);
     this.setLabel("wave", `${this.wave}/${this.level.waves.length} 波`);
-    this.setLabel("coin", `● ${this.coins}`); this.setLabel("lives", `♥ ${this.lives}`); this.setLabel("pause", this.paused ? "▶" : "Ⅱ");
+    this.setLabel("coin", `● ${this.coins}`); this.setLabel("lives", `♥ ${this.lives}`);
+    this.setLabel("speed", `×${this.gameSpeed}`); this.setLabel("pause", this.paused ? "▶" : "Ⅱ");
     const contextVisible = this.screen === "playing" && !this.paused;
     const buildItems = contextVisible ? this.buildMenuItems() : [];
     KINDS.forEach((kind) => {
@@ -576,7 +589,10 @@ export class GameRoot extends Component {
 
   private handlePress(x: number, y: number): void {
     if (x < 0 || x > W || y < 0 || y > H || this.adRequesting) return;
-    if (this.screen === "playing" && y < 70 && x > 335) { this.paused = !this.paused; return; }
+    if (this.screen === "playing" && y < 70) {
+      if (x >= 354) { this.paused = !this.paused; return; }
+      if (x >= 320) { this.cycleGameSpeed(); return; }
+    }
     if (this.paused && this.screen === "playing") {
       if (x >= 91 && x <= 299 && y >= 355 && y <= 407) this.paused = false;
       return;
@@ -617,6 +633,13 @@ export class GameRoot extends Component {
       return;
     }
     this.selectedTower = null; this.selectedSpot = null;
+  }
+
+  private cycleGameSpeed(): void {
+    const currentIndex = GAME_SPEEDS.indexOf(this.gameSpeed);
+    this.gameSpeed = GAME_SPEEDS[(currentIndex + 1) % GAME_SPEEDS.length];
+    // 倍速属于玩家的正式偏好设置，切关、重开、复活和下次启动都沿用当前选择。
+    PlatformService.setNumber("night_store_game_speed", this.gameSpeed);
   }
 
   private advanceLevel(): void {
