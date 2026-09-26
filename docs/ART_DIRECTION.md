@@ -1,6 +1,6 @@
 # 第一版原创角色与 UI 美术方向
 
-> 状态：效果图评审中。第一轮效果图保留为风格参考，但其角色、装饰和 UI 占地过大，不作为塔防布局基准；下一版必须先满足高密度布阵与清障扩张。
+> 状态：量产方向已确认。第一轮三张效果图保留为风格参考；基于高密度棋盘的第二版母版和首批三名店员源图已经开始制作。
 
 ## 1. 已确认的项目视角
 
@@ -69,7 +69,8 @@
 - `source_assets/art/concepts/ui-v1/battle_ui_forest_picture_book_v1.png`
 - `source_assets/art/concepts/ui-v1/battle_ui_trendy_sticker_v1.png`
 - `source_assets/art/concepts/ui-v1/battle_ui_soft_candy_toy_v1.png`
+- `source_assets/art/production/v1/style_guides/battle_art_master_v2.png`
 
-三张图片用于方向评审，不是可直接切入游戏的最终资源。正式生产前仍需角色三视图、尺寸表、UI 组件表、动画清单和可复用地图组件清单。
+前三张图片用于方向评审，不是可直接切入游戏的最终资源。第二版母版用于约束量产比例、颜色和战场占地，同样不直接作为可交互背景。正式生产规范与首批资源顺序见 [美术资源生产规范](./ART_PRODUCTION.md)。
 
 玩法空间和交互约束以 [《保卫萝卜》塔防核心参考分析](./TOWER_DEFENSE_REFERENCE.md) 为准；后续重绘效果图时保留原创森林便利店风格，但收回大角色、大装饰和大底栏。
