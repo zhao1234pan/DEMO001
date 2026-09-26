@@ -2,7 +2,8 @@ export const GAME_CONFIG = {
   designWidth: 750,
   designHeight: 1334,
   prototypeLayoutWidth: 390,
-  prototypeLayoutHeight: 700,
+  // 逻辑画布必须与 750×1334 保持完全相同的宽高比，禁止横纵分别缩放造成图形和触控变形。
+  prototypeLayoutHeight: 1334 * 390 / 750,
   maxLevels: 10,
   rewardAdUnitId: "replace-with-douyin-ad-unit-id",
 } as const;

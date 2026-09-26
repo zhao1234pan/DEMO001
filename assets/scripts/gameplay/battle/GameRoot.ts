@@ -8,13 +8,13 @@ import { getLevelConfig, LevelConfig } from "./LevelConfig";
 import { PlatformService } from "../../services/PlatformService";
 
 const { ccclass } = _decorator;
-// 运行时仍使用 390×700 的轻量逻辑坐标，再映射到正式 750×1334 设计分辨率。
-// 这样可以保持现有原型数值易读，同时确保抖音竖屏适配由 Cocos 统一处理。
+// 运行时使用 390 宽的轻量逻辑坐标，逻辑高度与 750×1334 保持完全相同的宽高比。
+// 横纵采用同一缩放比例，避免圆形、字号和触控区域在正式设计分辨率下发生轻微变形。
 const DESIGN_W = GAME_CONFIG.designWidth;
 const DESIGN_H = GAME_CONFIG.designHeight;
 const W = GAME_CONFIG.prototypeLayoutWidth;
 const H = GAME_CONFIG.prototypeLayoutHeight;
-// 底部 68 像素只保留三个救援道具；建造和升级改为跟随塔位的上下文操作。
+// 底部固定区域只保留三个救援道具；建造和升级改为跟随塔位的上下文操作。
 const PANEL_Y = 632;
 const KINDS: TowerKind[] = ["sprout", "frost", "bloom"];
 type GameSpeed = 1 | 2 | 3;
@@ -139,6 +139,8 @@ export class GameRoot extends Component {
     this.makeLabel("prop-clear", "", 11, 195, 666, 108, 38, "#fff9df");
     this.makeLabel("prop-cash", "", 11, 321, 666, 108, 38, "#fff9df");
     this.makeLabel("toast", "", 12, 195, 101, 290, 30, "#fff9df");
+    this.makeLabel("next-wave-title", "", 12, 0, 0, 68, 20, "#32724c");
+    this.makeLabel("next-wave-number", "", 24, 0, 0, 58, 32, "#17352e");
     this.makeLabel("overlayTitle", "", 27, 195, 284, 286, 45, "#17352e");
     this.makeLabel("overlayStats", "", 14, 195, 340, 270, 58, "#32724c");
     this.makeLabel("overlayPrimary", "", 14, 195, 412, 246, 44, "#fff9df");
@@ -194,6 +196,7 @@ export class GameRoot extends Component {
     if (this.frozenTime > 0) this.box(g, 0, 72, W, PANEL_Y - 72, 0, "#b8f2ff", 0.14);
     this.drawContextMenu(g);
     this.drawPanels(g);
+    this.drawWaveCountdown(g);
     this.syncLabels();
     if (this.paused || this.screen !== "playing") this.drawOverlay(g);
   }
@@ -277,6 +280,29 @@ export class GameRoot extends Component {
     }
   }
 
+  private shouldShowWaveCountdown(): boolean {
+    return this.screen === "playing" && !this.paused && !this.inWave && this.enemies.length === 0
+      && this.wave < this.level.waves.length && this.toastTime <= 0;
+  }
+
+  private waveCountdownPosition(): { x: number; y: number } {
+    const start = this.level.pathPoints[0];
+    // 提示贴近怪物入口，并为顶部状态栏、底部道具栏和屏幕边缘保留安全距离。
+    return {
+      x: Math.max(42, Math.min(W - 42, start[0])),
+      y: Math.max(145, Math.min(PANEL_Y - 44, start[1])),
+    };
+  }
+
+  private drawWaveCountdown(g: Graphics): void {
+    if (!this.shouldShowWaveCountdown()) return;
+    const position = this.waveCountdownPosition();
+    const urgent = this.nextWaveTimer <= 3;
+    this.disc(g, position.x, position.y + 3, urgent ? 37 : 35, "#17352e", 0.2);
+    this.disc(g, position.x, position.y, urgent ? 35 : 33, "#fff9df", 0.96);
+    this.ring(g, position.x, position.y, urgent ? 35 : 33, urgent ? "#e78954" : "#58a95e", 1, urgent ? 3 : 2);
+  }
+
   private buildMenuItems(): Array<{ kind: TowerKind; x: number; y: number }> {
     const spot = this.selectedSpot;
     if (!spot || spot.tower) return [];
@@ -357,6 +383,16 @@ export class GameRoot extends Component {
     this.setLabel("prop-clear", this.propButtonText("闭店清场", "clear"));
     this.setLabel("prop-cash", this.propButtonText("紧急零钱", "cash"));
     this.showLabel("toast", this.toastTime > 0 && this.screen === "playing" && !this.paused); this.setLabel("toast", this.toastText);
+    const showWaveCountdown = this.shouldShowWaveCountdown();
+    this.showLabel("next-wave-title", showWaveCountdown);
+    this.showLabel("next-wave-number", showWaveCountdown);
+    if (showWaveCountdown) {
+      const position = this.waveCountdownPosition();
+      this.setLabelPosition("next-wave-title", position.x, position.y - 11);
+      this.setLabelPosition("next-wave-number", position.x, position.y + 11);
+      this.setLabel("next-wave-title", `下一波 ${this.wave + 1}/${this.level.waves.length}`);
+      this.setLabel("next-wave-number", `${Math.max(1, Math.ceil(this.nextWaveTimer))}`);
+    }
     const overlay = this.paused || this.screen !== "playing";
     ["overlayTitle", "overlayStats", "overlayPrimary", "overlayNote", "overlaySecondary"].forEach((key) => this.showLabel(key, overlay));
     if (!overlay) return;
@@ -480,7 +516,8 @@ export class GameRoot extends Component {
         this.screen = "win";
         PlatformService.setNumber("night_store_unlocked_level", Math.min(GAME_CONFIG.maxLevels, Math.max(this.currentLevelId + 1, PlatformService.getNumber("night_store_unlocked_level", 1))));
       } else {
-        this.nextWaveTimer = 2.4;
+        // 先展示波次奖励，再留出完整的 3、2、1 预告，避免下一波突然出现。
+        this.nextWaveTimer = 4.8;
         this.showToast(`守住了！夜班收入 +${bonus}`);
       }
     }
@@ -655,7 +692,7 @@ export class GameRoot extends Component {
     if (!result.rewarded && result.reason !== "missing-ad-unit") { this.showToast("广告未完整观看，暂未复活"); return; }
     // 复活保留布阵，但清掉当前波次的临时对象并回退一波，避免广告返回后立刻再次失败。
     this.revived = true; this.lives = Math.max(3, Math.ceil(this.level.initialLives * 0.4)); this.screen = "playing"; this.enemies = []; this.shots = []; this.queue = [];
-    this.inWave = false; this.wave = Math.max(0, this.wave - 1); this.nextWaveTimer = 1.5;
+    this.inWave = false; this.wave = Math.max(0, this.wave - 1); this.nextWaveTimer = 5.3;
     this.showToast(result.rewarded ? "继续营业！当前波次即将重来" : "暂无广告，测试环境已直接继续");
   }
 
