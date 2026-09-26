@@ -26,6 +26,10 @@ MVP 入口组件，负责游戏状态、波次、寻路、战斗、输入和程�
 
 向玩法层提供生命周期、本地存储和广告能力。当前可玩原型在正式 750 × 1334 画布中映射原有逻辑坐标，后续新 UI 直接按正式设计尺寸制作。
 
+### `assets/scripts/services/AudioService.ts`
+
+集中管理局内短音效。服务通过 Cocos `resources` 异步加载 `assets/resources/audio/sfx/` 中的 `AudioClip`，再使用单一 `AudioSource` 播放，不依赖 DOM、浏览器音频接口或 `tt.*`。资源尚未加载或加载失败时跳过本次播放，不影响战斗；攻击、击杀和漏怪等高频声音由服务统一限频。
+
 ### `assets/scripts/platform/douyin/`
 
 唯一允许封装 `tt.*` 的目录。`DouyinRewardedVideo.ts` 管理激励视频实例和一次性回调保护；玩法层不得直接引用平台全局变量。

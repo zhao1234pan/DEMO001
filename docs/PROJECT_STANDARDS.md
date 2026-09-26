@@ -57,7 +57,7 @@ G:\DEMO001
 │  │  ├─ animations
 │  │  ├─ spine
 │  │  └─ fonts
-│  ├─ audio/{bgm,sfx,voice}
+│  ├─ resources/audio/sfx
 │  ├─ data/{levels,balance,localization,defaults}
 │  └─ bundles/{common,chapter_01,audio}
 ├─ source_assets/{art,animation,audio}
@@ -111,6 +111,8 @@ G:\DEMO001
 - 战斗音效：`sfx_battle_`。
 - 系统音效：`sfx_system_`。
 - 语音：`voice_`。
+- 当前 MVP 的局内短音效放在 `assets/resources/audio/sfx/`，由 `AudioService` 按路径加载；后续大体积背景音乐和章节音频应迁入独立音频 Bundle，不重复保留同一运行时副本。
+- 高频战斗音效必须设置播放间隔或并发上限，避免密集波次叠加成噪声并增加解码压力。
 - 运行时格式和压缩参数按真机听感与包体评估决定，保留无损母带在 `source_assets/audio/`。
 
 ## 6. 图集与资源预算

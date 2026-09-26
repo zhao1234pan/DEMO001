@@ -31,24 +31,26 @@ const wave = (list: EnemyKind[], spawnInterval = 0.78, announcement?: string): W
 export const LEVEL_CONFIGS: readonly LevelConfig[] = [
   {
     id: 1, title: "第一次夜班", initialCoins: 170, initialLives: 9,
-    enemyHealthScale: 0.92, enemySpeedScale: 0.9, availableTowers: ["sprout"],
+    enemyHealthScale: 0.9, enemySpeedScale: 0.88, availableTowers: ["sprout"],
     pathPoints: [[-20, 145], [105, 145], [105, 270], [295, 270], [295, 430], [120, 430], [120, 555], [410, 555]],
     towerSpots: [[52, 215], [180, 205], [235, 340], [350, 335], [205, 500]],
-    waves: [wave(enemies("normal", 6), 0.94), wave(enemies("normal", 7), 0.88), wave(enemies("normal", 9), 0.8, "最后一波，别让它们冲进店里！")],
+    waves: [wave(enemies("normal", 6), 0.98), wave(enemies("normal", 7), 0.86), wave(enemies("normal", 9), 0.72, "最后一波，别让它们冲进店里！")],
   },
+  // 初始零钱刚好支持“豆包 + 棉棉”，首波加入疾行敌人用于验证减速价值。
   {
-    id: 2, title: "跑得太快啦", initialCoins: 190, initialLives: 8,
-    enemyHealthScale: 1.02, enemySpeedScale: 1, availableTowers: ["sprout", "frost"],
+    id: 2, title: "跑得太快啦", initialCoins: 195, initialLives: 8,
+    enemyHealthScale: 1, enemySpeedScale: 1.02, availableTowers: ["sprout", "frost"],
     pathPoints: [[-20, 125], [320, 125], [320, 245], [75, 245], [75, 380], [300, 380], [300, 520], [410, 520]],
     towerSpots: [[165, 185], [260, 185], [25, 312], [185, 312], [185, 450]],
-    waves: [wave(enemies("normal", 7), 0.88), wave(mix(enemies("normal", 6), enemies("swift", 3)), 0.78), wave(mix(enemies("swift", 5), enemies("normal", 7)), 0.68, "棉棉能让高速精怪慢下来！")],
+    waves: [wave(mix(enemies("normal", 6), enemies("swift", 2)), 0.86), wave(mix(enemies("normal", 5), enemies("swift", 5)), 0.7), wave(mix(enemies("normal", 7), enemies("swift", 6)), 0.6, "棉棉能让高速精怪慢下来！")],
   },
+  // 初始零钱刚好支持“布丁 + 豆包”，更密集的短间隔波次用于验证范围攻击价值。
   {
-    id: 3, title: "热食出炉", initialCoins: 225, initialLives: 8,
-    enemyHealthScale: 1.08, enemySpeedScale: 1.03, availableTowers: ["sprout", "frost", "bloom"],
+    id: 3, title: "热食出炉", initialCoins: 235, initialLives: 8,
+    enemyHealthScale: 1.06, enemySpeedScale: 1.02, availableTowers: ["sprout", "frost", "bloom"],
     pathPoints: [[-20, 125], [100, 125], [100, 520], [225, 520], [225, 180], [350, 180], [350, 575], [410, 575]],
     towerSpots: [[45, 250], [163, 210], [163, 350], [288, 275], [288, 440], [45, 440]],
-    waves: [wave(enemies("normal", 8), 0.84), wave(mix(enemies("normal", 8), enemies("swift", 3)), 0.72), wave(mix(enemies("normal", 11), enemies("swift", 5)), 0.62, "精怪挤在一起，试试布丁！")],
+    waves: [wave(enemies("normal", 9), 0.6), wave(mix(enemies("normal", 10), enemies("swift", 3)), 0.52), wave(mix(enemies("normal", 14), enemies("swift", 4)), 0.46, "精怪挤在一起，试试布丁！")],
   },
   {
     id: 4, title: "重重的纸袋", initialCoins: 240, initialLives: 7,

@@ -6,9 +6,9 @@
 - 开始日期：2026-09-26
 - 目标：精调前 3 关的经济、敌人组合和店员定位，增加不依赖新手引导的建造、升级、攻击、击杀、漏怪、波次与结算反馈，并接入原创轻量音效。
 - 修改范围：前 3 关配置、战斗表现状态、音频服务、原创音效资源、中文玩法与测试文档；本轮不增加新手引导。
-- 预计修改文件：`assets/scripts/gameplay/battle/LevelConfig.ts`、`assets/scripts/gameplay/battle/GameConfig.ts`、`assets/scripts/gameplay/battle/GameRoot.ts`、`assets/scripts/services/AudioService.ts`、`assets/audio/`、相关 `.meta`、`docs/GAMEPLAY.md`、`docs/PROJECT_STATUS.md`、`docs/TESTING.md`、`CHANGELOG.md`。
+- 预计修改文件：`assets/scripts/gameplay/battle/LevelConfig.ts`、`assets/scripts/gameplay/battle/GameRoot.ts`、`assets/scripts/services/AudioService.ts`、`assets/resources/audio/sfx/`、相关 `.meta`、玩法/架构/规范/状态/测试/路线图文档与 `CHANGELOG.md`。
 - 验收条件：第 1 关建立豆包建造/升级节奏，第 2 关体现棉棉对高速敌人的价值，第 3 关体现布丁处理密集敌群的价值；关键战斗行为有清晰视觉与声音反馈；音频加载失败不阻断游戏；TypeScript、Web Mobile、抖音小游戏构建和竖屏试玩通过。
-- 当前进度：已完成当前 10 关路线与压力审计，准备建立前三关更细的经济和波次基线。
-- 测试结果：待填写。
+- 当前进度：已完成前三关数值调优、战斗视觉反馈、音频服务和 11 个原创短音效，并通过代码、浏览器与抖音构建验收。
+- 测试结果：TypeScript 严格检查通过；前三关综合压力约 0.9、1.4、1.7，经济组合符合设计；Web Mobile 构建完成并导入全部音效；375 × 667 浏览器中建造、升级和攻击反馈点按通过，控制台无错误或警告；抖音小游戏构建任务输出 `Finished`，产物约 3.37 MiB、竖屏且包含全部 11 个音效路径。真机听感仍待复核。
 - 提交：待填写。
-- 遗留问题与下一步：待填写。
+- 遗留问题与下一步：第 2、3 关仍需整局人工通关；音效最终音量和混音需在 Creator 与抖音真机人工试听；新手引导按用户要求暂不制作。

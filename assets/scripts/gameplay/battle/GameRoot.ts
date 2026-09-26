@@ -6,6 +6,7 @@ import {
 import { ENEMY_CONFIG, GAME_CONFIG, TOWER_CONFIG, EnemyKind, TowerKind } from "./GameConfig";
 import { getLevelConfig, LevelConfig } from "./LevelConfig";
 import { PlatformService } from "../../services/PlatformService";
+import { AudioService } from "../../services/AudioService";
 
 const { ccclass } = _decorator;
 // 运行时使用 390 宽的轻量逻辑坐标，逻辑高度与 750×1334 保持完全相同的宽高比。
@@ -26,12 +27,12 @@ const PROP_KINDS: PropKind[] = ["freeze", "clear", "cash"];
 interface Enemy {
   kind: EnemyKind; hp: number; maxHp: number; speed: number; reward: number;
   radius: number; color: string; damage: number; distance: number; x: number; y: number;
-  age: number; slow: number;
+  age: number; slow: number; hitFlash: number;
 }
 
 interface Tower {
   x: number; y: number; kind: TowerKind; level: number; cooldown: number;
-  angle: number; spent: number; spot: Spot;
+  angle: number; spent: number; spot: Spot; recoil: number;
 }
 
 interface Spot { x: number; y: number; tower: Tower | null; }
@@ -43,6 +44,7 @@ export class GameRoot extends Component {
   private contentRoot!: Node;
   private staticG!: Graphics;
   private dynamicG!: Graphics;
+  private audio!: AudioService;
   private labels = new Map<string, Label>();
   private currentLevelId = 1;
   private level: LevelConfig = getLevelConfig(1);
@@ -74,6 +76,11 @@ export class GameRoot extends Component {
   private defeated = 0;
   private earned = 0;
   private pathLength = 0;
+  private damageFlash = 0;
+  private battleFeedbackText = "";
+  private battleFeedbackTime = 0;
+  private battleFeedbackX = W / 2;
+  private battleFeedbackY = H / 2;
   private readonly hideHandler = (): void => { this.paused = true; };
 
   onLoad(): void {
@@ -87,6 +94,7 @@ export class GameRoot extends Component {
     this.node.addChild(this.contentRoot);
     this.staticG = this.createGraphics("StaticMap");
     this.dynamicG = this.createGraphics("DynamicGame");
+    this.audio = new AudioService(this.node);
     this.createLabels();
     const savedSpeed = PlatformService.getNumber("night_store_game_speed", 1);
     this.gameSpeed = savedSpeed === 2 || savedSpeed === 3 ? savedSpeed : 1;
@@ -99,6 +107,7 @@ export class GameRoot extends Component {
   onDestroy(): void {
     this.node.off(Node.EventType.TOUCH_END, this.onTouchEnd, this);
     PlatformService.offHide(this.hideHandler);
+    this.audio.destroy();
   }
 
   update(dt: number): void {
@@ -141,6 +150,7 @@ export class GameRoot extends Component {
     this.makeLabel("toast", "", 12, 195, 101, 290, 30, "#fff9df");
     this.makeLabel("next-wave-title", "", 12, 0, 0, 68, 20, "#32724c");
     this.makeLabel("next-wave-number", "", 24, 0, 0, 58, 32, "#17352e");
+    this.makeLabel("battle-feedback", "", 12, 0, 0, 150, 26, "#17352e");
     this.makeLabel("overlayTitle", "", 27, 195, 284, 286, 45, "#17352e");
     this.makeLabel("overlayStats", "", 14, 195, 340, 270, 58, "#32724c");
     this.makeLabel("overlayPrimary", "", 14, 195, 412, 246, 44, "#fff9df");
@@ -194,6 +204,7 @@ export class GameRoot extends Component {
     this.shots.forEach((shot) => this.disc(g, shot.x, shot.y, shot.kind === "bloom" ? 5 : 3.5, TOWER_CONFIG[shot.kind].shotColor));
     this.particles.forEach((p) => this.disc(g, p.x, p.y, p.size, p.color, Math.max(0, p.life / p.maxLife)));
     if (this.frozenTime > 0) this.box(g, 0, 72, W, PANEL_Y - 72, 0, "#b8f2ff", 0.14);
+    if (this.damageFlash > 0) this.box(g, 0, 72, W, PANEL_Y - 72, 0, "#eb685d", Math.min(0.2, this.damageFlash * 0.7));
     this.drawContextMenu(g);
     this.drawPanels(g);
     this.drawWaveCountdown(g);
@@ -221,6 +232,13 @@ export class GameRoot extends Component {
     this.disc(g, tower.x, tower.y + 6, 22, "#8c7047");
     this.disc(g, tower.x, tower.y + 2, 18, cfg.color);
     this.ring(g, tower.x, tower.y + 2, 18, "#2d6048", 1, 2);
+    const barrelLength = tower.recoil > 0 ? 10 : 15;
+    const barrelX = tower.x + Math.cos(tower.angle) * barrelLength;
+    const barrelY = tower.y + 2 + Math.sin(tower.angle) * barrelLength;
+    g.lineWidth = tower.kind === "bloom" ? 6 : 4;
+    g.strokeColor = this.color(tower.kind === "frost" ? "#ddfbff" : "#734f35");
+    g.moveTo(tower.x, tower.y + 2); g.lineTo(barrelX, barrelY); g.stroke();
+    if (tower.recoil > 0) this.disc(g, barrelX, barrelY, tower.kind === "bloom" ? 5 : 3.5, cfg.shotColor, 0.9);
     if (tower.kind === "sprout") {
       this.disc(g, tower.x - 7, tower.y - 7, 8, "#3d874b"); this.disc(g, tower.x + 7, tower.y - 7, 8, "#3d874b");
       this.disc(g, tower.x, tower.y + 1, 8, "#dcf278");
@@ -246,6 +264,7 @@ export class GameRoot extends Component {
     this.ring(g, enemy.x, enemy.y + 4 + wobble, enemy.radius, "#17352e", 0.45, 2);
     this.disc(g, enemy.x - 5, enemy.y + wobble, 2.2, "#fff9df"); this.disc(g, enemy.x + 5, enemy.y + wobble, 2.2, "#fff9df");
     this.disc(g, enemy.x - 5, enemy.y + wobble, 1.1, "#17352e"); this.disc(g, enemy.x + 5, enemy.y + wobble, 1.1, "#17352e");
+    if (enemy.hitFlash > 0) this.disc(g, enemy.x, enemy.y + 4 + wobble, enemy.radius + 2, "#fff9df", Math.min(0.82, enemy.hitFlash * 7));
     if (enemy.kind === "tank") this.box(g, enemy.x - 13, enemy.y - 14 + wobble, 26, 8, 4, "#8e7357");
     const ratio = Math.max(0, enemy.hp / enemy.maxHp);
     this.box(g, enemy.x - 17, enemy.y - enemy.radius - 10, 34, 5, 3, "#17352e", 0.32);
@@ -393,6 +412,12 @@ export class GameRoot extends Component {
       this.setLabel("next-wave-title", `下一波 ${this.wave + 1}/${this.level.waves.length}`);
       this.setLabel("next-wave-number", `${Math.max(1, Math.ceil(this.nextWaveTimer))}`);
     }
+    const showBattleFeedback = this.battleFeedbackTime > 0 && this.screen === "playing" && !this.paused;
+    this.showLabel("battle-feedback", showBattleFeedback);
+    if (showBattleFeedback) {
+      this.setLabelPosition("battle-feedback", this.battleFeedbackX, this.battleFeedbackY - (1 - this.battleFeedbackTime / 0.85) * 12);
+      this.setLabel("battle-feedback", this.battleFeedbackText);
+    }
     const overlay = this.paused || this.screen !== "playing";
     ["overlayTitle", "overlayStats", "overlayPrimary", "overlayNote", "overlaySecondary"].forEach((key) => this.showLabel(key, overlay));
     if (!overlay) return;
@@ -448,11 +473,15 @@ export class GameRoot extends Component {
     this.drawStaticMap();
     this.toastText = this.level.id === 1 ? "先点空塔位，再选择豆包" : `第 ${this.level.id} 关：${this.level.title}`; this.toastTime = 4;
     this.defeated = 0; this.earned = 0;
+    this.damageFlash = 0; this.battleFeedbackTime = 0; this.battleFeedbackText = "";
   }
 
   private updateGame(dt: number): void {
     this.toastTime = Math.max(0, this.toastTime - dt);
     this.frozenTime = Math.max(0, this.frozenTime - dt);
+    this.damageFlash = Math.max(0, this.damageFlash - dt);
+    this.battleFeedbackTime = Math.max(0, this.battleFeedbackTime - dt);
+    this.towers.forEach((tower) => { tower.recoil = Math.max(0, tower.recoil - dt); });
     // 波次自动衔接，但预留短暂整理时间；首关开局等待更久，给玩家完成第一次建造。
     if (!this.inWave && this.enemies.length === 0 && this.wave < this.level.waves.length) {
       this.nextWaveTimer -= dt;
@@ -469,13 +498,16 @@ export class GameRoot extends Component {
     // 敌人只保存“沿路线行进的距离”，不同关卡换路线时无需改移动状态结构。
     for (let i = this.enemies.length - 1; i >= 0; i -= 1) {
       const enemy = this.enemies[i];
-      enemy.age += dt; enemy.slow = Math.max(0, enemy.slow - dt);
+      enemy.age += dt; enemy.slow = Math.max(0, enemy.slow - dt); enemy.hitFlash = Math.max(0, enemy.hitFlash - dt);
       enemy.distance += enemy.speed * (this.frozenTime > 0 ? 0 : enemy.slow > 0 ? 0.57 : 1) * dt;
       const pos = this.pathPosition(enemy.distance); enemy.x = pos.x; enemy.y = pos.y;
       if (pos.done || enemy.distance >= this.pathLength) {
-        this.lives -= enemy.damage; this.burst(enemy.x, enemy.y, "#eb685d", 10); this.enemies.splice(i, 1);
+        this.lives -= enemy.damage; this.damageFlash = 0.28; this.audio.play("leak", 0.62);
+        this.showBattleFeedback(`便利店耐久 -${enemy.damage}`, W - 78, 92);
+        this.burst(enemy.x, enemy.y, "#eb685d", 14); this.enemies.splice(i, 1);
         if (this.lives <= 0) {
           this.lives = 0; this.screen = "lose";
+          this.audio.play("lose", 0.82);
           PlatformService.setNumber("night_store_best_level", Math.max(this.level.id, PlatformService.getNumber("night_store_best_level", 0)));
           return;
         }
@@ -492,6 +524,8 @@ export class GameRoot extends Component {
       tower.angle = Math.atan2(target.y - tower.y, target.x - tower.x);
       if (tower.cooldown <= 0) {
         this.shots.push({ x: tower.x, y: tower.y, target, kind: tower.kind, level: tower.level, speed: tower.kind === "bloom" ? 150 : 230 });
+        tower.recoil = 0.11;
+        this.audio.play(tower.kind, tower.kind === "bloom" ? 0.24 : 0.18);
         // 升级同时提高伤害和少量攻速，但总效率不会压过新建店员，保留布阵选择。
         tower.cooldown = cfg.rate / (1 + (tower.level - 1) * 0.12);
       }
@@ -514,6 +548,7 @@ export class GameRoot extends Component {
       this.inWave = false; const bonus = 12 + this.wave * 4; this.coins += bonus; this.earned += bonus;
       if (this.wave >= this.level.waves.length) {
         this.screen = "win";
+        this.audio.play("win", 0.8);
         PlatformService.setNumber("night_store_unlocked_level", Math.min(GAME_CONFIG.maxLevels, Math.max(this.currentLevelId + 1, PlatformService.getNumber("night_store_unlocked_level", 1))));
       } else {
         // 先展示波次奖励，再留出完整的 3、2、1 预告，避免下一波突然出现。
@@ -528,22 +563,25 @@ export class GameRoot extends Component {
     const config = this.level.waves[this.wave]; this.wave += 1;
     this.queue = [...config.enemies]; this.spawnInterval = config.spawnInterval;
     this.spawnTimer = 0; this.inWave = true; this.showToast(config.announcement ?? `第 ${this.wave} 波来袭！`);
+    this.audio.play("wave", 0.58);
   }
 
   private spawnEnemy(kind: EnemyKind): void {
     const base = ENEMY_CONFIG[kind];
     const hp = Math.round(base.hp * this.level.enemyHealthScale * (1 + (this.wave - 1) * 0.08));
     const start = this.level.pathPoints[0];
-    this.enemies.push({ kind, hp, maxHp: hp, speed: base.speed * this.level.enemySpeedScale, reward: base.reward, radius: base.radius, color: base.color, damage: base.damage, distance: 0, x: start[0], y: start[1], age: 0, slow: 0 });
+    this.enemies.push({ kind, hp, maxHp: hp, speed: base.speed * this.level.enemySpeedScale, reward: base.reward, radius: base.radius, color: base.color, damage: base.damage, distance: 0, x: start[0], y: start[1], age: 0, slow: 0, hitFlash: 0 });
   }
 
   private hit(shot: Shot, target: Enemy): void {
     const cfg = TOWER_CONFIG[shot.kind]; const damage = cfg.damage * (1 + (shot.level - 1) * 0.52);
     if (cfg.splash) {
-      for (const enemy of this.enemies) if (Math.hypot(enemy.x - target.x, enemy.y - target.y) <= cfg.splash) enemy.hp -= damage;
+      for (const enemy of this.enemies) if (Math.hypot(enemy.x - target.x, enemy.y - target.y) <= cfg.splash) {
+        enemy.hp -= damage; enemy.hitFlash = 0.12;
+      }
       this.burst(target.x, target.y, cfg.shotColor, 12);
     } else {
-      target.hp -= damage; if (cfg.slow) target.slow = 1.35 + shot.level * 0.2;
+      target.hp -= damage; target.hitFlash = 0.12; if (cfg.slow) target.slow = 1.35 + shot.level * 0.2;
       this.burst(target.x, target.y, cfg.shotColor, 4);
     }
     for (let i = this.enemies.length - 1; i >= 0; i -= 1) {
@@ -555,7 +593,8 @@ export class GameRoot extends Component {
   private defeatEnemyAt(index: number): void {
     const enemy = this.enemies[index]; if (!enemy) return;
     this.coins += enemy.reward; this.earned += enemy.reward; this.defeated += 1;
-    this.burst(enemy.x, enemy.y, "#ffc34d", 10); this.enemies.splice(index, 1);
+    this.audio.play("defeat", 0.26);
+    this.burst(enemy.x, enemy.y, "#ffc34d", 14); this.enemies.splice(index, 1);
   }
 
   private buildTower(spot: Spot, kind: TowerKind): void {
@@ -563,8 +602,9 @@ export class GameRoot extends Component {
     const cfg = TOWER_CONFIG[kind];
     if (this.coins < cfg.cost) { this.showToast("夜班零钱不够，先赶走一些精怪吧"); return; }
     this.coins -= cfg.cost;
-    const tower: Tower = { x: spot.x, y: spot.y, kind, level: 1, cooldown: 0, angle: 0, spent: cfg.cost, spot };
+    const tower: Tower = { x: spot.x, y: spot.y, kind, level: 1, cooldown: 0, angle: 0, spent: cfg.cost, spot, recoil: 0 };
     spot.tower = tower; this.towers.push(tower); this.burst(spot.x, spot.y, cfg.color, 12);
+    this.audio.play("build", 0.64); this.showBattleFeedback(`${cfg.name}上岗！`, spot.x, spot.y - 28);
     this.selectedTower = tower; this.selectedSpot = spot;
   }
 
@@ -573,6 +613,7 @@ export class GameRoot extends Component {
     if (tower.level >= 3) { this.showToast(`${TOWER_CONFIG[tower.kind].name}已经满级`); return; }
     const cost = this.upgradeCost(tower); if (this.coins < cost) { this.showToast("升级所需零钱不足"); return; }
     this.coins -= cost; tower.spent += cost; tower.level += 1; this.burst(tower.x, tower.y, "#ffc34d", 18);
+    this.audio.play("upgrade", 0.68); this.showBattleFeedback(`${TOWER_CONFIG[tower.kind].name} Lv.${tower.level}`, tower.x, tower.y - 28);
   }
 
   private upgradeCost(tower: Tower): number {
@@ -590,6 +631,7 @@ export class GameRoot extends Component {
   }
 
   private applyProp(kind: PropKind): void {
+    this.audio.play("prop", 0.62);
     if (kind === "freeze") {
       this.frozenTime = Math.max(this.frozenTime, 5); this.showToast("冰柜冷气：全场冻结 5 秒"); return;
     }
@@ -697,6 +739,10 @@ export class GameRoot extends Component {
   }
 
   private showToast(value: string): void { this.toastText = value; this.toastTime = 2.3; }
+
+  private showBattleFeedback(value: string, x: number, y: number): void {
+    this.battleFeedbackText = value; this.battleFeedbackX = x; this.battleFeedbackY = y; this.battleFeedbackTime = 0.85;
+  }
 
   private burst(x: number, y: number, color: string, count: number): void {
     for (let i = 0; i < count; i += 1) {
