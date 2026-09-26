@@ -252,14 +252,23 @@ export class GameRoot extends Component {
   private drawSpots(g: Graphics): void {
     for (const spot of this.spots) {
       if (spot.obstacle) {
+        // 障碍物与空位共用同一套底座，让玩家一眼看出“清掉这里就能建塔”。
+        this.drawSpotMarker(g, spot, false, true);
         this.drawObstacle(g, spot.obstacle);
       } else if (!spot.tower) {
-        const selected = this.selectedSpot === spot;
-        this.disc(g, spot.x, spot.y, selected ? 21 : 14, selected ? "#fff3c2" : "#ffffff", selected ? 0.9 : 0.2);
-        this.ring(g, spot.x, spot.y, selected ? 21 : 14, selected ? "#e6a83e" : "#32724c", selected ? 0.95 : 0.25, selected ? 3 : 1.5);
-        this.ring(g, spot.x, spot.y, selected ? 7 : 5, "#32724c", selected ? 0.6 : 0.25, 1.5);
+        this.drawSpotMarker(g, spot, this.selectedSpot === spot, false);
       } else this.drawTower(g, spot.tower);
     }
+  }
+
+  private drawSpotMarker(g: Graphics, spot: Spot, selected: boolean, blocked: boolean): void {
+    const radius = selected ? 21 : blocked ? 20 : 14;
+    const fill = selected ? "#fff3c2" : blocked ? "#fff9df" : "#ffffff";
+    const stroke = selected ? "#e6a83e" : blocked ? "#8c6a24" : "#32724c";
+    const alpha = selected ? 0.9 : blocked ? 0.44 : 0.24;
+    this.disc(g, spot.x, spot.y, radius, fill, alpha);
+    this.ring(g, spot.x, spot.y, radius, stroke, selected ? 0.95 : blocked ? 0.48 : 0.3, selected ? 3 : 1.5);
+    this.ring(g, spot.x, spot.y, selected ? 7 : 5, stroke, selected ? 0.6 : 0.3, 1.5);
   }
 
   private drawObstacle(g: Graphics, obstacle: Obstacle): void {
