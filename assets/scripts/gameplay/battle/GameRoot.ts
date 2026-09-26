@@ -3,6 +3,7 @@ import {
   Label, Layers, Node, ResolutionPolicy, UITransform, Vec3,
   VerticalTextAlignment, view,
 } from "cc";
+import { DEBUG } from "cc/env";
 import { ENEMY_CONFIG, GAME_CONFIG, TOWER_CONFIG, EnemyKind, TowerKind } from "./GameConfig";
 import { getLevelConfig, LevelConfig, ObstacleKind } from "./LevelConfig";
 import { PlatformService } from "../../services/PlatformService";
@@ -27,6 +28,16 @@ const PROP_BUTTONS = [
   { kind: "clear" as const, x: 252, y: 648, width: 60, height: 40 },
   { kind: "cash" as const, x: 318, y: 648, width: 60, height: 40 },
 ];
+// GM 入口只由 Cocos 的调试编译常量控制，正式抖音构建会直接隐藏整套测试界面。
+const GM_BUTTON = { x: 348, y: 78, width: 36, height: 28 };
+const GM_PROGRESS_BUTTON = { x: 115, y: 540, width: 160, height: 34 };
+const GM_LEVEL_BUTTONS = Array.from({ length: GAME_CONFIG.maxLevels }, (_, index) => ({
+  levelId: index + 1,
+  x: 56 + (index % 2) * 158,
+  y: 204 + Math.floor(index / 2) * 60,
+  width: 120,
+  height: 46,
+}));
 
 interface Enemy {
   kind: EnemyKind; hp: number; maxHp: number; speed: number; reward: number;
@@ -66,6 +77,8 @@ export class GameRoot extends Component {
   private gameSpeed: GameSpeed = 1;
   private screen: "playing" | "win" | "lose" = "playing";
   private revived = false;
+  private gmPanelOpen = false;
+  private gmSessionActive = false;
   private selectedTower: Tower | null = null;
   private selectedSpot: Spot | null = null;
   private selectedObstacle: Obstacle | null = null;
@@ -125,7 +138,7 @@ export class GameRoot extends Component {
   update(dt: number): void {
     // 先限制单帧追赶时间，再把倍速后的游戏时间拆成稳定小步长，避免低帧率或三倍速时穿透目标。
     let remainingGameTime = Math.min(dt, 0.1) * this.gameSpeed;
-    while (remainingGameTime > 0 && !this.paused && !this.adRequesting && this.screen === "playing") {
+    while (remainingGameTime > 0 && !this.paused && !this.gmPanelOpen && !this.adRequesting && this.screen === "playing") {
       const step = Math.min(remainingGameTime, 0.033);
       this.updateGame(step);
       remainingGameTime -= step;
@@ -170,6 +183,15 @@ export class GameRoot extends Component {
     this.makeLabel("overlayPrimary", "", 14, 195, 412, 246, 44, "#fff9df");
     this.makeLabel("overlayNote", "", 11, 195, 454, 270, 24, "#71877d");
     this.makeLabel("overlaySecondary", "", 14, 195, 496, 246, 40, "#fff9df");
+    if (DEBUG) {
+      this.makeLabel("gm-entry", "GM", 10, 366, 92, 36, 28, "#fff9df");
+      this.makeLabel("gm-title", "GM 关卡选择", 21, 195, 148, 220, 34, "#17352e");
+      this.makeLabel("gm-note", "仅调试构建显示｜切关不修改正式进度", 10, 195, 176, 280, 24, "#71877d");
+      this.makeLabel("gm-close", "关闭", 10, 320, 148, 44, 28, "#fff9df");
+      this.makeLabel("gm-current", "", 11, 195, 516, 250, 26, "#32724c");
+      this.makeLabel("gm-progress", "返回正式进度", 11, 195, 557, 160, 34, "#fff9df");
+      GM_LEVEL_BUTTONS.forEach((item) => this.makeLabel(`gm-level-${item.levelId}`, "", 12, item.x + item.width / 2, item.y + item.height / 2, item.width, item.height, "#17352e"));
+    }
   }
 
   private makeLabel(key: string, value: string, size: number, x: number, y: number, width: number, height: number, hex: string, align = HorizontalTextAlignment.CENTER): Label {
@@ -222,8 +244,9 @@ export class GameRoot extends Component {
     this.drawContextMenu(g);
     this.drawPanels(g);
     this.drawWaveCountdown(g);
-    this.syncLabels();
     if (this.paused || this.screen !== "playing") this.drawOverlay(g);
+    this.drawGmPanel(g);
+    this.syncLabels();
   }
 
   private drawSpots(g: Graphics): void {
@@ -419,12 +442,26 @@ export class GameRoot extends Component {
     } else this.box(g, 72, 394, 246, 52, 14, "#58a95e");
   }
 
+  private drawGmPanel(g: Graphics): void {
+    if (!DEBUG) return;
+    this.box(g, GM_BUTTON.x, GM_BUTTON.y, GM_BUTTON.width, GM_BUTTON.height, 9, "#7358a6", 0.96);
+    if (!this.gmPanelOpen) return;
+    g.fillColor = this.color("#0c1f1a", 205); g.rect(0, 72, W, H - 72); g.fill();
+    this.box(g, 35, 112, 320, 474, 24, "#fff9df");
+    this.box(g, 298, 134, 44, 28, 9, "#7358a6");
+    for (const item of GM_LEVEL_BUTTONS) {
+      const current = item.levelId === this.currentLevelId;
+      this.box(g, item.x, item.y, item.width, item.height, 12, current ? "#ffc34d" : "#dff0b7");
+    }
+    this.box(g, GM_PROGRESS_BUTTON.x, GM_PROGRESS_BUTTON.y, GM_PROGRESS_BUTTON.width, GM_PROGRESS_BUTTON.height, 11, "#58a95e");
+  }
+
   private syncLabels(): void {
-    this.setLabel("level", `第 ${this.level.id} 关`);
+    this.setLabel("level", `第 ${this.level.id} 关${this.gmSessionActive ? "·GM" : ""}`);
     this.setLabel("wave", `${this.wave}/${this.level.waves.length} 波`);
     this.setLabel("coin", `● ${this.coins}`); this.setLabel("lives", `♥ ${this.lives}`);
     this.setLabel("speed", `×${this.gameSpeed}`); this.setLabel("pause", this.paused ? "▶" : "Ⅱ");
-    const contextVisible = this.screen === "playing" && !this.paused;
+    const contextVisible = this.screen === "playing" && !this.paused && !this.gmPanelOpen;
     const buildItems = contextVisible ? this.buildMenuItems() : [];
     KINDS.forEach((kind) => {
       const item = buildItems.find((candidate) => candidate.kind === kind);
@@ -461,8 +498,9 @@ export class GameRoot extends Component {
     this.setLabel("prop-freeze", this.propButtonText("freeze"));
     this.setLabel("prop-clear", this.propButtonText("clear"));
     this.setLabel("prop-cash", this.propButtonText("cash"));
-    this.showLabel("toast", this.toastTime > 0 && this.screen === "playing" && !this.paused); this.setLabel("toast", this.toastText);
-    const showWaveCountdown = this.shouldShowWaveCountdown();
+    ["prop-freeze", "prop-clear", "prop-cash"].forEach((key) => this.showLabel(key, !this.gmPanelOpen));
+    this.showLabel("toast", this.toastTime > 0 && this.screen === "playing" && !this.paused && !this.gmPanelOpen); this.setLabel("toast", this.toastText);
+    const showWaveCountdown = !this.gmPanelOpen && this.shouldShowWaveCountdown();
     this.showLabel("next-wave-title", showWaveCountdown);
     this.showLabel("next-wave-number", showWaveCountdown);
     if (showWaveCountdown) {
@@ -472,14 +510,15 @@ export class GameRoot extends Component {
       this.setLabel("next-wave-title", `下一波 ${this.wave + 1}/${this.level.waves.length}`);
       this.setLabel("next-wave-number", `${Math.max(1, Math.ceil(this.nextWaveTimer))}`);
     }
-    const showBattleFeedback = this.battleFeedbackTime > 0 && this.screen === "playing" && !this.paused;
+    const showBattleFeedback = this.battleFeedbackTime > 0 && this.screen === "playing" && !this.paused && !this.gmPanelOpen;
     this.showLabel("battle-feedback", showBattleFeedback);
     if (showBattleFeedback) {
       this.setLabelPosition("battle-feedback", this.battleFeedbackX, this.battleFeedbackY - (1 - this.battleFeedbackTime / 0.85) * 12);
       this.setLabel("battle-feedback", this.battleFeedbackText);
     }
-    const overlay = this.paused || this.screen !== "playing";
+    const overlay = !this.gmPanelOpen && (this.paused || this.screen !== "playing");
     ["overlayTitle", "overlayStats", "overlayPrimary", "overlayNote", "overlaySecondary"].forEach((key) => this.showLabel(key, overlay));
+    this.syncGmLabels();
     if (!overlay) return;
     if (this.paused && this.screen === "playing") {
       this.setLabelPosition("overlayPrimary", 195, 381);
@@ -494,6 +533,20 @@ export class GameRoot extends Component {
       this.setLabel("overlayNote", !win && !this.revived ? "保留店员，从当前波次继续" : "");
       this.setLabel("overlaySecondary", !win && !this.revived ? "重新开始" : "");
     }
+  }
+
+  private syncGmLabels(): void {
+    if (!DEBUG) return;
+    this.showLabel("gm-entry", true);
+    const keys = ["gm-title", "gm-note", "gm-close", "gm-current", "gm-progress"];
+    keys.forEach((key) => this.showLabel(key, this.gmPanelOpen));
+    this.setLabel("gm-current", `当前：第 ${this.currentLevelId} 关${this.gmSessionActive ? "（GM 测试）" : "（正式进度）"}`);
+    GM_LEVEL_BUTTONS.forEach((item) => {
+      const key = `gm-level-${item.levelId}`;
+      this.showLabel(key, this.gmPanelOpen);
+      this.setLabel(key, `第 ${item.levelId} 关${item.levelId === this.currentLevelId ? "  当前" : ""}`);
+      this.setLabelColor(key, item.levelId === this.currentLevelId ? "#6f472f" : "#17352e");
+    });
   }
 
   private propButtonText(kind: PropKind): string {
@@ -623,7 +676,8 @@ export class GameRoot extends Component {
       if (this.wave >= this.level.waves.length) {
         this.screen = "win";
         this.audio.play("win", 0.8);
-        PlatformService.setNumber("night_store_unlocked_level", Math.min(GAME_CONFIG.maxLevels, Math.max(this.currentLevelId + 1, PlatformService.getNumber("night_store_unlocked_level", 1))));
+        // GM 选关用于隔离测试，通关不能污染玩家的正式解锁进度。
+        if (!this.gmSessionActive) PlatformService.setNumber("night_store_unlocked_level", Math.min(GAME_CONFIG.maxLevels, Math.max(this.currentLevelId + 1, PlatformService.getNumber("night_store_unlocked_level", 1))));
       } else {
         // 先展示波次奖励，再留出完整的 3、2、1 预告，避免下一波突然出现。
         this.nextWaveTimer = 4.8;
@@ -782,6 +836,25 @@ export class GameRoot extends Component {
 
   private handlePress(x: number, y: number): void {
     if (x < 0 || x > W || y < 0 || y > H || this.adRequesting) return;
+    if (DEBUG && x >= GM_BUTTON.x && x <= GM_BUTTON.x + GM_BUTTON.width && y >= GM_BUTTON.y && y <= GM_BUTTON.y + GM_BUTTON.height) {
+      this.gmPanelOpen = !this.gmPanelOpen; return;
+    }
+    if (DEBUG && this.gmPanelOpen) {
+      if (x >= 298 && x <= 342 && y >= 134 && y <= 162) { this.gmPanelOpen = false; return; }
+      if (x >= GM_PROGRESS_BUTTON.x && x <= GM_PROGRESS_BUTTON.x + GM_PROGRESS_BUTTON.width
+        && y >= GM_PROGRESS_BUTTON.y && y <= GM_PROGRESS_BUTTON.y + GM_PROGRESS_BUTTON.height) {
+        this.gmSessionActive = false; this.gmPanelOpen = false;
+        const officialLevel = Math.max(1, Math.min(GAME_CONFIG.maxLevels, PlatformService.getNumber("night_store_unlocked_level", 1)));
+        this.resetLevel(officialLevel); return;
+      }
+      const levelButton = GM_LEVEL_BUTTONS.find((item) => x >= item.x && x <= item.x + item.width && y >= item.y && y <= item.y + item.height);
+      if (levelButton) {
+        this.gmSessionActive = true; this.gmPanelOpen = false; this.resetLevel(levelButton.levelId); return;
+      }
+      // 面板外点击仅关闭 GM，不把同一次点击传递给战斗，防止误建造或误用道具。
+      if (x < 35 || x > 355 || y < 112 || y > 586) this.gmPanelOpen = false;
+      return;
+    }
     if (this.screen === "playing" && y < 70) {
       if (x >= 354) { this.paused = !this.paused; return; }
       if (x >= 320) { this.cycleGameSpeed(); return; }
