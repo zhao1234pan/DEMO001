@@ -1,6 +1,14 @@
 import type { EnemyKind, TowerKind } from "./GameConfig";
 
 export type MapPoint = readonly [number, number];
+export type ObstacleKind = "crate" | "basket" | "plant";
+
+export interface ObstacleConfig {
+  spotIndex: number;
+  kind: ObstacleKind;
+  hp: number;
+  reward: number;
+}
 
 export interface WaveConfig {
   enemies: EnemyKind[];
@@ -18,6 +26,7 @@ export interface LevelConfig {
   availableTowers: TowerKind[];
   pathPoints: readonly MapPoint[];
   towerSpots: readonly MapPoint[];
+  obstacles?: readonly ObstacleConfig[];
   waves: WaveConfig[];
 }
 
@@ -25,32 +34,49 @@ const enemies = (kind: EnemyKind, count: number): EnemyKind[] => Array.from({ le
 const mix = (...groups: EnemyKind[][]): EnemyKind[] => groups.reduce<EnemyKind[]>((result, group) => result.concat(group), []);
 const wave = (list: EnemyKind[], spawnInterval = 0.78, announcement?: string): WaveConfig => ({ enemies: list, spawnInterval, announcement });
 
-// 每关路线和塔位独立配置：路线主体限制在顶部状态栏与底部道具栏之间，
-// 塔位中心与道路中心线至少保留约 50 个逻辑像素，避免底座压在道路上。
-// 生命与速度倍率承担关卡纵向难度，波次编排负责引入高速、重型与混合压力。
+// 前三关先验证高密度塔防棋盘：建造单元保持离散坐标以保证触控稳定，
+// 但未选中时弱化显示；部分单元由可清除障碍占据，清除后再释放建造空间。
 export const LEVEL_CONFIGS: readonly LevelConfig[] = [
   {
     id: 1, title: "第一次夜班", initialCoins: 170, initialLives: 9,
     enemyHealthScale: 0.9, enemySpeedScale: 0.88, availableTowers: ["sprout"],
     pathPoints: [[-20, 145], [105, 145], [105, 270], [295, 270], [295, 430], [120, 430], [120, 555], [410, 555]],
-    towerSpots: [[52, 215], [180, 205], [235, 340], [350, 335], [205, 500]],
-    waves: [wave(enemies("normal", 6), 0.98), wave(enemies("normal", 7), 0.86), wave(enemies("normal", 9), 0.72, "最后一波，别让它们冲进店里！")],
+    towerSpots: [[20, 85], [120, 95], [50, 195], [160, 195], [300, 215], [60, 295], [350, 305], [220, 345], [120, 375], [360, 405], [50, 455], [180, 495], [300, 505], [90, 595], [230, 605], [370, 605]],
+    obstacles: [
+      { spotIndex: 1, kind: "basket", hp: 42, reward: 18 }, { spotIndex: 3, kind: "crate", hp: 58, reward: 24 },
+      { spotIndex: 4, kind: "plant", hp: 50, reward: 20 }, { spotIndex: 7, kind: "basket", hp: 46, reward: 20 },
+      { spotIndex: 8, kind: "crate", hp: 64, reward: 26 }, { spotIndex: 11, kind: "plant", hp: 54, reward: 22 },
+      { spotIndex: 13, kind: "crate", hp: 68, reward: 28 }, { spotIndex: 15, kind: "basket", hp: 50, reward: 22 },
+    ],
+    waves: [wave(enemies("normal", 6), 0.98), wave(enemies("normal", 7), 0.86), wave(enemies("normal", 9), 0.72), wave(enemies("normal", 12), 0.64, "最后一波，扩建完整防线！")],
   },
   // 初始零钱刚好支持“豆包 + 棉棉”，首波加入疾行敌人用于验证减速价值。
   {
-    id: 2, title: "跑得太快啦", initialCoins: 195, initialLives: 8,
+    id: 2, title: "跑得太快啦", initialCoins: 210, initialLives: 8,
     enemyHealthScale: 1, enemySpeedScale: 1.02, availableTowers: ["sprout", "frost"],
     pathPoints: [[-20, 125], [320, 125], [320, 245], [75, 245], [75, 380], [300, 380], [300, 520], [410, 520]],
-    towerSpots: [[165, 185], [260, 185], [25, 312], [185, 312], [185, 450]],
-    waves: [wave(mix(enemies("normal", 6), enemies("swift", 2)), 0.86), wave(mix(enemies("normal", 5), enemies("swift", 5)), 0.7), wave(mix(enemies("normal", 7), enemies("swift", 6)), 0.6, "棉棉能让高速精怪慢下来！")],
+    towerSpots: [[350, 85], [20, 185], [140, 185], [200, 185], [260, 185], [370, 215], [20, 305], [150, 305], [220, 315], [300, 315], [50, 425], [150, 435], [250, 435], [370, 465], [250, 535], [360, 595]],
+    obstacles: [
+      { spotIndex: 0, kind: "plant", hp: 62, reward: 22 }, { spotIndex: 2, kind: "crate", hp: 78, reward: 30 },
+      { spotIndex: 4, kind: "basket", hp: 66, reward: 24 }, { spotIndex: 5, kind: "crate", hp: 84, reward: 34 },
+      { spotIndex: 7, kind: "plant", hp: 72, reward: 26 }, { spotIndex: 9, kind: "basket", hp: 70, reward: 26 },
+      { spotIndex: 12, kind: "crate", hp: 92, reward: 38 }, { spotIndex: 14, kind: "plant", hp: 76, reward: 28 },
+    ],
+    waves: [wave(mix(enemies("normal", 6), enemies("swift", 2)), 0.86), wave(mix(enemies("normal", 6), enemies("swift", 5)), 0.7), wave(mix(enemies("normal", 8), enemies("swift", 6)), 0.58), wave(mix(enemies("normal", 10), enemies("swift", 8)), 0.5, "用减速争取清障和扩建时间！")],
   },
   // 初始零钱刚好支持“布丁 + 豆包”，更密集的短间隔波次用于验证范围攻击价值。
   {
-    id: 3, title: "热食出炉", initialCoins: 235, initialLives: 8,
+    id: 3, title: "热食出炉", initialCoins: 250, initialLives: 8,
     enemyHealthScale: 1.06, enemySpeedScale: 1.02, availableTowers: ["sprout", "frost", "bloom"],
-    pathPoints: [[-20, 125], [100, 125], [100, 520], [225, 520], [225, 180], [350, 180], [350, 575], [410, 575]],
-    towerSpots: [[45, 250], [163, 210], [163, 350], [288, 275], [288, 440], [45, 440]],
-    waves: [wave(enemies("normal", 9), 0.6), wave(mix(enemies("normal", 10), enemies("swift", 3)), 0.52), wave(mix(enemies("normal", 14), enemies("swift", 4)), 0.46, "精怪挤在一起，试试布丁！")],
+    pathPoints: [[-20, 125], [100, 125], [100, 520], [225, 520], [225, 180], [320, 180], [320, 575], [410, 575]],
+    towerSpots: [[310, 115], [160, 125], [20, 175], [150, 205], [370, 225], [50, 265], [170, 275], [370, 345], [30, 355], [160, 365], [370, 435], [160, 455], [50, 465], [370, 525], [90, 575], [240, 575]],
+    obstacles: [
+      { spotIndex: 1, kind: "crate", hp: 88, reward: 32 }, { spotIndex: 3, kind: "basket", hp: 76, reward: 28 },
+      { spotIndex: 4, kind: "plant", hp: 82, reward: 30 }, { spotIndex: 6, kind: "crate", hp: 104, reward: 40 },
+      { spotIndex: 8, kind: "basket", hp: 84, reward: 30 }, { spotIndex: 10, kind: "plant", hp: 92, reward: 34 },
+      { spotIndex: 12, kind: "crate", hp: 116, reward: 44 }, { spotIndex: 14, kind: "basket", hp: 90, reward: 34 },
+    ],
+    waves: [wave(enemies("normal", 10), 0.62), wave(mix(enemies("normal", 11), enemies("swift", 3)), 0.54), wave(mix(enemies("normal", 14), enemies("swift", 4)), 0.46), wave(mix(enemies("normal", 17), enemies("swift", 5)), 0.4, "布丁适合守住密集路段！")],
   },
   {
     id: 4, title: "重重的纸袋", initialCoins: 240, initialLives: 7,
