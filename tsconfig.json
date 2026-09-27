@@ -1,9 +1,11 @@
 {
-  /* Base configuration. Do not edit this field. */
+  /* 引擎声明由Creator生成；新电脑先打开工程，再执行类型检查。 */
   "extends": "./temp/tsconfig.cocos.json",
 
-  /* Add your custom configuration here. */
+  /* 明确统一本地与构建检查，includes等数组接口需ES2016以上声明。 */
   "compilerOptions": {
-    "strict": false
+    "strict": true,
+    "target": "ES2018",
+    "skipLibCheck": true
   }
 }

@@ -1,0 +1,304 @@
+{
+  "date": "2026-09-27",
+  "tool": "Node.js + sharp，机械导出",
+  "description": "仅去除孤立碎点、透明裁边、等比缩放并排入图集。源图保持原样。",
+  "assets": [
+    {
+      "name": "doubao",
+      "source": "characters/staff_lv1/spr_staff_doubao_idle_v3_runtime.png",
+      "sourceSize": [
+        1374,
+        1145
+      ],
+      "sourceSha256": "6c5cdb6103fcf66a62aedaaa8d38b9f7b09e07b5f1bfd94c4c8bfff558a555b9",
+      "crop": {
+        "left": 330,
+        "top": 271,
+        "width": 651,
+        "height": 636,
+        "removed": 93
+      },
+      "group": "staff",
+      "cell": [
+        192,
+        192
+      ],
+      "bodyDesign": [
+        73.5,
+        72
+      ],
+      "placement": [
+        23,
+        32
+      ],
+      "alpha": true
+    },
+    {
+      "name": "mianmian",
+      "source": "characters/staff_lv1/spr_staff_mianmian_idle_v2_simple_q.png",
+      "sourceSize": [
+        1374,
+        1145
+      ],
+      "sourceSha256": "5a3506678a8423e6bda84e4eaeccd562602e1e91fe1c1461b7ca04bf57cd6595",
+      "crop": {
+        "left": 308,
+        "top": 269,
+        "width": 756,
+        "height": 645,
+        "removed": 128
+      },
+      "group": "staff",
+      "cell": [
+        192,
+        192
+      ],
+      "bodyDesign": [
+        80,
+        68.5
+      ],
+      "placement": [
+        16,
+        39
+      ],
+      "alpha": true
+    },
+    {
+      "name": "buding",
+      "source": "characters/staff_lv1/spr_staff_buding_idle_v3_runtime.png",
+      "sourceSize": [
+        1374,
+        1145
+      ],
+      "sourceSha256": "42a47004c4e31811b6613ba7f0e6b7788dbfdec8d0edf7c73425bd3b7ebc1388",
+      "crop": {
+        "left": 404,
+        "top": 224,
+        "width": 606,
+        "height": 697,
+        "removed": 125
+      },
+      "group": "staff",
+      "cell": [
+        192,
+        192
+      ],
+      "bodyDesign": [
+        62.5,
+        72
+      ],
+      "placement": [
+        34,
+        32
+      ],
+      "alpha": true
+    },
+    {
+      "name": "pad",
+      "source": "map_parts/spr_build_pad_v1.png",
+      "sourceSize": [
+        1565,
+        1005
+      ],
+      "sourceSha256": "99a187eadd77043f214d40fad85161451f65606d5585b99131d7aacc191b0aa2",
+      "crop": {
+        "left": 273,
+        "top": 199,
+        "width": 1056,
+        "height": 630,
+        "removed": 267
+      },
+      "group": "props",
+      "cell": [
+        192,
+        192
+      ],
+      "bodyDesign": [
+        76,
+        45.5
+      ],
+      "placement": [
+        20,
+        51
+      ],
+      "alpha": true
+    },
+    {
+      "name": "crate",
+      "source": "map_parts/spr_obstacle_crate_v1.png",
+      "sourceSize": [
+        1312,
+        1199
+      ],
+      "sourceSha256": "d47f443829ef1396b82dcdabbfee9c835854d8a08de3cfa6ac89ace8af53604c",
+      "crop": {
+        "left": 120,
+        "top": 101,
+        "width": 1078,
+        "height": 1001,
+        "removed": 172
+      },
+      "group": "props",
+      "cell": [
+        192,
+        192
+      ],
+      "bodyDesign": [
+        69,
+        64
+      ],
+      "placement": [
+        27,
+        48
+      ],
+      "alpha": true
+    },
+    {
+      "name": "basket",
+      "source": "map_parts/spr_obstacle_basket_v1.png",
+      "sourceSize": [
+        1293,
+        1217
+      ],
+      "sourceSha256": "1ec5909041b8657bd229a5a668ce960152623b532d75ce5fd1de5bfed78a7509",
+      "crop": {
+        "left": 172,
+        "top": 97,
+        "width": 984,
+        "height": 944,
+        "removed": 291
+      },
+      "group": "props",
+      "cell": [
+        192,
+        192
+      ],
+      "bodyDesign": [
+        66.5,
+        64
+      ],
+      "placement": [
+        30,
+        48
+      ],
+      "alpha": true
+    },
+    {
+      "name": "plant",
+      "source": "map_parts/spr_obstacle_plant_v1.png",
+      "sourceSize": [
+        1242,
+        1266
+      ],
+      "sourceSha256": "55efd82842c5257d09794c9fe9a3d796e5f6a73d524643f25b88f190c79a05f5",
+      "crop": {
+        "left": 253,
+        "top": 186,
+        "width": 735,
+        "height": 926,
+        "removed": 116
+      },
+      "group": "props",
+      "cell": [
+        192,
+        192
+      ],
+      "bodyDesign": [
+        55.5,
+        70
+      ],
+      "placement": [
+        41,
+        36
+      ],
+      "alpha": true
+    }
+  ],
+  "atlases": [
+    {
+      "group": "staff",
+      "file": "assets/art/gameplay/towers/atlas_staff_idle.png",
+      "size": [
+        512,
+        512
+      ],
+      "bytes": 120225,
+      "frames": [
+        {
+          "name": "doubao",
+          "rect": [
+            8,
+            8,
+            192,
+            192
+          ]
+        },
+        {
+          "name": "mianmian",
+          "rect": [
+            216,
+            8,
+            192,
+            192
+          ]
+        },
+        {
+          "name": "buding",
+          "rect": [
+            8,
+            216,
+            192,
+            192
+          ]
+        }
+      ]
+    },
+    {
+      "group": "props",
+      "file": "assets/art/gameplay/maps/atlas_battle_props.png",
+      "size": [
+        512,
+        512
+      ],
+      "bytes": 131634,
+      "frames": [
+        {
+          "name": "pad",
+          "rect": [
+            8,
+            8,
+            192,
+            192
+          ]
+        },
+        {
+          "name": "crate",
+          "rect": [
+            216,
+            8,
+            192,
+            192
+          ]
+        },
+        {
+          "name": "basket",
+          "rect": [
+            8,
+            216,
+            192,
+            192
+          ]
+        },
+        {
+          "name": "plant",
+          "rect": [
+            216,
+            216,
+            192,
+            192
+          ]
+        }
+      ]
+    }
+  ]
+}
