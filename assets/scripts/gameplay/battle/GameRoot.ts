@@ -9,6 +9,7 @@ import { getLevelConfig, LevelConfig, ObstacleKind } from "./LevelConfig";
 import { PlatformService } from "../../services/PlatformService";
 import { AudioService } from "../../services/AudioService";
 import { BattleArtView } from "./BattleArtView";
+import { BattleUiView } from "./BattleUiView";
 import { BATTLE_UI, computeBattleLayout, containsPoint, HitRect } from "./BattleLayout";
 
 const { ccclass } = _decorator;
@@ -19,16 +20,16 @@ const DESIGN_H = GAME_CONFIG.designHeight;
 const W = GAME_CONFIG.prototypeLayoutWidth;
 const H = GAME_CONFIG.prototypeLayoutHeight;
 // 全局道具缩成右下角三个紧凑按钮，把主要可视面积还给塔防棋盘。
-const PANEL_Y = 640;
+const PANEL_Y = 618;
 const KINDS: TowerKind[] = ["sprout", "frost", "bloom"];
 type GameSpeed = 1 | 2 | 3;
 // 正式局内倍速档位按固定顺序循环，避免出现不受数值验证覆盖的任意倍率。
 const GAME_SPEEDS: readonly GameSpeed[] = [1, 2, 3];
 type PropKind = "freeze" | "clear" | "cash";
 const PROP_BUTTONS = [
-  { kind: "freeze" as const, x: 166, y: H - 60, width: 68, height: 48 },
-  { kind: "clear" as const, x: 238, y: H - 60, width: 68, height: 48 },
-  { kind: "cash" as const, x: 310, y: H - 60, width: 68, height: 48 },
+  { kind: "freeze" as const, x: 166, y: H - 76, width: 68, height: 64 },
+  { kind: "clear" as const, x: 238, y: H - 76, width: 68, height: 64 },
+  { kind: "cash" as const, x: 310, y: H - 76, width: 68, height: 64 },
 ];
 // GM 入口只由 Cocos 的调试编译常量控制，正式抖音构建会直接隐藏整套测试界面。
 const GM_BUTTON = { x: 12, y: H - 60, width: 50, height: 48 };
@@ -69,10 +70,12 @@ export class GameRoot extends Component {
   private unitBaseG!: Graphics;
   private dynamicG!: Graphics;
   private art!: BattleArtView;
+  private uiArt!: BattleUiView;
   private layoutTop = 0;
   private layoutBottom = H;
   private hitSize = BATTLE_UI.minimumHit;
   private touchStart: { x: number; y: number } | null = null;
+  private appliedResolutionPolicy: number | null = null;
   private audio!: AudioService;
   private labels = new Map<string, Label>();
   private labelSizes = new Map<string, number>();
@@ -116,10 +119,10 @@ export class GameRoot extends Component {
   private battleFeedbackX = W / 2;
   private battleFeedbackY = H / 2;
   private readonly hideHandler = (): void => { this.paused = true; };
-  private readonly resizeHandler = (): void => { this.applyLayout(); this.scheduleOnce(() => this.applyLayout(), 0); };
+  private readonly resizeHandler = (): void => { this.configureResolution(); this.applyLayout(); this.scheduleOnce(() => this.applyLayout(), 0); };
 
   onLoad(): void {
-    view.setDesignResolutionSize(DESIGN_W, DESIGN_H, ResolutionPolicy.FIXED_WIDTH);
+    this.configureResolution();
     const transform = this.node.getComponent(UITransform) ?? this.node.addComponent(UITransform);
     transform.setContentSize(DESIGN_W, DESIGN_H);
     this.contentRoot = new Node("PrototypeContent");
@@ -132,6 +135,7 @@ export class GameRoot extends Component {
     // 三层分离：范围和地面在下、精灵居中、血条/投射物/操作菜单在上。
     this.art = new BattleArtView(this.contentRoot, W, H);
     this.dynamicG = this.createGraphics("DynamicGame");
+    this.uiArt = new BattleUiView(this.contentRoot, W, H);
     this.audio = new AudioService(this.node);
     this.createLabels();
     const savedSpeed = PlatformService.getNumber("night_store_game_speed", 1);
@@ -140,6 +144,7 @@ export class GameRoot extends Component {
     this.resetLevel(this.currentLevelId);
     this.applyLayout();
     void this.art.load();
+    void this.uiArt.load();
     view.on("canvas-resize", this.resizeHandler, this);
     view.on("design-resolution-changed", this.resizeHandler, this);
     this.node.on(Node.EventType.TOUCH_START, this.onTouchStart, this);
@@ -159,6 +164,7 @@ export class GameRoot extends Component {
     PlatformService.offHide(this.hideHandler);
     this.audio.destroy();
     this.art.destroy();
+    this.uiArt.destroy();
   }
 
   private applyLayout(): void {
@@ -179,11 +185,22 @@ export class GameRoot extends Component {
     // 顶栏贴安全区顶部，道具贴安全区底部；地图保持等比居中，不拉长道路。
     const headerLabels: Array<[string, number, number]> = [
       ["title", 77, 23], ["level", 45, 50], ["wave", 115, 50],
-      ["coin", 179, 36], ["lives", 239, 36], ["speed", 293, 36], ["pause", 353, 36],
+      ["coin", 189, 36], ["lives", 247, 36], ["speed", 293, 36], ["pause", 353, 36],
     ];
     headerLabels.forEach(([key, x, y]) => this.setLabelPosition(key, x, y + this.layoutTop));
-    PROP_BUTTONS.forEach((button) => this.setLabelPosition(`prop-${button.kind}`, button.x + button.width / 2, this.layoutBottom - 36));
+    PROP_BUTTONS.forEach((button) => this.setLabelPosition(`prop-${button.kind}`, button.x + button.width / 2, this.layoutBottom - 23));
     if (DEBUG) this.setLabelPosition("gm-entry", 37, this.layoutBottom - 36);
+  }
+
+  private configureResolution(): void {
+    const frame = view.getFrameSize();
+    // 手机长屏固定宽度；桌面宽窗口完整容纳竖屏，不把狭短窗口挤成热区互相覆盖的横屏游戏。
+    const policy = frame.width / Math.max(1, frame.height) > DESIGN_W / DESIGN_H + 0.01
+      ? ResolutionPolicy.SHOW_ALL : ResolutionPolicy.FIXED_WIDTH;
+    if (policy === this.appliedResolutionPolicy) return;
+    // 先记录再设置，避免design-resolution-changed同步回调形成递归。
+    this.appliedResolutionPolicy = policy;
+    view.setDesignResolutionSize(DESIGN_W, DESIGN_H, policy);
   }
 
   private footerRect(rect: HitRect): HitRect { return { ...rect, y: rect.y + this.layoutBottom - H }; }
@@ -194,7 +211,7 @@ export class GameRoot extends Component {
     const minimum = 88 / this.contentRoot.scale.x;
     const width = Math.max(rect.width, minimum); const height = Math.max(rect.height, minimum);
     const headerButton = rect.y >= this.layoutTop && rect.y + rect.height <= this.layoutTop + 60;
-    // 顶部第一排格位在y=85，顶栏向上扩热区，不向下侵入格位的y=62边界。
+    // 顶栏只向上扩热区；即使未来收紧地图顶部留白，也不能向下抢走棋盘点击。
     const top = headerButton ? rect.y + rect.height - height : rect.y - (height - rect.height) / 2;
     return containsPoint({ x: rect.x - (width - rect.width) / 2, y: top, width, height }, x, y);
   }
@@ -221,13 +238,13 @@ export class GameRoot extends Component {
   }
 
   private createLabels(): void {
-    this.makeLabel("title", "夜班便利店", 17, 77, 23, 130, 30, "#fff9df", HorizontalTextAlignment.LEFT);
+    this.makeLabel("title", "叮咚！夜班", 17, 77, 23, 130, 30, "#fff2cd", HorizontalTextAlignment.LEFT);
     this.makeLabel("level", "", 13, 45, 50, 66, 24, "#aee3bd", HorizontalTextAlignment.LEFT);
     this.makeLabel("wave", "", 13, 115, 50, 58, 24, "#aee3bd");
-    this.makeLabel("coin", "", 17, 179, 36, 64, 38, "#fff9df");
-    this.makeLabel("lives", "", 17, 239, 36, 46, 38, "#fff9df");
+    this.makeLabel("coin", "", 17, 189, 36, 44, 38, "#4b422e");
+    this.makeLabel("lives", "", 17, 247, 36, 24, 38, "#4b422e");
     this.makeLabel("speed", "×1", 17, 293, 36, 50, 40, "#fff9df");
-    this.makeLabel("pause", "Ⅱ", 21, 353, 36, 50, 40, "#fff9df");
+    this.makeLabel("pause", "Ⅱ", 21, 353, 36, 50, 40, "#4b422e");
     KINDS.forEach((kind) => {
       this.makeLabel(`build-${kind}`, TOWER_CONFIG[kind].name, 16, 0, 0, 58, 24, "#17352e");
       this.makeLabel(`build-cost-${kind}`, `●${TOWER_CONFIG[kind].cost}`, 13, 0, 0, 58, 20, "#8c6a24");
@@ -235,7 +252,7 @@ export class GameRoot extends Component {
     this.makeLabel("context-upgrade", "", 16, 0, 0, 96, 46, "#fff9df");
     this.makeLabel("context-sell", "", 16, 0, 0, 96, 46, "#fff9df");
     this.makeLabel("obstacle-info", "", 13, 0, 0, 164, 30, "#fff9df");
-    PROP_BUTTONS.forEach((button) => this.makeLabel(`prop-${button.kind}`, "", 15, button.x + button.width / 2, button.y + 24, 68, 48, "#fff9df"));
+    PROP_BUTTONS.forEach((button) => this.makeLabel(`prop-${button.kind}`, "", 13, button.x + button.width / 2, button.y + 53, 68, 22, "#4b422e"));
     this.makeLabel("toast", "", 12, 195, 101, 290, 30, "#fff9df");
     this.makeLabel("next-wave-title", "", 13, 0, 0, 82, 22, "#32724c");
     this.makeLabel("next-wave-number", "", 24, 0, 0, 58, 32, "#17352e");
@@ -301,9 +318,10 @@ export class GameRoot extends Component {
     g.clear();
     this.unitBaseG.clear();
     this.art.beginFrame();
+    this.uiArt.beginFrame();
     this.drawSpots(this.unitBaseG);
-    this.art.endFrame();
     this.enemies.forEach((enemy) => this.drawEnemy(g, enemy));
+    this.art.endFrame();
     this.shots.forEach((shot) => this.disc(g, shot.x, shot.y, shot.kind === "bloom" ? 5 : 3.5, TOWER_CONFIG[shot.kind].shotColor));
     this.particles.forEach((p) => this.disc(g, p.x, p.y, p.size, p.color, Math.max(0, p.life / p.maxLife)));
     if (this.frozenTime > 0) this.box(g, 0, 72, W, PANEL_Y - 72, 0, "#b8f2ff", 0.14);
@@ -313,6 +331,7 @@ export class GameRoot extends Component {
     this.drawWaveCountdown(g);
     if (this.paused || this.screen !== "playing") this.drawOverlay(g);
     this.drawGmPanel(g);
+    this.uiArt.endFrame();
     this.syncLabels();
   }
 
@@ -419,49 +438,61 @@ export class GameRoot extends Component {
 
   private drawEnemy(g: Graphics, enemy: Enemy): void {
     const wobble = Math.sin(enemy.age * 8) * 1.5;
+    if (this.art.ready) this.art.drawEnemy(enemy, enemy);
+    else {
     this.disc(g, enemy.x, enemy.y + 4 + wobble, enemy.radius, enemy.color);
     this.ring(g, enemy.x, enemy.y + 4 + wobble, enemy.radius, "#17352e", 0.45, 2);
     this.disc(g, enemy.x - 5, enemy.y + wobble, 2.2, "#fff9df"); this.disc(g, enemy.x + 5, enemy.y + wobble, 2.2, "#fff9df");
     this.disc(g, enemy.x - 5, enemy.y + wobble, 1.1, "#17352e"); this.disc(g, enemy.x + 5, enemy.y + wobble, 1.1, "#17352e");
     if (enemy.hitFlash > 0) this.disc(g, enemy.x, enemy.y + 4 + wobble, enemy.radius + 2, "#fff9df", Math.min(0.82, enemy.hitFlash * 7));
     if (enemy.kind === "tank") this.box(g, enemy.x - 13, enemy.y - 14 + wobble, 26, 8, 4, "#8e7357");
+    }
     const ratio = Math.max(0, enemy.hp / enemy.maxHp);
-    this.box(g, enemy.x - 17, enemy.y - enemy.radius - 10, 34, 5, 3, "#17352e", 0.32);
-    this.box(g, enemy.x - 17, enemy.y - enemy.radius - 10, 34 * ratio, 5, 3, ratio > 0.35 ? "#70c963" : "#eb685d");
+    this.box(g, enemy.x - 15, enemy.y - enemy.radius - 12, 30, 5, 2.5, "#4b422e", 0.9);
+    this.box(g, enemy.x - 14, enemy.y - enemy.radius - 11, 28 * ratio, 3, 1.5, ratio > 0.35 ? "#f59270" : "#ea635a");
     if (enemy.slow > 0) this.ring(g, enemy.x, enemy.y, enemy.radius + 3, "#b4f6ff", 0.7, 2);
   }
 
   private drawPanels(g: Graphics): void {
-    g.fillColor = this.color("#244d42"); g.rect(0, this.layoutTop, W, BATTLE_UI.headerHeight); g.fill();
-    this.box(g, 147, this.layoutTop + 12, 64, 48, 14, "#ffffff", 0.1);
-    this.box(g, 216, this.layoutTop + 12, 46, 48, 14, "#ffffff", 0.1);
-    [BATTLE_UI.speed, BATTLE_UI.pause].forEach((rect) => {
-      const button = this.headerRect(rect);
-      this.box(g, button.x, button.y, button.width, button.height, 15, "#fff9df", 0.16);
-    });
-    const colors = ["#5797b5", "#d46f62", "#d5a748"];
+    g.fillColor = this.color("#2b5448"); g.rect(0, this.layoutTop, W, BATTLE_UI.headerHeight); g.fill();
+    this.box(g, 0, this.layoutTop + 70, W, 3, 0, "#e8d2a1");
+    this.uiCard(g, 147, this.layoutTop + 12, 64, 48, "#fff5d6");
+    this.uiCard(g, 216, this.layoutTop + 12, 46, 48, "#fff5d6");
+    const speed = this.headerRect(BATTLE_UI.speed); const pause = this.headerRect(BATTLE_UI.pause);
+    this.uiCard(g, speed.x, speed.y, speed.width, speed.height, "#ee9559");
+    this.uiCard(g, pause.x, pause.y, pause.width, pause.height, "#fff5d6");
+    if (!this.gmPanelOpen) {
+      if (this.uiArt.ready) this.uiArt.drawIcon("hud-coin", "cash", 161, this.layoutTop + 36, 28);
+      else { this.disc(g, 160, this.layoutTop + 36, 8, "#ffbf45"); this.ring(g, 160, this.layoutTop + 36, 6, "#bd792c", 1, 1.5); }
+    }
+    this.drawHeart(g, 228, this.layoutTop + 36);
+    const colors = ["#b9e1e8", "#f7c7ab", "#f7df91"];
     PROP_BUTTONS.forEach((item, index) => {
       const button = this.footerRect(item);
-      this.box(g, button.x, button.y + 3, button.width, button.height, 13, "#244d42", 0.22);
-      this.box(g, button.x, button.y, button.width, button.height, 13, colors[index]);
+      this.uiCard(g, button.x, button.y, button.width, button.height, "#fff5d6", 14);
+      this.box(g, button.x + 5, button.y + 5, button.width - 10, 38, 10, colors[index]);
+      if (this.screen === "playing" && !this.paused && !this.gmPanelOpen && this.uiArt.ready) {
+        this.uiArt.drawIcon(`prop-${item.kind}`, item.kind, button.x + button.width / 2, button.y + 24, 48);
+      }
     });
     if (this.toastTime > 0 && this.screen === "playing" && !this.paused) this.box(g, 43, 82, 304, 38, 16, "#17352e", 0.9);
   }
 
   private drawContextMenu(g: Graphics): void {
-    if (this.paused || this.screen !== "playing") return;
+    if (this.paused || this.screen !== "playing" || this.gmPanelOpen) return;
     if (this.selectedSpot && !this.selectedSpot.tower && !this.selectedSpot.obstacle) {
       for (const item of this.buildMenuItems()) {
         const affordable = this.coins >= TOWER_CONFIG[item.kind].cost;
-        this.disc(g, item.x, item.y, 30, affordable ? "#fff9df" : "#bdc9c2", 0.98);
-        this.ring(g, item.x, item.y, 30, affordable ? TOWER_CONFIG[item.kind].color : "#53645f", 1, 2.5);
+        this.uiCard(g, item.x - 32, item.y - 42, 64, 84, affordable ? "#fff5d6" : "#c6cec0", 16);
+        this.disc(g, item.x, item.y - 19, 17, affordable ? "#dfebc8" : "#acb8a7");
+        if (this.uiArt.ready) this.uiArt.drawIcon(`build-${item.kind}`, item.kind, item.x, item.y - 19, 40);
       }
       return;
     }
     if (this.selectedTower) {
       for (const item of this.towerMenuItems(this.selectedTower)) {
         const active = item.action === "sell" || (this.selectedTower.level < 3 && this.coins >= this.upgradeCost(this.selectedTower));
-        this.box(g, item.x - BATTLE_UI.contextWidth / 2, item.y - BATTLE_UI.contextHeight / 2, BATTLE_UI.contextWidth, BATTLE_UI.contextHeight, 13, item.action === "sell" ? "#d88758" : active ? "#58a95e" : "#53645f");
+        this.uiCard(g, item.x - BATTLE_UI.contextWidth / 2, item.y - BATTLE_UI.contextHeight / 2, BATTLE_UI.contextWidth, BATTLE_UI.contextHeight, item.action === "sell" ? "#dd9764" : active ? "#78ad65" : "#879382", 13);
       }
     }
     if (this.selectedObstacle) {
@@ -483,10 +514,26 @@ export class GameRoot extends Component {
   private waveCountdownPosition(): { x: number; y: number } {
     const start = this.level.pathPoints[0];
     // 提示贴近怪物入口，并为顶部状态栏、底部道具栏和屏幕边缘保留安全距离。
-    return {
+    const preferred = {
       x: Math.max(42, Math.min(W - 42, start[0])),
       y: Math.max(145, Math.min(PANEL_Y - 44, start[1])),
     };
+    const menus: HitRect[] = this.buildMenuItems().map((item) => ({ x: item.x - 32, y: item.y - 42, width: 64, height: 84 }));
+    if (this.selectedTower) menus.push(...this.towerMenuItems(this.selectedTower).map((item) => ({
+      x: item.x - BATTLE_UI.contextWidth / 2, y: item.y - BATTLE_UI.contextHeight / 2,
+      width: BATTLE_UI.contextWidth, height: BATTLE_UI.contextHeight,
+    })));
+    if (this.selectedObstacle) {
+      const info = this.obstacleInfoPosition();
+      menus.push({ x: info.x - 86, y: info.y - 16, width: 172, height: 32 });
+    }
+    // 入口靠近首排时，菜单或清障信息会与倒计时相撞；只移动提示，不隐藏预告或更改波次计时。
+    const candidates = [preferred, { x: W - preferred.x, y: preferred.y }];
+    for (const y of [Math.max(145, preferred.y - 104), Math.min(PANEL_Y - 44, preferred.y + 104)]) {
+      candidates.push({ x: preferred.x, y }, { x: W - preferred.x, y });
+    }
+    return candidates.find((point) => menus.every((rect) => point.x + 48 <= rect.x || point.x - 48 >= rect.x + rect.width
+      || point.y + 40 <= rect.y || point.y - 40 >= rect.y + rect.height)) ?? preferred;
   }
 
   private drawWaveCountdown(g: Graphics): void {
@@ -502,14 +549,16 @@ export class GameRoot extends Component {
     const spot = this.selectedSpot;
     if (!spot || spot.tower || spot.obstacle) return [];
     const kinds = this.level.availableTowers;
-    const spacing = 68;
+    const spacing = 74;
     const totalWidth = (kinds.length - 1) * spacing;
     // 整组按钮一起做边缘避让，而不是逐个夹紧，防止三个按钮在窄边缘处互相重叠。
-    const startX = Math.max(42, Math.min(W - 42 - totalWidth, spot.x - totalWidth / 2));
-    const candidates = [spot.y - 68, spot.y + 68].map((value) => Math.max(112, Math.min(PANEL_Y - 40, value)));
+    const startX = Math.max(44, Math.min(W - 44 - totalWidth, spot.x - totalWidth / 2));
+    const candidates = [spot.y - 82, spot.y + 82]
+      .map((value) => Math.max(120, Math.min(PANEL_Y - 48, value)))
+      .filter((value) => Math.abs(value - spot.y) >= 60);
     // 比较上下两侧所有按钮到道路的最小距离，优先把菜单放到不遮挡战斗的一边。
     const score = (candidateY: number): number => Math.min(...kinds.map((_, index) => this.distanceToPath(startX + index * spacing, candidateY)));
-    const y = score(candidates[0]) >= score(candidates[1]) ? candidates[0] : candidates[1];
+    const y = candidates.length < 2 || score(candidates[0]) >= score(candidates[1]) ? candidates[0] : candidates[1];
     return kinds.map((kind, index) => ({ kind, x: startX + index * spacing, y }));
   }
 
@@ -517,8 +566,8 @@ export class GameRoot extends Component {
     const totalWidth = BATTLE_UI.contextWidth * 2 + 10;
     const startX = Math.max(12, Math.min(W - totalWidth - 12, tower.x - totalWidth / 2));
     const centerX = startX + totalWidth / 2;
-    const candidates = [tower.y - 65, tower.y + 65].map((value) => Math.max(104, Math.min(PANEL_Y - 40, value)));
-    const y = this.distanceToPath(centerX, candidates[0]) >= this.distanceToPath(centerX, candidates[1]) ? candidates[0] : candidates[1];
+    const candidates = [tower.y - 65, tower.y + 65].map((value) => Math.max(104, Math.min(PANEL_Y - 40, value))).filter((value) => Math.abs(value - tower.y) >= 48);
+    const y = candidates.length < 2 || this.distanceToPath(centerX, candidates[0]) >= this.distanceToPath(centerX, candidates[1]) ? candidates[0] : candidates[1];
     return [
       { action: "upgrade", x: startX + BATTLE_UI.contextWidth / 2, y },
       { action: "sell", x: startX + BATTLE_UI.contextWidth * 1.5 + 10, y },
@@ -541,15 +590,18 @@ export class GameRoot extends Component {
   private drawOverlay(g: Graphics): void {
     g.fillColor = this.color("#0c1f1a", 196); g.rect(0, this.layoutTop + 72, W, this.layoutBottom - this.layoutTop - 72); g.fill();
     if (this.paused && this.screen === "playing") {
-      this.box(g, 55, 226, 280, 210, 24, "#fff9df"); this.box(g, 91, 355, 208, 52, 14, "#58a95e");
+      this.uiCard(g, 55, 226, 280, 210, "#fff7df", 24);
+      this.box(g, 77, 240, 236, 6, 3, "#e5d1a4");
+      this.uiCard(g, 91, 355, 208, 52, "#78ad65", 14);
       return;
     }
     const win = this.screen === "win";
-    this.box(g, 36, 176, 318, win ? 318 : 360, 26, "#fff9df");
-    this.disc(g, 195, 225, 40, win ? "#8fd66f" : "#f09a7c");
+    this.uiCard(g, 36, 176, 318, win ? 318 : 360, "#fff7df", 26);
+    this.disc(g, 195, 225, 40, win ? "#d8eabc" : "#f6c4a7");
+    this.drawShopMark(g, 195, 225);
     if (!win && !this.revived) {
-      this.box(g, 72, 386, 246, 52, 14, "#e78954"); this.box(g, 72, 474, 246, 48, 14, "#58a95e");
-    } else this.box(g, 72, 394, 246, 52, 14, "#58a95e");
+      this.uiCard(g, 72, 386, 246, 52, "#ee9559"); this.uiCard(g, 72, 474, 246, 48, "#78ad65");
+    } else this.uiCard(g, 72, 394, 246, 52, "#78ad65");
   }
 
   private drawGmPanel(g: Graphics): void {
@@ -571,7 +623,7 @@ export class GameRoot extends Component {
   private syncLabels(): void {
     this.setLabel("level", `${this.level.id}关${this.gmSessionActive ? "·GM" : ""}`);
     this.setLabel("wave", `${this.wave}/${this.level.waves.length} 波`);
-    this.setLabel("coin", `● ${this.coins}`); this.setLabel("lives", `♥ ${this.lives}`);
+    this.setLabel("coin", `${this.coins}`); this.setLabel("lives", `${this.lives}`);
     this.setLabel("speed", `×${this.gameSpeed}`); this.setLabel("pause", this.paused ? "▶" : "Ⅱ");
     ["title", "level", "wave", "coin", "lives", "speed", "pause"].forEach((key) => this.showLabel(key, !this.gmPanelOpen));
     const contextVisible = this.screen === "playing" && !this.paused && !this.gmPanelOpen;
@@ -583,8 +635,8 @@ export class GameRoot extends Component {
       if (!item) return;
       this.setLabel(`build-${kind}`, TOWER_CONFIG[kind].name);
       this.setLabel(`build-cost-${kind}`, `●${TOWER_CONFIG[kind].cost}`);
-      this.setLabelPosition(`build-${kind}`, item.x, item.y - 8);
-      this.setLabelPosition(`build-cost-${kind}`, item.x, item.y + 12);
+      this.setLabelPosition(`build-${kind}`, item.x, item.y + 10);
+      this.setLabelPosition(`build-cost-${kind}`, item.x, item.y + 29);
       this.setLabelColor(`build-${kind}`, this.coins >= TOWER_CONFIG[kind].cost ? "#17352e" : "#53645f");
       this.setLabelColor(`build-cost-${kind}`, this.coins >= TOWER_CONFIG[kind].cost ? "#8c6a24" : "#53645f");
     });
@@ -665,8 +717,8 @@ export class GameRoot extends Component {
 
   private propButtonText(kind: PropKind): string {
     const shortName = kind === "freeze" ? "冷气" : kind === "clear" ? "清场" : "零钱";
-    if (this.propCounts[kind] > 0) return `${shortName}\n×${this.propCounts[kind]}`;
-    return this.propAdUsed[kind] ? `${shortName}\n用完` : `${shortName}\n广告`;
+    if (this.propCounts[kind] > 0) return `${shortName}×${this.propCounts[kind]}`;
+    return this.propAdUsed[kind] ? `${shortName}·用完` : `${shortName}·广告`;
   }
 
   private disc(g: Graphics, x: number, y: number, radius: number, hex: string, alpha = 1): void {
@@ -679,6 +731,29 @@ export class GameRoot extends Component {
 
   private box(g: Graphics, x: number, y: number, width: number, height: number, radius: number, hex: string, alpha = 1): void {
     g.fillColor = this.color(hex, Math.round(alpha * 255)); g.roundRect(x, y, width, height, radius); g.fill();
+  }
+
+  /** 皮肤用可缩放矢量底板，图标用独立精灵；大圆角和统一描边不依赖高分大面板贴图。 */
+  private uiCard(g: Graphics, x: number, y: number, width: number, height: number, fill: string, radius = 14): void {
+    this.box(g, x, y + 3, width, height, radius, "#4b422e", 0.25);
+    this.box(g, x, y, width, height, radius, fill);
+    g.strokeColor = this.color("#554d39"); g.lineWidth = 2;
+    g.roundRect(x, y, width, height, radius); g.stroke();
+    g.strokeColor = this.color("#fff9e8", 180); g.lineWidth = 1;
+    g.moveTo(x + radius, y + 4); g.lineTo(x + width - radius, y + 4); g.stroke();
+  }
+
+  private drawHeart(g: Graphics, x: number, y: number): void {
+    g.fillColor = this.color("#ee7866"); g.strokeColor = this.color("#844a3b"); g.lineWidth = 1.5;
+    g.moveTo(x, y + 8); g.bezierCurveTo(x - 17, y - 1, x - 8, y - 13, x, y - 5);
+    g.bezierCurveTo(x + 8, y - 13, x + 17, y - 1, x, y + 8); g.close(); g.fill(); g.stroke();
+  }
+
+  private drawShopMark(g: Graphics, x: number, y: number): void {
+    this.uiCard(g, x - 23, y - 16, 46, 38, "#fff5d6", 5);
+    this.box(g, x - 16, y, 16, 22, 2, "#acccb4"); this.box(g, x + 6, y + 1, 12, 13, 2, "#f7d174");
+    for (let i = 0; i < 5; i += 1) this.box(g, x - 25 + i * 10, y - 20, 10, 14, 3, i % 2 ? "#fff5d6" : "#ed9b5b");
+    this.disc(g, x - 3, y + 12, 1.5, "#554d39");
   }
 
   private setLabel(key: string, value: string): void { const item = this.labels.get(key); if (item) item.string = value; }
@@ -1002,7 +1077,7 @@ export class GameRoot extends Component {
         return;
       }
     } else if (this.selectedSpot && !this.selectedSpot.tower && !this.selectedSpot.obstacle) {
-      const buildItem = this.buildMenuItems().find((item) => this.buttonHit({ x: item.x - 26, y: item.y - 26, width: 52, height: 52 }, x, y));
+      const buildItem = this.buildMenuItems().find((item) => this.buttonHit({ x: item.x - 32, y: item.y - 42, width: 64, height: 84 }, x, y));
       if (buildItem) { this.buildTower(this.selectedSpot, buildItem.kind); return; }
     }
 

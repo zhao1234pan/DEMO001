@@ -1,0 +1,162 @@
+{
+  "date": "2026-09-27",
+  "tool": "Node.js + sharp，机械清理和导出",
+  "assets": [
+    {
+      "kind": "normal",
+      "file": "spr_enemy_paper_bag_v1.png",
+      "sourceSize": [
+        1145,
+        1374
+      ],
+      "sourceSha256": "2007775346aadce036313424b03633d13f1a0397ae89aff68247a1d5e94fdfef",
+      "crop": {
+        "left": 268,
+        "top": 257,
+        "width": 685,
+        "height": 862,
+        "removed": 278
+      },
+      "bodyDesign": [
+        41.142857142857146,
+        52
+      ],
+      "cell": [
+        168,
+        168
+      ],
+      "placement": [
+        48,
+        63
+      ],
+      "targetDesignHeight": 52
+    },
+    {
+      "kind": "swift",
+      "file": "spr_enemy_soda_can_v1.png",
+      "sourceSize": [
+        1206,
+        1305
+      ],
+      "sourceSha256": "f9cb30814c60b5c89d4bedf7d0572972e3d0f8a3d3f386a76d4c9dbe7fee4478",
+      "crop": {
+        "left": 226,
+        "top": 133,
+        "width": 758,
+        "height": 1031,
+        "removed": 217
+      },
+      "bodyDesign": [
+        35.42857142857143,
+        48
+      ],
+      "cell": [
+        168,
+        168
+      ],
+      "placement": [
+        53,
+        70
+      ],
+      "targetDesignHeight": 48
+    },
+    {
+      "kind": "tank",
+      "file": "spr_enemy_parcel_box_v1.png",
+      "sourceSize": [
+        1375,
+        1144
+      ],
+      "sourceSha256": "18a9effbe2a36b9425511a600c13e3d79577df1fc73c89f6ff539aa5f48f173d",
+      "crop": {
+        "left": 129,
+        "top": 119,
+        "width": 1118,
+        "height": 872,
+        "removed": 255
+      },
+      "bodyDesign": [
+        86.85714285714286,
+        68
+      ],
+      "cell": [
+        168,
+        168
+      ],
+      "placement": [
+        8,
+        35
+      ],
+      "targetDesignHeight": 68
+    }
+  ],
+  "atlas": {
+    "file": "assets/art/gameplay/enemies/atlas_enemies.png",
+    "size": [
+      512,
+      512
+    ],
+    "bytes": 71899,
+    "cellDesign": [
+      96,
+      96
+    ],
+    "frames": [
+      {
+        "name": "enemy_normal",
+        "rect": [
+          4,
+          4,
+          168,
+          168
+        ]
+      },
+      {
+        "name": "enemy_swift",
+        "rect": [
+          172,
+          4,
+          168,
+          168
+        ]
+      },
+      {
+        "name": "enemy_tank",
+        "rect": [
+          340,
+          4,
+          168,
+          168
+        ]
+      },
+      {
+        "name": "enemy_normal_hit",
+        "rect": [
+          4,
+          172,
+          168,
+          168
+        ]
+      },
+      {
+        "name": "enemy_swift_hit",
+        "rect": [
+          172,
+          172,
+          168,
+          168
+        ]
+      },
+      {
+        "name": "enemy_tank_hit",
+        "rect": [
+          340,
+          172,
+          168,
+          168
+        ]
+      }
+    ]
+  },
+  "hitFrame": "以常态完整Alpha生成RGB(255,247,221)暖白命中态，不改变外形或位移"
+}

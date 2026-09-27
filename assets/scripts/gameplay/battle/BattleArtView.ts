@@ -6,6 +6,9 @@ export interface TowerArtState {
 export interface ObstacleArtState {
   x: number; y: number; kind: string; hitFlash: number;
 }
+export interface EnemyArtState {
+  x: number; y: number; kind: string; age: number; hitFlash: number; distance?: number;
+}
 interface SpriteEntry {
   node: Node; sprite: Sprite; transform: UITransform; frame: number; depth: number;
 }
@@ -17,6 +20,7 @@ const CANVAS_DESIGN_PIXELS = 96;
 const WARM_HIT = new Color(255, 216, 168, 255);
 // 来自本轮导出清单；兔耳和工具更宽，升级时也要给相邻网格留出轮廓间隙。
 const STAFF_DESIGN_WIDTH = { doubao: 73.5, mianmian: 80, buding: 62.5 };
+const ENEMY_DESIGN_HEIGHT = { normal: 52, swift: 48, tank: 68 };
 
 /** 只负责精灵表现；输入为左上原点、向下为正的逻辑坐标，父节点统一缩放。 */
 export class BattleArtView {
@@ -40,7 +44,7 @@ export class BattleArtView {
     parent.addChild(this.root);
     // 固定底座、单位两层，后绘制的空位不会盖住已建成店员。
     this.pads = this.makePool("BuildPads");
-    this.units = this.makePool("StaffAndObstacles");
+    this.units = this.makePool("BattleUnits");
   }
   get ready(): boolean { return this.loaded && !this.disposed; }
 
@@ -83,6 +87,23 @@ export class BattleArtView {
     this.placeUnit(entry, state.x, state.y, 9, 1);
     entry.node.setScale(1, 1, 1);
     entry.sprite.color = state.hitFlash > 0 ? WARM_HIT : Color.WHITE;
+  }
+  drawEnemy(key: object, state: EnemyArtState): void {
+    if (!this.ready) return;
+    const kind = state.kind === "swift" || state.kind === "tank" ? state.kind : "normal";
+    // 暖白帧沿用原图Alpha轮廓，避免使用乘色伪装闪白导致角色反而变暗。
+    const frameName = `enemy_${kind}${state.hitFlash > 0 ? "_hit" : ""}`;
+    const entry = this.acquire(this.units, key, frameName, false);
+    // 有行进距离时步态随位移推进；调用方未提供时，退回战斗年龄且保持倍速一致。
+    const phase = state.distance === undefined ? state.age * (kind === "swift" ? 14 : 8) : state.distance * 0.24;
+    const stride = Math.sin(phase);
+    const sway = stride * (kind === "tank" ? 0.28 : 0.65);
+    const bounce = Math.abs(stride) * (kind === "tank" ? 0.35 : 0.85);
+    const footOffset = ENEMY_DESIGN_HEIGHT[kind] * 0.42 * this.logicalPerDesignPixel - bounce;
+    this.placeUnit(entry, state.x + sway, state.y, footOffset, 1);
+    // 怪物本体始终直立，只做轻微步态；血条、减速圈由调用方的上层图形绘制。
+    entry.node.setScale(1 + stride * 0.018, 1 - Math.abs(stride) * 0.018, 1);
+    entry.sprite.color = Color.WHITE;
   }
   endFrame(): void {
     if (this.disposed) return;
@@ -158,6 +179,7 @@ export class BattleArtView {
       const loaded = await Promise.all([
         this.loadTexture(bundle, "gameplay/towers/atlas_staff_idle/texture"),
         this.loadTexture(bundle, "gameplay/maps/atlas_battle_props/texture"),
+        this.loadTexture(bundle, "gameplay/enemies/atlas_enemies/texture"),
       ]);
       this.textures = loaded.filter((texture): texture is Texture2D => texture !== null);
       if (this.disposed || loaded.some((texture) => !texture)) {
@@ -167,6 +189,7 @@ export class BattleArtView {
       }
       this.addFrames(loaded[0]!, ["doubao", "mianmian", "buding"]);
       this.addFrames(loaded[1]!, ["pad", "crate", "basket", "plant"]);
+      this.addFrames(loaded[2]!, ["enemy_normal", "enemy_swift", "enemy_tank", "enemy_normal_hit", "enemy_swift_hit", "enemy_tank_hit"], 168, 3, 0, 4);
       this.loaded = true;
     } catch (error) {
       this.releaseAssets();
@@ -184,15 +207,15 @@ export class BattleArtView {
       } catch { resolve(null); }
     });
   }
-  private addFrames(texture: Texture2D, names: string[]): void {
+  private addFrames(texture: Texture2D, names: string[], cellPixels = CELL_PIXELS, columns = 2, gap = 16, padding = 8): void {
     names.forEach((name, index) => {
       const frame = new SpriteFrame();
       // 图集导入必须 flipVertical=false，切片坐标与PNG一致为左上原点。
       // 翻转整张图集会把另一行的素材读入当前帧，不能仅靠翻转帧UV补救。
       frame.reset({
         texture,
-        rect: new Rect(8 + (index % 2) * 208, 8 + Math.floor(index / 2) * 208, CELL_PIXELS, CELL_PIXELS),
-        originalSize: new Size(CELL_PIXELS, CELL_PIXELS),
+        rect: new Rect(padding + (index % columns) * (cellPixels + gap), padding + Math.floor(index / columns) * (cellPixels + gap), cellPixels, cellPixels),
+        originalSize: new Size(cellPixels, cellPixels),
         offset: new Vec2(0, 0),
         isRotate: false,
         isFlipUv: false,

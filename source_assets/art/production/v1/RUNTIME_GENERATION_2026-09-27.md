@@ -91,5 +91,3 @@ Use case: stylized-concept. Asset type: single transparent 2D tower-defense remo
 ```text
 Use case: stylized-concept. Asset type: single transparent 2D tower-defense removable obstacle sprite for a cute forest convenience-store mobile game. One small terracotta plant pot with a compact round green shrub consisting of 3 large rounded leaf masses, no individual tiny leaves. Gentle top-down 3/4 view, orange-brown pot, medium forest green and light green foliage, dark brown-green thick clean outline with a thin cream sticker outer border. Simple cute flat game art, 3 main color blocks, a single subtle shadow and soft ground shadow, left upper lighting. No flowers, no face, no text, no labels, no terrain, no stand, no characters. Genuinely transparent alpha background, whole object centered with clear padding. Must remain readable at 64 pixels high.
 ```
-
-
