@@ -1,0 +1,130 @@
+{
+  "date": "2026-09-27",
+  "mode": "内置图像生成后机械导出",
+  "atlas": "assets/art/ui/icons/atlas_battle_ui.png",
+  "atlasPixels": [
+    512,
+    512
+  ],
+  "atlasBytes": 67463,
+  "flipVertical": false,
+  "frameOrigin": "左上",
+  "frames": [
+    {
+      "key": "freeze",
+      "rect": [
+        8,
+        8,
+        192,
+        192
+      ]
+    },
+    {
+      "key": "clear",
+      "rect": [
+        216,
+        8,
+        192,
+        192
+      ]
+    },
+    {
+      "key": "cash",
+      "rect": [
+        8,
+        216,
+        192,
+        192
+      ]
+    }
+  ],
+  "assets": [
+    {
+      "key": "freeze",
+      "source": "source_assets/art/production/v1/ui_icons/spr_ui_freeze_v1.png",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sha256": "0f778a8c7c7ac27dd8350986c979b47e5be222cf211e8f11440a028f32a0e2f4",
+      "crop": {
+        "left": 320,
+        "top": 140,
+        "width": 600,
+        "height": 981,
+        "removedPixels": 176
+      },
+      "bodyDesign": [
+        39,
+        64
+      ],
+      "cellPixels": [
+        192,
+        192
+      ],
+      "canvasDesign": [
+        96,
+        96
+      ],
+      "alpha": true
+    },
+    {
+      "key": "clear",
+      "source": "source_assets/art/production/v1/ui_icons/spr_ui_clear_v1.png",
+      "sourceSize": [
+        1230,
+        1278
+      ],
+      "sha256": "a2b253b13102bb4c7a17098ef3b0fe26de8d4edbe0a113e3d1e50c782b839f1a",
+      "crop": {
+        "left": 270,
+        "top": 179,
+        "width": 711,
+        "height": 944,
+        "removedPixels": 50
+      },
+      "bodyDesign": [
+        48,
+        64
+      ],
+      "cellPixels": [
+        192,
+        192
+      ],
+      "canvasDesign": [
+        96,
+        96
+      ],
+      "alpha": true
+    },
+    {
+      "key": "cash",
+      "source": "source_assets/art/production/v1/ui_icons/spr_ui_cash_v1.png",
+      "sourceSize": [
+        1536,
+        1024
+      ],
+      "sha256": "995c3aa9dc49870e9d9966bab4d77de029f27b0d089b6515bdb43f529b8d3942",
+      "crop": {
+        "left": 334,
+        "top": 214,
+        "width": 877,
+        "height": 592,
+        "removedPixels": 15
+      },
+      "bodyDesign": [
+        64,
+        43
+      ],
+      "cellPixels": [
+        192,
+        192
+      ],
+      "canvasDesign": [
+        96,
+        96
+      ],
+      "alpha": true
+    }
+  ]
+}

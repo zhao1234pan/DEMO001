@@ -1,9 +1,15 @@
 import { game, Game, sys } from "cc";
 import { isDouyinRuntime, showDouyinRewardedVideo } from "../platform/douyin/DouyinRewardedVideo";
+import { getDouyinTopOverlayRatio } from "../platform/douyin/DouyinLayout";
 
 export interface RewardResult { rewarded: boolean; simulated?: boolean; reason?: unknown; }
 
 export class PlatformService {
+  /** 布局只消费设计坐标，不让战斗层直接依赖平台SDK。与广告服务无关。 */
+  static getTopOverlayInset(designWidth: number): number {
+    return getDouyinTopOverlayRatio() * designWidth;
+  }
+
   static onHide(callback: () => void): void {
     game.on(Game.EVENT_HIDE, callback);
   }
