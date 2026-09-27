@@ -1,17 +1,18 @@
 import { assetManager, AssetManager, Color, Layers, Node, Rect, Size, Sprite, SpriteFrame, Texture2D, UITransform, Vec2 } from "cc";
 import type { MapPoint } from "./LevelConfig";
-import type { MapSkin } from "./BattleMapSkin";
+import type { SceneDecoration } from "./BattleSceneryLayout";
 
-type SceneryKind = "entry" | "goal" | "foliage";
+type SceneryKind = "entry" | "goal" | "planter" | "tree";
 interface ScenerySprite { node: Node; sprite: Sprite; transform: UITransform; }
-interface SceneSnapshot { entry: MapPoint; goal: MapPoint; foliage: readonly MapPoint[]; }
+interface SceneSnapshot { entry: MapPoint; goal: MapPoint; decorations: readonly SceneDecoration[]; }
 
 const ATLAS_PIXELS = 512;
 // 纹理按逻辑画布的4倍导出；切片内部自带透明边距，不把大源图直接载入游戏。
 const FRAME_RECTS: Record<SceneryKind, readonly [number, number, number, number]> = {
   entry: [0, 0, 256, 224],
   goal: [256, 0, 256, 224],
-  foliage: [0, 224, 192, 160],
+  planter: [0, 224, 192, 192],
+  tree: [192, 224, 160, 224],
 };
 
 /** 静态场景表现层：父节点由调用方放在道路之上、战斗单位之下，不处理碰撞与寻路。 */
@@ -25,20 +26,18 @@ export class BattleSceneryView {
   private goalSprite: ScenerySprite | null = null;
   private latestScene: SceneSnapshot | null = null;
   private texture: Texture2D | null = null;
-  private reviewTexture: Texture2D | null = null;
   private loading: Promise<void> | null = null;
   private loaded = false;
   private disposed = false;
 
-  constructor(parent: Node, private readonly width: number, private readonly height: number, private readonly skin: MapSkin = "classic") {
+  constructor(parent: Node, private readonly width: number, private readonly height: number) {
     this.root = this.createLayer("BattleSceneryView", parent);
-    // 草丛固定在地标下方，重用节点或切关时也不会颠倒静态层级。
+    // 非交互绿化固定在地标下方，重用节点或切关时也不会颠倒静态层级。
     this.foliageRoot = this.createLayer("SceneryFoliage", this.root);
     this.landmarkRoot = this.createLayer("SceneryLandmarks", this.root);
   }
 
   get ready(): boolean { return this.loaded && !this.disposed; }
-  get reviewReady(): boolean { return this.ready && (this.skin === "classic" || this.frames.has(`foliage-${this.skin}`)); }
 
   load(): Promise<void> {
     if (this.disposed) return Promise.resolve();
@@ -47,13 +46,16 @@ export class BattleSceneryView {
   }
 
   /** 坐标沿用地图左上原点、Y向下；复制快照，异步完成时只重画最新一关。 */
-  setScene(entry: MapPoint, goal: MapPoint, foliage: readonly MapPoint[]): void {
+  setScene(entry: MapPoint, goal: MapPoint, decorations: readonly SceneDecoration[]): void {
     if (this.disposed) return;
     this.latestScene = {
       entry: [entry[0], entry[1]],
       goal: [goal[0], goal[1]],
-      foliage: foliage.filter((point) => Number.isFinite(point[0]) && Number.isFinite(point[1]))
-        .map((point): MapPoint => [point[0], point[1]]),
+      // 保存独立快照，避免加载期间外部切关或复用数组改变旧请求的数据。
+      decorations: decorations.filter((item) => ["planter", "tree"].includes(item.kind)
+        && item.position.every(Number.isFinite) && Number.isFinite(item.width) && Number.isFinite(item.height)
+        && item.width > 0 && item.height > 0)
+        .map((item) => ({ ...item, position: [item.position[0], item.position[1]] as MapPoint })),
     };
     this.redraw();
   }
@@ -91,7 +93,7 @@ export class BattleSceneryView {
     sprite.type = Sprite.Type.SIMPLE;
     sprite.sizeMode = Sprite.SizeMode.CUSTOM;
     sprite.color = Color.WHITE;
-    sprite.spriteFrame = (kind === "foliage" ? this.frames.get(`foliage-${this.skin}`) : null) ?? this.frames.get(kind)!;
+    sprite.spriteFrame = this.frames.get(kind)!;
     parent.addChild(node);
     return { node, sprite, transform };
   }
@@ -113,13 +115,15 @@ export class BattleSceneryView {
     // 入口、终点画布中心下移6逻辑像素，让短门槛接上路线而非把主体顶到HUD。
     this.place(this.entrySprite, scene.entry, 64, 56, 6);
     this.place(this.goalSprite, scene.goal, 64, 56, 6);
-    scene.foliage.forEach((point, index) => {
-      const item = this.foliageSprites[index] ?? this.createSprite("foliage", this.foliageRoot);
+    scene.decorations.forEach((decoration, index) => {
+      const item = this.foliageSprites[index] ?? this.createSprite(decoration.kind, this.foliageRoot);
       this.foliageSprites[index] = item;
-      this.place(item, point, 48, 40, 0);
+      // 同一个池节点切关后可能由花池变为树，必须同时换帧与尺寸，不能把高树压扁。
+      item.sprite.spriteFrame = this.frames.get(decoration.kind)!;
+      this.place(item, decoration.position, decoration.width, decoration.height, 0);
     });
     // 切换装饰较少的关卡时只停用多余节点，随后切关继续复用。
-    for (let i = scene.foliage.length; i < this.foliageSprites.length; i += 1) this.foliageSprites[i].node.active = false;
+    for (let i = scene.decorations.length; i < this.foliageSprites.length; i += 1) this.foliageSprites[i].node.active = false;
   }
 
   private async loadAssets(): Promise<void> {
@@ -140,19 +144,6 @@ export class BattleSceneryView {
           offset: new Vec2(0, 0), isRotate: false, isFlipUv: false }, true);
         frame.packable = false;
       });
-      if (this.skin !== "classic") {
-        // 候选资源只在独立评审请求下加载；默认版本仍只依赖原有场景图集。
-        const review = await this.loadTexture(bundle, true);
-        if (this.disposed) return;
-        if (review && review.width === ATLAS_PIXELS && review.height === ATLAS_PIXELS) {
-          ["meadow", "courtyard", "storybook"].forEach((skin, index) => {
-            const frame = new SpriteFrame(); this.frames.set(`foliage-${skin}`, frame);
-            frame.reset({ texture: review, rect: new Rect(index * 128, 0, 128, 128), originalSize: new Size(128, 128),
-              offset: new Vec2(0, 0), isRotate: false, isFlipUv: false }, true);
-            frame.packable = false;
-          });
-        } else console.warn("候选灌木未就绪，保留原有资源；评审截图暂不可导出。");
-      }
       this.loaded = true;
       this.redraw();
     } catch (error) {
@@ -162,19 +153,18 @@ export class BattleSceneryView {
     }
   }
 
-  private loadTexture(bundle: AssetManager.Bundle, review = false): Promise<Texture2D | null> {
+  private loadTexture(bundle: AssetManager.Bundle): Promise<Texture2D | null> {
     return new Promise((resolve) => {
       let settled = false;
       try {
-        bundle.load(review ? "gameplay/maps/atlas_map_review_foliage/texture" : "gameplay/maps/atlas_battle_scenery/texture", Texture2D, (error, texture) => {
+        bundle.load("gameplay/maps/atlas_battle_scenery/texture", Texture2D, (error, texture) => {
           if (settled) return;
           settled = true;
           if (error || !texture) { resolve(null); return; }
           texture.addRef();
           // 销毁先于异步回调时立即归还晚到纹理，不在已销毁场景下创建节点。
           if (this.disposed) { texture.decRef(); resolve(null); return; }
-          if (review) this.reviewTexture = texture;
-          else this.texture = texture;
+          this.texture = texture;
           resolve(texture);
         });
       } catch { settled = true; resolve(null); }
@@ -186,7 +176,5 @@ export class BattleSceneryView {
     this.frames.clear();
     this.texture?.decRef();
     this.texture = null;
-    this.reviewTexture?.decRef();
-    this.reviewTexture = null;
   }
 }

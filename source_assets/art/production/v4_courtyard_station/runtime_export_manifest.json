@@ -1,0 +1,212 @@
+{
+  "date": "2026-09-27",
+  "generation": "内置image_gen：3次独立生成，小树1次树冠定向修正；未用CLI/API回退",
+  "exportTool": "G:/gptwork/export-courtyard-station.cjs",
+  "exportToolSha256": "83d6300d9d3fbc228ebbdedd377f1594bf49a9433c406fc9d074b4d61c768da5",
+  "exportProcess": "去游离Alpha点、裁透明边、等比缩放到四倍逻辑画布；商店切片直接RGBA拷贝，不重新生成或缩放",
+  "assets": [
+    {
+      "kind": "entry",
+      "file": "spr_scene_subway_entry_v1.png",
+      "sourceSize": [
+        1448,
+        1086
+      ],
+      "sourceBytes": 556411,
+      "sourceSha256": "a38b0b30d381607c186edd002d453f031f6d164f8d152aee261191a4c562ef2a",
+      "crop": {
+        "left": 295,
+        "top": 225,
+        "width": 878,
+        "height": 678,
+        "removedPixels": 134,
+        "transparentRatio": 0.7226484997405451
+      },
+      "frameRect": [
+        0,
+        0,
+        256,
+        224
+      ],
+      "logicalCanvas": [
+        64,
+        56
+      ],
+      "exportedBodyPixels": [
+        217,
+        168
+      ],
+      "bodyLogical": [
+        54.25,
+        42
+      ],
+      "placement": [
+        19,
+        28
+      ],
+      "bodyBoundsLogical": [
+        4.75,
+        7,
+        59,
+        49
+      ],
+      "bodyBoundsFromCenter": [
+        -27.25,
+        -21,
+        27,
+        21
+      ],
+      "paddingTexturePixels": [
+        19,
+        28,
+        20,
+        28
+      ]
+    },
+    {
+      "kind": "planter",
+      "file": "spr_scene_courtyard_planter_v1.png",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceBytes": 687999,
+      "sourceSha256": "de9bfcf9b10cde86ac0fc9057bce5478363414ac09e3a69ea2abc11ce5049d05",
+      "crop": {
+        "left": 86,
+        "top": 279,
+        "width": 1083,
+        "height": 813,
+        "removedPixels": 163,
+        "transparentRatio": 0.6381327757555408
+      },
+      "frameRect": [
+        0,
+        224,
+        192,
+        192
+      ],
+      "logicalCanvas": [
+        48,
+        48
+      ],
+      "exportedBodyPixels": [
+        160,
+        120
+      ],
+      "bodyLogical": [
+        40,
+        30
+      ],
+      "placement": [
+        16,
+        36
+      ],
+      "bodyBoundsLogical": [
+        4,
+        9,
+        44,
+        39
+      ],
+      "bodyBoundsFromCenter": [
+        -20,
+        -15,
+        20,
+        15
+      ],
+      "paddingTexturePixels": [
+        16,
+        36,
+        16,
+        36
+      ]
+    },
+    {
+      "kind": "tree",
+      "file": "spr_scene_courtyard_round_tree_v2.png",
+      "sourceSize": [
+        1060,
+        1484
+      ],
+      "sourceBytes": 646779,
+      "sourceSha256": "2009797e3ad797cf6697684f1054c9dc1ad8e8bb4f1606d054db1915fb3a7aa3",
+      "crop": {
+        "left": 140,
+        "top": 252,
+        "width": 795,
+        "height": 1068,
+        "removedPixels": 429,
+        "transparentRatio": 0.617530387021309
+      },
+      "frameRect": [
+        192,
+        224,
+        160,
+        224
+      ],
+      "logicalCanvas": [
+        40,
+        56
+      ],
+      "exportedBodyPixels": [
+        120,
+        161
+      ],
+      "bodyLogical": [
+        30,
+        40.25
+      ],
+      "placement": [
+        20,
+        31
+      ],
+      "bodyBoundsLogical": [
+        5,
+        7.75,
+        35,
+        48
+      ],
+      "bodyBoundsFromCenter": [
+        -15,
+        -20.25,
+        15,
+        20
+      ],
+      "paddingTexturePixels": [
+        20,
+        31,
+        20,
+        32
+      ]
+    }
+  ],
+  "goalPreserved": {
+    "rect": [
+      256,
+      0,
+      256,
+      224
+    ],
+    "pixelsCompared": 57344,
+    "channelsCompared": 229376,
+    "beforeRgbaSha256": "2e244e08919f7ebc0dc7cdf84aa4366f38248c3cf6bb82446806670fbd4fc42f",
+    "afterRgbaSha256": "2e244e08919f7ebc0dc7cdf84aa4366f38248c3cf6bb82446806670fbd4fc42f",
+    "exactPixelMatch": true,
+    "baselineAtlasSha256": "fe2da7628718c661ba509fb56502d4ef9560035b0f41db18eb2ae796af73cd34",
+    "source": "v2_scene/spr_scene_mini_store_v1.png；沿用原运行切片"
+  },
+  "atlas": {
+    "file": "assets/art/gameplay/maps/atlas_battle_scenery.png",
+    "size": [
+      512,
+      512
+    ],
+    "bytes": 200061,
+    "sha256": "f2e5621f6fe359d62f30420f3c9528f1fd8ada80f443c1a70a96608eddfdb44c",
+    "metaUuid": "ec0de4b8-94b7-4dd4-8b2c-3a46bb4e4537",
+    "metaSha256": "1f2edaff8f00ea16f03420f94fbc74c0b2150830cb7219875a4ee7cb8289d868",
+    "metaUnchanged": true,
+    "flipVertical": false
+  },
+  "display": "完整画布entry64×56、goal64×56、planter48×48、tree40×56，均居中锚点；entry仍中心path+(0,6)，由代码门槛前坪承接道路。自带小接触影，不再叠加组级大阴影。"
+}

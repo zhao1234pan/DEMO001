@@ -1,8 +1,7 @@
 import { DEBUG } from "cc/env";
 import { director, Director, sys } from "cc";
-import type { MapSkin } from "../gameplay/battle/BattleMapSkin";
 
-export interface MapStyleReviewConfig { skin: MapSkin; levelId: number; stage: "empty" | "battle"; }
+export interface MapStyleReviewConfig { skin: "courtyard"; levelId: number; stage: "empty" | "battle"; }
 
 /** 仅本机Web调试版接受白名单参数，正式小游戏不读取URL，更不修改正式玩家存档。 */
 export function readMapStyleReview(): MapStyleReviewConfig | null {
@@ -10,7 +9,8 @@ export function readMapStyleReview(): MapStyleReviewConfig | null {
   if (!["127.0.0.1", "localhost"].includes(window.location.hostname)) return null;
   const params = new URLSearchParams(window.location.search);
   const skin = params.get("mapReview");
-  if (skin !== "classic" && skin !== "meadow" && skin !== "courtyard" && skin !== "storybook") return null;
+  // B方案已选定，只保留正式皮肤的美术验收入口；旧候选参数不能改变玩家运行状态。
+  if (skin !== "courtyard") return null;
   const value = Number(params.get("level") ?? 7);
   const levelId = Number.isInteger(value) && value >= 1 && value <= 10 ? value : 7;
   return { skin, levelId, stage: params.get("stage") === "empty" ? "empty" : "battle" };

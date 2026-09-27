@@ -145,7 +145,7 @@ export class GameRoot extends Component {
     this.node.addChild(this.contentRoot);
     this.staticG = this.createGraphics("StaticMap");
     this.mapView = new BattleMapView(this.staticG, W);
-    this.scenery = new BattleSceneryView(this.contentRoot, W, H, this.mapReview?.skin ?? "classic");
+    this.scenery = new BattleSceneryView(this.contentRoot, W, H);
     this.unitBaseG = this.createGraphics("UnitUnderlay");
     // 三层分离：范围和地面在下、精灵居中、血条/投射物/操作菜单在上。
     this.art = new BattleArtView(this.contentRoot, W, H);
@@ -163,7 +163,7 @@ export class GameRoot extends Component {
     void this.uiArt.load();
     void this.scenery.load().then(() => { if (!this.disposed) this.drawStaticMap(); });
     if (this.mapReview) this.releaseMapReviewCapture = installMapStyleCapture(this.mapReview,
-      () => this.art.ready && this.uiArt.ready && this.scenery.reviewReady);
+      () => this.art.ready && this.uiArt.ready && this.scenery.ready);
     view.on("canvas-resize", this.resizeHandler, this);
     view.on("design-resolution-changed", this.resizeHandler, this);
     this.node.on(Node.EventType.TOUCH_START, this.onTouchStart, this);
@@ -269,7 +269,7 @@ export class GameRoot extends Component {
     this.makeLabel("title", "夜班便利店", 15, 85, 24, 106, 28, "#fff2cd");
     this.makeLabel("level", "", 13, 43, 51, 64, 24, "#f9e7b7");
     this.makeLabel("wave", "", 13, 109, 51, 62, 24, "#e0ecd1");
-    this.makeLabel("entry-mark", "入口", 13, 0, 0, 48, 22, "#fff4d1");
+    this.makeLabel("entry-mark", "地铁口", 13, 0, 0, 48, 22, "#fff4d1");
     this.makeLabel("goal-mark", "便利店", 13, 0, 0, 60, 22, "#fff4d1");
     this.makeLabel("coin", "", 17, 189, 36, 44, 38, "#4b422e");
     this.makeLabel("lives", "", 17, 247, 36, 24, 38, "#4b422e");
@@ -326,9 +326,9 @@ export class GameRoot extends Component {
   }
 
   private drawStaticMap(): void {
-    const foliage = this.mapView.draw(this.level, this.layoutTop, this.layoutBottom, this.scenery.ready, this.mapReview?.skin ?? "classic");
+    const decorations = this.mapView.draw(this.level, this.layoutTop, this.layoutBottom, this.scenery.ready);
     const start = this.level.pathPoints[0]; const end = this.level.pathPoints[this.level.pathPoints.length - 1];
-    this.scenery.setScene(start, end, foliage);
+    this.scenery.setScene(start, end, decorations);
     this.setLabelPosition("entry-mark", start[0], start[1] - 29);
     this.setLabelPosition("goal-mark", end[0], end[1] - 29);
   }
