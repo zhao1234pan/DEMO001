@@ -1,0 +1,121 @@
+{
+  "date": "2026-09-27",
+  "tool": "Node.js + sharp；机械裁边、清透明杂点、等比缩放和图集打包",
+  "assets": [
+    {
+      "kind": "entry",
+      "file": "spr_scene_forest_entry_v1.png",
+      "sourceSize": [
+        1341,
+        1173
+      ],
+      "sourceBytes": 679676,
+      "sourceSha256": "576fbf4bc1128af27016d5a92af0c7292a00514cab94b5e0f36485323fc3a873",
+      "crop": {
+        "left": 80,
+        "top": 235,
+        "width": 1182,
+        "height": 695,
+        "removedPixels": 297
+      },
+      "frameRect": [
+        0,
+        0,
+        256,
+        224
+      ],
+      "logicalCanvas": [
+        64,
+        56
+      ],
+      "bodyLogical": [
+        56,
+        33
+      ],
+      "placement": [
+        16,
+        46
+      ]
+    },
+    {
+      "kind": "goal",
+      "file": "spr_scene_mini_store_v1.png",
+      "sourceSize": [
+        1341,
+        1173
+      ],
+      "sourceBytes": 841881,
+      "sourceSha256": "3a30f417ac7701ee62ec89ba9f4d2f4b0c5606bcc94fc424136468350d1615de",
+      "crop": {
+        "left": 124,
+        "top": 208,
+        "width": 1087,
+        "height": 778,
+        "removedPixels": 374
+      },
+      "frameRect": [
+        256,
+        0,
+        256,
+        224
+      ],
+      "logicalCanvas": [
+        64,
+        56
+      ],
+      "bodyLogical": [
+        56,
+        40
+      ],
+      "placement": [
+        16,
+        32
+      ]
+    },
+    {
+      "kind": "foliage",
+      "file": "spr_scene_foliage_cluster_v1.png",
+      "sourceSize": [
+        1484,
+        1060
+      ],
+      "sourceBytes": 586494,
+      "sourceSha256": "7bc32f1e36fbdd7240f5e80dbd1be465d43a79c885449b723213643a25916e78",
+      "crop": {
+        "left": 110,
+        "top": 250,
+        "width": 1267,
+        "height": 642,
+        "removedPixels": 98
+      },
+      "frameRect": [
+        0,
+        224,
+        192,
+        160
+      ],
+      "logicalCanvas": [
+        48,
+        40
+      ],
+      "bodyLogical": [
+        40,
+        20.25
+      ],
+      "placement": [
+        16,
+        40
+      ]
+    }
+  ],
+  "atlas": {
+    "file": "assets/art/gameplay/maps/atlas_battle_scenery.png",
+    "size": [
+      512,
+      512
+    ],
+    "bytes": 142327,
+    "sha256": "fe2da7628718c661ba509fb56502d4ef9560035b0f41db18eb2ae796af73cd34"
+  },
+  "display": "入口和商店画布64×56逻辑像素，中心为路径点(x,y+6)；灌木48×40逻辑像素，中心为配置点。"
+}
