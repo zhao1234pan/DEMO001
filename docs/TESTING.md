@@ -2,7 +2,23 @@
 
 ## 最新自动检查
 
-### 0.4.0 成组塔位、地图UI与屏内地标（2026-09-27，当前）
+### 地图材质评审分支（2026-09-27，待用户选择，未合main）
+
+- 分支 `codex/pc-a/map-style-review`，对照main `ef6e3e7`。严格TypeScript及diff检查通过；GameConfig、LevelConfig完整内容和21个核心方法未变。
+- 最终地图回归11/11通过，报告时间11:03:34 UTC，执行中源码未改：classic默认/显式40组Graphics调用与基线逐条一致；三候选120组可见边界；30套植物保守框避让；庭院84段接缝独立逐像素步长核对。
+- 4皮肤×10关×2阶段共80组定格：每组600帧、隐藏恢复、全屏触控与直接handlePress均保持冻结，零正式存档读写、零广告。正式构建、非浏览器和非本机域名不能开启评审；截图仅同源父页在引擎帧尾触发，未就绪/销毁不导出。
+- 候选场景层12/12、原场景层7/7通过：classic只加载旧图集；三候选准确切片并用48×40画布；缺图回退且reviewReady=false；晚到/重复回调、正常/重复销毁及共享纹理归还均验证。以上接口替身不替代PNG/GPU检查。
+- 最终Web Mobile 19:03:19 Finished；抖音小游戏19:04:46 Finished。日志保留CLI默认参数校验提示，不伪称完全无警告。
+- 最终小游戏68文件、4150140字节，主脚本86248字节，SHA256 `51a105a18ec5a3a553d528994322a171259e632710a12b1237985fcffe4ec4b5`。评审读取函数折叠为return null、截图安装函数为空操作；截图消息/导出提示不在包内，但mapReview字段仍保留。6 PNG各唯一且与源哈希匹配，共568476字节；候选图集34928字节仍入包，选定时须收敛。竖屏正确，仍是testappId。
+- 实屏已检查第7关三方案和第3关密集布阵，原尺寸导出750×1334；另检查第7关原始开局22格。最终PNG及逐图SHA记录进入Git的source_assets/art/reviews/map_styles_v1。三方案同态，角色/敌人/UI真实渲染，没有把AI整屏图当截图；发现孤立深斑和避让后碎裂纸边后已删除并重新出图。
+- 浏览器曾捕获一次无来源URL的MutationObserver.observe节点类型错误；仓库、评审页和Web构建中未检索到MutationObserver调用，暂不能确定归属。当前导出与各Canvas均正常，不以“零控制台错误”作为验收结论。
+- 中局仅是8店员/8障碍/6空位/6敌人的视觉示例，不是自然游玩、初始经济或通关证据。未新增人工整局通关、低端机性能或抖音真机结论。广告、正式UI及数值维持原状。
+
+最终源码哈希：GameRoot `8417fe7749e6d55fe83650da3caa475b893040a11cf2ca1d8f44630cadb45ebd`；BattleMapView `d41395768bc511616f858372f0ad4ddb4914c383336991e7873cd9b001829ef0`；BattleSceneryView `5eea4c5fc17c80a7496e8745edf89313b25de8140038071e603cdf27b669a6c6`。
+
+辅助证据均在G:\gptwork：map-review-regression-report.md/json、scenery-review-regression-report.md/json、creator-style-review-web-delivery/mini-delivery.stdout/stderr.log。辅助文件不提交；另一电脑可依照 [地图材质评审](./MAP_STYLE_REVIEW.md) 复现画面，按本段断言重建自动检查。
+
+### 0.4.0 成组塔位、地图UI与屏内地标（2026-09-27，稳定主线）
 
 #### 静态与机制检查
 

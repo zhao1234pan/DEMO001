@@ -1,5 +1,6 @@
 import { assetManager, AssetManager, Color, Layers, Node, Rect, Size, Sprite, SpriteFrame, Texture2D, UITransform, Vec2 } from "cc";
 import type { MapPoint } from "./LevelConfig";
+import type { MapSkin } from "./BattleMapSkin";
 
 type SceneryKind = "entry" | "goal" | "foliage";
 interface ScenerySprite { node: Node; sprite: Sprite; transform: UITransform; }
@@ -19,16 +20,17 @@ export class BattleSceneryView {
   private readonly foliageRoot: Node;
   private readonly landmarkRoot: Node;
   private readonly foliageSprites: ScenerySprite[] = [];
-  private readonly frames = new Map<SceneryKind, SpriteFrame>();
+  private readonly frames = new Map<string, SpriteFrame>();
   private entrySprite: ScenerySprite | null = null;
   private goalSprite: ScenerySprite | null = null;
   private latestScene: SceneSnapshot | null = null;
   private texture: Texture2D | null = null;
+  private reviewTexture: Texture2D | null = null;
   private loading: Promise<void> | null = null;
   private loaded = false;
   private disposed = false;
 
-  constructor(parent: Node, private readonly width: number, private readonly height: number) {
+  constructor(parent: Node, private readonly width: number, private readonly height: number, private readonly skin: MapSkin = "classic") {
     this.root = this.createLayer("BattleSceneryView", parent);
     // 草丛固定在地标下方，重用节点或切关时也不会颠倒静态层级。
     this.foliageRoot = this.createLayer("SceneryFoliage", this.root);
@@ -36,6 +38,7 @@ export class BattleSceneryView {
   }
 
   get ready(): boolean { return this.loaded && !this.disposed; }
+  get reviewReady(): boolean { return this.ready && (this.skin === "classic" || this.frames.has(`foliage-${this.skin}`)); }
 
   load(): Promise<void> {
     if (this.disposed) return Promise.resolve();
@@ -88,7 +91,7 @@ export class BattleSceneryView {
     sprite.type = Sprite.Type.SIMPLE;
     sprite.sizeMode = Sprite.SizeMode.CUSTOM;
     sprite.color = Color.WHITE;
-    sprite.spriteFrame = this.frames.get(kind)!;
+    sprite.spriteFrame = (kind === "foliage" ? this.frames.get(`foliage-${this.skin}`) : null) ?? this.frames.get(kind)!;
     parent.addChild(node);
     return { node, sprite, transform };
   }
@@ -137,6 +140,19 @@ export class BattleSceneryView {
           offset: new Vec2(0, 0), isRotate: false, isFlipUv: false }, true);
         frame.packable = false;
       });
+      if (this.skin !== "classic") {
+        // 候选资源只在独立评审请求下加载；默认版本仍只依赖原有场景图集。
+        const review = await this.loadTexture(bundle, true);
+        if (this.disposed) return;
+        if (review && review.width === ATLAS_PIXELS && review.height === ATLAS_PIXELS) {
+          ["meadow", "courtyard", "storybook"].forEach((skin, index) => {
+            const frame = new SpriteFrame(); this.frames.set(`foliage-${skin}`, frame);
+            frame.reset({ texture: review, rect: new Rect(index * 128, 0, 128, 128), originalSize: new Size(128, 128),
+              offset: new Vec2(0, 0), isRotate: false, isFlipUv: false }, true);
+            frame.packable = false;
+          });
+        } else console.warn("候选灌木未就绪，保留原有资源；评审截图暂不可导出。");
+      }
       this.loaded = true;
       this.redraw();
     } catch (error) {
@@ -146,18 +162,19 @@ export class BattleSceneryView {
     }
   }
 
-  private loadTexture(bundle: AssetManager.Bundle): Promise<Texture2D | null> {
+  private loadTexture(bundle: AssetManager.Bundle, review = false): Promise<Texture2D | null> {
     return new Promise((resolve) => {
       let settled = false;
       try {
-        bundle.load("gameplay/maps/atlas_battle_scenery/texture", Texture2D, (error, texture) => {
+        bundle.load(review ? "gameplay/maps/atlas_map_review_foliage/texture" : "gameplay/maps/atlas_battle_scenery/texture", Texture2D, (error, texture) => {
           if (settled) return;
           settled = true;
           if (error || !texture) { resolve(null); return; }
           texture.addRef();
           // 销毁先于异步回调时立即归还晚到纹理，不在已销毁场景下创建节点。
           if (this.disposed) { texture.decRef(); resolve(null); return; }
-          this.texture = texture;
+          if (review) this.reviewTexture = texture;
+          else this.texture = texture;
           resolve(texture);
         });
       } catch { settled = true; resolve(null); }
@@ -169,5 +186,7 @@ export class BattleSceneryView {
     this.frames.clear();
     this.texture?.decRef();
     this.texture = null;
+    this.reviewTexture?.decRef();
+    this.reviewTexture = null;
   }
 }
