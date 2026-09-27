@@ -1,0 +1,18 @@
+{
+  "description": "真实Cocos截图的机械并排预览；原图不修改，仅等比缩放取整到450×800并标注A/B/C",
+  "inputs": [
+    {
+      "file": "level_07_meadow_battle.png",
+      "sha256": "2e0c840f0d31317fadf05f1579e8882c93feaa1aebdf59985ff23392594781ef"
+    },
+    {
+      "file": "level_07_courtyard_battle.png",
+      "sha256": "de957668d22e80539e3de7dcefc69b95acd9666b26dcd006d4d91939247e4067"
+    },
+    {
+      "file": "level_07_storybook_battle.png",
+      "sha256": "9bf2d7c52c985541977152fa0964dbaaf766a51e98af24fab860f6c985020d77"
+    }
+  ],
+  "sha256": "181a4de2344ff9ac1303764538a5ef15d311ec1b6d6e63c680109fb32cea8411"
+}

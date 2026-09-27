@@ -2,7 +2,65 @@
 
 ## 最新自动检查
 
-### 0.4.0 成组塔位、地图UI与屏内地标（2026-09-27，当前）
+### 0.4.1 庭院地铁入口与成组绿化（2026-09-27）
+
+#### 代码、几何与玩法隔离
+
+- 用户选定B后收敛正式默认地图，移除未选皮肤分支和候选运行图集。严格TypeScript（Creator 3.8.8声明）及git diff --check通过。
+- 地图检查10/10：十关正式地面Graphics调用与原B候选逐条一致；GameConfig/LevelConfig全文件及21个战斗/广告方法对照259633b未变；普通运行正常推进，旧候选参数不再启用其他皮肤。
+- 十关25组42件装饰，分别为组数/件数：3/4、2/4、2/2、2/4、2/4、3/5、2/4、3/5、3/5、3/5。校验完整透明画布而非可见叶片：位于x4～386/y84～602内，距路中心线至少29，实测最小路边净空7；避让最高级角色保守框、地标联合框及其他装饰。第3关仅两个低花池。
+- 场景层9/9：四切片、类型/尺寸更新、节点复用、切关最新快照、缺图/错误尺寸/帧创建失败、晚到回调、释放和共享纹理引用均验证；ready未满足时不能导出验收图。显示接口替身不代替GPU与PNG检查。
+- 本机DEBUG评审仅保留courtyard；十关×两状态定格均不读写正式存档、不调用广告。正式发布及非本机域名不能开启。正常模式与评审隔离。
+- 真实GameRoot配显示替身19/19机制通过。60局无广告策略与0.4.0报告逐局对象完全一致：混合30/30、纯豆包21/30，8～10关纯豆包三速仍失败。未改数值以抹平失败；不作为人工胜率或新性能证据。
+
+#### 资源、构建及实屏
+
+- 运行场景图集512×512、200061字节；四切片entry[0,0,256,224]、goal[256,0,256,224]、planter[0,224,192,192]、tree[192,224,160,224]。原.meta/UUID不变；商店切片57344像素的RGBA逐字节与259633b一致。
+- 五张正式PNG合计591282字节；高分源图、历史A/B/C源图与截图均不进运行包。删除的候选图集可从Git历史恢复。
+- Web Mobile 19:32:15 Finished；抖音小游戏19:33:42 Finished（本机时间）。日志保留CLI默认参数校验提示，不声称完全无警告。最终小游戏位于G:\gptwork\courtyard-mini-build\bytedance-mini-game，共66文件、4170031字节。
+- 小游戏五PNG各唯一副本并与源哈希一致；旧候选图集名称、原UUID及压缩UUID均不在路径/脚本/JSON中。正式readMapStyleReview返回null、截图安装函数无操作，截图消息/导出文本及GM入口标签不在包内；仍有不可达mapReview字段，不宣称全部调试代码剔除。竖屏、showStatusBar=false、testappId，非正式发布。
+- 在Cocos真实渲染第3/7/9关，直接于引擎帧尾导出750×1334画布，PNG/JSON哈希保存于source_assets/art/reviews/courtyard_station_v1。地铁口方向、石材厚度、树冠高低、花池/可清障盆栽区分及第9关上下地标净空均检查。中局8店员/8障碍/6空位/6敌人是固定视觉示例，不是自然通关截图；没有AI整屏图替代实机。
+- 正常4173游戏实点GM第3关、免费重开、建造豆包85、升级64（250→101金币），然后暂停；倍速3→1已点按，未点击广告。375×667与375×812确认地图等比、上下栏锚点及菜单可用。未重新宣称本轮完成人工十关通关或所有设备回归。
+- 正常游戏页捕获warn/error为空。独立评审页曾出现一次无来源URL的MutationObserver.observe参数错误，与历史评审一样未确定归属；页面和引擎截图正常，不把全部浏览器控制台无错误列为通过条件。
+
+#### 可追溯证据
+
+- 机制/场景最终检查为11:32:09/11:31:57 UTC；提交前仅删除Layout末尾空行，转译JS与构建时逐字相同，地图10/10于11:54:25 UTC重跑通过。下列为交付源码哈希，其余源码与构建时一致。
+- GameRoot：`e2a147e3730a83be6b0564a51526d62b16a5cb31c07115e73fb3239a1e22fcdc`。
+- BattleMapView：`c2de1e4846cea4ce860fdb910235df005ef2e4c646b00a18fe89d2f4938fc71e`。
+- BattleSceneryLayout：`96373a13347e7d881bdc69ce22312d8b42e736ca5b7af04e8ca651a3758f8911`。
+- BattleSceneryView：`ec7f95b90565ac1f80abc751f26441a7ae10d9c62655a66e0ac8c573dda583e4`。
+- 场景图集：`f2e5621f6fe359d62f30420f3c9528f1fd8ada80f443c1a70a96608eddfdb44c`。
+- 抖音主脚本83618字节，SHA256：`286dc16d39e7b1fdc3395a0ee2ced26f09189c3e94ae1d68bf2d470637b66fcd`。
+- 辅助证据只在G:\gptwork：courtyard-regression-report.md/json、courtyard-scenery-regression-report.md/json、courtyard-validation/runtime-regression-report.md/json及comparison-to-0.4.json、creator-courtyard-web/mini.stdout/stderr.log。它们不提交；另一电脑根据本文断言及仓库纯布局/真实配置复建检查，不能依赖本机工具路径。
+- 三模块内置生成、迭代及机械导出记录见source_assets/art/production/v4_courtyard_station/GENERATION_NOTES.md与runtime_export_manifest.json。项目源资产可追溯不等于已完成全部美术。
+
+```powershell
+node 'F:\cocos2d\Creator\3.8.8\resources\app.asar.unpacked\node_modules\typescript\bin\tsc' -p 'G:\DEMO001' --noEmit --strict --skipLibCheck
+node 'G:\gptwork\courtyard-regression.cjs'
+node 'G:\gptwork\courtyard-scenery-regression.cjs'
+node 'G:\gptwork\courtyard-runtime-regression.cjs'
+```
+
+仍未完成：抖音开发者工具/真机、低端安卓FPS/内存、真实胶囊/异形屏、8～12店员人工密度及十关人工整局。广告缺口保持不动；本轮可以交用户体验，不可据此提审。
+
+### 历史：地图材质三方案评审（2026-09-27，用户选择前）
+
+- 分支 `codex/pc-a/map-style-review`，对照main `ef6e3e7`。严格TypeScript及diff检查通过；GameConfig、LevelConfig完整内容和21个核心方法未变。
+- 最终地图回归11/11通过，报告时间11:03:34 UTC，执行中源码未改：classic默认/显式40组Graphics调用与基线逐条一致；三候选120组可见边界；30套植物保守框避让；庭院84段接缝独立逐像素步长核对。
+- 4皮肤×10关×2阶段共80组定格：每组600帧、隐藏恢复、全屏触控与直接handlePress均保持冻结，零正式存档读写、零广告。正式构建、非浏览器和非本机域名不能开启评审；截图仅同源父页在引擎帧尾触发，未就绪/销毁不导出。
+- 候选场景层12/12、原场景层7/7通过：classic只加载旧图集；三候选准确切片并用48×40画布；缺图回退且reviewReady=false；晚到/重复回调、正常/重复销毁及共享纹理归还均验证。以上接口替身不替代PNG/GPU检查。
+- 最终Web Mobile 19:03:19 Finished；抖音小游戏19:04:46 Finished。日志保留CLI默认参数校验提示，不伪称完全无警告。
+- 最终小游戏68文件、4150140字节，主脚本86248字节，SHA256 `51a105a18ec5a3a553d528994322a171259e632710a12b1237985fcffe4ec4b5`。评审读取函数折叠为return null、截图安装函数为空操作；截图消息/导出提示不在包内，但mapReview字段仍保留。6 PNG各唯一且与源哈希匹配，共568476字节；候选图集34928字节仍入包，选定时须收敛。竖屏正确，仍是testappId。
+- 实屏已检查第7关三方案和第3关密集布阵，原尺寸导出750×1334；另检查第7关原始开局22格。最终PNG及逐图SHA记录进入Git的source_assets/art/reviews/map_styles_v1。三方案同态，角色/敌人/UI真实渲染，没有把AI整屏图当截图；发现孤立深斑和避让后碎裂纸边后已删除并重新出图。
+- 浏览器曾捕获一次无来源URL的MutationObserver.observe节点类型错误；仓库、评审页和Web构建中未检索到MutationObserver调用，暂不能确定归属。当前导出与各Canvas均正常，不以“零控制台错误”作为验收结论。
+- 中局仅是8店员/8障碍/6空位/6敌人的视觉示例，不是自然游玩、初始经济或通关证据。未新增人工整局通关、低端机性能或抖音真机结论。广告、正式UI及数值维持原状。
+
+最终源码哈希：GameRoot `8417fe7749e6d55fe83650da3caa475b893040a11cf2ca1d8f44630cadb45ebd`；BattleMapView `d41395768bc511616f858372f0ad4ddb4914c383336991e7873cd9b001829ef0`；BattleSceneryView `5eea4c5fc17c80a7496e8745edf89313b25de8140038071e603cdf27b669a6c6`。
+
+辅助证据均在G:\gptwork：map-review-regression-report.md/json、scenery-review-regression-report.md/json、creator-style-review-web-delivery/mini-delivery.stdout/stderr.log。辅助文件不提交；另一电脑可依照 [地图材质评审](./MAP_STYLE_REVIEW.md) 复现画面，按本段断言重建自动检查。
+
+### 历史：0.4.0 成组塔位、地图UI与屏内地标（2026-09-27）
 
 #### 静态与机制检查
 

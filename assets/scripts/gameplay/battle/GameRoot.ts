@@ -12,6 +12,7 @@ import { BattleArtView } from "./BattleArtView";
 import { BattleUiView } from "./BattleUiView";
 import { BattleMapView } from "./BattleMapView";
 import { BattleSceneryView } from "./BattleSceneryView";
+import { installMapStyleCapture, MapStyleReviewConfig, readMapStyleReview } from "../../debug/MapStyleReview";
 import { BATTLE_UI, computeBattleLayout, containsPoint, HitRect } from "./BattleLayout";
 
 const { ccclass } = _decorator;
@@ -83,6 +84,8 @@ export class GameRoot extends Component {
   private touchTravelCancelled = false;
   private appliedResolutionPolicy: number | null = null;
   private disposed = false;
+  private mapReview: MapStyleReviewConfig | null = null;
+  private releaseMapReviewCapture: (() => void) | null = null;
   private audio!: AudioService;
   private labels = new Map<string, Label>();
   private labelSizes = new Map<string, number>();
@@ -129,6 +132,7 @@ export class GameRoot extends Component {
   private readonly resizeHandler = (): void => { this.configureResolution(); this.applyLayout(); this.scheduleOnce(() => this.applyLayout(), 0); };
 
   onLoad(): void {
+    this.mapReview = readMapStyleReview();
     this.configureResolution();
     const transform = this.node.getComponent(UITransform) ?? this.node.addComponent(UITransform);
     transform.setContentSize(DESIGN_W, DESIGN_H);
@@ -149,14 +153,17 @@ export class GameRoot extends Component {
     this.uiArt = new BattleUiView(this.contentRoot, W, H);
     this.audio = new AudioService(this.node);
     this.createLabels();
-    const savedSpeed = PlatformService.getNumber("night_store_game_speed", 1);
+    const savedSpeed = this.mapReview ? 1 : PlatformService.getNumber("night_store_game_speed", 1);
     this.gameSpeed = savedSpeed === 2 || savedSpeed === 3 ? savedSpeed : 1;
-    this.currentLevelId = Math.max(1, Math.min(GAME_CONFIG.maxLevels, PlatformService.getNumber("night_store_unlocked_level", 1)));
+    this.currentLevelId = this.mapReview?.levelId ?? Math.max(1, Math.min(GAME_CONFIG.maxLevels, PlatformService.getNumber("night_store_unlocked_level", 1)));
     this.resetLevel(this.currentLevelId);
+    if (this.mapReview) this.setupMapReview();
     this.applyLayout();
     void this.art.load();
     void this.uiArt.load();
     void this.scenery.load().then(() => { if (!this.disposed) this.drawStaticMap(); });
+    if (this.mapReview) this.releaseMapReviewCapture = installMapStyleCapture(this.mapReview,
+      () => this.art.ready && this.uiArt.ready && this.scenery.ready);
     view.on("canvas-resize", this.resizeHandler, this);
     view.on("design-resolution-changed", this.resizeHandler, this);
     this.node.on(Node.EventType.TOUCH_START, this.onTouchStart, this);
@@ -170,6 +177,7 @@ export class GameRoot extends Component {
 
   onDestroy(): void {
     this.disposed = true;
+    this.releaseMapReviewCapture?.();
     view.off("canvas-resize", this.resizeHandler, this);
     view.off("design-resolution-changed", this.resizeHandler, this);
     this.node.off(Node.EventType.TOUCH_START, this.onTouchStart, this);
@@ -235,6 +243,8 @@ export class GameRoot extends Component {
   }
 
   update(dt: number): void {
+    // 美术评审只冻结实例状态并使用真实渲染链；不调用战斗推进、广告或存档。
+    if (this.mapReview) { this.paused = false; this.render(); return; }
     // 先限制单帧追赶时间，再把倍速后的游戏时间拆成稳定小步长，避免低帧率或三倍速时穿透目标。
     let remainingGameTime = Math.min(dt, 0.1) * this.gameSpeed;
     while (remainingGameTime > 0 && !this.paused && !this.gmPanelOpen && !this.adRequesting && this.screen === "playing") {
@@ -259,7 +269,7 @@ export class GameRoot extends Component {
     this.makeLabel("title", "夜班便利店", 15, 85, 24, 106, 28, "#fff2cd");
     this.makeLabel("level", "", 13, 43, 51, 64, 24, "#f9e7b7");
     this.makeLabel("wave", "", 13, 109, 51, 62, 24, "#e0ecd1");
-    this.makeLabel("entry-mark", "入口", 13, 0, 0, 48, 22, "#fff4d1");
+    this.makeLabel("entry-mark", "地铁口", 13, 0, 0, 48, 22, "#fff4d1");
     this.makeLabel("goal-mark", "便利店", 13, 0, 0, 60, 22, "#fff4d1");
     this.makeLabel("coin", "", 17, 189, 36, 44, 38, "#4b422e");
     this.makeLabel("lives", "", 17, 247, 36, 24, 38, "#4b422e");
@@ -316,9 +326,9 @@ export class GameRoot extends Component {
   }
 
   private drawStaticMap(): void {
-    const foliage = this.mapView.draw(this.level, this.layoutTop, this.layoutBottom, this.scenery.ready);
+    const decorations = this.mapView.draw(this.level, this.layoutTop, this.layoutBottom, this.scenery.ready);
     const start = this.level.pathPoints[0]; const end = this.level.pathPoints[this.level.pathPoints.length - 1];
-    this.scenery.setScene(start, end, foliage);
+    this.scenery.setScene(start, end, decorations);
     this.setLabelPosition("entry-mark", start[0], start[1] - 29);
     this.setLabelPosition("goal-mark", end[0], end[1] - 29);
   }
@@ -533,6 +543,7 @@ export class GameRoot extends Component {
   }
 
   private shouldShowWaveCountdown(): boolean {
+    if (this.mapReview) return false;
     return this.screen === "playing" && !this.paused && !this.inWave && this.enemies.length === 0
       && this.wave < this.level.waves.length && this.toastTime <= 0;
   }
@@ -643,7 +654,7 @@ export class GameRoot extends Component {
   }
 
   private drawGmPanel(g: Graphics): void {
-    if (!DEBUG) return;
+    if (!DEBUG || this.mapReview) return;
     const entry = this.footerRect(GM_BUTTON);
     this.box(g, entry.x, entry.y, entry.width, entry.height, 13, "#7358a6", 0.96);
     if (!this.gmPanelOpen) return;
@@ -659,7 +670,7 @@ export class GameRoot extends Component {
   }
 
   private syncLabels(): void {
-    this.setLabel("level", `${this.level.id.toString().padStart(2, "0")}关${this.gmSessionActive ? "·GM" : "/10"}`);
+    this.setLabel("level", `${this.level.id.toString().padStart(2, "0")}关${this.gmSessionActive && !this.mapReview ? "·GM" : "/10"}`);
     this.setLabel("wave", `${this.wave}/${this.level.waves.length} 波`);
     this.setLabel("coin", `${this.coins}`); this.setLabel("lives", `${this.lives}`);
     this.setLabel("speed", `×${this.gameSpeed}`); this.setLabel("pause", this.paused ? "▶" : "Ⅱ");
@@ -743,6 +754,10 @@ export class GameRoot extends Component {
 
   private syncGmLabels(): void {
     if (!DEBUG) return;
+    if (this.mapReview) {
+      for (const key of this.labels.keys()) if (key.startsWith("gm-")) this.showLabel(key, false);
+      return;
+    }
     this.showLabel("gm-entry", !this.gmPanelOpen);
     const keys = ["gm-title", "gm-note", "gm-close", "gm-current", "gm-progress"];
     keys.forEach((key) => this.showLabel(key, this.gmPanelOpen));
@@ -806,6 +821,38 @@ export class GameRoot extends Component {
     const item = this.labels.get(key); if (item) item.node.setPosition(x - W / 2, H / 2 - y);
   }
   private showLabel(key: string, visible: boolean): void { const item = this.labels.get(key); if (item) item.node.active = visible; }
+
+  /** 三种风格共用同一视觉布阵：只引用真实格位和素材，绝不写回关卡配置或玩家进度。 */
+  private setupMapReview(): void {
+    if (!this.mapReview) return;
+    this.gmSessionActive = true; this.gameSpeed = 1; this.toastTime = 0;
+    if (this.mapReview.stage === "empty") return;
+    // 示例为中局密度，不是初始资源下可直接购买的阵容，也不是无广告通关证据。
+    const cleared = [this.obstacles[1], this.obstacles[5]].filter(Boolean);
+    for (const obstacle of cleared) obstacle.spot.obstacle = null;
+    this.obstacles = this.obstacles.filter((obstacle) => !cleared.includes(obstacle));
+    const open = this.spots.filter((spot) => !spot.obstacle);
+    for (let i = 0; i < 8; i += 1) {
+      const spot = open[Math.round(i * (open.length - 1) / 7)];
+      const kind = this.level.availableTowers[i % this.level.availableTowers.length];
+      const tower: Tower = { x: spot.x, y: spot.y, kind, level: i % 3 === 0 ? 2 : 1,
+        cooldown: 0, angle: 0, spent: TOWER_CONFIG[kind].cost, spot, recoil: 0 };
+      spot.tower = tower; this.towers.push(tower);
+    }
+    this.coins = 235; this.wave = 2; this.inWave = true;
+    const kinds: EnemyKind[] = ["normal", "swift", "tank", "normal", "swift", "normal"];
+    [0.14, 0.22, 0.39, 0.46, 0.64, 0.72].forEach((ratio, i) => {
+      this.spawnEnemy(kinds[i]);
+      const enemy = this.enemies[this.enemies.length - 1];
+      enemy.distance = this.pathLength * ratio; const point = this.pathPosition(enemy.distance);
+      enemy.x = point.x; enemy.y = point.y; enemy.age = 0;
+      enemy.hp = Math.round(enemy.maxHp * (i % 2 ? 0.65 : 0.9));
+    });
+    for (const tower of this.towers) {
+      const target = this.enemies.reduce((a, b) => Math.hypot(a.x - tower.x, a.y - tower.y) < Math.hypot(b.x - tower.x, b.y - tower.y) ? a : b);
+      tower.angle = Math.atan2(target.y - tower.y, target.x - tower.x);
+    }
+  }
 
   private resetLevel(levelId = this.currentLevelId): void {
     this.currentLevelId = Math.max(1, Math.min(GAME_CONFIG.maxLevels, levelId)); this.level = getLevelConfig(this.currentLevelId);
@@ -1062,6 +1109,7 @@ export class GameRoot extends Component {
   }
 
   private onTouchStart(event: EventTouch): void {
+    if (this.mapReview) return;
     // 第二根手指不能覆盖首个触点；多点交错统一取消当前点击，避免松手时触发另一处按钮。
     if (this.touchStart) { this.touchTravelCancelled = true; return; }
     const point = event.getUILocation();
@@ -1082,6 +1130,7 @@ export class GameRoot extends Component {
   }
 
   private onTouchEnd(event: EventTouch): void {
+    if (this.mapReview) return;
     if (event.getID() !== this.touchId) return;
     const point = event.getUILocation();
     const start = this.touchStart; const cancelled = this.touchTravelCancelled; this.onTouchCancel();
@@ -1092,6 +1141,7 @@ export class GameRoot extends Component {
   }
 
   private handlePress(x: number, y: number): void {
+    if (this.mapReview) return;
     if (x < 0 || x > W || y < this.layoutTop || y > this.layoutBottom || this.adRequesting) return;
     if (DEBUG && !this.gmPanelOpen && this.buttonHit(this.footerRect(GM_BUTTON), x, y)) {
       this.gmPanelOpen = !this.gmPanelOpen; return;

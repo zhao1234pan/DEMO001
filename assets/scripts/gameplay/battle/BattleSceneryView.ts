@@ -1,16 +1,18 @@
 import { assetManager, AssetManager, Color, Layers, Node, Rect, Size, Sprite, SpriteFrame, Texture2D, UITransform, Vec2 } from "cc";
 import type { MapPoint } from "./LevelConfig";
+import type { SceneDecoration } from "./BattleSceneryLayout";
 
-type SceneryKind = "entry" | "goal" | "foliage";
+type SceneryKind = "entry" | "goal" | "planter" | "tree";
 interface ScenerySprite { node: Node; sprite: Sprite; transform: UITransform; }
-interface SceneSnapshot { entry: MapPoint; goal: MapPoint; foliage: readonly MapPoint[]; }
+interface SceneSnapshot { entry: MapPoint; goal: MapPoint; decorations: readonly SceneDecoration[]; }
 
 const ATLAS_PIXELS = 512;
 // 纹理按逻辑画布的4倍导出；切片内部自带透明边距，不把大源图直接载入游戏。
 const FRAME_RECTS: Record<SceneryKind, readonly [number, number, number, number]> = {
   entry: [0, 0, 256, 224],
   goal: [256, 0, 256, 224],
-  foliage: [0, 224, 192, 160],
+  planter: [0, 224, 192, 192],
+  tree: [192, 224, 160, 224],
 };
 
 /** 静态场景表现层：父节点由调用方放在道路之上、战斗单位之下，不处理碰撞与寻路。 */
@@ -19,7 +21,7 @@ export class BattleSceneryView {
   private readonly foliageRoot: Node;
   private readonly landmarkRoot: Node;
   private readonly foliageSprites: ScenerySprite[] = [];
-  private readonly frames = new Map<SceneryKind, SpriteFrame>();
+  private readonly frames = new Map<string, SpriteFrame>();
   private entrySprite: ScenerySprite | null = null;
   private goalSprite: ScenerySprite | null = null;
   private latestScene: SceneSnapshot | null = null;
@@ -30,7 +32,7 @@ export class BattleSceneryView {
 
   constructor(parent: Node, private readonly width: number, private readonly height: number) {
     this.root = this.createLayer("BattleSceneryView", parent);
-    // 草丛固定在地标下方，重用节点或切关时也不会颠倒静态层级。
+    // 非交互绿化固定在地标下方，重用节点或切关时也不会颠倒静态层级。
     this.foliageRoot = this.createLayer("SceneryFoliage", this.root);
     this.landmarkRoot = this.createLayer("SceneryLandmarks", this.root);
   }
@@ -44,13 +46,16 @@ export class BattleSceneryView {
   }
 
   /** 坐标沿用地图左上原点、Y向下；复制快照，异步完成时只重画最新一关。 */
-  setScene(entry: MapPoint, goal: MapPoint, foliage: readonly MapPoint[]): void {
+  setScene(entry: MapPoint, goal: MapPoint, decorations: readonly SceneDecoration[]): void {
     if (this.disposed) return;
     this.latestScene = {
       entry: [entry[0], entry[1]],
       goal: [goal[0], goal[1]],
-      foliage: foliage.filter((point) => Number.isFinite(point[0]) && Number.isFinite(point[1]))
-        .map((point): MapPoint => [point[0], point[1]]),
+      // 保存独立快照，避免加载期间外部切关或复用数组改变旧请求的数据。
+      decorations: decorations.filter((item) => ["planter", "tree"].includes(item.kind)
+        && item.position.every(Number.isFinite) && Number.isFinite(item.width) && Number.isFinite(item.height)
+        && item.width > 0 && item.height > 0)
+        .map((item) => ({ ...item, position: [item.position[0], item.position[1]] as MapPoint })),
     };
     this.redraw();
   }
@@ -110,13 +115,15 @@ export class BattleSceneryView {
     // 入口、终点画布中心下移6逻辑像素，让短门槛接上路线而非把主体顶到HUD。
     this.place(this.entrySprite, scene.entry, 64, 56, 6);
     this.place(this.goalSprite, scene.goal, 64, 56, 6);
-    scene.foliage.forEach((point, index) => {
-      const item = this.foliageSprites[index] ?? this.createSprite("foliage", this.foliageRoot);
+    scene.decorations.forEach((decoration, index) => {
+      const item = this.foliageSprites[index] ?? this.createSprite(decoration.kind, this.foliageRoot);
       this.foliageSprites[index] = item;
-      this.place(item, point, 48, 40, 0);
+      // 同一个池节点切关后可能由花池变为树，必须同时换帧与尺寸，不能把高树压扁。
+      item.sprite.spriteFrame = this.frames.get(decoration.kind)!;
+      this.place(item, decoration.position, decoration.width, decoration.height, 0);
     });
     // 切换装饰较少的关卡时只停用多余节点，随后切关继续复用。
-    for (let i = scene.foliage.length; i < this.foliageSprites.length; i += 1) this.foliageSprites[i].node.active = false;
+    for (let i = scene.decorations.length; i < this.foliageSprites.length; i += 1) this.foliageSprites[i].node.active = false;
   }
 
   private async loadAssets(): Promise<void> {

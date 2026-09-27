@@ -1,0 +1,157 @@
+{
+  "date": "2026-09-27",
+  "generation": "内置image_gen，逐素材单次生成；未用CLI/API回退",
+  "exportTool": "G:/gptwork/export-map-review-foliage.cjs",
+  "exportToolSha256": "f4a22893304a4ea2d37ba7431bbc558c4c958b44f3dbde53a4a8d4ffbeeec1d8",
+  "exportProcess": "最大连通主体清游离Alpha点、裁边、按48×40逻辑画布反算尺寸、打包；不做创意改图",
+  "assets": [
+    {
+      "kind": "meadow",
+      "file": "spr_map_review_foliage_meadow_v1.png",
+      "sourceSize": [
+        1619,
+        972
+      ],
+      "sourceBytes": 506627,
+      "sourceSha256": "fe7854b89d8d47f93bcd10c08f3cd42567d393f85ab9d67e1bee0f04470f73a8",
+      "crop": {
+        "left": 205,
+        "top": 222,
+        "width": 1209,
+        "height": 577,
+        "removedPixels": 415,
+        "transparentRatio": 0.7010239771031755
+      },
+      "frameRect": [
+        0,
+        0,
+        128,
+        128
+      ],
+      "logicalCanvas": [
+        48,
+        40
+      ],
+      "exportedBodyPixels": [
+        107,
+        61
+      ],
+      "bodyLogical": [
+        40.125,
+        19.0625
+      ],
+      "placement": [
+        10,
+        33
+      ],
+      "paddingTexturePixels": [
+        10,
+        33,
+        11,
+        34
+      ]
+    },
+    {
+      "kind": "courtyard",
+      "file": "spr_map_review_foliage_courtyard_v1.png",
+      "sourceSize": [
+        1635,
+        962
+      ],
+      "sourceBytes": 526550,
+      "sourceSha256": "901415764776bf65c827ac79240a9567f3402654c340226ff6da71bd3091f717",
+      "crop": {
+        "left": 177,
+        "top": 211,
+        "width": 1283,
+        "height": 584,
+        "removedPixels": 641,
+        "transparentRatio": 0.6799716441918277
+      },
+      "frameRect": [
+        128,
+        0,
+        128,
+        128
+      ],
+      "logicalCanvas": [
+        48,
+        40
+      ],
+      "exportedBodyPixels": [
+        107,
+        58
+      ],
+      "bodyLogical": [
+        40.125,
+        18.125
+      ],
+      "placement": [
+        10,
+        35
+      ],
+      "paddingTexturePixels": [
+        10,
+        35,
+        11,
+        35
+      ]
+    },
+    {
+      "kind": "storybook",
+      "file": "spr_map_review_foliage_storybook_v1.png",
+      "sourceSize": [
+        1643,
+        957
+      ],
+      "sourceBytes": 553727,
+      "sourceSha256": "f4040385e140c865753cd1d09a0ec8a33a5d2ddaa295485d34ca185ae4ccdb7a",
+      "crop": {
+        "left": 173,
+        "top": 186,
+        "width": 1298,
+        "height": 619,
+        "removedPixels": 377,
+        "transparentRatio": 0.6574753347058004
+      },
+      "frameRect": [
+        256,
+        0,
+        128,
+        128
+      ],
+      "logicalCanvas": [
+        48,
+        40
+      ],
+      "exportedBodyPixels": [
+        107,
+        61
+      ],
+      "bodyLogical": [
+        40.125,
+        19.0625
+      ],
+      "placement": [
+        10,
+        33
+      ],
+      "paddingTexturePixels": [
+        10,
+        33,
+        11,
+        34
+      ]
+    }
+  ],
+  "atlas": {
+    "file": "assets/art/gameplay/maps/atlas_map_review_foliage.png",
+    "size": [
+      512,
+      512
+    ],
+    "bytes": 34928,
+    "sha256": "3c5063809c8b4dd2623fe5d4ada00da9d90c4c93824fcd3df8a7f5c78359ddd5"
+  },
+  "display": "3个128×128切片横排，运行完整画布48×40逻辑像素、居中锚点；主体按约40×24目标盒等比适配，纹理取整误差不超过1像素，不可改成48×48。"
+}
