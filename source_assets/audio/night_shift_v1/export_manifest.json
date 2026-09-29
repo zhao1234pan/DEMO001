@@ -1,0 +1,51 @@
+{
+  "created": "2026-09-29",
+  "generator": "G:/gptwork/generate-night-shift-bgm-v1.cjs",
+  "generatorSha256": "2b55172c0d4cc58387f8005b05b1f53032037904e8deb7b133a8fb078ca5e675",
+  "sampleRate": 44100,
+  "channels": 1,
+  "bits": 16,
+  "durationSeconds": 24,
+  "masterBytes": 2116844,
+  "masterSha256": "9e8f5fc76b24222bb36fcd1378529a4614b064892bbdf9b99f2e9f39bca37ee7",
+  "peakDbFS": -3.0980391997148637,
+  "rmsDbFS": -18.232725546571167,
+  "seamStep": 0.001892147587511826,
+  "notes": "音符尾音与短反射按24秒周期回绕，不整体淡出；MP3和手机解码循环衔接仍须实际听验。",
+  "runtime": {
+    "path": "assets/resources/audio/music/bgm_night_shift.mp3",
+    "encoder": "lameenc 1.8.4 / LAME",
+    "bitrateKbps": 64,
+    "channels": 1,
+    "quality": 2,
+    "bytes": 192261,
+    "sha256": "5486508cd9213d3c77f06a65755bc9f7bb5cc4dff93644bcf9850be70682be62",
+    "encoderScript": "G:/gptwork/encode-night-shift-bgm-v1.py",
+    "encoderScriptSha256": "e8bf25466c920f0d862a4e6b9e3454b8d9ad9c28ba6f6640a3cd610a0377f530"
+  },
+  "audioCheck": {
+    "master": {
+      "sampleRate": 44100,
+      "channels": 1,
+      "durationSeconds": 24.0,
+      "peakDbFS": -3.0982664075284743,
+      "rmsDbFS": -18.232989808271864,
+      "clippedSamples": 0,
+      "energyAbove4kRatio": 3.503021636230697e-05,
+      "leadingBelowMinus60dBSeconds": 0.0,
+      "trailingBelowMinus60dBSeconds": 0.0
+    },
+    "decoded": {
+      "sampleRate": 44100,
+      "channels": 1,
+      "durationSeconds": 24.03265306122449,
+      "peakDbFS": -3.5195723586086873,
+      "rmsDbFS": -18.68468937431893,
+      "clippedSamples": 0,
+      "energyAbove4kRatio": 2.9075034640443138e-05,
+      "leadingBelowMinus60dBSeconds": 0.006757369614512471,
+      "trailingBelowMinus60dBSeconds": 0.0017687074829931973
+    },
+    "limits": "数值检查不是人工听音；MP3编码延迟、平台循环衔接和手机外放仍待验收。"
+  }
+}

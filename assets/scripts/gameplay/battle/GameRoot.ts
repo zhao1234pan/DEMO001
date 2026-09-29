@@ -10,6 +10,8 @@ import { PlatformService } from "../../services/PlatformService";
 import { AudioService } from "../../services/AudioService";
 import { BattleArtView } from "./BattleArtView";
 import { BattleUiView } from "./BattleUiView";
+import { GameMenuView } from "./GameMenuView";
+import { CollectionProgress } from "./CollectionData";
 import { BattleMapView } from "./BattleMapView";
 import { BattleSceneryView } from "./BattleSceneryView";
 import { installMapStyleCapture, MapStyleReviewConfig, readMapStyleReview } from "../../debug/MapStyleReview";
@@ -34,14 +36,6 @@ const PROP_BUTTONS = [
   { kind: "clear" as const, x: 188, y: H - 76, width: 88, height: 64 },
   { kind: "cash" as const, x: 284, y: H - 76, width: 88, height: 64 },
 ];
-const HOME_CONTINUE_BUTTON = { x: 55, y: 225, width: 280, height: 56 };
-const HOME_LEVEL_BUTTONS = Array.from({ length: GAME_CONFIG.maxLevels }, (_, index) => ({
-  levelId: index + 1,
-  x: 55 + (index % 2) * 152,
-  y: 335 + Math.floor(index / 2) * 58,
-  width: 128,
-  height: 48,
-}));
 // GM 入口只由 Cocos 的调试编译常量控制，正式抖音构建会直接隐藏整套测试界面。
 const GM_BUTTON = { x: 12, y: H - 60, width: 50, height: 48 };
 const GM_PROGRESS_BUTTON = { x: 115, y: 534, width: 160, height: 48 };
@@ -90,11 +84,14 @@ export class GameRoot extends Component {
   private touchStart: { x: number; y: number } | null = null;
   private touchId: number | null = null;
   private touchTravelCancelled = false;
+  private readonly activeTouchIds = new Set<number | null>();
   private appliedResolutionPolicy: number | null = null;
   private disposed = false;
   private mapReview: MapStyleReviewConfig | null = null;
   private releaseMapReviewCapture: (() => void) | null = null;
   private audio!: AudioService;
+  private menu: GameMenuView | null = null;
+  private collection: CollectionProgress | null = null;
   private labels = new Map<string, Label>();
   private labelSizes = new Map<string, number>();
   private currentLevelId = 1;
@@ -137,7 +134,8 @@ export class GameRoot extends Component {
   private battleFeedbackTime = 0;
   private battleFeedbackX = W / 2;
   private battleFeedbackY = H / 2;
-  private readonly hideHandler = (): void => { this.paused = true; this.onTouchCancel(); };
+  private readonly hideHandler = (): void => { this.paused = true; this.audio?.setSuspended(true); this.onTouchCancel(); };
+  private readonly showHandler = (): void => { this.audio?.setSuspended(false); };
   private readonly resizeHandler = (): void => { this.configureResolution(); this.applyLayout(); this.scheduleOnce(() => this.applyLayout(), 0); };
 
   onLoad(): void {
@@ -160,7 +158,7 @@ export class GameRoot extends Component {
     this.art = new BattleArtView(this.contentRoot, W, H);
     this.dynamicG = this.createGraphics("DynamicGame");
     this.uiArt = new BattleUiView(this.contentRoot, W, H);
-    this.audio = new AudioService(this.node);
+    this.audio = new AudioService(this.node, !this.mapReview);
     this.createLabels();
     const savedSpeed = this.mapReview ? 1 : PlatformService.getNumber("night_store_game_speed", 1);
     this.gameSpeed = savedSpeed === 2 || savedSpeed === 3 ? savedSpeed : 1;
@@ -168,6 +166,11 @@ export class GameRoot extends Component {
     this.resetLevel(this.currentLevelId);
     if (this.mapReview) this.setupMapReview();
     else { this.unlockedLevel = this.currentLevelId; this.screen = "home"; }
+    if (!this.mapReview) {
+      this.collection = new CollectionProgress(this.unlockedLevel);
+      this.menu = new GameMenuView(this.contentRoot, this.audio, this.collection, id => this.startOfficialLevel(id));
+      this.menu.show(this.unlockedLevel);
+    }
     this.applyLayout();
     void this.art.load();
     void this.uiArt.load();
@@ -181,6 +184,7 @@ export class GameRoot extends Component {
     this.node.on(Node.EventType.TOUCH_CANCEL, this.onTouchCancel, this);
     this.node.on(Node.EventType.TOUCH_END, this.onTouchEnd, this);
     PlatformService.onHide(this.hideHandler);
+    PlatformService.onShow(this.showHandler);
     // 体验版默认不让性能统计遮住左下GM与道具；Creator的Show FPS仍可按需手动打开。
     if (DEBUG) profiler.hideStats();
   }
@@ -195,6 +199,8 @@ export class GameRoot extends Component {
     this.node.off(Node.EventType.TOUCH_CANCEL, this.onTouchCancel, this);
     this.node.off(Node.EventType.TOUCH_END, this.onTouchEnd, this);
     PlatformService.offHide(this.hideHandler);
+    PlatformService.offShow(this.showHandler);
+    this.menu?.destroy();
     this.audio.destroy();
     this.art.destroy();
     this.uiArt.destroy();
@@ -276,14 +282,6 @@ export class GameRoot extends Component {
   }
 
   private createLabels(): void {
-    this.makeLabel("home-title", GAME_CONFIG.gameName, 28, 195, 161, 310, 44, "#244d42");
-    this.makeLabel("home-subtitle", "守住便利店，今晚也准时打烊", 14, 195, 194, 280, 28, "#6f795b");
-    this.makeLabel("home-continue", "", 18, 195, 253, 280, 56, "#fff9df");
-    this.makeLabel("home-progress", "", 15, 195, 307, 280, 28, "#32724c");
-    this.makeLabel("home-note", "通关后解锁下一关", 13, 195, 654, 250, 28, "#fff2cd");
-    HOME_LEVEL_BUTTONS.forEach((item) => this.makeLabel(
-      `home-level-${item.levelId}`, "", 14, item.x + item.width / 2, item.y + item.height / 2, item.width, item.height, "#244d42",
-    ));
     this.makeLabel("title", GAME_CONFIG.gameName, 15, 85, 24, 106, 28, "#fff2cd");
     this.makeLabel("level", "", 13, 43, 51, 64, 24, "#f9e7b7");
     this.makeLabel("wave", "", 13, 109, 51, 62, 24, "#e0ecd1");
@@ -359,14 +357,12 @@ export class GameRoot extends Component {
     this.art.beginFrame();
     this.uiArt.beginFrame();
     if (this.screen === "home") {
-      // 首页不提交战场精灵与操作图标；回收上一局对象后，用不透明底色盖住静态地图。
-      this.art.endFrame();
-      this.drawHome(g);
-      this.drawGmPanel(g);
-      this.uiArt.endFrame();
-      this.syncHomeLabels();
+      this.art.endFrame(); this.uiArt.endFrame();
+      for (const key of this.labels.keys()) this.showLabel(key, false);
+      this.menu?.render(this.unlockedLevel, this.layoutTop, this.layoutBottom);
       return;
     }
+    this.menu?.hide();
     this.drawSpots(this.unitBaseG);
     this.drawLandmarkStatus(g);
     this.enemies.forEach((enemy) => this.drawEnemy(g, enemy));
@@ -663,43 +659,6 @@ export class GameRoot extends Component {
     return minimum;
   }
 
-  private drawHome(g: Graphics): void {
-    this.box(g, 0, this.layoutTop, W, this.layoutBottom - this.layoutTop, 0, "#244d42");
-    this.uiCard(g, 30, 68, 330, 568, "#fff7df", 26);
-    this.drawAwning(g, 47, 75, 296);
-    if (!this.gmPanelOpen && this.uiArt.ready) {
-      KINDS.forEach((kind, index) => {
-        const x = 141 + index * 54;
-        this.disc(g, x, 110, 24, "#e8e6bd");
-        this.uiArt.drawIcon(`home-staff-${kind}`, kind, x, 110, 46);
-      });
-    } else {
-      this.disc(g, 195, 110, 27, "#f3d5a0");
-      this.drawShopMark(g, 195, 110);
-    }
-    const primary = HOME_CONTINUE_BUTTON;
-    this.uiCard(g, primary.x, primary.y, primary.width, primary.height, "#ee9559", 16);
-    const unlocked = this.unlockedLevel;
-    for (const item of HOME_LEVEL_BUTTONS) {
-      const available = item.levelId <= unlocked;
-      this.uiCard(g, item.x, item.y, item.width, item.height, available ? "#dceabe" : "#e0dfcd", 12);
-    }
-  }
-
-  private syncHomeLabels(): void {
-    for (const key of this.labels.keys()) this.showLabel(key, key.startsWith("home-") && !this.gmPanelOpen);
-    const unlocked = this.unlockedLevel;
-    this.setLabel("home-continue", `继续闯关 · 第 ${unlocked} 关`);
-    this.setLabel("home-progress", `已解锁 ${unlocked} / ${GAME_CONFIG.maxLevels} 关`);
-    for (const item of HOME_LEVEL_BUTTONS) {
-      const available = item.levelId <= unlocked;
-      const key = `home-level-${item.levelId}`;
-      this.setLabel(key, `第 ${item.levelId.toString().padStart(2, "0")} 关\n${available ? "可挑战" : "未解锁"}`);
-      this.setLabelColor(key, available ? "#244d42" : "#747b69");
-    }
-    this.syncGmLabels();
-  }
-
   private readUnlockedLevel(): number {
     return getLevelConfig(PlatformService.getNumber("night_store_unlocked_level", 1)).id;
   }
@@ -718,6 +677,8 @@ export class GameRoot extends Component {
     this.unlockedLevel = this.readUnlockedLevel();
     this.resetLevel(this.unlockedLevel);
     this.screen = "home";
+    this.collection?.refresh(this.unlockedLevel);
+    this.menu?.show(this.unlockedLevel);
   }
 
   private overlayHomeButton(): HitRect {
@@ -836,7 +797,7 @@ export class GameRoot extends Component {
     this.setLabel("overlayHome", this.screen === "playing" ? "结束本局并返回" : "返回首页");
     if (this.paused && this.screen === "playing") {
       this.setLabelPosition("overlayPrimary", 195, 381);
-      this.setLabel("overlayTitle", "暂停营业"); this.setLabel("overlayStats", "店员们稍微休息一下"); this.setLabel("overlayPrimary", "继续营业");
+      this.setLabel("overlayTitle", "暂停营业"); this.setLabel("overlayStats", ""); this.setLabel("overlayPrimary", "继续营业");
       this.setLabel("overlayNote", ""); this.setLabel("overlaySecondary", "");
     } else {
       const win = this.screen === "win";
@@ -844,7 +805,7 @@ export class GameRoot extends Component {
       this.setLabel("overlayTitle", win ? "顺利打烊！" : "便利店失守了");
       this.setLabel("overlayStats", `赶走 ${this.defeated} 只夜间精怪\n本局收入 ${this.earned}`);
       this.setLabel("overlayPrimary", win ? (this.level.id < GAME_CONFIG.maxLevels ? "下一关" : "再次挑战") : !this.revived ? "看广告继续营业" : "重新挑战");
-      this.setLabel("overlayNote", !win && !this.revived ? "保留店员，从当前波次继续" : "");
+      this.setLabel("overlayNote", !win && !this.revived ? "保留店员，重打当前波次" : "");
       this.setLabel("overlaySecondary", !win && !this.revived ? "重新开始" : "");
     }
   }
@@ -952,6 +913,7 @@ export class GameRoot extends Component {
   }
 
   private resetLevel(levelId = this.currentLevelId): void {
+    this.menu?.hide();
     this.level = getLevelConfig(levelId); this.currentLevelId = this.level.id;
     this.coins = this.level.initialCoins; this.lives = this.level.initialLives; this.wave = 0;
     this.inWave = false; this.paused = false; this.screen = "playing"; this.revived = false;
@@ -1073,6 +1035,8 @@ export class GameRoot extends Component {
   }
 
   private spawnEnemy(kind: EnemyKind): void {
+    // 只记录正式遭遇；GM和地图评审不写图鉴存档。
+    if (!this.gmSessionActive && !this.mapReview) this.collection?.encounter(kind);
     const base = ENEMY_CONFIG[kind];
     const hp = Math.round(base.hp * this.level.enemyHealthScale * (1 + (this.wave - 1) * 0.08));
     const start = this.level.pathPoints[0];
@@ -1207,8 +1171,10 @@ export class GameRoot extends Component {
 
   private onTouchStart(event: EventTouch): void {
     if (this.mapReview) return;
-    // 第二根手指不能覆盖首个触点；多点交错统一取消当前点击，避免松手时触发另一处按钮。
-    if (this.touchStart) { this.touchTravelCancelled = true; return; }
+    this.audio.unlock();
+    this.activeTouchIds.add(event.getID());
+    // 第二指即使仍留在屏幕上也会锁住后续点击，直到本组触点全部结束。
+    if (this.activeTouchIds.size !== 1 || this.touchStart) { this.touchTravelCancelled = true; return; }
     const point = event.getUILocation();
     this.touchStart = { x: point.x, y: point.y };
     this.touchId = event.getID(); this.touchTravelCancelled = false;
@@ -1217,21 +1183,27 @@ export class GameRoot extends Component {
   private onTouchMove(event: EventTouch): void {
     if (!this.touchStart || event.getID() !== this.touchId) return;
     const point = event.getUILocation();
-    // 锁存最大行程：即使滑远后又回到起点，也不能被当作一次点击。
     if (Math.hypot(point.x - this.touchStart.x, point.y - this.touchStart.y) > 24) this.touchTravelCancelled = true;
   }
 
   private onTouchCancel(event?: EventTouch): void {
-    if (event && event.getID() !== this.touchId) return;
-    this.touchStart = null; this.touchId = null; this.touchTravelCancelled = false;
+    if (event) this.activeTouchIds.delete(event.getID()); else this.activeTouchIds.clear();
+    this.touchStart = null; this.touchId = null;
+    this.touchTravelCancelled = this.activeTouchIds.size > 0;
   }
 
   private onTouchEnd(event: EventTouch): void {
     if (this.mapReview) return;
-    if (event.getID() !== this.touchId) return;
+    this.activeTouchIds.delete(event.getID());
+    if (event.getID() !== this.touchId) {
+      if (!this.activeTouchIds.size) this.onTouchCancel();
+      return;
+    }
     const point = event.getUILocation();
-    const start = this.touchStart; const cancelled = this.touchTravelCancelled; this.onTouchCancel();
-    // 手指滑动或系统取消不算点击，避免拖动到道具/出售按钮时意外触发。
+    const start = this.touchStart;
+    const cancelled = this.touchTravelCancelled || this.activeTouchIds.size > 0;
+    this.touchStart = null; this.touchId = null;
+    this.touchTravelCancelled = this.activeTouchIds.size > 0;
     if (!start || cancelled || Math.hypot(point.x - start.x, point.y - start.y) > 24) return;
     const local = this.contentRoot.getComponent(UITransform)!.convertToNodeSpaceAR(new Vec3(point.x, point.y));
     this.handlePress(local.x + W / 2, H / 2 - local.y);
@@ -1240,7 +1212,7 @@ export class GameRoot extends Component {
   private handlePress(x: number, y: number): void {
     if (this.mapReview) return;
     if (x < 0 || x > W || y < this.layoutTop || y > this.layoutBottom || this.adRequesting) return;
-    if (DEBUG && !this.gmPanelOpen && this.buttonHit(this.footerRect(GM_BUTTON), x, y)) {
+    if (DEBUG && this.screen !== "home" && !this.gmPanelOpen && this.buttonHit(this.footerRect(GM_BUTTON), x, y)) {
       this.gmPanelOpen = !this.gmPanelOpen; return;
     }
     if (DEBUG && this.gmPanelOpen) {
@@ -1256,14 +1228,7 @@ export class GameRoot extends Component {
       if (x < 35 || x > 355 || y < 112 || y > 586) this.gmPanelOpen = false;
       return;
     }
-    if (this.screen === "home") {
-      if (this.buttonHit(HOME_CONTINUE_BUTTON, x, y)) this.startOfficialLevel(this.readUnlockedLevel());
-      else {
-        const levelButton = HOME_LEVEL_BUTTONS.find((item) => this.buttonHit(item, x, y));
-        if (levelButton) this.startOfficialLevel(levelButton.levelId);
-      }
-      return;
-    }
+    if (this.screen === "home") { this.menu?.press(x, y); return; }
     if ((this.paused || this.screen !== "playing") && this.buttonHit(this.overlayHomeButton(), x, y)) {
       this.returnHome(); return;
     }
@@ -1333,7 +1298,7 @@ export class GameRoot extends Component {
     // 复活保留布阵，但清掉当前波次的临时对象并回退一波，避免广告返回后立刻再次失败。
     this.revived = true; this.lives = Math.max(3, Math.ceil(this.level.initialLives * 0.4)); this.screen = "playing"; this.enemies = []; this.shots = []; this.queue = [];
     this.inWave = false; this.wave = Math.max(0, this.wave - 1); this.nextWaveTimer = 5.3;
-    this.showToast(result.rewarded ? "继续营业！当前波次即将重来" : "暂无广告，测试环境已直接继续");
+    this.showToast(result.rewarded ? "继续营业！当前波次即将重来" : "暂无广告，本次已继续营业");
   }
 
   private showToast(value: string): void { this.toastText = value; this.toastTime = 2.3; }

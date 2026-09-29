@@ -1,6 +1,6 @@
 # 技术架构
 
-适用版本：0.5.0（2026-09-29）。本文说明实现边界，构建、逻辑和实屏证据分别见TESTING。
+适用版本：0.6.0（2026-09-29）。本文说明实现边界，构建、逻辑和实屏证据分别见TESTING。
 
 ## 技术基线
 
@@ -8,7 +8,7 @@
 - TypeScript
 - 2D UI 渲染，750 × 1334 竖屏设计分辨率
 - `Fit Width = true`、`Fit Height = false`，固定宽度、动态高度
-- 目标为抖音及微信小游戏，同时保留浏览器预览；微信目标构建已完成，开发者工具与真机验收待完成
+- 目标为抖音及微信小游戏，同时保留浏览器预览；0.5.0微信目标构建是历史证据，0.6.0最终三目标构建以TESTING为准，开发者工具与真机尚待验收
 
 ## 模块
 
@@ -16,9 +16,27 @@
 
 入口组件，负责首页、正式关卡入口、游戏状态、波次、寻路、战斗和输入；范围、血条、特效及UI矢量底板由程序绘制，地图皮肤、场景精灵、单位精灵和UI图标交给独立表现层。0.3.0抽出单位/UI表现与布局计算；v0.4.0继续抽出静态地图和地标层，不以全面拆系统作为内容制作前置条件。
 
-0.5.0增加`home`页面状态，正式启动先进入首页；`startOfficialLevel`只接受已解锁关卡，最高已解锁进度通过`getLevelConfig(...).id`正规化。`returnHome`结束当前局并重置本局对象，不保存中途快照；暂停和结算页均提供返回路径。首页绘制与选关命中共享按钮矩形，首页不执行战斗子步、不显示战斗层和战斗操作。GM仍隔离正式进度，返回正式进度走首页；MapReview保留固定评审入口并跳过首页。通关写入取当前解锁与下一关的较大值，避免重玩低关降低解锁。
+保留0.5.0的`home`/战斗状态分流，0.6.0把正式菜单展示和命中交给`GameMenuView`。`startOfficialLevel`仅接受已解锁关卡，最高进度通过`getLevelConfig(...).id`正规化。`returnHome`结束本局并重置战斗对象，不保存中途快照；暂停和结算页提供返回路径。菜单期间不执行战斗子步、不显示战斗操作。正式`spawnEnemy`记录图鉴遭遇，GM和MapReview跳过记录；GM返回正式首页，MapReview保留固定评审入口。通关保存只提高最高解锁，重玩低关不降进度。
 
-子层固定顺序为：`StaticMap → BattleSceneryView → UnitUnderlay → BattleArtView → DynamicGame → BattleUiView → Label`。地图及子层共用`contentRoot`矩形Mask，宽390逻辑像素，高度随安全区域上下延展；避免宽窗口黑边出现地图外图形。该遮罩不改变坐标或触控反算，仍需实屏检查边缘角色与动态特效的裁切。
+`activeTouchIds`在主触点结束后仍保留其余手指，全部松开前继续取消点击，修复残留第二指时再次按主指的误触边界；专项最终结果见TESTING。`Game.EVENT_HIDE`暂停战斗并挂起音频，`EVENT_SHOW`只恢复音频偏好，不自动继续战斗。
+
+战斗子层固定顺序为：`StaticMap → BattleSceneryView → UnitUnderlay → BattleArtView → DynamicGame → BattleUiView → Label`。地图及子层共用`contentRoot`矩形Mask，宽390逻辑像素，高度随安全区域上下延展；避免宽窗口黑边出现地图外图形。该遮罩不改变坐标或触控反算，仍需实屏检查边缘角色与动态特效的裁切。
+
+### `assets/scripts/gameplay/battle/GameMenuView.ts`
+
+管理`home`、`levels`、`collection`、`settings`四页和独立弹窗；三个主页入口为冒险、挑战预留和图鉴，设置位于角落。冒险按每页4关共3页展示，由真实`pathPoints`和`towerSpots`绘制等比缩略图；`show`按最高已解锁关定位默认页，翻页不写进度。锁关、挑战和必要操作失败通过提示窗表达，不能穿透至卡片或战斗。设置不含自编隐私/数据说明或帮助反馈弹窗。
+
+绘制和点击使用同一矩形，页面状态、尺寸或资源就绪变化时才重画；文本节点按键复用。主页面与弹窗各有图形、精灵和文字层，弹窗开启时独占命中列表。通过`AudioService`控制声音，通过`PlatformSettings`调用平台入口，不直接依赖`tt`或`wx`。
+
+### `assets/scripts/gameplay/battle/MenuArtView.ts`
+
+复用现有`battle_art`中店员、敌人与场景三张纹理，不新增运行图集。图标节点与切片复用，未解锁时将原图颜色置黑、保留Alpha轮廓；BOSS预留剪影由菜单绘制。异步加载失败保留文字与程序底板，销毁先解绑精灵帧，再归还帧和纹理引用；晚到资源不复活已销毁页面。
+
+### `assets/scripts/gameplay/battle/CollectionData.ts`
+
+集中维护怪物、BOSS、店员三页签与8条档案：3怪、2个永久预留BOSS、3店员。数值从`ENEMY_CONFIG`/`TOWER_CONFIG`读取，故事和解锁说明独立，不复制战斗计算。`CollectionProgress`缓存收录状态，绘制仅查缓存，打开菜单或正式进度变化时刷新。
+
+正式怪物首次出场后，独立`night_store_collection_enemy_*`键用`setMaximumInteger(key, 1, 1)`保存发现标记。旧档仅从最高已解锁关之前的已完成关卡补录怪物；店员由截至最高已解锁关的可用店员集合导出，无额外养成存档。BOSS在本版本始终返回未解锁。GM和MapReview不写遭遇，存储异常继续沿用会话兜底与读恢复合并。
 
 ### `assets/scripts/gameplay/battle/BattleMapView.ts`
 
@@ -66,23 +84,37 @@
 
 最高解锁和既有最高关纪录使用`setMaximumInteger(key, value, upperBound)`：将新值、会话缓存及旧存档向下取整并夹到`[0, upperBound]`后取最大值，当前上限为10。写入前必须读旧存档；读取失败时旧最高进度未知，只保留会话待落盘值，不执行写入以免覆盖更高旧档。`pendingMaximumBounds`标记这种待合并的最高纪录；下次`getNumber`读取该键时重试读取旧档、取最大值并保存，成功后清除待落盘标记。没有后台定时重试；最高纪录在下次读取时尝试恢复，也不能保证退出进程后保住未落盘的新值。
 
-倍速继续使用普通`setNumber`，按玩家新选择覆盖，允许从3倍改回1倍，不套用最大值合并。普通写入失败后优先读取会话待落盘值；与最高纪录的读取恢复机制分开处理。
+倍速、音乐和音效偏好使用普通`setNumber`覆盖选择，允许降速或关闭声音，不套用最大值合并。普通写入失败后优先读取会话待落盘值；与最高纪录、图鉴发现标记的读取恢复机制分开处理。`onShow/offShow`和`onHide/offHide`统一封装Cocos前后台事件；顶部遮挡根据实际运行环境选择抖音或微信尺寸封装。
 
 广告调用路径本轮按用户要求保持原样。当前服务的非抖音分支仍是模拟奖励，不能作为微信广告适配；抖音缺广告位虽返回失败，`GameRoot`仍对`missing-ad-unit`放行奖励/复活，这个既有问题尚未修复。
 
 ### `assets/scripts/services/AudioService.ts`
 
-集中管理局内短音效。服务通过 Cocos `resources` 异步加载 `assets/resources/audio/sfx/` 中的 `AudioClip`，再使用单一 `AudioSource` 播放，不依赖 DOM、浏览器音频接口或 `tt.*`。资源尚未加载或加载失败时跳过本次播放，不影响战斗；攻击、击杀和漏怪等高频声音由服务统一限频。
+通过Cocos `resources`异步加载11个短音效和`audio/music/bgm_night_shift`。一个循环`AudioSource`供首页、图鉴、设置和全部战斗共用；24秒原创音乐的运行MP3为192261字节，音量0.32。`night_store_music_enabled`与`night_store_effects_enabled`独立保存0/1偏好，首次玩家触摸调用`unlock`后才允许出声。
+
+短音效使用最多6个按需创建、可停止的`AudioSource`，保留既有音量和高频间隔；空闲通道优先，满额时替换最早音效。解码期间先占用通道，避免同帧反复抢占。关闭音效或挂起时停止并清空clip，撤销未完成解码的旧播放。音乐停止时记录播放位置、清空clip，按偏好恢复；页面切换不会重复创建音乐源。
+
+资源成功后持有引用，销毁时归还；失败、重复回调或销毁后回调不阻断流程。MapReview不持久化声音偏好。没有DOM、浏览器专用音频或平台录音权限调用；真实听感、循环边界、前后台焦点行为仍须两平台验收。音符、母带和导出记录见`source_assets/audio/night_shift_v1/`。
+
+### `assets/scripts/services/PlatformSettings.ts`
+
+实例提供只读`capabilities`（`runtime`、`sidebar`）、`refresh()`和`openSidebar()`。抖音刷新需接口存在且`checkScene`明确返回`isExist:true`才开放侧边栏入口，较旧并发刷新不能覆盖最新结果。点击后同步发起跳转，不发奖励。设置无可选政策入口，也无`privacy`字段或`openPrivacy`接口；政策按宿主机制及后台要求处理。
+
+回调、同步抛错、8秒超时统一返回`{ok,message}`，重复或晚到回调只结算一次。没有账号、个人资料、授权申请、网络或后端依赖。反馈由宿主菜单提供，本游戏未实现反馈或客服界面。
 
 ### `assets/scripts/platform/douyin/`
 
-唯一允许封装`tt.*`的目录。`DouyinRewardedVideo.ts`管理激励视频实例和一次性回调；`DouyinLayout.ts`读取顶部菜单胶囊及窗口宽度，向上返回避让比例，缺接口时退回引擎安全区。玩法层不得直接引用平台全局变量。
+唯一允许封装`tt.*`的目录。原`DouyinRewardedVideo.ts`广告逻辑不改，`DouyinLayout.ts`继续提供胶囊比例。新增`DouyinSettings.ts`封装小游戏`checkScene`及`navigateToScene`，只检测和打开`sidebar`，不混用抖音小程序隐私API。
+
+### `assets/scripts/platform/wechat/`
+
+`WechatSettings.ts`只识别微信运行环境，并通过`getWindowInfo`与`getMenuButtonBoundingClientRect`计算胶囊避让，不保留未使用的可选隐私接口。旧版缺接口、非有限尺寸或异常返回0，继续引擎安全区，不回退到更广的系统信息接口。`wx.*`不进入玩法或UI，微信广告仍未接入。
 
 ## 平台适配边界
 
 - 广告仅通过 `PlatformService.showRewardedVideo` 调用。
-- 微信沿用`PlatformService`业务入口；`settings/builds/wechatgame.json`已配置正式App ID并完成目标构建，微信SDK封装尚未接入。后续接入微信平台层、顶部胶囊和广告分支，并验证引擎生命周期/存储在微信环境下的行为，详见[微信发布准备](./WECHAT_RELEASE.md)。
-- 监听 Cocos `Game.EVENT_HIDE`，切入后台立即暂停。
+- 微信构建配置保留正式App ID；0.6.0新增微信胶囊封装，广告分支仍未接入。开发者工具、真机、存储与焦点行为分别验收，详见[微信发布准备](./WECHAT_RELEASE.md)。
+- 监听Cocos `Game.EVENT_HIDE/SHOW`；切后台暂停战斗并挂起音频，回前台按声音偏好恢复音乐，战斗仍保持暂停。
 - 设计为竖屏并优先使用触控事件。
 - 资源按“首场景 / 关卡资源 / 音频”预留 Asset Bundle 拆分空间。
 - 不依赖 DOM、浏览器专用 API 或 Node.js 运行时。
