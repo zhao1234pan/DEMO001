@@ -1,0 +1,14 @@
+{
+  "taskName": "bytedance-mini-game",
+  "platform": "bytedance-mini-game",
+  "buildPath": "../gptwork/douyin-build",
+  "startScene": "e5b6646d-6245-405e-a983-5e58b2d32c2c",
+  "debug": false,
+  "mainBundleCompressionType": "merge_dep",
+  "packages": {
+    "bytedance-mini-game": {
+      "appid": "tt160f60b2887734e202",
+      "orientation": "portrait"
+    }
+  }
+}

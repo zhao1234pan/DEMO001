@@ -1,6 +1,8 @@
 import { game, Game, sys } from "cc";
 import { isDouyinRuntime, showDouyinRewardedVideo } from "../platform/douyin/DouyinRewardedVideo";
 import { getDouyinTopOverlayRatio } from "../platform/douyin/DouyinLayout";
+import { isDouyinSettingsRuntime } from "../platform/douyin/DouyinSettings";
+import { getWechatTopOverlayRatio } from "../platform/wechat/WechatSettings";
 
 export interface RewardResult { rewarded: boolean; simulated?: boolean; reason?: unknown; }
 
@@ -11,7 +13,8 @@ export class PlatformService {
 
   /** 布局只消费设计坐标，不让战斗层直接依赖平台SDK。与广告服务无关。 */
   static getTopOverlayInset(designWidth: number): number {
-    return getDouyinTopOverlayRatio() * designWidth;
+    const ratio = isDouyinSettingsRuntime() ? getDouyinTopOverlayRatio() : getWechatTopOverlayRatio();
+    return ratio * designWidth;
   }
 
   static onHide(callback: () => void): void {
@@ -20,6 +23,14 @@ export class PlatformService {
 
   static offHide(callback: () => void): void {
     game.off(Game.EVENT_HIDE, callback);
+  }
+
+  static onShow(callback: () => void): void {
+    game.on(Game.EVENT_SHOW, callback);
+  }
+
+  static offShow(callback: () => void): void {
+    game.off(Game.EVENT_SHOW, callback);
   }
 
   static getNumber(key: string, fallback: number): number {
