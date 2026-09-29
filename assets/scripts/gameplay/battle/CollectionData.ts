@@ -1,9 +1,10 @@
-import { ENEMY_CONFIG, EnemyKind, TOWER_CONFIG, TowerKind } from "./GameConfig";
+import { rows, numeric, text, globalNumber, globalString, onConfigsReady } from "../../config/ConfigTables";
+import { ENEMY_CONFIG, ENEMY_KINDS, EnemyKind, TOWER_CONFIG, TowerKind } from "./GameConfig";
 import { getLevelConfig, LEVEL_CONFIGS } from "./LevelConfig";
 import { PlatformService } from "../../services/PlatformService";
 
 export type CollectionTab = "enemies" | "bosses" | "staff";
-export type CollectionImageKey = TowerKind | "enemy_normal" | "enemy_swift" | "enemy_tank" | "boss_silhouette";
+export type CollectionImageKey = TowerKind | `enemy_${EnemyKind}`;
 
 export interface CollectionEntry {
   readonly id: string;
@@ -20,98 +21,44 @@ export interface CollectionEntry {
   readonly staffKind?: TowerKind;
 }
 
-export const COLLECTION_TABS: readonly { id: CollectionTab; label: string }[] = [
-  { id: "enemies", label: "怪物" },
-  { id: "bosses", label: "BOSS" },
-  { id: "staff", label: "店员" },
-];
-
-const ENEMY_KINDS: readonly EnemyKind[] = ["normal", "swift", "tank"];
-export const COLLECTION_ENEMY_KEYS: Readonly<Record<EnemyKind, string>> = {
-  normal: "night_store_collection_enemy_normal",
-  swift: "night_store_collection_enemy_swift",
-  tank: "night_store_collection_enemy_tank",
-};
-
+export const COLLECTION_TABS: { id:CollectionTab; label:string }[] = [];
+export const COLLECTION_ENEMY_KEYS = {} as Record<EnemyKind,string>;
 function enemyStats(kind: EnemyKind): CollectionEntry["stats"] {
   const config = ENEMY_CONFIG[kind];
   return [
-    { label: "基础耐久", value: String(config.hp) },
-    { label: "基础移速", value: String(config.speed) },
-    { label: "零钱奖励", value: String(config.reward) },
-    { label: "漏怪扣耐久", value: String(config.damage) },
+    { label: text("ui.CollectionData.001"), value: String(config.hp) },
+    { label: text("ui.CollectionData.002"), value: String(config.speed) },
+    { label: text("ui.CollectionData.003"), value: String(config.reward) },
+    { label: text("ui.CollectionData.004"), value: String(config.damage) },
   ];
 }
 
 function staffStats(kind: TowerKind): CollectionEntry["stats"] {
   const config = TOWER_CONFIG[kind];
   return [
-    { label: "上岗费用", value: String(config.cost) },
-    { label: "一级伤害", value: String(config.damage) },
-    { label: "攻击间隔", value: `${config.rate} 秒` },
-    { label: "基础射程", value: String(config.range) },
+    { label: text("ui.CollectionData.005"), value: String(config.cost) },
+    { label: text("ui.CollectionData.006"), value: String(config.damage) },
+    { label: text("ui.CollectionData.007"), value: text("ui.CollectionData.008", config.rate) },
+    { label: text("ui.CollectionData.009"), value: String(config.range) },
   ];
 }
 
 function staffUnlockHint(kind: TowerKind): string {
   const firstLevel = LEVEL_CONFIGS.find((level) => level.availableTowers.includes(kind));
-  return firstLevel ? `解锁第 ${firstLevel.id} 关后上岗` : "后续开放";
+  return firstLevel ? text("ui.CollectionData.010", firstLevel.id) : text("ui.CollectionData.011");
 }
 
-const ENEMY_STAT_NOTE = "耐久随关卡和波次变化\n移速受关卡影响";
-const STAFF_STAT_NOTE = "升级提高伤害与射程，缩短攻击间隔";
 
-export const COLLECTION_ENTRIES: readonly CollectionEntry[] = [
-  {
-    id: "enemy-normal", tab: "enemies", name: "小纸袋怪", imageKey: "enemy_normal", enemyKind: "normal",
-    category: "普通精怪", traits: "移动稳定，常常结伴出现，适合交给豆包逐个赶走。",
-    story: "地铁末班车离站后，它才把小短腿伸出纸袋。袋口总朝着便利店的暖光，像在等一份刚装好的夜宵。",
-    stats: enemyStats("normal"), statNote: ENEMY_STAT_NOTE, unlockHint: "在冒险模式中遇见后解锁",
-  },
-  {
-    id: "enemy-swift", tab: "enemies", name: "红汽水罐", imageKey: "enemy_swift", enemyKind: "swift",
-    category: "疾行精怪", traits: "跑得快，耐久较低。棉棉的减速能让它在防线前多留一会儿。",
-    story: "它总觉得末班车还没开走，顺着庭院一路小跑。跑到店门前才想起来：自己出门只是想听汽水开罐的声音。",
-    stats: enemyStats("swift"), statNote: ENEMY_STAT_NOTE, unlockHint: "在冒险模式中遇见后解锁",
-  },
-  {
-    id: "enemy-tank", tab: "enemies", name: "快递纸箱怪", imageKey: "enemy_tank", enemyKind: "tank",
-    category: "重型精怪", traits: "移动较慢、耐久较高；漏进店里会扣除更多店铺耐久。",
-    story: "箱子上没有收件地址，只有一张歪歪扭扭的“夜间送达”。它走得很认真，至今还没发现纸箱里的自己就是那件包裹。",
-    stats: enemyStats("tank"), statNote: ENEMY_STAT_NOTE, unlockHint: "在冒险模式中遇见后解锁",
-  },
-  {
-    id: "boss-fog-guest", tab: "bosses", name: "雾灯旅客", imageKey: "boss_silhouette",
-    category: "神秘来客", traits: "后续开放。它的身影还藏在庭院外的夜雾里。",
-    story: "留言簿上画着一盏提灯，旁边只写了“等雾散了再来”。没有店员见过落款的人。",
-    stats: [{ label: "登场状态", value: "后续开放" }], statNote: "当前关卡尚无 BOSS。", unlockHint: "后续开放",
-  },
-  {
-    id: "boss-midnight-leader", tab: "bosses", name: "夜宵团长", imageKey: "boss_silhouette",
-    category: "神秘来客", traits: "后续开放。关于这位夜间访客，店里还没有完整记录。",
-    story: "门缝里曾塞进一张很长的夜宵清单，每一项后面都画着笑脸。豆包把它夹在值班本里，留给未来的某个夜班。",
-    stats: [{ label: "登场状态", value: "后续开放" }], statNote: "当前关卡尚无 BOSS。", unlockHint: "后续开放",
-  },
-  {
-    id: "staff-doubao", tab: "staff", name: TOWER_CONFIG.sprout.name, imageKey: "sprout", staffKind: "sprout",
-    category: "仓鼠 · 收银员", traits: "快速、稳定的单体驱赶。上岗费用低，方便逐步扩展防线。",
-    story: "豆包会把每枚零钱朝同一个方向码好。客流再急，他也能一边报数一边守住收银台，最怕的是下班前少算一枚硬币。",
-    stats: staffStats("sprout"), statNote: STAFF_STAT_NOTE, unlockHint: staffUnlockHint("sprout"),
-  },
-  {
-    id: "staff-mianmian", tab: "staff", name: TOWER_CONFIG.frost.name, imageKey: "frost", staffKind: "frost",
-    category: "垂耳兔 · 理货员", traits: "攻击附带减速，为其他店员争取输出时间，适合照看疾行精怪。",
-    story: "棉棉能记住每件商品该在的格子。遇到匆忙的来客，她总会轻轻提醒：“慢一点，热食还没凉。”",
-    stats: staffStats("frost"), statNote: STAFF_STAT_NOTE, unlockHint: staffUnlockHint("frost"),
-  },
-  {
-    id: "staff-buding", tab: "staff", name: TOWER_CONFIG.bloom.name, imageKey: "bloom", staffKind: "bloom",
-    category: "柯基 · 热食员", traits: "对目标及附近精怪造成范围伤害，适合应对密集精怪。",
-    story: "布丁总把“刚出炉”喊得比广播还响。看到门外排起长队，他会先把围裙系紧，再把最后一份热食留给值夜的同伴。",
-    stats: staffStats("bloom"), statNote: STAFF_STAT_NOTE, unlockHint: staffUnlockHint("bloom"),
-  },
-];
-
+export const COLLECTION_ENTRIES: CollectionEntry[] = [];
+onConfigsReady(()=>{
+  COLLECTION_TABS.splice(0,COLLECTION_TABS.length,{id:"enemies",label:text("ui.CollectionData.012")},{id:"bosses",label:text("ui.boss")},{id:"staff",label:text("ui.CollectionData.013")});
+  for(const kind of ENEMY_KINDS) COLLECTION_ENEMY_KEYS[kind]="night_store_collection_enemy_"+kind;
+  COLLECTION_ENTRIES.splice(0,COLLECTION_ENTRIES.length,...rows("Collection").map(row=>{
+    const staff=row.tab==="staff",kind=row.kind;
+    return {id:row.key,tab:row.tab as CollectionTab,name:staff?TOWER_CONFIG[kind as TowerKind].name:ENEMY_CONFIG[kind as EnemyKind].name!,imageKey:row.imageKey as CollectionImageKey,category:text(row.category),traits:entryTraits(row.traits,kind,staff),story:text(row.story),
+      stats:staff?staffStats(kind as TowerKind):enemyStats(kind as EnemyKind),statNote:staff?text("ui.CollectionData.014"):text("ui.CollectionData.015"),unlockHint:staff?staffUnlockHint(kind as TowerKind):text("ui.CollectionData.016"),...(staff?{staffKind:kind as TowerKind}:{enemyKind:kind as EnemyKind})};
+  }));
+});
 /** 调用方只传正式解锁关，并仅在正式战斗出怪时记录遭遇；GM 与美术评审不接入本服务。 */
 export class CollectionProgress {
   private readonly enemies = new Set<EnemyKind>();
@@ -134,7 +81,6 @@ export class CollectionProgress {
   }
 
   isUnlocked(entry: CollectionEntry): boolean {
-    if (entry.tab === "bosses") return false;
     if (entry.tab === "staff") return entry.staffKind !== undefined && this.staff.has(entry.staffKind);
     return entry.enemyKind !== undefined && this.enemies.has(entry.enemyKind);
   }
@@ -154,8 +100,19 @@ export class CollectionProgress {
       for (const kind of level.availableTowers) this.staff.add(kind);
       // 最高已解锁关可能尚未开始；旧档只从此前已完成关卡补入怪物记录。
       if (level.id === highest) continue;
-      for (const wave of level.waves) for (const kind of wave.enemies) if (this.encounter(kind)) added += 1;
+      for (const wave of level.waves) for (const kind of wave.enemies) if (ENEMY_CONFIG[kind].legacyUnlock === 1 && this.encounter(kind)) added += 1;
     }
     return added;
   }
+}
+
+function entryTraits(key:string,kind:string,staff:boolean):string {
+  if(!staff)return text(key,ENEMY_CONFIG[kind as EnemyKind].damage);
+  const c=TOWER_CONFIG[kind as TowerKind];
+  if(c.pierce)return text(key,c.pierceLength,c.pierceRatio*100);
+  if(c.chain)return text(key,c.chain,c.chainRatio*100);
+  if(c.burn)return text(key,c.burnSeconds);
+  if(c.shred)return text(key,c.markSeconds,Math.round((globalNumber("markDamageRatio")-1)*100));
+  if(c.targets && c.targets>1)return text(key,c.targets);
+  return text(key);
 }

@@ -1,0 +1,269 @@
+id,key,zhCN
+1,game.name,叮咚夜班开始
+2,staff.sprout.name,豆包
+3,staff.frost.name,棉棉
+4,staff.bloom.name,布丁
+5,staff.scope.name,咕咕
+6,staff.spark.name,栗栗
+7,staff.ember.name,烘烘
+8,staff.mint.name,薄荷
+9,staff.fan.name,啾啾
+10,enemy.normal.name,小纸袋怪
+11,enemy.swift.name,红汽水罐
+12,enemy.tank.name,快递纸箱怪
+13,enemy.shield.name,铁罐卫士
+14,enemy.jelly.name,果冻夜游者
+15,enemy.runner.name,冲刺牛奶盒
+16,enemy.postmaster.name,包裹队长
+17,enemy.lantern.name,雾灯旅客
+18,enemy.chef.name,夜宵团长
+19,enemy.clock.name,午夜钟守
+20,theme.courtyard.name,暖灯庭院
+21,theme.rain.name,雨巷站台
+22,theme.market.name,秋日夜市
+23,theme.midnight.name,月下钟街
+24,level.1.title,第一次夜班
+25,level.2.title,跑得太快啦
+26,level.3.title,热食出炉
+27,level.4.title,重重的纸袋
+28,level.5.title,包裹队长
+29,level.5.goal,击退首领，守住便利店
+30,level.6.title,雨夜来客
+31,level.6.goal,咕咕远射，贯穿排队来客
+32,level.7.title,仓库告急
+33,level.7.goal,咕咕远射，贯穿排队来客
+34,level.8.title,深夜加急单
+35,level.8.goal,栗栗连锁，应对密集来客
+36,level.9.title,天亮前一小时
+37,level.9.goal,栗栗连锁，应对密集来客
+38,level.10.title,雾灯旅客
+39,level.10.goal,击退首领，守住便利店
+40,level.11.title,夜市开张
+41,level.11.goal,认识灼烧与厚血来客
+42,level.12.title,穿过摊位
+43,level.12.goal,交替火力，守住整条路线
+44,level.13.title,清洁时间
+45,level.13.goal,用薄荷标记集中输出
+46,level.14.title,转角夜宵
+47,level.14.goal,交替火力，守住整条路线
+48,level.15.title,夜宵团长
+49,level.15.goal,击退首领，守住便利店
+50,level.16.title,午夜快递
+51,level.16.goal,用啾啾应对密集快客
+52,level.17.title,双向赶路
+53,level.17.goal,交替火力，守住整条路线
+54,level.18.title,钟前折返
+55,level.18.goal,交替火力，守住整条路线
+56,level.19.title,最后一班
+57,level.19.goal,交替火力，守住整条路线
+58,level.20.title,守到天亮
+59,level.20.goal,击退午夜钟守，完成二十夜
+60,wave.104.announcement,最后一波，扩建完整防线！
+61,wave.204.announcement,用减速争取清障和扩建时间！
+62,wave.304.announcement,布丁适合守住密集路段！
+63,wave.404.announcement,重型纸袋怪需要集中火力！
+64,wave.504.announcement,包裹队长登场，集中火力！
+65,wave.604.announcement,先清出中场空地，再补终点防线！
+66,wave.704.announcement,出口在左下，给终点留一份火力！
+67,wave.804.announcement,加急订单到达，别只守入口！
+68,wave.904.announcement,天亮前的客流最难守！
+69,wave.1005.announcement,雾灯旅客登场，集中火力！
+70,wave.1101.announcement,本关店员：豆包、棉棉、布丁、烘烘
+71,wave.1201.announcement,本关店员：咕咕、棉棉、布丁、烘烘
+72,wave.1301.announcement,本关店员：豆包、布丁、薄荷、烘烘
+73,wave.1401.announcement,本关店员：咕咕、栗栗、薄荷、棉棉
+74,wave.1501.announcement,本关店员：咕咕、布丁、烘烘、薄荷
+75,wave.1505.announcement,夜宵团长登场，集中火力！
+76,wave.1601.announcement,本关店员：豆包、棉棉、布丁、啾啾
+77,wave.1701.announcement,本关店员：咕咕、栗栗、棉棉、啾啾
+78,wave.1801.announcement,本关店员：咕咕、布丁、薄荷、啾啾
+79,wave.1901.announcement,本关店员：咕咕、棉棉、烘烘、啾啾
+80,wave.2001.announcement,本关店员：咕咕、棉棉、布丁、薄荷
+81,wave.2005.announcement,午夜钟守来了，守住最后一班！
+82,collection.enemy-normal.category,普通精怪
+83,collection.enemy-normal.traits,移动稳定，常常结伴出现，适合交给豆包逐个赶走。
+84,collection.enemy-normal.story,地铁末班车离站后，它才把小短腿伸出纸袋。袋口总朝着便利店的暖光，像在等一份刚装好的夜宵。
+85,collection.enemy-swift.category,疾行精怪
+86,collection.enemy-swift.traits,跑得快，耐久较低。棉棉的减速能让它在防线前多留一会儿。
+87,collection.enemy-swift.story,它总觉得末班车还没开走，顺着庭院一路小跑。跑到店门前才想起来：自己出门只是想听汽水开罐的声音。
+88,collection.enemy-tank.category,重型精怪
+89,collection.enemy-tank.traits,移动较慢、耐久较高；漏进店里会扣除更多店铺耐久。
+90,collection.enemy-tank.story,箱子上没有收件地址，只有一张歪歪扭扭的“夜间送达”。它走得很认真，至今还没发现纸箱里的自己就是那件包裹。
+91,collection.staff-doubao.category,仓鼠 · 收银员
+92,collection.staff-doubao.traits,快速、稳定的单体驱赶。上岗费用低，方便逐步扩展防线。
+93,collection.staff-doubao.story,豆包会把每枚零钱朝同一个方向码好。客流再急，他也能一边报数一边守住收银台，最怕的是下班前少算一枚硬币。
+94,collection.staff-mianmian.category,垂耳兔 · 理货员
+95,collection.staff-mianmian.traits,攻击附带减速，为其他店员争取输出时间，适合照看疾行精怪。
+96,collection.staff-mianmian.story,棉棉能记住每件商品该在的格子。遇到匆忙的来客，她总会轻轻提醒：“慢一点，热食还没凉。”
+97,collection.staff-buding.category,柯基 · 热食员
+98,collection.staff-buding.traits,对目标及附近精怪造成范围伤害，适合应对密集精怪。
+99,collection.staff-buding.story,布丁总把“刚出炉”喊得比广播还响。看到门外排起长队，他会先把围裙系紧，再把最后一份热食留给值夜的同伴。
+100,collection.enemy-shield.category,夜间精怪
+101,collection.enemy-shield.traits,耐久较高，速度适中。适合集中输出，也可以让咕咕利用远射多打几轮。
+102,collection.enemy-shield.story,它把茶叶罐擦得锃亮，郑重宣布自己是夜班巡逻员。走到店门口才发现，巡逻路线正好绕回了零食货架。
+103,collection.enemy-jelly.category,夜间精怪
+104,collection.enemy-jelly.traits,耐久中等、速度适中，零钱奖励较多。与快客混行时不要忽略它。
+105,collection.enemy-jelly.story,白天躲在冷柜里打瞌睡，夜里悄悄出门散步。每走一步都晃一下，却从来没把杯里的月光洒出来。
+106,collection.enemy-runner.category,夜间精怪
+107,collection.enemy-runner.traits,移速高于汽水罐，耐久也更高。减速和多目标火力能减少漏怪。
+108,collection.enemy-runner.story,它把保质期当成了末班车时刻，系上围巾就往前跑。棉棉常常拦住它，提醒它今天其实还早。
+109,collection.boss-postmaster.category,小首领 · 第5关
+110,collection.boss-postmaster.traits,耐久远高于普通来客，移动较慢；漏进店里扣 {p0} 点耐久，需要持续输出。
+111,collection.boss-postmaster.story,它揣着整条街的夜间包裹，坚信便利店是最后一站。红帽子歪了也不肯停，因为清单上还差一枚签收章。
+112,collection.boss-fog-guest.category,大首领 · 第10关
+113,collection.boss-fog-guest.traits,耐久远高于普通来客，移动较慢；漏进店里扣 {p0} 点耐久，需要持续输出。
+114,collection.boss-fog-guest.story,它提着自己走过潮湿的石板路。灯芯里藏着几封没寄出的信，只愿在便利店的屋檐下等到雾散。
+115,collection.boss-midnight-leader.category,小首领 · 第15关
+116,collection.boss-midnight-leader.traits,耐久远高于普通来客，移动较慢；漏进店里扣 {p0} 点耐久，需要持续输出。
+117,collection.boss-midnight-leader.story,它推着装满热食的小车，打算请每位夜班店员吃一口。可惜清单太长，排队的来客把整条夜市都挤满了。
+118,collection.boss-clock.category,大首领 · 第20关
+119,collection.boss-clock.traits,耐久远高于普通来客，移动较慢；漏进店里扣 {p0} 点耐久，需要持续输出。
+120,collection.boss-clock.story,它每晚巡回一次，确认还有灯为晚归的人亮着。最后一声钟响之后，它也会在便利店门口坐下，等一杯温热的牛奶。
+121,collection.staff-scope.category,猫头鹰 · 盘点员
+122,collection.staff-scope.traits,远射贯穿：命中后继续攻击后方 {p0} 范围的同线来客，后续伤害 {p1}%。
+123,collection.staff-scope.story,咕咕隔着一整排货架也能看清价签。那支长长的扫码镜是他的宝贝，只有认真盘点时才舍得擦亮。
+124,collection.staff-spark.category,松鼠 · 电工
+125,collection.staff-spark.traits,连锁电光：最多命中 {p0} 名来客，每跳保留 {p1}% 伤害。
+126,collection.staff-spark.story,栗栗把便利店坏掉的小电器都修好了。口袋里总有一颗备用电池，说是为了应付夜里突然不亮的招牌。
+127,collection.staff-ember.category,小熊猫 · 烘焙员
+128,collection.staff-ember.traits,持续灼烧：命中附加 {p0} 秒灼烧，重复命中刷新时间，不叠层。
+129,collection.staff-ember.story,烘烘坚持最后一炉面包也要烤得刚刚好。烤箱的余温总留到收班，谁路过都能闻到一点甜香。
+130,collection.staff-mint.category,浣熊 · 保洁员
+131,collection.staff-mint.traits,清洁标记：{p0} 秒内受到的店员伤害增加 {p1}%。
+132,collection.staff-mint.story,薄荷把雨脚印擦成一道弯弯的光。她的喷瓶上没有刻度，因为每一处污渍她都愿意多照顾一下。
+133,collection.staff-fan.category,小鸭 · 配送员
+134,collection.staff-fan.traits,多路风刃：一次最多攻击 {p0} 名不同来客，单个目标只承受一道。
+135,collection.staff-fan.story,啾啾担心热食太烫，送餐时总抱着一台小风扇。后来大家发现，它吹走排队烦恼的本领比送餐还熟练。
+136,ui.BattleArtView.001,战斗美术未完整加载，继续使用程序图形。
+137,ui.BattleArtView.002,战斗美术加载失败，继续使用程序图形。
+138,ui.BattleSceneryView.001,场景图集必须为512×512。
+139,ui.BattleSceneryView.002,场景美术加载失败，保留地图和程序地标。
+140,ui.BattleUiView.001,战斗UI图标未完整加载，继续使用文字按钮。
+141,ui.BattleUiView.002,战斗UI图集尺寸应为512×512，请核对运行资源导出。
+142,ui.BattleUiView.003,战斗UI图标加载失败，继续使用文字按钮。
+143,ui.CollectionData.001,基础耐久
+144,ui.CollectionData.002,基础移速
+145,ui.CollectionData.003,零钱奖励
+146,ui.CollectionData.004,漏怪扣耐久
+147,ui.CollectionData.005,上岗费用
+148,ui.CollectionData.006,一级伤害
+149,ui.CollectionData.007,攻击间隔
+150,ui.CollectionData.008,{p0} 秒
+151,ui.CollectionData.009,基础射程
+152,ui.CollectionData.010,解锁第 {p0} 关后上岗
+153,ui.CollectionData.011,后续开放
+154,ui.CollectionData.012,怪物
+155,ui.CollectionData.013,店员
+156,ui.CollectionData.014,升级提高伤害与射程，缩短攻击间隔
+157,ui.CollectionData.015,"耐久随关卡和波次变化
+移速受关卡影响"
+158,ui.CollectionData.016,在冒险模式中遇见后解锁
+159,ui.GameMenuView.001,森林便利店
+160,ui.GameMenuView.002,灯亮着，夜班就开始了
+161,ui.GameMenuView.003,冒险模式
+162,ui.GameMenuView.004,已解锁 {p0} / {p1} 关
+163,ui.GameMenuView.005,挑战模式
+164,ui.GameMenuView.006,暂未开放
+165,ui.GameMenuView.007,挑战模式
+166,ui.GameMenuView.008,挑战模式暂未开放。
+167,ui.GameMenuView.009,游戏图鉴
+168,ui.GameMenuView.010,怪物 · BOSS · 店员
+169,ui.GameMenuView.011,侧边栏再玩
+170,ui.GameMenuView.012,侧边栏再玩
+171,ui.GameMenuView.013,欢迎回来，店长
+172,ui.GameMenuView.014,返回
+173,ui.GameMenuView.015,冒险模式
+174,ui.GameMenuView.016,已解锁 {p0} / {p1} 关 · 通关开启下一班
+175,ui.GameMenuView.017,{p0} · {p1} 波
+176,ui.GameMenuView.018,通关第 {p0} 关解锁
+177,ui.GameMenuView.019,关卡未解锁
+178,ui.GameMenuView.020,通关第 {p0} 关后解锁。
+179,ui.GameMenuView.021,上一页
+180,ui.GameMenuView.022,下一页
+181,ui.GameMenuView.023,点击关卡图片，从开局开始挑战
+182,ui.GameMenuView.024,游戏图鉴
+183,ui.GameMenuView.025,{p0}图鉴
+184,ui.GameMenuView.026,{p0} / {p1} 已收录
+185,ui.GameMenuView.027,上一页
+186,ui.GameMenuView.028,下一页
+187,ui.GameMenuView.029,点击图片，查看特点与夜班故事
+188,ui.GameMenuView.030,设置
+189,ui.GameMenuView.031,音乐
+190,ui.GameMenuView.032,音效
+191,ui.GameMenuView.033,{p0}  ·  v{p1}
+192,ui.GameMenuView.034,开
+193,ui.GameMenuView.035,关
+194,ui.GameMenuView.036,未知档案
+195,ui.GameRoot.001,地铁口
+196,ui.GameRoot.002,便利店
+197,ui.GameRoot.003,返回首页
+198,ui.GameRoot.004,GM 关卡选择
+199,ui.GameRoot.005,测试选关，不改变正式解锁
+200,ui.GameRoot.006,关闭
+201,ui.GameRoot.007,返回正式进度
+202,ui.GameRoot.008,{p0}关{p1}
+203,ui.GameRoot.009,{p0}/{p1} 波
+204,ui.GameRoot.010,已满级
+205,ui.GameRoot.011,升级 ●{p0}
+206,ui.GameRoot.012,出售 +{p0}
+207,ui.GameRoot.013,清理 ♥{p0}  +{p1}
+208,ui.GameRoot.014,下一波 {p0}/{p1}
+209,ui.GameRoot.015,结束本局并返回
+210,ui.GameRoot.016,返回首页
+211,ui.GameRoot.017,暂停营业
+212,ui.GameRoot.018,继续营业
+213,ui.GameRoot.019,二十夜守护完成！
+214,ui.GameRoot.020,顺利打烊！
+215,ui.GameRoot.021,便利店失守了
+216,ui.GameRoot.022,"赶走 {p0} 只夜间精怪
+本局收入 {p1}"
+217,ui.GameRoot.023,下一关
+218,ui.GameRoot.024,再次挑战
+219,ui.GameRoot.025,看广告继续营业
+220,ui.GameRoot.026,重新挑战
+221,ui.GameRoot.027,保留店员，重打当前波次
+222,ui.GameRoot.028,重新开始
+223,ui.GameRoot.029,当前：第 {p0} 关{p1}
+224,ui.GameRoot.030,第 {p0} 关{p1}
+225,ui.GameRoot.031,冷气
+226,ui.GameRoot.032,清场
+227,ui.GameRoot.033,零钱
+228,ui.GameRoot.034,{p0}·用完
+229,ui.GameRoot.035,{p0}·广告
+230,ui.GameRoot.036,点空地建造；空闲时点货箱清理
+231,ui.GameRoot.037,第 {p0} 关：{p1}
+232,ui.GameRoot.038,便利店耐久 -{p0}
+233,ui.GameRoot.039,守住了！夜班收入 +{p0}
+234,ui.GameRoot.040,第 {p0} 波来袭！
+235,ui.GameRoot.041,清出空地 +{p0}
+236,ui.GameRoot.042,这名店员还没有加入夜班
+237,ui.GameRoot.043,夜班零钱不够，先赶走一些精怪吧
+238,ui.GameRoot.044,{p0}上岗！
+239,ui.GameRoot.045,先点击一名场上店员
+240,ui.GameRoot.046,{p0}已经满级
+241,ui.GameRoot.047,升级所需零钱不足
+242,ui.GameRoot.048,调岗返还 +{p0}
+243,ui.GameRoot.049,本关这个道具已经用完了
+244,ui.GameRoot.050,冰柜冷气：全场冻结 {p0} 秒
+245,ui.GameRoot.051,紧急零钱 +{p0}
+246,ui.GameRoot.052,闭店清场：赶走小怪，削弱重型与首领
+247,ui.GameRoot.053,正在请求道具广告…
+248,ui.GameRoot.054,广告未完整观看，暂未补充道具
+249,ui.GameRoot.055,正在请求继续营业广告…
+250,ui.GameRoot.056,广告未完整观看，暂未复活
+251,ui.GameRoot.057,继续营业！当前波次即将重来
+252,ui.GameRoot.058,暂无广告，本次已继续营业
+253,ui.MenuArtView.001,主界面图标未完整加载，继续使用文字按钮。
+254,ui.MenuArtView.002,主界面图集尺寸应为512×512，请核对运行资源导出。
+255,ui.MenuArtView.003,主界面图标加载失败，继续使用文字按钮。
+256,ui.GameRoot.extra0,（GM 测试）
+257,ui.GameRoot.extra1,（正式进度）
+258,ui.GameRoot.extra2,  当前
+259,ui.GameMenuView.extra0,大BOSS
+260,ui.GameMenuView.extra1,小BOSS
+261,ui.GameMenuView.extra2,可挑战
+262,ui.PlatformSettings.0,当前环境暂不支持侧边栏入口。
+263,ui.PlatformSettings.1,暂时无法打开侧边栏，请稍后重试。
+264,ui.PlatformSettings.2,已打开侧边栏，可从这里再次进入游戏。
+265,ui.unknown,???
+266,ui.boss,BOSS

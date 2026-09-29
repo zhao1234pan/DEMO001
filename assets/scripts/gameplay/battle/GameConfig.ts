@@ -1,20 +1,12 @@
-export const GAME_CONFIG = {
-  // 正式中文名与抖音后台、软著简称使用同一写法；不要添加标点或改动存档键。
-  gameName: "叮咚夜班开始",
-  designWidth: 750,
-  designHeight: 1334,
-  prototypeLayoutWidth: 390,
-  // 逻辑画布必须与 750×1334 保持完全相同的宽高比，禁止横纵分别缩放造成图形和触控变形。
-  prototypeLayoutHeight: 1334 * 390 / 750,
-  maxLevels: 10,
-  rewardAdUnitId: "replace-with-douyin-ad-unit-id",
-} as const;
-
-export type TowerKind = "sprout" | "frost" | "bloom";
-export type EnemyKind = "normal" | "swift" | "tank";
+import { rows, numeric, text, globalNumber, globalString, onConfigsReady } from "../../config/ConfigTables";
+// 引擎启动与画布比例为技术常量，玩法数据在 CSV 加载后填充。
+export const GAME_CONFIG = { designWidth:750, designHeight:1334, prototypeLayoutWidth:390, prototypeLayoutHeight:1334*390/750, maxLevels:0, gameName:"", rewardAdUnitId:"" };
+export type TowerKind = "sprout" | "frost" | "bloom" | "scope" | "spark" | "ember" | "mint" | "fan";
+export type EnemyKind = "normal" | "swift" | "tank" | "shield" | "jelly" | "runner" | "postmaster" | "lantern" | "chef" | "clock";
 
 export interface TowerConfig {
   name: string;
+  spriteWidth:number; arcHeight:number; laneBend:number; projectile: TowerKind; shotSpeed: number; pierceLength: number; pierceWidth: number; pierceRatio: number; chainRadius: number; chainRatio: number; burnSeconds: number; markSeconds: number; slowBase: number; slowPerLevel: number;
   cost: number;
   color: string;
   range: number;
@@ -23,17 +15,17 @@ export interface TowerConfig {
   shotColor: string;
   slow?: boolean;
   splash?: number;
+  pierce?: boolean;
+  chain?: number;
+  burn?: number;
+  shred?: boolean;
+  targets?: number;
 }
 
-// 一级店员先按“单体效率、控制价值、群体效率”分工；升级倍率由 GameRoot 统一计算，
-// 防止某名店员只靠基础面板就同时压过另外两种定位。
-export const TOWER_CONFIG: Record<TowerKind, TowerConfig> = {
-  sprout: { name: "豆包", cost: 85, color: "#d59b58", range: 88, rate: 0.72, damage: 12, shotColor: "#ffe072" },
-  frost: { name: "棉棉", cost: 110, color: "#d6c2e9", range: 86, rate: 1.08, damage: 8, shotColor: "#e8f8ff", slow: true },
-  bloom: { name: "布丁", cost: 150, color: "#e9aa62", range: 100, rate: 1.52, damage: 23, shotColor: "#ffbd72", splash: 38 },
-};
-
 export interface EnemyConfig {
+  name?: string;
+  boss?: "mini" | "major";
+  spriteHeight:number; spriteScale:number; clearRatio: number; legacyUnlock: number;
   hp: number;
   speed: number;
   reward: number;
@@ -42,9 +34,17 @@ export interface EnemyConfig {
   damage: number;
 }
 
-// 敌人基础值不含关卡和波次倍率。奖励刻意低于旧原型，避免前两波滚出过量经济。
-export const ENEMY_CONFIG: Record<EnemyKind, EnemyConfig> = {
-  normal: { hp: 58, speed: 38, reward: 8, radius: 15, color: "#9a77bd", damage: 1 },
-  swift: { hp: 44, speed: 62, reward: 11, radius: 13, color: "#e5aa54", damage: 1 },
-  tank: { hp: 190, speed: 25, reward: 22, radius: 19, color: "#8a705c", damage: 2 },
-};
+
+export const TOWER_CONFIG = {} as Record<TowerKind,TowerConfig>;
+export const ENEMY_CONFIG = {} as Record<EnemyKind,EnemyConfig>;
+export const TOWER_KINDS: TowerKind[] = [];
+export const ENEMY_KINDS: EnemyKind[] = [];
+onConfigsReady(() => {
+  GAME_CONFIG.maxLevels = globalNumber("maxLevels"); GAME_CONFIG.gameName = text(globalString("gameName")); GAME_CONFIG.rewardAdUnitId = globalString("rewardAdUnitId");
+  for (const [name, target] of [["Staff",TOWER_CONFIG],["Enemy",ENEMY_CONFIG]] as const) for (const row of rows(name)) {
+    const record: Record<string,any> = {}; for (const key of Object.keys(row)) { if(key === "id" || key === "key") continue; record[key] = ["name","color","shotColor","boss","projectile"].includes(key) ? row[key] : numeric(row,key); }
+    record.name = text(row.name); if(record.boss === "") delete record.boss;
+    (target as Record<string,any>)[row.key] = record;
+  }
+  TOWER_KINDS.splice(0,TOWER_KINDS.length,...rows("Staff").map(r=>r.key as TowerKind)); ENEMY_KINDS.splice(0,ENEMY_KINDS.length,...rows("Enemy").map(r=>r.key as EnemyKind));
+});

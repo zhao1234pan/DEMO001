@@ -1,5 +1,7 @@
+import { text, globalString } from "../../config/ConfigTables";
+import { levelTheme } from "./LevelTheme";
 import { Color, Graphics, HorizontalTextAlignment, Label, Layers, Node, UITransform, VerticalTextAlignment } from "cc";
-import { GAME_CONFIG } from "./GameConfig";
+import { GAME_CONFIG, ENEMY_CONFIG } from "./GameConfig";
 import { getLevelConfig } from "./LevelConfig";
 import { COLLECTION_ENTRIES, COLLECTION_TABS, CollectionEntry, CollectionProgress, CollectionTab } from "./CollectionData";
 import { MenuArtView, MenuIconKind } from "./MenuArtView";
@@ -31,6 +33,7 @@ export class GameMenuView {
   private page: MenuPage = "home";
   private tab: CollectionTab = "enemies";
   private levelPage = 0;
+  private collectionPage = 0;
   private unlocked = 1;
   private dialog: Dialog | null = null;
   private dirty = true;
@@ -137,9 +140,9 @@ export class GameMenuView {
 
   private drawHome(): void {
     const g = this.background;
-    this.label("brand-small", "森林便利店", 13, 195, 48, 160, 26, "#e3d6a7");
+    this.label("brand-small", text("ui.GameMenuView.001"), 13, 195, 48, 160, 26, "#e3d6a7");
     this.label("brand", GAME_CONFIG.gameName, 30, 195, 91, 326, 48, "#fff4ce");
-    this.label("brand-note", "灯亮着，夜班就开始了", 14, 195, 130, 290, 30, "#c9d4ab");
+    this.label("brand-note", text("ui.GameMenuView.002"), 14, 195, 130, 290, 30, "#c9d4ab");
     this.button("settings", { x: 330, y: 16, width: 48, height: 48 }, () => this.navigate("settings"));
     this.disc(g, 354, 40, 24, "#406453"); this.gear(g, 354, 40);
     this.disc(g, 195, 283, 118, "#385f4d");
@@ -150,22 +153,22 @@ export class GameMenuView {
     this.art.drawIcon("hero-frost", "frost", 108, 315, 83);
     this.art.drawIcon("hero-bloom", "bloom", 279, 315, 83);
     this.art.drawIcon("hero-sprout", "sprout", 192, 326, 94);
-    this.homeButton("adventure", 382, "冒险模式", `已解锁 ${this.unlocked} / ${GAME_CONFIG.maxLevels} 关`, C.orange, () => this.navigate("levels"));
-    this.homeButton("challenge", 463, "挑战模式", "暂未开放", "#91aa8c", () => this.notice("挑战模式", "挑战模式暂未开放。"));
-    this.homeButton("collection", 544, "游戏图鉴", "怪物 · BOSS · 店员", "#edcf84", () => { this.collection.refresh(this.unlocked); this.navigate("collection"); });
+    this.homeButton("adventure", 382, text("ui.GameMenuView.003"), text("ui.GameMenuView.004", this.unlocked, GAME_CONFIG.maxLevels), C.orange, () => this.navigate("levels"));
+    this.homeButton("challenge", 463, text("ui.GameMenuView.005"), text("ui.GameMenuView.006"), "#91aa8c", () => this.notice(text("ui.GameMenuView.007"), text("ui.GameMenuView.008")));
+    this.homeButton("collection", 544, text("ui.GameMenuView.009"), text("ui.GameMenuView.010"), "#edcf84", () => { this.collection.refresh(this.unlocked); this.navigate("collection"); });
     const side = this.platform.capabilities.sidebar;
     if (side) {
-      this.label("sidebar", "侧边栏再玩", 13, 195, 657, 200, 36, "#efe6bd");
+      this.label("sidebar", text("ui.GameMenuView.011"), 13, 195, 657, 200, 36, "#efe6bd");
       this.button("sidebar", { x: 95, y: 632, width: 200, height: 48 }, () => {
         if (this.platformBusy) return;
         this.platformBusy = true;
         const revision = this.navigationRevision;
         void this.platform.openSidebar().then(result => {
           this.platformBusy = false;
-          if (!this.disposed && this.active && this.page === "home" && revision === this.navigationRevision && !this.dialog && !result.ok) this.notice("侧边栏再玩", result.message);
+          if (!this.disposed && this.active && this.page === "home" && revision === this.navigationRevision && !this.dialog && !result.ok) this.notice(text("ui.GameMenuView.012"), result.message);
         });
       });
-    } else this.label("home-footer", "欢迎回来，店长", 13, 195, 657, 260, 28, "#bdcea8");
+    } else this.label("home-footer", text("ui.GameMenuView.013"), 13, 195, 657, 260, 28, "#bdcea8");
   }
 
   private homeButton(id: string, y: number, title: string, subtitle: string, color: string, action: () => void): void {
@@ -177,14 +180,14 @@ export class GameMenuView {
 
   private header(title: string, note: string): void {
     this.card(this.background, 15, 22, 52, 48, "#456957", 13);
-    this.label("back", "返回", 15, 41, 46, 50, 42, C.paper);
+    this.label("back", text("ui.GameMenuView.014"), 15, 41, 46, 50, 42, C.paper);
     this.button("back", { x: 15, y: 22, width: 52, height: 48 }, () => this.navigate("home"));
     this.label("page-title", title, 25, 210, 47, 240, 44, C.paper);
     if (note) this.label("page-note", note, 13, 195, 110, 334, 30, C.muted);
   }
 
   private drawLevels(): void {
-    this.header("冒险模式", `已解锁 ${this.unlocked} / ${GAME_CONFIG.maxLevels} 关 · 通关开启下一班`);
+    this.header(text("ui.GameMenuView.015"), text("ui.GameMenuView.016", this.unlocked, GAME_CONFIG.maxLevels));
     const g = this.background;
     for (let i = 0; i < 4; i++) {
       const id = this.levelPage * 4 + i + 1;
@@ -192,29 +195,30 @@ export class GameMenuView {
       const level = getLevelConfig(id); const unlocked = id <= this.unlocked;
       const x = 28 + (i % 2) * 172; const y = 142 + Math.floor(i / 2) * 211;
       this.card(g, x, y, 162, 196, unlocked ? "#fffef2" : "#e8e7d6", 15);
-      this.box(g, x + 9, y + 10, 144, 112, 10, unlocked ? "#cad7b0" : "#bdc8b1");
+      this.box(g, x + 9, y + 10, 144, 112, 10, unlocked ? levelTheme(level).ground : "#bdc8b1");
       // 缩略图使用实际关卡路线，横纵同倍率缩放，不重复摆一张无关场景图。
       const factor = 0.205; const ox = x + 40; const oy = y - 8;
       g.lineWidth = 10; g.lineCap = Graphics.LineCap.ROUND; g.lineJoin = Graphics.LineJoin.ROUND;
-      g.strokeColor = this.color(unlocked ? "#f4dcad" : "#d6d7c2");
+      g.strokeColor = this.color(unlocked ? levelTheme(level).road : "#d6d7c2");
       level.pathPoints.forEach(([px, py], index) => { if (!index) g.moveTo(ox + px * factor, oy + py * factor); else g.lineTo(ox + px * factor, oy + py * factor); }); g.stroke();
       level.towerSpots.forEach(([px, py]) => this.disc(g, ox + px * factor, oy + py * factor, 2.2, "#94a27f"));
       const end = level.pathPoints[level.pathPoints.length - 1];
       this.art.drawIcon(`level-shop-${id}`, "shop", ox + end[0] * factor, oy + end[1] * factor - 4, 32);
+      this.label(`level-theme-${id}`, levelTheme(level).name, 11, x + 99, y + 28, 95, 23, C.ink);
       this.label(`level-num-${id}`, String(id).padStart(2, "0"), 17, x + 25, y + 29, 40, 30, C.ink);
       this.label(`level-title-${id}`, level.title, 16, x + 81, y + 145, 151, 31, C.ink);
-      this.label(`level-state-${id}`, unlocked ? `可挑战 · ${level.waves.length} 波` : `通关第 ${id - 1} 关解锁`, 13, x + 81, y + 174, 154, 27, unlocked ? "#52835a" : C.muted);
+      this.label(`level-state-${id}`, unlocked ? text("ui.GameMenuView.017", level.waves.some(w=>w.enemies.some(k=>ENEMY_CONFIG[k].boss==="major")) ? text("ui.GameMenuView.extra0") : level.waves.some(w=>w.enemies.some(k=>ENEMY_CONFIG[k].boss==="mini")) ? text("ui.GameMenuView.extra1") : text("ui.GameMenuView.extra2"), level.waves.length) : text("ui.GameMenuView.018", id - 1), 13, x + 81, y + 174, 154, 27, unlocked ? "#52835a" : C.muted);
       if (!unlocked) { this.lock(g, x + 81, y + 62, 1.15); }
       this.button(`level-${id}`, { x, y, width: 162, height: 196 }, () => {
-        if (id > this.unlocked) this.notice("关卡未解锁", `通关第 ${id - 1} 关后解锁。`);
+        if (id > this.unlocked) this.notice(text("ui.GameMenuView.019"), text("ui.GameMenuView.020", id - 1));
         else this.startLevel(id);
       });
     }
     const pages = Math.ceil(GAME_CONFIG.maxLevels / 4);
-    this.pageButton("level-prev", "上一页", 31, this.levelPage > 0, () => { this.levelPage--; });
-    this.pageButton("level-next", "下一页", 259, this.levelPage < pages - 1, () => { this.levelPage++; });
+    this.pageButton("level-prev", text("ui.GameMenuView.021"), 31, this.levelPage > 0, () => { this.levelPage--; });
+    this.pageButton("level-next", text("ui.GameMenuView.022"), 259, this.levelPage < pages - 1, () => { this.levelPage++; });
     this.label("level-pagination", `${this.levelPage + 1} / ${pages}`, 16, 195, 602, 90, 40, C.ink);
-    this.label("levels-footer", "点击关卡图片，从开局开始挑战", 13, 195, 657, 315, 30, "#c9d4ab");
+    this.label("levels-footer", text("ui.GameMenuView.023"), 13, 195, 657, 315, 30, "#c9d4ab");
   }
 
   private pageButton(id: string, text: string, x: number, enabled: boolean, action: () => void): void {
@@ -224,33 +228,38 @@ export class GameMenuView {
   }
 
   private drawCollection(): void {
-    this.header("游戏图鉴", "");
+    this.header(text("ui.GameMenuView.024"), "");
     COLLECTION_TABS.forEach((item, index) => {
       const x = 26 + index * 114; const selected = this.tab === item.id;
       this.card(this.background, x, 136, 110, 48, selected ? "#edc87c" : "#e2e6ce", 12);
-      this.label(`tab-${item.id}`, `${item.label}图鉴`, 15, x + 55, 159, 106, 43, C.ink);
-      this.button(`tab-${item.id}`, { x, y: 136, width: 110, height: 48 }, () => { this.tab = item.id; });
+      this.label(`tab-${item.id}`, text("ui.GameMenuView.025", item.label), 15, x + 55, 159, 106, 43, C.ink);
+      this.button(`tab-${item.id}`, { x, y: 136, width: 110, height: 48 }, () => { this.tab = item.id; this.collectionPage = 0; });
     });
     const entries = COLLECTION_ENTRIES.filter(item => item.tab === this.tab);
-    entries.forEach((entry, index) => {
+    const pages = Math.ceil(entries.length / 4);
+    this.collectionPage = Math.min(this.collectionPage, pages - 1);
+    entries.slice(this.collectionPage * 4, this.collectionPage * 4 + 4).forEach((entry, index) => {
       const x = 27 + index % 2 * 173; const y = 202 + Math.floor(index / 2) * 179;
       const unlocked = this.collection.isUnlocked(entry);
       this.card(this.background, x, y, 163, 163, unlocked ? "#fffdf0" : "#e2e7d6", 14);
       this.box(this.background, x + 8, y + 8, 147, 115, 10, unlocked ? "#e7edcf" : "#c6d1bb");
       this.entryPicture(entry, this.art, this.background, `${entry.id}-card`, x + 82, y + 66, 115, !unlocked);
-      this.label(`${entry.id}-name`, unlocked ? entry.name : "???", 17, x + 82, y + 139, 150, 34, C.ink);
+      this.label(`${entry.id}-name`, unlocked ? entry.name : text("ui.unknown"), 17, x + 82, y + 139, 150, 34, C.ink);
       this.button(`entry-${entry.id}`, { x, y, width: 163, height: 163 }, () => { this.dialog = { kind: "entry", entry }; });
     });
     const visible = entries.filter(entry => this.collection.isUnlocked(entry)).length;
-    this.label("collection-count", `${visible} / ${entries.length} 已收录`, 14, 195, 599, 300, 36, C.muted);
-    this.label("collection-footer", this.tab === "bosses" ? "BOSS 尚未开放" : "点击图片，查看特点与夜班故事", 13, 195, 657, 340, 32, "#c9d4ab");
+    this.label("collection-count", text("ui.GameMenuView.026", visible, entries.length), 13, 195, 110, 300, 30, C.muted);
+    this.pageButton("collection-prev", text("ui.GameMenuView.027"), 31, this.collectionPage > 0, () => { this.collectionPage--; });
+    this.pageButton("collection-next", text("ui.GameMenuView.028"), 259, this.collectionPage < pages - 1, () => { this.collectionPage++; });
+    this.label("collection-pagination", `${this.collectionPage + 1} / ${pages}`, 16, 195, 602, 90, 40, C.ink);
+    this.label("collection-footer", text("ui.GameMenuView.029"), 13, 195, 657, 340, 32, "#c9d4ab");
   }
 
   private drawSettings(): void {
-    this.header("设置", "");
-    this.settingRow("music", 149, "音乐", this.audio.musicEnabled, () => this.audio.setMusicEnabled(!this.audio.musicEnabled));
-    this.settingRow("effects", 264, "音效", this.audio.effectsEnabled, () => this.audio.setEffectsEnabled(!this.audio.effectsEnabled));
-    this.label("settings-version", "叮咚夜班开始  ·  v0.6.0", 13, 195, 596, 300, 30, C.muted);
+    this.header(text("ui.GameMenuView.030"), "");
+    this.settingRow("music", 149, text("ui.GameMenuView.031"), this.audio.musicEnabled, () => this.audio.setMusicEnabled(!this.audio.musicEnabled));
+    this.settingRow("effects", 264, text("ui.GameMenuView.032"), this.audio.effectsEnabled, () => this.audio.setEffectsEnabled(!this.audio.effectsEnabled));
+    this.label("settings-version", text("ui.GameMenuView.033",GAME_CONFIG.gameName,globalString("version")), 13, 195, 596, 300, 30, C.muted);
   }
 
   private settingRow(id: string, y: number, title: string, enabled: boolean, action: () => void): void {
@@ -258,7 +267,7 @@ export class GameMenuView {
     this.label(`${id}-title`, title, 21, 102, y + 47, 100, 40, C.ink);
     this.box(this.background, 252, y + 24, 83, 46, 23, enabled ? "#5b865e" : "#a5ae99");
     this.disc(this.background, enabled ? 313 : 274, y + 47, 18, "#fff8df");
-    this.label(`${id}-state`, enabled ? "开" : "关", 13, enabled ? 274 : 314, y + 47, 33, 30, "#fffdf1");
+    this.label(`${id}-state`, enabled ? text("ui.GameMenuView.034") : text("ui.GameMenuView.035"), 13, enabled ? 274 : 314, y + 47, 33, 30, "#fffdf1");
     this.button(id, { x: 31, y, width: 328, height: 96 }, action);
   }
 
@@ -280,11 +289,11 @@ export class GameMenuView {
     this.button("dialog-close", { x: 307, y: 87, width: 48, height: 48 }, () => { this.dialog = null; }, true);
     if (dialog.kind === "entry") {
       const entry = dialog.entry; const unlocked = this.collection.isUnlocked(entry);
-      this.label("dialog-title", unlocked ? entry.name : "未知档案", 23, 177, 119, 244, 44, C.ink, true);
+      this.label("dialog-title", unlocked ? entry.name : text("ui.GameMenuView.036"), 23, 177, 119, 244, 44, C.ink, true);
       this.box(g, 91, 153, 208, 158, 20, "#e0e9c7");
       this.entryPicture(entry, this.modalArt, g, "detail", 195, 228, 163, !unlocked);
       if (!unlocked) {
-        this.label("dialog-unknown", "???", 23, 195, 340, 260, 42, C.ink, true);
+        this.label("dialog-unknown", text("ui.unknown"), 23, 195, 340, 260, 42, C.ink, true);
         this.label("dialog-hint", entry.unlockHint, 16, 195, 405, 270, 90, C.muted, true);
       } else {
         this.label("dialog-category", entry.category, 15, 195, 333, 280, 30, "#678056", true);
@@ -299,19 +308,7 @@ export class GameMenuView {
   }
 
   private entryPicture(entry: CollectionEntry, art: MenuArtView, g: Graphics, key: string, x: number, y: number, size: number, locked: boolean): void {
-    if (entry.imageKey === "boss_silhouette") {
-      const r = size * 0.27;
-      if (entry.id === "boss-fog-guest") {
-        this.box(g, x - r * 0.64, y - r * 0.75, r * 1.28, r * 1.7, r * 0.5, "#3e554b");
-        this.box(g, x - r, y - r * 0.95, r * 2, r * 0.35, 4, "#3e554b");
-        this.box(g, x - r * 0.4, y - r * 1.35, r * 0.8, r * 0.6, 4, "#3e554b");
-        return;
-      }
-      this.disc(g, x, y + 5, r, "#3e554b");
-      this.disc(g, x - r * 0.8, y + 15, r * 0.43, "#3e554b"); this.disc(g, x + r * 0.8, y + 15, r * 0.43, "#3e554b");
-      this.box(g, x - r * 0.8, y - r * 0.9, r * 0.45, r, 5, "#3e554b");
-      this.box(g, x + r * 0.35, y - r * 0.9, r * 0.45, r, 5, "#3e554b");
-    } else art.drawIcon(key, entry.imageKey as MenuIconKind, x, y, size, locked);
+    art.drawIcon(key, entry.imageKey as MenuIconKind, x, y, size, locked);
   }
 
   private button(id: string, rect: Rect, action: () => void, modal = false): void { (modal ? this.modalButtons : this.buttons).push({ id, ...rect, action }); }

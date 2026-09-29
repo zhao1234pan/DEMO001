@@ -1,0 +1,13 @@
+id,key,path,minIntervalMs
+1,build,audio/sfx/sfx_ui_build,0
+2,upgrade,audio/sfx/sfx_ui_upgrade,0
+3,sprout,audio/sfx/sfx_battle_sprout,80
+4,frost,audio/sfx/sfx_battle_frost,120
+5,bloom,audio/sfx/sfx_battle_bloom,160
+6,defeat,audio/sfx/sfx_battle_defeat,90
+7,leak,audio/sfx/sfx_battle_leak,160
+8,wave,audio/sfx/sfx_system_wave,0
+9,win,audio/sfx/sfx_system_win,0
+10,lose,audio/sfx/sfx_system_lose,0
+11,prop,audio/sfx/sfx_battle_prop,0
+12,bgm,audio/music/bgm_night_shift,0

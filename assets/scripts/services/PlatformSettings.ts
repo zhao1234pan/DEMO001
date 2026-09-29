@@ -1,3 +1,4 @@
+import { text } from "../config/ConfigTables";
 import {
   checkDouyinSidebar, hasDouyinSidebarApi, isDouyinSettingsRuntime, navigateDouyinSidebar,
 } from "../platform/douyin/DouyinSettings";
@@ -39,12 +40,12 @@ export class PlatformSettings {
   openSidebar(): Promise<PlatformActionResult> {
     // 探测在展示入口前完成，此处同步发起跳转，保留本次点击的用户手势。
     if (!this.capabilities.sidebar) {
-      return Promise.resolve({ ok: false, message: "当前环境暂不支持侧边栏入口。" });
+      return Promise.resolve({ ok: false, message: text("ui.PlatformSettings.0") });
     }
-    const unavailable = { ok: false, message: "暂时无法打开侧边栏，请稍后重试。" };
+    const unavailable = { ok: false, message: text("ui.PlatformSettings.1") };
     return this.withCallback<PlatformActionResult>((finish) => {
       navigateDouyinSidebar(
-        () => finish({ ok: true, message: "已打开侧边栏，可从这里再次进入游戏。" }),
+        () => finish({ ok: true, message: text("ui.PlatformSettings.2") }),
         () => finish(unavailable),
       );
     }, unavailable);

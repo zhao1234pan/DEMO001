@@ -1,3 +1,4 @@
+import { rows, numeric } from "../../config/ConfigTables";
 import type { LevelConfig, MapPoint } from "./LevelConfig";
 
 export type SceneDecorationKind = "planter" | "tree";
@@ -11,80 +12,16 @@ export interface SceneDecoration {
   groupId: number;
 }
 
-type DecorationAnchor = readonly [SceneDecorationKind, number, number];
 type Bounds = readonly [number, number, number, number];
-
-const DECORATION_SIZES: Readonly<Record<SceneDecorationKind, readonly [number, number]>> = {
-  planter: [48, 48],
-  tree: [40, 56],
-};
-
-// 根据十关真实空白矩形逐关排布，不用随机候选填数量。横排的树/花池以完整画布底边对齐；
-// 纵向组合留8～16间距形成狭长绿化区。单件也可独立成组，不为凑两件挤占布阵空间。
-const COURTYARD_GROUPS: Readonly<Record<number, readonly (readonly DecorationAnchor[])[]>> = {
-  1: [
-    [["tree", 196, 128], ["planter", 248, 132]],
-    [["tree", 30, 298]],
-    [["planter", 354, 484]],
-  ],
-  2: [
-    [["tree", 54, 526], ["planter", 106, 530]],
-    [["tree", 352, 380], ["planter", 352, 442]],
-  ],
-  // 密集纵向路线没有合法的40×56树位，仅在右上和左下各保留一个完整花池。
-  3: [
-    [["planter", 354, 108]],
-    [["planter", 36, 576]],
-  ],
-  4: [
-    [["tree", 56, 528], ["planter", 108, 532]],
-    [["tree", 352, 370], ["planter", 352, 438]],
-  ],
-  5: [
-    [["tree", 64, 550], ["planter", 116, 554]],
-    [["tree", 354, 142], ["planter", 354, 204]],
-  ],
-  6: [
-    [["tree", 52, 120], ["planter", 104, 124]],
-    [["tree", 278, 132], ["planter", 330, 136]],
-    [["planter", 30, 360]],
-  ],
-  7: [
-    [["tree", 304, 304], ["planter", 356, 308]],
-    [["tree", 32, 484], ["planter", 84, 488]],
-  ],
-  8: [
-    [["tree", 64, 550], ["planter", 116, 554]],
-    [["tree", 350, 380], ["planter", 354, 444]],
-    [["planter", 120, 120]],
-  ],
-  9: [
-    [["tree", 46, 550], ["planter", 98, 554]],
-    [["tree", 330, 370], ["planter", 330, 432]],
-    [["planter", 52, 196]],
-  ],
-  10: [
-    [["tree", 64, 550], ["planter", 116, 554]],
-    [["tree", 352, 370], ["planter", 352, 434]],
-    [["tree", 52, 212]],
-  ],
-};
 
 /** 纯布局函数：不依赖Cocos、时间或随机数，不修改关卡；后续路线变更使位置失效时只省略，不偷偷搬到别处。 */
 export function selectSceneDecorations(level: LevelConfig, width: number): SceneDecoration[] {
   const result: SceneDecoration[] = [];
   if (!Number.isFinite(width) || width <= 0 || level.pathPoints.length < 2) return result;
-  const groups = COURTYARD_GROUPS[level.id] ?? [];
-  groups.forEach((anchors, index) => {
-    for (const [kind, x, y] of anchors) {
-      const [imageWidth, imageHeight] = DECORATION_SIZES[kind];
-      const decoration: SceneDecoration = { kind, position: [x, y], width: imageWidth, height: imageHeight, groupId: index + 1 };
-      const bounds = boundsOf(decoration);
-      if (!fitsGameplay(level, width, bounds)) continue;
-      if (result.some((other) => overlap(bounds, boundsOf(other), 4))) continue;
-      result.push(decoration);
-    }
-  });
+  for(const row of rows("Decoration").filter(r=>Number(r.mapId)===level.id)) {
+    const decoration:SceneDecoration={kind:row.kind as SceneDecorationKind,position:[numeric(row,"x"),numeric(row,"y")],width:numeric(row,"width"),height:numeric(row,"height"),groupId:numeric(row,"groupId")};
+    const bounds=boundsOf(decoration); if(!fitsGameplay(level,width,bounds)||result.some(other=>overlap(bounds,boundsOf(other),4)))continue; result.push(decoration);
+  }
   return result;
 }
 

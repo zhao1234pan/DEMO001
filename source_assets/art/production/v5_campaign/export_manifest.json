@@ -1,0 +1,22 @@
+{
+  "mode": "built-in image_gen",
+  "note": "透明源图按网格裁出，等比缩放并统一脚底；未拉伸或重绘旧角色。",
+  "atlases": [
+    {
+      "target": "assets/art/gameplay/towers/atlas_staff_expansion.png",
+      "bytes": 186850,
+      "sha256": "3e3eee9f546aef43c536e7801218fdd357d624a71cfa7957607b8693784a0b2d",
+      "frameSize": 160,
+      "padding": 16,
+      "columns": 3
+    },
+    {
+      "target": "assets/art/gameplay/enemies/atlas_campaign_enemies.png",
+      "bytes": 286028,
+      "sha256": "3ed0c9d2a46a3ea3233fc95a054c0c6ac31661ba6a8a2b7aa4ec7cdb77002519",
+      "frameSize": 160,
+      "padding": 16,
+      "columns": 3
+    }
+  ]
+}

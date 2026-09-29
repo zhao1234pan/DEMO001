@@ -1,0 +1,204 @@
+{
+  "Global": {
+    "fields": {
+      "id": "int",
+      "key": "string",
+      "type": "string",
+      "value": "string",
+      "note": "string"
+    }
+  },
+  "Staff": {
+    "fields": {
+      "id": "int",
+      "key": "string",
+      "name": "string",
+      "cost": "int",
+      "color": "string",
+      "range": "int",
+      "rate": "float",
+      "damage": "int",
+      "shotColor": "string",
+      "slow": "int",
+      "splash": "int",
+      "pierce": "int",
+      "chain": "int",
+      "burn": "int",
+      "shred": "int",
+      "targets": "int",
+      "projectile": "string",
+      "shotSpeed": "int",
+      "pierceLength": "int",
+      "pierceWidth": "int",
+      "pierceRatio": "float",
+      "chainRadius": "int",
+      "chainRatio": "float",
+      "burnSeconds": "int",
+      "markSeconds": "int",
+      "slowBase": "float",
+      "slowPerLevel": "float",
+      "arcHeight": "int",
+      "laneBend": "int",
+      "spriteWidth": "float"
+    }
+  },
+  "Enemy": {
+    "fields": {
+      "id": "int",
+      "key": "string",
+      "hp": "int",
+      "speed": "int",
+      "reward": "int",
+      "radius": "int",
+      "color": "string",
+      "damage": "int",
+      "name": "string",
+      "boss": "string",
+      "clearRatio": "float",
+      "legacyUnlock": "int",
+      "spriteHeight": "int",
+      "spriteScale": "float"
+    }
+  },
+  "Theme": {
+    "fields": {
+      "id": "int",
+      "key": "string",
+      "name": "string",
+      "ground": "string",
+      "road": "string",
+      "edge": "string",
+      "surface": "string",
+      "mark": "string",
+      "tile": "string",
+      "seam": "string"
+    }
+  },
+  "Map": {
+    "fields": {
+      "id": "int",
+      "theme": "string"
+    }
+  },
+  "MapPoint": {
+    "fields": {
+      "id": "int",
+      "mapId": "int",
+      "order": "int",
+      "x": "int",
+      "y": "int"
+    }
+  },
+  "Spot": {
+    "fields": {
+      "id": "int",
+      "mapId": "int",
+      "spotIndex": "int",
+      "x": "int",
+      "y": "int"
+    }
+  },
+  "Obstacle": {
+    "fields": {
+      "id": "int",
+      "mapId": "int",
+      "spotIndex": "int",
+      "kind": "string",
+      "hp": "int",
+      "reward": "int"
+    }
+  },
+  "Level": {
+    "fields": {
+      "id": "int",
+      "mapId": "int",
+      "title": "string",
+      "goal": "string",
+      "initialCoins": "int",
+      "initialLives": "int",
+      "enemyHealthScale": "float",
+      "enemySpeedScale": "float",
+      "availableTowers": "string"
+    }
+  },
+  "Wave": {
+    "fields": {
+      "id": "int",
+      "levelId": "int",
+      "order": "int",
+      "spawnInterval": "float",
+      "announcement": "string"
+    }
+  },
+  "WaveGroup": {
+    "fields": {
+      "id": "int",
+      "waveId": "int",
+      "order": "int",
+      "enemy": "string",
+      "count": "int"
+    }
+  },
+  "Collection": {
+    "fields": {
+      "id": "int",
+      "key": "string",
+      "tab": "string",
+      "kind": "string",
+      "imageKey": "string",
+      "category": "string",
+      "traits": "string",
+      "story": "string"
+    }
+  },
+  "Audio": {
+    "fields": {
+      "id": "int",
+      "key": "string",
+      "path": "string",
+      "minIntervalMs": "int"
+    }
+  },
+  "I18": {
+    "fields": {
+      "id": "int",
+      "key": "string",
+      "zhCN": "string"
+    }
+  },
+  "Decoration": {
+    "fields": {
+      "id": "int",
+      "mapId": "int",
+      "kind": "string",
+      "x": "int",
+      "y": "int",
+      "width": "int",
+      "height": "int",
+      "groupId": "int"
+    }
+  },
+  "ArtAtlas": {
+    "fields": {
+      "id": "int",
+      "key": "string",
+      "path": "string",
+      "width": "int",
+      "height": "int"
+    }
+  },
+  "ArtFrame": {
+    "fields": {
+      "id": "int",
+      "atlas": "string",
+      "x": "int",
+      "y": "int",
+      "width": "int",
+      "height": "int",
+      "battle": "string",
+      "menu": "string",
+      "ui": "string",
+      "scenery": "string"
+    }
+  }
+}
