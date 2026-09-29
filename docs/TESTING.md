@@ -2,6 +2,43 @@
 
 ## 最新自动检查
 
+### 0.5.0 首页选关与存档异常恢复（2026-09-29）
+
+#### 异常与逻辑回归
+
+- 基线bfb493d六项存档问题独立复现：读/写异常、已读取值再读异常、空白读成0、启动中断、2.5关ID与配置分叉。复核还发现新会话读失败而写正常时，旧解锁8会被第1关通关写成2，旧最高纪录有同类回退。修复前报告分别保留。
+- 最终存档/入口19/19通过（13:04:35 UTC）：坏值与读写故障、旧8保护/读取恢复合并/之后通8存9、小数2.5及越界99写回合法整数、重复待写取最大、普通倍速3→1；首页冻结/继续/锁关/重玩、暂停经首页免费重开、胜负返回/免费重试/第10关再挑战、GM隔离、正式关闭GM、评审绕过首页、标签往返和首页不每帧读存储。
+- 专项每组加载真实TS模块，Cocos节点、绘制、音频及存储使用替身；胜负临界状态由夹具准备，非自然通关。最高记录在后续读取时尝试恢复，没有后台定时写；存储仍失败时不保证跨进程保留。
+- 既有机制19/19通过。最终60局固定策略与0.4.1逐局对象完全一致（13:06:34 UTC）：混合＋免费道具30/30通、纯豆包无道具21/30通，8～10关三速失败仍保留；合计51通/9败、零广告、执行期间源码无变化。不能等同人工胜率或新增真机性能结果。
+- 隔离/产物6项通过（13:08:48 UTC）：GameConfig全文、十关配置正文不变；18个战斗/经济/广告方法统一换行后逐字相同；平台广告及抖音适配原样；抖音产物有正式首页和最高记录保护、无GM入口文案，testappId/竖屏正确。首次方法比较仅因Git LF与工作区CRLF差异失败，统一换行后通过，没有为测试更改业务。
+- Creator 3.8.8严格TypeScript及git diff --check通过。
+
+#### 构建与浏览器
+
+- 最终Web Mobile 21:05:19、抖音小游戏21:06:45 Finished。Web CLI进程退出码36，以Finished、产物核查及实际运行判断结果；日志仍有既有默认压缩参数和字符串debug参数提示，不声称无警告。
+- Web：G:\gptwork\foundation-web-build\web-mobile；抖音：G:\gptwork\foundation-mini-build\bytedance-mini-game。抖音66文件、4174661字节，主脚本88248字节，SHA256为1068b48f5a2f690e124fd3b23b968ae185f663ace2c7d631e0dca0db7ce710ff，仍是测试App ID，未发布。
+- 浏览器现有存档已解锁5：点第6关保持首页，第1关正常进入；暂停“结束本局并返回”回首页，“继续闯关”进入第5关。第5关不布阵自然漏怪失败后，“重新开始”恢复270零钱、7耐久、0/4波。未点击广告；这不是第5关通关证据。胜利与第10关流程通过真实逻辑专项验证，没有声称浏览器人工通关。
+- 查看375×667、750×1334、375×812、375×834首页，标题、三肖像、双列十关及页脚完整。大尺寸用固定iframe游戏视口，外层仅缩放展示；通过canvas DOM尺寸核对。最终375宽实点检查暂停和失败页新按钮，未覆盖全屏幕触控或真机。页面刷新仍读回既有解锁5，本轮未清空旧存档。
+- 浏览器曾捕获一次无来源URL的MutationObserver.observe参数错误（12:56:47 UTC），与历史评审相同，未确定归属；画布和流程可用，不把浏览器零错误作为结论。调整桌面视口时有瞬间裁切，布局稳定后重新检查，不把过渡截图当验收图。
+
+#### 微信独立构建补充
+
+- 用户最新确认微信基础信息提交完成，正式App ID为wx26d4fc297246037b。基于实现提交4a8d347，新增settings/builds/wechatgame.json；Cocos Creator 3.8.8微信目标于21:21:17 Finished（57秒）。日志有配置无版本号、引擎Rollup及worker退出提示，不能写为零警告。
+- 产物G:\gptwork\wechat-build\wechatgame共67文件、3817609字节；project.config.json的appid与用户提供值一致，compileType=game；game.json为portrait。assets/main/index.js为88248字节，SHA256为1068b48f5a2f690e124fd3b23b968ae185f663ace2c7d631e0dca0db7ce710ff，与本轮抖音业务主脚本一致。包含正式首页/锁关/返回文案，无GM入口/面板标签；调试状态字段仍保留。
+- 微信开发者工具运行：未执行；真机测试：未执行。仅核查两个常见安装路径未发现CLI，不能据此断言整机未安装。胶囊与微信广告SDK未接入，当前非抖音广告仍走既有模拟分支。本次仅构建及静态产物核查通过，未上传、未发布。
+- 命令及平台边界见WECHAT_RELEASE；日志为G:\gptwork\creator-foundation-wechat.stdout.log及stderr.log。构建配置不含账号秘密，未索取或记录AppSecret。
+
+#### 证据与遗留
+
+- 首页、暂停和失败实际浏览器截图在G:\gptwork\foundation-evidence；不是生成图或固定布阵。SHA256依次为30db20ed594d96ad152edc58b7bba50697417c9534edfd97e7eaf40ee85ab855、574393473c936d4ecc87a8bb4be5df2f88bfddbda5a1fe26fce9e5b5e6ed8034、9bc651beb1d0a7550d8ea86efdbd5882d746bfa311e7a5d6aa3d1d82de267a1e。
+
+
+- Web/抖音构建与测试时源码原始字节SHA256（可能含CRLF；Git按LF保存）：GameRoot fb90ab17e2940e14ca4832f45bca85fac5bcfff1920fb54aa36a30c72fb6c81e；PlatformService 657a8fc6a2ce8e353fa74ada80a5cc682aadb970d848daf1d32645514114f99b；LevelConfig 827b554f1c3f35cb117e2a235d2e1b0e870d380d3c2a92de30c2e3890b38c341。
+- 三模块统一LF后SHA256分别为：GameRoot c914a79766b277199efc6c7ebc84ecb91389f0aa50c19695b60da95a2e3fc977；PlatformService 967aafac5112e8ccf5bbb6f70d5985424805fe97f8a595d9572cf98d96baf320；LevelConfig 18651f85773b48cbcfc5d500c398abd3731e3c026ba120b90df06e5649341bb7。微信构建后核对与原验收源码一致。
+- 辅助文件仅G:\gptwork：save-entry-regression.cjs、save-entry-baseline-report、save-entry-pre-monotonic-*、save-entry-monotonic-before-report、save-entry-monotonic-regression-report、foundation-runtime-regression.cjs、foundation-validation中的报告与comparison-to-0.4.1.json、foundation-contract-check.cjs及foundation-contract-report.json、creator-foundation-web/mini-final.stdout/stderr.log。历史证据不覆盖；另一电脑按本文断言重建，不依赖本机辅助路径。
+- P2触控边界已复现：A按下→B按下→A松开→A再次按下/松开，B仍按住时可能触发新点击；真实业务配触点替身复现免费零钱被使用。本轮未修，不把既有多触检查通过称为覆盖所有交错序列。
+- 未完成：人工十关/多种布阵、低端安卓性能/音频/异形屏、真实抖音胶囊和广告、微信开发者工具运行/SDK/真机。广告既有缺配置发奖与异常请求问题保持原样；软著申请暂缓。
+
 ### 0.4.2 正式中文名称统一（2026-09-29）
 
 - 正式名称为「叮咚夜班开始」，由GAME_CONFIG.gameName提供，顶栏不再使用「夜班便利店」简称；106×28逻辑文字框、字号15及相邻控件几何不变。

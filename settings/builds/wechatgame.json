@@ -1,0 +1,14 @@
+{
+  "taskName": "wechatgame",
+  "platform": "wechatgame",
+  "buildPath": "../gptwork/wechat-build",
+  "startScene": "e5b6646d-6245-405e-a983-5e58b2d32c2c",
+  "debug": false,
+  "mainBundleCompressionType": "merge_dep",
+  "packages": {
+    "wechatgame": {
+      "appid": "wx26d4fc297246037b",
+      "orientation": "portrait"
+    }
+  }
+}
