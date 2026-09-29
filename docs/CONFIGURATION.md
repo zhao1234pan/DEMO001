@@ -4,7 +4,7 @@
 
 ## 目录与日常操作
 
-- design/tables：17张原始XLSX，均为可直接编辑的独立工作簿。
+- design/tables：18张原始XLSX，均为可直接编辑的独立工作簿。
 - tools/config：项目自带JAR、客户端Java入口、字段协议和校验器；不依赖参考项目仍存在。
 - assets/resources/config：运行时CSV及manifest.json，Cocos按TextAsset加载。
 - assets/scripts/config：CSV解析、跨表校验和启动加载；业务模块在配置全部就绪后初始化。
@@ -37,6 +37,7 @@ Creator启动时加载项目构建扩展；GUI已打开的工程在新增扩展�
 | Decoration | 57 | mapId、装饰类别、坐标、尺寸与组号 |
 | ArtAtlas | 7 | 图集逻辑键、Bundle内路径与尺寸 |
 | ArtFrame | 35 | atlas键、切片坐标及尺寸 |
+| UiPrefab | 22 | 稳定 UI 键、resources 下的原生预制体路径（不含扩展名） |
 
 Level.availableTowers用竖线分隔Staff.key。Level→Map→MapPoint/Spot/Obstacle/Decoration；Wave→Level，WaveGroup→Wave及Enemy。I18、ArtAtlas、ArtFrame等均使用稳定key，不把表格行号当业务ID。删除或改key时必须同步所有引用。
 
@@ -59,7 +60,7 @@ CSV采用UTF-8、LF及标准双引号转义；文本可包含逗号、引号和�
 ## 代码例外及理由
 
 - 算法结构、枚举分派和协议字段名保留在代码：例如实现减速/穿透/连锁的执行顺序、存档键、CSV解析器及Cocos API。
-- 750×1334设计尺寸、390逻辑宽、向量和碰撞公式、输入热区及UI几何/线宽等保留为引擎表现常量；改变它们涉及场景坐标与适配，不能作为独立策划数值随意调整。现有颜色/字体/布局属于表现代码；后续Prefab迁移独立进行。
+- 750×1334设计尺寸、390逻辑宽、向量和碰撞公式、输入热区及UI几何/线宽等保留为引擎表现常量；改变它们涉及场景坐标与适配，不能作为独立策划数值随意调整。固定UI颜色、字体、布局现已存入原生Prefab，供Creator直接编辑；它们属于引擎美术资产，不在XLSX复制第二套节点坐标。UiPrefab.xlsx管理资源引用，I18与ArtAtlas/ArtFrame仍是文字和图片来源，运行状态不从Prefab内的预览文本读取业务参数。动态战场几何继续由原算法绘制。
 - 配置尚未加载时的“加载中…”和失败重试提示保留为最小启动文案，否则I18自身无法加载时无从报错。开发日志和导表错误面向开发者，不进入游戏I18。
 - settings/builds及.meta、扩展package.json属于引擎构建协议，仍用引擎要求的JSON。schema/manifest为工具协议和自动清单，不与策划数据并列维护。
 
@@ -70,3 +71,7 @@ CSV采用UTF-8、LF及标准双引号转义；文本可包含逗号、引号和�
 vendor/zz-excel2csv.jar复制自用户指定biu_design导表工具，复用其Apache POI解析能力和五行表头规范。仅移除原JAR Manifest中Windows无效的Class-Path，不改类文件。ClientExport.java为本项目客户端适配入口，不调用原工具的服务端/JSON/TS导出主函数。原项目未修改，未复制JDK安装包或服务端输出。
 
 新项目复用步骤见 tools/config/NEW_PROJECT.md。构建钩子采用[Cocos Creator官方构建扩展接口](https://docs.cocos.com/creator/3.8/manual/zh/editor/publish/custom-build-plugin.html)；美术分包采用[官方本地小游戏分包机制](https://docs.cocos.com/creator/3.8/manual/zh/editor/publish/subpackage.html)，无需资源服务器。
+
+## UI 资源门禁
+
+UiPrefab是第18张表。config:export同步Prefab内I18预览与ArtFrame切片预览，只更新这些绑定，不改变手工布局。config:check以及所有Creator构建同时检查22个资源、meta、节点引用、必需绑定路径、I18与图片预览是否过期。缺少节点/资源或者未导出的原始表均阻止构建；校验器不自动补造页面。详见UI_PREFABS.md。

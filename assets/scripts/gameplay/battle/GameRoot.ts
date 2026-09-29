@@ -12,7 +12,9 @@ import { PlatformService } from "../../services/PlatformService";
 import { AudioService } from "../../services/AudioService";
 import { BattleArtView } from "./BattleArtView";
 import { BattleUiView } from "./BattleUiView";
-import { GameMenuView } from "./GameMenuView";
+import { PrefabGameMenuView as GameMenuView } from "../../ui/PrefabGameMenuView";
+import { UiPrefabs } from "../../ui/UiPrefabs";
+import { BattlePrefabView } from "../../ui/BattlePrefabView";
 import { CollectionProgress } from "./CollectionData";
 import { BattleMapView } from "./BattleMapView";
 import { BattleSceneryView } from "./BattleSceneryView";
@@ -75,6 +77,8 @@ interface Particle { x: number; y: number; vx: number; vy: number; size: number;
 @ccclass("GameRoot")
 export class GameRoot extends Component {
   private contentRoot!: Node;
+  private uiPrefabs!: UiPrefabs;
+  private battleUi!: BattlePrefabView;
   private staticG!: Graphics;
   private mapView!: BattleMapView;
   private scenery!: BattleSceneryView;
@@ -144,11 +148,25 @@ export class GameRoot extends Component {
   private readonly resizeHandler = (): void => { this.configureResolution(); this.applyLayout(); this.scheduleOnce(() => this.applyLayout(), 0); };
 
   onLoad(): void {
-    if(configsReady()) { this.boot(); return; }
-    const loading = new Node("ConfigLoading"); loading.layer=Layers.Enum.UI_2D; this.node.addChild(loading);
-    loading.addComponent(UITransform).setContentSize(650,180); const label=loading.addComponent(Label); label.fontSize=28; label.string="加载中…";
-    const start = () => { label.string="加载中…"; void loadGameConfigs().then(()=>{if(this.disposed)return; loading.destroy(); this.boot();}).catch(error=>{console.error("Game configuration load failed",error); if(!this.disposed)label.string="配置加载失败\n点击重试";}); };
-    loading.on(Node.EventType.TOUCH_END,start); start();
+    // 配置就绪后统一加载预制体；重试期间禁止重复启动同一批资源。
+    const loading = new Node("ConfigLoading"); loading.layer = Layers.Enum.UI_2D; this.node.addChild(loading);
+    loading.addComponent(UITransform).setContentSize(650, 180);
+    const label = loading.addComponent(Label); label.fontSize = 28;
+    let busy = false;
+    const start = async (): Promise<void> => {
+      if (busy || this.disposed) return;
+      busy = true; label.string = "加载中…";
+      try {
+        if (!configsReady()) await loadGameConfigs();
+        const assets = await UiPrefabs.load();
+        if (this.disposed) { assets.destroy(); return; }
+        this.uiPrefabs = assets; loading.destroy(); this.boot();
+      } catch (error) {
+        console.error("Game UI/configuration load failed", error);
+        if (!this.disposed) label.string = "界面加载失败\n点击重试";
+      } finally { busy = false; }
+    };
+    loading.on(Node.EventType.TOUCH_END, () => { void start(); }); void start();
   }
 
   private boot(): void {
@@ -172,6 +190,7 @@ export class GameRoot extends Component {
     this.art = new BattleArtView(this.contentRoot, W, H);
     this.dynamicG = this.createGraphics("DynamicGame");
     this.uiArt = new BattleUiView(this.contentRoot, W, H);
+    this.battleUi = new BattlePrefabView(this.contentRoot, this.uiPrefabs);
     this.audio = new AudioService(this.node, !this.mapReview);
     this.createLabels();
     const savedSpeed = this.mapReview ? 1 : PlatformService.getNumber("night_store_game_speed", 1);
@@ -182,7 +201,7 @@ export class GameRoot extends Component {
     else { this.unlockedLevel = this.currentLevelId; this.screen = "home"; }
     if (!this.mapReview) {
       this.collection = new CollectionProgress(this.unlockedLevel);
-      this.menu = new GameMenuView(this.contentRoot, this.audio, this.collection, id => this.startOfficialLevel(id));
+      this.menu = new GameMenuView(this.contentRoot, this.uiPrefabs, this.audio, this.collection, id => this.startOfficialLevel(id));
       this.menu.show(this.unlockedLevel);
     }
     this.applyLayout();
@@ -215,6 +234,8 @@ export class GameRoot extends Component {
     PlatformService.offHide(this.hideHandler);
     PlatformService.offShow(this.showHandler);
     this.menu?.destroy();
+    this.battleUi?.destroy();
+    this.uiPrefabs?.destroy();
     this.audio?.destroy();
     this.art?.destroy();
     this.uiArt?.destroy();
@@ -233,18 +254,13 @@ export class GameRoot extends Component {
     // 紧凑安全区宁可缩小格位热区，也不让相邻50间距的格位互相抢点击；常规750宽时为88设计像素。
     this.hitSize = Math.min(BATTLE_UI.minimumHit, layout.hitSize);
     for (const [key, label] of this.labels) {
+      if (this.battleUi.fixedLabels.has(key)) continue;
       label.fontSize = Math.max(this.labelSizes.get(key) ?? 13, 24 / layout.scale);
       label.lineHeight = label.fontSize + 4;
     }
     this.drawStaticMap();
     // 顶栏贴安全区顶部，道具贴安全区底部；地图保持等比居中，不拉长道路。
-    const headerLabels: Array<[string, number, number]> = [
-      ["title", 85, 24], ["level", 43, 51], ["wave", 109, 51],
-      ["coin", 189, 36], ["lives", 247, 36], ["speed", 293, 36], ["pause", 353, 36],
-    ];
-    headerLabels.forEach(([key, x, y]) => this.setLabelPosition(key, x, y + this.layoutTop));
-    PROP_BUTTONS.forEach((button) => this.setLabelPosition(`prop-${button.kind}`, button.x + button.width / 2, this.layoutBottom - 23));
-    if (DEBUG) this.setLabelPosition("gm-entry", 37, this.layoutBottom - 36);
+    this.battleUi.layout(this.layoutTop, this.layoutBottom);
   }
 
   private configureResolution(): void {
@@ -259,8 +275,14 @@ export class GameRoot extends Component {
     view.setDesignResolutionSize(DESIGN_W, DESIGN_H, policy);
   }
 
-  private footerRect(rect: HitRect): HitRect { return { ...rect, y: rect.y + this.layoutBottom - H }; }
-  private headerRect(rect: HitRect): HitRect { return { ...rect, y: rect.y + this.layoutTop }; }
+  private footerRect(rect: HitRect): HitRect {
+    if (rect === GM_BUTTON) return this.battleUi.gmRect("Entry");
+    const prop = PROP_BUTTONS.find(item => item === rect);
+    return prop ? this.battleUi.propRect(prop.kind) : { ...rect, y: rect.y + this.layoutBottom - H };
+  }
+  private headerRect(rect: HitRect): HitRect {
+    return this.battleUi.headerRect(rect === BATTLE_UI.pause ? "Pause" : "Speed");
+  }
 
   private buttonHit(rect: HitRect, x: number, y: number): boolean {
     // 按钮允许透明热区大于底板；按钮之间预留空隙，安全区压缩时也保持88设计像素的点击范围。
@@ -297,58 +319,23 @@ export class GameRoot extends Component {
   }
 
   private createLabels(): void {
-    this.makeLabel("boss-status", "", 13, 195, 101, 340, 25, "#61445f");
-    this.makeLabel("title", GAME_CONFIG.gameName, 15, 85, 24, 106, 28, "#fff2cd");
-    this.makeLabel("level", "", 13, 43, 51, 64, 24, "#f9e7b7");
-    this.makeLabel("wave", "", 13, 109, 51, 62, 24, "#e0ecd1");
+    for (const [key, label] of this.battleUi.labels) { this.labels.set(key, label); this.labelSizes.set(key, label.fontSize); }
     this.makeLabel("entry-mark", text("ui.GameRoot.001"), 13, 0, 0, 48, 22, "#fff4d1");
     this.makeLabel("goal-mark", text("ui.GameRoot.002"), 13, 0, 0, 60, 22, "#fff4d1");
-    this.makeLabel("coin", "", 17, 189, 36, 44, 38, "#4b422e");
-    this.makeLabel("lives", "", 17, 247, 36, 24, 38, "#4b422e");
-    this.makeLabel("speed", "×1", 17, 293, 36, 50, 40, "#fff9df");
-    this.makeLabel("pause", "Ⅱ", 21, 353, 36, 50, 40, "#4b422e");
-    KINDS.forEach((kind) => {
-      this.makeLabel(`build-${kind}`, TOWER_CONFIG[kind].name, 16, 0, 0, 58, 24, "#17352e");
-      this.makeLabel(`build-cost-${kind}`, `●${TOWER_CONFIG[kind].cost}`, 13, 0, 0, 58, 20, "#8c6a24");
-    });
-    this.makeLabel("context-upgrade", "", 16, 0, 0, 96, 46, "#fff9df");
-    this.makeLabel("context-sell", "", 16, 0, 0, 96, 46, "#fff9df");
-    this.makeLabel("obstacle-info", "", 13, 0, 0, 164, 30, "#fff9df");
-    PROP_BUTTONS.forEach((button) => this.makeLabel(`prop-${button.kind}`, "", 13, button.x + button.width / 2, button.y + 53, button.width - 8, 22, "#4b422e"));
-    this.makeLabel("toast", "", 12, 195, 101, 290, 30, "#fff9df");
     this.makeLabel("next-wave-title", "", 13, 0, 0, 82, 22, "#32724c");
     this.makeLabel("next-wave-number", "", 24, 0, 0, 58, 32, "#17352e");
-    this.makeLabel("battle-feedback", "", 12, 0, 0, 150, 26, "#17352e");
-    this.makeLabel("overlayTitle", "", 27, 195, 284, 286, 45, "#17352e");
-    this.makeLabel("overlayStats", "", 14, 195, 340, 270, 58, "#32724c");
-    this.makeLabel("overlayPrimary", "", 17, 195, 412, 246, 48, "#fff9df");
-    this.makeLabel("overlayNote", "", 11, 195, 454, 270, 24, "#71877d");
-    this.makeLabel("overlaySecondary", "", 17, 195, 498, 246, 48, "#fff9df");
-    this.makeLabel("overlayHome", text("ui.GameRoot.003"), 16, 195, 488, 246, 48, "#4b624c");
-    if (DEBUG) {
-      this.makeLabel("gm-entry", "GM", 16, 37, H - 36, 50, 48, "#fff9df");
-      this.makeLabel("gm-title", text("ui.GameRoot.004"), 21, 195, 148, 220, 34, "#17352e");
-      this.makeLabel("gm-note", text("ui.GameRoot.005"), 13, 195, 183, 280, 24, "#71877d");
-      this.makeLabel("gm-close", text("ui.GameRoot.006"), 15, 317, 148, 50, 48, "#fff9df");
-      this.makeLabel("gm-current", "", 11, 195, 516, 250, 26, "#32724c");
-      this.makeLabel("gm-progress", text("ui.GameRoot.007"), 16, 195, 558, 160, 48, "#fff9df");
-      GM_LEVEL_BUTTONS.forEach((item) => this.makeLabel(`gm-level-${item.levelId}`, "", 12, item.x + item.width / 2, item.y + item.height / 2, item.width, item.height, "#17352e"));
-    }
+    this.makeLabel("battle-feedback", "", 13, 0, 0, 150, 26, "#17352e");
   }
 
   private makeLabel(key: string, value: string, size: number, x: number, y: number, width: number, height: number, hex: string, align = HorizontalTextAlignment.CENTER): Label {
-    const node = new Node(key);
-    node.layer = Layers.Enum.UI_2D;
-    node.setPosition(x - W / 2, H / 2 - y);
-    this.contentRoot.addChild(node);
-    node.addComponent(UITransform).setContentSize(width, height);
-    const label = node.addComponent(Label);
-    // 390逻辑单位的13号字约等于25设计像素，统一守住辅助文字24像素下限。
-    label.string = value; label.fontSize = Math.max(13, size); label.lineHeight = Math.max(13, size) + 4; label.color = this.color(hex);
+    // 仅世界坐标标记和动态反馈复用此控件；固定面板不走程序排版。
+    const root = this.uiPrefabs.create("floating_label", this.contentRoot);
+    const label = root.getChildByName("Text")!.getComponent(Label)!;
+    label.node.name = key; label.node.setPosition(x - W / 2, H / 2 - y);
+    label.node.getComponent(UITransform)!.setContentSize(width, height);
+    label.string = value; label.fontSize = Math.max(13, size); label.lineHeight = label.fontSize + 4; label.color = this.color(hex);
     label.horizontalAlign = align; label.verticalAlign = VerticalTextAlignment.CENTER;
-    this.labels.set(key, label);
-    this.labelSizes.set(key, Math.max(13, size));
-    return label;
+    this.labels.set(key, label); this.labelSizes.set(key, label.fontSize); return label;
   }
 
   private color(hex: string, alpha = 255): Color {
@@ -372,6 +359,7 @@ export class GameRoot extends Component {
     this.unitBaseG.clear();
     this.art.beginFrame();
     this.uiArt.beginFrame();
+    this.battleUi.beginFrame(this.screen === "home");
     if (this.screen === "home") {
       this.art.endFrame(); this.uiArt.endFrame();
       for (const key of this.labels.keys()) this.showLabel(key, false);
@@ -555,65 +543,21 @@ export class GameRoot extends Component {
     if (enemy.slow > 0) this.ring(g, enemy.x, enemy.y, enemy.radius + 3, "#b4f6ff", 0.7, 2);
   }
 
-  private drawPanels(g: Graphics): void {
-    g.fillColor = this.color("#244d42"); g.rect(0, this.layoutTop, W, BATTLE_UI.headerHeight); g.fill();
-    this.box(g, 0, this.layoutTop + 3, W, 2, 0, "#537b5e");
-    // 小雨棚纹样与终点便利店统一识别，不扩大顶栏占地。
-    for (let i = 0; i < 15; i += 1) this.box(g, i * 26, this.layoutTop + 69, 26, 6, 2, i % 2 ? "#efd6a4" : "#d9945d");
-    this.disc(g, 24, this.layoutTop + 24, 11, "#e6c785");
-    g.fillColor = this.color("#456a4d"); g.ellipse(21, this.layoutTop + 21, 5, 3); g.fill();
-    g.ellipse(27, this.layoutTop + 27, 5, 3); g.fill();
-    this.box(g, 12, this.layoutTop + 40, 62, 23, 8, "#173b32");
-    this.box(g, 79, this.layoutTop + 40, 60, 23, 8, "#355f4d");
-    this.uiCard(g, 147, this.layoutTop + 12, 64, 48, "#fff5d6");
-    this.uiCard(g, 216, this.layoutTop + 12, 46, 48, "#fff5d6");
-    const speed = this.headerRect(BATTLE_UI.speed); const pause = this.headerRect(BATTLE_UI.pause);
-    this.uiCard(g, speed.x, speed.y, speed.width, speed.height, "#ee9559");
-    this.uiCard(g, pause.x, pause.y, pause.width, pause.height, "#fff5d6");
-    if (!this.gmPanelOpen) {
-      if (this.uiArt.ready) this.uiArt.drawIcon("hud-coin", "cash", 161, this.layoutTop + 36, 28);
-      else { this.disc(g, 160, this.layoutTop + 36, 8, "#ffbf45"); this.ring(g, 160, this.layoutTop + 36, 6, "#bd792c", 1, 1.5); }
-    }
-    this.drawHeart(g, 228, this.layoutTop + 36);
-    // 底部是一整块物资托盘，三道具等宽；左侧保留调试入口，发布版显示店铺纹章。
-    this.box(g, 0, this.layoutBottom - 85, W, 85, 0, "#244d42");
-    this.box(g, 7, this.layoutBottom - 82, W - 14, 85, 18, "#e7d4a8");
-    this.box(g, 11, this.layoutBottom - 78, W - 22, 78, 15, "#f4e7c7");
-    this.drawShopMark(g, 45, this.layoutBottom - 43);
-    const colors = ["#a6d7de", "#efb894", "#ecd277"];
-    PROP_BUTTONS.forEach((item, index) => {
-      const button = this.footerRect(item);
-      const exhausted = this.propCounts[item.kind] === 0 && this.propAdUsed[item.kind];
-      this.uiCard(g, button.x, button.y, button.width, button.height, exhausted ? "#d1cfbd" : "#fff5d6", 13);
-      this.box(g, button.x + 5, button.y + 5, button.width - 10, 38, 9, exhausted ? "#b6beb0" : colors[index]);
-      if (this.screen === "playing" && !this.paused && !this.gmPanelOpen && this.uiArt.ready) {
-        this.uiArt.drawIcon(`prop-${item.kind}`, item.kind, button.x + button.width / 2, button.y + 24, 45);
-      }
-    });
-    if (this.toastTime > 0 && this.screen === "playing" && !this.paused) this.box(g, 43, 82, 304, 38, 16, "#17352e", 0.9);
+  private drawPanels(_g: Graphics): void {
+    this.battleUi.hudState(this.propCounts, this.propAdUsed, this.screen === "playing" && !this.paused && !this.gmPanelOpen,
+      this.gmPanelOpen, this.toastTime > 0 && this.screen === "playing" && !this.paused, Boolean(this.mapReview));
   }
 
-  private drawContextMenu(g: Graphics): void {
+  private drawContextMenu(_g: Graphics): void {
     if (this.paused || this.screen !== "playing" || this.gmPanelOpen) return;
     if (this.selectedSpot && !this.selectedSpot.tower && !this.selectedSpot.obstacle) {
-      for (const item of this.buildMenuItems()) {
-        const affordable = this.coins >= TOWER_CONFIG[item.kind].cost;
-        this.uiCard(g, item.x - 32, item.y - 42, 64, 84, affordable ? "#fff5d6" : "#c6cec0", 16);
-        this.disc(g, item.x, item.y - 19, 17, affordable ? "#dfebc8" : "#acb8a7");
-        if (this.uiArt.ready) this.uiArt.drawIcon(`build-${item.kind}`, item.kind, item.x, item.y - 19, 40);
-      }
-      return;
+      for (const item of this.buildMenuItems()) this.battleUi.showBuild(item.kind, item.x, item.y, this.coins >= TOWER_CONFIG[item.kind].cost);
     }
-    if (this.selectedTower) {
-      for (const item of this.towerMenuItems(this.selectedTower)) {
-        const active = item.action === "sell" || (this.selectedTower.level < 3 && this.coins >= this.upgradeCost(this.selectedTower));
-        this.uiCard(g, item.x - BATTLE_UI.contextWidth / 2, item.y - BATTLE_UI.contextHeight / 2, BATTLE_UI.contextWidth, BATTLE_UI.contextHeight, item.action === "sell" ? "#dd9764" : active ? "#78ad65" : "#879382", 13);
-      }
+    if (this.selectedTower) for (const item of this.towerMenuItems(this.selectedTower)) {
+      const enabled = item.action === "sell" || (this.selectedTower.level < globalNumber("maxStaffLevel") && this.coins >= this.upgradeCost(this.selectedTower));
+      this.battleUi.showAction(item.action, item.x, item.y, enabled);
     }
-    if (this.selectedObstacle) {
-      const position = this.obstacleInfoPosition();
-      this.box(g, position.x - 86, position.y - 16, 172, 32, 10, "#244d42", 0.96);
-    }
+    if (this.selectedObstacle) { const p = this.obstacleInfoPosition(); this.battleUi.showObstacle(p.x, p.y); }
   }
 
   private obstacleInfoPosition(): { x: number; y: number } {
@@ -737,45 +681,18 @@ export class GameRoot extends Component {
   }
 
   private overlayHomeButton(): HitRect {
-    const y = this.paused && this.screen === "playing" ? 431 : this.screen === "lose" && !this.revived ? 540 : 464;
-    return { x: 72, y, width: 246, height: 48 };
+    const mode = this.paused && this.screen === "playing" ? "pause" : this.screen === "win" ? "win" : this.revived ? "retry" : "lose";
+    return this.battleUi.overlayRect("Home", mode);
   }
 
-  private drawOverlay(g: Graphics): void {
-    g.fillColor = this.color("#0c1f1a", 196); g.rect(0, this.layoutTop + 72, W, this.layoutBottom - this.layoutTop - 72); g.fill();
-    const home = this.overlayHomeButton();
-    if (this.paused && this.screen === "playing") {
-      this.uiCard(g, 55, 226, 280, 270, "#fff7df", 24);
-      this.drawAwning(g, 78, 235, 234);
-      this.uiCard(g, 91, 355, 208, 52, "#78ad65", 14);
-      this.uiCard(g, home.x, home.y, home.width, home.height, "#e2e7cd", 14);
-      return;
-    }
-    const win = this.screen === "win";
-    this.uiCard(g, 36, 176, 318, !win && !this.revived ? 430 : 356, "#fff7df", 26);
-    this.drawAwning(g, 64, 180, 262);
-    this.disc(g, 195, 225, 40, win ? "#d8eabc" : "#f6c4a7");
-    this.drawShopMark(g, 195, 225);
-    if (!win && !this.revived) {
-      this.uiCard(g, 72, 386, 246, 52, "#ee9559"); this.uiCard(g, 72, 474, 246, 48, "#78ad65");
-    } else this.uiCard(g, 72, 394, 246, 52, "#78ad65");
-    this.uiCard(g, home.x, home.y, home.width, home.height, "#e2e7cd", 14);
+  private drawOverlay(_g: Graphics): void {
+    const mode = this.paused && this.screen === "playing" ? "pause" : this.screen === "win" ? "win" : this.revived ? "retry" : "lose";
+    this.battleUi.showOverlay(mode, this.labels);
   }
 
-  private drawGmPanel(g: Graphics): void {
+  private drawGmPanel(_g: Graphics): void {
     if (!DEBUG || this.mapReview) return;
-    const entry = this.footerRect(GM_BUTTON);
-    this.box(g, entry.x, entry.y, entry.width, entry.height, 13, "#7358a6", 0.96);
-    if (!this.gmPanelOpen) return;
-    g.fillColor = this.color("#0c1f1a", 205); g.rect(0, this.layoutTop, W, this.layoutBottom - this.layoutTop); g.fill();
-    this.box(g, 35, 112, 320, 474, 24, "#fff9df");
-    const close = BATTLE_UI.gmClose;
-    this.box(g, close.x, close.y, close.width, close.height, 12, "#7358a6");
-    for (const item of GM_LEVEL_BUTTONS) {
-      const current = item.levelId === this.currentLevelId;
-      this.box(g, item.x, item.y, item.width, item.height, 12, current ? "#ffc34d" : "#dff0b7");
-    }
-    this.box(g, GM_PROGRESS_BUTTON.x, GM_PROGRESS_BUTTON.y, GM_PROGRESS_BUTTON.width, GM_PROGRESS_BUTTON.height, 11, "#58a95e");
+    this.battleUi.showGm(this.gmPanelOpen, this.currentLevelId);
   }
 
   private syncLabels(): void {
@@ -906,36 +823,10 @@ export class GameRoot extends Component {
     g.fillColor = this.color(hex, Math.round(alpha * 255)); g.roundRect(x, y, width, height, radius); g.fill();
   }
 
-  /** 皮肤用可缩放矢量底板，图标用独立精灵；大圆角和统一描边不依赖高分大面板贴图。 */
-  private uiCard(g: Graphics, x: number, y: number, width: number, height: number, fill: string, radius = 14): void {
-    this.box(g, x, y + 3, width, height, radius, "#334933", 0.42);
-    this.box(g, x, y, width, height, radius, fill);
-    g.strokeColor = this.color("#655d43"); g.lineWidth = 1.8;
-    g.roundRect(x, y, width, height, radius); g.stroke();
-    g.strokeColor = this.color("#fff9e8", 180); g.lineWidth = 1;
-    g.moveTo(x + radius, y + 4); g.lineTo(x + width - radius, y + 4); g.stroke();
-  }
-
-  private drawAwning(g: Graphics, x: number, y: number, width: number): void {
-    for (let i = 0; i < 9; i += 1) this.box(g, x + i * width / 9, y, width / 9, 12, 4, i % 2 ? "#f4dfb8" : "#e5a46e");
-  }
-
-  private drawHeart(g: Graphics, x: number, y: number): void {
-    g.fillColor = this.color("#ee7866"); g.strokeColor = this.color("#844a3b"); g.lineWidth = 1.5;
-    g.moveTo(x, y + 8); g.bezierCurveTo(x - 17, y - 1, x - 8, y - 13, x, y - 5);
-    g.bezierCurveTo(x + 8, y - 13, x + 17, y - 1, x, y + 8); g.close(); g.fill(); g.stroke();
-  }
-
-  private drawShopMark(g: Graphics, x: number, y: number): void {
-    this.uiCard(g, x - 23, y - 16, 46, 38, "#fff5d6", 5);
-    this.box(g, x - 16, y, 16, 22, 2, "#acccb4"); this.box(g, x + 6, y + 1, 12, 13, 2, "#f7d174");
-    for (let i = 0; i < 5; i += 1) this.box(g, x - 25 + i * 10, y - 20, 10, 14, 3, i % 2 ? "#fff5d6" : "#ed9b5b");
-    this.disc(g, x - 3, y + 12, 1.5, "#554d39");
-  }
-
   private setLabel(key: string, value: string): void { const item = this.labels.get(key); if (item) item.string = value; }
   private setLabelColor(key: string, hex: string): void { const item = this.labels.get(key); if (item) item.color = this.color(hex); }
   private setLabelPosition(key: string, x: number, y: number): void {
+    if (this.battleUi.fixedLabels.has(key)) return;
     const item = this.labels.get(key); if (item) item.node.setPosition(x - W / 2, H / 2 - y);
   }
   private showLabel(key: string, visible: boolean): void { const item = this.labels.get(key); if (item) item.node.active = visible; }
@@ -1319,11 +1210,11 @@ export class GameRoot extends Component {
       this.gmPanelOpen = !this.gmPanelOpen; return;
     }
     if (DEBUG && this.gmPanelOpen) {
-      if (this.buttonHit(BATTLE_UI.gmClose, x, y)) { this.gmPanelOpen = false; return; }
-      if (this.buttonHit(GM_PROGRESS_BUTTON, x, y)) {
+      if (this.buttonHit(this.battleUi.gmRect("Close"), x, y)) { this.gmPanelOpen = false; return; }
+      if (this.buttonHit(this.battleUi.gmRect("Home"), x, y)) {
         this.returnHome(); return;
       }
-      const levelButton = GM_LEVEL_BUTTONS.find((item) => this.buttonHit(item, x, y));
+      const levelButton = GM_LEVEL_BUTTONS.find((item) => this.buttonHit(this.battleUi.gmRect("Level" + item.levelId), x, y));
       if (levelButton) {
         this.gmSessionActive = true; this.gmPanelOpen = false; this.resetLevel(levelButton.levelId); return;
       }
@@ -1340,26 +1231,26 @@ export class GameRoot extends Component {
       if (this.buttonHit(this.headerRect(BATTLE_UI.speed), x, y)) { this.cycleGameSpeed(); return; }
     }
     if (this.paused && this.screen === "playing") {
-      if (this.buttonHit({ x: 91, y: 355, width: 208, height: 52 }, x, y)) this.paused = false;
+      if (this.buttonHit(this.battleUi.overlayRect("Primary", "pause"), x, y)) this.paused = false;
       return;
     }
     if (this.screen === "lose") {
-      if (!this.revived && this.buttonHit({ x: 72, y: 386, width: 246, height: 52 }, x, y)) void this.reviveWithAd();
-      else if (!this.revived && this.buttonHit({ x: 72, y: 474, width: 246, height: 48 }, x, y)) this.resetLevel();
-      else if (this.revived && this.buttonHit({ x: 72, y: 394, width: 246, height: 52 }, x, y)) this.resetLevel();
+      if (!this.revived && this.buttonHit(this.battleUi.overlayRect("Primary", "lose"), x, y)) void this.reviveWithAd();
+      else if (!this.revived && this.buttonHit(this.battleUi.overlayRect("Secondary", "lose"), x, y)) this.resetLevel();
+      else if (this.revived && this.buttonHit(this.battleUi.overlayRect("Primary", "retry"), x, y)) this.resetLevel();
       return;
     }
-    if (this.screen === "win") { if (this.buttonHit({ x: 72, y: 394, width: 246, height: 52 }, x, y)) this.advanceLevel(); return; }
+    if (this.screen === "win") { if (this.buttonHit(this.battleUi.overlayRect("Primary", "win"), x, y)) this.advanceLevel(); return; }
 
     // 先处理塔位旁的上下文按钮，避免点到按钮时被下方建造单元再次选中。
     if (this.selectedTower) {
-      const item = this.towerMenuItems(this.selectedTower).find((candidate) => this.buttonHit({ x: candidate.x - BATTLE_UI.contextWidth / 2, y: candidate.y - BATTLE_UI.contextHeight / 2, width: BATTLE_UI.contextWidth, height: BATTLE_UI.contextHeight }, x, y));
+      const item = this.towerMenuItems(this.selectedTower).find((candidate) => this.buttonHit(this.battleUi.contextRect(candidate.action), x, y));
       if (item) {
         if (item.action === "upgrade") this.upgradeSelected(); else this.sellSelected();
         return;
       }
     } else if (this.selectedSpot && !this.selectedSpot.tower && !this.selectedSpot.obstacle) {
-      const buildItem = this.buildMenuItems().find((item) => this.buttonHit({ x: item.x - 32, y: item.y - 42, width: 64, height: 84 }, x, y));
+      const buildItem = this.buildMenuItems().find((item) => this.buttonHit(this.battleUi.contextRect(item.kind), x, y));
       if (buildItem) { this.buildTower(this.selectedSpot, buildItem.kind); return; }
     }
 

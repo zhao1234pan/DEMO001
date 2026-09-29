@@ -16,6 +16,7 @@ function inspect(dir){for(const entry of fs.readdirSync(dir,{withFileTypes:true}
 inspect(path.join(root,'assets/scripts'));
 for(const row of core.rows('ArtAtlas'))if(!fs.existsSync(path.join(root,'assets/art',row.path.replace('/texture','.png'))))throw Error('缺少图集资源：'+row.path);
 for(const row of core.rows('Audio'))if(!['.mp3','.wav'].some(ext=>fs.existsSync(path.join(root,'assets/resources',row.path+ext))))throw Error('缺少音频资源：'+row.path);
+const uiReport=require('../ui/check-prefabs.cjs').check(root,core,!process.argv.includes('--check'));console.log('UI资源校验：'+uiReport.prefabs+'个预制体，'+uiReport.nodes+'个节点。');
 const names=fs.readdirSync(input).filter(f=>f.endsWith('.xlsx')&&!f.startsWith('~')).sort();if(names.length!==core.TABLE_NAMES.length||names.some(f=>!core.TABLE_NAMES.includes(path.basename(f,'.xlsx'))))throw Error('发现未接入的表格，请同步 schema 和运行时表清单');
 const manifest={format:1,source:Object.fromEntries(names.map(name=>[name,hash(fs.readFileSync(path.join(input,name)))])),csv:Object.fromEntries(core.TABLE_NAMES.map(name=>[name+'.csv',hash(sources[name])]))};
 const manifestText=JSON.stringify(manifest,null,2)+'\n';

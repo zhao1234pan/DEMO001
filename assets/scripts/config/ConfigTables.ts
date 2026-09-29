@@ -1,6 +1,6 @@
 /** CSV 是运行时唯一配置源；此模块不依赖引擎，可用于导表与回归检查。 */
 export type TableRow = Record<string, string>;
-export const TABLE_NAMES = ["Global", "I18", "Staff", "Enemy", "Theme", "Map", "MapPoint", "Spot", "Obstacle", "Level", "Wave", "WaveGroup", "Collection", "Audio", "Decoration", "ArtAtlas", "ArtFrame"] as const;
+export const TABLE_NAMES = ["Global", "I18", "Staff", "Enemy", "Theme", "Map", "MapPoint", "Spot", "Obstacle", "Level", "Wave", "WaveGroup", "Collection", "Audio", "Decoration", "ArtAtlas", "ArtFrame", "UiPrefab"] as const;
 let data: Record<string, TableRow[]> = Object.create(null);
 let ready = false;
 let byKey:Record<string,Record<string,TableRow>> = Object.create(null);
@@ -70,6 +70,7 @@ export function installConfigs(sources: Record<string, string>): void {
   for(const row of next.Enemy) {if(!["","mini","major"].includes(row.boss)||numeric(row,"clearRatio")<0||numeric(row,"clearRatio")>1)throw new Error("Invalid enemy rank/clear ratio");if(!next.ArtFrame.some(f=>f.battle==="enemy_"+row.key&&f.menu==="enemy_"+row.key))throw new Error("Missing enemy portrait");}
   for(const row of next.Decoration) if(!["tree","planter"].includes(row.kind))throw new Error("Unknown decoration kind");
   for(const row of next.Collection) if(!next.ArtFrame.some(f=>f.menu===row.imageKey))throw new Error("Unknown collection image");
+  for (const row of next.UiPrefab) if (!/^ui\/[a-z_]+$/.test(row.path)) throw new Error("Invalid UI prefab path: " + row.key);
   const max = Number(next.Global.find(r => r.key === "maxLevels")?.value);
   if (!Number.isInteger(max) || max !== next.Level.length) throw new Error("maxLevels mismatch");
   for (let id = 1; id <= max; id++) { requireRef("Level", "id", String(id), "Level sequence"); if (!next.Wave.some(w => w.levelId === String(id))) throw new Error("Level without waves"); }

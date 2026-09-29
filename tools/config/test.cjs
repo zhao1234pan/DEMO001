@@ -4,7 +4,7 @@ const root=path.resolve(__dirname,'../..'),core=require('./validator.cjs');
 const temp=process.env.CONFIG_WORK_DIR||path.join(path.parse(root).root,'gptwork','config-export');
 fs.mkdirSync(temp,{recursive:true});
 const fixture=fs.mkdtempSync(path.join(temp,'regression-'));
-for(const dir of ['tools/config','design/tables','assets/scripts','assets/resources/config','assets/resources/audio','assets/art']) {
+for(const dir of ['tools/config','tools/ui','assets/resources/ui','design/tables','assets/scripts','assets/resources/config','assets/resources/audio','assets/art']) {
   const src=path.join(root,dir);if(fs.existsSync(src))fs.cpSync(src,path.join(fixture,dir),{recursive:true});
 }
 let passed=0;
@@ -17,6 +17,16 @@ const csv=path.join(fixture,'assets/resources/config/I18.csv'),originalCsv=fs.re
 test('手改CSV会阻止构建且不覆盖文件',()=>{fs.appendFileSync(csv,'\n');const r=run();assert.notEqual(r.status,0);assert.match(r.stderr,/CSV已过期/);assert.equal(digest(),manifest);assert.equal(fs.readFileSync(csv).length,originalCsv.length+1);fs.writeFileSync(csv,originalCsv);});
 const xlsx=path.join(fixture,'design/tables/I18.xlsx'),originalXlsx=fs.readFileSync(xlsx);
 test('工作簿版本改变必须重新导表',()=>{fs.appendFileSync(xlsx,Buffer.from([0]));const r=run();assert.notEqual(r.status,0);assert.match(r.stderr,/原始表格已变更/);assert.equal(digest(),manifest);fs.writeFileSync(xlsx,originalXlsx);});
+
+// 以下只改隔离副本，验证 Prefab 构建门禁与预览同步边界。
+const uiCheck=require(path.join(fixture,'tools/ui/check-prefabs.cjs')).check;
+const configSources={};for(const name of core.TABLE_NAMES)configSources[name]=fs.readFileSync(path.join(fixture,'assets/resources/config',name+'.csv'),'utf8');core.installConfigs(configSources);
+const home=path.join(fixture,'assets/resources/ui/home.prefab'),originalHome=fs.readFileSync(home);
+test('缺少预制体阻止校验',()=>{fs.renameSync(home,home+'.fixture');try{assert.throws(()=>uiCheck(fixture,core),/缺少预制体/);}finally{fs.renameSync(home+'.fixture',home);}});
+test('缺少运行时绑定节点阻止校验',()=>{const d=JSON.parse(originalHome);d.find(o=>o.__type__==='cc.Node'&&o._name==='Adventure')._name='Missing';fs.writeFileSync(home,JSON.stringify(d));try{assert.throws(()=>uiCheck(fixture,core),/缺少运行时节点/);}finally{fs.writeFileSync(home,originalHome);}});
+test('I18预览过期可同步且保留手工布局',()=>{const d=JSON.parse(originalHome),label=d.find(o=>o.__type__==='cc.Label'&&o._string==='叮咚夜班开始'),node=d.find(o=>o.__type__==='cc.Node'&&o._name==='Settings');assert.ok(label);label._string='过期预览';node._lpos.x+=7;fs.writeFileSync(home,JSON.stringify(d));try{assert.throws(()=>uiCheck(fixture,core),/文字预览已过期/);uiCheck(fixture,core,true);const result=JSON.parse(fs.readFileSync(home));assert.equal(result.find(o=>o._name==='Settings')._lpos.x,node._lpos.x);assert.equal(result.find(o=>o.__type__==='cc.Label'&&o._string==='叮咚夜班开始')._string,'叮咚夜班开始');}finally{fs.writeFileSync(home,originalHome);}});
+test('图集切片预览过期阻止构建并可同步',()=>{const d=JSON.parse(originalHome),image=d.find(o=>o.frameKey);image.previewRect.width+=1;fs.writeFileSync(home,JSON.stringify(d));try{assert.throws(()=>uiCheck(fixture,core),/图片预览已过期/);uiCheck(fixture,core,true);assert.doesNotThrow(()=>uiCheck(fixture,core));}finally{fs.writeFileSync(home,originalHome);}});
+
 const code=path.join(fixture,'assets/scripts/config/ConfigTables.ts');
 test('未同步校验器会阻止导出',()=>{fs.appendFileSync(code,'\n');const r=run();assert.notEqual(r.status,0);assert.match(r.stderr,/配置校验器已修改/);assert.equal(digest(),manifest);});
 console.log(passed+'项通过；隔离证据：'+fixture);

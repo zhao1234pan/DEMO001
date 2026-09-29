@@ -11,7 +11,7 @@ exports.globalString = globalString;
 exports.text = text;
 exports.parseCsv = parseCsv;
 exports.installConfigs = installConfigs;
-exports.TABLE_NAMES = ["Global", "I18", "Staff", "Enemy", "Theme", "Map", "MapPoint", "Spot", "Obstacle", "Level", "Wave", "WaveGroup", "Collection", "Audio", "Decoration", "ArtAtlas", "ArtFrame"];
+exports.TABLE_NAMES = ["Global", "I18", "Staff", "Enemy", "Theme", "Map", "MapPoint", "Spot", "Obstacle", "Level", "Wave", "WaveGroup", "Collection", "Audio", "Decoration", "ArtAtlas", "ArtFrame", "UiPrefab"];
 let data = Object.create(null);
 let ready = false;
 let byKey = Object.create(null);
@@ -230,6 +230,9 @@ function installConfigs(sources) {
     for (const row of next.Collection)
         if (!next.ArtFrame.some(f => f.menu === row.imageKey))
             throw new Error("Unknown collection image");
+    for (const row of next.UiPrefab)
+        if (!/^ui\/[a-z_]+$/.test(row.path))
+            throw new Error("Invalid UI prefab path: " + row.key);
     const max = Number((_a = next.Global.find(r => r.key === "maxLevels")) === null || _a === void 0 ? void 0 : _a.value);
     if (!Number.isInteger(max) || max !== next.Level.length)
         throw new Error("maxLevels mismatch");

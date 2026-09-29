@@ -200,5 +200,12 @@
       "ui": "string",
       "scenery": "string"
     }
+  },
+  "UiPrefab": {
+    "fields": {
+      "id": "int",
+      "key": "string",
+      "path": "string"
+    }
   }
 }
