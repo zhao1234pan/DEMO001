@@ -1,4 +1,6 @@
 export const GAME_CONFIG = {
+  // 正式中文名与抖音后台、软著简称使用同一写法；不要添加标点或改动存档键。
+  gameName: "叮咚夜班开始",
   designWidth: 750,
   designHeight: 1334,
   prototypeLayoutWidth: 390,
