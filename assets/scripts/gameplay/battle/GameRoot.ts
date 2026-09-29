@@ -266,7 +266,7 @@ export class GameRoot extends Component {
   }
 
   private createLabels(): void {
-    this.makeLabel("title", "夜班便利店", 15, 85, 24, 106, 28, "#fff2cd");
+    this.makeLabel("title", GAME_CONFIG.gameName, 15, 85, 24, 106, 28, "#fff2cd");
     this.makeLabel("level", "", 13, 43, 51, 64, 24, "#f9e7b7");
     this.makeLabel("wave", "", 13, 109, 51, 62, 24, "#e0ecd1");
     this.makeLabel("entry-mark", "地铁口", 13, 0, 0, 48, 22, "#fff4d1");
