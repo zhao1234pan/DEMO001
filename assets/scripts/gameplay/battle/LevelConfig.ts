@@ -245,6 +245,7 @@ export const LEVEL_CONFIGS: readonly LevelConfig[] = [
 ] as const;
 
 export function getLevelConfig(levelId: number): LevelConfig {
-  const index = Math.max(0, Math.min(LEVEL_CONFIGS.length - 1, Math.floor(levelId) - 1));
+  const safeLevelId = Number.isFinite(levelId) ? Math.floor(levelId) : 1;
+  const index = Math.max(0, Math.min(LEVEL_CONFIGS.length - 1, safeLevelId - 1));
   return LEVEL_CONFIGS[index];
 }
