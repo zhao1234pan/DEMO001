@@ -118,7 +118,8 @@
       "initialLives": "int",
       "enemyHealthScale": "float",
       "enemySpeedScale": "float",
-      "availableTowers": "string"
+      "availableTowers": "string",
+      "mode": "string"
     }
   },
   "Wave": {
@@ -127,7 +128,8 @@
       "levelId": "int",
       "order": "int",
       "spawnInterval": "float",
-      "announcement": "string"
+      "announcement": "string",
+      "healthScale": "float"
     }
   },
   "WaveGroup": {

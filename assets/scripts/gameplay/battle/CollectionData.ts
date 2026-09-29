@@ -33,13 +33,13 @@ function enemyStats(kind: EnemyKind): CollectionEntry["stats"] {
   ];
 }
 
-function staffStats(kind: TowerKind): CollectionEntry["stats"] {
+export function staffStats(kind: TowerKind, level = 1): CollectionEntry["stats"] {
   const config = TOWER_CONFIG[kind];
   return [
-    { label: text("ui.CollectionData.005"), value: String(config.cost) },
-    { label: text("ui.CollectionData.006"), value: String(config.damage) },
-    { label: text("ui.CollectionData.007"), value: text("ui.CollectionData.008", config.rate) },
-    { label: text("ui.CollectionData.009"), value: String(config.range) },
+    { label: text(level === 1 ? "ui.CollectionData.005" : "ui.opt.upgradeCost"), value: text("ui.opt.gold", level === 1 ? config.cost : Math.round(config.cost * (globalNumber("upgradeCostBase") + (level - 1) * globalNumber("upgradeCostStep")))) },
+    { label: text("ui.CollectionData.006"), value: String(Number((config.damage * (1 + (level - 1) * globalNumber("upgradeDamage"))).toFixed(2))) },
+    { label: text("ui.CollectionData.007"), value: text("ui.CollectionData.008", ((1 + (level - 1) * globalNumber("upgradeRate")) / config.rate).toFixed(1)) },
+    { label: text("ui.CollectionData.009"), value: String(Number((config.range * (1 + (level - 1) * globalNumber("upgradeRange"))).toFixed(2))) },
   ];
 }
 

@@ -109,6 +109,7 @@ export class BattlePrefabView {
     this.gm.active = open;
     if (open) for (let id = 1; id <= GAME_CONFIG.maxLevels; id++) uiNode(this.gm, "Level" + id + "/Selected").active = current === id;
   }
+  toastRect(): HitRect { return uiRect(this.toast, this.parent, W, H); }
   headerRect(key: "Speed" | "Pause"): HitRect { return uiRect(uiNode(this.hud, "Header/" + key), this.parent, W, H); }
   propRect(kind: PropKind): HitRect { return uiRect(uiNode(this.hud, "Footer/Prop-" + kind), this.parent, W, H); }
   overlayRect(name: "Home" | "Primary" | "Secondary", key = this.overlay): HitRect { return uiRect(uiNode(this.overlays.get(key)!, name), this.parent, W, H); }

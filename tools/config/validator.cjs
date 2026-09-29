@@ -127,7 +127,7 @@ function installConfigs(sources) {
     positive("Level", ["initialCoins"], true);
     positive("Obstacle", ["hp"]);
     positive("Obstacle", ["reward"], true);
-    positive("Wave", ["spawnInterval"]);
+    positive("Wave", ["spawnInterval", "healthScale"]);
     positive("WaveGroup", ["count"]);
     for (const row of next.Global)
         if (row.type === "float")
@@ -185,14 +185,14 @@ function installConfigs(sources) {
             keys.add(row[field]);
         }
     }
-    const requiredGlobals = ["gameName", "maxLevels", "rewardAdUnitId", "version", "upgradeDamage", "upgradeRange", "upgradeRate", "upgradeCostBase", "upgradeCostStep", "maxStaffLevel", "sellRatio", "waveHealthGrowth", "waveBonusBase", "waveBonusStep", "firstWaveDelay", "nextWaveDelay", "reviveWaveDelay", "reviveMinLives", "reviveLifeRatio", "freezeSeconds", "cashBase", "cashPerLevel", "freePropCount", "slowSpeedRatio", "markDamageRatio", "musicVolume", "maxEffectSources", "toastSeconds"];
+    const requiredGlobals = ["gameName", "maxLevels", "rewardAdUnitId", "version", "upgradeDamage", "upgradeRange", "upgradeRate", "upgradeCostBase", "upgradeCostStep", "maxStaffLevel", "sellRatio", "waveHealthGrowth", "waveBonusBase", "waveBonusStep", "firstWaveDelay", "nextWaveDelay", "reviveWaveDelay", "reviveMinLives", "reviveLifeRatio", "freezeSeconds", "cashBase", "cashPerLevel", "freePropCount", "slowSpeedRatio", "markDamageRatio", "musicVolume", "maxEffectSources", "toastSeconds", "challengeLevelId"];
     for (const key of requiredGlobals) {
         requireRef("Global", "key", key, "Global contract");
         const row = next.Global.find(r => r.key === key);
         if (!["gameName", "rewardAdUnitId", "version"].includes(key) && (row.type !== "float" || numeric(row, "value") < 0))
             throw new Error("Invalid global: " + key);
     }
-    for (const key of ["maxLevels", "maxStaffLevel", "reviveMinLives", "freePropCount", "maxEffectSources"]) {
+    for (const key of ["maxLevels", "maxStaffLevel", "reviveMinLives", "maxEffectSources"]) {
         const value = Number(next.Global.find(r => r.key === key).value);
         if (!Number.isInteger(value) || value < 1)
             throw new Error("Invalid integer global: " + key);
@@ -200,6 +200,8 @@ function installConfigs(sources) {
     for (const key of ["sellRatio", "reviveLifeRatio", "slowSpeedRatio", "musicVolume"])
         if (Number(next.Global.find(r => r.key === key).value) > 1)
             throw new Error("Ratio exceeds one: " + key);
+    if (!Number.isInteger(Number(next.Global.find(r => r.key === "freePropCount").value)))
+        throw new Error("Fractional free prop count");
     requireRef("I18", "key", next.Global.find(r => r.key === "gameName").value, "gameName");
     for (const row of next.Staff) {
         if (!["sprout", "frost", "bloom", "scope", "spark", "ember", "mint", "fan"].includes(row.projectile))
@@ -234,12 +236,30 @@ function installConfigs(sources) {
         if (!/^ui\/[a-z_]+$/.test(row.path))
             throw new Error("Invalid UI prefab path: " + row.key);
     const max = Number((_a = next.Global.find(r => r.key === "maxLevels")) === null || _a === void 0 ? void 0 : _a.value);
-    if (!Number.isInteger(max) || max !== next.Level.length)
+    if (!Number.isInteger(max) || max !== next.Level.filter(r => r.mode === "adventure").length)
         throw new Error("maxLevels mismatch");
     for (let id = 1; id <= max; id++) {
         requireRef("Level", "id", String(id), "Level sequence");
         if (!next.Wave.some(w => w.levelId === String(id)))
             throw new Error("Level without waves");
+    }
+    const challengeId = next.Global.find(r => r.key === "challengeLevelId").value;
+    requireRef("Level", "id", challengeId, "challengeLevelId");
+    if (next.Level.find(r => r.id === challengeId).mode !== "challenge")
+        throw new Error("Challenge mode mismatch");
+    for (const level of next.Level) {
+        if (!["adventure", "challenge"].includes(level.mode))
+            throw new Error("Unknown level mode");
+        if (level.mode === "adventure" && (numeric(level, "id") > max || numeric(level, "id") < 1))
+            throw new Error("Adventure ID outside progress");
+        if (level.mode === "challenge" && numeric(level, "id") <= max)
+            throw new Error("Challenge overlaps adventure");
+        if (level.mode === "challenge" && (level.availableTowers.split("|").length !== 4 || next.Wave.filter(w => w.levelId === level.id).length < 21))
+            throw new Error("Challenge needs four staff and 21+ waves");
+        if (new Set(level.availableTowers.split("|")).size !== level.availableTowers.split("|").length)
+            throw new Error("Duplicate available staff");
+        if (numeric(level, "enemySpeedScale") !== 1)
+            throw new Error("Base speed must not scale by level");
     }
     for (const map of next.Map) {
         const points = next.MapPoint.filter(r => r.mapId === map.id).sort((a, b) => numeric(a, "order") - numeric(b, "order"));

@@ -20,21 +20,21 @@ Creator启动时加载项目构建扩展；GUI已打开的工程在新增扩展�
 
 | 工作簿 | 本版行数 | 内容与引用 |
 | --- | ---: | --- |
-| Global | 28 | 全局经济、升级、道具、音乐、版本、最大关卡；value由type解释 |
-| I18 | 266 | 简体中文文本，key稳定，支持{p0}等格式参数 |
+| Global | 29 | 全局经济、升级、道具、音乐、版本、最大关卡；value由type解释 |
+| I18 | 279 | 简体中文文本，key稳定，支持{p0}等格式参数 |
 | Staff | 8 | 店员基础数值、技能参数、弹道样式/速度、尺寸，name指I18 |
 | Enemy | 10 | 6小怪和4BOSS；耐久、移速、奖励、漏怪扣血、清场系数 |
 | Theme | 4 | 地图主题名称与配色 |
-| Map | 20 | 地图ID与Theme.key |
-| MapPoint | 172 | mapId、路径顺序、坐标 |
-| Spot | 440 | mapId、从0开始的塔位索引、坐标 |
-| Obstacle | 200 | mapId、塔位索引、障碍类型、耐久、奖励 |
-| Level | 20 | mapId、初始资源、敌人倍率、可用店员列表、标题与目标文本 |
-| Wave | 83 | levelId、波次顺序、间隔及波次HP/速度倍率 |
-| WaveGroup | 354 | waveId、出怪组顺序、Enemy.key与数量 |
+| Map | 21 | 地图ID与Theme.key |
+| MapPoint | 180 | mapId、路径顺序、坐标 |
+| Spot | 462 | mapId、从0开始的塔位索引、坐标 |
+| Obstacle | 210 | mapId、塔位索引、障碍类型、耐久、奖励 |
+| Level | 21 | mapId、初始资源、敌人倍率、可用店员列表、标题与目标文本 |
+| Wave | 104 | levelId、波次顺序、间隔及本波血量倍率（不改变基础移速） |
+| WaveGroup | 420 | waveId、出怪组顺序、Enemy.key与数量 |
 | Collection | 18 | 三类档案、角色键、故事I18、解锁提示、图片引用 |
 | Audio | 12 | BGM/音效路径、播放节流间隔 |
-| Decoration | 57 | mapId、装饰类别、坐标、尺寸与组号 |
+| Decoration | 64 | mapId、装饰类别、坐标、尺寸与组号 |
 | ArtAtlas | 7 | 图集逻辑键、Bundle内路径与尺寸 |
 | ArtFrame | 35 | atlas键、切片坐标及尺寸 |
 | UiPrefab | 22 | 稳定 UI 键、resources 下的原生预制体路径（不含扩展名） |
@@ -75,3 +75,10 @@ vendor/zz-excel2csv.jar复制自用户指定biu_design导表工具，复用其Ap
 ## UI 资源门禁
 
 UiPrefab是第18张表。config:export同步Prefab内I18预览与ArtFrame切片预览，只更新这些绑定，不改变手工布局。config:check以及所有Creator构建同时检查22个资源、meta、节点引用、必需绑定路径、I18与图片预览是否过期。缺少节点/资源或者未导出的原始表均阻止构建；校验器不自动补造页面。详见UI_PREFABS.md。
+
+## 0.8.0新增字段与约束
+
+- Level.mode（string）：adventure计入连续1～maxLevels的冒险进度，challenge使用独立ID；当前挑战21，冒险上限仍20。Global.challengeLevelId指向挑战模式关卡，禁止用Level总行数作为最高解锁关。
+- Wave.healthScale（float，>0）：本波血量倍率；实际HP由Enemy.hp×Level.enemyHealthScale×Wave.healthScale×逐波增长计算。Level.enemySpeedScale保留旧字段协议但校验必须1，客户端基础速度直接读取Enemy.speed；技能与全局倍速仍生效。
+- Global.freePropCount允许非负整数0；正式道具每种每局一次成功广告为生命周期规则，未增加第二份可调次数。Level/Wave等模式及I18先写原始表，再扩展schema和读取器。
+- 店员属性级别1/2/3是当前三档UI协议；数值与费用公式读取Staff/Global。气泡避让、同类按钮尺寸和文本小数显示属于既有引擎表现例外，新增几何仅在Prefab/布局算法，业务文案从I18读取。

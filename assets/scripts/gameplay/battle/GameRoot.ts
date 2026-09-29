@@ -125,7 +125,9 @@ export class GameRoot extends Component {
   private nextWaveTimer = 4;
   private frozenTime = 0;
   private adRequesting = false;
-  private propCounts: Record<PropKind, number> = { freeze: 1, clear: 1, cash: 1 };
+  private battleRevision = 0;
+  private adFeedback = "";
+  private propCounts: Record<PropKind, number> = { freeze: 0, clear: 0, cash: 0 };
   private propAdUsed: Record<PropKind, boolean> = { freeze: false, clear: false, cash: false };
   private enemies: Enemy[] = [];
   private towers: Tower[] = [];
@@ -299,7 +301,14 @@ export class GameRoot extends Component {
     // 美术评审只冻结实例状态并使用真实渲染链；不调用战斗推进、广告或存档。
     if (this.mapReview) { this.paused = false; this.render(); return; }
     // 先限制单帧追赶时间，再把倍速后的游戏时间拆成稳定小步长，避免低帧率或三倍速时穿透目标。
-    let remainingGameTime = Math.min(dt, 0.1) * this.gameSpeed;
+    // 准备时钟独立于倍速，后台/暂停/广告期间不推进；战斗仍用稳定子步长。
+    const realDelta = Math.max(0, dt);
+    if (!this.paused && !this.gmPanelOpen && !this.adRequesting && this.screen === "playing"
+      && !this.inWave && this.enemies.length === 0 && this.wave < this.level.waves.length) {
+      this.nextWaveTimer = Math.max(0, this.nextWaveTimer - realDelta);
+      if (this.nextWaveTimer <= 0) this.startWave();
+    }
+    let remainingGameTime = Math.min(realDelta, 0.1) * this.gameSpeed;
     while (remainingGameTime > 0 && !this.paused && !this.gmPanelOpen && !this.adRequesting && this.screen === "playing") {
       const step = Math.min(remainingGameTime, 0.033);
       this.updateGame(step);
@@ -324,6 +333,7 @@ export class GameRoot extends Component {
     this.makeLabel("goal-mark", text("ui.GameRoot.002"), 13, 0, 0, 60, 22, "#fff4d1");
     this.makeLabel("next-wave-title", "", 13, 0, 0, 82, 22, "#32724c");
     this.makeLabel("next-wave-number", "", 24, 0, 0, 58, 32, "#17352e");
+    this.makeLabel("next-wave-action", text("ui.opt.startWave"), 13, 0, 0, 100, 22, "#32724c");
     this.makeLabel("battle-feedback", "", 13, 0, 0, 150, 26, "#17352e");
   }
 
@@ -545,7 +555,7 @@ export class GameRoot extends Component {
 
   private drawPanels(_g: Graphics): void {
     this.battleUi.hudState(this.propCounts, this.propAdUsed, this.screen === "playing" && !this.paused && !this.gmPanelOpen,
-      this.gmPanelOpen, this.toastTime > 0 && this.screen === "playing" && !this.paused, Boolean(this.mapReview));
+      this.gmPanelOpen, this.shouldShowToast(), Boolean(this.mapReview));
   }
 
   private drawContextMenu(_g: Graphics): void {
@@ -568,7 +578,15 @@ export class GameRoot extends Component {
   private shouldShowWaveCountdown(): boolean {
     if (this.mapReview) return false;
     return this.screen === "playing" && !this.paused && !this.inWave && this.enemies.length === 0
-      && this.wave < this.level.waves.length && this.toastTime <= 0;
+      && !this.adRequesting && this.wave < this.level.waves.length;
+  }
+
+  private shouldShowToast(): boolean {
+    if (this.toastTime <= 0 || this.screen !== "playing" || this.paused || this.gmPanelOpen) return false;
+    if (!this.shouldShowWaveCountdown()) return true;
+    const p = this.waveCountdownPosition(), r = this.battleUi.toastRect();
+    // 局部空间不足时优先保留可操作的倒计时；纯提示不能挡住数字或建造格。
+    return p.x + 58 <= r.x || p.x - 58 >= r.x + r.width || p.y + 44 <= r.y || p.y - 44 >= r.y + r.height;
   }
 
   private waveCountdownPosition(): { x: number; y: number } {
@@ -576,8 +594,8 @@ export class GameRoot extends Component {
     const next = this.level.pathPoints[1];
     // 提示贴近怪物入口，并为顶部状态栏、底部道具栏和屏幕边缘保留安全距离。
     const preferred = {
-      x: Math.max(48, Math.min(W - 48, start[0] + Math.sign(next[0] - start[0]) * 90)),
-      y: Math.max(145, Math.min(PANEL_Y - 44, start[1] + Math.sign(next[1] - start[1]) * 90)),
+      x: Math.max(60, Math.min(W - 60, start[0] + Math.sign(next[0] - start[0]) * 90)),
+      y: Math.max(116, this.layoutTop + 116),
     };
     const menus: HitRect[] = this.buildMenuItems().map((item) => ({ x: item.x - 32, y: item.y - 42, width: 64, height: 84 }));
     if (this.selectedTower) menus.push(...this.towerMenuItems(this.selectedTower).map((item) => ({
@@ -590,30 +608,33 @@ export class GameRoot extends Component {
     }
     // 入口靠近首排时，菜单或清障信息会与倒计时相撞；只移动提示，不隐藏预告或更改波次计时。
     const candidates = [preferred, { x: W - preferred.x, y: preferred.y }];
+    const toastRect = this.toastTime > 0 ? this.battleUi.toastRect() : null;
+    // 气泡可点击，不能覆盖尚未选择的建造格，避免玩家点格位却提前开波。
+    menus.push(...this.spots.map(spot => ({x:spot.x-20,y:spot.y-20,width:40,height:40})));
     for (const y of [Math.max(145, preferred.y - 104), Math.min(PANEL_Y - 44, preferred.y + 104)]) {
       candidates.push({ x: preferred.x, y }, { x: W - preferred.x, y });
     }
-    const fits = (point: { x: number; y: number }): boolean => menus.every((rect) => point.x + 48 <= rect.x || point.x - 48 >= rect.x + rect.width
-      || point.y + 40 <= rect.y || point.y - 40 >= rect.y + rect.height);
-    const nearby = candidates.find(fits);
+    const fits = (point: { x: number; y: number }, includeToast = true): boolean => (includeToast && toastRect ? menus.concat(toastRect) : menus).every((rect) => point.x + 58 <= rect.x || point.x - 58 >= rect.x + rect.width
+      || point.y + 44 <= rect.y || point.y - 44 >= rect.y + rect.height);
+    const nearby = candidates.find(point => fits(point));
     if (nearby) return nearby;
     // 屏内入口可能与整组三张建造卡同时占满近处候选；再搜索棋盘内空位，按离入口的距离排序。
-    // 这里只在近处没有空间时降级，96×80的保守框包含数字与波次标题，不会缩小预告来挤菜单。
+    // 这里只在近处没有空间时降级，116×88的保守框包含数字与波次标题，不会缩小预告来挤菜单。
     const fallback: Array<{ x: number; y: number }> = [];
-    for (let y = 145; y <= PANEL_Y - 44; y += 48) {
-      for (let x = 48; x <= W - 48; x += 48) fallback.push({ x, y });
+    for (let y = Math.max(116, this.layoutTop + 116); y <= PANEL_Y - 44; y += 48) {
+      for (let x = 60; x <= W - 60; x += 48) fallback.push({ x, y });
     }
     fallback.sort((a, b) => Math.hypot(a.x - preferred.x, a.y - preferred.y) - Math.hypot(b.x - preferred.x, b.y - preferred.y));
-    return fallback.find(fits) ?? preferred;
+    return fallback.find(point => fits(point)) ?? candidates.find(point => fits(point, false)) ?? fallback.find(point => fits(point, false)) ?? preferred;
   }
 
   private drawWaveCountdown(g: Graphics): void {
     if (!this.shouldShowWaveCountdown()) return;
     const position = this.waveCountdownPosition();
     const urgent = this.nextWaveTimer <= 3;
-    this.disc(g, position.x, position.y + 3, urgent ? 37 : 35, "#17352e", 0.2);
-    this.disc(g, position.x, position.y, urgent ? 35 : 33, "#fff9df", 0.96);
-    this.ring(g, position.x, position.y, urgent ? 35 : 33, urgent ? "#e78954" : "#58a95e", 1, urgent ? 3 : 2);
+    this.box(g, position.x - 56, position.y - 40, 112, 84, 16, "#fff9df", 0.97);
+    g.strokeColor = this.color(urgent ? "#e78954" : "#58a95e"); g.lineWidth = 2;
+    g.roundRect(position.x - 56, position.y - 40, 112, 84, 16); g.stroke();
   }
 
   private buildMenuItems(): Array<{ kind: TowerKind; x: number; y: number }> {
@@ -659,25 +680,24 @@ export class GameRoot extends Component {
   }
 
   private readUnlockedLevel(): number {
-    return getLevelConfig(PlatformService.getNumber("night_store_unlocked_level", 1)).id;
+    return getLevelConfig(Math.max(1, Math.min(GAME_CONFIG.maxLevels, PlatformService.getNumber("night_store_unlocked_level", 1)))).id;
   }
 
   private startOfficialLevel(levelId: number): void {
     const level = getLevelConfig(levelId);
-    if (level.id > this.readUnlockedLevel()) return;
+    if (level.mode !== "challenge" && level.id > this.readUnlockedLevel()) return;
     this.gmSessionActive = false; this.gmPanelOpen = false;
     this.resetLevel(level.id);
   }
 
   private returnHome(): void {
-    // 返回首页即结束本局；只保留正式解锁和倍速偏好，GM 布阵不进入正式游戏。
+    // 结束本局并定位原关所在页，保留正式进度，不把重玩旧关改成最高关。
+    const focus = this.currentLevelId, challenge = this.level.mode === "challenge";
     this.gmSessionActive = false; this.gmPanelOpen = false;
-    this.onTouchCancel();
-    this.unlockedLevel = this.readUnlockedLevel();
-    this.resetLevel(this.unlockedLevel);
-    this.screen = "home";
+    this.onTouchCancel(); this.unlockedLevel = this.readUnlockedLevel();
+    this.resetLevel(this.unlockedLevel); this.screen = "home";
     this.collection?.refresh(this.unlockedLevel);
-    this.menu?.show(this.unlockedLevel);
+    this.menu?.show(this.unlockedLevel, challenge ? "home" : "levels", challenge ? this.unlockedLevel : focus);
   }
 
   private overlayHomeButton(): HitRect {
@@ -702,7 +722,7 @@ export class GameRoot extends Component {
       this.setLabel("boss-status", ENEMY_CONFIG[boss.kind].name + " · " + Math.ceil(boss.hp) + " / " + boss.maxHp);
     }
     for (const key of this.labels.keys()) if (key.startsWith("home-")) this.showLabel(key, false);
-    this.setLabel("level", text("ui.GameRoot.008", this.level.id.toString().padStart(2, "0"), this.gmSessionActive && !this.mapReview ? "·GM" : "/" + GAME_CONFIG.maxLevels));
+    this.setLabel("level", this.level.mode === "challenge" ? text("challenge.hud") : text("ui.GameRoot.008", this.level.id, this.gmSessionActive && !this.mapReview ? "·GM" : ""));
     this.setLabel("wave", text("ui.GameRoot.009", this.wave, this.level.waves.length));
     this.setLabel("coin", `${this.coins}`); this.setLabel("lives", `${this.lives}`);
     this.setLabel("speed", `×${this.gameSpeed}`); this.setLabel("pause", this.paused ? "▶" : "Ⅱ");
@@ -748,14 +768,16 @@ export class GameRoot extends Component {
     this.setLabel("prop-clear", this.propButtonText("clear"));
     this.setLabel("prop-cash", this.propButtonText("cash"));
     ["prop-freeze", "prop-clear", "prop-cash"].forEach((key) => this.showLabel(key, contextVisible));
-    this.showLabel("toast", this.toastTime > 0 && this.screen === "playing" && !this.paused && !this.gmPanelOpen); this.setLabel("toast", this.toastText);
+    this.showLabel("toast", this.shouldShowToast()); this.setLabel("toast", this.toastText);
     const showWaveCountdown = !this.gmPanelOpen && this.shouldShowWaveCountdown();
     this.showLabel("next-wave-title", showWaveCountdown);
     this.showLabel("next-wave-number", showWaveCountdown);
+    this.showLabel("next-wave-action", showWaveCountdown);
     if (showWaveCountdown) {
       const position = this.waveCountdownPosition();
-      this.setLabelPosition("next-wave-title", position.x, position.y - 11);
-      this.setLabelPosition("next-wave-number", position.x, position.y + 11);
+      this.setLabelPosition("next-wave-title", position.x, position.y - 25);
+      this.setLabelPosition("next-wave-number", position.x, position.y);
+      this.setLabelPosition("next-wave-action", position.x, position.y + 26);
       this.setLabel("next-wave-title", text("ui.GameRoot.014", this.wave + 1, this.level.waves.length));
       this.setLabel("next-wave-number", `${Math.max(1, Math.ceil(this.nextWaveTimer))}`);
     }
@@ -771,7 +793,7 @@ export class GameRoot extends Component {
     if (!overlay) return;
     const home = this.overlayHomeButton();
     this.setLabelPosition("overlayHome", home.x + home.width / 2, home.y + home.height / 2);
-    this.setLabel("overlayHome", this.screen === "playing" ? text("ui.GameRoot.015") : text("ui.GameRoot.016"));
+    this.setLabel("overlayHome", this.level.mode === "challenge" ? text("challenge.return") : this.screen === "playing" ? text("ui.GameRoot.015") : text("ui.GameRoot.016"));
     if (this.paused && this.screen === "playing") {
       this.setLabelPosition("overlayPrimary", 195, 381);
       this.setLabel("overlayTitle", text("ui.GameRoot.017")); this.setLabel("overlayStats", ""); this.setLabel("overlayPrimary", text("ui.GameRoot.018"));
@@ -779,10 +801,10 @@ export class GameRoot extends Component {
     } else {
       const win = this.screen === "win";
       this.setLabelPosition("overlayPrimary", 195, win || this.revived ? 420 : 412);
-      this.setLabel("overlayTitle", win ? (this.level.id === GAME_CONFIG.maxLevels ? text("ui.GameRoot.019") : text("ui.GameRoot.020")) : text("ui.GameRoot.021"));
+      this.setLabel("overlayTitle", win ? (this.level.mode === "challenge" ? text("challenge.win") : this.level.id === GAME_CONFIG.maxLevels ? text("ui.GameRoot.019") : text("ui.GameRoot.020")) : text("ui.GameRoot.021"));
       this.setLabel("overlayStats", text("ui.GameRoot.022", this.defeated, this.earned));
       this.setLabel("overlayPrimary", win ? (this.level.id < GAME_CONFIG.maxLevels ? text("ui.GameRoot.023") : text("ui.GameRoot.024")) : !this.revived ? text("ui.GameRoot.025") : text("ui.GameRoot.026"));
-      this.setLabel("overlayNote", !win && !this.revived ? text("ui.GameRoot.027") : "");
+      this.setLabel("overlayNote", !win && !this.revived ? (this.adFeedback || text("ui.GameRoot.027")) : "");
       this.setLabel("overlaySecondary", !win && !this.revived ? text("ui.GameRoot.028") : "");
     }
   }
@@ -864,6 +886,7 @@ export class GameRoot extends Component {
   }
 
   private resetLevel(levelId = this.currentLevelId): void {
+    this.battleRevision++; this.adFeedback = "";
     this.menu?.hide();
     this.level = getLevelConfig(levelId); this.currentLevelId = this.level.id;
     this.coins = this.level.initialCoins; this.lives = this.level.initialLives; this.wave = 0;
@@ -884,7 +907,7 @@ export class GameRoot extends Component {
     }
     this.pathLength = this.computePathLength();
     this.drawStaticMap();
-    this.toastText = this.level.id <= 3 ? text("ui.GameRoot.036") : text("ui.GameRoot.037", this.level.id, this.level.title); this.toastTime = 4;
+    this.toastText = this.level.mode === "challenge" ? text("challenge.enter") : this.level.id <= 3 ? text("ui.GameRoot.036") : text("ui.GameRoot.037", this.level.id, this.level.title); this.toastTime = 4;
     this.defeated = 0; this.earned = 0;
     this.damageFlash = 0; this.battleFeedbackTime = 0; this.battleFeedbackText = "";
   }
@@ -896,11 +919,7 @@ export class GameRoot extends Component {
     this.battleFeedbackTime = Math.max(0, this.battleFeedbackTime - dt);
     this.towers.forEach((tower) => { tower.recoil = Math.max(0, tower.recoil - dt); });
     this.obstacles.forEach((obstacle) => { obstacle.hitFlash = Math.max(0, obstacle.hitFlash - dt); });
-    // 横幅结束后才开始按剩余秒数向上取整显示倒计时，倍速会同时加快预告和战斗。
-    if (!this.inWave && this.enemies.length === 0 && this.wave < this.level.waves.length) {
-      if (this.toastTime <= 0) this.nextWaveTimer -= dt;
-      if (this.nextWaveTimer <= 0) this.startWave();
-    }
+    // 准备倒计时由update按真实时间推进，不在倍速子步内重复扣减。
     if (this.inWave && this.queue.length > 0) {
       this.spawnTimer -= dt;
       if (this.spawnTimer <= 0) {
@@ -930,7 +949,7 @@ export class GameRoot extends Component {
         if (this.lives <= 0) {
           this.lives = 0; this.screen = "lose";
           this.audio.play("lose", 0.82);
-          if (!this.gmSessionActive) PlatformService.setMaximumInteger("night_store_best_level", this.level.id, GAME_CONFIG.maxLevels);
+          if (!this.gmSessionActive && this.level.mode === "adventure") PlatformService.setMaximumInteger("night_store_best_level", this.level.id, GAME_CONFIG.maxLevels);
           return;
         }
       }
@@ -979,9 +998,9 @@ export class GameRoot extends Component {
         this.screen = "win";
         this.audio.play("win", 0.8);
         // GM 选关用于隔离测试，通关不能污染玩家的正式解锁进度。
-        if (!this.gmSessionActive) PlatformService.setMaximumInteger("night_store_unlocked_level", this.currentLevelId + 1, GAME_CONFIG.maxLevels);
+        if (!this.gmSessionActive && this.level.mode === "adventure") PlatformService.setMaximumInteger("night_store_unlocked_level", this.currentLevelId + 1, GAME_CONFIG.maxLevels);
       } else {
-        // 先展示波次奖励，再留出完整的 3、2、1 预告，避免下一波突然出现。
+        // 下一波保留配置的真实秒数，玩家可点击气泡提前开波。
         this.nextWaveTimer = globalNumber("nextWaveDelay");
         this.showToast(text("ui.GameRoot.039", bonus));
       }
@@ -1000,9 +1019,9 @@ export class GameRoot extends Component {
     // 只记录正式遭遇；GM和地图评审不写图鉴存档。
     if (!this.gmSessionActive && !this.mapReview) this.collection?.encounter(kind);
     const base = ENEMY_CONFIG[kind];
-    const hp = Math.round(base.hp * this.level.enemyHealthScale * (1 + (this.wave - 1) * globalNumber("waveHealthGrowth")));
+    const hp = Math.round(base.hp * this.level.enemyHealthScale * (this.level.waves[Math.max(0, this.wave - 1)]?.healthScale ?? 1) * (1 + (this.wave - 1) * globalNumber("waveHealthGrowth")));
     const start = this.level.pathPoints[0];
-    this.enemies.push({ kind, hp, maxHp: hp, speed: base.speed * this.level.enemySpeedScale, reward: base.reward, radius: base.radius, color: base.color, damage: base.damage, distance: 0, x: start[0], y: start[1], age: 0, slow: 0, hitFlash: 0, burnTime: 0, burnDamage: 0, markedTime: 0, sinceHit: 0 });
+    this.enemies.push({ kind, hp, maxHp: hp, speed: base.speed, reward: base.reward, radius: base.radius, color: base.color, damage: base.damage, distance: 0, x: start[0], y: start[1], age: 0, slow: 0, hitFlash: 0, burnTime: 0, burnDamage: 0, markedTime: 0, sinceHit: 0 });
   }
 
   private hit(shot: Shot, target: AttackTarget): void {
@@ -1156,11 +1175,17 @@ export class GameRoot extends Component {
   }
 
   private async usePropWithAd(kind: PropKind): Promise<void> {
+    if (this.adRequesting || this.propAdUsed[kind] || this.screen !== "playing" || this.disposed) return;
+    const revision = this.battleRevision;
     this.adRequesting = true; this.showToast(text("ui.GameRoot.053"));
-    const result = await PlatformService.showRewardedVideo(GAME_CONFIG.rewardAdUnitId);
-    this.adRequesting = false;
-    if (!result.rewarded && result.reason !== "missing-ad-unit") { this.showToast(text("ui.GameRoot.054")); return; }
-    this.propAdUsed[kind] = true; this.applyProp(kind);
+    try {
+      const result = await PlatformService.showRewardedVideo(GAME_CONFIG.rewardAdUnitId);
+      if (this.disposed || revision !== this.battleRevision || this.screen !== "playing") return;
+      // 缺少广告位、模拟结果、取消和失败都不能发放正式道具。
+      if (!result.rewarded || result.simulated) { this.showToast(text("ui.GameRoot.054")); return; }
+      this.propAdUsed[kind] = true; this.applyProp(kind);
+    } catch { if (!this.disposed && revision === this.battleRevision) this.showToast(text("ui.GameRoot.054")); }
+    finally { if (revision === this.battleRevision) this.adRequesting = false; }
   }
 
   private onTouchStart(event: EventTouch): void {
@@ -1257,6 +1282,12 @@ export class GameRoot extends Component {
     const button = PROP_BUTTONS.find((item) => this.buttonHit(this.footerRect(item), x, y));
     if (button) { this.useProp(button.kind); return; }
 
+    if (this.shouldShowWaveCountdown()) {
+      const bubble = this.waveCountdownPosition();
+      if (containsPoint({x:bubble.x-56,y:bubble.y-40,width:112,height:84},x,y)) {
+        this.startWave(); this.selectedSpot = null; this.selectedTower = null; this.selectedObstacle = null; return;
+      }
+    }
     // 边缘格位把方形热区夹在可视边界内，保证不因一半热区在屏幕外而难以点中。
     const spot = this.spots.find((item) => containsPoint({
       x: Math.max(0, Math.min(W - this.hitSize, item.x - this.hitSize / 2)),
@@ -1279,20 +1310,25 @@ export class GameRoot extends Component {
   }
 
   private advanceLevel(): void {
-    const next = this.currentLevelId < GAME_CONFIG.maxLevels ? this.currentLevelId + 1 : this.currentLevelId;
+    const next = this.level.mode === "adventure" && this.currentLevelId < GAME_CONFIG.maxLevels ? this.currentLevelId + 1 : this.currentLevelId;
     this.resetLevel(next);
   }
 
   private async reviveWithAd(): Promise<void> {
-    if (this.revived) return;
-    this.adRequesting = true; this.showToast(text("ui.GameRoot.055"));
-    const result = await PlatformService.showRewardedVideo(GAME_CONFIG.rewardAdUnitId);
-    this.adRequesting = false;
-    if (!result.rewarded && result.reason !== "missing-ad-unit") { this.showToast(text("ui.GameRoot.056")); return; }
-    // 复活保留布阵，但清掉当前波次的临时对象并回退一波，避免广告返回后立刻再次失败。
-    this.revived = true; this.lives = Math.max(globalNumber("reviveMinLives"), Math.ceil(this.level.initialLives * globalNumber("reviveLifeRatio"))); this.screen = "playing"; this.enemies = []; this.shots = []; this.queue = [];
-    this.inWave = false; this.wave = Math.max(0, this.wave - 1); this.nextWaveTimer = globalNumber("reviveWaveDelay");
-    this.showToast(result.rewarded ? text("ui.GameRoot.057") : text("ui.GameRoot.058"));
+    if (this.revived || this.adRequesting || this.screen !== "lose" || this.disposed) return;
+    const revision = this.battleRevision;
+    this.adRequesting = true; this.adFeedback = text("ui.GameRoot.055");
+    try {
+      const result = await PlatformService.showRewardedVideo(GAME_CONFIG.rewardAdUnitId);
+      if (this.disposed || revision !== this.battleRevision || this.screen !== "lose") return;
+      if (!result.rewarded || result.simulated) { this.adFeedback = text("ui.GameRoot.056"); return; }
+      // 复活保留布阵，清除当前波对象并重打本波，迟到回调不能复活另一局。
+      this.revived = true; this.lives = Math.max(globalNumber("reviveMinLives"), Math.ceil(this.level.initialLives * globalNumber("reviveLifeRatio")));
+      this.screen = "playing"; this.enemies = []; this.shots = []; this.queue = [];
+      this.inWave = false; this.wave = Math.max(0, this.wave - 1); this.nextWaveTimer = globalNumber("reviveWaveDelay");
+      this.showToast(text("ui.GameRoot.057"));
+    } catch { if (!this.disposed && revision === this.battleRevision) this.adFeedback = text("ui.GameRoot.056"); }
+    finally { if (revision === this.battleRevision) this.adRequesting = false; }
   }
 
   private showToast(value: string): void { this.toastText = value; this.toastTime = globalNumber("toastSeconds"); }

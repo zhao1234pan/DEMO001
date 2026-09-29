@@ -91,7 +91,7 @@ id,key,zhCN
 90,collection.enemy-tank.story,箱子上没有收件地址，只有一张歪歪扭扭的“夜间送达”。它走得很认真，至今还没发现纸箱里的自己就是那件包裹。
 91,collection.staff-doubao.category,仓鼠 · 收银员
 92,collection.staff-doubao.traits,快速、稳定的单体驱赶。上岗费用低，方便逐步扩展防线。
-93,collection.staff-doubao.story,豆包会把每枚零钱朝同一个方向码好。客流再急，他也能一边报数一边守住收银台，最怕的是下班前少算一枚硬币。
+93,collection.staff-doubao.story,豆包会把每枚金币朝同一个方向码好。客流再急，他也能一边报数一边守住收银台，最怕的是下班前少算一枚硬币。
 94,collection.staff-mianmian.category,垂耳兔 · 理货员
 95,collection.staff-mianmian.traits,攻击附带减速，为其他店员争取输出时间，适合照看疾行精怪。
 96,collection.staff-mianmian.story,棉棉能记住每件商品该在的格子。遇到匆忙的来客，她总会轻轻提醒：“慢一点，热食还没凉。”
@@ -102,7 +102,7 @@ id,key,zhCN
 101,collection.enemy-shield.traits,耐久较高，速度适中。适合集中输出，也可以让咕咕利用远射多打几轮。
 102,collection.enemy-shield.story,它把茶叶罐擦得锃亮，郑重宣布自己是夜班巡逻员。走到店门口才发现，巡逻路线正好绕回了零食货架。
 103,collection.enemy-jelly.category,夜间精怪
-104,collection.enemy-jelly.traits,耐久中等、速度适中，零钱奖励较多。与快客混行时不要忽略它。
+104,collection.enemy-jelly.traits,耐久中等、速度适中，金币奖励较多。与快客混行时不要忽略它。
 105,collection.enemy-jelly.story,白天躲在冷柜里打瞌睡，夜里悄悄出门散步。每走一步都晃一下，却从来没把杯里的月光洒出来。
 106,collection.enemy-runner.category,夜间精怪
 107,collection.enemy-runner.traits,移速高于汽水罐，耐久也更高。减速和多目标火力能减少漏怪。
@@ -141,29 +141,29 @@ id,key,zhCN
 140,ui.BattleUiView.001,战斗UI图标未完整加载，继续使用文字按钮。
 141,ui.BattleUiView.002,战斗UI图集尺寸应为512×512，请核对运行资源导出。
 142,ui.BattleUiView.003,战斗UI图标加载失败，继续使用文字按钮。
-143,ui.CollectionData.001,基础耐久
-144,ui.CollectionData.002,基础移速
-145,ui.CollectionData.003,零钱奖励
-146,ui.CollectionData.004,漏怪扣耐久
-147,ui.CollectionData.005,上岗费用
-148,ui.CollectionData.006,一级伤害
-149,ui.CollectionData.007,攻击间隔
-150,ui.CollectionData.008,{p0} 秒
-151,ui.CollectionData.009,基础射程
+143,ui.CollectionData.001,血量
+144,ui.CollectionData.002,移速
+145,ui.CollectionData.003,金币奖励
+146,ui.CollectionData.004,伤害值
+147,ui.CollectionData.005,建造费用
+148,ui.CollectionData.006,伤害
+149,ui.CollectionData.007,攻速
+150,ui.CollectionData.008,{p0}次/秒
+151,ui.CollectionData.009,射程
 152,ui.CollectionData.010,解锁第 {p0} 关后上岗
 153,ui.CollectionData.011,后续开放
 154,ui.CollectionData.012,怪物
 155,ui.CollectionData.013,店员
 156,ui.CollectionData.014,升级提高伤害与射程，缩短攻击间隔
-157,ui.CollectionData.015,"耐久随关卡和波次变化
-移速受关卡影响"
-158,ui.CollectionData.016,在冒险模式中遇见后解锁
+157,ui.CollectionData.015,"显示基础血量，实战随关卡和波次变化
+基础移速固定，仍受技能影响"
+158,ui.CollectionData.016,未遭遇
 159,ui.GameMenuView.001,森林便利店
 160,ui.GameMenuView.002,灯亮着，夜班就开始了
 161,ui.GameMenuView.003,冒险模式
 162,ui.GameMenuView.004,已解锁 {p0} / {p1} 关
 163,ui.GameMenuView.005,挑战模式
-164,ui.GameMenuView.006,暂未开放
+164,ui.GameMenuView.006,固定体验关 · 限定4名店员
 165,ui.GameMenuView.007,挑战模式
 166,ui.GameMenuView.008,挑战模式暂未开放。
 167,ui.GameMenuView.009,游戏图鉴
@@ -201,22 +201,22 @@ id,key,zhCN
 199,ui.GameRoot.005,测试选关，不改变正式解锁
 200,ui.GameRoot.006,关闭
 201,ui.GameRoot.007,返回正式进度
-202,ui.GameRoot.008,{p0}关{p1}
+202,ui.GameRoot.008,第{p0}关{p1}
 203,ui.GameRoot.009,{p0}/{p1} 波
 204,ui.GameRoot.010,已满级
 205,ui.GameRoot.011,升级 ●{p0}
 206,ui.GameRoot.012,出售 +{p0}
 207,ui.GameRoot.013,清理 ♥{p0}  +{p1}
-208,ui.GameRoot.014,下一波 {p0}/{p1}
+208,ui.GameRoot.014,下一波
 209,ui.GameRoot.015,结束本局并返回
-210,ui.GameRoot.016,返回首页
+210,ui.GameRoot.016,返回选关
 211,ui.GameRoot.017,暂停营业
 212,ui.GameRoot.018,继续营业
 213,ui.GameRoot.019,二十夜守护完成！
 214,ui.GameRoot.020,顺利打烊！
 215,ui.GameRoot.021,便利店失守了
 216,ui.GameRoot.022,"赶走 {p0} 只夜间精怪
-本局收入 {p1}"
+金币 {p1}"
 217,ui.GameRoot.023,下一关
 218,ui.GameRoot.024,再次挑战
 219,ui.GameRoot.025,看广告继续营业
@@ -227,7 +227,7 @@ id,key,zhCN
 224,ui.GameRoot.030,第 {p0} 关{p1}
 225,ui.GameRoot.031,冷气
 226,ui.GameRoot.032,清场
-227,ui.GameRoot.033,零钱
+227,ui.GameRoot.033,金币
 228,ui.GameRoot.034,{p0}·用完
 229,ui.GameRoot.035,{p0}·广告
 230,ui.GameRoot.036,点空地建造；空闲时点货箱清理
@@ -237,22 +237,22 @@ id,key,zhCN
 234,ui.GameRoot.040,第 {p0} 波来袭！
 235,ui.GameRoot.041,清出空地 +{p0}
 236,ui.GameRoot.042,这名店员还没有加入夜班
-237,ui.GameRoot.043,夜班零钱不够，先赶走一些精怪吧
+237,ui.GameRoot.043,夜班金币不够，先赶走一些精怪吧
 238,ui.GameRoot.044,{p0}上岗！
 239,ui.GameRoot.045,先点击一名场上店员
 240,ui.GameRoot.046,{p0}已经满级
-241,ui.GameRoot.047,升级所需零钱不足
+241,ui.GameRoot.047,升级所需金币不足
 242,ui.GameRoot.048,调岗返还 +{p0}
 243,ui.GameRoot.049,本关这个道具已经用完了
 244,ui.GameRoot.050,冰柜冷气：全场冻结 {p0} 秒
-245,ui.GameRoot.051,紧急零钱 +{p0}
+245,ui.GameRoot.051,紧急金币 +{p0}
 246,ui.GameRoot.052,闭店清场：赶走小怪，削弱重型与首领
 247,ui.GameRoot.053,正在请求道具广告…
-248,ui.GameRoot.054,广告未完整观看，暂未补充道具
+248,ui.GameRoot.054,广告未完成或暂不可用，道具未使用
 249,ui.GameRoot.055,正在请求继续营业广告…
-250,ui.GameRoot.056,广告未完整观看，暂未复活
+250,ui.GameRoot.056,广告未完成或暂不可用，未复活
 251,ui.GameRoot.057,继续营业！当前波次即将重来
-252,ui.GameRoot.058,暂无广告，本次已继续营业
+252,ui.GameRoot.058,广告暂不可用，请稍后重试
 253,ui.MenuArtView.001,主界面图标未完整加载，继续使用文字按钮。
 254,ui.MenuArtView.002,主界面图集尺寸应为512×512，请核对运行资源导出。
 255,ui.MenuArtView.003,主界面图标加载失败，继续使用文字按钮。
@@ -267,3 +267,16 @@ id,key,zhCN
 264,ui.PlatformSettings.2,已打开侧边栏，可从这里再次进入游戏。
 265,ui.unknown,???
 266,ui.boss,BOSS
+267,ui.opt.upgradeCost,升级费用
+268,ui.opt.staffLevel1,1级
+269,ui.opt.staffLevel2,2级
+270,ui.opt.staffLevel3,3级
+271,ui.opt.gold,{p0}金币
+272,challenge.title,夜班极限挑战
+273,challenge.goal,限定店员搭配，守住最后一班
+274,challenge.bossWave,首领来袭，准备集中火力！
+275,challenge.hud,挑战体验关
+276,challenge.win,挑战守护完成！
+277,challenge.return,返回首页
+278,challenge.enter,固定挑战：棉棉、布丁、咕咕、薄荷
+279,ui.opt.startWave,开始下一波

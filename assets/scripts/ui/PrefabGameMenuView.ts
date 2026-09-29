@@ -1,9 +1,9 @@
 import { Color, Graphics, Node, UITransform } from "cc";
-import { globalString, text } from "../config/ConfigTables";
+import { globalString, globalNumber, text } from "../config/ConfigTables";
 import { GAME_CONFIG, ENEMY_CONFIG } from "../gameplay/battle/GameConfig";
 import { getLevelConfig } from "../gameplay/battle/LevelConfig";
 import { levelTheme } from "../gameplay/battle/LevelTheme";
-import { COLLECTION_ENTRIES, COLLECTION_TABS, CollectionEntry, CollectionProgress, CollectionTab } from "../gameplay/battle/CollectionData";
+import { COLLECTION_ENTRIES, COLLECTION_TABS, CollectionEntry, CollectionProgress, CollectionTab, staffStats } from "../gameplay/battle/CollectionData";
 import { AudioService } from "../services/AudioService";
 import { PlatformSettings } from "../services/PlatformSettings";
 import { UiPrefabs, uiNode, uiText, uiRect, uiColor } from "./UiPrefabs";
@@ -26,6 +26,7 @@ export class PrefabGameMenuView {
   private page: MenuPage = "home";
   private tab: CollectionTab = "enemies";
   private levelPage = 0;
+  private detailLevel = 1;
   private collectionPage = 0;
   private unlocked = 1;
   private dialog: Dialog | null = null;
@@ -49,9 +50,9 @@ export class PrefabGameMenuView {
     void this.platform.refresh().then(() => { if (!this.disposed) this.dirty = true; });
     this.root.active = false;
   }
-  show(unlocked: number, page: MenuPage = "home"): void {
+  show(unlocked: number, page: MenuPage = "home", focusLevel = unlocked): void {
     this.navigationRevision++; this.unlocked = getLevelConfig(unlocked).id; this.collection.refresh(this.unlocked);
-    this.page = page; this.levelPage = Math.floor((this.unlocked - 1) / this.levelCards.length);
+    this.page = page; this.levelPage = Math.floor((getLevelConfig(focusLevel).id - 1) / this.levelCards.length);
     this.dialog = null; this.active = true; this.root.active = true; this.dirty = true;
   }
   hide(): void { if (!this.active) return; this.navigationRevision++; this.active = false; this.root.active = false; this.dialog = null; }
@@ -103,7 +104,7 @@ export class PrefabGameMenuView {
     uiText(page, "Adventure/Note", text("ui.GameMenuView.004", this.unlocked, GAME_CONFIG.maxLevels));
     this.bind(page, "Settings", () => this.navigate("settings"));
     this.bind(page, "Adventure", () => this.navigate("levels"));
-    this.bind(page, "Challenge", () => this.notice(text("ui.GameMenuView.007"), text("ui.GameMenuView.008")));
+    this.bind(page, "Challenge", () => this.startLevel(globalNumber("challengeLevelId")));
     this.bind(page, "Collection", () => { this.collection.refresh(this.unlocked); this.navigate("collection"); });
     const side = this.platform.capabilities.sidebar;
     uiNode(page, "Sidebar").active = side; uiNode(page, "Footer").active = !side;
@@ -179,7 +180,7 @@ export class PrefabGameMenuView {
       uiNode(card, "LockedPortraitBackground").active = !unlocked;
       this.assets.bindImage(uiNode(card, "Portrait"), "menu:" + entry.imageKey, !unlocked);
       uiText(card, "Name", unlocked ? entry.name : text("ui.unknown"));
-      this.bind(card, "", () => { this.dialog = { kind: "entry", entry }; });
+      this.bind(card, "", () => { this.detailLevel = 1; this.dialog = { kind: "entry", entry }; });
     });
     uiText(page, "Count", text("ui.GameMenuView.026", entries.filter(e => this.collection.isUnlocked(e)).length, entries.length));
     this.pagination(page, this.collectionPage, pages, () => { this.collectionPage--; }, () => { this.collectionPage++; });
@@ -204,9 +205,20 @@ export class PrefabGameMenuView {
     this.assets.bindImage(uiNode(page, "Portrait"), "menu:" + entry.imageKey, !unlocked);
     uiNode(page, "Known").active = unlocked; uiNode(page, "Unknown").active = !unlocked;
     uiText(page, "Unknown/Hint", entry.unlockHint);
+    for (const level of [1, 2, 3]) {
+      const key = "Level" + level, button = uiNode(page, key);
+      button.active = unlocked && Boolean(entry.staffKind);
+      if (button.active) {
+        const levelKey = ["ui.opt.staffLevel1", "ui.opt.staffLevel2", "ui.opt.staffLevel3"][level - 1]; uiText(button, "Text", text(levelKey));
+        uiColor(button, "Surface", this.detailLevel === level ? "#96bb77" : "#efe7c8");
+        this.bind(page, key, () => { this.detailLevel = level; }, true);
+      }
+    }
     if (unlocked) {
       uiText(page, "Known/Category", entry.category); uiText(page, "Known/Traits", entry.traits);
-      uiText(page, "Known/Stats", entry.stats.map((item, i) => `${i === 2 ? "\n" : i ? "   " : ""}${item.label} ${item.value}`).join(""));
+      const stats = entry.staffKind ? staffStats(entry.staffKind, this.detailLevel) : entry.stats;
+      uiNode(page, "Known/Stats").active = false;
+      stats.forEach((item, index) => uiText(page, "Known/Stat" + index, item.label + "\n" + item.value));
       uiText(page, "Known/Note", entry.statNote); uiText(page, "Known/Story", entry.story);
     }
   }
