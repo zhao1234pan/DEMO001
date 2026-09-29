@@ -1,0 +1,11 @@
+{
+  "name": "config-table-check",
+  "version": "1.0.0",
+  "package_version": 2,
+  "description": "构建前校验原始表格与客户端CSV",
+  "author": "项目开发组",
+  "editor": ">=3.8.0",
+  "contributions": {
+    "builder": "./builder.js"
+  }
+}

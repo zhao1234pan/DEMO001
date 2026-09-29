@@ -8,6 +8,7 @@
   "description": "叮咚夜班开始：森林夜班便利店主题的原创竖屏动物轻塔防小游戏",
   "scripts": {
     "config:export": "node tools/config/export.cjs",
-    "config:check": "node tools/config/export.cjs --check"
+    "config:check": "node tools/config/export.cjs --check",
+    "config:test": "node tools/config/test.cjs"
   }
 }
