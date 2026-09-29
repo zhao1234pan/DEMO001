@@ -21,15 +21,23 @@
 - 查看375×667、750×1334、375×812、375×834首页，标题、三肖像、双列十关及页脚完整。大尺寸用固定iframe游戏视口，外层仅缩放展示；通过canvas DOM尺寸核对。最终375宽实点检查暂停和失败页新按钮，未覆盖全屏幕触控或真机。页面刷新仍读回既有解锁5，本轮未清空旧存档。
 - 浏览器曾捕获一次无来源URL的MutationObserver.observe参数错误（12:56:47 UTC），与历史评审相同，未确定归属；画布和流程可用，不把浏览器零错误作为结论。调整桌面视口时有瞬间裁切，布局稳定后重新检查，不把过渡截图当验收图。
 
+#### 微信独立构建补充
+
+- 用户最新确认微信基础信息提交完成，正式App ID为wx26d4fc297246037b。基于实现提交4a8d347，新增settings/builds/wechatgame.json；Cocos Creator 3.8.8微信目标于21:21:17 Finished（57秒）。日志有配置无版本号、引擎Rollup及worker退出提示，不能写为零警告。
+- 产物G:\gptwork\wechat-build\wechatgame共67文件、3817609字节；project.config.json的appid与用户提供值一致，compileType=game；game.json为portrait。assets/main/index.js为88248字节，SHA256为1068b48f5a2f690e124fd3b23b968ae185f663ace2c7d631e0dca0db7ce710ff，与本轮抖音业务主脚本一致。包含正式首页/锁关/返回文案，无GM入口/面板标签；调试状态字段仍保留。
+- 微信开发者工具运行：未执行；真机测试：未执行。仅核查两个常见安装路径未发现CLI，不能据此断言整机未安装。胶囊与微信广告SDK未接入，当前非抖音广告仍走既有模拟分支。本次仅构建及静态产物核查通过，未上传、未发布。
+- 命令及平台边界见WECHAT_RELEASE；日志为G:\gptwork\creator-foundation-wechat.stdout.log及stderr.log。构建配置不含账号秘密，未索取或记录AppSecret。
+
 #### 证据与遗留
 
 - 首页、暂停和失败实际浏览器截图在G:\gptwork\foundation-evidence；不是生成图或固定布阵。SHA256依次为30db20ed594d96ad152edc58b7bba50697417c9534edfd97e7eaf40ee85ab855、574393473c936d4ecc87a8bb4be5df2f88bfddbda5a1fe26fce9e5b5e6ed8034、9bc651beb1d0a7550d8ea86efdbd5882d746bfa311e7a5d6aa3d1d82de267a1e。
 
 
-- 源码SHA256：GameRoot fb90ab17e2940e14ca4832f45bca85fac5bcfff1920fb54aa36a30c72fb6c81e；PlatformService 657a8fc6a2ce8e353fa74ada80a5cc682aadb970d848daf1d32645514114f99b；LevelConfig 827b554f1c3f35cb117e2a235d2e1b0e870d380d3c2a92de30c2e3890b38c341。
+- Web/抖音构建与测试时源码原始字节SHA256（可能含CRLF；Git按LF保存）：GameRoot fb90ab17e2940e14ca4832f45bca85fac5bcfff1920fb54aa36a30c72fb6c81e；PlatformService 657a8fc6a2ce8e353fa74ada80a5cc682aadb970d848daf1d32645514114f99b；LevelConfig 827b554f1c3f35cb117e2a235d2e1b0e870d380d3c2a92de30c2e3890b38c341。
+- 三模块统一LF后SHA256分别为：GameRoot c914a79766b277199efc6c7ebc84ecb91389f0aa50c19695b60da95a2e3fc977；PlatformService 967aafac5112e8ccf5bbb6f70d5985424805fe97f8a595d9572cf98d96baf320；LevelConfig 18651f85773b48cbcfc5d500c398abd3731e3c026ba120b90df06e5649341bb7。微信构建后核对与原验收源码一致。
 - 辅助文件仅G:\gptwork：save-entry-regression.cjs、save-entry-baseline-report、save-entry-pre-monotonic-*、save-entry-monotonic-before-report、save-entry-monotonic-regression-report、foundation-runtime-regression.cjs、foundation-validation中的报告与comparison-to-0.4.1.json、foundation-contract-check.cjs及foundation-contract-report.json、creator-foundation-web/mini-final.stdout/stderr.log。历史证据不覆盖；另一电脑按本文断言重建，不依赖本机辅助路径。
 - P2触控边界已复现：A按下→B按下→A松开→A再次按下/松开，B仍按住时可能触发新点击；真实业务配触点替身复现免费零钱被使用。本轮未修，不把既有多触检查通过称为覆盖所有交错序列。
-- 未完成：人工十关/多种布阵、低端安卓性能/音频/异形屏、真实抖音胶囊和广告、微信目标构建/SDK/真机。广告既有缺配置发奖与异常请求问题保持原样；软著申请暂缓。
+- 未完成：人工十关/多种布阵、低端安卓性能/音频/异形屏、真实抖音胶囊和广告、微信开发者工具运行/SDK/真机。广告既有缺配置发奖与异常请求问题保持原样；软著申请暂缓。
 
 ### 0.4.2 正式中文名称统一（2026-09-29）
 

@@ -8,7 +8,7 @@
 - TypeScript
 - 2D UI 渲染，750 × 1334 竖屏设计分辨率
 - `Fit Width = true`、`Fit Height = false`，固定宽度、动态高度
-- 目标为抖音及微信小游戏，同时保留浏览器预览；微信尚未完成目标构建与平台验收
+- 目标为抖音及微信小游戏，同时保留浏览器预览；微信目标构建已完成，开发者工具与真机验收待完成
 
 ## 模块
 
@@ -81,7 +81,7 @@
 ## 平台适配边界
 
 - 广告仅通过 `PlatformService.showRewardedVideo` 调用。
-- 微信预留沿用`PlatformService`业务入口；微信SDK封装与App ID配置尚未接入。后续在取得后台信息后接入微信平台层、顶部胶囊和广告分支，并验证引擎生命周期/存储在微信环境下的行为，详见[微信发布准备](./WECHAT_RELEASE.md)。
+- 微信沿用`PlatformService`业务入口；`settings/builds/wechatgame.json`已配置正式App ID并完成目标构建，微信SDK封装尚未接入。后续接入微信平台层、顶部胶囊和广告分支，并验证引擎生命周期/存储在微信环境下的行为，详见[微信发布准备](./WECHAT_RELEASE.md)。
 - 监听 Cocos `Game.EVENT_HIDE`，切入后台立即暂停。
 - 设计为竖屏并优先使用触控事件。
 - 资源按“首场景 / 关卡资源 / 音频”预留 Asset Bundle 拆分空间。
