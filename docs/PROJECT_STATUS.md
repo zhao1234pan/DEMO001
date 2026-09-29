@@ -10,7 +10,7 @@
 - 首版固定挑战21波，限定棉棉/布丁/咕咕/薄荷；1倍速测试9.6～12分钟，铺开混合策略19/22格与部分升级。无广告可残血通关；广告改善容错，没有强制观看判胜条件。体验结论与局限见CHALLENGE_DESIGN。
 - 18张原始XLSX→CSV与manifest同步；新增Level.mode、Wave.healthScale和Global.challengeLevelId。20关冒险与挑战进度分离，旧存档不清空。
 - 专项17、原机制11、配置9、实屏138项通过；冒险69局全通（含前三关18局满血），另有挑战6局对照。修复广告异常/迟到回调、复活反馈、倒计时低帧率与遮挡、金币重叠及16/17首波压力。详见TESTING及CONTENT_OPTIMIZATION。
-- 工作树G:/DEMO001-worktrees/ui-prefabs，分支codex/pc-a/content-optimization；本地交付，旧预览与存档保留。真机/真实广告位及用户挑战体验待验；远端上传受既有自动审批限制，未推送、未合并main。
+- 工作树G:/DEMO001-worktrees/ui-prefabs，分支codex/pc-a/content-optimization；本地交付，旧预览与存档保留。真机/真实广告位及用户挑战体验待验。2026-09-30用户明确授权推送后，campaign-20、ui-prefabs、content-optimization三条任务分支已同步GitHub；main未合并。之前审批限制为历史记录，现已解除本次分支上传阻碍。
 
 
 ### 0.7.0 固定 UI 预制体迁移（2026-09-30）
