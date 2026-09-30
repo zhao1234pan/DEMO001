@@ -2,6 +2,13 @@
 
 ## 最新自动检查
 
+### 2026-09-30 主线合并前复核
+
+- 基于已推送完整版本704d73f，使用项目原始tsconfig（ES2018）运行严格tsc，发现PrefabGameMenuView选关分类使用flatMap导致类型检查失败；改为等价的嵌套some，保留大BOSS优先、小BOSS其次的分类规则，不提高运行环境要求、不改CSV或数值。
+- 修复后默认tsconfig严格TS通过；18表config:check、22预制体ui:check（744节点）、现有优化专项17/17和git diff --check通过。
+- 独立Web Mobile构建2026-09-30 08:52:41 Finished，日志G:/gptwork/content-optimization/creator-main-merge-web.stdout.log；构建前自动配置检查通过。输出G:/gptwork/main-merge-web-build/web-mobile，不覆盖4308现有试玩。CLI退出码36沿用既有环境，以Finished为证据。
+- 其余集成内容与已验证版本相同，原三目标/实屏/数值结果见下方条目。本次没有重复声明跑过全部75局或真实设备测试。
+
 ### 0.8.0 十八项内容优化（2026-09-30）
 
 - 接续基础功能cb31b7f与预制体d868eae本地交接，复用G:/DEMO001-worktrees/ui-prefabs，分支codex/pc-a/content-optimization。原文、18附图与确认口径均已归档；逐项结果见[内容优化记录](CONTENT_OPTIMIZATION.md)。
