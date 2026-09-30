@@ -375,6 +375,7 @@ export class GameRoot extends Component {
       this.art.endFrame(); this.uiArt.endFrame();
       for (const key of this.labels.keys()) this.showLabel(key, false);
       this.menu?.render(this.unlockedLevel, this.layoutTop, this.layoutBottom);
+      this.drawGmPanel(g); this.syncGmLabels();
       return;
     }
     this.menu?.hide();
@@ -842,7 +843,7 @@ export class GameRoot extends Component {
     GM_LEVEL_BUTTONS.forEach((item) => {
       const key = `gm-level-${item.levelId}`;
       this.showLabel(key, this.gmPanelOpen);
-      this.setLabel(key, text("ui.GameRoot.030", item.levelId, item.levelId === this.currentLevelId ? text("ui.GameRoot.extra2") : ""));
+      this.setLabel(key, text("ui.GameRoot.030", item.levelId, ""));
       this.setLabelColor(key, item.levelId === this.currentLevelId ? "#6f472f" : "#17352e");
     });
   }
@@ -1256,7 +1257,7 @@ export class GameRoot extends Component {
   private handlePress(x: number, y: number): void {
     if (this.mapReview) return;
     if (x < 0 || x > W || y < this.layoutTop || y > this.layoutBottom || this.adRequesting) return;
-    if (DEBUG && this.screen !== "home" && !this.gmPanelOpen && this.buttonHit(this.footerRect(GM_BUTTON), x, y)) {
+    if (DEBUG && !this.gmPanelOpen && this.buttonHit(this.footerRect(GM_BUTTON), x, y)) {
       this.gmPanelOpen = !this.gmPanelOpen; return;
     }
     if (DEBUG && this.gmPanelOpen) {
@@ -1264,12 +1265,20 @@ export class GameRoot extends Component {
       if (this.buttonHit(this.battleUi.gmRect("Home"), x, y)) {
         this.returnHome(); return;
       }
+      const commands = ["enemies", "bosses", "staff", "all", "restore"] as const;
+      const command = commands.find(key => this.buttonHit(this.battleUi.gmRect("Collection-" + key), x, y));
+      if (command) {
+        this.collection?.setGmPreview(command === "restore" ? null : command);
+        this.returnHome();
+        this.menu?.showCollection(this.unlockedLevel, command === "all" || command === "restore" ? "enemies" : command);
+        return;
+      }
       const levelButton = GM_LEVEL_BUTTONS.find((item) => this.buttonHit(this.battleUi.gmRect("Level" + item.levelId), x, y));
       if (levelButton) {
         this.gmSessionActive = true; this.gmPanelOpen = false; this.resetLevel(levelButton.levelId); return;
       }
       // 面板外点击仅关闭 GM，不把同一次点击传递给战斗，防止误建造或误用道具。
-      if (x < 35 || x > 355 || y < 112 || y > 586) this.gmPanelOpen = false;
+      if (!containsPoint(this.battleUi.gmRect("Panel"), x, y)) this.gmPanelOpen = false;
       return;
     }
     if (this.screen === "home") { this.menu?.press(x, y); return; }

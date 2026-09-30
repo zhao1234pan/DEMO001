@@ -1,3 +1,4 @@
+import { DEBUG } from "cc/env";
 import { rows, numeric, text, globalNumber, globalString, onConfigsReady } from "../../config/ConfigTables";
 import { ENEMY_CONFIG, ENEMY_KINDS, EnemyKind, TOWER_CONFIG, TowerKind } from "./GameConfig";
 import { getLevelConfig, LEVEL_CONFIGS } from "./LevelConfig";
@@ -61,6 +62,7 @@ onConfigsReady(()=>{
 });
 /** 调用方只传正式解锁关，并仅在正式战斗出怪时记录遭遇；GM 与美术评审不接入本服务。 */
 export class CollectionProgress {
+  private readonly previewTabs = new Set<CollectionTab>();
   private readonly enemies = new Set<EnemyKind>();
   private readonly staff = new Set<TowerKind>();
 
@@ -80,7 +82,15 @@ export class CollectionProgress {
     return { enemies: [...this.enemies], staff: [...this.staff] };
   }
 
+  /** 只覆盖本次运行的展示，不调用遭遇记录或写入玩家存档；正式构建不可启用。 */
+  setGmPreview(tab: CollectionTab | "all" | null): void {
+    if (!DEBUG) return;
+    if (tab === null) this.previewTabs.clear();
+    else for (const item of COLLECTION_TABS) if (tab === "all" || item.id === tab) this.previewTabs.add(item.id);
+  }
+
   isUnlocked(entry: CollectionEntry): boolean {
+    if (DEBUG && this.previewTabs.has(entry.tab)) return true;
     if (entry.tab === "staff") return entry.staffKind !== undefined && this.staff.has(entry.staffKind);
     return entry.enemyKind !== undefined && this.enemies.has(entry.enemyKind);
   }

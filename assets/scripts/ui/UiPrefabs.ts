@@ -1,3 +1,4 @@
+import { DEBUG } from "cc/env";
 import { assetManager, AssetManager, Color, instantiate, Label, Node, Prefab, Rect, resources, Size, Sprite, SpriteFrame, Texture2D, UITransform, Vec2, Vec3 } from "cc";
 import { numeric, rows } from "../config/ConfigTables";
 import { UiImage } from "./UiImage";
@@ -22,7 +23,7 @@ export class UiPrefabs {
       });
 
       // 等待全部回调落定，再统一释放失败批次，避免晚到回调泄漏资源引用。
-      const loaded = await Promise.all(rows("UiPrefab").map(row => new Promise<Prefab>((resolve, reject) => {
+      const loaded = await Promise.all(rows("UiPrefab").filter(row => DEBUG || row.key !== "gm").map(row => new Promise<Prefab>((resolve, reject) => {
         resources.load(row.path, Prefab, (error, asset) => {
           if (error || !asset) { reject(error || new Error(`Missing prefab: ${row.key}`)); return; }
           asset.addRef(); result.prefabs.set(row.key, asset); resolve(asset);

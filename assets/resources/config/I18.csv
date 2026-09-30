@@ -197,8 +197,8 @@ id,key,zhCN
 195,ui.GameRoot.001,地铁口
 196,ui.GameRoot.002,便利店
 197,ui.GameRoot.003,返回首页
-198,ui.GameRoot.004,GM 关卡选择
-199,ui.GameRoot.005,测试选关，不改变正式解锁
+198,ui.GameRoot.004,GM 调试
+199,ui.GameRoot.005,图鉴预览仅本次生效，不改正式存档
 200,ui.GameRoot.006,关闭
 201,ui.GameRoot.007,返回正式进度
 202,ui.GameRoot.008,第{p0}关{p1}
@@ -280,3 +280,8 @@ id,key,zhCN
 277,challenge.return,返回首页
 278,challenge.enter,固定挑战：棉棉、布丁、咕咕、薄荷
 279,ui.opt.startWave,开始下一波
+280,ui.gm.enemies,解锁怪物
+281,ui.gm.bosses,解锁 BOSS
+282,ui.gm.staff,解锁店员
+283,ui.gm.all,解锁全部图鉴
+284,ui.gm.restore,恢复正式图鉴

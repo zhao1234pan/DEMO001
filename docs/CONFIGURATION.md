@@ -88,3 +88,5 @@ UiPrefab是第18张表。config:export同步Prefab内I18预览与ArtFrame切片�
 - Global.touchTravelTolerance（float）：按390宽战斗逻辑坐标衡量的触点移动容错，当前20；统一在触摸开始、移动与结束时转换坐标，避免随屏幕缩放改变容错。
 - I18.ui.GameMenuView.017为“共{p0}波”；MapPoint与Spot原始表管理本轮居中修正。配置变更清单见OPTIMIZATION_V2。
 - 菜单避让的矩形间隔、屏幕边界、50逻辑像素最小格位命中及64×64建造卡为既有UI几何例外；固定控件外观在原生Prefab，未复制新业务参数到代码。广告count/isEnded及并发结算属于平台协议与算法，仍位于平台适配层。
+
+- GM图鉴预览：I18新增ui.gm.*五键；固定布局使用gm.prefab。命令ID/集合操作/DEBUG属于技术协议与算法例外，临时展示不新增玩家存储键。

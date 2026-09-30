@@ -55,6 +55,9 @@ export class PrefabGameMenuView {
     this.page = page; this.levelPage = Math.floor((getLevelConfig(focusLevel).id - 1) / this.levelCards.length);
     this.dialog = null; this.active = true; this.root.active = true; this.dirty = true;
   }
+  showCollection(unlocked: number, tab: CollectionTab): void {
+    this.tab = tab; this.collectionPage = 0; this.show(unlocked, "collection");
+  }
   hide(): void { if (!this.active) return; this.navigationRevision++; this.active = false; this.root.active = false; this.dialog = null; }
   render(unlocked: number, top: number, bottom: number): void {
     if (!this.active || this.disposed) return;

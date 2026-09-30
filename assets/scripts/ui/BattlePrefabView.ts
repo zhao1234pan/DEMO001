@@ -65,7 +65,10 @@ export class BattlePrefabView {
     this.register("overlaySecondary", uiNode(node, "Secondary/overlaySecondary")); this.register("overlayHome", uiNode(node, "Home/overlayHome"));
   }
   beginFrame(home: boolean): void {
-    this.hud.active = !home; this.gmEntry.active = DEBUG && !home; this.upgrade.active = false; this.sell.active = false; this.obstacle.active = false;
+    this.hud.active = !home; this.gmEntry.active = DEBUG;
+    // 菜单晚于战斗UI创建，入口与面板需保持在当前页面之上。
+    if (DEBUG) { this.gmEntry.setSiblingIndex(this.parent.children.length - 1); this.gm?.setSiblingIndex(this.parent.children.length - 1); }
+    this.upgrade.active = false; this.sell.active = false; this.obstacle.active = false;
     for (const node of this.builds.values()) node.active = false;
     for (const node of this.overlays.values()) node.active = false;
     if (this.gm) this.gm.active = false;
@@ -106,6 +109,7 @@ export class BattlePrefabView {
   }
   showGm(open: boolean, current: number): void {
     if (!this.gm) return;
+    this.gmEntry.active = !open;
     this.gm.active = open;
     if (open) for (let id = 1; id <= GAME_CONFIG.maxLevels; id++) uiNode(this.gm, "Level" + id + "/Selected").active = current === id;
   }
