@@ -90,3 +90,7 @@ UiPrefab是第18张表。config:export同步Prefab内I18预览与ArtFrame切片�
 - 菜单避让的矩形间隔、屏幕边界、50逻辑像素最小格位命中及64×64建造卡为既有UI几何例外；固定控件外观在原生Prefab，未复制新业务参数到代码。广告count/isEnded及并发结算属于平台协议与算法，仍位于平台适配层。
 
 - GM图鉴预览：I18新增ui.gm.*五键；固定布局使用gm.prefab。命令ID/集合操作/DEBUG属于技术协议与算法例外，临时展示不新增玩家存储键。
+
+## 前三关引导配置
+
+新增Tutorial为第19张表，6条动作配置；字段、完成规则、持久化与验证见TUTORIAL.md。I18和UiPrefab同步，23个预制体。动作/存储键为技术协议；detail.prefab/LayoutSpacing管理信息弹窗几何，描边厚度/圆角与行高排列属于引擎表现例外。

@@ -1,4 +1,4 @@
-import { Color, Graphics, Node, UITransform } from "cc";
+import { Color, Graphics, Label, Node, UITransform } from "cc";
 import { globalString, globalNumber, text } from "../config/ConfigTables";
 import { GAME_CONFIG } from "../gameplay/battle/GameConfig";
 import { getLevelConfig } from "../gameplay/battle/LevelConfig";
@@ -220,7 +220,31 @@ export class PrefabGameMenuView {
       const stats = entry.staffKind ? staffStats(entry.staffKind, this.detailLevel) : entry.stats;
       uiNode(page, "Known/Stats").active = false;
       stats.forEach((item, index) => uiText(page, "Known/Stat" + index, item.label + "\n" + item.value));
-      uiText(page, "Known/Note", entry.statNote); uiText(page, "Known/Story", entry.story);
+      uiNode(page, "Known/Note").active = false; uiText(page, "Known/Story", entry.story);
     }
+    this.layoutDetail(page, unlocked, Boolean(entry.staffKind));
   }
+  /** 按实际行高排列内容；无等级切换的怪物详情不占用店员按钮的位置。 */
+  private layoutDetail(page: Node, unlocked: boolean, staff: boolean): void {
+    const spacing = uiNode(page, "LayoutSpacing").getComponent(UITransform)!;
+    const gap = spacing.height, padding = spacing.width;
+    const rows: Node[][] = [[uiNode(page, "Title"), uiNode(page, "Close")], [uiNode(page, "Portrait"), uiNode(page, "PictureBackground")]];
+    const measured = (path: string): Node => {
+      const node = uiNode(page, path), label = node.getComponent(Label)!;
+      label.overflow = Label.Overflow.RESIZE_HEIGHT; label.updateRenderData(true);
+      return node;
+    };
+    if (unlocked) {
+      rows.push([measured("Known/Category")], [measured("Known/Traits")]);
+      if (staff) rows.push([1, 2, 3].map(level => uiNode(page, "Level" + level)));
+      rows.push([uiNode(page, "Known/Stat0"), uiNode(page, "Known/Stat1")], [uiNode(page, "Known/Stat2"), uiNode(page, "Known/Stat3")], [uiNode(page, "Known/Rule")], [measured("Known/Story")]);
+    } else rows.push([uiNode(page, "Unknown/Title")], [measured("Unknown/Hint")]);
+    const heights = rows.map(row => Math.max(...row.map(node => node.getComponent(UITransform)!.height)));
+    const height = padding * 2 + heights.reduce((sum, value) => sum + value, 0) + gap * (rows.length - 1);
+    let y = height / 2 - padding;
+    rows.forEach((row, index) => { for (const node of row) node.setPosition(node.position.x, y - heights[index] / 2); y -= heights[index] + gap; });
+    const panel = uiNode(page, "Panel"); panel.setPosition(panel.position.x, 0);
+    for (const node of [panel, ...panel.children]) node.getComponent(UITransform)!.height = height;
+  }
+
 }

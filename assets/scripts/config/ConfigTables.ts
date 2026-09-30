@@ -1,6 +1,6 @@
 /** CSV 是运行时唯一配置源；此模块不依赖引擎，可用于导表与回归检查。 */
 export type TableRow = Record<string, string>;
-export const TABLE_NAMES = ["Global", "I18", "Staff", "Enemy", "Theme", "Map", "MapPoint", "Spot", "Obstacle", "Level", "Wave", "WaveGroup", "Collection", "Audio", "Decoration", "ArtAtlas", "ArtFrame", "UiPrefab"] as const;
+export const TABLE_NAMES = ["Global", "I18", "Staff", "Enemy", "Theme", "Map", "MapPoint", "Spot", "Obstacle", "Level", "Wave", "WaveGroup", "Collection", "Audio", "Decoration", "ArtAtlas", "ArtFrame", "UiPrefab", "Tutorial"] as const;
 let data: Record<string, TableRow[]> = Object.create(null);
 let ready = false;
 let byKey:Record<string,Record<string,TableRow>> = Object.create(null);
@@ -54,6 +54,25 @@ export function installConfigs(sources: Record<string, string>): void {
   positive("ArtAtlas",["width","height"]); positive("ArtFrame",["width","height"]); positive("ArtFrame",["x","y"],true);
   for(const row of next.ArtFrame) { requireRef("ArtAtlas","key",row.atlas,"ArtFrame"); const atlas=next.ArtAtlas.find(a=>a.key===row.atlas)!; if(numeric(row,"x")+numeric(row,"width")>numeric(atlas,"width") || numeric(row,"y")+numeric(row,"height")>numeric(atlas,"height"))throw new Error("Art frame outside atlas"); }
   for(const field of ["battle","menu","ui","scenery"]) { const keys=new Set<string>(); for(const row of next.ArtFrame) {if(!row[field])continue;if(keys.has(row[field]))throw new Error("Duplicate art frame key");keys.add(row[field]);} }
+  for (const row of next.Tutorial) {
+    requireRef("Level", "id", row.levelId, "Tutorial"); requireRef("Staff", "key", row.staffKind, "Tutorial");
+    const level = next.Level.find(item => item.id === row.levelId)!;
+    if (level.mode !== "adventure" || !level.availableTowers.split("|").includes(row.staffKind)) throw new Error("Tutorial staff unavailable");
+    if (!["deploy", "upgrade", "combo", "area", "clear"].includes(row.action)) throw new Error("Unknown tutorial action");
+    if (row.partnerKind && !level.availableTowers.split("|").includes(row.partnerKind)) throw new Error("Tutorial partner unavailable");
+    if (row.action === "combo" && !row.partnerKind) throw new Error("Tutorial combo needs partner");
+    for (const key of ["selectText", "actionText", "waitText"]) requireRef("I18", "key", row[key], "Tutorial");
+    const spot = next.Spot.find(item => item.mapId === level.mapId && item.spotIndex === row.spotIndex);
+    if (!spot || !/^#[0-9a-fA-F]{6}$/.test(row.highlightColor)) throw new Error("Invalid tutorial target/style");
+    const obstacle = next.Obstacle.some(item => item.mapId === level.mapId && item.spotIndex === row.spotIndex);
+    if ((row.action === "clear") !== obstacle) throw new Error("Tutorial preferred spot cannot support action");
+    for (const key of ["order", "requiredValue"]) if (!Number.isInteger(numeric(row,key)) || numeric(row,key) < 1) throw new Error("Invalid tutorial integer");
+  }
+  positive("Tutorial", ["firstWaveDelay", "pulseSeconds"]);
+  for (const id of new Set(next.Tutorial.map(row => row.levelId))) {
+    const steps = next.Tutorial.filter(row => row.levelId === id).sort((a,b) => numeric(a,"order") - numeric(b,"order"));
+    if (steps.some((row,i) => numeric(row,"order") !== i + 1 || row.firstWaveDelay !== steps[0].firstWaveDelay)) throw new Error("Tutorial order/delay mismatch");
+  }
   const requiredGlobals=["gameName","maxLevels","rewardAdUnitId","version","upgradeDamage","upgradeRange","upgradeRate","upgradeCostBase","upgradeCostStep","maxStaffLevel","sellRatio","waveHealthGrowth","waveBonusBase","waveBonusStep","firstWaveDelay","nextWaveDelay","reviveWaveDelay","reviveMinLives","reviveLifeRatio","freezeSeconds","cashBase","cashPerLevel","freePropCount","slowSpeedRatio","markDamageRatio","musicVolume","maxEffectSources","toastSeconds","challengeLevelId","touchTravelTolerance"];
   for(const key of requiredGlobals) { requireRef("Global","key",key,"Global contract"); const row=next.Global.find(r=>r.key===key)!; if(!["gameName","rewardAdUnitId","version"].includes(key) && (row.type!=="float" || numeric(row,"value")<0))throw new Error("Invalid global: "+key); }
   for(const key of ["maxLevels","maxStaffLevel","reviveMinLives","maxEffectSources"]) {const value=Number(next.Global.find(r=>r.key===key)!.value);if(!Number.isInteger(value)||value<1)throw new Error("Invalid integer global: "+key);}

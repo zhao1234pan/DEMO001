@@ -21,6 +21,8 @@ export class BattlePrefabView {
   private readonly sell: Node;
   private readonly obstacle: Node;
   private readonly toast: Node;
+  private readonly guide: Node;
+  private readonly guidePosition: Vec3;
   private readonly gm: Node | null;
   private readonly headerPosition: Vec3;
   private readonly footerPosition: Vec3;
@@ -36,6 +38,7 @@ export class BattlePrefabView {
     this.register("boss-status", uiNode(this.hud, "boss-status"));
     for (const kind of ["freeze", "clear", "cash"]) this.register("prop-" + kind, uiNode(this.hud, "Footer/Prop-" + kind + "/Text"));
     this.toast = create("toast", uiNode(this.hud, "ToastSlot")); this.register("toast", uiNode(this.toast, "Text"));
+    this.guide = create("guide_hint", this.hud); this.guidePosition = this.guide.position.clone();
     this.upgrade = create("button"); this.sell = create("sell_button"); this.obstacle = create("obstacle_info");
     this.register("context-upgrade", uiNode(this.upgrade, "Text")); this.register("context-sell", uiNode(this.sell, "Text")); this.register("obstacle-info", uiNode(this.obstacle, "Text"));
     for (const kind of TOWER_KINDS) {
@@ -65,6 +68,7 @@ export class BattlePrefabView {
     this.register("overlaySecondary", uiNode(node, "Secondary/overlaySecondary")); this.register("overlayHome", uiNode(node, "Home/overlayHome"));
   }
   beginFrame(home: boolean): void {
+    this.guide.active = false;
     this.hud.active = !home; this.gmEntry.active = DEBUG;
     // 菜单晚于战斗UI创建，入口与面板需保持在当前页面之上。
     if (DEBUG) { this.gmEntry.setSiblingIndex(this.parent.children.length - 1); this.gm?.setSiblingIndex(this.parent.children.length - 1); }
@@ -74,6 +78,7 @@ export class BattlePrefabView {
     if (this.gm) this.gm.active = false;
   }
   layout(top: number, bottom: number): void {
+    this.guide.setPosition(this.guidePosition.x, this.guidePosition.y - top);
     uiNode(this.hud, "Header").setPosition(this.headerPosition.x, this.headerPosition.y - top);
     uiNode(this.hud, "Footer").setPosition(this.footerPosition.x, this.footerPosition.y - (bottom - H));
     this.gmEntry.setPosition(this.gmEntryPosition.x, this.gmEntryPosition.y - (bottom - H));
@@ -113,6 +118,8 @@ export class BattlePrefabView {
     this.gm.active = open;
     if (open) for (let id = 1; id <= GAME_CONFIG.maxLevels; id++) uiNode(this.gm, "Level" + id + "/Selected").active = current === id;
   }
+  showGuide(value: string): void { this.guide.active = Boolean(value); uiNode(this.guide, "Text").getComponent(Label)!.string = value; }
+  guideRect(): HitRect { return uiRect(this.guide, this.parent, W, H); }
   toastRect(): HitRect { return uiRect(this.toast, this.parent, W, H); }
   headerRect(key: "Speed" | "Pause"): HitRect { return uiRect(uiNode(this.hud, "Header/" + key), this.parent, W, H); }
   propRect(kind: PropKind): HitRect { return uiRect(uiNode(this.hud, "Footer/Prop-" + kind), this.parent, W, H); }

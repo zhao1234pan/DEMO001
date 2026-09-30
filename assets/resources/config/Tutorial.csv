@@ -1,0 +1,7 @@
+id,levelId,order,action,staffKind,partnerKind,spotIndex,requiredValue,firstWaveDelay,selectText,actionText,waitText,pulseSeconds,highlightColor
+101,1,1,deploy,sprout,,1,1,18,guide.build.select,guide.build.action,guide.build.wait,1.4,#efb943
+102,1,2,upgrade,sprout,,1,2,18,guide.upgrade.select,guide.upgrade.action,guide.upgrade.wait,1.4,#efb943
+201,2,1,deploy,sprout,,0,1,15,guide.build.select,guide.build.action,guide.build.wait,1.4,#efb943
+202,2,2,combo,frost,sprout,1,1,15,guide.combo.select,guide.combo.action,guide.combo.wait,1.4,#efb943
+301,3,1,area,bloom,,9,2,15,guide.area.select,guide.area.action,guide.area.wait,1.4,#efb943
+302,3,2,clear,bloom,,10,1,15,guide.clear.select,guide.clear.action,guide.clear.wait,1.4,#efb943

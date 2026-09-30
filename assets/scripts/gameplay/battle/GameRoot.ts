@@ -1,4 +1,4 @@
-import { configsReady, globalNumber, text } from "../../config/ConfigTables";
+import { configsReady, globalNumber, numeric, text } from "../../config/ConfigTables";
 import { loadGameConfigs } from "../../config/ConfigLoader";
 import {
   _decorator, Color, Component, EventTouch, Graphics, HorizontalTextAlignment,
@@ -15,6 +15,7 @@ import { BattleUiView } from "./BattleUiView";
 import { PrefabGameMenuView as GameMenuView } from "../../ui/PrefabGameMenuView";
 import { UiPrefabs } from "../../ui/UiPrefabs";
 import { BattlePrefabView } from "../../ui/BattlePrefabView";
+import { TutorialGuide } from "./TutorialGuide";
 import { CollectionProgress } from "./CollectionData";
 import { BattleMapView } from "./BattleMapView";
 import { BattleSceneryView } from "./BattleSceneryView";
@@ -115,6 +116,9 @@ export class GameRoot extends Component {
   private gameSpeed: GameSpeed = 1;
   private screen: "home" | "playing" | "win" | "lose" = "home";
   private revived = false;
+  private readonly tutorial = new TutorialGuide();
+  private guidePulse = 0;
+  private guideCue: { rect: HitRect | null; text: string; color: string; period: number } | null = null;
   private gmPanelOpen = false;
   private gmSessionActive = false;
   private selectedTower: Tower | null = null;
@@ -304,6 +308,7 @@ export class GameRoot extends Component {
     // 先限制单帧追赶时间，再把倍速后的游戏时间拆成稳定小步长，避免低帧率或三倍速时穿透目标。
     // 准备时钟独立于倍速，后台/暂停/广告期间不推进；战斗仍用稳定子步长。
     const realDelta = Math.max(0, dt);
+    if (this.screen === "playing" && !this.paused && !this.gmPanelOpen && !this.adRequesting) this.guidePulse += realDelta;
     if (!this.paused && !this.gmPanelOpen && !this.adRequesting && this.screen === "playing"
       && !this.inWave && this.enemies.length === 0 && this.wave < this.level.waves.length) {
       this.nextWaveTimer = Math.max(0, this.nextWaveTimer - realDelta);
@@ -371,6 +376,7 @@ export class GameRoot extends Component {
     this.art.beginFrame();
     this.uiArt.beginFrame();
     this.battleUi.beginFrame(this.screen === "home");
+    this.guideCue = null;
     if (this.screen === "home") {
       this.art.endFrame(); this.uiArt.endFrame();
       for (const key of this.labels.keys()) this.showLabel(key, false);
@@ -388,7 +394,9 @@ export class GameRoot extends Component {
     if (this.frozenTime > 0) this.box(g, 0, 72, W, PANEL_Y - 72, 0, "#b8f2ff", 0.14);
     if (this.damageFlash > 0) this.box(g, 0, 72, W, PANEL_Y - 72, 0, "#eb685d", Math.min(0.2, this.damageFlash * 0.7));
     this.drawContextMenu(g);
+    this.guideCue = this.resolveGuideCue();
     this.drawPanels(g);
+    this.drawGuide(g);
     this.drawWaveCountdown(g);
     if (this.paused || this.screen !== "playing") this.drawOverlay(g);
     this.drawGmPanel(g);
@@ -583,6 +591,47 @@ export class GameRoot extends Component {
       && !this.adRequesting && this.wave < this.level.waves.length;
   }
 
+
+  private resolveGuideCue(): { rect: HitRect | null; text: string; color: string; period: number } | null {
+    const step = this.tutorial.current;
+    if (!step || this.screen !== "playing" || this.paused || this.gmPanelOpen || this.adRequesting || this.gmSessionActive || this.mapReview) return null;
+    const partner = this.towers.find(item => item.kind === step.partnerKind);
+    const kind = (step.action === "combo" && !partner ? step.partnerKind : step.staffKind) as TowerKind, config = TOWER_CONFIG[kind];
+    const result = (rect: HitRect | null, value: string) => ({rect, text:value, color:step.highlightColor, period:numeric(step,"pulseSeconds")});
+    const spotRect = (spot: Spot): HitRect => ({x:spot.x-22,y:spot.y-22,width:44,height:44});
+    const tower = this.towers.find(item => item.kind === kind && (step.action !== "combo" || !partner || Math.hypot(item.x-partner.x,item.y-partner.y) <= config.range + TOWER_CONFIG[partner.kind].range));
+    if (step.action === "clear") {
+      const reachable = this.obstacles.filter(obstacle => this.towers.some(item => Math.hypot(item.x-obstacle.x,item.y-obstacle.y) <= TOWER_CONFIG[item.kind].range * (1+(item.level-1)*globalNumber("upgradeRange"))));
+      const obstacle = reachable.find(item => item.spot === this.spots[numeric(step,"spotIndex")]) ?? reachable[0];
+      if (!obstacle) return null;
+      return result(spotRect(obstacle.spot), text(this.selectedObstacle === obstacle ? step.waitText : step.actionText));
+    }
+    if (tower) {
+      if (step.action === "upgrade") {
+        if (this.coins < this.upgradeCost(tower)) return result(null,text(step.waitText));
+        return result(this.selectedTower === tower ? this.battleUi.contextRect("upgrade") : spotRect(tower.spot),text(this.selectedTower === tower ? step.actionText : step.selectText));
+      }
+      return result(spotRect(tower.spot),text(step.waitText));
+    }
+    if (this.coins < config.cost) return result(null,text("guide.coins",config.name));
+    if (this.selectedSpot && !this.selectedSpot.obstacle && !this.selectedSpot.tower) return result(this.battleUi.contextRect(kind),text("guide.choose",config.name));
+    const open = this.spots.filter(spot => !spot.tower && !spot.obstacle);
+    const preferred = this.spots[numeric(step,"spotIndex")];
+    const spot = partner ? open.sort((a,b)=>Math.hypot(a.x-partner.x,a.y-partner.y)-Math.hypot(b.x-partner.x,b.y-partner.y))[0] : open.includes(preferred) ? preferred : open[0];
+    return spot ? result(spotRect(spot),text(step.action === "combo" && partner ? step.selectText : "guide.place",config.name)) : null;
+  }
+
+  private drawGuide(g: Graphics): void {
+    const cue = this.guideCue;
+    if (!cue || this.toastTime > 0) return;
+    this.battleUi.showGuide(cue.text);
+    if (!cue.rect) return;
+    const pulse = (Math.sin(this.guidePulse * Math.PI * 2 / cue.period)+1)/2, padding = 3+2*pulse;
+    const r=cue.rect; Color.fromHEX(g.strokeColor,cue.color); g.lineWidth=2+2*pulse;
+    g.roundRect(r.x-padding, r.y-padding,r.width+padding*2,r.height+padding*2,8); g.stroke();
+    // 提示只绘制，不注册触摸监听；按钮、空白关闭与取消手势继续走原输入链。
+  }
+
   private shouldShowToast(): boolean {
     if (this.toastTime <= 0 || this.screen !== "playing" || this.paused || this.gmPanelOpen) return false;
     if (!this.shouldShowWaveCountdown()) return true;
@@ -604,6 +653,7 @@ export class GameRoot extends Component {
       x: item.x - BATTLE_UI.contextWidth / 2, y: item.y - BATTLE_UI.contextHeight / 2,
       width: BATTLE_UI.contextWidth, height: BATTLE_UI.contextHeight,
     })));
+    if (this.guideCue && this.toastTime <= 0) menus.push(this.battleUi.guideRect());
     if (this.selectedObstacle) {
       const info = this.obstacleInfoPosition();
       menus.push({ x: info.x - 86, y: info.y - 16, width: 172, height: 32 });
@@ -641,10 +691,11 @@ export class GameRoot extends Component {
 
   /** 菜单仍围绕选中格弹出；候选区域避开所有格位，防止邻格点击被升级/出售截走。 */
   private contextMenuPoints(x: number, y: number, count: number, width: number, height: number): Array<{ x: number; y: number }> {
-    const key = [this.currentLevelId, x, y, count, width, height, this.layoutTop, this.layoutBottom].join("/");
+    const guideVisible = Boolean(this.tutorial.current) && !this.gmSessionActive && !this.mapReview && this.toastTime <= 0;
+    const key = [this.currentLevelId, x, y, count, width, height, this.layoutTop, this.layoutBottom, guideVisible].join("/");
     if (this.contextPlacement?.key === key) return this.contextPlacement.points;
     const gap = 10, margin = 6, tileHalf = BATTLE_UI.minimumHit / 2;
-    const top = Math.max(78, this.layoutTop + BATTLE_UI.headerHeight + margin);
+    const top = Math.max(78, this.layoutTop + BATTLE_UI.headerHeight + margin, guideVisible ? this.battleUi.guideRect().y + this.battleUi.guideRect().height + margin : 0);
     const bottom = Math.min(PANEL_Y - margin, this.layoutBottom - 82);
     let best: { score: number; points: Array<{ x: number; y: number }> } | null = null;
     for (const columns of Array.from(new Set([count, Math.ceil(count / 2), 1]))) {
@@ -929,6 +980,9 @@ export class GameRoot extends Component {
     this.pathLength = this.computePathLength();
     this.drawStaticMap();
     this.toastText = this.level.mode === "challenge" ? text("challenge.enter") : this.level.id <= 3 ? text("ui.GameRoot.036") : text("ui.GameRoot.037", this.level.id, this.level.title); this.toastTime = 4;
+    this.tutorial.reset(this.level.id, !this.gmSessionActive && !this.mapReview && this.level.mode === "adventure" && this.readUnlockedLevel() <= this.level.id);
+    this.guideCue = null; this.guidePulse = 0;
+    if (this.tutorial.firstWaveDelay !== null) { this.nextWaveTimer = this.tutorial.firstWaveDelay; this.toastTime = 0; }
     this.defeated = 0; this.earned = 0;
     this.damageFlash = 0; this.battleFeedbackTime = 0; this.battleFeedbackText = "";
   }
@@ -1054,6 +1108,7 @@ export class GameRoot extends Component {
       return;
     }
     if (cfg.splash) {
+      const splash = cfg.splash; this.tutorial.record("area", shot.kind, this.enemies.filter(enemy => Math.hypot(enemy.x - target.x, enemy.y - target.y) <= splash).length);
       for (const enemy of this.enemies) if (Math.hypot(enemy.x - target.x, enemy.y - target.y) <= cfg.splash) {
         this.damageEnemy(enemy, damage, shot.kind, shot.level);
       }
@@ -1096,7 +1151,11 @@ export class GameRoot extends Component {
     if (cfg.shred) enemy.markedTime = cfg.markSeconds;
     enemy.hp -= damage * (enemy.markedTime > 0 ? globalNumber("markDamageRatio") : 1);
     enemy.hitFlash = 0.12; enemy.sinceHit = 0;
-    if (cfg.slow) enemy.slow = cfg.slowBase + level * cfg.slowPerLevel;
+    if (cfg.slow) {
+      enemy.slow = cfg.slowBase + level * cfg.slowPerLevel;
+      const partners = this.towers.filter(tower => tower.kind !== kind && Math.hypot(tower.x - enemy.x, tower.y - enemy.y) <= TOWER_CONFIG[tower.kind].range * (1 + (tower.level - 1) * globalNumber("upgradeRange"))).map(tower => tower.kind);
+      this.tutorial.record("combo", kind, 1, partners);
+    }
     if (cfg.burn) { enemy.burnTime = cfg.burnSeconds; enemy.burnDamage = Math.max(enemy.burnDamage ?? 0, cfg.burn * (1 + (level - 1) * globalNumber("upgradeDamage"))); }
   }
 
@@ -1112,6 +1171,7 @@ export class GameRoot extends Component {
     const index = this.obstacles.indexOf(obstacle);
     if (index < 0) return;
     obstacle.spot.obstacle = null; this.obstacles.splice(index, 1);
+    this.tutorial.record("clear");
     this.coins += obstacle.reward; this.earned += obstacle.reward;
     this.audio.play("defeat", 0.2); this.burst(obstacle.x, obstacle.y, "#ffc34d", 16);
     this.showBattleFeedback(text("ui.GameRoot.041", obstacle.reward), obstacle.x, obstacle.y - 24);
@@ -1137,13 +1197,15 @@ export class GameRoot extends Component {
     spot.tower = tower; this.towers.push(tower); this.burst(spot.x, spot.y, cfg.color, 12);
     this.audio.play("build", 0.64); this.showBattleFeedback(text("ui.GameRoot.044", cfg.name), spot.x, spot.y - 28);
     this.selectedTower = tower; this.selectedSpot = spot; this.selectedObstacle = null;
+    this.tutorial.record("deploy", kind);
   }
 
   private upgradeSelected(): void {
     const tower = this.selectedTower; if (!tower) { this.showToast(text("ui.GameRoot.045")); return; }
     if (tower.level >= globalNumber("maxStaffLevel")) { this.showToast(text("ui.GameRoot.046", TOWER_CONFIG[tower.kind].name)); return; }
     const cost = this.upgradeCost(tower); if (this.coins < cost) { this.showToast(text("ui.GameRoot.047")); return; }
-    this.coins -= cost; tower.spent += cost; tower.level += 1; this.burst(tower.x, tower.y, "#ffc34d", 18);
+    this.coins -= cost; tower.spent += cost; tower.level += 1;
+    this.tutorial.record("upgrade", tower.kind, tower.level); this.burst(tower.x, tower.y, "#ffc34d", 18);
     this.audio.play("upgrade", 0.68); this.showBattleFeedback(`${TOWER_CONFIG[tower.kind].name} Lv.${tower.level}`, tower.x, tower.y - 28);
   }
 
