@@ -1,9 +1,15 @@
 {
   "name": "ding-dong-night-shift",
   "uuid": "3bdce58e-bebf-4d67-8f58-f3590d4a23d4",
-  "version": "0.6.0",
+  "version": "0.8.0",
   "creator": {
     "version": "3.8.8"
   },
-  "description": "叮咚夜班开始：森林夜班便利店主题的原创竖屏动物轻塔防小游戏"
+  "description": "叮咚夜班开始：森林夜班便利店主题的原创竖屏动物轻塔防小游戏",
+  "scripts": {
+    "config:export": "node tools/config/export.cjs",
+    "config:check": "node tools/config/export.cjs --check",
+    "config:test": "node tools/config/test.cjs",
+    "ui:check": "node tools/ui/check-prefabs.cjs"
+  }
 }

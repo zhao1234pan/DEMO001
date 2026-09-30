@@ -1,34 +1,16 @@
+import { rows, globalNumber } from "../config/ConfigTables";
 import { AudioClip, AudioSource, Node, resources } from "cc";
 import { PlatformService } from "./PlatformService";
 
 export type SoundKey = "build" | "upgrade" | "sprout" | "frost" | "bloom"
   | "defeat" | "leak" | "wave" | "win" | "lose" | "prop";
 
-const SOUND_PATHS: Record<SoundKey, string> = {
-  build: "audio/sfx/sfx_ui_build",
-  upgrade: "audio/sfx/sfx_ui_upgrade",
-  sprout: "audio/sfx/sfx_battle_sprout",
-  frost: "audio/sfx/sfx_battle_frost",
-  bloom: "audio/sfx/sfx_battle_bloom",
-  defeat: "audio/sfx/sfx_battle_defeat",
-  leak: "audio/sfx/sfx_battle_leak",
-  wave: "audio/sfx/sfx_system_wave",
-  win: "audio/sfx/sfx_system_win",
-  lose: "audio/sfx/sfx_system_lose",
-  prop: "audio/sfx/sfx_battle_prop",
-};
-const MUSIC_PATH = "audio/music/bgm_night_shift";
+function soundPath(key:string):string { return rows("Audio").find(row=>row.key===key)!.path; }
 const MUSIC_PREFERENCE = "night_store_music_enabled";
 const EFFECTS_PREFERENCE = "night_store_effects_enabled";
-const MAX_EFFECT_SOURCES = 6;
 
-const MIN_INTERVAL_MS: Partial<Record<SoundKey, number>> = {
-  sprout: 80,
-  frost: 120,
-  bloom: 160,
-  defeat: 90,
-  leak: 160,
-};
+
+function minInterval(key:string):number { return Number(rows("Audio").find(row=>row.key===key)?.minIntervalMs ?? 0); }
 interface EffectVoice { source: AudioSource; startedAt: number; busyUntil: number; }
 
 /** 音乐和音效独立控制；加载失败不阻断界面，未取得玩家手势前不自动播放。 */
@@ -54,7 +36,7 @@ export class AudioService {
     parent.addChild(this.audioNode);
     this.musicSource = this.createSource("NightShiftMusic");
     this.musicSource.loop = true;
-    this.musicSource.volume = 0.32;
+    this.musicSource.volume = globalNumber("musicVolume");
     this.preload();
   }
 
@@ -94,7 +76,7 @@ export class AudioService {
       || !Number.isFinite(volumeScale) || volumeScale <= 0) return;
     const now = Date.now();
     const lastPlayed = this.lastPlayedAt.get(key);
-    if (lastPlayed !== undefined && now - lastPlayed < (MIN_INTERVAL_MS[key] ?? 0)) return;
+    if (lastPlayed !== undefined && now - lastPlayed < minInterval(key)) return;
     const voice = this.acquireVoice(now);
     // 不使用无法停止的 playOneShot；切开关和切后台时可立即清空所有在途声音。
     voice.source.stop(); voice.source.clip = null;
@@ -132,7 +114,7 @@ export class AudioService {
   private acquireVoice(now: number): EffectVoice {
     const available = this.voices.find((voice) => now >= voice.busyUntil && !voice.source.playing);
     if (available) return available;
-    if (this.voices.length < MAX_EFFECT_SOURCES) {
+    if (this.voices.length < globalNumber("maxEffectSources")) {
       const voice = { source: this.createSource(`Effect${this.voices.length + 1}`), startedAt: 0, busyUntil: 0 };
       this.voices.push(voice);
       return voice;
@@ -171,10 +153,10 @@ export class AudioService {
   }
 
   private preload(): void {
-    (Object.keys(SOUND_PATHS) as SoundKey[]).forEach((key) => this.loadClip(SOUND_PATHS[key], (clip) => {
+    (rows("Audio").filter(row=>row.key!=="bgm").map(row=>row.key) as SoundKey[]).forEach((key) => this.loadClip(soundPath(key), (clip) => {
       this.clips.set(key, clip);
     }));
-    this.loadClip(MUSIC_PATH, (clip) => { this.musicClip = clip; this.syncMusic(); });
+    this.loadClip(soundPath("bgm"), (clip) => { this.musicClip = clip; this.syncMusic(); });
   }
 
   private loadClip(path: string, accept: (clip: AudioClip) => void): void {

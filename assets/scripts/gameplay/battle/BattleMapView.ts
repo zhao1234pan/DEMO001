@@ -1,3 +1,4 @@
+import { levelTheme } from "./LevelTheme";
 import { Color, Graphics } from "cc";
 import type { LevelConfig, MapPoint } from "./LevelConfig";
 import { selectSceneDecorations } from "./BattleSceneryLayout";
@@ -9,10 +10,12 @@ const COURTYARD_PALETTE = {
 
 /** 正式庭院地图：道路与地台沿用已选B方案；环境绿化独立布局，不参与寻路或建造。 */
 export class BattleMapView {
+  private palette = levelTheme({} as LevelConfig);
   constructor(private readonly g: Graphics, private readonly width: number) {}
 
   draw(level: LevelConfig, top: number, bottom: number, landmarksReady: boolean): SceneDecoration[] {
-    const g = this.g; const palette = COURTYARD_PALETTE;
+    this.palette = levelTheme(level);
+    const g = this.g; const palette = this.palette;
     g.clear();
     // 连续浅暖铺装不加整图圆角边框；保留用户选定的B方案绘制顺序与尺寸。
     this.fillRect(0, top, this.width, bottom - top, 0, palette.ground);
@@ -21,7 +24,7 @@ export class BattleMapView {
     // 同材质连通铺地和单条浅缝表达“嵌砖”，不叠底面、亮边或按键式投影。
     this.drawJoinedSurface(level.towerSpots, palette.surface, 4);
     for (const [x, y] of level.towerSpots) {
-      this.fillRect(x - 19, y - 15, 38, 30, 2, "#e3e5cf");
+      this.fillRect(x - 19, y - 15, 38, 30, 2, palette.tile);
       g.strokeColor = this.color(palette.mark, 125); g.lineWidth = 0.8;
       g.roundRect(x - 19, y - 15, 38, 30, 2); g.stroke();
     }
@@ -33,7 +36,7 @@ export class BattleMapView {
   }
 
   private drawRoad(path: readonly MapPoint[]): void {
-    const g = this.g; const palette = COURTYARD_PALETTE;
+    const g = this.g; const palette = this.palette;
     g.lineCap = Graphics.LineCap.ROUND; g.lineJoin = Graphics.LineJoin.ROUND;
     // 路面49、低对比路缘52、转角8与已验B方案一致，不生成第二套视觉路线。
     g.strokeColor = this.color(palette.edge); g.lineWidth = 52;
@@ -68,10 +71,10 @@ export class BattleMapView {
   }
 
   private drawCourtyardFloor(level: LevelConfig): void {
-    const g = this.g; g.strokeColor = this.color("#bec6af", 95); g.lineWidth = 0.7;
+    const g = this.g; g.strokeColor = this.color(this.palette.seam, 95); g.lineWidth = 0.7;
     // 大块庭院铺装只在空闲地面露出接缝，主动退让道路、角色画布与地标文字。
-    for (let y = 130; y < 603; y += 100) this.drawFreeFloorLine(level, [12, y], [this.width - 12, y]);
-    for (let x = 90; x < this.width - 12; x += 100) this.drawFreeFloorLine(level, [x, 86], [x, 602]);
+    for (let y = 130; y < 603; y += level.theme === "rain" ? 75 : level.theme === "market" ? 150 : 100) this.drawFreeFloorLine(level, [12, y], [this.width - 12, y]);
+    for (let x = 90; x < this.width - 12; x += level.theme === "midnight" ? 75 : 100) this.drawFreeFloorLine(level, [x, 86], [x, 602]);
   }
 
   private drawFreeFloorLine(level: LevelConfig, a: MapPoint, b: MapPoint): void {

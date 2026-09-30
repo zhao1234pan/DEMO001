@@ -1,3 +1,4 @@
+import { text, rows, numeric } from "../../config/ConfigTables";
 import { assetManager, AssetManager, Color, Layers, Node, Rect, Size, Sprite, SpriteFrame, Texture2D, UITransform, Vec2 } from "cc";
 import type { MapPoint } from "./LevelConfig";
 import type { SceneDecoration } from "./BattleSceneryLayout";
@@ -5,15 +6,6 @@ import type { SceneDecoration } from "./BattleSceneryLayout";
 type SceneryKind = "entry" | "goal" | "planter" | "tree";
 interface ScenerySprite { node: Node; sprite: Sprite; transform: UITransform; }
 interface SceneSnapshot { entry: MapPoint; goal: MapPoint; decorations: readonly SceneDecoration[]; }
-
-const ATLAS_PIXELS = 512;
-// 纹理按逻辑画布的4倍导出；切片内部自带透明边距，不把大源图直接载入游戏。
-const FRAME_RECTS: Record<SceneryKind, readonly [number, number, number, number]> = {
-  entry: [0, 0, 256, 224],
-  goal: [256, 0, 256, 224],
-  planter: [0, 224, 192, 192],
-  tree: [192, 224, 160, 224],
-};
 
 /** 静态场景表现层：父节点由调用方放在道路之上、战斗单位之下，不处理碰撞与寻路。 */
 export class BattleSceneryView {
@@ -134,9 +126,9 @@ export class BattleSceneryView {
       if (!bundle || this.disposed) return;
       const texture = await this.loadTexture(bundle);
       if (!texture || this.disposed) return;
-      if (texture.width !== ATLAS_PIXELS || texture.height !== ATLAS_PIXELS) throw new Error("场景图集必须为512×512。");
-      (Object.keys(FRAME_RECTS) as SceneryKind[]).forEach((kind) => {
-        const [x, y, width, height] = FRAME_RECTS[kind];
+      if (texture.width !== numeric(rows("ArtAtlas").find(r=>r.key==="scenery")!,"width") || texture.height !== numeric(rows("ArtAtlas").find(r=>r.key==="scenery")!,"height")) throw new Error(text("ui.BattleSceneryView.001"));
+      rows("ArtFrame").filter(row=>row.scenery).forEach(row => {
+        const kind=row.scenery; const x=numeric(row,"x"),y=numeric(row,"y"),width=numeric(row,"width"),height=numeric(row,"height");
         const frame = new SpriteFrame();
         this.frames.set(kind, frame);
         // 与PNG左上原点一致；导入meta必须flipVertical=false，不能翻转整幅图集。
@@ -149,7 +141,7 @@ export class BattleSceneryView {
     } catch (error) {
       this.loaded = false;
       this.releaseAssets();
-      if (!this.disposed) console.warn("场景美术加载失败，保留地图和程序地标。", error);
+      if (!this.disposed) console.warn(text("ui.BattleSceneryView.002"), error);
     }
   }
 
@@ -157,7 +149,7 @@ export class BattleSceneryView {
     return new Promise((resolve) => {
       let settled = false;
       try {
-        bundle.load("gameplay/maps/atlas_battle_scenery/texture", Texture2D, (error, texture) => {
+        bundle.load(rows("ArtAtlas").find(row=>row.key==="scenery")!.path, Texture2D, (error, texture) => {
           if (settled) return;
           settled = true;
           if (error || !texture) { resolve(null); return; }

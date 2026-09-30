@@ -1,6 +1,8 @@
+import { text, rows, numeric } from "../../config/ConfigTables";
+import type { TowerKind, EnemyKind } from "./GameConfig";
 import { assetManager, AssetManager, Color, Layers, Node, Rect, Size, Sprite, SpriteFrame, Texture2D, UITransform, Vec2 } from "cc";
 
-export type BattleIconKind = "freeze" | "clear" | "cash" | "sprout" | "frost" | "bloom";
+export type BattleIconKind = "freeze" | "clear" | "cash" | TowerKind;
 
 interface IconEntry {
   node: Node;
@@ -9,9 +11,6 @@ interface IconEntry {
   frame: number;
 }
 
-const ATLAS_PIXELS = 512;
-const FRAME_PIXELS = 192;
-const FRAME_ORIGINS: readonly (readonly [number, number])[] = [[8, 8], [216, 8], [8, 216]];
 
 /**
  * 战斗菜单与道具图标层，不处理输入、价格或奖励规则。
@@ -110,24 +109,27 @@ export class BattleUiView {
       });
       if (!bundle || this.disposed) return;
       // 所有回调落定后才启用图标层，避免出现只加载一半的道具菜单。
-      const loaded = await Promise.all([
-        this.loadTexture(bundle, "gameplay/towers/atlas_staff_idle/texture"),
-        this.loadTexture(bundle, "ui/icons/atlas_battle_ui/texture"),
-      ]);
+      const frameRows=rows("ArtFrame").filter(row=>row.ui);
+      const atlasRows=rows("ArtAtlas").filter(row=>frameRows.some(frame=>frame.atlas===row.key));
+      const loaded=await Promise.all(atlasRows.map(row=>this.loadTexture(bundle,row.path)));
       if (this.disposed || loaded.some((texture) => !texture)) {
         this.releaseAssets();
-        if (!this.disposed) console.warn("战斗UI图标未完整加载，继续使用文字按钮。");
+        if (!this.disposed) console.warn(text("ui.BattleUiView.001"));
         return;
       }
-      if (loaded.some((texture) => texture!.width !== ATLAS_PIXELS || texture!.height !== ATLAS_PIXELS)) {
-        throw new Error("战斗UI图集尺寸应为512×512，请核对运行资源导出。");
+      if (loaded.some((texture,i) => texture!.width !== numeric(atlasRows[i],"width") || texture!.height !== numeric(atlasRows[i],"height"))) {
+        throw new Error(text("ui.BattleUiView.002"));
       }
-      this.addFrames(loaded[0]!, ["sprout", "frost", "bloom"]);
-      this.addFrames(loaded[1]!, ["freeze", "clear", "cash"]);
+      for(const row of frameRows) {
+        const texture=loaded[atlasRows.findIndex(atlas=>atlas.key===row.atlas)]!;
+        const frame=new SpriteFrame(),width=numeric(row,"width"),height=numeric(row,"height");
+        frame.reset({texture,rect:new Rect(numeric(row,"x"),numeric(row,"y"),width,height),originalSize:new Size(width,height),offset:new Vec2(0,0),isRotate:false,isFlipUv:false},true); frame.packable=false;
+        this.frames.set(row.ui as BattleIconKind,frame);
+      }
       this.loaded = true;
     } catch (error) {
       this.releaseAssets();
-      if (!this.disposed) console.warn("战斗UI图标加载失败，继续使用文字按钮。", error);
+      if (!this.disposed) console.warn(text("ui.BattleUiView.003"), error);
     }
   }
 
@@ -149,24 +151,6 @@ export class BattleUiView {
         settled = true;
         resolve(null);
       }
-    });
-  }
-
-  private addFrames(texture: Texture2D, kinds: readonly BattleIconKind[]): void {
-    kinds.forEach((kind, index) => {
-      const [x, y] = FRAME_ORIGINS[index];
-      const frame = new SpriteFrame();
-      this.frames.set(kind, frame);
-      // 两张PNG均按左上原点导出且导入flipVertical=false，不能用整体Y翻转代替正确切片。
-      frame.reset({
-        texture,
-        rect: new Rect(x, y, FRAME_PIXELS, FRAME_PIXELS),
-        originalSize: new Size(FRAME_PIXELS, FRAME_PIXELS),
-        offset: new Vec2(0, 0),
-        isRotate: false,
-        isFlipUv: false,
-      }, true);
-      frame.packable = false;
     });
   }
 

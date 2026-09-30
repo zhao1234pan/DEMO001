@@ -19,3 +19,10 @@
 *.ogg binary
 *.ttf binary
 *.otf binary
+
+*.csv text eol=lf
+*.cjs text eol=lf
+*.java text eol=lf
+*.sha256 text eol=lf
+*.xlsx binary
+*.jar binary

@@ -1,3 +1,5 @@
+import { TOWER_CONFIG, ENEMY_CONFIG, TowerKind, EnemyKind } from "./GameConfig";
+import { text, rows, numeric } from "../../config/ConfigTables";
 import { assetManager, AssetManager, Color, Layers, Node, Rect, Size, Sprite, SpriteFrame, Texture2D, UITransform, Vec2 } from "cc";
 
 export interface TowerArtState {
@@ -15,12 +17,9 @@ interface SpriteEntry {
 interface SpritePool {
   root: Node; active: Map<object, SpriteEntry>; free: SpriteEntry[];
 }
-const CELL_PIXELS = 192;
 const CANVAS_DESIGN_PIXELS = 96;
 const WARM_HIT = new Color(255, 216, 168, 255);
 // 来自本轮导出清单；兔耳和工具更宽，升级时也要给相邻网格留出轮廓间隙。
-const STAFF_DESIGN_WIDTH = { doubao: 73.5, mianmian: 80, buding: 62.5 };
-const ENEMY_DESIGN_HEIGHT = { normal: 52, swift: 48, tank: 68 };
 
 /** 只负责精灵表现；输入为左上原点、向下为正的逻辑坐标，父节点统一缩放。 */
 export class BattleArtView {
@@ -68,11 +67,11 @@ export class BattleArtView {
   }
   drawTower(key: object, state: TowerArtState): void {
     if (!this.ready) return;
-    const kind = state.kind === "frost" ? "mianmian" : state.kind === "bloom" ? "buding" : "doubao";
+    const kind = state.kind === "frost" ? "mianmian" : state.kind === "bloom" ? "buding" : state.kind === "sprout" ? "doubao" : state.kind;
     const entry = this.acquire(this.units, key, kind, false);
     // 升级仅小幅放大，最高级主体不超过约 88 设计像素。
     const levelScale = 1 + (Math.min(3, Math.max(1, state.level)) - 1) * 0.1;
-    const scale = Math.min(levelScale, 88 / STAFF_DESIGN_WIDTH[kind]);
+    const scale = Math.min(levelScale, 88 / TOWER_CONFIG[state.kind as TowerKind].spriteWidth);
     const facing = Math.cos(state.angle) < 0 ? -1 : 1;
     const recoil = state.recoil > 0 ? 1 : 0;
     this.placeUnit(entry, state.x - facing * recoil * 1.1, state.y, 8, scale);
@@ -90,20 +89,22 @@ export class BattleArtView {
   }
   drawEnemy(key: object, state: EnemyArtState): void {
     if (!this.ready) return;
-    const kind = state.kind === "swift" || state.kind === "tank" ? state.kind : "normal";
+    const kind = state.kind;
+    const legacy = ["normal", "swift", "tank"].includes(kind);
+
     // 暖白帧沿用原图Alpha轮廓，避免使用乘色伪装闪白导致角色反而变暗。
-    const frameName = `enemy_${kind}${state.hitFlash > 0 ? "_hit" : ""}`;
+    const frameName = `enemy_${kind}${legacy && state.hitFlash > 0 ? "_hit" : ""}`;
     const entry = this.acquire(this.units, key, frameName, false);
     // 有行进距离时步态随位移推进；调用方未提供时，退回战斗年龄且保持倍速一致。
     const phase = state.distance === undefined ? state.age * (kind === "swift" ? 14 : 8) : state.distance * 0.24;
     const stride = Math.sin(phase);
     const sway = stride * (kind === "tank" ? 0.28 : 0.65);
     const bounce = Math.abs(stride) * (kind === "tank" ? 0.35 : 0.85);
-    const footOffset = ENEMY_DESIGN_HEIGHT[kind] * 0.42 * this.logicalPerDesignPixel - bounce;
-    this.placeUnit(entry, state.x + sway, state.y, footOffset, 1);
+    const footOffset = ENEMY_CONFIG[kind as EnemyKind].spriteHeight * 0.42 * this.logicalPerDesignPixel - bounce;
+    this.placeUnit(entry, state.x + sway, state.y, footOffset, ENEMY_CONFIG[kind as EnemyKind].spriteScale);
     // 怪物本体始终直立，只做轻微步态；血条、减速圈由调用方的上层图形绘制。
     entry.node.setScale(1 + stride * 0.018, 1 - Math.abs(stride) * 0.018, 1);
-    entry.sprite.color = Color.WHITE;
+    entry.sprite.color = !legacy && state.hitFlash > 0 ? WARM_HIT : Color.WHITE;
   }
   endFrame(): void {
     if (this.disposed) return;
@@ -176,24 +177,25 @@ export class BattleArtView {
       });
       if (!bundle || this.disposed) return;
       // 全部请求结束后统一处理；单项失败也不会遗失晚到纹理的引用。
-      const loaded = await Promise.all([
-        this.loadTexture(bundle, "gameplay/towers/atlas_staff_idle/texture"),
-        this.loadTexture(bundle, "gameplay/maps/atlas_battle_props/texture"),
-        this.loadTexture(bundle, "gameplay/enemies/atlas_enemies/texture"),
-      ]);
+      const frameRows=rows("ArtFrame").filter(row=>row.battle);
+      const atlasRows=rows("ArtAtlas").filter(row=>frameRows.some(frame=>frame.atlas===row.key));
+      const loaded=await Promise.all(atlasRows.map(row=>this.loadTexture(bundle,row.path)));
       this.textures = loaded.filter((texture): texture is Texture2D => texture !== null);
       if (this.disposed || loaded.some((texture) => !texture)) {
         this.releaseAssets();
-        if (!this.disposed) console.warn("战斗美术未完整加载，继续使用程序图形。");
+        if (!this.disposed) console.warn(text("ui.BattleArtView.001"));
         return;
       }
-      this.addFrames(loaded[0]!, ["doubao", "mianmian", "buding"]);
-      this.addFrames(loaded[1]!, ["pad", "crate", "basket", "plant"]);
-      this.addFrames(loaded[2]!, ["enemy_normal", "enemy_swift", "enemy_tank", "enemy_normal_hit", "enemy_swift_hit", "enemy_tank_hit"], 168, 3, 0, 4);
+      for(const row of frameRows) {
+        const texture=loaded[atlasRows.findIndex(atlas=>atlas.key===row.atlas)]!;
+        const frame=new SpriteFrame(),width=numeric(row,"width"),height=numeric(row,"height");
+        frame.reset({texture,rect:new Rect(numeric(row,"x"),numeric(row,"y"),width,height),originalSize:new Size(width,height),offset:new Vec2(0,0),isRotate:false,isFlipUv:false},true); frame.packable=false;
+        this.frames.set(row.battle as string,frame);
+      }
       this.loaded = true;
     } catch (error) {
       this.releaseAssets();
-      console.warn("战斗美术加载失败，继续使用程序图形。", error);
+      console.warn(text("ui.BattleArtView.002"), error);
     }
   }
   private loadTexture(bundle: AssetManager.Bundle, path: string): Promise<Texture2D | null> {
@@ -205,23 +207,6 @@ export class BattleArtView {
           resolve(texture);
         });
       } catch { resolve(null); }
-    });
-  }
-  private addFrames(texture: Texture2D, names: string[], cellPixels = CELL_PIXELS, columns = 2, gap = 16, padding = 8): void {
-    names.forEach((name, index) => {
-      const frame = new SpriteFrame();
-      // 图集导入必须 flipVertical=false，切片坐标与PNG一致为左上原点。
-      // 翻转整张图集会把另一行的素材读入当前帧，不能仅靠翻转帧UV补救。
-      frame.reset({
-        texture,
-        rect: new Rect(padding + (index % columns) * (cellPixels + gap), padding + Math.floor(index / columns) * (cellPixels + gap), cellPixels, cellPixels),
-        originalSize: new Size(cellPixels, cellPixels),
-        offset: new Vec2(0, 0),
-        isRotate: false,
-        isFlipUv: false,
-      }, true);
-      frame.packable = false;
-      this.frames.set(name, frame);
     });
   }
   private releaseAssets(): void {

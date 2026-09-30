@@ -1,6 +1,22 @@
 # 技术架构
 
-适用版本：0.6.0（2026-09-29）。本文说明实现边界，构建、逻辑和实屏证据分别见TESTING。
+适用版本：0.7.0（2026-09-29）。本文说明实现边界，构建、逻辑和实屏证据分别见TESTING。
+
+## 0.7.0 配置与战斗更新
+
+本节取代下文0.6模块描述中的固定数量、硬编码与BOSS预留说明；其余生命周期和交互规则继续沿用。完整数据关系见CONFIGURATION，参数设计见CAMPAIGN_20。
+
+GameRoot.onLoad先等待ConfigLoader加载全部客户端CSV并由ConfigTables全量校验，再通过onConfigsReady初始化GameConfig/LevelConfig等桥接数据并启动菜单。未就绪时不执行战斗帧，加载失败允许重试；不保留第二份硬编码回退参数。Global与I18索引缓存避免每帧线性查找。
+
+GameConfig提供业务类型与配置适配，LevelConfig把规范化路径/塔位/障碍/波次表组装为20关。Map/Theme/Decoration驱动四组主题，Staff驱动8店员和全部弹道。新增穿透、连锁、灼烧、标记、多目标机制在原战斗链中执行；6小怪与4BOSS只有数值差异。第20关是当前终局。
+
+GameMenuView冒险共5页，每页4张；图鉴18条（6/4/8）并分页。菜单与战斗共用ArtAtlas/ArtFrame的7图集及切片，未解锁按真实图片轮廓显示剪影。Collection中的故事和所有正常界面短文案来自I18。旧档仅补录原3类怪物，新增敌人/首领要求正式遇到，避免更新后自动全开。
+
+AudioService读取Audio/Global，继续复用原BGM及11音效、独立偏好与生命周期。配置改变不改玩家存档键。美术battle_art在微信/抖音走本地分包，Web走本地合包，未接远端服务器。
+
+项目内构建扩展在Creator所有目标的onBeforeBuild执行同一导表校验；XLSX、CSV或核心校验器不同步会失败。工具复制与客户端适配、协议例外均有文档。
+
+2026-09-30固定UI已迁至22个原生Prefab。启动依次加载CSV、battle_art与UiPrefab资源，再创建固定层级。PrefabGameMenuView和BattlePrefabView只绑定数据、状态与行为；公共控件按模板实例化。UiShape/UiImage在编辑器中展示矢量外观和表格图集切片，命中从实际节点变换求得。资源、生命周期、自适应及配置边界详见UI_PREFABS.md。
 
 ## 技术基线
 
@@ -14,13 +30,13 @@
 
 ### `assets/scripts/gameplay/battle/GameRoot.ts`
 
-入口组件，负责首页、正式关卡入口、游戏状态、波次、寻路、战斗和输入；范围、血条、特效及UI矢量底板由程序绘制，地图皮肤、场景精灵、单位精灵和UI图标交给独立表现层。0.3.0抽出单位/UI表现与布局计算；v0.4.0继续抽出静态地图和地标层，不以全面拆系统作为内容制作前置条件。
+入口组件，负责首页、正式关卡入口、游戏状态、波次、寻路、战斗和输入；范围、血条和特效由程序绘制，固定UI层级及矢量底板由Prefab资产声明，地图皮肤、场景精灵、单位精灵和UI图标交给独立表现层。0.3.0抽出单位/UI表现与布局计算；v0.4.0继续抽出静态地图和地标层，不以全面拆系统作为内容制作前置条件。
 
 保留0.5.0的`home`/战斗状态分流，0.6.0把正式菜单展示和命中交给`GameMenuView`。`startOfficialLevel`仅接受已解锁关卡，最高进度通过`getLevelConfig(...).id`正规化。`returnHome`结束本局并重置战斗对象，不保存中途快照；暂停和结算页提供返回路径。菜单期间不执行战斗子步、不显示战斗操作。正式`spawnEnemy`记录图鉴遭遇，GM和MapReview跳过记录；GM返回正式首页，MapReview保留固定评审入口。通关保存只提高最高解锁，重玩低关不降进度。
 
 `activeTouchIds`在主触点结束后仍保留其余手指，全部松开前继续取消点击，修复残留第二指时再次按主指的误触边界；专项最终结果见TESTING。`Game.EVENT_HIDE`暂停战斗并挂起音频，`EVENT_SHOW`只恢复音频偏好，不自动继续战斗。
 
-战斗子层固定顺序为：`StaticMap → BattleSceneryView → UnitUnderlay → BattleArtView → DynamicGame → BattleUiView → Label`。地图及子层共用`contentRoot`矩形Mask，宽390逻辑像素，高度随安全区域上下延展；避免宽窗口黑边出现地图外图形。该遮罩不改变坐标或触控反算，仍需实屏检查边缘角色与动态特效的裁切。
+战斗子层固定顺序为：`StaticMap → BattleSceneryView → UnitUnderlay → BattleArtView → DynamicGame → 固定HUD/上下文控件/弹窗 → 动态Label → 菜单`（GM入口维持原弹窗上方层级）。地图及子层共用`contentRoot`矩形Mask，宽390逻辑像素，高度随安全区域上下延展；避免宽窗口黑边出现地图外图形。该遮罩不改变坐标或触控反算，仍需实屏检查边缘角色与动态特效的裁切。
 
 ### `assets/scripts/gameplay/battle/GameMenuView.ts`
 

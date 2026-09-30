@@ -1,6 +1,8 @@
+import { text, rows, numeric } from "../../config/ConfigTables";
+import type { TowerKind, EnemyKind } from "./GameConfig";
 import { assetManager, AssetManager, Color, Layers, Node, Rect, Size, Sprite, SpriteFrame, Texture2D, UITransform, Vec2 } from "cc";
 
-export type MenuIconKind = "sprout" | "frost" | "bloom" | "enemy_normal" | "enemy_swift" | "enemy_tank" | "shop" | "entry" | "tree";
+export type MenuIconKind = TowerKind | `enemy_${EnemyKind}` | "shop" | "entry" | "tree";
 
 interface IconEntry {
   node: Node;
@@ -9,9 +11,6 @@ interface IconEntry {
   frame: number;
 }
 
-const ATLAS_PIXELS = 512;
-const FRAME_PIXELS = 192;
-const FRAME_ORIGINS: readonly (readonly [number, number])[] = [[8, 8], [216, 8], [8, 216]];
 
 /**
  * 主界面和图鉴的共享精灵层，不处理解锁和输入。
@@ -110,27 +109,27 @@ export class MenuArtView {
       });
       if (!bundle || this.disposed) return;
       // 所有回调落定后才启用图标层，避免出现只加载一半的图鉴。
-      const loaded = await Promise.all([
-        this.loadTexture(bundle, "gameplay/towers/atlas_staff_idle/texture"),
-        this.loadTexture(bundle, "gameplay/enemies/atlas_enemies/texture"),
-        this.loadTexture(bundle, "gameplay/maps/atlas_battle_scenery/texture"),
-      ]);
+      const frameRows=rows("ArtFrame").filter(row=>row.menu);
+      const atlasRows=rows("ArtAtlas").filter(row=>frameRows.some(frame=>frame.atlas===row.key));
+      const loaded=await Promise.all(atlasRows.map(row=>this.loadTexture(bundle,row.path)));
       if (this.disposed || loaded.some((texture) => !texture)) {
         this.releaseAssets();
-        if (!this.disposed) console.warn("主界面图标未完整加载，继续使用文字按钮。");
+        if (!this.disposed) console.warn(text("ui.MenuArtView.001"));
         return;
       }
-      if (loaded.some((texture) => texture!.width !== ATLAS_PIXELS || texture!.height !== ATLAS_PIXELS)) {
-        throw new Error("主界面图集尺寸应为512×512，请核对运行资源导出。");
+      if (loaded.some((texture,i) => texture!.width !== numeric(atlasRows[i],"width") || texture!.height !== numeric(atlasRows[i],"height"))) {
+        throw new Error(text("ui.MenuArtView.002"));
       }
-      this.addFrames(loaded[0]!, ["sprout", "frost", "bloom"]);
-      this.addFrames(loaded[1]!, ["enemy_normal", "enemy_swift", "enemy_tank"], 168, [[4, 4], [172, 4], [340, 4]]);
-      this.addFrames(loaded[2]!, ["entry", "shop"], 224, [[16, 0], [272, 0]]);
-      this.addFrames(loaded[2]!, ["tree"], 224, [[192, 224]]);
+      for(const row of frameRows) {
+        const texture=loaded[atlasRows.findIndex(atlas=>atlas.key===row.atlas)]!;
+        const frame=new SpriteFrame(),width=numeric(row,"width"),height=numeric(row,"height");
+        frame.reset({texture,rect:new Rect(numeric(row,"x"),numeric(row,"y"),width,height),originalSize:new Size(width,height),offset:new Vec2(0,0),isRotate:false,isFlipUv:false},true); frame.packable=false;
+        this.frames.set(row.menu as MenuIconKind,frame);
+      }
       this.loaded = true;
     } catch (error) {
       this.releaseAssets();
-      if (!this.disposed) console.warn("主界面图标加载失败，继续使用文字按钮。", error);
+      if (!this.disposed) console.warn(text("ui.MenuArtView.003"), error);
     }
   }
 
@@ -152,24 +151,6 @@ export class MenuArtView {
         settled = true;
         resolve(null);
       }
-    });
-  }
-
-  private addFrames(texture: Texture2D, kinds: readonly MenuIconKind[], pixels = FRAME_PIXELS, origins: readonly (readonly [number, number])[] = FRAME_ORIGINS): void {
-    kinds.forEach((kind, index) => {
-      const [x, y] = origins[index];
-      const frame = new SpriteFrame();
-      this.frames.set(kind, frame);
-      // PNG均按左上原点导出且导入flipVertical=false，不能用整体Y翻转代替正确切片。
-      frame.reset({
-        texture,
-        rect: new Rect(x, y, pixels, pixels),
-        originalSize: new Size(pixels, pixels),
-        offset: new Vec2(0, 0),
-        isRotate: false,
-        isFlipUv: false,
-      }, true);
-      frame.packable = false;
     });
   }
 
