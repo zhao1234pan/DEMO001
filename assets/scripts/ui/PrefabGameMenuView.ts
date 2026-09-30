@@ -1,6 +1,6 @@
 import { Color, Graphics, Node, UITransform } from "cc";
 import { globalString, globalNumber, text } from "../config/ConfigTables";
-import { GAME_CONFIG, ENEMY_CONFIG } from "../gameplay/battle/GameConfig";
+import { GAME_CONFIG } from "../gameplay/battle/GameConfig";
 import { getLevelConfig } from "../gameplay/battle/LevelConfig";
 import { levelTheme } from "../gameplay/battle/LevelTheme";
 import { COLLECTION_ENTRIES, COLLECTION_TABS, CollectionEntry, CollectionProgress, CollectionTab, staffStats } from "../gameplay/battle/CollectionData";
@@ -138,10 +138,8 @@ export class PrefabGameMenuView {
       card.active = id <= GAME_CONFIG.maxLevels; if (!card.active) continue;
       const level = getLevelConfig(id), unlocked = id <= this.unlocked, theme = levelTheme(level);
       uiNode(card, "Unlocked").active = unlocked; uiNode(card, "Locked").active = !unlocked; uiNode(card, "Lock").active = !unlocked;
-      uiText(card, "Theme", theme.name); uiText(card, "Number", String(id).padStart(2, "0")); uiText(card, "Title", level.title);
-      const hasMajorBoss = level.waves.some(w => w.enemies.some(k => ENEMY_CONFIG[k].boss === "major"));
-      const category = hasMajorBoss ? text("ui.GameMenuView.extra0") : level.waves.some(w => w.enemies.some(k => ENEMY_CONFIG[k].boss === "mini")) ? text("ui.GameMenuView.extra1") : text("ui.GameMenuView.extra2");
-      uiText(card, "State", unlocked ? text("ui.GameMenuView.017", category, level.waves.length) : text("ui.GameMenuView.018", id - 1));
+      uiNode(card, "Theme").active = false; uiText(card, "Number", String(id).padStart(2, "0")); uiText(card, "Title", level.title);
+      uiText(card, "State", unlocked ? text("ui.GameMenuView.017", level.waves.length) : text("ui.GameMenuView.018", id - 1));
       uiText(card, "LockedState", text("ui.GameMenuView.018", id - 1));
       uiNode(card, "LockedState").active = !unlocked; uiNode(card, "State").active = unlocked;
       uiColor(card, "Thumbnail", theme.ground);

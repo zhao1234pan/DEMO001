@@ -91,6 +91,7 @@ export class GameRoot extends Component {
   private hitSize = BATTLE_UI.minimumHit;
   private touchStart: { x: number; y: number } | null = null;
   private touchId: number | null = null;
+  private contextPlacement: { key: string; points: Array<{ x: number; y: number }> } | null = null;
   private touchTravelCancelled = false;
   private readonly activeTouchIds = new Set<number | null>();
   private appliedResolutionPolicy: number | null = null;
@@ -597,7 +598,7 @@ export class GameRoot extends Component {
       x: Math.max(60, Math.min(W - 60, start[0] + Math.sign(next[0] - start[0]) * 90)),
       y: Math.max(116, this.layoutTop + 116),
     };
-    const menus: HitRect[] = this.buildMenuItems().map((item) => ({ x: item.x - 32, y: item.y - 42, width: 64, height: 84 }));
+    const menus: HitRect[] = this.buildMenuItems().map((item) => ({ x: item.x - 32, y: item.y - 32, width: 64, height: 64 }));
     if (this.selectedTower) menus.push(...this.towerMenuItems(this.selectedTower).map((item) => ({
       x: item.x - BATTLE_UI.contextWidth / 2, y: item.y - BATTLE_UI.contextHeight / 2,
       width: BATTLE_UI.contextWidth, height: BATTLE_UI.contextHeight,
@@ -637,33 +638,52 @@ export class GameRoot extends Component {
     g.roundRect(position.x - 56, position.y - 40, 112, 84, 16); g.stroke();
   }
 
+  /** 菜单仍围绕选中格弹出；候选区域避开所有格位，防止邻格点击被升级/出售截走。 */
+  private contextMenuPoints(x: number, y: number, count: number, width: number, height: number): Array<{ x: number; y: number }> {
+    const key = [this.currentLevelId, x, y, count, width, height, this.layoutTop, this.layoutBottom].join("/");
+    if (this.contextPlacement?.key === key) return this.contextPlacement.points;
+    const gap = 10, margin = 6, tileHalf = BATTLE_UI.minimumHit / 2;
+    const top = Math.max(78, this.layoutTop + BATTLE_UI.headerHeight + margin);
+    const bottom = Math.min(PANEL_Y - margin, this.layoutBottom - 82);
+    let best: { score: number; points: Array<{ x: number; y: number }> } | null = null;
+    for (const columns of Array.from(new Set([count, Math.ceil(count / 2), 1]))) {
+      const rows = Math.ceil(count / columns), groupWidth = columns * width + (columns - 1) * gap;
+      const groupHeight = rows * height + (rows - 1) * gap;
+      const minX = margin + groupWidth / 2, maxX = W - margin - groupWidth / 2;
+      const minY = top + groupHeight / 2, maxY = bottom - groupHeight / 2;
+      if (minX > maxX || minY > maxY) continue;
+      const clampX = (n: number) => Math.max(minX, Math.min(maxX, n));
+      const clampY = (n: number) => Math.max(minY, Math.min(maxY, n));
+      const xs = new Set([clampX(x), minX, maxX]);
+      const ys = new Set([clampY(y - tileHalf - margin - groupHeight / 2), clampY(y + tileHalf + margin + groupHeight / 2), minY, maxY]);
+      for (const spot of this.spots) {
+        xs.add(clampX(spot.x - tileHalf - margin - groupWidth / 2)); xs.add(clampX(spot.x + tileHalf + margin + groupWidth / 2));
+        ys.add(clampY(spot.y - tileHalf - margin - groupHeight / 2)); ys.add(clampY(spot.y + tileHalf + margin + groupHeight / 2));
+      }
+      for (const cx of xs) for (const cy of ys) {
+        const points = Array.from({ length: count }, (_, i) => ({ x: cx - groupWidth / 2 + width / 2 + (i % columns) * (width + gap), y: cy - groupHeight / 2 + height / 2 + Math.floor(i / columns) * (height + gap) }));
+        const overlaps = points.reduce((sum, p) => sum + this.spots.filter(spot => Math.abs(p.x - spot.x) < width / 2 + tileHalf + margin && Math.abs(p.y - spot.y) < height / 2 + tileHalf + margin).length, 0);
+        // 优先无格位遮挡，再取距所选格最近的位置；同距优先原有横排。
+        const score = overlaps * W * H + Math.hypot(cx - x, cy - y) + (columns === count ? 0 : gap);
+        if (!best || score < best.score) best = { score, points };
+      }
+    }
+    const points = best?.points ?? [];
+    this.contextPlacement = { key, points };
+    return points;
+  }
+
   private buildMenuItems(): Array<{ kind: TowerKind; x: number; y: number }> {
     const spot = this.selectedSpot;
     if (!spot || spot.tower || spot.obstacle) return [];
     const kinds = this.level.availableTowers;
-    const spacing = 74;
-    const totalWidth = (kinds.length - 1) * spacing;
-    // 整组按钮一起做边缘避让，而不是逐个夹紧，防止三个按钮在窄边缘处互相重叠。
-    const startX = Math.max(44, Math.min(W - 44 - totalWidth, spot.x - totalWidth / 2));
-    const candidates = [spot.y - 82, spot.y + 82]
-      .map((value) => Math.max(120, Math.min(PANEL_Y - 48, value)))
-      .filter((value) => Math.abs(value - spot.y) >= 60);
-    // 比较上下两侧所有按钮到道路的最小距离，优先把菜单放到不遮挡战斗的一边。
-    const score = (candidateY: number): number => Math.min(...kinds.map((_, index) => this.distanceToPath(startX + index * spacing, candidateY)));
-    const y = candidates.length < 2 || score(candidates[0]) >= score(candidates[1]) ? candidates[0] : candidates[1];
-    return kinds.map((kind, index) => ({ kind, x: startX + index * spacing, y }));
+    const points = this.contextMenuPoints(spot.x, spot.y, kinds.length, 64, 64);
+    return kinds.map((kind, i) => ({ kind, ...points[i] }));
   }
 
   private towerMenuItems(tower: Tower): Array<{ action: "upgrade" | "sell"; x: number; y: number }> {
-    const totalWidth = BATTLE_UI.contextWidth * 2 + 10;
-    const startX = Math.max(12, Math.min(W - totalWidth - 12, tower.x - totalWidth / 2));
-    const centerX = startX + totalWidth / 2;
-    const candidates = [tower.y - 65, tower.y + 65].map((value) => Math.max(104, Math.min(PANEL_Y - 40, value))).filter((value) => Math.abs(value - tower.y) >= 48);
-    const y = candidates.length < 2 || this.distanceToPath(centerX, candidates[0]) >= this.distanceToPath(centerX, candidates[1]) ? candidates[0] : candidates[1];
-    return [
-      { action: "upgrade", x: startX + BATTLE_UI.contextWidth / 2, y },
-      { action: "sell", x: startX + BATTLE_UI.contextWidth * 1.5 + 10, y },
-    ];
+    const points = this.contextMenuPoints(tower.x, tower.y, 2, BATTLE_UI.contextWidth, BATTLE_UI.contextHeight);
+    return [{ action: "upgrade", ...points[0] }, { action: "sell", ...points[1] }];
   }
 
   private distanceToPath(x: number, y: number): number {
@@ -1188,21 +1208,27 @@ export class GameRoot extends Component {
     finally { if (revision === this.battleRevision) this.adRequesting = false; }
   }
 
+  private touchPoint(event: EventTouch): { x: number; y: number } {
+    const p = event.getUILocation();
+    const local = this.contentRoot.getComponent(UITransform)!.convertToNodeSpaceAR(new Vec3(p.x, p.y));
+    return { x: local.x + W / 2, y: H / 2 - local.y };
+  }
+
   private onTouchStart(event: EventTouch): void {
     if (this.mapReview) return;
     this.audio.unlock();
     this.activeTouchIds.add(event.getID());
     // 第二指即使仍留在屏幕上也会锁住后续点击，直到本组触点全部结束。
     if (this.activeTouchIds.size !== 1 || this.touchStart) { this.touchTravelCancelled = true; return; }
-    const point = event.getUILocation();
+    const point = this.touchPoint(event);
     this.touchStart = { x: point.x, y: point.y };
     this.touchId = event.getID(); this.touchTravelCancelled = false;
   }
 
   private onTouchMove(event: EventTouch): void {
     if (!this.touchStart || event.getID() !== this.touchId) return;
-    const point = event.getUILocation();
-    if (Math.hypot(point.x - this.touchStart.x, point.y - this.touchStart.y) > 24) this.touchTravelCancelled = true;
+    const point = this.touchPoint(event);
+    if (Math.hypot(point.x - this.touchStart.x, point.y - this.touchStart.y) > globalNumber("touchTravelTolerance")) this.touchTravelCancelled = true;
   }
 
   private onTouchCancel(event?: EventTouch): void {
@@ -1218,14 +1244,13 @@ export class GameRoot extends Component {
       if (!this.activeTouchIds.size) this.onTouchCancel();
       return;
     }
-    const point = event.getUILocation();
+    const point = this.touchPoint(event);
     const start = this.touchStart;
     const cancelled = this.touchTravelCancelled || this.activeTouchIds.size > 0;
     this.touchStart = null; this.touchId = null;
     this.touchTravelCancelled = this.activeTouchIds.size > 0;
-    if (!start || cancelled || Math.hypot(point.x - start.x, point.y - start.y) > 24) return;
-    const local = this.contentRoot.getComponent(UITransform)!.convertToNodeSpaceAR(new Vec3(point.x, point.y));
-    this.handlePress(local.x + W / 2, H / 2 - local.y);
+    if (!start || cancelled || Math.hypot(point.x - start.x, point.y - start.y) > globalNumber("touchTravelTolerance")) return;
+    this.handlePress(point.x, point.y);
   }
 
   private handlePress(x: number, y: number): void {
@@ -1269,13 +1294,13 @@ export class GameRoot extends Component {
 
     // 先处理塔位旁的上下文按钮，避免点到按钮时被下方建造单元再次选中。
     if (this.selectedTower) {
-      const item = this.towerMenuItems(this.selectedTower).find((candidate) => this.buttonHit(this.battleUi.contextRect(candidate.action), x, y));
+      const item = this.towerMenuItems(this.selectedTower).find((candidate) => containsPoint(this.battleUi.contextRect(candidate.action), x, y));
       if (item) {
         if (item.action === "upgrade") this.upgradeSelected(); else this.sellSelected();
         return;
       }
     } else if (this.selectedSpot && !this.selectedSpot.tower && !this.selectedSpot.obstacle) {
-      const buildItem = this.buildMenuItems().find((item) => this.buttonHit(this.battleUi.contextRect(item.kind), x, y));
+      const buildItem = this.buildMenuItems().find((item) => containsPoint(this.battleUi.contextRect(item.kind), x, y));
       if (buildItem) { this.buildTower(this.selectedSpot, buildItem.kind); return; }
     }
 
@@ -1289,10 +1314,10 @@ export class GameRoot extends Component {
       }
     }
     // 边缘格位把方形热区夹在可视边界内，保证不因一半热区在屏幕外而难以点中。
-    const spot = this.spots.find((item) => containsPoint({
+    const spot = this.spots.filter((item) => containsPoint({
       x: Math.max(0, Math.min(W - this.hitSize, item.x - this.hitSize / 2)),
       y: item.y - this.hitSize / 2, width: this.hitSize, height: this.hitSize,
-    }, x, y));
+    }, x, y)).sort((a, b) => Math.hypot(a.x - x, a.y - y) - Math.hypot(b.x - x, b.y - y))[0];
     if (spot) {
       this.selectedSpot = spot; this.selectedTower = spot.tower; this.selectedObstacle = spot.obstacle;
       // 玩家已经主动操作时收起教学提示，给塔位菜单让出完整可视空间。

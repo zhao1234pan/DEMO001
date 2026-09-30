@@ -185,7 +185,7 @@ function installConfigs(sources) {
             keys.add(row[field]);
         }
     }
-    const requiredGlobals = ["gameName", "maxLevels", "rewardAdUnitId", "version", "upgradeDamage", "upgradeRange", "upgradeRate", "upgradeCostBase", "upgradeCostStep", "maxStaffLevel", "sellRatio", "waveHealthGrowth", "waveBonusBase", "waveBonusStep", "firstWaveDelay", "nextWaveDelay", "reviveWaveDelay", "reviveMinLives", "reviveLifeRatio", "freezeSeconds", "cashBase", "cashPerLevel", "freePropCount", "slowSpeedRatio", "markDamageRatio", "musicVolume", "maxEffectSources", "toastSeconds", "challengeLevelId"];
+    const requiredGlobals = ["gameName", "maxLevels", "rewardAdUnitId", "version", "upgradeDamage", "upgradeRange", "upgradeRate", "upgradeCostBase", "upgradeCostStep", "maxStaffLevel", "sellRatio", "waveHealthGrowth", "waveBonusBase", "waveBonusStep", "firstWaveDelay", "nextWaveDelay", "reviveWaveDelay", "reviveMinLives", "reviveLifeRatio", "freezeSeconds", "cashBase", "cashPerLevel", "freePropCount", "slowSpeedRatio", "markDamageRatio", "musicVolume", "maxEffectSources", "toastSeconds", "challengeLevelId", "touchTravelTolerance"];
     for (const key of requiredGlobals) {
         requireRef("Global", "key", key, "Global contract");
         const row = next.Global.find(r => r.key === key);
