@@ -174,7 +174,7 @@ id,key,zhCN
 172,ui.GameMenuView.014,返回
 173,ui.GameMenuView.015,冒险模式
 174,ui.GameMenuView.016,已解锁 {p0} / {p1} 关 · 通关开启下一班
-175,ui.GameMenuView.017,{p0} · {p1} 波
+175,ui.GameMenuView.017,共{p0}波
 176,ui.GameMenuView.018,通关第 {p0} 关解锁
 177,ui.GameMenuView.019,关卡未解锁
 178,ui.GameMenuView.020,通关第 {p0} 关后解锁。
@@ -197,8 +197,8 @@ id,key,zhCN
 195,ui.GameRoot.001,地铁口
 196,ui.GameRoot.002,便利店
 197,ui.GameRoot.003,返回首页
-198,ui.GameRoot.004,GM 关卡选择
-199,ui.GameRoot.005,测试选关，不改变正式解锁
+198,ui.GameRoot.004,GM 调试
+199,ui.GameRoot.005,图鉴预览仅本次生效，不改正式存档
 200,ui.GameRoot.006,关闭
 201,ui.GameRoot.007,返回正式进度
 202,ui.GameRoot.008,第{p0}关{p1}
@@ -280,3 +280,26 @@ id,key,zhCN
 277,challenge.return,返回首页
 278,challenge.enter,固定挑战：棉棉、布丁、咕咕、薄荷
 279,ui.opt.startWave,开始下一波
+280,ui.gm.enemies,解锁怪物
+281,ui.gm.bosses,解锁 BOSS
+282,ui.gm.staff,解锁店员
+283,ui.gm.all,解锁全部图鉴
+284,ui.gm.restore,恢复正式图鉴
+285,guide.place,点空位，安排{p0}
+286,guide.choose,选择{p0}
+287,guide.coins,金币够了再安排{p0}
+288,guide.build.select,点空位，安排豆包
+289,guide.build.action,选择豆包
+290,guide.build.wait,豆包会自动攻击
+291,guide.upgrade.select,点豆包，看看升级
+292,guide.upgrade.action,升级豆包
+293,guide.upgrade.wait,攒够金币再升级
+294,guide.combo.select,把棉棉放在豆包旁
+295,guide.combo.action,选择棉棉
+296,guide.combo.wait,棉棉减速，豆包接着打
+297,guide.area.select,安排布丁对付成群精怪
+298,guide.area.action,选择布丁
+299,guide.area.wait,布丁能一次打到多只精怪
+300,guide.clear.select,点店员旁的杂物
+301,guide.clear.action,点杂物，清理后获得金币
+302,guide.clear.wait,店员空闲时会清理杂物

@@ -2,7 +2,7 @@ id,key,type,value,note
 1,gameName,string,game.name,游戏名I18键
 6,maxLevels,float,20,当前关卡上限
 7,rewardAdUnitId,string,replace-with-douyin-ad-unit-id,抖音激励视频广告位
-8,version,string,0.8.0,客户端版本
+8,version,string,1.0.0,客户端版本
 9,upgradeDamage,float,0.52,升级伤害增幅
 10,upgradeRange,float,0.08,升级射程增幅
 11,upgradeRate,float,0.12,升级攻速增幅
@@ -28,3 +28,4 @@ id,key,type,value,note
 31,maxEffectSources,float,6,音效并发上限
 32,toastSeconds,float,2.3,提示显示秒数
 33,challengeLevelId,float,21,挑战体验关内部ID，不计入冒险最大关卡
+34,touchTravelTolerance,float,20,点击允许移动距离，390宽逻辑像素

@@ -209,5 +209,23 @@
       "key": "string",
       "path": "string"
     }
+  },
+  "Tutorial": {
+    "fields": {
+      "id": "int",
+      "levelId": "int",
+      "order": "int",
+      "action": "string",
+      "staffKind": "string",
+      "partnerKind": "string",
+      "spotIndex": "int",
+      "requiredValue": "int",
+      "firstWaveDelay": "float",
+      "selectText": "string",
+      "actionText": "string",
+      "waitText": "string",
+      "pulseSeconds": "float",
+      "highlightColor": "string"
+    }
   }
 }

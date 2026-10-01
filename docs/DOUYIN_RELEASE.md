@@ -97,3 +97,7 @@
 - [抖音开放平台：激励视频广告](https://developer.open-douyin.com/docs/resource/zh-CN/mini-game/develop/guide/open-ability/ad/incentive-ads)
 - [抖音开放平台：广告小游戏运营规范](https://developer.open-douyin.com/docs/resource/zh-CN/mini-game/operation1/norms/norms)
 - [抖音开放平台：小游戏自审标准](https://developer.open-douyin.com/docs/resource/zh-CN/mini-game/operation1/norms/standards)
+
+## 2026-09-30 GM发布检查补充
+
+首页新增GM仅供调试。发布必须使用settings/builds中的debug=false配置；非调试运行不显示入口、不加载面板且不能通过GM解锁图鉴。已构建本平台正式包，宿主真机验收仍待完成。详见[GM工具说明](GM_TOOLS.md)。

@@ -82,3 +82,15 @@ UiPrefab是第18张表。config:export同步Prefab内I18预览与ArtFrame切片�
 - Wave.healthScale（float，>0）：本波血量倍率；实际HP由Enemy.hp×Level.enemyHealthScale×Wave.healthScale×逐波增长计算。Level.enemySpeedScale保留旧字段协议但校验必须1，客户端基础速度直接读取Enemy.speed；技能与全局倍速仍生效。
 - Global.freePropCount允许非负整数0；正式道具每种每局一次成功广告为生命周期规则，未增加第二份可调次数。Level/Wave等模式及I18先写原始表，再扩展schema和读取器。
 - 店员属性级别1/2/3是当前三档UI协议；数值与费用公式读取Staff/Global。气泡避让、同类按钮尺寸和文本小数显示属于既有引擎表现例外，新增几何仅在Prefab/布局算法，业务文案从I18读取。
+
+## 0.8.1 点击与地图修复
+
+- Global.touchTravelTolerance（float）：按390宽战斗逻辑坐标衡量的触点移动容错，当前20；统一在触摸开始、移动与结束时转换坐标，避免随屏幕缩放改变容错。
+- I18.ui.GameMenuView.017为“共{p0}波”；MapPoint与Spot原始表管理本轮居中修正。配置变更清单见OPTIMIZATION_V2。
+- 菜单避让的矩形间隔、屏幕边界、50逻辑像素最小格位命中及64×64建造卡为既有UI几何例外；固定控件外观在原生Prefab，未复制新业务参数到代码。广告count/isEnded及并发结算属于平台协议与算法，仍位于平台适配层。
+
+- GM图鉴预览：I18新增ui.gm.*五键；固定布局使用gm.prefab。命令ID/集合操作/DEBUG属于技术协议与算法例外，临时展示不新增玩家存储键。
+
+## 前三关引导配置
+
+新增Tutorial为第19张表，6条动作配置；字段、完成规则、持久化与验证见TUTORIAL.md。I18和UiPrefab同步，23个预制体。动作/存储键为技术协议；detail.prefab/LayoutSpacing管理信息弹窗几何，描边厚度/圆角与行高排列属于引擎表现例外。

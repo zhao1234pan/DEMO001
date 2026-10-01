@@ -7,7 +7,7 @@ export const BATTLE_UI = {
   gmClose: { x: 292, y: 124, width: 50, height: 48 },
   contextWidth: 96,
   contextHeight: 48,
-  minimumHit: 46,
+  minimumHit: 50,
 };
 
 export function containsPoint(rect: HitRect, x: number, y: number): boolean {
