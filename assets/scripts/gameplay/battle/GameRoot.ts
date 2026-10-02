@@ -1,3 +1,4 @@
+import { attackProfile, evolutionChoices, evolutionByKey, StaffEvolution } from "./StaffEvolution";
 import { configsReady, globalNumber, numeric, rows, text } from "../../config/ConfigTables";
 import { loadGameConfigs } from "../../config/ConfigLoader";
 import {
@@ -56,13 +57,13 @@ function configureGmButtons():void { GM_LEVEL_BUTTONS.splice(0,GM_LEVEL_BUTTONS.
 interface Enemy {
   kind: EnemyKind; hp: number; maxHp: number; speed: number; reward: number;
   radius: number; color: string; damage: number; distance: number; x: number; y: number;
-  age: number; slow: number; hitFlash: number;
+  age: number; slow: number; slows?: Record<string,{ratio:number;remaining:number}>; hitFlash: number;
   burnTime: number; burnDamage: number; markedTime: number; sinceHit: number;
 }
 
 interface Tower {
   x: number; y: number; kind: TowerKind; level: number; cooldown: number;
-  angle: number; spent: number; spot: Spot; recoil: number;
+  angle: number; spent: number; spot: Spot; recoil: number; evolutionKey?: string; burstRemaining?: number; burstTimer?: number;
 }
 
 interface Obstacle {
@@ -72,7 +73,7 @@ interface Obstacle {
 
 type AttackTarget = Enemy | Obstacle;
 interface Spot { x: number; y: number; tower: Tower | null; obstacle: Obstacle | null; }
-interface Shot { x: number; y: number; target: AttackTarget; kind: TowerKind; level: number; speed: number; originX: number; originY: number; age: number; lane: number; }
+interface Shot { evolutionKey?: string; x: number; y: number; target: AttackTarget; kind: TowerKind; level: number; speed: number; originX: number; originY: number; age: number; lane: number; }
 interface Particle { x: number; y: number; vx: number; vy: number; size: number; color: string; life: number; maxLife: number; }
 
 @ccclass("GameRoot")
@@ -123,6 +124,8 @@ export class GameRoot extends Component {
   private gmResetArmed = false;
   private gmSessionActive = false;
   private selectedTower: Tower | null = null;
+  private evolutionTower: Tower | null = null;
+  private newEvolutionKeys: string[] = [];
   private selectedSpot: Spot | null = null;
   private selectedObstacle: Obstacle | null = null;
   private queue: EnemyKind[] = [];
@@ -417,7 +420,7 @@ export class GameRoot extends Component {
 
   /** 弹道仅改变视觉轨迹；命中仍由逻辑坐标和真实目标判定，倍速与暂停保持同步。 */
   private drawShot(g: Graphics, shot: Shot): void {
-    const cfg=TOWER_CONFIG[shot.kind];
+    const cfg=attackProfile(shot.kind,shot.level,shot.evolutionKey);
     const angle = Math.atan2(shot.target.y - shot.y, shot.target.x - shot.x);
     const ux = Math.cos(angle), uy = Math.sin(angle);
     const traveled = Math.hypot(shot.x - shot.originX, shot.y - shot.originY);
@@ -517,8 +520,8 @@ export class GameRoot extends Component {
   private drawTower(g: Graphics, tower: Tower): void {
     const cfg = TOWER_CONFIG[tower.kind];
     if (tower === this.selectedTower) {
-      this.disc(g, tower.x, tower.y, cfg.range * (1 + (tower.level - 1) * globalNumber("upgradeRange")), "#57a96a", 0.08);
-      this.ring(g, tower.x, tower.y, cfg.range * (1 + (tower.level - 1) * globalNumber("upgradeRange")), "#32724c", 0.35, 1);
+      this.disc(g, tower.x, tower.y, attackProfile(tower.kind,tower.level,tower.evolutionKey).range, "#57a96a", 0.08);
+      this.ring(g, tower.x, tower.y, attackProfile(tower.kind,tower.level,tower.evolutionKey).range, "#32724c", 0.35, 1);
     }
     if (this.art.ready) {
       this.art.drawTower(tower, tower);
@@ -571,7 +574,7 @@ export class GameRoot extends Component {
     const ratio = Math.max(0, enemy.hp / enemy.maxHp);
     this.box(g, enemy.x - 15, enemy.y - enemy.radius - 12, 30, 5, 2.5, "#4b422e", 0.9);
     this.box(g, enemy.x - 14, enemy.y - enemy.radius - 11, 28 * ratio, 3, 1.5, ratio > 0.35 ? "#f59270" : "#ea635a");
-    if (enemy.slow > 0) this.ring(g, enemy.x, enemy.y, enemy.radius + 3, "#b4f6ff", 0.7, 2);
+    if (enemy.slow > 0 || Object.keys(enemy.slows ?? {}).length > 0) this.ring(g, enemy.x, enemy.y, enemy.radius + 3, "#b4f6ff", 0.7, 2);
   }
 
   private drawPanels(_g: Graphics): void {
@@ -584,7 +587,7 @@ export class GameRoot extends Component {
     if (this.selectedSpot && !this.selectedSpot.tower && !this.selectedSpot.obstacle) {
       for (const item of this.buildMenuItems()) this.battleUi.showBuild(item.kind, item.x, item.y, this.coins >= TOWER_CONFIG[item.kind].cost);
     }
-    if (this.selectedTower) for (const item of this.towerMenuItems(this.selectedTower)) {
+    if (this.selectedTower && this.evolutionTower !== this.selectedTower) for (const item of this.towerMenuItems(this.selectedTower)) {
       const enabled = item.action === "sell" || (this.selectedTower.level < globalNumber("maxStaffLevel") && this.coins >= this.upgradeCost(this.selectedTower));
       this.battleUi.showAction(item.action, item.x, item.y, enabled);
     }
@@ -612,7 +615,7 @@ export class GameRoot extends Component {
     const spotRect = (spot: Spot): HitRect => ({x:spot.x-22,y:spot.y-22,width:44,height:44});
     const tower = this.towers.find(item => item.kind === kind && (step.action !== "combo" || !partner || Math.hypot(item.x-partner.x,item.y-partner.y) <= config.range + TOWER_CONFIG[partner.kind].range));
     if (step.action === "clear") {
-      const reachable = this.obstacles.filter(obstacle => this.towers.some(item => Math.hypot(item.x-obstacle.x,item.y-obstacle.y) <= TOWER_CONFIG[item.kind].range * (1+(item.level-1)*globalNumber("upgradeRange"))));
+      const reachable = this.obstacles.filter(obstacle => this.towers.some(item => Math.hypot(item.x-obstacle.x,item.y-obstacle.y) <= attackProfile(item.kind,item.level,item.evolutionKey).range));
       const obstacle = reachable.find(item => item.spot === this.spots[numeric(step,"spotIndex")]) ?? reachable[0];
       if (!obstacle) return null;
       return result(spotRect(obstacle.spot), text(this.selectedObstacle === obstacle ? step.waitText : step.actionText));
@@ -660,7 +663,7 @@ export class GameRoot extends Component {
       y: Math.max(116, this.layoutTop + 116),
     };
     const menus: HitRect[] = this.buildMenuItems().map((item) => ({ x: item.x - 32, y: item.y - 32, width: 64, height: 64 }));
-    if (this.selectedTower) menus.push(...this.towerMenuItems(this.selectedTower).map((item) => ({
+    if (this.selectedTower && this.evolutionTower !== this.selectedTower) menus.push(...this.towerMenuItems(this.selectedTower).map((item) => ({
       x: item.x - BATTLE_UI.contextWidth / 2, y: item.y - BATTLE_UI.contextHeight / 2,
       width: BATTLE_UI.contextWidth, height: BATTLE_UI.contextHeight,
     })));
@@ -670,6 +673,7 @@ export class GameRoot extends Component {
       menus.push({ x: info.x - 86, y: info.y - 16, width: 172, height: 32 });
     }
     // 入口靠近首排时，菜单或清障信息会与倒计时相撞；只移动提示，不隐藏预告或更改波次计时。
+    menus.push(...this.evolutionMenuItems().map(item=>this.battleUi.evolutionRect(item.evolution.key)));
     const candidates = [preferred, { x: W - preferred.x, y: preferred.y }];
     const toastRect = this.toastTime > 0 ? this.battleUi.toastRect() : null;
     // 气泡可点击，不能覆盖尚未选择的建造格，避免玩家点格位却提前开波。
@@ -847,7 +851,9 @@ export class GameRoot extends Component {
       this.setLabelColor(`build-${kind}`, this.coins >= TOWER_CONFIG[kind].cost ? "#17352e" : "#53645f");
       this.setLabelColor(`build-cost-${kind}`, this.coins >= TOWER_CONFIG[kind].cost ? "#8c6a24" : "#53645f");
     });
-    const showTowerMenu = contextVisible && Boolean(this.selectedTower);
+    const showEvolution = contextVisible && this.evolutionTower === this.selectedTower && Boolean(this.selectedTower) && this.towers.includes(this.selectedTower!);
+    this.battleUi.showEvolutions(showEvolution ? this.evolutionMenuItems() : [], this.coins);
+    const showTowerMenu = contextVisible && Boolean(this.selectedTower) && !showEvolution;
     this.showLabel("context-upgrade", showTowerMenu);
     this.showLabel("context-sell", showTowerMenu);
     if (this.selectedTower && showTowerMenu) {
@@ -857,7 +863,7 @@ export class GameRoot extends Component {
       const sell = items.find((item) => item.action === "sell")!;
       this.setLabelPosition("context-upgrade", upgrade.x, upgrade.y);
       this.setLabelPosition("context-sell", sell.x, sell.y);
-      this.setLabel("context-upgrade", tower.level >= globalNumber("maxStaffLevel") ? text("ui.GameRoot.010") : text("ui.GameRoot.011", this.upgradeCost(tower)));
+      this.setLabel("context-upgrade", tower.evolutionKey ? text("ui.evolution.complete") : tower.level >= globalNumber("maxStaffLevel") ? text("ui.GameRoot.010") : text(this.canEvolve(tower) ? "ui.evolution.button" : "ui.GameRoot.011", this.upgradeCost(tower)));
       this.setLabel("context-sell", text("ui.GameRoot.012", this.sellRefund(tower)));
     }
     const showObstacle = contextVisible && Boolean(this.selectedObstacle);
@@ -914,8 +920,10 @@ export class GameRoot extends Component {
           : text("result.progress", this.wave, this.level.waves.length);
         const details = [progress];
         if (this.newStaffKinds.length) details.push(text("result.staff", this.newStaffKinds.length));
+        if(this.newEvolutionKeys.length)details.push(text("ui.evolution.result",this.newEvolutionKeys.map(key=>evolutionByKey(key)!.name).join("、")));
         if (this.newEncounterKinds.length) details.push(text("result.collection", this.newEncounterKinds.length));
         this.battleUi.showResult(details.join("\n"), [
+          ...this.newEvolutionKeys.map(key=>{const e=evolutionByKey(key)!;return {name:e.name,image:"menu:"+e.imageKey};}),
           ...this.newStaffKinds.map(k => ({name:TOWER_CONFIG[k].name,image:"menu:"+k})),
           ...this.newEncounterKinds.map(k => ({name:ENEMY_CONFIG[k].name!,image:"menu:enemy_"+k})),
         ]);
@@ -1008,7 +1016,7 @@ export class GameRoot extends Component {
     this.level = getLevelConfig(levelId); this.currentLevelId = this.level.id;
     this.coins = this.level.initialCoins; this.lives = this.level.initialLives; this.wave = 0;
     this.inWave = false; this.paused = false; this.screen = "playing"; this.revived = false;
-    this.selectedTower = null; this.selectedSpot = null; this.selectedObstacle = null; this.queue = []; this.spawnTimer = 0;
+    this.evolutionTower = null; this.newEvolutionKeys = []; this.selectedTower = null; this.selectedSpot = null; this.selectedObstacle = null; this.queue = []; this.spawnTimer = 0;
     this.spawnInterval = 0.78; this.nextWaveTimer = globalNumber("firstWaveDelay"); this.frozenTime = 0; this.adRequesting = false;
     this.propCounts = { freeze: globalNumber("freePropCount"), clear: globalNumber("freePropCount"), cash: globalNumber("freePropCount") }; this.propAdUsed = { freeze: false, clear: false, cash: false };
     this.enemies = []; this.towers = []; this.shots = []; this.particles = []; this.obstacles = [];
@@ -1052,6 +1060,8 @@ export class GameRoot extends Component {
     for (let i = this.enemies.length - 1; i >= 0; i -= 1) {
       const enemy = this.enemies[i];
       enemy.age += dt; enemy.slow = Math.max(0, enemy.slow - dt);
+      for (const [key,effect] of Object.entries(enemy.slows ?? {})) { effect.remaining-=dt; if(effect.remaining<=0)delete enemy.slows![key]; }
+      const slowRatio=Math.min(enemy.slow>0?globalNumber("slowSpeedRatio"):1,...Object.values(enemy.slows??{}).map(effect=>effect.ratio));
       enemy.sinceHit = (enemy.sinceHit ?? 0) + dt;
       enemy.markedTime = Math.max(0, (enemy.markedTime ?? 0) - dt);
       if (enemy.burnTime > 0) {
@@ -1060,7 +1070,7 @@ export class GameRoot extends Component {
 
       }
       if (enemy.hp <= 0) { this.defeatEnemyAt(i); continue; }
-      enemy.distance += enemy.speed * (this.frozenTime > 0 ? 0 : enemy.slow > 0 ? globalNumber("slowSpeedRatio") : 1) * dt;
+      enemy.distance += enemy.speed * (this.frozenTime > 0 ? 0 : slowRatio) * dt;
       const pos = this.pathPosition(enemy.distance); enemy.x = pos.x; enemy.y = pos.y;
       if (pos.done || enemy.distance >= this.pathLength) {
         this.lives -= enemy.damage; this.damageFlash = 0.28; this.audio.play("leak", 0.62);
@@ -1075,27 +1085,18 @@ export class GameRoot extends Component {
       }
     }
 
-    // 店员优先处理范围内最靠近终点的敌人；只有没有敌人威胁时才清理玩家指定的障碍物。
     for (const tower of this.towers) {
       tower.cooldown -= dt;
-      const cfg = TOWER_CONFIG[tower.kind];
-      const range = cfg.range * (1 + (tower.level - 1) * globalNumber("upgradeRange"));
-      const enemyTarget = this.enemies.filter((enemy) => Math.hypot(enemy.x - tower.x, enemy.y - tower.y) <= range).sort((a, b) => b.distance - a.distance)[0];
-      const obstacleTarget = this.selectedObstacle && this.obstacles.includes(this.selectedObstacle)
-        && Math.hypot(this.selectedObstacle.x - tower.x, this.selectedObstacle.y - tower.y) <= range ? this.selectedObstacle : null;
-      const target: AttackTarget | null = enemyTarget ?? obstacleTarget;
-      if (!target) continue;
-      tower.angle = Math.atan2(target.y - tower.y, target.x - tower.x);
-      if (tower.cooldown <= 0) {
-        // 表现层只左右转身；子弹从手持工具附近发射，再追踪真实目标，不旋转整只动物。
-        const targets: AttackTarget[] = [target];
-        if (cfg.targets && this.isEnemy(target)) targets.push(...this.enemies.filter(item => item !== target && Math.hypot(item.x - tower.x, item.y - tower.y) <= range)
-          .sort((a, b) => b.distance - a.distance).slice(0, cfg.targets - 1));
-        for (const [lane, chosen] of targets.entries()) this.shots.push({ x: tower.x + (Math.cos(tower.angle) < 0 ? -12 : 12), y: tower.y - 5, target: chosen, kind: tower.kind, level: tower.level, speed: cfg.shotSpeed, originX: tower.x, originY: tower.y - 5, age: 0, lane });
-        tower.recoil = 0.11;
-        this.audio.play(tower.kind === "frost" ? "frost" : tower.kind === "bloom" || tower.kind === "ember" ? "bloom" : "sprout", tower.kind === "bloom" ? 0.24 : 0.18);
-        // 升级同时提高伤害和少量攻速，但总效率不会压过新建店员，保留布阵选择。
-        tower.cooldown = cfg.rate / (1 + (tower.level - 1) * globalNumber("upgradeRate"));
+      if ((tower.burstRemaining ?? 0) > 0) {
+        tower.burstTimer = (tower.burstTimer ?? 0) - dt;
+        while (tower.burstRemaining! > 0 && tower.burstTimer <= 0) {
+          this.fireTower(tower); tower.burstRemaining!--;
+          tower.burstTimer += attackProfile(tower.kind,tower.level,tower.evolutionKey).burstGap;
+        }
+      }
+      if (tower.cooldown <= 0 && this.fireTower(tower)) {
+        const profile=attackProfile(tower.kind,tower.level,tower.evolutionKey);
+        tower.cooldown=profile.rate; tower.burstRemaining=profile.burstCount-1; tower.burstTimer=profile.burstGap;
       }
     }
 
@@ -1154,8 +1155,20 @@ export class GameRoot extends Component {
     this.enemies.push({ kind, hp, maxHp: hp, speed: base.speed, reward: base.reward, radius: base.radius, color: base.color, damage: base.damage, distance: 0, x: start[0], y: start[1], age: 0, slow: 0, hitFlash: 0, burnTime: 0, burnDamage: 0, markedTime: 0, sinceHit: 0 });
   }
 
+  /** 每次子弹发射重新索敌，连发不会向已死亡目标补伤害。 */
+  private fireTower(tower: Tower): boolean {
+    const cfg=attackProfile(tower.kind,tower.level,tower.evolutionKey),range=cfg.range;
+    const candidates=this.enemies.filter(e=>e.hp>0&&Math.hypot(e.x-tower.x,e.y-tower.y)<=range).sort((a,b)=>b.distance-a.distance);
+    const obstacle=this.selectedObstacle && this.obstacles.includes(this.selectedObstacle) && Math.hypot(this.selectedObstacle.x-tower.x,this.selectedObstacle.y-tower.y)<=range ? this.selectedObstacle : null;
+    const target:AttackTarget|null=candidates[0]??obstacle;if(!target)return false;
+    tower.angle=Math.atan2(target.y-tower.y,target.x-tower.x);
+    const targets:AttackTarget[]=this.isEnemy(target)?candidates.slice(0,cfg.targets??1):[target];
+    for(const [lane,chosen]of targets.entries())this.shots.push({x:tower.x+(Math.cos(tower.angle)<0?-12:12),y:tower.y-5,target:chosen,kind:tower.kind,level:tower.level,evolutionKey:tower.evolutionKey,speed:cfg.shotSpeed,originX:tower.x,originY:tower.y-5,age:0,lane});
+    tower.recoil=0.11;this.audio.play(tower.kind==="frost"?"frost":tower.kind==="bloom"||tower.kind==="ember"?"bloom":"sprout",tower.kind==="bloom"?0.24:0.18);return true;
+  }
+
   private hit(shot: Shot, target: AttackTarget): void {
-    const cfg = TOWER_CONFIG[shot.kind]; const damage = cfg.damage * (1 + (shot.level - 1) * globalNumber("upgradeDamage"));
+    const cfg = attackProfile(shot.kind,shot.level,shot.evolutionKey); const damage = cfg.damage;
     if (!this.isEnemy(target)) {
       target.hp -= damage; target.hitFlash = globalNumber("hitFeedbackSeconds");
       this.addImpact(target, shot.kind);
@@ -1166,11 +1179,11 @@ export class GameRoot extends Component {
     if (cfg.splash) {
       const splash = cfg.splash; this.tutorial.record("area", shot.kind, this.enemies.filter(enemy => Math.hypot(enemy.x - target.x, enemy.y - target.y) <= splash).length);
       for (const enemy of this.enemies) if (Math.hypot(enemy.x - target.x, enemy.y - target.y) <= cfg.splash) {
-        this.damageEnemy(enemy, damage, shot.kind, shot.level);
+        this.damageEnemy(enemy, damage * (enemy === target ? 1 : cfg.splashOuterRatio), shot.kind, shot.level, shot.evolutionKey);
       }
       this.burst(target.x, target.y, cfg.shotColor, 12);
     } else {
-      this.damageEnemy(target, damage, shot.kind, shot.level);
+      this.damageEnemy(target, damage, shot.kind, shot.level, shot.evolutionKey);
       if (cfg.pierce) {
         const dx = target.x - (shot.originX ?? shot.x), dy = target.y - (shot.originY ?? shot.y);
         const length = Math.max(1, Math.hypot(dx, dy));
@@ -1203,15 +1216,18 @@ export class GameRoot extends Component {
   }
 
   /** 标记使全队伤害提高25%；灼烧不叠层，只刷新并保留较强伤害。 */
-  private damageEnemy(enemy: Enemy, damage: number, kind: TowerKind, level: number): void {
-    const cfg = TOWER_CONFIG[kind];
+  private damageEnemy(enemy: Enemy, damage: number, kind: TowerKind, level: number, evolutionKey?: string): void {
+    const cfg = attackProfile(kind,level,evolutionKey);
     if (cfg.shred) enemy.markedTime = cfg.markSeconds;
     enemy.hp -= damage * (enemy.markedTime > 0 ? globalNumber("markDamageRatio") : 1);
     enemy.hitFlash = globalNumber("hitFeedbackSeconds"); enemy.sinceHit = 0;
     this.addImpact(enemy, kind);
     if (cfg.slow) {
-      enemy.slow = cfg.slowBase + level * cfg.slowPerLevel;
-      const partners = this.towers.filter(tower => tower.kind !== kind && Math.hypot(tower.x - enemy.x, tower.y - enemy.y) <= TOWER_CONFIG[tower.kind].range * (1 + (tower.level - 1) * globalNumber("upgradeRange"))).map(tower => tower.kind);
+      if (evolutionKey) {
+        enemy.slows ??= {}; const old=enemy.slows[evolutionKey];
+        enemy.slows[evolutionKey]={ratio:cfg.slowRatio,remaining:Math.max(old?.remaining??0,cfg.slowSeconds)};
+      } else enemy.slow = cfg.slowSeconds;
+      const partners = this.towers.filter(tower => tower.kind !== kind && Math.hypot(tower.x - enemy.x, tower.y - enemy.y) <= attackProfile(tower.kind,tower.level,tower.evolutionKey).range).map(tower => tower.kind);
       this.tutorial.record("combo", kind, 1, partners);
     }
     if (cfg.burn) { enemy.burnTime = cfg.burnSeconds; enemy.burnDamage = Math.max(enemy.burnDamage ?? 0, cfg.burn * (1 + (level - 1) * globalNumber("upgradeDamage"))); }
@@ -1294,8 +1310,34 @@ export class GameRoot extends Component {
     this.tutorial.record("deploy", kind);
   }
 
+  private canEvolve(tower: Tower): boolean {
+    return !tower.evolutionKey && this.unlockedLevel>=globalNumber("branchUnlockProgress") && (this.level.mode!=="adventure"||this.level.id>=globalNumber("branchAdventureStartLevel"))
+      && evolutionChoices(tower.kind).some(e=>e.fromLevel===tower.level);
+  }
+  private evolutionMenuItems(): Array<{evolution:StaffEvolution;x:number;y:number}> {
+    const tower=this.evolutionTower;if(!tower||tower!==this.selectedTower||!this.towers.includes(tower)||!this.canEvolve(tower))return [];
+    const choices=evolutionChoices(tower.kind),size=this.battleUi.evolutionSize(),gap=6,total=choices.length*size.width+(choices.length-1)*gap;
+    const left=Math.max(gap,Math.min(W-gap-total,tower.x-total/2));
+    const topLimit=this.layoutTop+BATTLE_UI.headerHeight+gap,bottom=Math.min(PANEL_Y-gap,this.layoutBottom-82);
+    const above=tower.y-BATTLE_UI.minimumHit/2-gap-size.height;
+    const top=Math.max(topLimit,Math.min(bottom-size.height,above>=topLimit?above:tower.y+BATTLE_UI.minimumHit/2+gap));
+    return choices.map((evolution,i)=>({evolution,x:left+size.width/2+i*(size.width+gap),y:top+size.height/2}));
+  }
+  private evolveSelected(key: string): void {
+    const tower=this.selectedTower,evolution=evolutionByKey(key);
+    if(!tower||this.evolutionTower!==tower||!this.towers.includes(tower)||!this.canEvolve(tower)||!evolution||evolution.staffKind!==tower.kind||evolution.fromLevel!==tower.level)return;
+    if(this.coins<evolution.cost){this.showToast(text("ui.GameRoot.047"));return;}
+    const old=attackProfile(tower.kind,tower.level),fraction=Math.max(0,Math.min(1,tower.cooldown/old.rate));
+    this.coins-=evolution.cost;tower.spent+=evolution.cost;tower.level=evolution.toLevel;tower.evolutionKey=key;tower.cooldown=fraction*evolution.rate;
+    tower.burstRemaining=0;this.evolutionTower=null;
+    if(!this.gmSessionActive&&!this.mapReview&&this.collection?.recordEvolution(key))this.newEvolutionKeys.push(key);
+    this.tutorial.record("upgrade",tower.kind,tower.level);this.audio.play("upgrade",0.68);this.burst(tower.x,tower.y,"#ffc34d",18);
+    this.showBattleFeedback(text("ui.evolution.name",TOWER_CONFIG[tower.kind].name,evolution.name),tower.x,tower.y-28);
+  }
+
   private upgradeSelected(): void {
     const tower = this.selectedTower; if (!tower) { this.showToast(text("ui.GameRoot.045")); return; }
+    if (this.canEvolve(tower)) { this.evolutionTower=tower; return; }
     if (tower.level >= globalNumber("maxStaffLevel")) { this.showToast(text("ui.GameRoot.046", TOWER_CONFIG[tower.kind].name)); return; }
     const cost = this.upgradeCost(tower); if (this.coins < cost) { this.showToast(text("ui.GameRoot.047")); return; }
     this.coins -= cost; tower.spent += cost; tower.level += 1;
@@ -1305,6 +1347,7 @@ export class GameRoot extends Component {
 
   private upgradeCost(tower: Tower): number {
     // 二级为基础造价的 75%，三级为 100%；首关第一波收入刚好能支持一次升级。
+    if(this.canEvolve(tower))return evolutionChoices(tower.kind)[0].cost;
     return Math.round(TOWER_CONFIG[tower.kind].cost * (globalNumber("upgradeCostBase") + tower.level * globalNumber("upgradeCostStep")));
   }
 
@@ -1319,7 +1362,7 @@ export class GameRoot extends Component {
     tower.spot.tower = null; this.towers = this.towers.filter((item) => item !== tower);
     this.coins += refund; this.audio.play("upgrade", 0.45);
     this.burst(tower.x, tower.y, "#ffc34d", 12); this.showBattleFeedback(text("ui.GameRoot.048", refund), tower.x, tower.y - 24);
-    this.selectedTower = null; this.selectedSpot = tower.spot;
+    this.evolutionTower=null; this.selectedTower = null; this.selectedSpot = tower.spot;
   }
 
   private useProp(kind: PropKind): void {
@@ -1462,6 +1505,13 @@ export class GameRoot extends Component {
     }
     if (this.screen === "win") { if (this.buttonHit(this.battleUi.overlayRect("Primary", "win"), x, y)) this.advanceLevel(); return; }
 
+    if(this.evolutionTower){
+      const choice=this.evolutionMenuItems().find(item=>containsPoint(this.battleUi.evolutionRect(item.evolution.key),x,y));
+      if(choice){this.evolveSelected(choice.evolution.key);return;}
+      this.evolutionTower=null;
+      // 空白处关闭；仍允许本次点击切换到其他格位。
+      this.selectedTower=null;this.selectedSpot=null;this.selectedObstacle=null;
+    }
     // 先处理塔位旁的上下文按钮，避免点到按钮时被下方建造单元再次选中。
     if (this.selectedTower) {
       const item = this.towerMenuItems(this.selectedTower).find((candidate) => containsPoint(this.battleUi.contextRect(candidate.action), x, y));

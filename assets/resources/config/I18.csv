@@ -320,3 +320,52 @@ id,key,zhCN
 316,result.unlockTitle,新解锁
 317,result.noUnlock,本局记录
 318,result.more,另有 {p0} 项新图鉴
+319,branch.sprout_heavy.name,重投
+320,branch.sprout_heavy.summary,单发伤害高
+321,branch.sprout_heavy.tradeoff,攻击间隔长
+322,evolution.sprout_heavy.story,豆包把收银台旁的投掷器换大了一号。每次出手前，他仍要先把腰包里的硬币码整齐。
+323,branch.sprout_burst.name,连投
+324,branch.sprout_burst.summary,两连发，可接续补刀
+325,branch.sprout_burst.tradeoff,单发伤害低
+326,evolution.sprout_burst.story,晚高峰时，豆包学会了两手交替接零钱。现在守门也用上了这套本领。
+327,branch.frost_deep.name,深冷
+328,branch.frost_deep.summary,单目标减速更强
+329,branch.frost_deep.tradeoff,射程较短
+330,evolution.frost_deep.story,棉棉给冷风器添了一层保温套。来客走慢些，她就有时间把散落的商品放回原位。
+331,branch.frost_dual.name,双向冷风
+332,branch.frost_dual.summary,同时减速两个目标
+333,branch.frost_dual.tradeoff,每个目标减速较弱
+334,evolution.frost_dual.story,通道两头都有人赶来，棉棉便把风口分成两路。哪边的货架乱了，她都看得见。
+335,branch.bloom_focus.name,集中爆破
+336,branch.bloom_focus.summary,主目标伤害高
+337,branch.bloom_focus.tradeoff,范围小，旁伤低
+338,evolution.bloom_focus.story,布丁把烤锅换成了深口的。火候集中以后，最厚的那份热食也能按时出炉。
+339,branch.bloom_wide.name,广域爆破
+340,branch.bloom_wide.summary,爆炸覆盖更广
+341,branch.bloom_wide.tradeoff,单个目标伤害低
+342,evolution.bloom_wide.story,排队的人越来越多，布丁找来一只宽烤盘。一炉多做几份，夜班同伴也能早点吃上。
+343,ui.evolution.action,进化
+344,ui.evolution.choose,选择进化
+345,ui.evolution.base,基础形态
+346,ui.evolution.locked,???
+347,ui.evolution.unlock,首次进化后收录
+348,ui.evolution.new,新形态
+349,ui.evolution.collection,进化形态 {p0}/{p1}
+350,ui.evolution.cost,进化费用
+351,ui.evolution.complete,已进化
+352,ui.evolution.button,"进化
+●{p0}"
+353,ui.evolution.name,{p0}·{p1}
+354,ui.evolution.rate,{p1}秒/轮
+355,ui.evolution.slow,移速降至{p0}% · {p1}秒
+356,ui.evolution.splash,范围{p0} · 旁伤{p1}%
+357,ui.evolution.targets,每轮至多{p0}个目标
+358,ui.evolution.stats,"伤害{p0} · 周期{p1}秒
+射程{p2}"
+359,ui.evolution.lockedHint,战斗中完成此形态的进化后收录
+360,ui.evolution.shapeCount,形态 {p0}/{p1}
+361,ui.evolution.base1,一级
+362,ui.evolution.base2,二级
+363,ui.evolution.profile,进化形态
+364,ui.evolution.result,新形态 {p0}
+365,ui.evolution.costValue,●{p0}

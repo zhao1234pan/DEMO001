@@ -1,3 +1,4 @@
+import { evolutionChoices, StaffEvolution } from "../gameplay/battle/StaffEvolution";
 import { text } from "../config/ConfigTables";
 import { Label, Node, UITransform, Vec3 } from "cc";
 import { DEBUG } from "cc/env";
@@ -18,6 +19,7 @@ export class BattlePrefabView {
   private readonly gmEntryPosition: Vec3;
   private readonly overlays = new Map<Overlay, Node>();
   private readonly builds = new Map<TowerKind, Node>();
+  private readonly evolutions = new Map<string,Node>();
   private readonly upgrade: Node;
   private readonly sell: Node;
   private readonly obstacle: Node;
@@ -49,6 +51,11 @@ export class BattlePrefabView {
       const node = create("build_card"); this.builds.set(kind, node); assets.bindImage(uiNode(node, "Icon"), "ui:" + kind);
       this.register("build-" + kind, uiNode(node, "Title")); this.register("build-cost-" + kind, uiNode(node, "Cost"));
     }
+    for(const kind of TOWER_KINDS)for(const evolution of evolutionChoices(kind)){
+      const node=create("evolution_card");this.evolutions.set(evolution.key,node);assets.bindImage(uiNode(node,"Icon"),"ui:"+evolution.imageKey);
+      uiNode(node,"Title").getComponent(Label)!.string=evolution.name;uiNode(node,"Summary").getComponent(Label)!.string=evolution.summary;
+      uiNode(node,"Tradeoff").getComponent(Label)!.string=evolution.tradeoff;uiNode(node,"Cost").getComponent(Label)!.string=text("ui.evolution.costValue",evolution.cost);
+    }
     for (const key of ["pause", "win", "lose", "retry"] as Overlay[]) this.overlays.set(key, create(key));
     this.registerOverlay("pause");
     // 原版 GM 入口在战斗弹窗上方；位置仍取自 HUD 预制体。
@@ -78,6 +85,7 @@ export class BattlePrefabView {
     if (DEBUG) { this.gmEntry.setSiblingIndex(this.parent.children.length - 1); this.gm?.setSiblingIndex(this.parent.children.length - 1); }
     this.upgrade.active = false; this.sell.active = false; this.obstacle.active = false;
     for (const node of this.builds.values()) node.active = false;
+    for (const node of this.evolutions.values()) node.active = false;
     for (const node of this.overlays.values()) node.active = false;
     if (this.gm) this.gm.active = false;
   }
@@ -111,6 +119,12 @@ export class BattlePrefabView {
   showBuild(kind: TowerKind, x: number, y: number, affordable: boolean): void {
     const node = this.builds.get(kind)!; node.active = true; node.setPosition(x - W / 2, H / 2 - y);
     const disabled = node.getChildByName("Disabled"); if (disabled) disabled.active = !affordable;
+  }
+  evolutionSize(): {width:number;height:number} { const size=this.evolutions.values().next().value!.getComponent(UITransform)!.contentSize;return {width:size.width,height:size.height}; }
+  evolutionRect(key:string):HitRect{return uiRect(this.evolutions.get(key)!,this.parent,W,H);}
+  showEvolutions(items:Array<{evolution:StaffEvolution;x:number;y:number}>,coins:number):void{
+    for(const node of this.evolutions.values())node.active=false;
+    for(const item of items){const node=this.evolutions.get(item.evolution.key)!;node.active=true;node.setPosition(item.x-W/2,H/2-item.y);uiNode(node,"Disabled").active=coins<item.evolution.cost;}
   }
   showAction(action: "upgrade" | "sell", x: number, y: number, enabled: boolean): void {
     const node = action === "upgrade" ? this.upgrade : this.sell; node.active = true; node.setPosition(x - W / 2, H / 2 - y);

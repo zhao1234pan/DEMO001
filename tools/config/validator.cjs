@@ -11,7 +11,7 @@ exports.globalString = globalString;
 exports.text = text;
 exports.parseCsv = parseCsv;
 exports.installConfigs = installConfigs;
-exports.TABLE_NAMES = ["Global", "I18", "Staff", "Enemy", "Theme", "Map", "MapPoint", "Spot", "Obstacle", "Level", "Wave", "WaveGroup", "Collection", "Audio", "Decoration", "ArtAtlas", "ArtFrame", "UiPrefab", "Tutorial"];
+exports.TABLE_NAMES = ["Global", "I18", "Staff", "Enemy", "Theme", "Map", "MapPoint", "Spot", "Obstacle", "Level", "Wave", "WaveGroup", "Collection", "Audio", "Decoration", "ArtAtlas", "ArtFrame", "UiPrefab", "Tutorial", "StaffBranch", "StaffForm"];
 let data = Object.create(null);
 let ready = false;
 let byKey = Object.create(null);
@@ -214,6 +214,56 @@ function installConfigs(sources) {
         const steps = next.Tutorial.filter(row => row.levelId === id).sort((a, b) => numeric(a, "order") - numeric(b, "order"));
         if (steps.some((row, i) => numeric(row, "order") !== i + 1 || row.firstWaveDelay !== steps[0].firstWaveDelay))
             throw new Error("Tutorial order/delay mismatch");
+    }
+    for (const row of next.StaffBranch) {
+        requireRef("Staff", "key", row.staffKey, "StaffBranch");
+        requireRef("I18", "key", row.nameKey, "StaffBranch");
+        requireRef("StaffForm", "key", row.formKey, "StaffBranch");
+        const form = next.StaffForm.find(f => f.key === row.formKey);
+        if (form.branchKey !== row.key)
+            throw new Error("Evolution form owner mismatch");
+        for (const field of ["damage", "attackInterval", "range", "upgradeCost"])
+            if (numeric(row, field) <= 0)
+                throw new Error("Invalid evolution value");
+        for (const field of ["fromLevel", "toLevel", "burstCount", "targetCount", "upgradeCost"])
+            if (!Number.isInteger(numeric(row, field)) || numeric(row, field) < 1)
+                throw new Error("Invalid evolution integer");
+        if (numeric(row, "fromLevel") + 1 !== numeric(row, "toLevel") || numeric(row, "toLevel") !== Number(next.Global.find(r => r.key === "maxStaffLevel").value))
+            throw new Error("Invalid evolution level");
+        const burst = numeric(row, "burstCount"), gap = numeric(row, "burstGap");
+        if (gap < 0 || (burst === 1 ? gap !== 0 : gap <= 0) || (burst - 1) * gap >= numeric(row, "attackInterval"))
+            throw new Error("Invalid burst timing");
+        const slow = numeric(row, "slowSpeedRatio"), seconds = numeric(row, "slowSeconds"), outer = numeric(row, "splashOuterRatio");
+        if (slow <= 0 || slow > 1 || seconds < 0 || (slow === 1) !== (seconds === 0) || outer < 0 || outer > 1 || numeric(row, "splashRadius") < 0)
+            throw new Error("Invalid evolution effect");
+        if (!next.Staff.some(r => r.projectile === row.projectile))
+            throw new Error("Unknown evolution projectile");
+    }
+    for (const kind of new Set(next.StaffBranch.map(r => r.staffKey)))
+        if (next.StaffBranch.filter(r => r.staffKey === kind).length !== 2)
+            throw new Error("Evolution requires two choices");
+    for (const kind of new Set(next.StaffBranch.map(r => r.staffKey))) {
+        const branches = next.StaffBranch.filter(r => r.staffKey === kind);
+        const order = branches.map(b => next.StaffForm.find(f => f.key === b.formKey).displayOrder);
+        if (new Set(order).size !== order.length)
+            throw new Error("Duplicate evolution order");
+    }
+    for (const row of next.StaffForm) {
+        requireRef("StaffBranch", "key", row.branchKey, "StaffForm");
+        if (next.StaffBranch.find(r => r.key === row.branchKey).formKey !== row.key)
+            throw new Error("Orphan evolution form");
+        for (const key of ["storyKey", "summaryKey", "tradeoffKey"])
+            requireRef("I18", "key", row[key], "StaffForm");
+        if (!next.ArtFrame.some(f => f.battle === row.battleImageKey) || !next.ArtFrame.some(f => f.menu === row.portraitImageKey && f.ui === row.portraitImageKey))
+            throw new Error("Missing evolution art");
+        if (numeric(row, "spriteWidth") <= 0 || !Number.isInteger(numeric(row, "displayOrder")) || numeric(row, "displayOrder") < 1)
+            throw new Error("Invalid form geometry/order");
+    }
+    for (const key of ["branchUnlockProgress", "branchAdventureStartLevel"]) {
+        requireRef("Global", "key", key, "Evolution");
+        const v = Number(next.Global.find(r => r.key === key).value);
+        if (!Number.isInteger(v) || v < 1 || v > Number(next.Global.find(r => r.key === "maxLevels").value))
+            throw new Error("Invalid evolution gate");
     }
     const requiredGlobals = ["gameName", "maxLevels", "rewardAdUnitId", "version", "upgradeDamage", "upgradeRange", "upgradeRate", "upgradeCostBase", "upgradeCostStep", "maxStaffLevel", "sellRatio", "waveHealthGrowth", "waveBonusBase", "waveBonusStep", "firstWaveDelay", "nextWaveDelay", "reviveWaveDelay", "reviveMinLives", "reviveLifeRatio", "freezeSeconds", "cashBase", "cashPerLevel", "freePropCount", "slowSpeedRatio", "markDamageRatio", "musicVolume", "maxEffectSources", "toastSeconds", "challengeLevelId", "touchTravelTolerance"];
     for (const key of requiredGlobals) {

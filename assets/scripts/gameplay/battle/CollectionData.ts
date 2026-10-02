@@ -1,3 +1,4 @@
+import { evolutionByKey, evolutionChoices, StaffEvolution } from "./StaffEvolution";
 import { DEBUG } from "cc/env";
 import { rows, numeric, text, globalNumber, globalString, onConfigsReady } from "../../config/ConfigTables";
 import { ENEMY_CONFIG, ENEMY_KINDS, EnemyKind, TOWER_CONFIG, TowerKind } from "./GameConfig";
@@ -5,7 +6,7 @@ import { getLevelConfig, LEVEL_CONFIGS } from "./LevelConfig";
 import { PlatformService } from "../../services/PlatformService";
 
 export type CollectionTab = "enemies" | "bosses" | "staff";
-export type CollectionImageKey = TowerKind | `enemy_${EnemyKind}`;
+export type CollectionImageKey = string;
 
 export interface CollectionEntry {
   readonly id: string;
@@ -65,6 +66,7 @@ export class CollectionProgress {
   private readonly previewTabs = new Set<CollectionTab>();
   private readonly enemies = new Set<EnemyKind>();
   private readonly staff = new Set<TowerKind>();
+  private readonly forms = new Set<string>();
 
   constructor(unlockedLevel = 1) {
     this.refresh(unlockedLevel);
@@ -75,6 +77,7 @@ export class CollectionProgress {
     for (const kind of ENEMY_KINDS) {
       if (PlatformService.getNumber(COLLECTION_ENEMY_KEYS[kind], 0) === 1) this.enemies.add(kind);
     }
+    for(const row of rows("StaffBranch"))if(PlatformService.getNumber("night_store_evolution_"+row.key,0)===1)this.forms.add(row.key);
     if (unlockedLevel !== undefined) this.migrate(unlockedLevel);
   }
 
@@ -91,11 +94,14 @@ export class CollectionProgress {
 
   resetGmProgress(): void {
     if (!DEBUG) return;
-    this.previewTabs.clear(); this.enemies.clear(); this.staff.clear();
+    this.previewTabs.clear(); this.enemies.clear(); this.staff.clear(); this.forms.clear();
+    for(const row of rows("StaffBranch"))PlatformService.setNumber("night_store_evolution_"+row.key,0);
     for (const kind of ENEMY_KINDS) PlatformService.setNumber(COLLECTION_ENEMY_KEYS[kind], 0);
     this.refresh(1);
   }
 
+  isEvolutionUnlocked(key:string):boolean {return Boolean(evolutionByKey(key))&&(this.forms.has(key)||(DEBUG&&this.previewTabs.has("staff")));}
+  recordEvolution(key:string):boolean {if(!evolutionByKey(key)||this.forms.has(key))return false;this.forms.add(key);PlatformService.setMaximumInteger("night_store_evolution_"+key,1,1);return true;}
   isUnlocked(entry: CollectionEntry): boolean {
     if (DEBUG && this.previewTabs.has(entry.tab)) return true;
     if (entry.tab === "staff") return entry.staffKind !== undefined && this.staff.has(entry.staffKind);
@@ -132,4 +138,18 @@ function entryTraits(key:string,kind:string,staff:boolean):string {
   if(c.shred)return text(key,c.markSeconds,Math.round((globalNumber("markDamageRatio")-1)*100));
   if(c.targets && c.targets>1)return text(key,c.targets);
   return text(key);
+}
+
+export function evolutionStats(e:StaffEvolution):CollectionEntry["stats"] {
+  return [{label:text("ui.evolution.cost"),value:text("ui.opt.gold",e.cost)},
+    {label:text("ui.CollectionData.006"),value:String(e.damage)},
+    {label:text("ui.CollectionData.007"),value:text("ui.evolution.rate",e.burstCount,e.rate)},
+    {label:text("ui.CollectionData.009"),value:String(e.range)}];
+}
+export function evolutionTraits(e:StaffEvolution):string {
+  const details=[e.summary,e.tradeoff];
+  if(e.slowSeconds>0)details.push(text("ui.evolution.slow",Math.round(e.slowRatio*100),e.slowSeconds));
+  if(e.targets>1)details.push(text("ui.evolution.targets",e.targets));
+  if(e.splash>0)details.push(text("ui.evolution.splash",e.splash,e.splashOuterRatio*100));
+  return details.join("；");
 }

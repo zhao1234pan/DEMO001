@@ -1,9 +1,10 @@
+import { evolutionByKey } from "./StaffEvolution";
 import { TOWER_CONFIG, ENEMY_CONFIG, TowerKind, EnemyKind } from "./GameConfig";
 import { text, rows, numeric, globalNumber } from "../../config/ConfigTables";
 import { assetManager, AssetManager, Color, Layers, Node, Rect, Size, Sprite, SpriteFrame, Texture2D, UITransform, Vec2 } from "cc";
 
 export interface TowerArtState {
-  x: number; y: number; kind: string; level: number; angle: number; recoil: number;
+  x: number; y: number; kind: string; level: number; angle: number; recoil: number; evolutionKey?:string;
 }
 export interface ObstacleArtState {
   x: number; y: number; kind: string; hitFlash: number;
@@ -68,10 +69,11 @@ export class BattleArtView {
   drawTower(key: object, state: TowerArtState): void {
     if (!this.ready) return;
     const kind = state.kind === "frost" ? "mianmian" : state.kind === "bloom" ? "buding" : state.kind === "sprout" ? "doubao" : state.kind;
-    const entry = this.acquire(this.units, key, kind, false);
+    const evolution=evolutionByKey(state.evolutionKey);
+    const entry = this.acquire(this.units, key, evolution?.battleImageKey ?? kind, false);
     // 升级仅小幅放大，最高级主体不超过约 88 设计像素。
     const levelScale = 1 + (Math.min(3, Math.max(1, state.level)) - 1) * 0.1;
-    const scale = Math.min(levelScale, 88 / TOWER_CONFIG[state.kind as TowerKind].spriteWidth);
+    const scale = evolution ? Math.min(1,88/evolution.spriteWidth) : Math.min(levelScale, 88 / TOWER_CONFIG[state.kind as TowerKind].spriteWidth);
     const facing = Math.cos(state.angle) < 0 ? -1 : 1;
     const recoil = state.recoil > 0 ? 1 : 0;
     this.placeUnit(entry, state.x - facing * recoil * 1.1, state.y, 8, scale);

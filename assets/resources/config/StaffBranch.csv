@@ -1,0 +1,7 @@
+id,key,staffKey,nameKey,fromLevel,toLevel,damage,attackInterval,range,burstCount,burstGap,targetCount,slowSpeedRatio,slowSeconds,splashRadius,splashOuterRatio,upgradeCost,projectile,formKey
+1,sprout_heavy,sprout,branch.sprout_heavy.name,2,3,42,0.96,100,1,0,1,1,0,0,1,85,sprout,sprout_heavy
+2,sprout_burst,sprout,branch.sprout_burst.name,2,3,15,0.72,106,2,0.1,1,1,0,0,1,85,sprout,sprout_burst
+3,frost_deep,frost,branch.frost_deep.name,2,3,12,1.05,92,1,0,1,0.45,1.6,0,1,110,frost,frost_deep
+4,frost_dual,frost,branch.frost_dual.name,2,3,12,1,108,1,0,2,0.7,1.3,0,1,110,frost,frost_dual
+5,bloom_focus,bloom,branch.bloom_focus.name,2,3,64,1.4,110,1,0,1,1,0,26,0.45,150,bloom,bloom_focus
+6,bloom_wide,bloom,branch.bloom_wide.name,2,3,35,1.2,118,1,0,1,1,0,54,1,150,bloom,bloom_wide

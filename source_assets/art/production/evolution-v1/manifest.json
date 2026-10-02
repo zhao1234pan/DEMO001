@@ -1,0 +1,115 @@
+{
+  "method": "内置image_gen生成，Sharp仅裁边缩放和图集打包；保留Alpha",
+  "atlas": "assets/art/gameplay/towers/atlas_staff_evolution.png",
+  "atlasSha256": "c1a6afdec7e8d4631fad36df70202f127ed4c7a7a587d4bbd047777e9fa8b79d",
+  "frames": [
+    {
+      "key": "sprout_heavy",
+      "source": "sprout_heavy.png",
+      "sha256": "92136602acdb58483ec05a54f1bbffe962375b1bdb97b35c0ffe72725b7dd543",
+      "frame": [
+        0,
+        0,
+        256,
+        256
+      ],
+      "subject": [
+        11,
+        41,
+        234,
+        194
+      ],
+      "alpha": true
+    },
+    {
+      "key": "sprout_burst",
+      "source": "sprout_burst.png",
+      "sha256": "08d1e88f9c612f866b9a2b4b6704ebaa5e1f405f0fdea159e06d382dac066237",
+      "frame": [
+        256,
+        0,
+        256,
+        256
+      ],
+      "subject": [
+        11,
+        33,
+        234,
+        202
+      ],
+      "alpha": true
+    },
+    {
+      "key": "frost_deep",
+      "source": "frost_deep.png",
+      "sha256": "573c9e69beaf8d29e443ff8788adbbf369f250650778446f0734255b193953a3",
+      "frame": [
+        512,
+        0,
+        256,
+        256
+      ],
+      "subject": [
+        11,
+        37,
+        234,
+        198
+      ],
+      "alpha": true
+    },
+    {
+      "key": "frost_dual",
+      "source": "frost_dual.png",
+      "sha256": "c3ee96a0511ed4cf9fbc78c268f49947d1db6ded7376d511f681603e72a9489e",
+      "frame": [
+        0,
+        256,
+        256,
+        256
+      ],
+      "subject": [
+        11,
+        76,
+        234,
+        159
+      ],
+      "alpha": true
+    },
+    {
+      "key": "bloom_focus",
+      "source": "bloom_focus.png",
+      "sha256": "12ddf75c571bbd8289b26a8f5732ebeb9e9b776c0f01be56a4810bc22238bdd2",
+      "frame": [
+        256,
+        256,
+        256,
+        256
+      ],
+      "subject": [
+        11,
+        10,
+        234,
+        225
+      ],
+      "alpha": true
+    },
+    {
+      "key": "bloom_wide",
+      "source": "bloom_wide.png",
+      "sha256": "ada5d2cfed40a44392d573d3a5ae00c2ece5a2881490c396c81b325b355324f3",
+      "frame": [
+        512,
+        256,
+        256,
+        256
+      ],
+      "subject": [
+        11,
+        38,
+        234,
+        197
+      ],
+      "alpha": true
+    }
+  ]
+}

@@ -36,6 +36,13 @@ test('缺少运行时绑定节点阻止校验',()=>{const d=JSON.parse(originalH
 test('I18预览过期可同步且保留手工布局',()=>{const d=JSON.parse(originalHome),label=d.find(o=>o.__type__==='cc.Label'&&o._string==='叮咚夜班开始'),node=d.find(o=>o.__type__==='cc.Node'&&o._name==='Settings');assert.ok(label);label._string='过期预览';node._lpos.x+=7;fs.writeFileSync(home,JSON.stringify(d));try{assert.throws(()=>uiCheck(fixture,core),/文字预览已过期/);uiCheck(fixture,core,true);const result=JSON.parse(fs.readFileSync(home));assert.equal(result.find(o=>o._name==='Settings')._lpos.x,node._lpos.x);assert.equal(result.find(o=>o.__type__==='cc.Label'&&o._string==='叮咚夜班开始')._string,'叮咚夜班开始');}finally{fs.writeFileSync(home,originalHome);}});
 test('图集切片预览过期阻止构建并可同步',()=>{const d=JSON.parse(originalHome),image=d.find(o=>o.frameKey);image.previewRect.width+=1;fs.writeFileSync(home,JSON.stringify(d));try{assert.throws(()=>uiCheck(fixture,core),/图片预览已过期/);uiCheck(fixture,core,true);assert.doesNotThrow(()=>uiCheck(fixture,core));}finally{fs.writeFileSync(home,originalHome);}});
 
+
+// 进化表的引用和计时错误必须在导表阶段拦截。
+function changeEvolution(table,key,field,value){const lines=configSources[table].trim().split(/\r?\n/),header=lines[0].split(','),index=lines.findIndex((line,i)=>i>0&&line.split(',')[1]===key),cells=lines[index].split(',');cells[header.indexOf(field)]=value;lines[index]=cells.join(',');return {...configSources,[table]:lines.join('\n')};}
+test('进化连发周期、费用整数和减速组合非法时拒绝',()=>{for(const [key,field,value] of [['sprout_burst','burstGap','1'],['sprout_heavy','upgradeCost','1.5'],['frost_deep','slowSpeedRatio','1']])assert.throws(()=>core.installConfigs(changeEvolution('StaffBranch',key,field,value)),/Invalid/);core.installConfigs(configSources);});
+test('进化形态归属、图片缺失和排序重复时拒绝',()=>{for(const [key,field,value]of [['sprout_heavy','branchKey','frost_deep'],['sprout_heavy','battleImageKey','missing'],['sprout_burst','displayOrder','1']])assert.throws(()=>core.installConfigs(changeEvolution('StaffForm',key,field,value)),/mismatch|Missing|Duplicate/);core.installConfigs(configSources);});
+test('进化卡与图鉴缩略图缺失时阻止构建',()=>{for(const [key,name]of [['evolution_card','Summary'],['detail','Base1']]){const file=path.join(fixture,'assets/resources/ui',key+'.prefab'),original=fs.readFileSync(file),d=JSON.parse(original);d.find(n=>n.__type__==='cc.Node'&&n._name===name)._name='Missing';fs.writeFileSync(file,JSON.stringify(d));try{assert.throws(()=>uiCheck(fixture,core),/缺少运行时节点/);}finally{fs.writeFileSync(file,original);}}});
+
 const code=path.join(fixture,'assets/scripts/config/ConfigTables.ts');
 test('未同步校验器会阻止导出',()=>{fs.appendFileSync(code,'\n');const r=run();assert.notEqual(r.status,0);assert.match(r.stderr,/配置校验器已修改/);assert.equal(digest(),manifest);});
 console.log(passed+'项通过；隔离证据：'+fixture);

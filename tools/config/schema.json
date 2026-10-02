@@ -230,5 +230,42 @@
       "pulseSeconds": "float",
       "highlightColor": "string"
     }
+  },
+  "StaffBranch": {
+    "fields": {
+      "id": "int",
+      "key": "string",
+      "staffKey": "string",
+      "nameKey": "string",
+      "fromLevel": "int",
+      "toLevel": "int",
+      "damage": "float",
+      "attackInterval": "float",
+      "range": "float",
+      "burstCount": "int",
+      "burstGap": "float",
+      "targetCount": "int",
+      "slowSpeedRatio": "float",
+      "slowSeconds": "float",
+      "splashRadius": "float",
+      "splashOuterRatio": "float",
+      "upgradeCost": "int",
+      "projectile": "string",
+      "formKey": "string"
+    }
+  },
+  "StaffForm": {
+    "fields": {
+      "id": "int",
+      "key": "string",
+      "branchKey": "string",
+      "battleImageKey": "string",
+      "portraitImageKey": "string",
+      "storyKey": "string",
+      "summaryKey": "string",
+      "tradeoffKey": "string",
+      "displayOrder": "int",
+      "spriteWidth": "float"
+    }
   }
 }

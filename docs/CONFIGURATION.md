@@ -1,5 +1,15 @@
 # XLSX → 客户端 CSV 配置规范
 
+## 1.2.0 进化配置
+
+目前共21张运行表。新增StaffBranch.xlsx与StaffForm.xlsx，各6条。StaffBranch维护最终战斗数值、费用、源/目标等级、弹道协议键及formKey；StaffForm维护分支归属、战斗/画像ArtFrame键、故事/特点/代价I18键、角色内排序及主体设计宽度。完整字段和语义见STAFF_BRANCH_DESIGN.md第7节。
+
+三级分支值为最终值，不再乘Global等级系数。Global新增branchUnlockProgress=1与branchAdventureStartLevel=1；I18新文本统一{p0}格式。已支持的解锁事件只有“正常战斗进化成功”，由业务协议固定；没有虚设运行时可配置但代码不消费的unlockEvent字段。
+
+跨表校验双向归属、每位参与店员两条路线、排序唯一、费用正整数、最后连发早于下一轮、减速比例与时长组合、资源及所有文案。进化卡/图鉴的Icon和Base1/Base2节点加入构建门禁。配置修改必须经config:export，不能只手改CSV。
+
+本次允许的技术常量：进化存档键前缀、基础形态选择枚举、菜单边界间距和布局翻转；为持久化协议与UI几何算法。卡片尺寸和排版保存在原生Prefab，玩法值与图像宽度走表。设计稿中的assetStatus只用于制作记录，不导入运行时。默认不生成服务端配置。
+
 ## 1.1.0 战斗表现配置
 
 Global新增6个反馈参数，具体字段见BATTLE_EXPERIENCE.md。配置校验约束时长、形变幅度和整数并发上限；禁止0时长和超额对象分配。I18负责首领、结算及解锁文本；头像仍读取原ArtFrame。首领类型、伤害及店员机制不另设副本。
@@ -25,7 +35,7 @@ MapPoint/Spot/Obstacle/Decoration/I18原始表导出同步；现19表，Spot458�
 
 ## 目录与日常操作
 
-- design/tables：18张原始XLSX，均为可直接编辑的独立工作簿。
+- design/tables：21张原始XLSX，均为可直接编辑的独立工作簿。
 - tools/config：项目自带JAR、客户端Java入口、字段协议和校验器；不依赖参考项目仍存在。
 - assets/resources/config：运行时CSV及manifest.json，Cocos按TextAsset加载。
 - assets/scripts/config：CSV解析、跨表校验和启动加载；业务模块在配置全部就绪后初始化。
@@ -38,6 +48,8 @@ MapPoint/Spot/Obstacle/Decoration/I18原始表导出同步；现19表，Spot458�
 Creator启动时加载项目构建扩展；GUI已打开的工程在新增扩展后须刷新/启用“config-table-check”或重新启动。CLI实际三目标构建会输出“[config-table-check] …张表校验通过”。不要禁用扩展绕过过期配置。
 
 ## 表格与关系
+
+下表为0.7.0初始行数快照，新增表和后续变更以本文最新版本节及manifest为准。
 
 | 工作簿 | 本版行数 | 内容与引用 |
 | --- | ---: | --- |

@@ -1,9 +1,10 @@
+import { evolutionChoices } from "../gameplay/battle/StaffEvolution";
 import { Color, Graphics, Label, Node, UITransform } from "cc";
 import { globalString, globalNumber, text } from "../config/ConfigTables";
 import { GAME_CONFIG } from "../gameplay/battle/GameConfig";
 import { getLevelConfig } from "../gameplay/battle/LevelConfig";
 import { levelTheme } from "../gameplay/battle/LevelTheme";
-import { COLLECTION_ENTRIES, COLLECTION_TABS, CollectionEntry, CollectionProgress, CollectionTab, staffStats } from "../gameplay/battle/CollectionData";
+import { COLLECTION_ENTRIES, COLLECTION_TABS, CollectionEntry, CollectionProgress, CollectionTab, staffStats, evolutionStats, evolutionTraits } from "../gameplay/battle/CollectionData";
 import { AudioService } from "../services/AudioService";
 import { PlatformSettings } from "../services/PlatformSettings";
 import { UiPrefabs, uiNode, uiText, uiRect, uiColor } from "./UiPrefabs";
@@ -27,6 +28,7 @@ export class PrefabGameMenuView {
   private tab: CollectionTab = "enemies";
   private levelPage = 0;
   private detailLevel = 1;
+  private detailBaseLevel = 1;
   private collectionPage = 0;
   private unlocked = 1;
   private dialog: Dialog | null = null;
@@ -181,7 +183,7 @@ export class PrefabGameMenuView {
       uiNode(card, "LockedPortraitBackground").active = !unlocked;
       this.assets.bindImage(uiNode(card, "Portrait"), "menu:" + entry.imageKey, !unlocked);
       uiText(card, "Name", unlocked ? entry.name : text("ui.unknown"));
-      this.bind(card, "", () => { this.detailLevel = 1; this.dialog = { kind: "entry", entry }; });
+      this.bind(card, "", () => { this.detailLevel = 1; this.detailBaseLevel = 1; this.dialog = { kind: "entry", entry }; });
     });
     uiText(page, "Count", text("ui.GameMenuView.026", entries.filter(e => this.collection.isUnlocked(e)).length, entries.length));
     this.pagination(page, this.collectionPage, pages, () => { this.collectionPage--; }, () => { this.collectionPage++; });
@@ -201,28 +203,33 @@ export class PrefabGameMenuView {
     const page = this.dialogs.get(dialog.kind === "notice" ? "notice" : "detail")!; page.active = true;
     this.bind(page, "Close", () => { this.dialog = null; }, true);
     if (dialog.kind === "notice") { uiText(page, "Title", dialog.title); uiText(page, "Body", dialog.text); return; }
-    const entry = dialog.entry, unlocked = this.collection.isUnlocked(entry);
-    uiText(page, "Title", unlocked ? entry.name : text("ui.GameMenuView.036"));
-    this.assets.bindImage(uiNode(page, "Portrait"), "menu:" + entry.imageKey, !unlocked);
-    uiNode(page, "Known").active = unlocked; uiNode(page, "Unknown").active = !unlocked;
-    uiText(page, "Unknown/Hint", entry.unlockHint);
-    for (const level of [1, 2, 3]) {
-      const key = "Level" + level, button = uiNode(page, key);
-      button.active = unlocked && Boolean(entry.staffKind);
-      if (button.active) {
-        const levelKey = ["ui.opt.staffLevel1", "ui.opt.staffLevel2", "ui.opt.staffLevel3"][level - 1]; uiText(button, "Text", text(levelKey));
-        uiColor(button, "Surface", this.detailLevel === level ? "#96bb77" : "#efe7c8");
-        this.bind(page, key, () => { this.detailLevel = level; }, true);
-      }
+    const entry=dialog.entry,ownerKnown=this.collection.isUnlocked(entry),choices=entry.staffKind?evolutionChoices(entry.staffKind):[];
+    const evolution=choices.length&&this.detailLevel>1?choices[this.detailLevel-2]:undefined;
+    const unlocked=ownerKnown&&(!evolution||this.collection.isEvolutionUnlocked(evolution.key));
+    uiText(page,"Title",unlocked?(evolution?text("ui.evolution.name",entry.name,evolution.name):entry.name):text("ui.evolution.locked"));
+    this.assets.bindImage(uiNode(page,"Portrait"),"menu:"+(evolution?.imageKey??entry.imageKey),!unlocked);
+    uiNode(page,"Known").active=unlocked;uiNode(page,"Unknown").active=!unlocked;
+    uiText(page,"Unknown/Hint",evolution?text("ui.evolution.lockedHint"):entry.unlockHint);
+    for(const level of [1,2,3]){
+      const key="Level"+level,button=uiNode(page,key);button.active=ownerKnown&&Boolean(entry.staffKind);
+      if(!button.active)continue;
+      const e=choices[level-2],known=!e||this.collection.isEvolutionUnlocked(e.key);
+      const title=choices.length?(level===1?text("ui.evolution.base"):known?e.name:text("ui.evolution.locked")):text(["ui.opt.staffLevel1","ui.opt.staffLevel2","ui.opt.staffLevel3"][level-1]);
+      uiText(button,"Text",title);this.assets.bindImage(uiNode(button,"Icon"),"menu:"+(e?.imageKey??entry.imageKey),!known);
+      uiColor(button,"Surface",this.detailLevel===level?"#96bb77":"#efe7c8");this.bind(page,key,()=>{this.detailLevel=level;},true);
     }
-    if (unlocked) {
-      uiText(page, "Known/Category", entry.category); uiText(page, "Known/Traits", entry.traits);
-      const stats = entry.staffKind ? staffStats(entry.staffKind, this.detailLevel) : entry.stats;
-      uiNode(page, "Known/Stats").active = false;
-      stats.forEach((item, index) => uiText(page, "Known/Stat" + index, item.label + "\n" + item.value));
-      uiNode(page, "Known/Note").active = false; uiText(page, "Known/Story", entry.story);
+    for(const level of [1,2]){
+      const button=uiNode(page,"Base"+level);button.active=ownerKnown&&choices.length>0&&this.detailLevel===1;
+      if(button.active){uiText(button,"Text",text("ui.evolution.base"+level));uiColor(button,"Surface",this.detailBaseLevel===level?"#96bb77":"#efe7c8");this.bind(page,"Base"+level,()=>{this.detailBaseLevel=level;},true);}
     }
-    this.layoutDetail(page, unlocked, Boolean(entry.staffKind));
+    if(unlocked){
+      uiText(page,"Known/Category",evolution?text("ui.evolution.profile"):entry.category);
+      uiText(page,"Known/Traits",evolution?evolutionTraits(evolution):entry.traits);
+      const stats=evolution?evolutionStats(evolution):entry.staffKind?staffStats(entry.staffKind,choices.length?this.detailBaseLevel:this.detailLevel):entry.stats;
+      uiNode(page,"Known/Stats").active=false;stats.forEach((item,index)=>uiText(page,"Known/Stat"+index,item.label+"\n"+item.value));
+      uiNode(page,"Known/Note").active=false;uiText(page,"Known/Story",evolution?evolution.story:entry.story);
+    }
+    this.layoutDetail(page,unlocked,ownerKnown&&Boolean(entry.staffKind));
   }
   /** 按实际行高排列内容；无等级切换的怪物详情不占用店员按钮的位置。 */
   private layoutDetail(page: Node, unlocked: boolean, staff: boolean): void {
@@ -234,13 +241,14 @@ export class PrefabGameMenuView {
       label.overflow = Label.Overflow.RESIZE_HEIGHT; label.updateRenderData(true);
       return node;
     };
+    if(staff){rows.push([1,2,3].map(level=>uiNode(page,"Level"+level)));if(uiNode(page,"Base1").active)rows.push([uiNode(page,"Base1"),uiNode(page,"Base2")]);}
     if (unlocked) {
       rows.push([measured("Known/Category")], [measured("Known/Traits")]);
-      if (staff) rows.push([1, 2, 3].map(level => uiNode(page, "Level" + level)));
       rows.push([uiNode(page, "Known/Stat0"), uiNode(page, "Known/Stat1")], [uiNode(page, "Known/Stat2"), uiNode(page, "Known/Stat3")], [uiNode(page, "Known/Rule")], [measured("Known/Story")]);
     } else rows.push([uiNode(page, "Unknown/Title")], [measured("Unknown/Hint")]);
     const heights = rows.map(row => Math.max(...row.map(node => node.getComponent(UITransform)!.height)));
     const height = padding * 2 + heights.reduce((sum, value) => sum + value, 0) + gap * (rows.length - 1);
+    page.setScale(Math.min(1,(H-24)/height),Math.min(1,(H-24)/height),1);
     let y = height / 2 - padding;
     rows.forEach((row, index) => { for (const node of row) node.setPosition(node.position.x, y - heights[index] / 2); y -= heights[index] + gap; });
     const panel = uiNode(page, "Panel"); panel.setPosition(panel.position.x, 0);
