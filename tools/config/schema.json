@@ -77,7 +77,10 @@
   "Map": {
     "fields": {
       "id": "int",
-      "theme": "string"
+      "theme": "string",
+      "gridSize": "int",
+      "gridOriginX": "int",
+      "gridOriginY": "int"
     }
   },
   "MapPoint": {

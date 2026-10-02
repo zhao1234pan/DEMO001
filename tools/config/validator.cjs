@@ -312,6 +312,18 @@ function installConfigs(sources) {
             numeric(p, "y");
             coords.add(p.x + "," + p.y);
         }
+        // 格位与地台共用Map网格，导表时拒绝半格偏移、单格孤岛，避免视觉断裂再次进入游戏。
+        const step = numeric(map, "gridSize"), originX = numeric(map, "gridOriginX"), originY = numeric(map, "gridOriginY");
+        if (step <= 0)
+            throw new Error("Invalid map grid: " + map.id);
+        for (const spot of spots) {
+            const x = numeric(spot, "x"), y = numeric(spot, "y");
+            if (Math.abs((x - originX) / step - Math.round((x - originX) / step)) > 1e-6
+                || Math.abs((y - originY) / step - Math.round((y - originY) / step)) > 1e-6)
+                throw new Error("Off-grid spot: " + map.id + "/" + spot.spotIndex);
+            if (!spots.some(other => other !== spot && Math.abs(numeric(other, "x") - x) + Math.abs(numeric(other, "y") - y) === step))
+                throw new Error("Isolated spot: " + map.id + "/" + spot.spotIndex);
+        }
         const occupied = new Set();
         for (const o of next.Obstacle.filter(r => r.mapId === map.id)) {
             if (!spots.some(s => s.spotIndex === o.spotIndex) || occupied.has(o.spotIndex))

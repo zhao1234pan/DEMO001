@@ -21,6 +21,11 @@ test('工作簿版本改变必须重新导表',()=>{fs.appendFileSync(xlsx,Buffe
 // 以下只改隔离副本，验证 Prefab 构建门禁与预览同步边界。
 const uiCheck=require(path.join(fixture,'tools/ui/check-prefabs.cjs')).check;
 const configSources={};for(const name of core.TABLE_NAMES)configSources[name]=fs.readFileSync(path.join(fixture,'assets/resources/config',name+'.csv'),'utf8');core.installConfigs(configSources);
+// 网格与地台使用相同参数，拒绝会形成错位地台或孤岛的配置。
+test('格位偏离网格时拒绝配置',()=>{const lines=configSources.Spot.trim().split(/\r?\n/),cells=lines[1].split(',');cells[3]=String(Number(cells[3])+1);lines[1]=cells.join(',');assert.throws(()=>core.installConfigs({...configSources,Spot:lines.join('\n')}),/Off-grid spot/);core.installConfigs(configSources);});
+test('孤立格位时拒绝配置',()=>{const lines=configSources.Spot.trim().split(/\r?\n/),cells=lines[1].split(',');cells[3]=String(Number(cells[3])+10000);lines[1]=cells.join(',');assert.throws(()=>core.installConfigs({...configSources,Spot:lines.join('\n')}),/Isolated spot/);core.installConfigs(configSources);});
+test('网格间距必须为正数',()=>{const lines=configSources.Map.trim().split(/\r?\n/),fields=lines[0].split(','),cells=lines[1].split(',');cells[fields.indexOf('gridSize')]='0';lines[1]=cells.join(',');assert.throws(()=>core.installConfigs({...configSources,Map:lines.join('\n')}),/Invalid map grid/);core.installConfigs(configSources);});
+
 const home=path.join(fixture,'assets/resources/ui/home.prefab'),originalHome=fs.readFileSync(home);
 test('缺少预制体阻止校验',()=>{fs.renameSync(home,home+'.fixture');try{assert.throws(()=>uiCheck(fixture,core),/缺少预制体/);}finally{fs.renameSync(home+'.fixture',home);}});
 test('缺少运行时绑定节点阻止校验',()=>{const d=JSON.parse(originalHome);d.find(o=>o.__type__==='cc.Node'&&o._name==='Adventure')._name='Missing';fs.writeFileSync(home,JSON.stringify(d));try{assert.throws(()=>uiCheck(fixture,core),/缺少运行时节点/);}finally{fs.writeFileSync(home,originalHome);}});

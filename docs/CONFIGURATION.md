@@ -1,5 +1,12 @@
 # XLSX → 客户端 CSV 配置规范
 
+## 2026-10-02 Map网格字段
+
+Map.gridSize为格距，gridOriginX/Y为格位网格原点；当前21图统一50、45、135。Spot横纵坐标必须是原点加格距的整数倍，每格必须有一个横向或纵向相邻格。地台连接通过LevelConfig.gridSize读取相同参数，禁止自由挪半格补数量。三个字段必须在原始Map.xlsx编辑再导出。
+
+本轮Spot454行、Obstacle209行、Decoration63行；其他表行数保持。19表及manifest同步。逐图设计和验收见MAP_GRID；该条覆盖上一轮120夹层与自由坐标说明。
+
+
 ## 2026-10-01 本轮变更与例外
 
 MapPoint/Spot/Obstacle/Decoration/I18原始表导出同步；现19表，Spot458条（含挑战22），Obstacle209条，Decoration63条，I18 304条。运行时无程序随机生成地图，所有审定坐标写在原始表。
