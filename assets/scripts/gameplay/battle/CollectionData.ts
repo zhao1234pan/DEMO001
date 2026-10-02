@@ -46,8 +46,8 @@ export function staffStats(kind: TowerKind, level = 1): CollectionEntry["stats"]
 }
 
 function staffUnlockHint(kind: TowerKind): string {
-  const firstLevel = LEVEL_CONFIGS.find((level) => level.availableTowers.includes(kind));
-  return firstLevel ? text("ui.CollectionData.010", firstLevel.id) : text("ui.CollectionData.011");
+  const firstLevel = rows("Staff").find(row => row.key === kind);
+  return firstLevel ? text("ui.CollectionData.010", firstLevel.unlockLevel) : text("ui.CollectionData.011");
 }
 
 
@@ -118,9 +118,10 @@ export class CollectionProgress {
   migrate(unlockedLevel: number): number {
     const highest = getLevelConfig(unlockedLevel).id;
     let added = 0;
+    this.staff.clear();
+    for(const row of rows("Staff"))if(Number(row.unlockLevel)<=highest)this.staff.add(row.key as TowerKind);
     for (const level of LEVEL_CONFIGS) {
-      if (level.id > highest) continue;
-      for (const kind of level.availableTowers) this.staff.add(kind);
+      if (level.mode !== "adventure" || level.id > highest) continue;
       // 最高已解锁关可能尚未开始；旧档只从此前已完成关卡补入怪物记录。
       if (level.id === highest) continue;
       for (const wave of level.waves) for (const kind of wave.enemies) if (ENEMY_CONFIG[kind].legacyUnlock === 1 && this.encounter(kind)) added += 1;

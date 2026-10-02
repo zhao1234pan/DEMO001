@@ -42,7 +42,7 @@ export const ENEMY_KINDS: EnemyKind[] = [];
 onConfigsReady(() => {
   GAME_CONFIG.maxLevels = globalNumber("maxLevels"); GAME_CONFIG.gameName = text(globalString("gameName")); GAME_CONFIG.rewardAdUnitId = globalString("rewardAdUnitId");
   for (const [name, target] of [["Staff",TOWER_CONFIG],["Enemy",ENEMY_CONFIG]] as const) for (const row of rows(name)) {
-    const record: Record<string,any> = {}; for (const key of Object.keys(row)) { if(key === "id" || key === "key") continue; record[key] = ["name","color","shotColor","boss","projectile"].includes(key) ? row[key] : numeric(row,key); }
+    const record: Record<string,any> = {}; for (const key of Object.keys(row)) { if(key === "id" || key === "key") continue; record[key] = ["name","color","shotColor","boss","projectile","roleKey"].includes(key) ? row[key] : numeric(row,key); }
     record.name = text(row.name); if(record.boss === "") delete record.boss;
     (target as Record<string,any>)[row.key] = record;
   }

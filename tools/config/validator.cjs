@@ -11,7 +11,7 @@ exports.globalString = globalString;
 exports.text = text;
 exports.parseCsv = parseCsv;
 exports.installConfigs = installConfigs;
-exports.TABLE_NAMES = ["Global", "I18", "Staff", "Enemy", "Theme", "Map", "MapPoint", "Spot", "Obstacle", "Level", "Wave", "WaveGroup", "Collection", "Audio", "Decoration", "ArtAtlas", "ArtFrame", "UiPrefab", "Tutorial", "StaffBranch", "StaffForm"];
+exports.TABLE_NAMES = ["Global", "I18", "Staff", "Enemy", "Theme", "Map", "MapPoint", "Spot", "Obstacle", "Level", "Wave", "WaveGroup", "Collection", "Audio", "Decoration", "ArtAtlas", "ArtFrame", "UiPrefab", "Tutorial", "StaffBranch", "StaffForm", "LevelLoadout"];
 let data = Object.create(null);
 let ready = false;
 let byKey = Object.create(null);
@@ -145,8 +145,34 @@ function installConfigs(sources) {
         requireRef("I18", "key", row.title, "Level");
         if (row.goal)
             requireRef("I18", "key", row.goal, "Level");
-        for (const key of row.availableTowers.split("|"))
-            requireRef("Staff", "key", key, "Level");
+    }
+    for (const staff of next.Staff) {
+        requireRef("Level", "id", staff.unlockLevel, "Staff unlock");
+        requireRef("I18", "key", staff.roleKey, "Staff role");
+        if (next.Level.find(r => r.id === staff.unlockLevel).mode !== "adventure" || !Number.isInteger(numeric(staff, "displayOrder")) || numeric(staff, "displayOrder") < 1)
+            throw new Error("Invalid staff unlock/order");
+    }
+    if (new Set(next.Staff.map(r => r.displayOrder)).size !== next.Staff.length)
+        throw new Error("Duplicate staff order");
+    if (next.LevelLoadout.length !== next.Level.length || new Set(next.LevelLoadout.map(r => r.levelId)).size !== next.Level.length)
+        throw new Error("Missing/duplicate loadout level");
+    for (const row of next.LevelLoadout) {
+        requireRef("Level", "id", row.levelId, "LevelLoadout");
+        const level = next.Level.find(r => r.id === row.levelId);
+        const candidates = row.candidateStaff.split("|"), defaults = row.defaultStaff.split("|"), slots = numeric(row, "slots");
+        if (!["0", "1"].includes(row.enabled) || !Number.isInteger(slots) || slots < 1 || slots > 4 || candidates.length > 8)
+            throw new Error("Invalid loadout capacity");
+        if (new Set(candidates).size !== candidates.length || new Set(defaults).size !== defaults.length)
+            throw new Error("Duplicate loadout staff");
+        for (const key of candidates) {
+            requireRef("Staff", "key", key, "LevelLoadout");
+            if (level.mode === "adventure" && numeric(next.Staff.find(r => r.key === key), "unlockLevel") > numeric(level, "id"))
+                throw new Error("Early loadout staff");
+        }
+        if (defaults.some(k => !candidates.includes(k)) || defaults.length !== Math.min(slots, candidates.length))
+            throw new Error("Invalid default loadout");
+        if (level.mode === "challenge" && row.enabled !== "0")
+            throw new Error("Challenge loadout must be fixed");
     }
     for (const row of next.Wave) {
         requireRef("Level", "id", row.levelId, "Wave");
@@ -189,11 +215,11 @@ function installConfigs(sources) {
         requireRef("Level", "id", row.levelId, "Tutorial");
         requireRef("Staff", "key", row.staffKind, "Tutorial");
         const level = next.Level.find(item => item.id === row.levelId);
-        if (level.mode !== "adventure" || !level.availableTowers.split("|").includes(row.staffKind))
+        if (level.mode !== "adventure" || !next.LevelLoadout.find(r => r.levelId === level.id).defaultStaff.split("|").includes(row.staffKind))
             throw new Error("Tutorial staff unavailable");
         if (!["deploy", "upgrade", "combo", "area", "clear"].includes(row.action))
             throw new Error("Unknown tutorial action");
-        if (row.partnerKind && !level.availableTowers.split("|").includes(row.partnerKind))
+        if (row.partnerKind && !next.LevelLoadout.find(r => r.levelId === level.id).defaultStaff.split("|").includes(row.partnerKind))
             throw new Error("Tutorial partner unavailable");
         if (row.action === "combo" && !row.partnerKind)
             throw new Error("Tutorial combo needs partner");
@@ -348,9 +374,9 @@ function installConfigs(sources) {
             throw new Error("Adventure ID outside progress");
         if (level.mode === "challenge" && numeric(level, "id") <= max)
             throw new Error("Challenge overlaps adventure");
-        if (level.mode === "challenge" && (level.availableTowers.split("|").length !== 4 || next.Wave.filter(w => w.levelId === level.id).length < 21))
+        if (level.mode === "challenge" && (next.LevelLoadout.find(r => r.levelId === level.id).defaultStaff.split("|").length !== 4 || next.Wave.filter(w => w.levelId === level.id).length < 21))
             throw new Error("Challenge needs four staff and 21+ waves");
-        if (new Set(level.availableTowers.split("|")).size !== level.availableTowers.split("|").length)
+        if (new Set(next.LevelLoadout.find(r => r.levelId === level.id).defaultStaff.split("|")).size !== next.LevelLoadout.find(r => r.levelId === level.id).defaultStaff.split("|").length)
             throw new Error("Duplicate available staff");
         if (numeric(level, "enemySpeedScale") !== 1)
             throw new Error("Base speed must not scale by level");

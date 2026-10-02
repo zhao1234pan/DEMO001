@@ -1,3 +1,4 @@
+import { loadoutRule, validLoadout, saveLoadout, resetLoadouts, wavePreview } from "./LevelLoadout";
 import { attackProfile, evolutionChoices, evolutionByKey, StaffEvolution } from "./StaffEvolution";
 import { configsReady, globalNumber, numeric, rows, text } from "../../config/ConfigTables";
 import { loadGameConfigs } from "../../config/ConfigLoader";
@@ -218,7 +219,7 @@ export class GameRoot extends Component {
     else { this.unlockedLevel = this.currentLevelId; this.screen = "home"; }
     if (!this.mapReview) {
       this.collection = new CollectionProgress(this.unlockedLevel);
-      this.menu = new GameMenuView(this.contentRoot, this.uiPrefabs, this.audio, this.collection, id => this.startOfficialLevel(id));
+      this.menu = new GameMenuView(this.contentRoot, this.uiPrefabs, this.audio, this.collection, (id,roster) => this.startOfficialLevel(id,roster));
       this.menu.show(this.unlockedLevel);
     }
     this.applyLayout();
@@ -577,7 +578,13 @@ export class GameRoot extends Component {
     if (enemy.slow > 0 || Object.keys(enemy.slows ?? {}).length > 0) this.ring(g, enemy.x, enemy.y, enemy.radius + 3, "#b4f6ff", 0.7, 2);
   }
 
+  private previewVisible():boolean{return this.screen==="playing"&&!this.paused&&!this.gmPanelOpen&&!this.mapReview&&!this.bossCue&&!this.guideCue&&!this.selectedSpot&&!this.selectedTower&&!this.selectedObstacle&&!this.evolutionTower;}
   private drawPanels(_g: Graphics): void {
+    const last=this.wave>=this.level.waves.length,index=Math.min(this.wave,this.level.waves.length-1),entries=wavePreview(this.level.waves[index]);
+    const title=last?text("ui.preview.last"):text("ui.preview.title",index+1);
+    const bubble=this.waveCountdownPosition(),panelHeight=this.battleUi.wavePreviewHeight(entries.length);
+    const previewTop=this.shouldShowWaveCountdown()&&bubble.y<this.layoutTop+panelHeight+120?this.layoutBottom-PROP_BUTTONS[0].height-panelHeight-25:this.layoutTop+112;
+    this.battleUi.showWavePreview(entries,title,this.previewOpen,this.previewVisible(),previewTop);
     this.battleUi.hudState(this.propCounts, this.propAdUsed, this.screen === "playing" && !this.paused && !this.gmPanelOpen,
       this.gmPanelOpen, this.shouldShowToast() && !this.bossCue && !this.enemies.some(e => ENEMY_CONFIG[e.kind].boss), Boolean(this.mapReview));
   }
@@ -779,11 +786,16 @@ export class GameRoot extends Component {
     return getLevelConfig(Math.max(1, Math.min(GAME_CONFIG.maxLevels, PlatformService.getNumber("night_store_unlocked_level", 1)))).id;
   }
 
-  private startOfficialLevel(levelId: number): void {
+  private previewOpen = false;
+  private startOfficialLevel(levelId: number, roster?: TowerKind[]): void {
     const level = getLevelConfig(levelId);
     if (level.mode !== "challenge" && level.id > this.readUnlockedLevel()) return;
     this.gmSessionActive = false; this.gmPanelOpen = false;
-    this.resetLevel(level.id);
+    const unlocked=this.readUnlockedLevel();this.unlockedLevel=unlocked;
+    if(loadoutRule(level.id).enabled==="1"){
+      if(!roster||!validLoadout(level.id,unlocked,roster)){this.paused=false;this.screen="home";this.menu?.showPreparation(unlocked,level.id);return;}
+      this.resetLevel(level.id,roster);saveLoadout(level.id,unlocked,roster);
+    }else this.resetLevel(level.id);
   }
 
   /** GM明确重置本地进度；不删除其他应用数据或声音偏好。 */
@@ -793,7 +805,7 @@ export class GameRoot extends Component {
     PlatformService.setNumber("night_store_best_level", 0);
     PlatformService.setNumber("night_store_game_speed", 1);
     for (const row of rows("Tutorial")) PlatformService.setNumber("night_store_tutorial_" + row.id, 0);
-    this.collection?.resetGmProgress();
+    this.collection?.resetGmProgress();resetLoadouts();
     this.gmResetArmed = false; this.gmSessionActive = false; this.gmPanelOpen = false;
     this.gameSpeed = 1; this.unlockedLevel = 1; this.onTouchCancel();
     this.resetLevel(1); this.screen = "home"; this.menu?.show(1, "home", 1);
@@ -1010,10 +1022,13 @@ export class GameRoot extends Component {
     }
   }
 
-  private resetLevel(levelId = this.currentLevelId): void {
+  private resetLevel(levelId?: number, roster?: readonly TowerKind[]): void {
+    const retry=levelId===undefined;
+    const selection=roster??(retry?this.level.availableTowers:undefined);
+    levelId=levelId??this.currentLevelId;this.previewOpen=true;
     this.battleRevision++; this.adFeedback = "";
     this.menu?.hide();
-    this.level = getLevelConfig(levelId); this.currentLevelId = this.level.id;
+    const base=getLevelConfig(levelId);this.level={...base,availableTowers:[...(selection??base.availableTowers)]}; this.currentLevelId = this.level.id;
     this.coins = this.level.initialCoins; this.lives = this.level.initialLives; this.wave = 0;
     this.inWave = false; this.paused = false; this.screen = "playing"; this.revived = false;
     this.evolutionTower = null; this.newEvolutionKeys = []; this.selectedTower = null; this.selectedSpot = null; this.selectedObstacle = null; this.queue = []; this.spawnTimer = 0;
@@ -1132,7 +1147,7 @@ export class GameRoot extends Component {
         }
       } else {
         // 下一波保留配置的真实秒数，玩家可点击气泡提前开波。
-        this.nextWaveTimer = globalNumber("nextWaveDelay");
+        this.nextWaveTimer = globalNumber("nextWaveDelay");this.previewOpen=true;
         this.showToast(text("ui.GameRoot.039", bonus));
       }
     }
@@ -1144,6 +1159,7 @@ export class GameRoot extends Component {
   }
 
   private startWave(): void {
+    this.previewOpen=false;
     if (this.inWave || this.wave >= this.level.waves.length) return;
     const config = this.level.waves[this.wave]; this.wave += 1;
     this.queue = [...config.enemies]; this.spawnInterval = config.spawnInterval;
@@ -1516,6 +1532,9 @@ export class GameRoot extends Component {
     }
     if (this.screen === "win") { if (this.buttonHit(this.battleUi.overlayRect("Primary", "win"), x, y)) this.advanceLevel(); return; }
 
+    if(this.previewVisible()&&(containsPoint(this.battleUi.previewEntryRect(),x,y)||containsPoint(this.battleUi.waveLabelRect(),x,y))){this.previewOpen=!this.previewOpen;return;}
+    if(this.previewOpen&&this.previewVisible()&&containsPoint(this.battleUi.previewRect(),x,y)){this.previewOpen=false;return;}
+    this.previewOpen=false;
     if(this.evolutionTower){
       const choice=this.evolutionMenuItems().find(item=>containsPoint(this.battleUi.evolutionRect(item.evolution.key),x,y));
       if(choice){this.evolveSelected(choice.evolution.key);return;}
@@ -1567,7 +1586,7 @@ export class GameRoot extends Component {
 
   private advanceLevel(): void {
     const next = this.level.mode === "adventure" && this.currentLevelId < GAME_CONFIG.maxLevels ? this.currentLevelId + 1 : this.currentLevelId;
-    this.resetLevel(next);
+    if(this.gmSessionActive)this.resetLevel(next);else if(next===this.currentLevelId)this.resetLevel();else this.startOfficialLevel(next);
   }
 
   private async reviveWithAd(): Promise<void> {
@@ -1583,7 +1602,7 @@ export class GameRoot extends Component {
       this.screen = "playing"; this.enemies = []; this.shots = []; this.queue = [];
       this.cancelPendingAttacks(); this.bossCue = null; this.impacts = []; this.particles = [];
       this.damageFlash = 0; this.battleFeedbackTime = 0;
-      this.inWave = false; this.wave = Math.max(0, this.wave - 1); this.nextWaveTimer = globalNumber("reviveWaveDelay");
+      this.inWave = false; this.wave = Math.max(0, this.wave - 1); this.nextWaveTimer = globalNumber("reviveWaveDelay");this.previewOpen=true;
       this.showToast(text("ui.GameRoot.057"));
     } catch { if (!this.disposed && revision === this.battleRevision) this.adFeedback = text("ui.GameRoot.056"); }
     finally { if (revision === this.battleRevision) this.adRequesting = false; }

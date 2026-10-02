@@ -43,7 +43,7 @@ onConfigsReady(() => {
   LEVEL_CONFIGS.splice(0,LEVEL_CONFIGS.length,...rows("Level").sort(order("id")).map(row => {
     const map = rows("Map").find(r=>r.id===row.mapId)!;
     return { gridSize:numeric(map,"gridSize"),mode:row.mode as LevelConfig["mode"],id:numeric(row,"id"),title:text(row.title),goal:row.goal?text(row.goal):undefined,theme:map.theme as LevelConfig["theme"],
-      initialCoins:numeric(row,"initialCoins"),initialLives:numeric(row,"initialLives"),enemyHealthScale:numeric(row,"enemyHealthScale"),enemySpeedScale:numeric(row,"enemySpeedScale"),availableTowers:row.availableTowers.split("|") as TowerKind[],
+      initialCoins:numeric(row,"initialCoins"),initialLives:numeric(row,"initialLives"),enemyHealthScale:numeric(row,"enemyHealthScale"),enemySpeedScale:numeric(row,"enemySpeedScale"),availableTowers:rows("LevelLoadout").find(r=>r.levelId===row.id)!.defaultStaff.split("|") as TowerKind[],
       pathPoints:rows("MapPoint").filter(r=>r.mapId===map.id).sort(order("order")).map(r=>[numeric(r,"x"),numeric(r,"y")] as MapPoint),
       towerSpots:rows("Spot").filter(r=>r.mapId===map.id).sort(order("spotIndex")).map(r=>[numeric(r,"x"),numeric(r,"y")] as MapPoint),
       obstacles:rows("Obstacle").filter(r=>r.mapId===map.id).map(r=>({spotIndex:numeric(r,"spotIndex"),kind:r.kind as ObstacleKind,hp:numeric(r,"hp"),reward:numeric(r,"reward")})),

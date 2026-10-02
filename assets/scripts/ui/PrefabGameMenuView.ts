@@ -1,3 +1,5 @@
+import { loadoutRule, loadoutCandidates, requiredLoadoutSize, readLoadout, validLoadout, defaultLoadout, staffRole, levelPreview, bossWaveText } from "../gameplay/battle/LevelLoadout";
+import { TOWER_CONFIG, TowerKind } from "../gameplay/battle/GameConfig";
 import { evolutionChoices } from "../gameplay/battle/StaffEvolution";
 import { Color, Graphics, Label, Node, UITransform } from "cc";
 import { globalString, globalNumber, text } from "../config/ConfigTables";
@@ -9,7 +11,7 @@ import { AudioService } from "../services/AudioService";
 import { PlatformSettings } from "../services/PlatformSettings";
 import { UiPrefabs, uiNode, uiText, uiRect, uiColor } from "./UiPrefabs";
 
-type MenuPage = "home" | "levels" | "collection" | "settings";
+type MenuPage = "home" | "levels" | "collection" | "settings" | "loadout";
 type Dialog = { kind: "entry"; entry: CollectionEntry } | { kind: "notice"; title: string; text: string };
 const W = GAME_CONFIG.prototypeLayoutWidth, H = GAME_CONFIG.prototypeLayoutHeight;
 
@@ -18,6 +20,11 @@ export class PrefabGameMenuView {
   private readonly root: Node;
   private readonly pages = new Map<MenuPage, Node>();
   private readonly dialogs = new Map<string, Node>();
+  private readonly loadoutCards: Node[] = [];
+  private preparationId = 1;
+  private selection: TowerKind[] = [];
+  private replacementSlot = -1;
+  private selectionHint = "";
   private readonly levelCards: Node[] = [];
   private readonly collectionCards: Node[] = [];
   private readonly actions = new Map<Node, () => void>();
@@ -41,14 +48,15 @@ export class PrefabGameMenuView {
   private bottom = H;
 
   constructor(private readonly parent: Node, private readonly assets: UiPrefabs, private readonly audio: AudioService,
-    private readonly collection: CollectionProgress, private readonly startLevel: (id: number) => void) {
+    private readonly collection: CollectionProgress, private readonly startLevel: (id: number, roster?: TowerKind[]) => void) {
     this.root = assets.create("menu_shell", parent);
-    for (const key of ["home", "levels", "collection", "settings"] as MenuPage[]) {
+    for (const key of ["home", "levels", "collection", "settings", "loadout"] as MenuPage[]) {
       const node = assets.create(key, uiNode(this.root, "Pages")); this.pages.set(key, node); node.active = false;
     }
     for (const key of ["notice", "detail"]) { const node = assets.create(key, uiNode(this.root, "Dialogs")); this.dialogs.set(key, node); node.active = false; }
     for (const slot of uiNode(this.pages.get("levels")!, "Cards").children) this.levelCards.push(assets.create("level_card", slot));
     for (const slot of uiNode(this.pages.get("collection")!, "Cards").children) this.collectionCards.push(assets.create("collection_card", slot));
+    for(const slot of uiNode(this.pages.get("loadout")!, "Candidates").children)this.loadoutCards.push(assets.create("loadout_card",slot));
     void this.platform.refresh().then(() => { if (!this.disposed) this.dirty = true; });
     this.root.active = false;
   }
@@ -56,6 +64,9 @@ export class PrefabGameMenuView {
     this.navigationRevision++; this.unlocked = getLevelConfig(unlocked).id; this.collection.refresh(this.unlocked);
     this.page = page; this.levelPage = Math.floor((getLevelConfig(focusLevel).id - 1) / this.levelCards.length);
     this.dialog = null; this.active = true; this.root.active = true; this.dirty = true;
+  }
+  showPreparation(unlocked:number,id:number):void {
+    this.show(unlocked,"loadout",id);this.preparationId=id;this.selection=readLoadout(id,unlocked);this.replacementSlot=-1;this.selectionHint="";
   }
   showCollection(unlocked: number, tab: CollectionTab): void {
     this.tab = tab; this.collectionPage = 0; this.show(unlocked, "collection");
@@ -85,6 +96,7 @@ export class PrefabGameMenuView {
     if (this.page === "home") this.home(page);
     else if (this.page === "levels") this.levels(page);
     else if (this.page === "collection") this.collectionPageView(page);
+    else if(this.page === "loadout") this.preparation(page);
     else this.settings(page);
     this.renderDialog();
   }
@@ -187,6 +199,27 @@ export class PrefabGameMenuView {
     });
     uiText(page, "Count", text("ui.GameMenuView.026", entries.filter(e => this.collection.isUnlocked(e)).length, entries.length));
     this.pagination(page, this.collectionPage, pages, () => { this.collectionPage--; }, () => { this.collectionPage++; });
+  }
+  private preparation(page:Node):void {
+    const id=this.preparationId,level=getLevelConfig(id),pool=loadoutCandidates(id,this.unlocked),count=requiredLoadoutSize(id,this.unlocked);
+    this.bind(page,"Back",()=>this.navigate("levels"));uiText(page,"Title",text("ui.loadout.title"));
+    uiText(page,"LevelTitle",level.title);uiText(page,"Stats",text("ui.loadout.stats",level.initialCoins,level.waves.length));uiText(page,"Boss",bossWaveText(level));
+    const map=uiNode(page,"Map");uiColor(map,"Thumbnail",levelTheme(level).ground);this.routePreview(map,level,true);
+    uiText(page,"EnemyTitle",text("ui.loadout.enemies"));const enemies=levelPreview(level),enemySlots=uiNode(page,"Enemies").children;
+    enemySlots.forEach((slot,i)=>{const e=enemies[i];slot.active=Boolean(e);if(!e)return;this.assets.bindImage(uiNode(slot,"Icon"),"menu:"+e.imageKey);uiText(slot,"Name",e.name);});
+    uiText(page,"SelectedTitle",text("ui.loadout.selected",this.selection.length,count));uiText(page,"Default/Text",text("ui.loadout.default"));
+    this.bind(page,"Default",()=>{this.selection=defaultLoadout(id).filter(k=>pool.includes(k));this.replacementSlot=-1;this.selectionHint="";});
+    const full=this.selection.length===count;
+    uiNode(page,"Selected").children.forEach((slot,i)=>{slot.active=i<count;const kind=this.selection[i];uiNode(slot,"Icon").active=Boolean(kind);if(kind)this.assets.bindImage(uiNode(slot,"Icon"),"menu:"+kind);uiText(slot,"Name",kind?TOWER_CONFIG[kind].name:text("ui.loadout.empty"));uiColor(slot,"Surface",this.replacementSlot===i?"#edc87c":"#e0e7ca");this.bind(slot,"",()=>{if(!kind)return;if(this.replacementSlot===i){this.selection.splice(i,1);this.replacementSlot=-1;}else this.replacementSlot=i;this.selectionHint="";});});
+    uiText(page,"Hint",this.selectionHint||(this.replacementSlot>=0?text("ui.loadout.choose"):""));
+    this.loadoutCards.forEach((card,i)=>{const kind=pool[i];card.active=Boolean(kind);if(!kind)return;const entry=COLLECTION_ENTRIES.find(e=>e.staffKind===kind)!;
+      this.assets.bindImage(uiNode(card,"Icon"),"menu:"+entry.imageKey);uiText(card,"Name",text("ui.evolution.costValue",TOWER_CONFIG[kind].cost)+" "+TOWER_CONFIG[kind].name);uiText(card,"Role",staffRole(kind));uiNode(card,"Selected").active=this.selection.includes(kind);
+      // 小详情按钮先于整卡响应；查看不会改变阵容或图鉴收录。
+      this.bind(card,"Info",()=>{this.detailLevel=1;this.detailBaseLevel=1;this.dialog={kind:"entry",entry};});
+      this.bind(card,"",()=>{const ix=this.selection.indexOf(kind);if(ix>=0){this.selection.splice(ix,1);this.replacementSlot=-1;}else if(this.replacementSlot>=0){this.selection[this.replacementSlot]=kind;this.replacementSlot=-1;}else if(!full)this.selection.push(kind);else{this.selectionHint=text("ui.loadout.replace");return;}this.selectionHint="";});
+    });
+    uiText(page,"Start/Text",full?text("ui.loadout.start"):text("ui.loadout.need",count-this.selection.length));this.buttonEnabled(page,"Start",full);
+    if(validLoadout(id,this.unlocked,this.selection))this.bind(page,"Start",()=>this.startLevel(id,[...this.selection]));
   }
   private settings(page: Node): void {
     for (const [name, enabled, action] of [

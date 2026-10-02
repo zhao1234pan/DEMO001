@@ -39,7 +39,10 @@
       "slowPerLevel": "float",
       "arcHeight": "int",
       "laneBend": "int",
-      "spriteWidth": "float"
+      "spriteWidth": "float",
+      "unlockLevel": "int",
+      "roleKey": "string",
+      "displayOrder": "int"
     }
   },
   "Enemy": {
@@ -121,7 +124,6 @@
       "initialLives": "int",
       "enemyHealthScale": "float",
       "enemySpeedScale": "float",
-      "availableTowers": "string",
       "mode": "string"
     }
   },
@@ -266,6 +268,16 @@
       "tradeoffKey": "string",
       "displayOrder": "int",
       "spriteWidth": "float"
+    }
+  },
+  "LevelLoadout": {
+    "fields": {
+      "id": "int",
+      "levelId": "int",
+      "enabled": "int",
+      "slots": "int",
+      "candidateStaff": "string",
+      "defaultStaff": "string"
     }
   }
 }

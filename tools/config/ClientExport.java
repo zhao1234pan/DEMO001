@@ -32,6 +32,12 @@ public class ClientExport {
           Sheet sheet=book.getSheetAt(0);FormulaEvaluator eval=book.getCreationHelper().createFormulaEvaluator();
           if(sheet.getRow(4)==null)throw new IllegalArgumentException(file+": missing five-row header");
           int columns=sheet.getRow(4).getLastCellNum();List<String> keys=new ArrayList<>(),types=new ArrayList<>();Set<String> unique=new HashSet<>();
+          // Excel清空末列后可能保留空单元格记录；只忽略整列为空的尾列，内部空表头仍报错。
+          while(columns>0 && cell(sheet.getRow(4),columns-1,eval).isEmpty()) {
+            boolean empty=true;for(int r=0;r<=sheet.getLastRowNum();r++)if(!cell(sheet.getRow(r),columns-1,eval).isEmpty()){empty=false;break;}
+            if(!empty)break;columns--;
+          }
+          if(columns==0)throw new IllegalArgumentException(file+": empty header");
           for(int c=0;c<columns;c++){
             String key=cell(sheet.getRow(4),c,eval),type=cell(sheet.getRow(2),c,eval);
             if(key.isEmpty()||!unique.add(key))throw new IllegalArgumentException(file+": empty/duplicate field "+key);

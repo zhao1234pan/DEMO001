@@ -7,6 +7,19 @@ import { getWechatTopOverlayRatio } from "../platform/wechat/WechatSettings";
 export interface RewardResult { rewarded: boolean; simulated?: boolean; reason?: unknown; }
 
 export class PlatformService {
+  private static readonly lastStrings = new Map<string,string>();
+  private static readonly pendingStrings = new Map<string,string>();
+  static getString(key:string,fallback:string):string {
+    const pending=this.pendingStrings.get(key);
+    if(pending!==undefined){this.setString(key,pending);return pending;}
+    try{const value=sys.localStorage.getItem(key);if(value===null){this.lastStrings.delete(key);return fallback;}this.lastStrings.set(key,value);return value;}
+    catch{return this.lastStrings.get(key)??fallback;}
+  }
+  static setString(key:string,value:string):void {
+    // 整份配队一次写入，避免多槽写入中断留下半套阵容。
+    this.lastStrings.set(key,value);this.pendingStrings.set(key,value);
+    try{sys.localStorage.setItem(key,value);this.pendingStrings.delete(key);}catch{ /* 存储恢复后读取会重试。 */ }
+  }
   private static readonly lastNumbers = new Map<string, number>();
   private static readonly pendingNumbers = new Map<string, number>();
   private static readonly pendingMaximumBounds = new Map<string, number>();

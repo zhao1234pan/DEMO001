@@ -1,3 +1,4 @@
+import { EnemyPreview } from "../gameplay/battle/LevelLoadout";
 import { evolutionChoices, StaffEvolution } from "../gameplay/battle/StaffEvolution";
 import { text } from "../config/ConfigTables";
 import { Label, Node, UITransform, Vec3 } from "cc";
@@ -16,6 +17,12 @@ export class BattlePrefabView {
   readonly fixedLabels = new Set<string>();
   private readonly hud: Node;
   private readonly gmEntry: Node;
+  private readonly preview: Node;
+  private readonly previewCards: Node[] = [];
+  private readonly previewEntryPosition: Vec3;
+  private previewSignature = "";
+  private readonly previewPositions = new Map<Node,Vec3>();
+  private readonly previewBaseHeight: number;
   private readonly gmEntryPosition: Vec3;
   private readonly overlays = new Map<Overlay, Node>();
   private readonly builds = new Map<TowerKind, Node>();
@@ -40,6 +47,11 @@ export class BattlePrefabView {
   constructor(private readonly parent: Node, private readonly assets: UiPrefabs) {
     const create = (key: string, host = parent): Node => { const node = assets.create(key, host); this.owned.push(node); return node; };
     this.hud = create("battle_hud");
+    this.preview=create("wave_preview");
+    this.previewBaseHeight=this.preview.getComponent(UITransform)!.height;
+    for(const child of this.preview.children)this.previewPositions.set(child,child.position.clone());
+    for(const slot of uiNode(this.preview,"Cards").children)this.previewCards.push(create("enemy_preview_card",slot));
+    this.previewEntryPosition=uiNode(this.hud,"PreviewEntry").position.clone();
     this.boss = uiNode(this.hud, "Boss"); this.bossPosition = this.boss.position.clone();
     this.headerPosition = uiNode(this.hud, "Header").position.clone(); this.footerPosition = uiNode(this.hud, "Footer").position.clone();
     for (const name of ["title", "level", "wave", "coin", "lives"]) this.register(name, uiNode(this.hud, "Header/" + name));
@@ -86,7 +98,7 @@ export class BattlePrefabView {
     this.register("overlaySecondary", uiNode(node, "Secondary/overlaySecondary")); this.register("overlayHome", uiNode(node, "Home/overlayHome"));
   }
   beginFrame(home: boolean): void {
-    this.guide.active = false; this.boss.active = false;
+    this.guide.active = false; this.boss.active = false;this.preview.active=false;uiNode(this.hud,"PreviewEntry").active=false;
     this.hud.active = !home; this.gmEntry.active = DEBUG;
     // 菜单晚于战斗UI创建，入口与面板需保持在当前页面之上。
     if (DEBUG) { this.gmEntry.setSiblingIndex(this.parent.children.length - 1); this.gm?.setSiblingIndex(this.parent.children.length - 1); }
@@ -97,6 +109,7 @@ export class BattlePrefabView {
     if (this.gm) this.gm.active = false;
   }
   layout(top: number, bottom: number): void {
+    uiNode(this.hud,"PreviewEntry").setPosition(this.previewEntryPosition.x,this.previewEntryPosition.y-top);
     this.guide.setPosition(this.guidePosition.x, this.guidePosition.y - top);
     this.boss.setPosition(this.bossPosition.x, this.bossPosition.y - top);
     uiNode(this.hud, "Header").setPosition(this.headerPosition.x, this.headerPosition.y - top);
@@ -180,6 +193,29 @@ export class BattlePrefabView {
     panel.setPosition(anchor.position.x,anchor.position.y+shift/2-extra/2);panel.getComponent(UITransform)!.height=h;
     for (const name of ["Surface","Shadow","Outline"]) { const child=panel.getChildByName(name); if(child)child.getComponent(UITransform)!.height=h; }
   }
+  wavePreviewHeight(count:number):number {
+    const slots=uiNode(this.preview,"Cards").children,firstY=slots[0].position.y,columns=slots.filter(s=>s.position.y===firstY).length;
+    const stride=slots.length>columns?Math.abs(firstY-slots[columns].position.y):slots[0].getComponent(UITransform)!.height;
+    const baseRows=Math.ceil(slots.length/columns),rowCount=Math.max(1,Math.ceil(count/columns)),height=this.previewBaseHeight-(baseRows-rowCount)*stride;
+    return height;
+  }
+  showWavePreview(entries:EnemyPreview[],title:string,open:boolean,visible:boolean,top:number):void {
+    const entry=uiNode(this.hud,"PreviewEntry");entry.active=visible;uiNode(entry,"Text").getComponent(Label)!.string=text("ui.preview.open");
+    this.preview.active=visible&&open;if(!this.preview.active)return;this.preview.setSiblingIndex(this.parent.children.length-1);
+    // 尺寸、行列与间距来自预制体；内容变更才绑定图片。
+    const height=this.wavePreviewHeight(entries.length);
+    this.preview.getComponent(UITransform)!.height=height;
+    for(const child of this.preview.children){const pos=this.previewPositions.get(child)!;child.setPosition(pos.x,pos.y+(child.name==="Panel"?0:(height-this.previewBaseHeight)/2));}
+    const panel=uiNode(this.preview,"Panel");panel.getComponent(UITransform)!.height=height;for(const name of ["Surface","Shadow"])uiNode(panel,name).getComponent(UITransform)!.height=height;
+    const signature=title+entries.map(e=>e.kind+":"+e.count).join("|");
+    if(signature!==this.previewSignature){this.previewSignature=signature;uiNode(this.preview,"Title").getComponent(Label)!.string=title;
+      this.previewCards.forEach((card,i)=>{const e=entries[i];card.active=Boolean(e);if(!e)return;this.assets.bindImage(uiNode(card,"Icon"),"menu:"+e.imageKey);uiNode(card,"Name").getComponent(Label)!.string=e.name;uiNode(card,"Count").getComponent(Label)!.string=text("ui.preview.count",e.count);uiNode(card,"Boss").getComponent(Label)!.string=e.boss?text(e.boss==="major"?"ui.preview.major":"ui.preview.mini"):"";});
+    }
+    this.preview.setPosition(0,H/2-top-this.preview.getComponent(UITransform)!.height/2);
+  }
+  previewEntryRect():HitRect{return uiRect(uiNode(this.hud,"PreviewEntry"),this.parent,W,H);}
+  waveLabelRect():HitRect{return uiRect(uiNode(this.hud,"Header/wave"),this.parent,W,H);}
+  previewRect():HitRect{return uiRect(this.preview,this.parent,W,H);}
   showGm(open: boolean, current: number, resetArmed = false): void {
     if (!this.gm) return;
     this.gmEntry.active = !open;

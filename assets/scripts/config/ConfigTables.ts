@@ -1,6 +1,6 @@
 /** CSV 是运行时唯一配置源；此模块不依赖引擎，可用于导表与回归检查。 */
 export type TableRow = Record<string, string>;
-export const TABLE_NAMES = ["Global", "I18", "Staff", "Enemy", "Theme", "Map", "MapPoint", "Spot", "Obstacle", "Level", "Wave", "WaveGroup", "Collection", "Audio", "Decoration", "ArtAtlas", "ArtFrame", "UiPrefab", "Tutorial", "StaffBranch", "StaffForm"] as const;
+export const TABLE_NAMES = ["Global", "I18", "Staff", "Enemy", "Theme", "Map", "MapPoint", "Spot", "Obstacle", "Level", "Wave", "WaveGroup", "Collection", "Audio", "Decoration", "ArtAtlas", "ArtFrame", "UiPrefab", "Tutorial", "StaffBranch", "StaffForm", "LevelLoadout"] as const;
 let data: Record<string, TableRow[]> = Object.create(null);
 let ready = false;
 let byKey:Record<string,Record<string,TableRow>> = Object.create(null);
@@ -47,7 +47,22 @@ export function installConfigs(sources: Record<string, string>): void {
   for (const name of ["Staff", "Enemy", "Theme"]) for (const row of next[name]) requireRef("I18", "key", row.name, name);
   for (const row of next.Map) requireRef("Theme", "key", row.theme, "Map");
   for (const name of ["MapPoint", "Spot", "Obstacle", "Decoration"]) for (const row of next[name]) requireRef("Map", "id", row.mapId, name);
-  for (const row of next.Level) { requireRef("Map", "id", row.mapId, "Level"); requireRef("I18", "key", row.title, "Level"); if (row.goal) requireRef("I18", "key", row.goal, "Level"); for (const key of row.availableTowers.split("|")) requireRef("Staff", "key", key, "Level"); }
+  for (const row of next.Level) { requireRef("Map", "id", row.mapId, "Level"); requireRef("I18", "key", row.title, "Level"); if (row.goal) requireRef("I18", "key", row.goal, "Level"); }
+  for(const staff of next.Staff){
+    requireRef("Level","id",staff.unlockLevel,"Staff unlock");requireRef("I18","key",staff.roleKey,"Staff role");
+    if(next.Level.find(r=>r.id===staff.unlockLevel)!.mode!=="adventure"||!Number.isInteger(numeric(staff,"displayOrder"))||numeric(staff,"displayOrder")<1)throw new Error("Invalid staff unlock/order");
+  }
+  if(new Set(next.Staff.map(r=>r.displayOrder)).size!==next.Staff.length)throw new Error("Duplicate staff order");
+  if(next.LevelLoadout.length!==next.Level.length||new Set(next.LevelLoadout.map(r=>r.levelId)).size!==next.Level.length)throw new Error("Missing/duplicate loadout level");
+  for(const row of next.LevelLoadout){
+    requireRef("Level","id",row.levelId,"LevelLoadout");const level=next.Level.find(r=>r.id===row.levelId)!;
+    const candidates=row.candidateStaff.split("|"),defaults=row.defaultStaff.split("|"),slots=numeric(row,"slots");
+    if(!["0","1"].includes(row.enabled)||!Number.isInteger(slots)||slots<1||slots>4||candidates.length>8)throw new Error("Invalid loadout capacity");
+    if(new Set(candidates).size!==candidates.length||new Set(defaults).size!==defaults.length)throw new Error("Duplicate loadout staff");
+    for(const key of candidates){requireRef("Staff","key",key,"LevelLoadout");if(level.mode==="adventure"&&numeric(next.Staff.find(r=>r.key===key)!,"unlockLevel")>numeric(level,"id"))throw new Error("Early loadout staff");}
+    if(defaults.some(k=>!candidates.includes(k))||defaults.length!==Math.min(slots,candidates.length))throw new Error("Invalid default loadout");
+    if(level.mode==="challenge"&&row.enabled!=="0")throw new Error("Challenge loadout must be fixed");
+  }
   for (const row of next.Wave) { requireRef("Level", "id", row.levelId, "Wave"); if (row.announcement) requireRef("I18", "key", row.announcement, "Wave"); }
   for (const row of next.WaveGroup) { requireRef("Wave", "id", row.waveId, "WaveGroup"); requireRef("Enemy", "key", row.enemy, "WaveGroup"); if (!Number.isInteger(numeric(row, "count"))) throw new Error("Fractional enemy count"); }
   for (const row of next.Collection) { if (!["enemies", "bosses", "staff"].includes(row.tab)) throw new Error("Invalid collection tab"); requireRef(row.tab === "staff" ? "Staff" : "Enemy", "key", row.kind, "Collection"); for (const field of ["category", "traits", "story"]) requireRef("I18", "key", row[field], "Collection"); }
@@ -57,9 +72,9 @@ export function installConfigs(sources: Record<string, string>): void {
   for (const row of next.Tutorial) {
     requireRef("Level", "id", row.levelId, "Tutorial"); requireRef("Staff", "key", row.staffKind, "Tutorial");
     const level = next.Level.find(item => item.id === row.levelId)!;
-    if (level.mode !== "adventure" || !level.availableTowers.split("|").includes(row.staffKind)) throw new Error("Tutorial staff unavailable");
+    if (level.mode !== "adventure" || !next.LevelLoadout.find(r=>r.levelId===level.id)!.defaultStaff.split("|").includes(row.staffKind)) throw new Error("Tutorial staff unavailable");
     if (!["deploy", "upgrade", "combo", "area", "clear"].includes(row.action)) throw new Error("Unknown tutorial action");
-    if (row.partnerKind && !level.availableTowers.split("|").includes(row.partnerKind)) throw new Error("Tutorial partner unavailable");
+    if (row.partnerKind && !next.LevelLoadout.find(r=>r.levelId===level.id)!.defaultStaff.split("|").includes(row.partnerKind)) throw new Error("Tutorial partner unavailable");
     if (row.action === "combo" && !row.partnerKind) throw new Error("Tutorial combo needs partner");
     for (const key of ["selectText", "actionText", "waitText"]) requireRef("I18", "key", row[key], "Tutorial");
     const spot = next.Spot.find(item => item.mapId === level.mapId && item.spotIndex === row.spotIndex);
@@ -132,8 +147,8 @@ export function installConfigs(sources: Record<string, string>): void {
     if (!["adventure", "challenge"].includes(level.mode)) throw new Error("Unknown level mode");
     if (level.mode === "adventure" && (numeric(level,"id") > max || numeric(level,"id") < 1)) throw new Error("Adventure ID outside progress");
     if (level.mode === "challenge" && numeric(level,"id") <= max) throw new Error("Challenge overlaps adventure");
-    if (level.mode === "challenge" && (level.availableTowers.split("|").length !== 4 || next.Wave.filter(w=>w.levelId === level.id).length < 21)) throw new Error("Challenge needs four staff and 21+ waves");
-    if (new Set(level.availableTowers.split("|")).size !== level.availableTowers.split("|").length) throw new Error("Duplicate available staff");
+    if (level.mode === "challenge" && (next.LevelLoadout.find(r=>r.levelId===level.id)!.defaultStaff.split("|").length !== 4 || next.Wave.filter(w=>w.levelId === level.id).length < 21)) throw new Error("Challenge needs four staff and 21+ waves");
+    if (new Set(next.LevelLoadout.find(r=>r.levelId===level.id)!.defaultStaff.split("|")).size !== next.LevelLoadout.find(r=>r.levelId===level.id)!.defaultStaff.split("|").length) throw new Error("Duplicate available staff");
     if (numeric(level,"enemySpeedScale") !== 1) throw new Error("Base speed must not scale by level");
   }
   for (const map of next.Map) {

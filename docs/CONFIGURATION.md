@@ -1,5 +1,13 @@
 # XLSX → 客户端 CSV 配置规范
 
+## 1.3.0 配队与预告配置
+
+当前22张表。新增LevelLoadout.xlsx（21条），字段id/levelId/enabled/slots/candidateStaff/defaultStaff；候选与默认均引用Staff.key。Level原表移除availableTowers，默认阵容唯一来源改为LevelLoadout。Staff增加unlockLevel、roleKey、displayOrder；CollectionProgress按明确解锁关管理店员，不按候选池反推。
+
+Global版本1.3.0，I18新增27条，UiPrefab新增loadout、loadout_card、wave_preview、enemy_preview_card，共28个Prefab。预告聚合真实WaveConfig.enemies，不新增手写预告数据副本。原始表先完成，再接CSV读取逻辑。
+
+新增门禁和技术例外、存档协议见[完整说明](LOADOUT_WAVE_PREVIEW.md)。导表兼容整列为空的尾部记录，仍拒绝内部空表头和无表头但有数据的列。新成员或新关卡须同步Staff/LevelLoadout，原表导出后运行config:test，禁止只改CSV。
+
 ## 1.2.0 整体复盘修订
 
 本轮原始XLSX、客户端CSV、manifest、资源和Prefab均无数据变化，21表一致性通过。灼烧/减速取值仍来自Staff/Global/StaffBranch；修复到期清理及刷新算法。连发清理属于生命周期，偏好重试属于存储协议，结算动态高度取Label测量和Prefab初始锚点。未新增硬编码玩法参数或文本，未绕过导表改CSV。
@@ -39,7 +47,7 @@ MapPoint/Spot/Obstacle/Decoration/I18原始表导出同步；现19表，Spot458�
 
 ## 目录与日常操作
 
-- design/tables：21张原始XLSX，均为可直接编辑的独立工作簿。
+- design/tables：22张原始XLSX，均为可直接编辑的独立工作簿。
 - tools/config：项目自带JAR、客户端Java入口、字段协议和校验器；不依赖参考项目仍存在。
 - assets/resources/config：运行时CSV及manifest.json，Cocos按TextAsset加载。
 - assets/scripts/config：CSV解析、跨表校验和启动加载；业务模块在配置全部就绪后初始化。
@@ -76,7 +84,7 @@ Creator启动时加载项目构建扩展；GUI已打开的工程在新增扩展�
 | ArtFrame | 35 | atlas键、切片坐标及尺寸 |
 | UiPrefab | 22 | 稳定 UI 键、resources 下的原生预制体路径（不含扩展名） |
 
-Level.availableTowers用竖线分隔Staff.key。Level→Map→MapPoint/Spot/Obstacle/Decoration；Wave→Level，WaveGroup→Wave及Enemy。I18、ArtAtlas、ArtFrame等均使用稳定key，不把表格行号当业务ID。删除或改key时必须同步所有引用。
+当前LevelLoadout.candidateStaff/defaultStaff用竖线分隔Staff.key；Level不再保存availableTowers列。Level→Map→MapPoint/Spot/Obstacle/Decoration；Wave→Level，WaveGroup→Wave及Enemy。I18、ArtAtlas、ArtFrame等均使用稳定key，不把表格行号当业务ID。删除或改key时必须同步所有引用。
 
 ## 原始表格式
 
