@@ -1,4 +1,4 @@
-import { configsReady, globalNumber, numeric, text } from "../../config/ConfigTables";
+import { configsReady, globalNumber, numeric, rows, text } from "../../config/ConfigTables";
 import { loadGameConfigs } from "../../config/ConfigLoader";
 import {
   _decorator, Color, Component, EventTouch, Graphics, HorizontalTextAlignment,
@@ -120,6 +120,7 @@ export class GameRoot extends Component {
   private guidePulse = 0;
   private guideCue: { rect: HitRect | null; text: string; color: string; period: number } | null = null;
   private gmPanelOpen = false;
+  private gmResetArmed = false;
   private gmSessionActive = false;
   private selectedTower: Tower | null = null;
   private selectedSpot: Spot | null = null;
@@ -729,7 +730,16 @@ export class GameRoot extends Component {
     const spot = this.selectedSpot;
     if (!spot || spot.tower || spot.obstacle) return [];
     const kinds = this.level.availableTowers;
-    const points = this.contextMenuPoints(spot.x, spot.y, kinds.length, 64, 64);
+    // 建造菜单只跟随所选格和屏幕边界，不再为避让邻格搜索整张地图。
+    const { width, height } = this.battleUi.buildSize();
+    const gap = 6, columns = Math.min(4, kinds.length), rowCount = Math.ceil(kinds.length / columns);
+    const groupWidth = columns * width + (columns - 1) * gap;
+    const groupHeight = rowCount * height + (rowCount - 1) * gap;
+    const left = Math.max(gap, Math.min(W - gap - groupWidth, spot.x - groupWidth / 2));
+    const topLimit = Math.max(this.layoutTop + BATTLE_UI.headerHeight + gap, this.tutorial.current && this.toastTime <= 0 ? this.battleUi.guideRect().y + this.battleUi.guideRect().height + gap : 0);
+    const above = spot.y - BATTLE_UI.minimumHit / 2 - gap - groupHeight;
+    const top = above >= topLimit ? above : spot.y + BATTLE_UI.minimumHit / 2 + gap;
+    const points = kinds.map((_, i) => ({ x: left + width / 2 + (i % columns) * (width + gap), y: top + height / 2 + Math.floor(i / columns) * (height + gap) }));
     return kinds.map((kind, i) => ({ kind, ...points[i] }));
   }
 
@@ -762,6 +772,19 @@ export class GameRoot extends Component {
     this.resetLevel(level.id);
   }
 
+  /** GM明确重置本地进度；不删除其他应用数据或声音偏好。 */
+  private resetGmProgress(): void {
+    if (!DEBUG) return;
+    PlatformService.setNumber("night_store_unlocked_level", 1);
+    PlatformService.setNumber("night_store_best_level", 0);
+    PlatformService.setNumber("night_store_game_speed", 1);
+    for (const row of rows("Tutorial")) PlatformService.setNumber("night_store_tutorial_" + row.id, 0);
+    this.collection?.resetGmProgress();
+    this.gmResetArmed = false; this.gmSessionActive = false; this.gmPanelOpen = false;
+    this.gameSpeed = 1; this.unlockedLevel = 1; this.onTouchCancel();
+    this.resetLevel(1); this.screen = "home"; this.menu?.show(1, "home", 1);
+  }
+
   private returnHome(): void {
     // 结束本局并定位原关所在页，保留正式进度，不把重玩旧关改成最高关。
     const focus = this.currentLevelId, challenge = this.level.mode === "challenge";
@@ -784,7 +807,7 @@ export class GameRoot extends Component {
 
   private drawGmPanel(_g: Graphics): void {
     if (!DEBUG || this.mapReview) return;
-    this.battleUi.showGm(this.gmPanelOpen, this.currentLevelId);
+    this.battleUi.showGm(this.gmPanelOpen, this.currentLevelId, this.gmResetArmed);
   }
 
   private syncLabels(): void {
@@ -1320,9 +1343,14 @@ export class GameRoot extends Component {
     if (this.mapReview) return;
     if (x < 0 || x > W || y < this.layoutTop || y > this.layoutBottom || this.adRequesting) return;
     if (DEBUG && !this.gmPanelOpen && this.buttonHit(this.footerRect(GM_BUTTON), x, y)) {
-      this.gmPanelOpen = !this.gmPanelOpen; return;
+      this.gmResetArmed = false; this.gmPanelOpen = true; return;
     }
     if (DEBUG && this.gmPanelOpen) {
+      if (this.buttonHit(this.battleUi.gmRect("Reset"), x, y)) {
+        if (this.gmResetArmed) this.resetGmProgress(); else this.gmResetArmed = true;
+        return;
+      }
+      this.gmResetArmed = false;
       if (this.buttonHit(this.battleUi.gmRect("Close"), x, y)) { this.gmPanelOpen = false; return; }
       if (this.buttonHit(this.battleUi.gmRect("Home"), x, y)) {
         this.returnHome(); return;

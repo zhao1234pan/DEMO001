@@ -72,16 +72,17 @@ export class PlatformService {
     const limit = Math.floor(upperBound);
     const normalize = (candidate: number): number => Math.max(0, Math.min(limit, Math.floor(candidate)));
     // 最高关卡只接纳有效整数；历史小数、越界值不能重新混入规范化后的进度。
+    const replacing = this.pendingNumbers.has(key) && !this.pendingMaximumBounds.has(key);
     let maximum = normalize(value);
     for (const cached of [this.lastNumbers.get(key), this.pendingNumbers.get(key)]) {
       if (cached !== undefined && Number.isFinite(cached)) maximum = Math.max(maximum, normalize(cached));
     }
     this.lastNumbers.set(key, maximum);
     this.pendingNumbers.set(key, maximum);
-    this.pendingMaximumBounds.set(key, limit);
+    if (!replacing) this.pendingMaximumBounds.set(key, limit);
     try {
       // 必须先读出旧值再写入；读取失败时旧进度未知，只保留会话值，防止覆盖更高关卡。
-      const stored = this.readStoredNumber(key);
+      const stored = replacing ? undefined : this.readStoredNumber(key);
       if (stored !== undefined) maximum = Math.max(maximum, normalize(stored));
       this.lastNumbers.set(key, maximum);
       this.pendingNumbers.set(key, maximum);
