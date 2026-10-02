@@ -1,5 +1,10 @@
 # 固定 UI 预制体
 
+## 1.1.0 战斗与结算
+
+battle_hud新增Boss/Portrait、Name、State、Track、Fill；血条使用左锚点缩放，随安全区顶部偏移。win新增Summary和3个Unlocks画像位；PrimaryAnchor、HomeAnchor、PanelAnchor保存原始布局，无新解锁时按画像区实际高度收紧。新增关键节点参与构建校验。首领面板不注册输入，不新增关闭按钮。
+
+
 ## 2026-10-01 建造卡与GM
 
 build_card根缩放58/64，外观与热区同源；BattlePrefabView.buildSize从Prefab实际尺寸取值。gm.prefab增加Reset/Text，底部与Home并列，各150×48；资源门禁新增绑定检查。GM动态确认文字来自I18，不新增页面。

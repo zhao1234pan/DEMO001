@@ -91,6 +91,16 @@ export function installConfigs(sources: Record<string, string>): void {
   for(const row of next.Decoration) if(!["tree","planter"].includes(row.kind))throw new Error("Unknown decoration kind");
   for(const row of next.Collection) if(!next.ArtFrame.some(f=>f.menu===row.imageKey))throw new Error("Unknown collection image");
   for (const row of next.UiPrefab) if (!/^ui\/[a-z_]+$/.test(row.path)) throw new Error("Invalid UI prefab path: " + row.key);
+  // 表现参数必须有限且有界，避免无穷特效或每帧分配过量对象。
+  const feedbackRanges: Array<[string,number,number,boolean]> = [
+    ["hitFeedbackSeconds",0.01,1,false],["hitFeedbackScale",0,0.2,false],
+    ["impactSeconds",0.01,1,false],["impactLimit",1,128,true],
+    ["bossEntranceSeconds",0.1,10,false],["bossDefeatSeconds",0.1,10,false],
+  ];
+  for (const [key,min,max,integer] of feedbackRanges) {
+    const row=next.Global.find(r=>r.key===key); if(!row || row.type!=="float")throw new Error("Missing feedback parameter: "+key);
+    const value=numeric(row,"value");if(value<min||value>max||(integer&&!Number.isInteger(value)))throw new Error("Invalid feedback parameter: "+key);
+  }
   const max = Number(next.Global.find(r => r.key === "maxLevels")?.value);
   if (!Number.isInteger(max) || max !== next.Level.filter(r=>r.mode === "adventure").length) throw new Error("maxLevels mismatch");
   for (let id = 1; id <= max; id++) { requireRef("Level", "id", String(id), "Level sequence"); if (!next.Wave.some(w => w.levelId === String(id))) throw new Error("Level without waves"); }

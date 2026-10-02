@@ -1,5 +1,5 @@
 import { TOWER_CONFIG, ENEMY_CONFIG, TowerKind, EnemyKind } from "./GameConfig";
-import { text, rows, numeric } from "../../config/ConfigTables";
+import { text, rows, numeric, globalNumber } from "../../config/ConfigTables";
 import { assetManager, AssetManager, Color, Layers, Node, Rect, Size, Sprite, SpriteFrame, Texture2D, UITransform, Vec2 } from "cc";
 
 export interface TowerArtState {
@@ -103,7 +103,9 @@ export class BattleArtView {
     const footOffset = ENEMY_CONFIG[kind as EnemyKind].spriteHeight * 0.42 * this.logicalPerDesignPixel - bounce;
     this.placeUnit(entry, state.x + sway, state.y, footOffset, ENEMY_CONFIG[kind as EnemyKind].spriteScale);
     // 怪物本体始终直立，只做轻微步态；血条、减速圈由调用方的上层图形绘制。
-    entry.node.setScale(1 + stride * 0.018, 1 - Math.abs(stride) * 0.018, 1);
+    const hit = Math.max(0, Math.min(1, state.hitFlash / globalNumber("hitFeedbackSeconds")));
+    const squash = Math.sin(hit * Math.PI) * globalNumber("hitFeedbackScale");
+    entry.node.setScale(1 + stride * 0.018 + squash, 1 - Math.abs(stride) * 0.018 - squash, 1);
     entry.sprite.color = !legacy && state.hitFlash > 0 ? WARM_HIT : Color.WHITE;
   }
   endFrame(): void {

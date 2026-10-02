@@ -305,3 +305,18 @@ id,key,zhCN
 302,guide.clear.wait,店员空闲时会清理杂物
 303,ui.gm.reset,重置进度
 304,ui.gm.resetConfirm,再次点击确认
+305,feedback.boss.mini,小首领来袭
+306,feedback.boss.major,大首领来袭
+307,feedback.boss.defeated,首领已击退
+308,feedback.boss.health,{p0} / {p1}
+309,result.stats,"剩余耐久 {p0}/{p1}  ·  清障 {p2}/{p3}
+击退 {p4}  ·  获得金币 {p5}"
+310,result.next,下一关 · 第{p0}关
+311,result.open,第{p0}关已解锁
+312,result.staff,新店员 {p0} 名
+313,result.collection,图鉴新增 {p0} 项
+314,result.complete,二十关全部完成
+315,result.progress,完成 {p0}/{p1} 波
+316,result.unlockTitle,新解锁
+317,result.noUnlock,本局记录
+318,result.more,另有 {p0} 项新图鉴

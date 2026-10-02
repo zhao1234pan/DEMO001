@@ -265,6 +265,20 @@ function installConfigs(sources) {
     for (const row of next.UiPrefab)
         if (!/^ui\/[a-z_]+$/.test(row.path))
             throw new Error("Invalid UI prefab path: " + row.key);
+    // 表现参数必须有限且有界，避免无穷特效或每帧分配过量对象。
+    const feedbackRanges = [
+        ["hitFeedbackSeconds", 0.01, 1, false], ["hitFeedbackScale", 0, 0.2, false],
+        ["impactSeconds", 0.01, 1, false], ["impactLimit", 1, 128, true],
+        ["bossEntranceSeconds", 0.1, 10, false], ["bossDefeatSeconds", 0.1, 10, false],
+    ];
+    for (const [key, min, max, integer] of feedbackRanges) {
+        const row = next.Global.find(r => r.key === key);
+        if (!row || row.type !== "float")
+            throw new Error("Missing feedback parameter: " + key);
+        const value = numeric(row, "value");
+        if (value < min || value > max || (integer && !Number.isInteger(value)))
+            throw new Error("Invalid feedback parameter: " + key);
+    }
     const max = Number((_a = next.Global.find(r => r.key === "maxLevels")) === null || _a === void 0 ? void 0 : _a.value);
     if (!Number.isInteger(max) || max !== next.Level.filter(r => r.mode === "adventure").length)
         throw new Error("maxLevels mismatch");

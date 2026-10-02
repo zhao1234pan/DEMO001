@@ -1,7 +1,7 @@
 import { text } from "../config/ConfigTables";
 import { Label, Node, UITransform, Vec3 } from "cc";
 import { DEBUG } from "cc/env";
-import { GAME_CONFIG, TOWER_KINDS, TowerKind } from "../gameplay/battle/GameConfig";
+import { ENEMY_CONFIG, EnemyKind, GAME_CONFIG, TOWER_KINDS, TowerKind } from "../gameplay/battle/GameConfig";
 import { UiPrefabs, uiNode, uiRect } from "./UiPrefabs";
 import type { HitRect } from "../gameplay/battle/BattleLayout";
 
@@ -23,6 +23,8 @@ export class BattlePrefabView {
   private readonly obstacle: Node;
   private readonly toast: Node;
   private readonly guide: Node;
+  private readonly boss: Node;
+  private readonly bossPosition: Vec3;
   private readonly guidePosition: Vec3;
   private readonly gm: Node | null;
   private readonly headerPosition: Vec3;
@@ -33,6 +35,7 @@ export class BattlePrefabView {
   constructor(private readonly parent: Node, private readonly assets: UiPrefabs) {
     const create = (key: string, host = parent): Node => { const node = assets.create(key, host); this.owned.push(node); return node; };
     this.hud = create("battle_hud");
+    this.boss = uiNode(this.hud, "Boss"); this.bossPosition = this.boss.position.clone();
     this.headerPosition = uiNode(this.hud, "Header").position.clone(); this.footerPosition = uiNode(this.hud, "Footer").position.clone();
     for (const name of ["title", "level", "wave", "coin", "lives"]) this.register(name, uiNode(this.hud, "Header/" + name));
     this.register("speed", uiNode(this.hud, "Header/Speed/Text")); this.register("pause", uiNode(this.hud, "Header/Pause/Text"));
@@ -69,7 +72,7 @@ export class BattlePrefabView {
     this.register("overlaySecondary", uiNode(node, "Secondary/overlaySecondary")); this.register("overlayHome", uiNode(node, "Home/overlayHome"));
   }
   beginFrame(home: boolean): void {
-    this.guide.active = false;
+    this.guide.active = false; this.boss.active = false;
     this.hud.active = !home; this.gmEntry.active = DEBUG;
     // 菜单晚于战斗UI创建，入口与面板需保持在当前页面之上。
     if (DEBUG) { this.gmEntry.setSiblingIndex(this.parent.children.length - 1); this.gm?.setSiblingIndex(this.parent.children.length - 1); }
@@ -80,6 +83,7 @@ export class BattlePrefabView {
   }
   layout(top: number, bottom: number): void {
     this.guide.setPosition(this.guidePosition.x, this.guidePosition.y - top);
+    this.boss.setPosition(this.bossPosition.x, this.bossPosition.y - top);
     uiNode(this.hud, "Header").setPosition(this.headerPosition.x, this.headerPosition.y - top);
     uiNode(this.hud, "Footer").setPosition(this.footerPosition.x, this.footerPosition.y - (bottom - H));
     this.gmEntry.setPosition(this.gmEntryPosition.x, this.gmEntryPosition.y - (bottom - H));
@@ -116,6 +120,39 @@ export class BattlePrefabView {
   showOverlay(key: Overlay, labels: Map<string, Label>): void {
     this.overlay = key; this.overlays.get(key)!.active = true; this.registerOverlay(key);
     for (const [name, label] of this.labels) if (name.startsWith("overlay")) labels.set(name, label);
+  }
+  showBoss(enemy: {kind:EnemyKind;hp:number;maxHp:number} | null, cue: {kind:EnemyKind;defeated:boolean;time:number} | null): void {
+    const kind = cue?.kind ?? enemy?.kind;
+    this.boss.active = Boolean(kind);
+    if (!kind) return;
+    const config = ENEMY_CONFIG[kind];
+    this.assets.bindImage(uiNode(this.boss,"Portrait"), "menu:enemy_"+kind);
+    uiNode(this.boss,"Name").getComponent(Label)!.string = config.name!;
+    const value = cue ? text(cue.defeated ? "feedback.boss.defeated" : config.boss === "major" ? "feedback.boss.major" : "feedback.boss.mini")
+      : text("feedback.boss.health", Math.max(0,Math.ceil(enemy!.hp)),enemy!.maxHp);
+    uiNode(this.boss,"State").getComponent(Label)!.string = value;
+    // 提示可能对应刚退场的首领，不能把另一名首领的血量画到它名下。
+    const health = enemy?.kind === kind ? Math.max(0,Math.min(1,enemy.hp/enemy.maxHp)) : 0;
+    uiNode(this.boss,"Fill").setScale(health,1,1);
+  }
+  showResult(summary: string, entries: Array<{name:string;image:string}>): void {
+    const root = this.overlays.get("win")!;
+    uiNode(root,"Summary").getComponent(Label)!.string = summary;
+    const group = uiNode(root,"Unlocks"), slots = group.children;
+    group.active = entries.length > 0;
+    slots.forEach((slot,i) => {
+      const entry = entries[i]; slot.active = Boolean(entry);
+      const width=slot.getComponent(UITransform)!.width, count=Math.min(entries.length,slots.length);
+      slot.setPosition((i-(count-1)/2)*width,slot.position.y);
+      if (entry) { this.assets.bindImage(uiNode(slot,"Portrait"),entry.image); uiNode(slot,"Name").getComponent(Label)!.string=entry.name; }
+    });
+    const shift = entries.length ? 0 : group.getComponent(UITransform)!.height;
+    for (const key of ["Primary","Home"]) {
+      const marker = uiNode(root,key+"Anchor"); uiNode(root,key).setPosition(marker.position.x,marker.position.y+shift);
+    }
+    const panel=uiNode(root,"Panel"), anchor=uiNode(root,"PanelAnchor"), h=anchor.getComponent(UITransform)!.height-shift;
+    panel.setPosition(anchor.position.x,anchor.position.y+shift/2);panel.getComponent(UITransform)!.height=h;
+    for (const name of ["Surface","Shadow","Outline"]) { const child=panel.getChildByName(name); if(child)child.getComponent(UITransform)!.height=h; }
   }
   showGm(open: boolean, current: number, resetArmed = false): void {
     if (!this.gm) return;

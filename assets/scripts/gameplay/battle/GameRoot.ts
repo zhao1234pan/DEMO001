@@ -151,6 +151,12 @@ export class GameRoot extends Component {
   private battleFeedbackTime = 0;
   private battleFeedbackX = W / 2;
   private battleFeedbackY = H / 2;
+  // 反馈使用真实前台时间，不参与伤害、移速或碰撞计算。
+  private impacts: Array<{x:number;y:number;kind:TowerKind;life:number;radius:number;fromX?:number;fromY?:number}> = [];
+  private bossCue: {kind:EnemyKind;defeated:boolean;time:number} | null = null;
+  private newEncounterKinds: EnemyKind[] = [];
+  private newStaffKinds: TowerKind[] = [];
+  private resultNextLevel = 0;
   private readonly hideHandler = (): void => { this.paused = true; this.audio?.setSuspended(true); this.onTouchCancel(); };
   private readonly showHandler = (): void => { this.audio?.setSuspended(false); };
   private readonly resizeHandler = (): void => { this.configureResolution(); this.applyLayout(); this.scheduleOnce(() => this.applyLayout(), 0); };
@@ -309,7 +315,10 @@ export class GameRoot extends Component {
     // 先限制单帧追赶时间，再把倍速后的游戏时间拆成稳定小步长，避免低帧率或三倍速时穿透目标。
     // 准备时钟独立于倍速，后台/暂停/广告期间不推进；战斗仍用稳定子步长。
     const realDelta = Math.max(0, dt);
-    if (this.screen === "playing" && !this.paused && !this.gmPanelOpen && !this.adRequesting) this.guidePulse += realDelta;
+    if (this.screen === "playing" && !this.paused && !this.gmPanelOpen && !this.adRequesting) {
+      this.guidePulse += realDelta;
+      this.updateFeedback(realDelta);
+    }
     if (!this.paused && !this.gmPanelOpen && !this.adRequesting && this.screen === "playing"
       && !this.inWave && this.enemies.length === 0 && this.wave < this.level.waves.length) {
       this.nextWaveTimer = Math.max(0, this.nextWaveTimer - realDelta);
@@ -391,6 +400,7 @@ export class GameRoot extends Component {
     this.enemies.forEach((enemy) => this.drawEnemy(g, enemy));
     this.art.endFrame();
     this.shots.forEach((shot) => this.drawShot(g, shot));
+    this.drawImpacts(g);
     this.particles.forEach((p) => this.disc(g, p.x, p.y, p.size, p.color, Math.max(0, p.life / p.maxLife)));
     if (this.frozenTime > 0) this.box(g, 0, 72, W, PANEL_Y - 72, 0, "#b8f2ff", 0.14);
     if (this.damageFlash > 0) this.box(g, 0, 72, W, PANEL_Y - 72, 0, "#eb685d", Math.min(0.2, this.damageFlash * 0.7));
@@ -566,7 +576,7 @@ export class GameRoot extends Component {
 
   private drawPanels(_g: Graphics): void {
     this.battleUi.hudState(this.propCounts, this.propAdUsed, this.screen === "playing" && !this.paused && !this.gmPanelOpen,
-      this.gmPanelOpen, this.shouldShowToast(), Boolean(this.mapReview));
+      this.gmPanelOpen, this.shouldShowToast() && !this.bossCue && !this.enemies.some(e => ENEMY_CONFIG[e.kind].boss), Boolean(this.mapReview));
   }
 
   private drawContextMenu(_g: Graphics): void {
@@ -812,10 +822,9 @@ export class GameRoot extends Component {
 
   private syncLabels(): void {
     const boss = this.enemies.find(enemy => ENEMY_CONFIG[enemy.kind].boss);
-    this.showLabel("boss-status", Boolean(boss) && this.toastTime <= 0 && this.screen === "playing" && !this.gmPanelOpen && !this.paused);
-    if (boss) {
-      this.setLabel("boss-status", ENEMY_CONFIG[boss.kind].name + " · " + Math.ceil(boss.hp) + " / " + boss.maxHp);
-    }
+    this.showLabel("boss-status", false);
+    this.battleUi.showBoss(this.screen === "playing" && !this.paused && !this.gmPanelOpen && !this.adRequesting ? boss ?? null : null,
+      this.screen === "playing" && !this.paused && !this.gmPanelOpen && !this.adRequesting ? this.bossCue : null);
     for (const key of this.labels.keys()) if (key.startsWith("home-")) this.showLabel(key, false);
     this.setLabel("level", this.level.mode === "challenge" ? text("challenge.hud") : text("ui.GameRoot.008", this.level.id, this.gmSessionActive && !this.mapReview ? "·GM" : ""));
     this.setLabel("wave", text("ui.GameRoot.009", this.wave, this.level.waves.length));
@@ -897,8 +906,21 @@ export class GameRoot extends Component {
       const win = this.screen === "win";
       this.setLabelPosition("overlayPrimary", 195, win || this.revived ? 420 : 412);
       this.setLabel("overlayTitle", win ? (this.level.mode === "challenge" ? text("challenge.win") : this.level.id === GAME_CONFIG.maxLevels ? text("ui.GameRoot.019") : text("ui.GameRoot.020")) : text("ui.GameRoot.021"));
-      this.setLabel("overlayStats", text("ui.GameRoot.022", this.defeated, this.earned));
-      this.setLabel("overlayPrimary", win ? (this.level.id < GAME_CONFIG.maxLevels ? text("ui.GameRoot.023") : text("ui.GameRoot.024")) : !this.revived ? text("ui.GameRoot.025") : text("ui.GameRoot.026"));
+      this.setLabel("overlayStats", text("result.stats", this.lives, this.level.initialLives,
+        (this.level.obstacles?.length ?? 0) - this.obstacles.length, this.level.obstacles?.length ?? 0, this.defeated, this.earned));
+      if (win) {
+        const progress = this.resultNextLevel ? text("result.open", this.resultNextLevel)
+          : this.level.mode === "adventure" && this.level.id === GAME_CONFIG.maxLevels ? text("result.complete")
+          : text("result.progress", this.wave, this.level.waves.length);
+        const details = [progress];
+        if (this.newStaffKinds.length) details.push(text("result.staff", this.newStaffKinds.length));
+        if (this.newEncounterKinds.length) details.push(text("result.collection", this.newEncounterKinds.length));
+        this.battleUi.showResult(details.join("\n"), [
+          ...this.newStaffKinds.map(k => ({name:TOWER_CONFIG[k].name,image:"menu:"+k})),
+          ...this.newEncounterKinds.map(k => ({name:ENEMY_CONFIG[k].name!,image:"menu:enemy_"+k})),
+        ]);
+      }
+      this.setLabel("overlayPrimary", win ? (this.level.id < GAME_CONFIG.maxLevels ? text("result.next", this.level.id + 1) : text("ui.GameRoot.024")) : !this.revived ? text("ui.GameRoot.025") : text("ui.GameRoot.026"));
       this.setLabel("overlayNote", !win && !this.revived ? (this.adFeedback || text("ui.GameRoot.027")) : "");
       this.setLabel("overlaySecondary", !win && !this.revived ? text("ui.GameRoot.028") : "");
     }
@@ -1007,6 +1029,7 @@ export class GameRoot extends Component {
     this.guideCue = null; this.guidePulse = 0;
     if (this.tutorial.firstWaveDelay !== null) { this.nextWaveTimer = this.tutorial.firstWaveDelay; this.toastTime = 0; }
     this.defeated = 0; this.earned = 0;
+    this.impacts = []; this.bossCue = null; this.newEncounterKinds = []; this.newStaffKinds = []; this.resultNextLevel = 0;
     this.damageFlash = 0; this.battleFeedbackTime = 0; this.battleFeedbackText = "";
   }
 
@@ -1016,7 +1039,6 @@ export class GameRoot extends Component {
     this.damageFlash = Math.max(0, this.damageFlash - dt);
     this.battleFeedbackTime = Math.max(0, this.battleFeedbackTime - dt);
     this.towers.forEach((tower) => { tower.recoil = Math.max(0, tower.recoil - dt); });
-    this.obstacles.forEach((obstacle) => { obstacle.hitFlash = Math.max(0, obstacle.hitFlash - dt); });
     // 准备倒计时由update按真实时间推进，不在倍速子步内重复扣减。
     if (this.inWave && this.queue.length > 0) {
       this.spawnTimer -= dt;
@@ -1029,7 +1051,7 @@ export class GameRoot extends Component {
     // 敌人只保存“沿路线行进的距离”，不同关卡换路线时无需改移动状态结构。
     for (let i = this.enemies.length - 1; i >= 0; i -= 1) {
       const enemy = this.enemies[i];
-      enemy.age += dt; enemy.slow = Math.max(0, enemy.slow - dt); enemy.hitFlash = Math.max(0, enemy.hitFlash - dt);
+      enemy.age += dt; enemy.slow = Math.max(0, enemy.slow - dt);
       enemy.sinceHit = (enemy.sinceHit ?? 0) + dt;
       enemy.markedTime = Math.max(0, (enemy.markedTime ?? 0) - dt);
       if (enemy.burnTime > 0) {
@@ -1096,7 +1118,16 @@ export class GameRoot extends Component {
         this.screen = "win";
         this.audio.play("win", 0.8);
         // GM 选关用于隔离测试，通关不能污染玩家的正式解锁进度。
-        if (!this.gmSessionActive && this.level.mode === "adventure") PlatformService.setMaximumInteger("night_store_unlocked_level", this.currentLevelId + 1, GAME_CONFIG.maxLevels);
+        if (!this.gmSessionActive && this.level.mode === "adventure") {
+          const previous = this.readUnlockedLevel();
+          this.collection?.refresh(previous);
+          const knownStaff = this.collection?.readState().staff ?? [];
+          PlatformService.setMaximumInteger("night_store_unlocked_level", this.currentLevelId + 1, GAME_CONFIG.maxLevels);
+          const unlocked = this.readUnlockedLevel();
+          this.collection?.refresh(unlocked);
+          this.resultNextLevel = unlocked > previous ? unlocked : 0;
+          this.newStaffKinds = (this.collection?.readState().staff ?? []).filter(kind => !knownStaff.includes(kind));
+        }
       } else {
         // 下一波保留配置的真实秒数，玩家可点击气泡提前开波。
         this.nextWaveTimer = globalNumber("nextWaveDelay");
@@ -1115,8 +1146,9 @@ export class GameRoot extends Component {
 
   private spawnEnemy(kind: EnemyKind): void {
     // 只记录正式遭遇；GM和地图评审不写图鉴存档。
-    if (!this.gmSessionActive && !this.mapReview) this.collection?.encounter(kind);
+    if (!this.gmSessionActive && !this.mapReview && this.collection?.encounter(kind)) this.newEncounterKinds.push(kind);
     const base = ENEMY_CONFIG[kind];
+    if (base.boss && !this.enemies.some(e => e.kind === kind)) this.bossCue = {kind, defeated:false, time:globalNumber("bossEntranceSeconds")};
     const hp = Math.round(base.hp * this.level.enemyHealthScale * (this.level.waves[Math.max(0, this.wave - 1)]?.healthScale ?? 1) * (1 + (this.wave - 1) * globalNumber("waveHealthGrowth")));
     const start = this.level.pathPoints[0];
     this.enemies.push({ kind, hp, maxHp: hp, speed: base.speed, reward: base.reward, radius: base.radius, color: base.color, damage: base.damage, distance: 0, x: start[0], y: start[1], age: 0, slow: 0, hitFlash: 0, burnTime: 0, burnDamage: 0, markedTime: 0, sinceHit: 0 });
@@ -1125,7 +1157,8 @@ export class GameRoot extends Component {
   private hit(shot: Shot, target: AttackTarget): void {
     const cfg = TOWER_CONFIG[shot.kind]; const damage = cfg.damage * (1 + (shot.level - 1) * globalNumber("upgradeDamage"));
     if (!this.isEnemy(target)) {
-      target.hp -= damage; target.hitFlash = 0.12;
+      target.hp -= damage; target.hitFlash = globalNumber("hitFeedbackSeconds");
+      this.addImpact(target, shot.kind);
       this.burst(target.x, target.y, cfg.shotColor, shot.kind === "bloom" ? 10 : 5);
       if (target.hp <= 0) this.clearObstacle(target);
       return;
@@ -1157,6 +1190,7 @@ export class GameRoot extends Component {
             .sort((a, b) => Math.hypot(a.x - last.x, a.y - last.y) - Math.hypot(b.x - last.x, b.y - last.y))[0];
           if (!next) break;
           visited.add(next); this.damageEnemy(next, damage * Math.pow(cfg.chainRatio, hop), shot.kind, shot.level);
+          this.addImpact(next, shot.kind, last);
           this.burst(next.x, next.y, cfg.shotColor, 4); last = next;
         }
       }
@@ -1173,7 +1207,8 @@ export class GameRoot extends Component {
     const cfg = TOWER_CONFIG[kind];
     if (cfg.shred) enemy.markedTime = cfg.markSeconds;
     enemy.hp -= damage * (enemy.markedTime > 0 ? globalNumber("markDamageRatio") : 1);
-    enemy.hitFlash = 0.12; enemy.sinceHit = 0;
+    enemy.hitFlash = globalNumber("hitFeedbackSeconds"); enemy.sinceHit = 0;
+    this.addImpact(enemy, kind);
     if (cfg.slow) {
       enemy.slow = cfg.slowBase + level * cfg.slowPerLevel;
       const partners = this.towers.filter(tower => tower.kind !== kind && Math.hypot(tower.x - enemy.x, tower.y - enemy.y) <= TOWER_CONFIG[tower.kind].range * (1 + (tower.level - 1) * globalNumber("upgradeRange"))).map(tower => tower.kind);
@@ -1208,6 +1243,42 @@ export class GameRoot extends Component {
     this.coins += enemy.reward; this.earned += enemy.reward; this.defeated += 1;
     this.audio.play("defeat", 0.26);
     this.burst(enemy.x, enemy.y, "#ffc34d", 14); this.enemies.splice(index, 1);
+    if (ENEMY_CONFIG[enemy.kind].boss && !this.enemies.some(e => e.kind === enemy.kind)) this.bossCue = {kind:enemy.kind, defeated:true, time:globalNumber("bossDefeatSeconds")};
+  }
+
+  private updateFeedback(dt: number): void {
+    for (const target of [...this.enemies, ...this.obstacles]) target.hitFlash = Math.max(0, target.hitFlash - dt);
+    for (const impact of this.impacts) impact.life -= dt;
+    this.impacts = this.impacts.filter(impact => impact.life > 0);
+    if (this.bossCue && (this.bossCue.time -= dt) <= 0) this.bossCue = null;
+  }
+
+  private addImpact(target: {x:number;y:number;radius:number}, kind: TowerKind, from?: {x:number;y:number}): void {
+    const limit = globalNumber("impactLimit");
+    if (this.impacts.length >= limit) this.impacts.splice(0, this.impacts.length - limit + 1);
+    this.impacts.push({x:target.x,y:target.y,kind,life:globalNumber("impactSeconds"),radius:target.radius,
+      ...(from ? {fromX:from.x,fromY:from.y} : {})});
+  }
+
+  private drawImpacts(g: Graphics): void {
+    for (const impact of this.impacts) {
+      const cfg = TOWER_CONFIG[impact.kind], alpha = Math.max(0, impact.life / globalNumber("impactSeconds"));
+      const radius = impact.radius * (1 - alpha / 2), x = impact.x, y = impact.y;
+      g.strokeColor = this.color(cfg.shotColor, Math.round(255 * alpha)); g.lineWidth = 2;
+      if (impact.fromX !== undefined && impact.fromY !== undefined) {
+        // 连锁轨迹连到实际受击目标，不生成额外伤害或改变索敌。
+        g.moveTo(impact.fromX, impact.fromY); g.lineTo((impact.fromX+x)/2+4, (impact.fromY+y)/2-4); g.lineTo(x,y); g.stroke();
+      } else if (cfg.projectile === "bloom" || cfg.projectile === "ember" || cfg.projectile === "mint") {
+        this.ring(g,x,y,radius,cfg.shotColor,alpha,2);
+        if (cfg.projectile === "ember") this.disc(g,x,y-4,3,cfg.shotColor,alpha);
+        if (cfg.projectile === "mint") { g.moveTo(x-radius,y);g.lineTo(x+radius,y);g.moveTo(x,y-radius);g.lineTo(x,y+radius);g.stroke(); }
+      } else {
+        const rays = cfg.projectile === "frost" ? 6 : cfg.projectile === "fan" ? 3 : 4;
+        for (let i=0;i<rays;i++) { const angle=i*Math.PI*2/rays; g.moveTo(x+Math.cos(angle)*radius/2,y+Math.sin(angle)*radius/2);g.lineTo(x+Math.cos(angle)*radius,y+Math.sin(angle)*radius); }
+        g.stroke();
+        if (cfg.projectile === "scope") this.ring(g,x,y,radius/2,cfg.shotColor,alpha,1);
+      }
+    }
   }
 
   private buildTower(spot: Spot, kind: TowerKind): void {
