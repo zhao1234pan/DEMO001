@@ -1,5 +1,29 @@
 # 测试与验收
 
+
+## 2026-10-02 验收版本1.0.1冻结
+
+- Global.xlsx只变更版本单元格D9；Global.csv、manifest与package.json同步1.0.1，其他客户端表无内容变化。
+- 19表/23预制体772节点一致性、12项导表回归、严格ES2018 TypeScript检查通过；原始表修改前后渲染核对通过。
+- 正式Web、抖音、微信构建日志均为Finished，三个实际资源包均检出1.0.1的Global内容，构建配置debug=false。Creator沿用此前环境退出码36，不能据此声称零警告；本轮以Finished与实际产物核对确认构建完成。
+- 构建证据：G:/gptwork/version-1.0.1；导表回归G:/gptwork/config-export/regression-jNOESQ。此次不改功能，沿用下方地图版本的21关完整Web通关、1728组菜单、26项引导等证据，不重复声称新跑全关卡。
+- 用户验收版本以copyright-v1.0.1标签冻结；实体设备、真实广告与平台审核待验。软著材料在另一对话更新。
+
+## 2026-10-02 地图行列与地台连续性
+
+- 20关实际截图逐张审阅；地图网格、射程与清障连通检查通过。不能用自动胜率代替视觉审阅。
+- 4视口1728组全格位菜单、12项交互、26项引导、17项战斗及12项导表门禁通过。69局冒险逻辑通关；最终完整Web21关通关，页面错误0。
+- 严格TS、19表一致性、调试/正式Web及抖音/微信构建通过；真人/真机待验。证据与测试局限见[MAP_GRID](MAP_GRID.md)。
+
+
+## 2026-10-01 菜单、重置与地图
+
+- 最终证据：G:/gptwork/menu-map-reset；[完整测试范围和限制](MENU_MAP_RESET.md)。
+- 12项实屏/1744组菜单、26项引导、4项存储、17项战斗、9项导表门禁通过；21地图射程/清障连通和20关夹层单排通过。
+- 69局冒险逻辑通关；挑战6策略5通1败；最终Web20冒险+1挑战全部自动通关，页面异常0。
+- 严格TS、调试/正式Web、抖音/微信构建通过；正式Web验证GM不加载且重置无效。实体设备与真人关卡体验待验。
+
+
 ## 2026-10-01 V1.0软著登记版本冻结
 
 - 原始Global.xlsx中的version改为1.0.0，并由项目导表工具重新生成Global.csv和manifest；19张表一致性检查、9项导表隔离回归通过。
@@ -301,7 +325,7 @@ node 'G:\gptwork\courtyard-runtime-regression.cjs'
 - GameRoot.ts SHA256：`24ef8a57a69aa9e9b5083d4b14022569f9ef2b489bd98bae48542da20639bfb8`。
 - LevelConfig.ts SHA256：`4e2d0a5a3ee536a2a343a7ac6d530f85be01e7d71126b2ff50ffbebe0c2e57d5`。
 - GameConfig.ts SHA256：`ea47d0db943ad5281abfee64c28a707e8005b1a360d73c0201ba93aab7da6bf1`。
-- 抖音主脚本77375字节，SHA256：`b5bf550a2870d826005b564b6b8fc4fc9e560059b948e26d56452fcb77e7210d`。
+- 抖音主脚本77375字节，SHA256：`b5bf550a2870d826005b564b6b8fc4fc9e560059b1744e26d56452fcb77e7210d`。
 - 辅助证据在G:\gptwork：presentation-audit-report.md/json、runtime-regression-report.md/json、ui-view-regression-report.json、test-scenery-view.cjs及creator-map-ui-web-final/mini.stdout/stderr.log；按用户要求不放C盘、不提交项目仓库。另一电脑按本文断言重建工具，不能依赖本机绝对路径产物。
 - 三个新源图及实际生成提示词、导出清单在source_assets/art/production/v2_scene；源图不进入运行包。
 

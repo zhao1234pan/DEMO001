@@ -1,5 +1,10 @@
 # 固定 UI 预制体
 
+## 2026-10-01 建造卡与GM
+
+build_card根缩放58/64，外观与热区同源；BattlePrefabView.buildSize从Prefab实际尺寸取值。gm.prefab增加Reset/Text，底部与Home并列，各150×48；资源门禁新增绑定检查。GM动态确认文字来自I18，不新增页面。
+
+
 本轮保留 0.7.0 已接受的排版、美术、菜单层级和战斗规则，将固定层级保存为 Cocos Creator 3.8.8 原生 `.prefab`。正常启动不再用代码逐项创建固定页面。文件位于 `assets/resources/ui/`，入口资源索引为 `design/tables/UiPrefab.xlsx` → `assets/resources/config/UiPrefab.csv`。
 
 ## 资源清单

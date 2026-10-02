@@ -79,7 +79,7 @@ export class CollectionProgress {
   }
 
   readState(): { readonly enemies: readonly EnemyKind[]; readonly staff: readonly TowerKind[] } {
-    return { enemies: [...this.enemies], staff: [...this.staff] };
+    return { enemies: Array.from(this.enemies), staff: Array.from(this.staff) };
   }
 
   /** 只覆盖本次运行的展示，不调用遭遇记录或写入玩家存档；正式构建不可启用。 */
@@ -87,6 +87,13 @@ export class CollectionProgress {
     if (!DEBUG) return;
     if (tab === null) this.previewTabs.clear();
     else for (const item of COLLECTION_TABS) if (tab === "all" || item.id === tab) this.previewTabs.add(item.id);
+  }
+
+  resetGmProgress(): void {
+    if (!DEBUG) return;
+    this.previewTabs.clear(); this.enemies.clear(); this.staff.clear();
+    for (const kind of ENEMY_KINDS) PlatformService.setNumber(COLLECTION_ENEMY_KEYS[kind], 0);
+    this.refresh(1);
   }
 
   isUnlocked(entry: CollectionEntry): boolean {

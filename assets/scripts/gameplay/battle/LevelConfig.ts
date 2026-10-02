@@ -20,6 +20,7 @@ export interface WaveConfig {
 
 export interface LevelConfig {
   mode: "adventure" | "challenge";
+  gridSize: number;
   id: number;
   theme?: "courtyard" | "rain" | "market" | "midnight";
   goal?: string;
@@ -41,7 +42,7 @@ onConfigsReady(() => {
   const order = (field:string) => (a:Record<string,string>,b:Record<string,string>) => numeric(a,field)-numeric(b,field);
   LEVEL_CONFIGS.splice(0,LEVEL_CONFIGS.length,...rows("Level").sort(order("id")).map(row => {
     const map = rows("Map").find(r=>r.id===row.mapId)!;
-    return { mode:row.mode as LevelConfig["mode"],id:numeric(row,"id"),title:text(row.title),goal:row.goal?text(row.goal):undefined,theme:map.theme as LevelConfig["theme"],
+    return { gridSize:numeric(map,"gridSize"),mode:row.mode as LevelConfig["mode"],id:numeric(row,"id"),title:text(row.title),goal:row.goal?text(row.goal):undefined,theme:map.theme as LevelConfig["theme"],
       initialCoins:numeric(row,"initialCoins"),initialLives:numeric(row,"initialLives"),enemyHealthScale:numeric(row,"enemyHealthScale"),enemySpeedScale:numeric(row,"enemySpeedScale"),availableTowers:row.availableTowers.split("|") as TowerKind[],
       pathPoints:rows("MapPoint").filter(r=>r.mapId===map.id).sort(order("order")).map(r=>[numeric(r,"x"),numeric(r,"y")] as MapPoint),
       towerSpots:rows("Spot").filter(r=>r.mapId===map.id).sort(order("spotIndex")).map(r=>[numeric(r,"x"),numeric(r,"y")] as MapPoint),

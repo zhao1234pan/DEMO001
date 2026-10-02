@@ -111,6 +111,15 @@ export function installConfigs(sources: Record<string, string>): void {
     if (points.length < 2 || !spots.length) throw new Error("Empty map: " + map.id);
     for (const [i,p] of points.entries()) { if (numeric(p,"order") !== i+1) throw new Error("Path order gap"); numeric(p,"x"); numeric(p,"y"); if (i && p.x !== points[i-1].x && p.y !== points[i-1].y) throw new Error("Non-orthogonal path"); }
     const coords = new Set<string>(); for (const [i,p] of spots.entries()) { if (numeric(p,"spotIndex") !== i || coords.has(p.x+","+p.y)) throw new Error("Invalid spot index/duplicate"); numeric(p,"x"); numeric(p,"y"); coords.add(p.x+","+p.y); }
+    // 格位与地台共用Map网格，导表时拒绝半格偏移、单格孤岛，避免视觉断裂再次进入游戏。
+    const step = numeric(map, "gridSize"), originX = numeric(map, "gridOriginX"), originY = numeric(map, "gridOriginY");
+    if (step <= 0) throw new Error("Invalid map grid: " + map.id);
+    for (const spot of spots) {
+      const x = numeric(spot, "x"), y = numeric(spot, "y");
+      if (Math.abs((x - originX) / step - Math.round((x - originX) / step)) > 1e-6
+        || Math.abs((y - originY) / step - Math.round((y - originY) / step)) > 1e-6) throw new Error("Off-grid spot: " + map.id + "/" + spot.spotIndex);
+      if (!spots.some(other => other !== spot && Math.abs(numeric(other, "x") - x) + Math.abs(numeric(other, "y") - y) === step)) throw new Error("Isolated spot: " + map.id + "/" + spot.spotIndex);
+    }
     const occupied = new Set<string>(); for (const o of next.Obstacle.filter(r => r.mapId === map.id)) { if (!spots.some(s=>s.spotIndex===o.spotIndex) || occupied.has(o.spotIndex)) throw new Error("Invalid obstacle spot"); if (!["crate","basket","plant"].includes(o.kind)) throw new Error("Invalid obstacle kind"); occupied.add(o.spotIndex); }
   }
   for (const level of next.Level) { const waves=next.Wave.filter(w=>w.levelId===level.id).sort((a,b)=>numeric(a,"order")-numeric(b,"order")); waves.forEach((w,i)=>{ if(numeric(w,"order")!==i+1)throw new Error("Wave order gap"); const groups=next.WaveGroup.filter(g=>g.waveId===w.id).sort((a,b)=>numeric(a,"order")-numeric(b,"order")); if(!groups.length)throw new Error("Empty wave"); groups.forEach((g,j)=>{if(numeric(g,"order")!==j+1)throw new Error("Wave group order gap");}); }); }

@@ -1,3 +1,4 @@
+import { text } from "../config/ConfigTables";
 import { Label, Node, UITransform, Vec3 } from "cc";
 import { DEBUG } from "cc/env";
 import { GAME_CONFIG, TOWER_KINDS, TowerKind } from "../gameplay/battle/GameConfig";
@@ -99,6 +100,10 @@ export class BattlePrefabView {
     this.gmEntry.active = DEBUG && !mapReview;
     uiNode(this.hud, "Footer/Shop").active = true;
   }
+  buildSize(): { width: number; height: number } {
+    const node = this.builds.get(TOWER_KINDS[0])!, size = node.getComponent(UITransform)!.contentSize;
+    return { width: size.width * node.scale.x, height: size.height * node.scale.y };
+  }
   showBuild(kind: TowerKind, x: number, y: number, affordable: boolean): void {
     const node = this.builds.get(kind)!; node.active = true; node.setPosition(x - W / 2, H / 2 - y);
     const disabled = node.getChildByName("Disabled"); if (disabled) disabled.active = !affordable;
@@ -112,10 +117,11 @@ export class BattlePrefabView {
     this.overlay = key; this.overlays.get(key)!.active = true; this.registerOverlay(key);
     for (const [name, label] of this.labels) if (name.startsWith("overlay")) labels.set(name, label);
   }
-  showGm(open: boolean, current: number): void {
+  showGm(open: boolean, current: number, resetArmed = false): void {
     if (!this.gm) return;
     this.gmEntry.active = !open;
     this.gm.active = open;
+    uiNode(this.gm, "Reset/Text").getComponent(Label)!.string = text(resetArmed ? "ui.gm.resetConfirm" : "ui.gm.reset");
     if (open) for (let id = 1; id <= GAME_CONFIG.maxLevels; id++) uiNode(this.gm, "Level" + id + "/Selected").active = current === id;
   }
   showGuide(value: string): void { this.guide.active = Boolean(value); uiNode(this.guide, "Text").getComponent(Label)!.string = value; }

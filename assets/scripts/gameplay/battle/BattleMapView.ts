@@ -22,7 +22,7 @@ export class BattleMapView {
     this.drawCourtyardFloor(level);
     this.drawRoad(level.pathPoints);
     // 同材质连通铺地和单条浅缝表达“嵌砖”，不叠底面、亮边或按键式投影。
-    this.drawJoinedSurface(level.towerSpots, palette.surface, 4);
+    this.drawJoinedSurface(level.towerSpots, palette.surface, 4, level.gridSize);
     for (const [x, y] of level.towerSpots) {
       this.fillRect(x - 19, y - 15, 38, 30, 2, palette.tile);
       g.strokeColor = this.color(palette.mark, 125); g.lineWidth = 0.8;
@@ -57,12 +57,12 @@ export class BattleMapView {
     }
   }
 
-  private drawJoinedSurface(spots: readonly MapPoint[], fill: string, radius: number): void {
+  private drawJoinedSurface(spots: readonly MapPoint[], fill: string, radius: number, gridSize: number): void {
     for (let i = 0; i < spots.length; i += 1) {
       const [x, y] = spots[i];
       for (let j = i + 1; j < spots.length; j += 1) {
         const [bx, by] = spots[j];
-        if (Math.abs(x - bx) + Math.abs(y - by) !== 50) continue;
+        if (Math.abs(x - bx) + Math.abs(y - by) !== gridSize) continue;
         this.fillRect(Math.min(x, bx) - 21, Math.min(y, by) - 17,
           Math.abs(x - bx) + 42, Math.abs(y - by) + 34, radius, fill);
       }
