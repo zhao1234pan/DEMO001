@@ -1,5 +1,9 @@
 # XLSX → 客户端 CSV 配置规范
 
+## 1.2.0 整体复盘修订
+
+本轮原始XLSX、客户端CSV、manifest、资源和Prefab均无数据变化，21表一致性通过。灼烧/减速取值仍来自Staff/Global/StaffBranch；修复到期清理及刷新算法。连发清理属于生命周期，偏好重试属于存储协议，结算动态高度取Label测量和Prefab初始锚点。未新增硬编码玩法参数或文本，未绕过导表改CSV。
+
 ## 1.2.0 进化配置
 
 目前共21张运行表。新增StaffBranch.xlsx与StaffForm.xlsx，各6条。StaffBranch维护最终战斗数值、费用、源/目标等级、弹道协议键及formKey；StaffForm维护分支归属、战斗/画像ArtFrame键、故事/特点/代价I18键、角色内排序及主体设计宽度。完整字段和语义见STAFF_BRANCH_DESIGN.md第7节。

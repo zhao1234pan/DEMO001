@@ -33,6 +33,9 @@ export class BattlePrefabView {
   private readonly footerPosition: Vec3;
   private overlay: Overlay = "pause";
   private readonly owned: Node[] = [];
+  private readonly resultSummaryPosition: Vec3;
+  private readonly resultSummaryHeight: number;
+  private readonly resultUnlockPosition: Vec3;
 
   constructor(private readonly parent: Node, private readonly assets: UiPrefabs) {
     const create = (key: string, host = parent): Node => { const node = assets.create(key, host); this.owned.push(node); return node; };
@@ -57,6 +60,10 @@ export class BattlePrefabView {
       uiNode(node,"Tradeoff").getComponent(Label)!.string=evolution.tradeoff;uiNode(node,"Cost").getComponent(Label)!.string=text("ui.evolution.costValue",evolution.cost);
     }
     for (const key of ["pause", "win", "lose", "retry"] as Overlay[]) this.overlays.set(key, create(key));
+    const result = this.overlays.get("win")!, summary = uiNode(result,"Summary");
+    this.resultSummaryPosition = summary.position.clone();
+    this.resultSummaryHeight = summary.getComponent(UITransform)!.height;
+    this.resultUnlockPosition = uiNode(result,"Unlocks").position.clone();
     this.registerOverlay("pause");
     // 原版 GM 入口在战斗弹窗上方；位置仍取自 HUD 预制体。
     this.gmEntry = uiNode(this.hud, "Footer/Gm");
@@ -151,9 +158,14 @@ export class BattlePrefabView {
   }
   showResult(summary: string, entries: Array<{name:string;image:string}>): void {
     const root = this.overlays.get("win")!;
-    uiNode(root,"Summary").getComponent(Label)!.string = summary;
+    const summaryNode = uiNode(root,"Summary"), label = summaryNode.getComponent(Label)!;
+    // 新形态较多时按实际行高向下排版，保留预制体字号，避免整段文字被缩成小字。
+    label.string = summary; label.overflow = Label.Overflow.RESIZE_HEIGHT; label.updateRenderData(true);
+    const extra = Math.max(0, summaryNode.getComponent(UITransform)!.height - this.resultSummaryHeight);
+    summaryNode.setPosition(this.resultSummaryPosition.x, this.resultSummaryPosition.y - extra / 2);
     const group = uiNode(root,"Unlocks"), slots = group.children;
     group.active = entries.length > 0;
+    group.setPosition(this.resultUnlockPosition.x, this.resultUnlockPosition.y - extra);
     slots.forEach((slot,i) => {
       const entry = entries[i]; slot.active = Boolean(entry);
       const width=slot.getComponent(UITransform)!.width, count=Math.min(entries.length,slots.length);
@@ -162,10 +174,10 @@ export class BattlePrefabView {
     });
     const shift = entries.length ? 0 : group.getComponent(UITransform)!.height;
     for (const key of ["Primary","Home"]) {
-      const marker = uiNode(root,key+"Anchor"); uiNode(root,key).setPosition(marker.position.x,marker.position.y+shift);
+      const marker = uiNode(root,key+"Anchor"); uiNode(root,key).setPosition(marker.position.x,marker.position.y+shift-extra);
     }
-    const panel=uiNode(root,"Panel"), anchor=uiNode(root,"PanelAnchor"), h=anchor.getComponent(UITransform)!.height-shift;
-    panel.setPosition(anchor.position.x,anchor.position.y+shift/2);panel.getComponent(UITransform)!.height=h;
+    const panel=uiNode(root,"Panel"), anchor=uiNode(root,"PanelAnchor"), h=anchor.getComponent(UITransform)!.height-shift+extra;
+    panel.setPosition(anchor.position.x,anchor.position.y+shift/2-extra/2);panel.getComponent(UITransform)!.height=h;
     for (const name of ["Surface","Shadow","Outline"]) { const child=panel.getChildByName(name); if(child)child.getComponent(UITransform)!.height=h; }
   }
   showGm(open: boolean, current: number, resetArmed = false): void {

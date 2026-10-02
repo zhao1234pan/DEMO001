@@ -1067,6 +1067,7 @@ export class GameRoot extends Component {
       if (enemy.burnTime > 0) {
         enemy.hp -= enemy.burnDamage * Math.min(dt, enemy.burnTime);
         enemy.burnTime = Math.max(0, enemy.burnTime - dt); enemy.sinceHit = 0;
+        if (enemy.burnTime === 0) enemy.burnDamage = 0;
 
       }
       if (enemy.hp <= 0) { this.defeatEnemyAt(i); continue; }
@@ -1077,7 +1078,7 @@ export class GameRoot extends Component {
         this.showBattleFeedback(text("ui.GameRoot.038", enemy.damage), W - 78, 92);
         this.burst(enemy.x, enemy.y, "#eb685d", 14); this.enemies.splice(i, 1);
         if (this.lives <= 0) {
-          this.lives = 0; this.screen = "lose";
+          this.lives = 0; this.screen = "lose"; this.cancelPendingAttacks();
           this.audio.play("lose", 0.82);
           if (!this.gmSessionActive && this.level.mode === "adventure") PlatformService.setMaximumInteger("night_store_best_level", this.level.id, GAME_CONFIG.maxLevels);
           return;
@@ -1116,7 +1117,7 @@ export class GameRoot extends Component {
     if (this.inWave && this.queue.length === 0 && this.enemies.length === 0) {
       this.inWave = false; const bonus = globalNumber("waveBonusBase") + this.wave * globalNumber("waveBonusStep"); this.coins += bonus; this.earned += bonus;
       if (this.wave >= this.level.waves.length) {
-        this.screen = "win";
+        this.screen = "win"; this.cancelPendingAttacks();
         this.audio.play("win", 0.8);
         // GM 选关用于隔离测试，通关不能污染玩家的正式解锁进度。
         if (!this.gmSessionActive && this.level.mode === "adventure") {
@@ -1135,6 +1136,11 @@ export class GameRoot extends Component {
         this.showToast(text("ui.GameRoot.039", bonus));
       }
     }
+  }
+
+  /** 胜负已确定或复活重开波次时，不能把旧轮次尚未发出的子弹带入下一阶段。 */
+  private cancelPendingAttacks(): void {
+    for (const tower of this.towers) { tower.burstRemaining = 0; tower.burstTimer = 0; }
   }
 
   private startWave(): void {
@@ -1226,11 +1232,16 @@ export class GameRoot extends Component {
       if (evolutionKey) {
         enemy.slows ??= {}; const old=enemy.slows[evolutionKey];
         enemy.slows[evolutionKey]={ratio:cfg.slowRatio,remaining:Math.max(old?.remaining??0,cfg.slowSeconds)};
-      } else enemy.slow = cfg.slowSeconds;
+      } else enemy.slow = Math.max(enemy.slow, cfg.slowSeconds);
       const partners = this.towers.filter(tower => tower.kind !== kind && Math.hypot(tower.x - enemy.x, tower.y - enemy.y) <= attackProfile(tower.kind,tower.level,tower.evolutionKey).range).map(tower => tower.kind);
       this.tutorial.record("combo", kind, 1, partners);
     }
-    if (cfg.burn) { enemy.burnTime = cfg.burnSeconds; enemy.burnDamage = Math.max(enemy.burnDamage ?? 0, cfg.burn * (1 + (level - 1) * globalNumber("upgradeDamage"))); }
+    if (cfg.burn) {
+      // 只在旧效果仍有效时保留较强灼烧；到期后的旧强度不能被新命中重新激活。
+      const activeDamage = enemy.burnTime > 0 ? enemy.burnDamage : 0;
+      enemy.burnTime = cfg.burnSeconds;
+      enemy.burnDamage = Math.max(activeDamage, cfg.burn * (1 + (level - 1) * globalNumber("upgradeDamage")));
+    }
   }
 
   private isEnemy(target: AttackTarget): target is Enemy {
@@ -1570,6 +1581,8 @@ export class GameRoot extends Component {
       // 复活保留布阵，清除当前波对象并重打本波，迟到回调不能复活另一局。
       this.revived = true; this.lives = Math.max(globalNumber("reviveMinLives"), Math.ceil(this.level.initialLives * globalNumber("reviveLifeRatio")));
       this.screen = "playing"; this.enemies = []; this.shots = []; this.queue = [];
+      this.cancelPendingAttacks(); this.bossCue = null; this.impacts = []; this.particles = [];
+      this.damageFlash = 0; this.battleFeedbackTime = 0;
       this.inWave = false; this.wave = Math.max(0, this.wave - 1); this.nextWaveTimer = globalNumber("reviveWaveDelay");
       this.showToast(text("ui.GameRoot.057"));
     } catch { if (!this.disposed && revision === this.battleRevision) this.adFeedback = text("ui.GameRoot.056"); }

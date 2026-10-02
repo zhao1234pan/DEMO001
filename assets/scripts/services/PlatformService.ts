@@ -39,6 +39,8 @@ export class PlatformService {
     if (pending !== undefined) {
       const upperBound = this.pendingMaximumBounds.get(key);
       if (upperBound !== undefined) this.setMaximumInteger(key, pending, upperBound);
+      // 偏好和GM重置使用覆盖语义；存储恢复后重试，不让会话新值永久悬在内存里。
+      else this.setNumber(key, pending);
       return this.lastNumbers.get(key) ?? pending;
     }
     try {
