@@ -1,5 +1,37 @@
 # 测试与验收
 
+## 1.4.0 关卡战术与全店员进化（2026-10-03）
+
+- 最终复核补正：旧首波“本关店员”仍列默认名单，会误导自选阵容；I18统一改为“第一波来客到了”，不再声称固定阵容，波次配置数值未改。重新导表、四目标构建并检查运行文本。
+
+基线135e2ea，分支codex/pc-a/tactics-full-evolution。证据目录G:/gptwork/tactics-full-evolution，最终试玩4327。
+
+| 检查 | 结果与证据 |
+| --- | --- |
+| 严格TypeScript ES2018 | 通过，Creator实际声明；git diff --check通过 |
+| 原始表、CSV、门禁 | 22表一致，28预制体938节点；config:test 22项，含新攻击字段负例 |
+| 新攻击机制 | tactics-tests.json 9项，穿透/电链上限和衰减、范围点燃、到期帧积分、标记取强、双发去重、图鉴最终值 |
+| 全16进化与旧操作 | evolution-tests.json 12项、optimization-regression.json 17项、loadout-tests.json 11项通过 |
+| 四视口形态图鉴/战斗 | evolution-browser.json 16组通过，覆盖16形态；最终文案修改后重跑，无页面错误 |
+| 设置、图鉴与GM | flow.json 24项通过 |
+| 配队与波次预告 | loadout-browser.json 32项通过 |
+| 前3关教学 | browser.json 26项通过 |
+| 拥挤布局 | expanded-layout.json 4组通过，5名新店员进化卡、同时8形态解锁结算，字体保留、按钮和内容未出屏 |
+| 正式包 | release.json 6项通过，GM入口/面板/临时预览/重置屏蔽，正常形态可收录 |
+| 完整真实Cocos Web | browser-playthrough.json 20冒险＋1挑战通关、页面错误0 |
+| 默认布阵、三档速度 | balance-regression.json 冒险69/69；挑战5/6，mixed无广告失败，与历史策略胜负一致 |
+| 代表配队 | combinations.json 17/17；重点8/10各5组、15三组、20四组 |
+| 另一侧进化 | alternate-branches.json 默认19/20、代表15/17；失败集中在终章纯偏群攻的两个阵容 |
+| 战术反例修正 | branch-counterplay.json，同阵容只将咕咕改定点，两组均通关；棉棉深冷也可改善含棉棉的组合 |
+| 变更边界 | scope-audit.json，Staff/Enemy/地图/教学/配队等13表不变；Wave/WaveGroup/Obstacle只改8/10/15/20；原六条进化既有字段未变 |
+| 最终四目标构建 | 调试Web、正式Web、抖音、微信均Finished；环境仍返回36，结合日志、产物与真实Web执行确认；未把退出码单独视为成功 |
+
+通关测试从配置初始金币和耐久出发，不注入金币/血量/强制胜利；除明确标注ads的挑战对照外不使用广告奖励。完整Web采用隔离浏览器存档，自动策略驱动真实Cocos组件，批次内省略渲染、批次间恢复并截图。机制和布局用例直接设置状态，不作为正常通关依据。
+
+另一侧路线终章失败不是卡死或缺图：选择群攻、宽覆盖、弱标记组合后，首领单体处理不足。同阵容更换咕咕进化即过；不将所有选择调成无差别必胜。自动测试不能推导真人胜率，也未穷举全部70种终章配队与布阵。实体手机触控、性能、听感和平台SDK未代验。
+
+最终只追加图鉴文本精简、每次/每轮和旧阵容提示修正后重新导表、四目标构建，并重跑进化图鉴与正式包；战斗数值未在跑关后调整。
+
 ## 1.3.0 配队与波次预告（2026-10-02）
 
 本节覆盖分支codex/pc-a/loadout-wave-preview，基线c98583e，预览4326。证据目录G:/gptwork/loadout-wave-preview。

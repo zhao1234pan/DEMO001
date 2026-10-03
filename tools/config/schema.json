@@ -253,7 +253,20 @@
       "splashOuterRatio": "float",
       "upgradeCost": "int",
       "projectile": "string",
-      "formKey": "string"
+      "formKey": "string",
+      "pierceLength": "float",
+      "pierceWidth": "float",
+      "pierceRatio": "float",
+      "chainCount": "int",
+      "chainRadius": "float",
+      "chainRatio": "float",
+      "burnDamage": "float",
+      "burnSeconds": "float",
+      "markRatio": "float",
+      "markSeconds": "float",
+      "shotColor": "string",
+      "shotSpeed": "float",
+      "laneBend": "float"
     }
   },
   "StaffForm": {

@@ -1,0 +1,188 @@
+{
+  "method": "内置 image_gen，每形态单独生成；Sharp仅Alpha裁边、等比缩放和图集打包",
+  "reference": "assets/art/gameplay/towers/atlas_staff_expansion.png",
+  "atlas": "assets/art/gameplay/towers/atlas_staff_evolution_expansion.png",
+  "atlasSha256": "7fda62561b7d6b6c4b8c1ec6be1ddf1bdf3c53838c5c274ad8b5a19a02e42f82",
+  "frames": [
+    {
+      "key": "scope_precision",
+      "source": "scope_precision.png",
+      "sha256": "066a838de1dfedfbe0623e87316aeee8856a093150c2cf535536eb89b2da311d",
+      "frame": [
+        0,
+        0,
+        256,
+        256
+      ],
+      "subject": [
+        11,
+        1,
+        233,
+        234
+      ],
+      "alpha": true
+    },
+    {
+      "key": "scope_pierce",
+      "source": "scope_pierce.png",
+      "sha256": "3cec12e81e2b9f4fa461ac7d304b7e88e6ca497de90dea2f66408f94ccfa7b34",
+      "frame": [
+        256,
+        0,
+        256,
+        256
+      ],
+      "subject": [
+        11,
+        59,
+        234,
+        176
+      ],
+      "alpha": true
+    },
+    {
+      "key": "spark_focus",
+      "source": "spark_focus.png",
+      "sha256": "da560c43c074194cbe4ab0f7b750c3e3cb237d696b7566c1b2acb02a749abbf7",
+      "frame": [
+        512,
+        0,
+        256,
+        256
+      ],
+      "subject": [
+        11,
+        39,
+        234,
+        196
+      ],
+      "alpha": true
+    },
+    {
+      "key": "spark_chain",
+      "source": "spark_chain.png",
+      "sha256": "33c1825592e1cce85274526a9e4c940b73e8456b70e1549c6715a13955ac7ce8",
+      "frame": [
+        768,
+        0,
+        256,
+        256
+      ],
+      "subject": [
+        11,
+        61,
+        234,
+        174
+      ],
+      "alpha": true
+    },
+    {
+      "key": "ember_scorch",
+      "source": "ember_scorch.png",
+      "sha256": "5fe4513527765f834b99a15e674f5f3b943c20891b7b74880c973ec77479f093",
+      "frame": [
+        0,
+        256,
+        256,
+        256
+      ],
+      "subject": [
+        11,
+        29,
+        234,
+        206
+      ],
+      "alpha": true
+    },
+    {
+      "key": "ember_burst",
+      "source": "ember_burst.png",
+      "sha256": "227068e91c28e5ad12a57541c3f0b66fb16fd09fb6d8b5de438ae02c3b7dfd26",
+      "frame": [
+        256,
+        256,
+        256,
+        256
+      ],
+      "subject": [
+        11,
+        18,
+        234,
+        217
+      ],
+      "alpha": true
+    },
+    {
+      "key": "mint_focus",
+      "source": "mint_focus.png",
+      "sha256": "d11bd00c96988572d56cdad7ad34c5b0ae1a323d54305310cd7558a06b94dfb7",
+      "frame": [
+        512,
+        256,
+        256,
+        256
+      ],
+      "subject": [
+        11,
+        6,
+        234,
+        229
+      ],
+      "alpha": true
+    },
+    {
+      "key": "mint_dual",
+      "source": "mint_dual.png",
+      "sha256": "046b6d3020429064a57b66a0cd8c7d174a1cb058327f5e195351ae9678403d8d",
+      "frame": [
+        768,
+        256,
+        256,
+        256
+      ],
+      "subject": [
+        11,
+        14,
+        234,
+        221
+      ],
+      "alpha": true
+    },
+    {
+      "key": "fan_spread",
+      "source": "fan_spread.png",
+      "sha256": "8dadf62c2512f92f9f48a8692d4fe05faa9482fbf9760a42df44050630ee4068",
+      "frame": [
+        0,
+        512,
+        256,
+        256
+      ],
+      "subject": [
+        11,
+        24,
+        234,
+        211
+      ],
+      "alpha": true
+    },
+    {
+      "key": "fan_volley",
+      "source": "fan_volley.png",
+      "sha256": "81cf8364c674dd6cd0d2e36134f2d25224d419b5856f7cdd943fc2c7f72c1243",
+      "frame": [
+        256,
+        512,
+        256,
+        256
+      ],
+      "subject": [
+        11,
+        35,
+        234,
+        200
+      ],
+      "alpha": true
+    }
+  ]
+}

@@ -97,9 +97,15 @@ export function installConfigs(sources: Record<string, string>): void {
     const burst=numeric(row,"burstCount"),gap=numeric(row,"burstGap");if(gap<0||(burst===1?gap!==0:gap<=0)||(burst-1)*gap>=numeric(row,"attackInterval"))throw new Error("Invalid burst timing");
     const slow=numeric(row,"slowSpeedRatio"),seconds=numeric(row,"slowSeconds"),outer=numeric(row,"splashOuterRatio");
     if(slow<=0||slow>1||seconds<0||(slow===1)!==(seconds===0)||outer<0||outer>1||numeric(row,"splashRadius")<0)throw new Error("Invalid evolution effect");
-    if(!next.Staff.some(r=>r.projectile===row.projectile))throw new Error("Unknown evolution projectile");
+    if(!next.Staff.some(r=>r.key===row.staffKey&&r.projectile===row.projectile))throw new Error("Unknown evolution projectile");
+    for(const field of ["pierceLength","pierceWidth","pierceRatio","chainCount","chainRadius","chainRatio","burnDamage","burnSeconds","markSeconds","laneBend"])if(numeric(row,field)<0)throw new Error("Invalid evolution effect parameter");
+    const pierce=numeric(row,"pierceLength"),chain=numeric(row,"chainCount"),burn=numeric(row,"burnDamage"),mark=numeric(row,"markRatio");
+    if((pierce===0)!==(numeric(row,"pierceRatio")===0)||numeric(row,"pierceRatio")>1)throw new Error("Invalid evolution pierce");
+    if(!Number.isInteger(chain)||chain===1||(chain===0)!==(numeric(row,"chainRadius")===0)||(chain===0)!==(numeric(row,"chainRatio")===0)||numeric(row,"chainRatio")>1)throw new Error("Invalid evolution chain");
+    if((burn===0)!==(numeric(row,"burnSeconds")===0)||mark<1||(mark===1)!==(numeric(row,"markSeconds")===0))throw new Error("Invalid evolution timed strength");
+    if(numeric(row,"shotSpeed")<=0||!/^#[0-9a-f]{6}$/i.test(row.shotColor))throw new Error("Invalid evolution projectile style");
   }
-  for(const kind of new Set(next.StaffBranch.map(r=>r.staffKey)))if(next.StaffBranch.filter(r=>r.staffKey===kind).length!==2)throw new Error("Evolution requires two choices");
+  for(const kind of next.Staff.map(r=>r.key))if(next.StaffBranch.filter(r=>r.staffKey===kind).length!==2)throw new Error("Evolution requires two choices");
   for(const kind of new Set(next.StaffBranch.map(r=>r.staffKey))){const branches=next.StaffBranch.filter(r=>r.staffKey===kind);const order=branches.map(b=>next.StaffForm.find(f=>f.key===b.formKey)!.displayOrder);if(new Set(order).size!==order.length)throw new Error("Duplicate evolution order");}
   for(const row of next.StaffForm){
     requireRef("StaffBranch","key",row.branchKey,"StaffForm");

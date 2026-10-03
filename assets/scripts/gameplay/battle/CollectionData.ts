@@ -152,5 +152,9 @@ export function evolutionTraits(e:StaffEvolution):string {
   if(e.slowSeconds>0)details.push(text("ui.evolution.slow",Math.round(e.slowRatio*100),e.slowSeconds));
   if(e.targets>1)details.push(text("ui.evolution.targets",e.targets));
   if(e.splash>0)details.push(text("ui.evolution.splash",e.splash,e.splashOuterRatio*100));
+  if(e.pierceLength>0)details.push(text("ui.evolution.pierce",e.pierceLength,Math.round(e.pierceRatio*100)));
+  if(e.chain>0)details.push(text("ui.evolution.chain",e.chain,Math.round(e.chainRatio*100)));
+  if(e.burn>0)details.push(text("ui.evolution.burn",e.burn,e.burnSeconds));
+  if(e.markRatio>1)details.push(text("ui.evolution.mark",Math.round((e.markRatio-1)*100),e.markSeconds));
   return details.join("；");
 }

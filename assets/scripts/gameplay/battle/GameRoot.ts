@@ -55,11 +55,22 @@ function configureGmButtons():void { GM_LEVEL_BUTTONS.splice(0,GM_LEVEL_BUTTONS.
   height: 46,
 }))); }
 
+interface TimedStrength { value:number; remaining:number; }
+/** 同类效果不叠加；按各自到期时刻分段结算，弱效果不能续上强效果。 */
+function advanceStrengths(effects:Record<string,TimedStrength>,dt:number):number {
+  const active=Object.values(effects).filter(effect=>effect.remaining>0);
+  const ends=Array.from(new Set([0,dt,...active.map(effect=>Math.min(dt,effect.remaining))])).sort((a,b)=>a-b);
+  let integral=0;
+  for(let i=1;i<ends.length;i++)integral+=(ends[i]-ends[i-1])*Math.max(0,...active.filter(effect=>effect.remaining>ends[i-1]).map(effect=>effect.value));
+  for(const [key,effect]of Object.entries(effects)){effect.remaining=Math.max(0,effect.remaining-dt);if(effect.remaining===0)delete effects[key];}
+  return integral;
+}
 interface Enemy {
   kind: EnemyKind; hp: number; maxHp: number; speed: number; reward: number;
   radius: number; color: string; damage: number; distance: number; x: number; y: number;
   age: number; slow: number; slows?: Record<string,{ratio:number;remaining:number}>; hitFlash: number;
   burnTime: number; burnDamage: number; markedTime: number; sinceHit: number;
+  burns?:Record<string,TimedStrength>; marks?:Record<string,TimedStrength>;
 }
 
 interface Tower {
@@ -74,7 +85,7 @@ interface Obstacle {
 
 type AttackTarget = Enemy | Obstacle;
 interface Spot { x: number; y: number; tower: Tower | null; obstacle: Obstacle | null; }
-interface Shot { evolutionKey?: string; x: number; y: number; target: AttackTarget; kind: TowerKind; level: number; speed: number; originX: number; originY: number; age: number; lane: number; }
+interface Shot { evolutionKey?: string; x: number; y: number; target: AttackTarget; kind: TowerKind; level: number; speed: number; originX: number; originY: number; age: number; lane: number; laneCount?:number; }
 interface Particle { x: number; y: number; vx: number; vy: number; size: number; color: string; life: number; maxLife: number; }
 
 @ccclass("GameRoot")
@@ -441,18 +452,18 @@ export class GameRoot extends Component {
       g.fillColor=this.color("#bdeafb"); g.moveTo(x+ux*7,y+uy*7); g.lineTo(x-uy*3,y+ux*3); g.lineTo(x-ux*5,y-uy*5); g.lineTo(x+uy*3,y-ux*3); g.close();g.fill();
       line(x-ux*13,y-uy*13,x-ux*7,y-uy*7,"#e9fbff",2);
     } else if (cfg.projectile === "scope") {
-      line(x-ux*25,y-uy*25,x+ux*5,y+uy*5,"#997a45",3); line(x-ux*17,y-uy*17,x+ux*7,y+uy*7,"#fff0b4",1.5);
+      line(x-ux*25,y-uy*25,x+ux*5,y+uy*5,cfg.shotColor,3); line(x-ux*17,y-uy*17,x+ux*7,y+uy*7,"#fff0b4",1.5);
     } else if (cfg.projectile === "spark") {
-      line(x-ux*18,y-uy*18,x-ux*10-uy*5,y-uy*10+ux*5,"#dec774",2);
+      line(x-ux*18,y-uy*18,x-ux*10-uy*5,y-uy*10+ux*5,cfg.shotColor,2);
       line(x-ux*10-uy*5,y-uy*10+ux*5,x-ux*6+uy*4,y-uy*6-ux*4,"#fff4b7",2);
-      line(x-ux*6+uy*4,y-uy*6-ux*4,x,y,"#dec774",2); this.disc(g,x,y,3,"#fff6c4");
+      line(x-ux*6+uy*4,y-uy*6-ux*4,x,y,cfg.shotColor,2); this.disc(g,x,y,3,"#fff6c4");
     } else if (cfg.projectile === "ember") {
-      for(let i=3;i>=0;i--) this.disc(g,x-ux*i*4+uy*Math.sin(shot.age*22-i)*2,y-uy*i*4-ux*Math.sin(shot.age*22-i)*2,4-i*0.7,i===0?"#fff1ae":"#ed8f55",1-i*0.2);
+      for(let i=3;i>=0;i--) this.disc(g,x-ux*i*4+uy*Math.sin(shot.age*22-i)*2,y-uy*i*4-ux*Math.sin(shot.age*22-i)*2,4-i*0.7,i===0?"#fff1ae":cfg.shotColor,1-i*0.2);
     } else if (cfg.projectile === "mint") {
-      this.ring(g,x,y,4+progress*2,"#72b99a",0.9,2); this.disc(g,x-1,y-2,1.5,"#edffe2");this.disc(g,x-ux*10,y-uy*10,2,"#a4d7b8",0.6);
+      this.ring(g,x,y,4+progress*2,cfg.shotColor,0.9,2); this.disc(g,x-1,y-2,1.5,"#edffe2");this.disc(g,x-ux*10,y-uy*10,2,"#a4d7b8",0.6);
     } else {
-      const bend = Math.sin(progress*Math.PI) * (shot.lane-1)*cfg.laneBend; x-=uy*bend;y+=ux*bend;
-      for(let i=-1;i<=1;i++) line(x-ux*8+uy*i*3,y-uy*8-ux*i*3,x+ux*4+uy*i*3,y+uy*4-ux*i*3,"#a0d8d2",2);
+      const bend = Math.sin(progress*Math.PI) * (shot.lane-((shot.laneCount ?? cfg.targets ?? 1)-1)/2)*cfg.laneBend; x-=uy*bend;y+=ux*bend;
+      for(let i=-1;i<=1;i++) line(x-ux*8+uy*i*3,y-uy*8-ux*i*3,x+ux*4+uy*i*3,y+uy*4-ux*i*3,cfg.shotColor,2);
     }
   }
 
@@ -1078,8 +1089,14 @@ export class GameRoot extends Component {
       for (const [key,effect] of Object.entries(enemy.slows ?? {})) { effect.remaining-=dt; if(effect.remaining<=0)delete enemy.slows![key]; }
       const slowRatio=Math.min(enemy.slow>0?globalNumber("slowSpeedRatio"):1,...Object.values(enemy.slows??{}).map(effect=>effect.ratio));
       enemy.sinceHit = (enemy.sinceHit ?? 0) + dt;
-      enemy.markedTime = Math.max(0, (enemy.markedTime ?? 0) - dt);
-      if (enemy.burnTime > 0) {
+      if(enemy.marks){advanceStrengths(enemy.marks,dt);enemy.markedTime=Math.max(0,...Object.values(enemy.marks).map(effect=>effect.remaining));}
+      else enemy.markedTime = Math.max(0, (enemy.markedTime ?? 0) - dt);
+      if(enemy.burns){
+        const burnDamage=advanceStrengths(enemy.burns,dt);enemy.hp-=burnDamage;
+        enemy.burnTime=Math.max(0,...Object.values(enemy.burns).map(effect=>effect.remaining));
+        enemy.burnDamage=Math.max(0,...Object.values(enemy.burns).map(effect=>effect.value));
+        if(burnDamage>0)enemy.sinceHit=0;
+      } else if (enemy.burnTime > 0) {
         enemy.hp -= enemy.burnDamage * Math.min(dt, enemy.burnTime);
         enemy.burnTime = Math.max(0, enemy.burnTime - dt); enemy.sinceHit = 0;
         if (enemy.burnTime === 0) enemy.burnDamage = 0;
@@ -1185,7 +1202,7 @@ export class GameRoot extends Component {
     const target:AttackTarget|null=candidates[0]??obstacle;if(!target)return false;
     tower.angle=Math.atan2(target.y-tower.y,target.x-tower.x);
     const targets:AttackTarget[]=this.isEnemy(target)?candidates.slice(0,cfg.targets??1):[target];
-    for(const [lane,chosen]of targets.entries())this.shots.push({x:tower.x+(Math.cos(tower.angle)<0?-12:12),y:tower.y-5,target:chosen,kind:tower.kind,level:tower.level,evolutionKey:tower.evolutionKey,speed:cfg.shotSpeed,originX:tower.x,originY:tower.y-5,age:0,lane});
+    for(const [lane,chosen]of targets.entries())this.shots.push({x:tower.x+(Math.cos(tower.angle)<0?-12:12),y:tower.y-5,target:chosen,kind:tower.kind,level:tower.level,evolutionKey:tower.evolutionKey,speed:cfg.shotSpeed,originX:tower.x,originY:tower.y-5,age:0,lane,laneCount:targets.length});
     tower.recoil=0.11;this.audio.play(tower.kind==="frost"?"frost":tower.kind==="bloom"||tower.kind==="ember"?"bloom":"sprout",tower.kind==="bloom"?0.24:0.18);return true;
   }
 
@@ -1214,7 +1231,7 @@ export class GameRoot extends Component {
           const ex = enemy.x - target.x, ey = enemy.y - target.y;
           const forward = (ex * dx + ey * dy) / length;
           if (forward > 0 && forward <= cfg.pierceLength && Math.abs(ex * dy - ey * dx) / length <= enemy.radius + cfg.pierceWidth) {
-            this.damageEnemy(enemy, damage * cfg.pierceRatio, shot.kind, shot.level); this.burst(enemy.x, enemy.y, cfg.shotColor, 3);
+            this.damageEnemy(enemy, damage * cfg.pierceRatio, shot.kind, shot.level, shot.evolutionKey); this.burst(enemy.x, enemy.y, cfg.shotColor, 3);
           }
         }
       }
@@ -1224,7 +1241,7 @@ export class GameRoot extends Component {
           const next = this.enemies.filter(enemy => !visited.has(enemy) && enemy.hp > 0 && Math.hypot(enemy.x - last.x, enemy.y - last.y) <= cfg.chainRadius)
             .sort((a, b) => Math.hypot(a.x - last.x, a.y - last.y) - Math.hypot(b.x - last.x, b.y - last.y))[0];
           if (!next) break;
-          visited.add(next); this.damageEnemy(next, damage * Math.pow(cfg.chainRatio, hop), shot.kind, shot.level);
+          visited.add(next); this.damageEnemy(next, damage * Math.pow(cfg.chainRatio, hop), shot.kind, shot.level, shot.evolutionKey);
           this.addImpact(next, shot.kind, last);
           this.burst(next.x, next.y, cfg.shotColor, 4); last = next;
         }
@@ -1237,11 +1254,15 @@ export class GameRoot extends Component {
     }
   }
 
-  /** 标记使全队伤害提高25%；灼烧不叠层，只刷新并保留较强伤害。 */
+  /** 标记增强全队直击伤害；同类标记/灼烧取当前最强值，各自独立到期。 */
   private damageEnemy(enemy: Enemy, damage: number, kind: TowerKind, level: number, evolutionKey?: string): void {
     const cfg = attackProfile(kind,level,evolutionKey);
-    if (cfg.shred) enemy.markedTime = cfg.markSeconds;
-    enemy.hp -= damage * (enemy.markedTime > 0 ? globalNumber("markDamageRatio") : 1);
+    if (cfg.shred) {
+      enemy.marks ??= {};enemy.marks[evolutionKey ?? kind+":"+level]={value:cfg.markRatio,remaining:cfg.markSeconds};
+      enemy.markedTime=Math.max(...Object.values(enemy.marks).map(effect=>effect.remaining));
+    }
+    const markRatio=enemy.marks ? Math.max(1,...Object.values(enemy.marks).filter(effect=>effect.remaining>0).map(effect=>effect.value)) : (enemy.markedTime>0?globalNumber("markDamageRatio"):1);
+    enemy.hp -= damage * markRatio;
     enemy.hitFlash = globalNumber("hitFeedbackSeconds"); enemy.sinceHit = 0;
     this.addImpact(enemy, kind);
     if (cfg.slow) {
@@ -1253,10 +1274,9 @@ export class GameRoot extends Component {
       this.tutorial.record("combo", kind, 1, partners);
     }
     if (cfg.burn) {
-      // 只在旧效果仍有效时保留较强灼烧；到期后的旧强度不能被新命中重新激活。
-      const activeDamage = enemy.burnTime > 0 ? enemy.burnDamage : 0;
-      enemy.burnTime = cfg.burnSeconds;
-      enemy.burnDamage = Math.max(activeDamage, cfg.burn * (1 + (level - 1) * globalNumber("upgradeDamage")));
+      enemy.burns ??= {};enemy.burns[evolutionKey ?? kind+":"+level]={value:cfg.burn,remaining:cfg.burnSeconds};
+      enemy.burnTime=Math.max(...Object.values(enemy.burns).map(effect=>effect.remaining));
+      enemy.burnDamage=Math.max(...Object.values(enemy.burns).map(effect=>effect.value));
     }
   }
 

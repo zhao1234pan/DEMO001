@@ -139,3 +139,12 @@ UiPrefab是第18张表。config:export同步Prefab内I18预览与ArtFrame切片�
 ## 前三关引导配置
 
 新增Tutorial为第19张表，6条动作配置；字段、完成规则、持久化与验证见TUTORIAL.md。I18和UiPrefab同步，23个预制体。动作/存储键为技术协议；detail.prefab/LayoutSpacing管理信息弹窗几何，描边厚度/圆角与行高排列属于引擎表现例外。
+
+## 1.4.0 全店员进化配置
+
+- StaffBranch补齐16条分支，校验每个Staff恰有两条，StaffForm与ArtFrame引用一一对应。
+- 新增pierceLength/pierceWidth/pierceRatio控制贯穿；chainCount（含首目标）、chainRadius/chainRatio控制电链；burnDamage为最终每秒灼烧、burnSeconds为独立持续时间；markRatio为直击伤害倍率、markSeconds为持续时间。
+- shotColor/shotSpeed/laneBend控制分支弹道颜色、速度和多目标弧线幅度。禁用穿透/链/灼烧时相关倍率或时长必须为0；禁用标记为倍率1且时长0。
+- 原六分支写入明确的禁用值及原弹道参数，不能用缺省数值掩盖漏导字段。新字段、原始表、schema、运行时和共享校验器一起提交。
+- 状态独立计时、取强、到期分段积分为算法；目标槽居中属于既有几何例外，无新业务硬编码。新增美术引用与文本均来自表。
+- 重点关8/10/15/20的Wave/WaveGroup/Obstacle调整见TACTICS_FULL_EVOLUTION。基础Staff/Enemy/地图与教学表不变。
