@@ -6,7 +6,7 @@ import { LevelConfig, WaveConfig } from "./LevelConfig";
 export function loadoutRule(id:number){return rows("LevelLoadout").find(r=>numeric(r,"levelId")===id)!;}
 export function loadoutCandidates(id:number,unlocked:number):TowerKind[]{
   const row=loadoutRule(id),pool=row.candidateStaff.split("|");
-  return rows("Staff").filter(s=>pool.includes(s.key)&&numeric(s,"unlockLevel")<=unlocked)
+  return rows("Staff").filter(s=>pool.includes(s.key)&&(numeric(s,"unlockLevel")<=unlocked||rows("ChallengeRule").some(c=>Number(c.levelId)===id&&c.allowAllStaff==="1")))
     .sort((a,b)=>numeric(a,"displayOrder")-numeric(b,"displayOrder")).map(s=>s.key as TowerKind);
 }
 export function staffRole(kind:TowerKind):string{return text(rows("Staff").find(s=>s.key===kind)!.roleKey);}
@@ -33,5 +33,5 @@ export function wavePreview(wave:WaveConfig):EnemyPreview[]{
   const counts=new Map<EnemyKind,number>();for(const kind of wave.enemies)counts.set(kind,(counts.get(kind)??0)+1);
   return Array.from(counts,([kind,count])=>({kind,count,name:ENEMY_CONFIG[kind].name!,imageKey:rows("Collection").find(r=>r.kind===kind&&r.tab!=="staff")!.imageKey,boss:ENEMY_CONFIG[kind].boss??""}));
 }
-export function levelPreview(level:LevelConfig):EnemyPreview[]{return wavePreview({enemies:level.waves.reduce<EnemyKind[]>((all,w)=>all.concat(w.enemies),[]),healthScale:1,spawnInterval:1});}
+export function levelPreview(level:LevelConfig):EnemyPreview[]{return wavePreview({enemies:level.waves.reduce<EnemyKind[]>((all,w)=>all.concat(w.enemies),[]),healthScale:1,bossHealthScale:1,spawnInterval:1});}
 export function bossWaveText(level:LevelConfig):string{return level.waves.map((w,i)=>wavePreview(w).filter(e=>e.boss).map(e=>text("ui.loadout.boss",i+1,e.name)).join("、")).filter(Boolean).join("\n");}

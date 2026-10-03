@@ -202,10 +202,10 @@ export class PrefabGameMenuView {
   }
   private preparation(page:Node):void {
     const id=this.preparationId,level=getLevelConfig(id),pool=loadoutCandidates(id,this.unlocked),count=requiredLoadoutSize(id,this.unlocked);
-    this.bind(page,"Back",()=>this.navigate("levels"));uiText(page,"Title",text("ui.loadout.title"));
+    this.bind(page,"Back",()=>this.navigate(level.mode==="challenge"?"home":"levels"));uiText(page,"Title",text(level.mode==="challenge"?"challenge.loadout":"ui.loadout.title"));
     uiText(page,"LevelTitle",level.title);uiText(page,"Stats",text("ui.loadout.stats",level.initialCoins,level.waves.length));uiText(page,"Boss",bossWaveText(level));
     const map=uiNode(page,"Map");uiColor(map,"Thumbnail",levelTheme(level).ground);this.routePreview(map,level,true);
-    uiText(page,"EnemyTitle",text("ui.loadout.enemies"));const enemies=levelPreview(level),enemySlots=uiNode(page,"Enemies").children;
+    uiText(page,"EnemyTitle",text("ui.loadout.enemies"));const enemies=levelPreview(level).filter(e=>level.mode!=="challenge"||!e.boss),enemySlots=uiNode(page,"Enemies").children;
     enemySlots.forEach((slot,i)=>{const e=enemies[i];slot.active=Boolean(e);if(!e)return;this.assets.bindImage(uiNode(slot,"Icon"),"menu:"+e.imageKey);uiText(slot,"Name",e.name);});
     uiText(page,"SelectedTitle",text("ui.loadout.selected",this.selection.length,count));uiText(page,"Default/Text",text("ui.loadout.default"));
     this.bind(page,"Default",()=>{this.selection=defaultLoadout(id).filter(k=>pool.includes(k));this.replacementSlot=-1;this.selectionHint="";});
@@ -236,9 +236,9 @@ export class PrefabGameMenuView {
     const page = this.dialogs.get(dialog.kind === "notice" ? "notice" : "detail")!; page.active = true;
     this.bind(page, "Close", () => { this.dialog = null; }, true);
     if (dialog.kind === "notice") { uiText(page, "Title", dialog.title); uiText(page, "Body", dialog.text); return; }
-    const entry=dialog.entry,ownerKnown=this.collection.isUnlocked(entry),choices=entry.staffKind?evolutionChoices(entry.staffKind):[];
+    const entry=dialog.entry,trial=this.page==="loadout"&&getLevelConfig(this.preparationId).mode==="challenge"&&Boolean(entry.staffKind),ownerKnown=trial||this.collection.isUnlocked(entry),choices=entry.staffKind?evolutionChoices(entry.staffKind):[];
     const evolution=choices.length&&this.detailLevel>1?choices[this.detailLevel-2]:undefined;
-    const unlocked=ownerKnown&&(!evolution||this.collection.isEvolutionUnlocked(evolution.key));
+    const unlocked=ownerKnown&&(trial||!evolution||this.collection.isEvolutionUnlocked(evolution.key));
     uiText(page,"Title",unlocked?(evolution?text("ui.evolution.name",entry.name,evolution.name):entry.name):text("ui.evolution.locked"));
     this.assets.bindImage(uiNode(page,"Portrait"),"menu:"+(evolution?.imageKey??entry.imageKey),!unlocked);
     uiNode(page,"Known").active=unlocked;uiNode(page,"Unknown").active=!unlocked;
@@ -246,7 +246,7 @@ export class PrefabGameMenuView {
     for(const level of [1,2,3]){
       const key="Level"+level,button=uiNode(page,key);button.active=ownerKnown&&Boolean(entry.staffKind);
       if(!button.active)continue;
-      const e=choices[level-2],known=!e||this.collection.isEvolutionUnlocked(e.key);
+      const e=choices[level-2],known=trial||!e||this.collection.isEvolutionUnlocked(e.key);
       const title=choices.length?(level===1?text("ui.evolution.base"):known?e.name:text("ui.evolution.locked")):text(["ui.opt.staffLevel1","ui.opt.staffLevel2","ui.opt.staffLevel3"][level-1]);
       uiText(button,"Text",title);this.assets.bindImage(uiNode(button,"Icon"),"menu:"+(e?.imageKey??entry.imageKey),!known);
       uiColor(button,"Surface",this.detailLevel===level?"#96bb77":"#efe7c8");this.bind(page,key,()=>{this.detailLevel=level;},true);

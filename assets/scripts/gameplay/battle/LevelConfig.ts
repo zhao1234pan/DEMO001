@@ -13,6 +13,7 @@ export interface ObstacleConfig {
 
 export interface WaveConfig {
   healthScale: number;
+  bossHealthScale:number;
   enemies: EnemyKind[];
   spawnInterval: number;
   announcement?: string;
@@ -47,7 +48,7 @@ onConfigsReady(() => {
       pathPoints:rows("MapPoint").filter(r=>r.mapId===map.id).sort(order("order")).map(r=>[numeric(r,"x"),numeric(r,"y")] as MapPoint),
       towerSpots:rows("Spot").filter(r=>r.mapId===map.id).sort(order("spotIndex")).map(r=>[numeric(r,"x"),numeric(r,"y")] as MapPoint),
       obstacles:rows("Obstacle").filter(r=>r.mapId===map.id).map(r=>({spotIndex:numeric(r,"spotIndex"),kind:r.kind as ObstacleKind,hp:numeric(r,"hp"),reward:numeric(r,"reward")})),
-      waves:rows("Wave").filter(r=>r.levelId===row.id).sort(order("order")).map(w=>({healthScale:numeric(w,"healthScale"),spawnInterval:numeric(w,"spawnInterval"),announcement:w.announcement?text(w.announcement):undefined,enemies:rows("WaveGroup").filter(g=>g.waveId===w.id).sort(order("order")).reduce<EnemyKind[]>((all,g)=>all.concat(Array.from({length:numeric(g,"count")},()=>g.enemy as EnemyKind)),[])})),
+      waves:rows("Wave").filter(r=>r.levelId===row.id).sort(order("order")).map(w=>({healthScale:numeric(w,"healthScale"),bossHealthScale:numeric(w,"bossHealthScale"),spawnInterval:numeric(w,"spawnInterval"),announcement:w.announcement?text(w.announcement):undefined,enemies:rows("WaveGroup").filter(g=>g.waveId===w.id).sort(order("order")).reduce<EnemyKind[]>((all,g)=>all.concat(Array.from({length:numeric(g,"count")},()=>g.enemy as EnemyKind)),[])})),
     };
   }));
 });

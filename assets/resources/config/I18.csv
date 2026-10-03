@@ -163,7 +163,7 @@ id,key,zhCN
 161,ui.GameMenuView.003,冒险模式
 162,ui.GameMenuView.004,已解锁 {p0} / {p1} 关
 163,ui.GameMenuView.005,挑战模式
-164,ui.GameMenuView.006,固定体验关 · 限定4名店员
+164,ui.GameMenuView.006,15波夜班 · 自选4名店员
 165,ui.GameMenuView.007,挑战模式
 166,ui.GameMenuView.008,挑战模式暂未开放。
 167,ui.GameMenuView.009,游戏图鉴
@@ -272,13 +272,13 @@ id,key,zhCN
 269,ui.opt.staffLevel2,2级
 270,ui.opt.staffLevel3,3级
 271,ui.opt.gold,{p0}金币
-272,challenge.title,夜班极限挑战
-273,challenge.goal,限定店员搭配，守住最后一班
-274,challenge.bossWave,首领来袭，准备集中火力！
-275,challenge.hud,挑战体验关
-276,challenge.win,挑战守护完成！
+272,challenge.title,夜班加时赛
+273,challenge.goal,守住15波来客
+274,challenge.bossWave,首领来访
+275,challenge.hud,夜班加时赛
+276,challenge.win,夜班挑战完成！
 277,challenge.return,返回首页
-278,challenge.enter,固定挑战：棉棉、布丁、咕咕、薄荷
+278,challenge.enter,夜班加时赛
 279,ui.opt.startWave,开始下一波
 280,ui.gm.enemies,解锁怪物
 281,ui.gm.bosses,解锁 BOSS
@@ -445,3 +445,82 @@ id,key,zhCN
 439,wave.1503.announcement,来客开始增多
 440,wave.2002.announcement,厚实来客随后赶到
 441,wave.2003.announcement,快客混进了队伍
+442,challenge.pick,选一份夜班补给
+443,challenge.pickCount,第 {p0} / {p1} 次补给
+444,challenge.refresh,免费换一批（{p0}）
+445,challenge.refreshEmpty,本局换卡已用完
+446,challenge.inventory,本局强化 {p0}
+447,challenge.close,返回战斗
+448,challenge.exit,结束本局
+449,challenge.empty,本局还没有强化
+450,challenge.result,抵达第 {p0} / {p1} 波 · 获得 {p2} 项强化
+451,challenge.loadout,夜班加时赛 · 选择店员
+452,challenge.category.S,店员
+453,challenge.category.G,全局
+454,challenge.category.E,经济
+455,challenge.category.X,特殊
+456,challenge.category.F,趣味
+457,perk.S01.name,三连发
+458,perk.S01.desc,豆包每第三轮攻击改为三连发，每发造成70%伤害。
+459,perk.S02.name,冷气外送
+460,perk.S02.desc,被减速的来客被击败时，将当前减速传给80范围内至多2名来客，持续1.5秒。
+461,perk.S03.name,双响礼花
+462,perk.S03.desc,布丁每第三轮攻击的爆点会在0.35秒后再爆一次，造成80%伤害。
+463,perk.S04.name,远处加急
+464,perk.S04.desc,咕咕离目标越远伤害越高，在原射程边缘达到额外60%。
+465,perk.S05.name,电流返工
+466,perk.S05.desc,栗栗每第三轮攻击多放出一条电链，造成60%伤害。
+467,perk.S06.name,余温四散
+468,perk.S06.desc,燃烧中的来客被击败时，对65范围内其他来客造成其每秒灼烧伤害200%的伤害。
+469,perk.S07.name,接班标记
+470,perk.S07.desc,被标记的来客被击败后，将标记传给100范围内至多2名来客，持续2秒，最多传递3代。
+471,perk.S08.name,回旋小风
+472,perk.S08.desc,啾啾的每枚风弹命中后，弹向65范围内另一名来客，造成60%伤害。
+473,perk.G01.name,开门冲刺
+474,perk.G01.desc,每波开始后的6秒内，全体攻击间隔缩短35%。
+475,perk.G02.name,邻柜帮忙
+476,perk.G02.desc,90范围内有其他种类店员时，伤害提高25%。
+477,perk.G03.name,独当一面
+478,perk.G03.desc,90范围内没有其他店员时，伤害提高50%，射程缩短10%。
+479,perk.G04.name,满满收银台
+480,perk.G04.desc,每持有100金币，全体伤害提高10%，最多提高40%。
+481,perk.G05.name,整齐交班
+482,perk.G05.desc,上一波没有漏客时，本波伤害提高25%，射程提高15%。
+483,perk.G06.name,全员到岗
+484,perk.G06.desc,所选4种店员全部在场时，全体伤害提高35%。
+485,perk.E01.name,备用金
+486,perk.E01.desc,立即获得200金币。
+487,perk.E02.name,夜班利息
+488,perk.E02.desc,接下来5次清波，按清波奖金到账前的金币获得15%利息，每次最多75金币。
+489,perk.E03.name,新柜补贴
+490,perk.E03.desc,接下来3次建造免费。免费投入不计入出售返还。
+491,perk.E04.name,进化报销
+492,perk.E04.desc,接下来2次进化免费。免费投入不计入出售返还。
+493,perk.E05.name,清仓补贴
+494,perk.E05.desc,立即获得60金币，此后每清除一件货物额外获得30金币。
+495,perk.E06.name,零钱罐
+496,perk.E06.desc,普通来客的基础金币奖励增加25%，向下取整。
+497,perk.X01.name,退货再加工
+498,perk.X01.desc,每波第一名到达店门的普通来客返回路线30%处，保留生命与状态。
+499,perk.X02.name,加固门帘
+500,perk.X02.desc,每波抵挡2点漏客伤害。
+501,perk.X03.name,门口慢行
+502,perk.X03.desc,每波前3名进入最后20%路段的普通来客，移速降低60%，持续2秒。
+503,perk.X04.name,收银开火
+504,perk.X04.desc,每累计收入100金币，全体攻击间隔缩短25%，持续4秒。出售收入不计入。
+505,perk.X05.name,货架连拆
+506,perk.X05.desc,直接清除货物时，对100范围内其他货物造成其最大生命35%的伤害。
+507,perk.X06.name,最后一位
+508,perk.X06.desc,本波来客全部出现且只剩一名时，店员直击伤害提高80%。
+509,perk.F01.name,大个子值班
+510,perk.F01.desc,每波随机一名最高等级店员变大，伤害提高80%，射程提高15%，攻击间隔增加20%。
+511,perk.F02.name,迷你夜班
+512,perk.F02.desc,全体店员变小，攻击间隔缩短25%，伤害降低10%。
+513,perk.F03.name,惊喜包裹
+514,perk.F03.desc,每击败12名来客，随机获得20金币、一次100伤害爆炸或2秒减速。每波最多3次，额外攻击不计数。
+515,perk.F04.name,夜班保龄球
+516,perk.F04.desc,全队每完成24轮攻击，从店门滚出保龄球，沿路造成100伤害，最多命中8名来客，冷却8秒。
+517,perk.F05.name,天降快递
+518,perk.F05.desc,每10秒在最靠近店门的3名来客处落下快递，0.6秒后对40范围造成80伤害。每次快递雨对同一来客只伤害一次。
+519,perk.F06.name,口袋鼓鼓
+520,perk.F06.desc,每波随机一名普通来客生命变为2倍，击败奖励变为4倍。

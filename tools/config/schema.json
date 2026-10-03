@@ -134,7 +134,8 @@
       "order": "int",
       "spawnInterval": "float",
       "announcement": "string",
-      "healthScale": "float"
+      "healthScale": "float",
+      "bossHealthScale": "float"
     }
   },
   "WaveGroup": {
@@ -291,6 +292,37 @@
       "slots": "int",
       "candidateStaff": "string",
       "defaultStaff": "string"
+    }
+  },
+  "ChallengeRule": {
+    "fields": {
+      "id": "int",
+      "levelId": "int",
+      "choiceWaves": "string",
+      "waveReward": "int",
+      "firstDelay": "float",
+      "nextDelay": "float",
+      "minIntervalRatio": "float",
+      "freeRefresh": "int",
+      "allowAllStaff": "int",
+      "cashReward": "int",
+      "freeProps": "int",
+      "reviveProgress": "float"
+    }
+  },
+  "ChallengePerk": {
+    "fields": {
+      "id": "int",
+      "key": "string",
+      "category": "string",
+      "staffKey": "string",
+      "nameKey": "string",
+      "descriptionKey": "string",
+      "iconKey": "string",
+      "params": "string",
+      "condition": "string",
+      "maxWave": "int",
+      "exclusive": "string"
     }
   }
 }

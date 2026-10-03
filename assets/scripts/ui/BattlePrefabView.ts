@@ -144,7 +144,7 @@ export class BattlePrefabView {
   evolutionRect(key:string):HitRect{return uiRect(this.evolutions.get(key)!,this.parent,W,H);}
   showEvolutions(items:Array<{evolution:StaffEvolution;x:number;y:number}>,coins:number):void{
     for(const node of this.evolutions.values())node.active=false;
-    for(const item of items){const node=this.evolutions.get(item.evolution.key)!;node.active=true;node.setPosition(item.x-W/2,H/2-item.y);uiNode(node,"Disabled").active=coins<item.evolution.cost;}
+    for(const item of items){const node=this.evolutions.get(item.evolution.key)!;node.active=true;node.setPosition(item.x-W/2,H/2-item.y);uiNode(node,"Disabled").active=coins<item.evolution.cost;uiNode(node,"Cost").getComponent(Label)!.string=text("ui.evolution.costValue",item.evolution.cost);}
   }
   showAction(action: "upgrade" | "sell", x: number, y: number, enabled: boolean): void {
     const node = action === "upgrade" ? this.upgrade : this.sell; node.active = true; node.setPosition(x - W / 2, H / 2 - y);

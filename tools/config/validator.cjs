@@ -11,7 +11,7 @@ exports.globalString = globalString;
 exports.text = text;
 exports.parseCsv = parseCsv;
 exports.installConfigs = installConfigs;
-exports.TABLE_NAMES = ["Global", "I18", "Staff", "Enemy", "Theme", "Map", "MapPoint", "Spot", "Obstacle", "Level", "Wave", "WaveGroup", "Collection", "Audio", "Decoration", "ArtAtlas", "ArtFrame", "UiPrefab", "Tutorial", "StaffBranch", "StaffForm", "LevelLoadout"];
+exports.TABLE_NAMES = ["Global", "I18", "Staff", "Enemy", "Theme", "Map", "MapPoint", "Spot", "Obstacle", "Level", "Wave", "WaveGroup", "Collection", "Audio", "Decoration", "ArtAtlas", "ArtFrame", "UiPrefab", "Tutorial", "StaffBranch", "StaffForm", "LevelLoadout", "ChallengeRule", "ChallengePerk"];
 let data = Object.create(null);
 let ready = false;
 let byKey = Object.create(null);
@@ -171,8 +171,6 @@ function installConfigs(sources) {
         }
         if (defaults.some(k => !candidates.includes(k)) || defaults.length !== Math.min(slots, candidates.length))
             throw new Error("Invalid default loadout");
-        if (level.mode === "challenge" && row.enabled !== "0")
-            throw new Error("Challenge loadout must be fixed");
     }
     for (const row of next.Wave) {
         requireRef("Level", "id", row.levelId, "Wave");
@@ -303,6 +301,53 @@ function installConfigs(sources) {
         if (!Number.isInteger(v) || v < 1 || v > Number(next.Global.find(r => r.key === "maxLevels").value))
             throw new Error("Invalid evolution gate");
     }
+    positive("Wave", ["bossHealthScale"]);
+    const perkKeys = ["S01", "S02", "S03", "S04", "S05", "S06", "S07", "S08", "G01", "G02", "G03", "G04", "G05", "G06", "E01", "E02", "E03", "E04", "E05", "E06", "X01", "X02", "X03", "X04", "X05", "X06", "F01", "F02", "F03", "F04", "F05", "F06"];
+    for (const row of next.ChallengePerk) {
+        if (!perkKeys.includes(row.key) || !['S', 'G', 'E', 'X', 'F'].includes(row.category) || !['', 'space', 'evolve', 'obstacles'].includes(row.condition))
+            throw Error('Unknown challenge effect/category/condition');
+        if (row.staffKey)
+            requireRef('Staff', 'key', row.staffKey, 'ChallengePerk');
+        for (const field of ['nameKey', 'descriptionKey'])
+            requireRef('I18', 'key', row[field], 'ChallengePerk');
+        requireRef('ArtFrame', 'ui', row.iconKey, 'ChallengePerk');
+        if (row.exclusive)
+            requireRef('ChallengePerk', 'key', row.exclusive, 'ChallengePerk');
+        const contracts = { S01: 'every|shots|ratio', S02: 'radius|count|seconds', S03: 'every|delay|ratio', S04: 'ratio', S05: 'every|ratio', S06: 'radius|ratio', S07: 'radius|count|seconds|generations', S08: 'radius|ratio', G01: 'seconds|rate', G02: 'radius|damage', G03: 'radius|damage|range', G04: 'step|damage|cap', G05: 'damage|range', G06: 'damage', E01: 'coins', E02: 'waves|ratio|cap', E03: 'charges', E04: 'charges', E05: 'coins|reward', E06: 'ratio', X01: 'progress', X02: 'shield', X03: 'count|progress|ratio|seconds', X04: 'coins|rate|seconds', X05: 'radius|ratio', X06: 'damage', F01: 'damage|range|rate|scale', F02: 'rate|damage|scale', F03: 'every|limit|coins|damage|radius|ratio|seconds', F04: 'every|damage|count|cooldown|speed|seconds|radius', F05: 'interval|count|delay|radius|damage', F06: 'hp|reward' };
+        const params = JSON.parse(row.params);
+        if (Object.keys(params).sort().join('|') !== contracts[row.key].split('|').sort().join('|'))
+            throw Error('Challenge parameter contract mismatch');
+        for (const [key, value] of Object.entries(params)) {
+            if (!Number.isFinite(value) || value <= (['rate', 'damage', 'range'].includes(key) ? -1 : 0) || Math.abs(value) > 100000)
+                throw Error('Invalid challenge parameter range');
+            if (['every', 'shots', 'count', 'generations', 'waves', 'charges', 'limit', 'coins', 'shield', 'reward'].includes(key) && !Number.isInteger(value))
+                throw Error('Invalid challenge integer parameter');
+            if (['progress', 'ratio'].includes(key) && value > 1 && !['S06'].includes(row.key))
+                throw Error('Invalid challenge ratio');
+        }
+        if (row.category !== row.key[0] || (row.category === 'S' && row.staffKey !== ['sprout', 'frost', 'bloom', 'scope', 'spark', 'ember', 'mint', 'fan'][Number(row.key.slice(1)) - 1]) || (row.category === 'S') !== Boolean(row.staffKey))
+            throw Error('Invalid staff challenge card');
+        if (row.exclusive && next.ChallengePerk.find(r => r.key === row.exclusive).exclusive !== row.key)
+            throw Error('Asymmetric challenge exclusion');
+        if (!params || Array.isArray(params) || Object.values(params).some(v => typeof v !== 'number' || !Number.isFinite(v)))
+            throw Error('Invalid challenge parameters');
+        if (!Number.isInteger(numeric(row, 'maxWave')) || numeric(row, 'maxWave') < 0)
+            throw Error('Invalid challenge eligibility');
+    }
+    if (next.ChallengePerk.length !== perkKeys.length || perkKeys.some(k => !next.ChallengePerk.some(r => r.key === k)))
+        throw Error('Missing challenge effect');
+    if (new Set(next.ChallengeRule.map(r => r.levelId)).size !== next.ChallengeRule.length)
+        throw Error('Duplicate challenge rule');
+    for (const row of next.ChallengeRule) {
+        if (!Number.isInteger(numeric(row, 'cashReward')) || numeric(row, 'cashReward') < 0 || !Number.isInteger(numeric(row, 'freeProps')) || numeric(row, 'freeProps') < 0 || numeric(row, 'reviveProgress') <= 0 || numeric(row, 'reviveProgress') >= 1)
+            throw Error('Invalid challenge supply rule');
+        requireRef('Level', 'id', row.levelId, 'ChallengeRule');
+        const waves = next.Wave.filter(w => w.levelId === row.levelId), choice = row.choiceWaves.split('|').map(Number);
+        if (next.Level.find(l => l.id === row.levelId).mode !== 'challenge' || !choice.length || choice[0] !== 0 || choice.some((v, i) => !Number.isInteger(v) || v < 0 || v >= waves.length || (i > 0 && v <= choice[i - 1])))
+            throw Error('Invalid challenge choice schedule');
+        if (!['0', '1'].includes(row.allowAllStaff) || numeric(row, 'minIntervalRatio') <= 0 || numeric(row, 'minIntervalRatio') > 1 || numeric(row, 'waveReward') < 0 || numeric(row, 'firstDelay') <= 0 || numeric(row, 'nextDelay') <= 0 || !Number.isInteger(numeric(row, 'freeRefresh')) || numeric(row, 'freeRefresh') < 0)
+            throw Error('Invalid challenge rule');
+    }
     const requiredGlobals = ["gameName", "maxLevels", "rewardAdUnitId", "version", "upgradeDamage", "upgradeRange", "upgradeRate", "upgradeCostBase", "upgradeCostStep", "maxStaffLevel", "sellRatio", "waveHealthGrowth", "waveBonusBase", "waveBonusStep", "firstWaveDelay", "nextWaveDelay", "reviveWaveDelay", "reviveMinLives", "reviveLifeRatio", "freezeSeconds", "cashBase", "cashPerLevel", "freePropCount", "slowSpeedRatio", "markDamageRatio", "musicVolume", "maxEffectSources", "toastSeconds", "challengeLevelId", "touchTravelTolerance"];
     for (const key of requiredGlobals) {
         requireRef("Global", "key", key, "Global contract");
@@ -386,8 +431,8 @@ function installConfigs(sources) {
             throw new Error("Adventure ID outside progress");
         if (level.mode === "challenge" && numeric(level, "id") <= max)
             throw new Error("Challenge overlaps adventure");
-        if (level.mode === "challenge" && (next.LevelLoadout.find(r => r.levelId === level.id).defaultStaff.split("|").length !== 4 || next.Wave.filter(w => w.levelId === level.id).length < 21))
-            throw new Error("Challenge needs four staff and 21+ waves");
+        if (level.mode === "challenge" && !next.ChallengeRule.some(r => r.levelId === level.id))
+            throw new Error("Missing challenge rule");
         if (new Set(next.LevelLoadout.find(r => r.levelId === level.id).defaultStaff.split("|")).size !== next.LevelLoadout.find(r => r.levelId === level.id).defaultStaff.split("|").length)
             throw new Error("Duplicate available staff");
         if (numeric(level, "enemySpeedScale") !== 1)
