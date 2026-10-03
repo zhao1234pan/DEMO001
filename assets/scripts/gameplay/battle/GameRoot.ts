@@ -1492,6 +1492,23 @@ export class GameRoot extends Component {
     this.showToast(text("ui.GameRoot.052"));
   }
 
+  /** 奖励只属于发起广告的那一局、那一次选择；旧回调不能给新局换卡。 */
+  private async refreshChallengeWithAd(): Promise<void> {
+    const run=this.challenge;
+    if(!run?.pending||run.refreshLeft<=0||run.refreshBusy||this.adRequesting||this.paused||this.screen!=="playing"||this.disposed)return;
+    const revision=this.battleRevision,choice=run.completedChoices.length;
+    const current=():boolean=>!this.disposed&&revision===this.battleRevision&&this.challenge===run&&run.pending&&run.completedChoices.length===choice&&this.screen==="playing";
+    this.adRequesting=true;run.refreshBusy=true;run.refreshFeedback='';
+    try {
+      const result=await PlatformService.showRewardedVideo(GAME_CONFIG.rewardAdUnitId);
+      if(!current())return;
+      if(result.simulated||result.reason){run.refreshFeedback='challenge.refreshUnavailable';return;}
+      if(!result.rewarded){run.refreshFeedback='challenge.refreshIncomplete';return;}
+      run.refresh(this.challengePort());
+    } catch { if(current())run.refreshFeedback='challenge.refreshUnavailable'; }
+    finally {run.refreshBusy=false;if(revision===this.battleRevision)this.adRequesting=false;}
+  }
+
   private async usePropWithAd(kind: PropKind): Promise<void> {
     if (this.adRequesting || this.propAdUsed[kind] || this.screen !== "playing" || this.disposed) return;
     const revision = this.battleRevision;
@@ -1584,7 +1601,7 @@ export class GameRoot extends Component {
       return;
     }
     if (this.screen === "home") { this.menu?.press(x, y); return; }
-    if(this.screen==="playing"&&!this.paused&&this.challenge&&this.challengeView?.press(x,y,this.challenge,this.challengePort(),()=>this.returnHome()))return;
+    if(this.screen==="playing"&&!this.paused&&this.challenge&&this.challengeView?.press(x,y,this.challenge,this.challengePort(),()=>void this.refreshChallengeWithAd()))return;
     if ((this.paused || this.screen !== "playing") && this.buttonHit(this.overlayHomeButton(), x, y)) {
       this.returnHome(); return;
     }

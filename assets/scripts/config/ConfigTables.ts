@@ -118,6 +118,7 @@ export function installConfigs(sources: Record<string, string>): void {
 
   positive("Wave",["bossHealthScale"]);
   const perkKeys=["S01","S02","S03","S04","S05","S06","S07","S08","G01","G02","G03","G04","G05","G06","E01","E02","E03","E04","E05","E06","X01","X02","X03","X04","X05","X06","F01","F02","F03","F04","F05","F06"];
+  if(new Set(next.ChallengePerk.map(row=>row.iconKey)).size!==next.ChallengePerk.length)throw Error('Duplicate challenge icon');
   for(const row of next.ChallengePerk){
     if(!perkKeys.includes(row.key)||!['S','G','E','X','F'].includes(row.category)||!['','space','evolve','obstacles'].includes(row.condition))throw Error('Unknown challenge effect/category/condition');
     if(row.staffKey)requireRef('Staff','key',row.staffKey,'ChallengePerk');
@@ -143,7 +144,7 @@ export function installConfigs(sources: Record<string, string>): void {
     if(!Number.isInteger(numeric(row,'cashReward'))||numeric(row,'cashReward')<0||!Number.isInteger(numeric(row,'freeProps'))||numeric(row,'freeProps')<0||numeric(row,'reviveProgress')<=0||numeric(row,'reviveProgress')>=1)throw Error('Invalid challenge supply rule');
     requireRef('Level','id',row.levelId,'ChallengeRule');const waves=next.Wave.filter(w=>w.levelId===row.levelId),choice=row.choiceWaves.split('|').map(Number);
     if(next.Level.find(l=>l.id===row.levelId)!.mode!=='challenge'||!choice.length||choice[0]!==0||choice.some((v,i)=>!Number.isInteger(v)||v<0||v>=waves.length||(i>0&&v<=choice[i-1])))throw Error('Invalid challenge choice schedule');
-    if(!['0','1'].includes(row.allowAllStaff)||numeric(row,'minIntervalRatio')<=0||numeric(row,'minIntervalRatio')>1||numeric(row,'waveReward')<0||numeric(row,'firstDelay')<=0||numeric(row,'nextDelay')<=0||!Number.isInteger(numeric(row,'freeRefresh'))||numeric(row,'freeRefresh')<0)throw Error('Invalid challenge rule');
+    if(!['0','1'].includes(row.allowAllStaff)||numeric(row,'minIntervalRatio')<=0||numeric(row,'minIntervalRatio')>1||numeric(row,'waveReward')<0||numeric(row,'firstDelay')<=0||numeric(row,'nextDelay')<=0||!Number.isInteger(numeric(row,'adRefreshPerChoice'))||numeric(row,'adRefreshPerChoice')<0)throw Error('Invalid challenge rule');
   }
   const requiredGlobals=["gameName","maxLevels","rewardAdUnitId","version","upgradeDamage","upgradeRange","upgradeRate","upgradeCostBase","upgradeCostStep","maxStaffLevel","sellRatio","waveHealthGrowth","waveBonusBase","waveBonusStep","firstWaveDelay","nextWaveDelay","reviveWaveDelay","reviveMinLives","reviveLifeRatio","freezeSeconds","cashBase","cashPerLevel","freePropCount","slowSpeedRatio","markDamageRatio","musicVolume","maxEffectSources","toastSeconds","challengeLevelId","touchTravelTolerance"];
   for(const key of requiredGlobals) { requireRef("Global","key",key,"Global contract"); const row=next.Global.find(r=>r.key===key)!; if(!["gameName","rewardAdUnitId","version"].includes(key) && (row.type!=="float" || numeric(row,"value")<0))throw new Error("Invalid global: "+key); }

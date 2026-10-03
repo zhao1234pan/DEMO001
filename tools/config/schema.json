@@ -303,7 +303,7 @@
       "firstDelay": "float",
       "nextDelay": "float",
       "minIntervalRatio": "float",
-      "freeRefresh": "int",
+      "adRefreshPerChoice": "int",
       "allowAllStaff": "int",
       "cashReward": "int",
       "freeProps": "int",

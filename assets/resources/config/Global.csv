@@ -2,7 +2,7 @@ id,key,type,value,note
 1,gameName,string,game.name,游戏名I18键
 6,maxLevels,float,20,当前关卡上限
 7,rewardAdUnitId,string,replace-with-douyin-ad-unit-id,抖音激励视频广告位
-8,version,string,1.5.0,客户端版本
+8,version,string,1.5.1,客户端版本
 9,upgradeDamage,float,0.52,升级伤害增幅
 10,upgradeRange,float,0.08,升级射程增幅
 11,upgradeRate,float,0.12,升级攻速增幅

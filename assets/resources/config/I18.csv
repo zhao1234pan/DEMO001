@@ -447,11 +447,10 @@ id,key,zhCN
 441,wave.2003.announcement,快客混进了队伍
 442,challenge.pick,选一份夜班补给
 443,challenge.pickCount,第 {p0} / {p1} 次补给
-444,challenge.refresh,免费换一批（{p0}）
-445,challenge.refreshEmpty,本局换卡已用完
+444,challenge.refresh,看广告刷新
+445,challenge.refreshEmpty,本次刷新已用完
 446,challenge.inventory,本局强化 {p0}
 447,challenge.close,返回战斗
-448,challenge.exit,结束本局
 449,challenge.empty,本局还没有强化
 450,challenge.result,抵达第 {p0} / {p1} 波 · 获得 {p2} 项强化
 451,challenge.loadout,夜班加时赛 · 选择店员
@@ -524,3 +523,8 @@ id,key,zhCN
 518,perk.F05.desc,每10秒在最靠近店门的3名来客处落下快递，0.6秒后对40范围造成80伤害。每次快递雨对同一来客只伤害一次。
 519,perk.F06.name,口袋鼓鼓
 520,perk.F06.desc,每波随机一名普通来客生命变为2倍，击败奖励变为4倍。
+521,challenge.refreshCount,本次剩余刷新 {p0}/{p1}
+522,challenge.refreshLoading,广告加载中…
+523,challenge.refreshUnavailable,广告暂不可用
+524,challenge.refreshIncomplete,未完整观看，未刷新
+525,challenge.enhanceStaff,强化 {p0}

@@ -152,10 +152,16 @@ UiPrefab是第18张表。config:export同步Prefab内I18预览与ArtFrame切片�
 ## 1.5.0 单关挑战配置
 
 - 新增 ChallengeRule、ChallengePerk，总计 24 张客户端表。原始文件在 design/tables，CSV 在 assets/resources/config；现有项目内导表工具、schema、共享校验器与 manifest 一并管理。
-- ChallengeRule：levelId 指向挑战关；choiceWaves 为严格递增的清波节点，0 表示开局；waveReward、firstDelay、nextDelay 管理经济与准备时长；minIntervalRatio 为间隔下限；freeRefresh 为整局免费换卡次数；allowAllStaff 只控制本模式试玩候选；cashReward、freeProps、reviveProgress 管理现有道具和复活参数。
+- ChallengeRule：levelId 指向挑战关；choiceWaves 为严格递增的清波节点，0 表示开局；waveReward、firstDelay、nextDelay 管理经济与准备时长；minIntervalRatio 为间隔下限；adRefreshPerChoice 为每次选择允许成功观看广告刷新的次数（1.5.1 替换 freeRefresh，当前为1）；allowAllStaff 只控制本模式试玩候选；cashReward、freeProps、reviveProgress 管理现有道具和复活参数。
 - ChallengePerk：key 为效果协议键，category 为分类，staffKey 为空表示非专属；nameKey/descriptionKey 关联 I18，iconKey 关联 ArtFrame；params 为显式 JSON 数值字段；condition 为场地可用条件；maxWave 为最晚出现节点；exclusive 为对称互斥键。
 - params 的必填键由 ConfigTables 中的效果协议校验，禁止漏字段、文本冒充数值、非整数次数、非法比例和不存在的引用。增加新的效果必须同时扩展协议、原表与客户端算法，不能仅填一个未实现的键。
 - Wave 新增 bossHealthScale。挑战使用 Enemy.hp × 本波普通或首领倍率；冒险继续采用原有公式，新增字段在冒险表中显式填 1，不参与其成长。
 - 三张候选槽、四人阵容容量、效果事件类型、随机数算法、循环/集合操作属于技术协议；卡牌参数、出现时间、文本和图标不能硬编码。保龄球圆形指孔与快递方形投影属于弹道几何，尺寸基础和作用范围来自效果参数，颜色复用 Staff 配置。固定面板布局在原生 Prefab。
 - 原型局内卡牌状态不跨会话持久化，退出即结束。冒险成长和图鉴存档不被试玩写入，配队偏好仍由 LevelLoadout 独立存储。
 - 可复用规则测试：`node tools/gameplay/test-challenge.cjs <TypeScript模块目录>`；也可在可解析 TypeScript 的环境执行 `npm run challenge:test`。不依赖引擎渲染，实际战斗和界面另行验证。
+
+## 1.5.1 强化界面与广告换卡
+
+- ChallengePerk.iconKey 逐卡引用 ArtFrame 的 perk_* 切片，禁止重复或缺失；ArtAtlas 新增 challengePerks 透明图集。staffKey 仍是专属归属依据，底栏从 Staff 名称与现有头像引用读取。category 仅参与候选池算法，不显示标签。
+- adRefreshPerChoice 在新选择节点初始化，当前1；请求中、取消、失败、模拟回调不消耗额度，成功后换三张并减一。旧局或旧节点回调失效属于生命周期协议，无新业务硬编码。
+- I18 新增广告状态、剩余次数和“强化 {p0}”；移除结束按钮文本。六张原始表、CSV与manifest同步；固定几何保存于原生Prefab。

@@ -16,7 +16,7 @@ export function challengeCards():ChallengeCard[]{return rows('ChallengePerk').ma
 /** 一局的选卡、计数与衍生攻击都在这里持有；不写入冒险成长。 */
 export class ChallengeRun {
   readonly cards=challengeCards(); readonly selected:string[]=[]; readonly choiceWaves:number[];
-  offers:string[]=[]; pending=false; browsing=false; refreshLeft:number; completedChoices:number[]=[];
+  offers:string[]=[]; pending=false; browsing=false; refreshLeft=0; refreshBusy=false; refreshFeedback=''; completedChoices:number[]=[];
   seed:number; elapsed=0;waveElapsed=0;shield=0;returned=false;slowCount=0;leaks=0;previousPerfect=false;
   freeBuild=0;freeEvolution=0;interestLeft=0;cashMeter=0;cashTime=0;killMeter=0;gifts=0;roundMeter=0;ballCooldown=0;rainTimer=0;
   giant:Tower|null=null;treasureIndex=-1;spawned=0;
@@ -24,7 +24,7 @@ export class ChallengeRun {
   private readonly balls:Array<{distance:number;remaining:number;hit:Enemy[]}>=[];
   private rainGroup=0;
   constructor(readonly rule:TableRow,readonly roster:readonly TowerKind[],seed=Math.floor(Math.random()*0x100000000)){
-    this.seed=seed>>>0||1;this.choiceWaves=rule.choiceWaves.split('|').map(Number);this.refreshLeft=numeric(rule,'freeRefresh');
+    this.seed=seed>>>0||1;this.choiceWaves=rule.choiceWaves.split('|').map(Number);
   }
   random():number{let x=this.seed;x^=x<<13;x^=x>>>17;x^=x<<5;this.seed=x>>>0;return this.seed/0x100000000;}
   has(key:string):boolean{return this.selected.includes(key);}
@@ -36,7 +36,7 @@ export class ChallengeRun {
     &&(c.condition!=='evolve'||port.towers.some(t=>t.level<globalNumber("maxStaffLevel"))||port.towers.length<rows('Spot').filter(s=>s.mapId===rows('Level').find(l=>l.id===this.rule.levelId)!.mapId).length));}
   offer(port:ChallengePort):void{
     if(this.pending||!this.choiceWaves.includes(port.wave)||this.completedChoices.includes(port.wave))return;
-    this.pending=true;this.roll(port);
+    this.pending=true;this.refreshLeft=numeric(this.rule,'adRefreshPerChoice');this.refreshFeedback='';this.roll(port);
   }
   private roll(port:ChallengePort,exclude:readonly string[]=[]):void{
     let pool=this.eligible(port).filter(c=>!exclude.includes(c.key));if(pool.length<3)pool=this.eligible(port);
@@ -44,9 +44,9 @@ export class ChallengeRun {
     while(result.length<3&&pool.length){const diverse=pool.filter(c=>!result.some(r=>r.category===c.category)),choices=diverse.length?diverse:pool;const c=choices[Math.floor(this.random()*choices.length)];result.push(c);pool=pool.filter(x=>x!==c);}
     if(result.length!==3)throw Error('挑战候选池不足');this.offers=result.map(c=>c.key);
   }
-  refresh(port:ChallengePort):boolean{if(!this.pending||this.refreshLeft<=0)return false;this.refreshLeft--;this.roll(port,this.offers);return true;}
+  refresh(port:ChallengePort):boolean{if(!this.pending||this.refreshLeft<=0)return false;this.roll(port,this.offers);this.refreshLeft--;return true;}
   choose(key:string,port:ChallengePort):boolean{
-    if(!this.pending||!this.offers.includes(key)||this.has(key))return false;
+    if(this.refreshBusy||!this.pending||!this.offers.includes(key)||this.has(key))return false;
     this.selected.push(key);this.completedChoices.push(port.wave);this.pending=false;this.offers=[];
     const p=this.p(key);if(key==='E01'||key==='E05')port.addCoins(p.coins);
     if(key==='E02')this.interestLeft=p.waves;if(key==='E03')this.freeBuild=p.charges;if(key==='E04')this.freeEvolution=p.charges;

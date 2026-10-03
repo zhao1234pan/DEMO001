@@ -1,16 +1,16 @@
 {
   "format": 1,
   "source": {
-    "ArtAtlas.xlsx": "8182e05ce39427c55c4bd4b59de250099ee5532328cb02b336a784ae0acb25e7",
-    "ArtFrame.xlsx": "6b67038353bb5831f3bd91060ba006fb108b9e7a5d6d030110aad51d774ba76b",
+    "ArtAtlas.xlsx": "dc8129f26c782efac34a0f02d575e85b6e41fffa39e28d31cf1804bbf81ec819",
+    "ArtFrame.xlsx": "226f4d5cb514375bdad765bfa31cb16251666abd3c88e8f7e62d1fb7cedbbe35",
     "Audio.xlsx": "25b2886f7cf001e8c64dd03d4c3254e3ed72160b2fab5bf8db4e24ed048fb6fe",
-    "ChallengePerk.xlsx": "0f0e7636e1789729f754bb9330e45965077a3b6f93aa3eb7ccbf68063bc69a67",
-    "ChallengeRule.xlsx": "5835d91b92105347b3e082b2dfb4c7dd9aa05c9249d5dfe3b5973712b91be0cb",
+    "ChallengePerk.xlsx": "26a937042292efbac63cbb0c11a7ba06d29760c24d59d73397b65661cf992d68",
+    "ChallengeRule.xlsx": "fb68af74328e8afc8351f272cd40d8379269e44d67e0826530c7c1bd38a980b2",
     "Collection.xlsx": "7c38036fc721bd0d6c3028f887543b74b49e789e8fdeb6355bcd90f4119d63a3",
     "Decoration.xlsx": "57d58b6fee572026db71d0dc46ef705651aed0b9b684dbb4413458a1e2f9beba",
     "Enemy.xlsx": "297bb6a48550591190e7ae763d730800528aeced656da228c202cd9f13e35b41",
-    "Global.xlsx": "79aea11432cf36479f6b6eeb84adf57f84ed2edf6031afbb4ada30fd22e56010",
-    "I18.xlsx": "31bccc1dec6885e37a610b74181008169efdcc1e551c3105f85acfa7c3649264",
+    "Global.xlsx": "ea3fa54d6f4422a433401fa3cd9c3d5bbaa56da9afa22fbd80744a96537aff08",
+    "I18.xlsx": "e4e3b6c580b8e0e45a6f43838cdd5b47bac2a64ba8ee41438c89ba847abb0548",
     "Level.xlsx": "f41f1b055b1b89c3615e764bb49d88cf2f4fbc600efca6af27442503e04d0c90",
     "LevelLoadout.xlsx": "398c951d655e793c14f2f12450a212b8bf2e373627a98354b51d9043e9b0534c",
     "Map.xlsx": "b8ae6d85c7e3a79067759f7168a1b396d435fd4eb54e314c38257737e46a2165",
@@ -27,8 +27,8 @@
     "WaveGroup.xlsx": "c04b47fb1772507a798b049ff0137ad298ceeb0ed19bf2ca618fe642b067140b"
   },
   "csv": {
-    "Global.csv": "f3fcca5cf0963c71d0a3bcaa6a5bcc864085eed072004907f5499a49f27277ec",
-    "I18.csv": "1ffb4f63b329ee5df3b69562fba2dde304ca54b9964be7126678198ec6ebf580",
+    "Global.csv": "0a46fe60f6d9e91aa34194a4d1ffecd23c149f041d32b094ddda6380bcd5480e",
+    "I18.csv": "29afcc6b6655469bc9115f428c5917ca73668ddca419e4390938af1afd6a4bc6",
     "Staff.csv": "8d82d267841254036b965c649cbc393a8671e6ff598fb786443a742eb3924002",
     "Enemy.csv": "fc0b7ca4d9575da2494d15a2101c9d6008356fa200b3c92371b45be17c740f8e",
     "Theme.csv": "9927e6999f32204ecaca79369d113c7c906d528b31a4d5fd7acd57c740ac9aff",
@@ -42,14 +42,14 @@
     "Collection.csv": "0e6212e1ec23727cef11390339ecba0074e8034692c080ef24328de0d275a66f",
     "Audio.csv": "93be1a11c96ec846b72b46d458974aa868e48e597233f5af028f138907604291",
     "Decoration.csv": "de4be03831c32cca23c1138f6f4460167991ddaec22108333e9846c32b241a02",
-    "ArtAtlas.csv": "15fbb9a5db07b63e0e4dabf2e6ed3a8f82c44b421fdd39d7becce376d3545b49",
-    "ArtFrame.csv": "9580b0c36707ff741c609f25c5df3ac19d181cf70278c8e742a91e394095dc1e",
+    "ArtAtlas.csv": "9750275937b2bdeb799dbff7a133cf0aec22b76d033750b170968df2ccf72bb9",
+    "ArtFrame.csv": "3107f90d878561a870b84b31bc1bce6a4fd57c4b5e0b84452aff8a8298fe77b5",
     "UiPrefab.csv": "5f4be4897e0d59819d0a63da003947eb9cae75c5a84f7e608e51afc2bf1ffaba",
     "Tutorial.csv": "bf66015fde8e7b6cf099e1218ca15a7510636e58986fc3c38daccdbde43ec566",
     "StaffBranch.csv": "1056f17d2d38c95a915b3f1d03a56e9d8c1fb9e76cdfe27c71fb4bbd715b8099",
     "StaffForm.csv": "78b1a020ed17ca9ad0840a7ba41cc2b6371419b4beae5e52949e7170863e971c",
     "LevelLoadout.csv": "e9d9cf6e3380f14b9f5f217c0f2c52ce27c0ebcc37d4c5a9abcafbb2fbdb2f78",
-    "ChallengeRule.csv": "9ebc9ea6e79bdb5ae945f5c32040daf67161abc635635e4d5e437ea3ff1dd9e9",
-    "ChallengePerk.csv": "3c5f7d4361331bc8c893c0fb18a83bf5cdd22a660d085672e912a4a421e28ce0"
+    "ChallengeRule.csv": "3fb8dde15ac1867fc5e3a7901b635c58ea271a16871ccc8db614993ce223dca1",
+    "ChallengePerk.csv": "2f2c8c8ee3c8c84371985c0e7b379a2622a49e5b70b5269a25e68dab98801502"
   }
 }
