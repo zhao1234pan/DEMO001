@@ -469,6 +469,9 @@ export class GameRoot extends Component {
       this.disc(g, shot.x, shot.y + 3, 4, "#66725e", 0.2);
       this.disc(g,x,y,6,"#ea8a46"); this.disc(g,x-1,y-2,3,"#ffe4a0");
     } else if (cfg.projectile === "sprout") {
+      // 三弹共享索敌，但沿各自弧线展开，避免完全重叠而看不出强化。
+      const spread=Math.sin(progress*Math.PI)*(shot.lane-((shot.laneCount??1)-1)/2)*shot.target.radius;
+      x-=uy*spread;y+=ux*spread;
       line(x-ux*9,y-uy*9,x,y,"#a4bf69",2); this.disc(g,x,y,3.8,"#d4e875"); this.disc(g,x-1,y-1,1.4,"#fffbd4");
     } else if (cfg.projectile === "frost") {
       g.fillColor=this.color("#bdeafb"); g.moveTo(x+ux*7,y+uy*7); g.lineTo(x-uy*3,y+ux*3); g.lineTo(x-ux*5,y-uy*5); g.lineTo(x+uy*3,y-ux*3); g.close();g.fill();
