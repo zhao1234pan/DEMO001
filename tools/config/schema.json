@@ -206,7 +206,8 @@
       "battle": "string",
       "menu": "string",
       "ui": "string",
-      "scenery": "string"
+      "scenery": "string",
+      "assetPath": "string"
     }
   },
   "UiPrefab": {
@@ -323,6 +324,23 @@
       "condition": "string",
       "maxWave": "int",
       "exclusive": "string"
+    }
+  },
+  "VisualSkin": {
+    "fields": {
+      "id": "int",
+      "key": "string",
+      "path": "string",
+      "group": "string",
+      "mode": "string",
+      "width": "int",
+      "height": "int",
+      "left": "int",
+      "right": "int",
+      "top": "int",
+      "bottom": "int",
+      "padding": "int",
+      "note": "string"
     }
   }
 }

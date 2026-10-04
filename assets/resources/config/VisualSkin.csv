@@ -1,0 +1,85 @@
+id,key,path,group,mode,width,height,left,right,top,bottom,padding,note
+1,disc,ui/skins/common/disc/spriteFrame,ui/skins/common,simple,128,128,0,0,0,0,0,共享可替换皮肤
+2,round_0,ui/skins/common/round_0/spriteFrame,ui/skins/common,simple,4,4,0,0,0,0,0,共享可替换皮肤
+3,round_1,ui/skins/common/round_1/spriteFrame,ui/skins/common,sliced,4,4,1,1,1,1,0,共享可替换皮肤
+4,round_1p5,ui/skins/common/round_1p5/spriteFrame,ui/skins/common,sliced,6,6,2,2,2,2,0,共享可替换皮肤
+5,round_2,ui/skins/common/round_2/spriteFrame,ui/skins/common,sliced,6,6,2,2,2,2,0,共享可替换皮肤
+6,round_2p5,ui/skins/common/round_2p5/spriteFrame,ui/skins/common,sliced,8,8,3,3,3,3,0,共享可替换皮肤
+7,round_3,ui/skins/common/round_3/spriteFrame,ui/skins/common,sliced,8,8,3,3,3,3,0,共享可替换皮肤
+8,round_4,ui/skins/common/round_4/spriteFrame,ui/skins/common,sliced,10,10,4,4,4,4,0,共享可替换皮肤
+9,round_5,ui/skins/common/round_5/spriteFrame,ui/skins/common,sliced,12,12,5,5,5,5,0,共享可替换皮肤
+10,round_6,ui/skins/common/round_6/spriteFrame,ui/skins/common,sliced,14,14,6,6,6,6,0,共享可替换皮肤
+11,round_8,ui/skins/common/round_8/spriteFrame,ui/skins/common,sliced,18,18,8,8,8,8,0,共享可替换皮肤
+12,round_10,ui/skins/common/round_10/spriteFrame,ui/skins/common,sliced,22,22,10,10,10,10,0,共享可替换皮肤
+13,round_13,ui/skins/common/round_13/spriteFrame,ui/skins/common,sliced,28,28,13,13,13,13,0,共享可替换皮肤
+14,round_14,ui/skins/common/round_14/spriteFrame,ui/skins/common,sliced,30,30,14,14,14,14,0,共享可替换皮肤
+15,round_16,ui/skins/common/round_16/spriteFrame,ui/skins/common,sliced,34,34,16,16,16,16,0,共享可替换皮肤
+16,round_20,ui/skins/common/round_20/spriteFrame,ui/skins/common,sliced,42,42,20,20,20,20,0,共享可替换皮肤
+17,outline_8_2,ui/skins/borders/outline_8_2/spriteFrame,ui/skins/borders,sliced,22,22,10,10,10,10,2,共享可替换皮肤
+18,outline_10_2,ui/skins/borders/outline_10_2/spriteFrame,ui/skins/borders,sliced,26,26,12,12,12,12,2,共享可替换皮肤
+19,outline_16_2,ui/skins/borders/outline_16_2/spriteFrame,ui/skins/borders,sliced,38,38,18,18,18,18,2,共享可替换皮肤
+20,ring,gameplay/effects/ring/spriteFrame,gameplay/effects,simple,256,256,0,0,0,0,0,共享可替换皮肤
+21,range_ring,gameplay/effects/range_ring/spriteFrame,gameplay/effects,simple,256,256,0,0,0,0,0,共享可替换皮肤
+22,shot_ring,gameplay/effects/shot_ring/spriteFrame,gameplay/effects,simple,256,256,0,0,0,0,0,共享可替换皮肤
+23,frost_shard,gameplay/projectiles/frost_shard/spriteFrame,gameplay/projectiles,simple,128,80,0,0,0,0,0,共享可替换皮肤
+24,outline_14_1p8,ui/skins/borders/outline_14_1p8/spriteFrame,ui/skins/borders,sliced,34,34,16,16,16,16,2,共享可替换皮肤
+25,shape_7c9f638f0a,ui/skins/symbols/shape_7c9f638f0a/spriteFrame,ui/skins/symbols,simple,84,16,0,0,0,0,3,Highlight，原预制体 battle_hud.prefab
+26,shape_10f273c7ff,ui/skins/symbols/shape_10f273c7ff/spriteFrame,ui/skins/symbols,simple,48,16,0,0,0,0,3,Highlight，原预制体 battle_hud.prefab
+27,shape_aa65f74e17,ui/skins/symbols/shape_aa65f74e17/spriteFrame,ui/skins/symbols,simple,56,16,0,0,0,0,3,Highlight，原预制体 battle_hud.prefab
+28,shape_174ccb03a7,ui/skins/symbols/shape_174ccb03a7/spriteFrame,ui/skins/symbols,simple,80,64,0,0,0,0,3,Heart，原预制体 battle_hud.prefab
+29,round_18,ui/skins/common/round_18/spriteFrame,ui/skins/common,sliced,38,38,18,18,18,18,0,共享可替换皮肤
+30,round_15,ui/skins/common/round_15/spriteFrame,ui/skins/common,sliced,32,32,15,15,15,15,0,共享可替换皮肤
+31,outline_5_1p8,ui/skins/borders/outline_5_1p8/spriteFrame,ui/skins/borders,sliced,16,16,7,7,7,7,2,共享可替换皮肤
+32,outline_13_1p8,ui/skins/borders/outline_13_1p8/spriteFrame,ui/skins/borders,sliced,32,32,15,15,15,15,2,共享可替换皮肤
+33,shape_84d2036dc1,ui/skins/symbols/shape_84d2036dc1/spriteFrame,ui/skins/symbols,simple,136,16,0,0,0,0,3,Highlight，原预制体 battle_hud.prefab
+34,round_9,ui/skins/common/round_9/spriteFrame,ui/skins/common,sliced,20,20,9,9,9,9,0,共享可替换皮肤
+35,outline_16_1p8,ui/skins/borders/outline_16_1p8/spriteFrame,ui/skins/borders,sliced,38,38,18,18,18,18,2,共享可替换皮肤
+36,shape_34531faf13,ui/skins/symbols/shape_34531faf13/spriteFrame,ui/skins/symbols,simple,76,16,0,0,0,0,3,Highlight，原预制体 build_card.prefab
+37,shape_c5f65c98b6,ui/skins/symbols/shape_c5f65c98b6/spriteFrame,ui/skins/symbols,simple,152,16,0,0,0,0,3,Highlight，原预制体 button.prefab
+38,round_40,ui/skins/common/round_40/spriteFrame,ui/skins/common,sliced,82,82,40,40,40,40,0,共享可替换皮肤
+39,shape_544998b285,ui/skins/symbols/shape_544998b285/spriteFrame,ui/skins/symbols,simple,42,42,0,0,0,0,2,Play，原预制体 challenge_pick.prefab
+40,round_25,ui/skins/common/round_25/spriteFrame,ui/skins/common,sliced,52,52,25,25,25,25,0,共享可替换皮肤
+41,round_12,ui/skins/common/round_12/spriteFrame,ui/skins/common,sliced,26,26,12,12,12,12,0,共享可替换皮肤
+42,round_24,ui/skins/common/round_24/spriteFrame,ui/skins/common,sliced,50,50,24,24,24,24,0,共享可替换皮肤
+43,round_11,ui/skins/common/round_11/spriteFrame,ui/skins/common,sliced,24,24,11,11,11,11,0,共享可替换皮肤
+44,shape_879420dc0b,ui/skins/symbols/shape_879420dc0b/spriteFrame,ui/skins/symbols,simple,112,112,0,0,0,0,4,Tooth0，原预制体 home.prefab
+45,shape_f3905dc24d,ui/skins/symbols/shape_f3905dc24d/spriteFrame,ui/skins/symbols,simple,112,112,0,0,0,0,4,Tooth1，原预制体 home.prefab
+46,shape_b3665c1d45,ui/skins/symbols/shape_b3665c1d45/spriteFrame,ui/skins/symbols,simple,112,112,0,0,0,0,4,Tooth2，原预制体 home.prefab
+47,shape_c40152e557,ui/skins/symbols/shape_c40152e557/spriteFrame,ui/skins/symbols,simple,112,112,0,0,0,0,4,Tooth3，原预制体 home.prefab
+48,shape_a4685d65a6,ui/skins/symbols/shape_a4685d65a6/spriteFrame,ui/skins/symbols,simple,112,112,0,0,0,0,4,Tooth4，原预制体 home.prefab
+49,shape_6e8296e572,ui/skins/symbols/shape_6e8296e572/spriteFrame,ui/skins/symbols,simple,112,112,0,0,0,0,4,Tooth5，原预制体 home.prefab
+50,shape_a886e0fc5b,ui/skins/symbols/shape_a886e0fc5b/spriteFrame,ui/skins/symbols,simple,112,112,0,0,0,0,4,Tooth6，原预制体 home.prefab
+51,shape_933e4e7edb,ui/skins/symbols/shape_933e4e7edb/spriteFrame,ui/skins/symbols,simple,112,112,0,0,0,0,4,Tooth7，原预制体 home.prefab
+52,shape_0d1d14c16e,ui/skins/symbols/shape_0d1d14c16e/spriteFrame,ui/skins/symbols,simple,48,48,0,0,0,0,4,GearRing，原预制体 home.prefab
+53,round_24p5,ui/skins/common/round_24p5/spriteFrame,ui/skins/common,sliced,52,52,25,25,25,25,0,共享可替换皮肤
+54,shape_4d22f9bb82,ui/skins/symbols/shape_4d22f9bb82/spriteFrame,ui/skins/symbols,simple,48,48,0,0,0,0,4,Ring，原预制体 level_card.prefab
+55,round_4p6,ui/skins/common/round_4p6/spriteFrame,ui/skins/common,sliced,12,12,5,5,5,5,0,共享可替换皮肤
+56,round_26,ui/skins/common/round_26/spriteFrame,ui/skins/common,sliced,54,54,26,26,26,26,0,共享可替换皮肤
+57,outline_26_1p8,ui/skins/borders/outline_26_1p8/spriteFrame,ui/skins/borders,sliced,58,58,28,28,28,28,2,共享可替换皮肤
+58,shape_68dd104b57,ui/skins/symbols/shape_68dd104b57/spriteFrame,ui/skins/symbols,simple,544,16,0,0,0,0,3,Highlight，原预制体 lose.prefab
+59,shape_f3936d303b,ui/skins/symbols/shape_f3936d303b/spriteFrame,ui/skins/symbols,simple,448,16,0,0,0,0,3,Highlight，原预制体 lose.prefab
+60,outline_24_1p8,ui/skins/borders/outline_24_1p8/spriteFrame,ui/skins/borders,sliced,54,54,26,26,26,26,2,共享可替换皮肤
+61,shape_f48e01acad,ui/skins/symbols/shape_f48e01acad/spriteFrame,ui/skins/symbols,simple,476,16,0,0,0,0,3,Highlight，原预制体 pause.prefab
+62,shape_2ec48d18f7,ui/skins/symbols/shape_2ec48d18f7/spriteFrame,ui/skins/symbols,simple,448,16,0,0,0,0,3,Highlight，原预制体 pause.prefab
+63,round_23,ui/skins/common/round_23/spriteFrame,ui/skins/common,sliced,48,48,23,23,23,23,0,共享可替换皮肤
+64,map_1,gameplay/maps/map_1/spriteFrame,gameplay/maps,simple,780,1388,0,0,0,0,0,第1关，路线来自Map/MapPoint/Spot/Theme
+65,map_2,gameplay/maps/map_2/spriteFrame,gameplay/maps,simple,780,1388,0,0,0,0,0,第2关，路线来自Map/MapPoint/Spot/Theme
+66,map_3,gameplay/maps/map_3/spriteFrame,gameplay/maps,simple,780,1388,0,0,0,0,0,第3关，路线来自Map/MapPoint/Spot/Theme
+67,map_4,gameplay/maps/map_4/spriteFrame,gameplay/maps,simple,780,1388,0,0,0,0,0,第4关，路线来自Map/MapPoint/Spot/Theme
+68,map_5,gameplay/maps/map_5/spriteFrame,gameplay/maps,simple,780,1388,0,0,0,0,0,第5关，路线来自Map/MapPoint/Spot/Theme
+69,map_6,gameplay/maps/map_6/spriteFrame,gameplay/maps,simple,780,1388,0,0,0,0,0,第6关，路线来自Map/MapPoint/Spot/Theme
+70,map_7,gameplay/maps/map_7/spriteFrame,gameplay/maps,simple,780,1388,0,0,0,0,0,第7关，路线来自Map/MapPoint/Spot/Theme
+71,map_8,gameplay/maps/map_8/spriteFrame,gameplay/maps,simple,780,1388,0,0,0,0,0,第8关，路线来自Map/MapPoint/Spot/Theme
+72,map_9,gameplay/maps/map_9/spriteFrame,gameplay/maps,simple,780,1388,0,0,0,0,0,第9关，路线来自Map/MapPoint/Spot/Theme
+73,map_10,gameplay/maps/map_10/spriteFrame,gameplay/maps,simple,780,1388,0,0,0,0,0,第10关，路线来自Map/MapPoint/Spot/Theme
+74,map_11,gameplay/maps/map_11/spriteFrame,gameplay/maps,simple,780,1388,0,0,0,0,0,第11关，路线来自Map/MapPoint/Spot/Theme
+75,map_12,gameplay/maps/map_12/spriteFrame,gameplay/maps,simple,780,1388,0,0,0,0,0,第12关，路线来自Map/MapPoint/Spot/Theme
+76,map_13,gameplay/maps/map_13/spriteFrame,gameplay/maps,simple,780,1388,0,0,0,0,0,第13关，路线来自Map/MapPoint/Spot/Theme
+77,map_14,gameplay/maps/map_14/spriteFrame,gameplay/maps,simple,780,1388,0,0,0,0,0,第14关，路线来自Map/MapPoint/Spot/Theme
+78,map_15,gameplay/maps/map_15/spriteFrame,gameplay/maps,simple,780,1388,0,0,0,0,0,第15关，路线来自Map/MapPoint/Spot/Theme
+79,map_16,gameplay/maps/map_16/spriteFrame,gameplay/maps,simple,780,1388,0,0,0,0,0,第16关，路线来自Map/MapPoint/Spot/Theme
+80,map_17,gameplay/maps/map_17/spriteFrame,gameplay/maps,simple,780,1388,0,0,0,0,0,第17关，路线来自Map/MapPoint/Spot/Theme
+81,map_18,gameplay/maps/map_18/spriteFrame,gameplay/maps,simple,780,1388,0,0,0,0,0,第18关，路线来自Map/MapPoint/Spot/Theme
+82,map_19,gameplay/maps/map_19/spriteFrame,gameplay/maps,simple,780,1388,0,0,0,0,0,第19关，路线来自Map/MapPoint/Spot/Theme
+83,map_20,gameplay/maps/map_20/spriteFrame,gameplay/maps,simple,780,1388,0,0,0,0,0,第20关，路线来自Map/MapPoint/Spot/Theme
+84,map_21,gameplay/maps/map_21/spriteFrame,gameplay/maps,simple,780,1388,0,0,0,0,0,第21关，路线来自Map/MapPoint/Spot/Theme

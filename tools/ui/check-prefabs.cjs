@@ -2,9 +2,16 @@
 const fs=require('node:fs'),path=require('node:path');
 function compressed(uuid){const h=uuid.replace(/-/g,''),chars='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';let s=h.slice(0,5);for(let i=5;i<32;i+=3){const n=parseInt(h.slice(i,i+3),16);s+=chars[n>>6]+chars[n&63];}return s;}
 function check(root,core,sync=false){
+ for(const skin of core.rows('VisualSkin')){
+  const file=path.join(root,'assets/art',skin.path.replace('/spriteFrame','.png'));
+  if(!fs.existsSync(file)||!fs.existsSync(file+'.meta'))throw Error('缺少PNG资源：'+skin.path);
+  const b=fs.readFileSync(file),meta=JSON.parse(fs.readFileSync(file+'.meta','utf8')),sf=meta.subMetas?.f9941?.userData;
+  if(b.readUInt32BE(16)!==Number(skin.width)||b.readUInt32BE(20)!==Number(skin.height)||!sf||sf.packable!==true||sf.trimType!=="none")throw Error('PNG尺寸或SpriteFrame不一致：'+skin.key);
+  for(const side of ['Left','Right','Top','Bottom'])if(sf['border'+side]!==Number(skin[side.toLowerCase()])){if(!sync)throw Error('九宫边距不一致：'+skin.key);sf['border'+side]=Number(skin[side.toLowerCase()]);fs.writeFileSync(file+'.meta',JSON.stringify(meta,null,2)+'\n');}
+ }
  const registry=core.rows('UiPrefab'),texts=new Map(core.rows('I18').map(r=>[r.key,r.zhCN])),frames=core.rows('ArtFrame'),atlases=core.rows('ArtAtlas');
  const type=name=>compressed(JSON.parse(fs.readFileSync(path.join(root,'assets/scripts/ui',name+'.ts.meta'),'utf8')).uuid);
- const textType=type('UiText'),imageType=type('UiImage'),shapeType=type('UiShape');
+ const textType=type('UiText'),imageType=type('UiImage'),skinType=type('UiSkin');
  const paths=new Set(),ids=new Set();let nodes=0,labels=0,images=0;
  for(const row of registry){
   if(paths.has(row.path))throw Error('重复预制体路径：'+row.path);paths.add(row.path);
@@ -19,10 +26,18 @@ function check(root,core,sync=false){
   let changed=false;
   function refs(value){if(!value||typeof value!=='object')return;if('__id__'in value&&(!Number.isInteger(value.__id__)||value.__id__<0||value.__id__>=data.length))throw Error('悬空Prefab引用：'+row.path);Object.values(value).forEach(refs);}
   refs(data);
+  for(const [index,o]of data.entries())if(o.node){const n=data[o.node.__id__];if(n?.__type__!=="cc.Node"||!n._components.some(r=>r.__id__===index))throw Error("组件所属节点引用错误："+row.path); }
   for(const object of data){
    if(object.__type__==='cc.Node'){nodes++;const names=(object._children||[]).map(r=>data[r.__id__]._name);if(new Set(names).size!==names.length)throw Error('同层节点重名：'+row.path+'/'+object._name);}
    if(object.__type__==='cc.Label')labels++;
-   if(object.__type__===shapeType){for(const f of ['radius','lineWidth'])if(!Number.isFinite(object[f])||object[f]<0)throw Error('非法UI形状：'+row.path);if(object.kind==='path')JSON.parse(object.points);}
+   if(object.__type__==='cc.Graphics')throw Error('禁止运行时绘制UI：'+row.path);
+   if(object.__type__===skinType){
+    const skin=core.rows('VisualSkin').find(r=>r.key===object.key);if(!skin)throw Error('缺少PNG皮肤：'+object.key);
+    const image=path.join(root,'assets/art',skin.path.replace('/spriteFrame','.png'));
+    const uuid=JSON.parse(fs.readFileSync(image+'.meta','utf8')).uuid+'@f9941';
+    if(object.previewFrame?.__uuid__!==uuid || object.padding!==Number(skin.padding)){if(!sync)throw Error('PNG皮肤预览或边距过期：'+object.key);object.previewFrame={__uuid__:uuid,__expectedType__:'cc.SpriteFrame'};object.padding=Number(skin.padding);changed=true;}
+    const node=data[object.image?.__id__];if(node?._active!==true)throw Error('皮肤子节点不能独立禁用：'+row.path);if(!node?._components.some(r=>data[r.__id__].__type__==='cc.Sprite'))throw Error('PNG未绑定Sprite：'+object.key);
+   }
    if(object.__type__===textType){
     if(!texts.has(object.key))throw Error('预制体缺少I18：'+row.path+'/'+object.key);
     const node=data[object.node.__id__],label=node._components.map(r=>data[r.__id__]).find(c=>c.__type__==='cc.Label');if(!label)throw Error('UiText未绑定Label：'+row.path);
@@ -31,10 +46,11 @@ function check(root,core,sync=false){
    if(object.__type__===imageType){
     const node=data[object.node.__id__];if(!node._components.some(r=>data[r.__id__].__type__==='cc.Sprite'))throw Error('UiImage未绑定Sprite：'+row.path);
     images++;const [domain,key]=object.frameKey.split(':'),frame=frames.find(r=>domain==='frame'?r.id===key:r[domain]===key);if(!frame)throw Error('预制体缺少图集切片：'+object.frameKey);
-    const atlas=atlases.find(r=>r.key===frame.atlas),image=path.join(root,'assets/art',atlas.path.replace('/texture','.png'));
-    const uuid=JSON.parse(fs.readFileSync(image+'.meta','utf8')).uuid+'@6c48a';
-    const stale=object.previewTexture?.__uuid__!==uuid||['x','y','width','height'].some(k=>object.previewRect?.[k]!==Number(frame[k]));
-    if(stale){if(!sync)throw Error('预制体图片预览已过期，请重新导表：'+row.path+'/'+object.frameKey);object.previewTexture={__uuid__:uuid,__expectedType__:'cc.Texture2D'};object.previewRect={__type__:'cc.Rect',...Object.fromEntries(['x','y','width','height'].map(k=>[k,Number(frame[k])]))};changed=true;}
+    const image=path.join(root,'assets/art',frame.assetPath.replace('/spriteFrame','.png'));
+    const uuid=JSON.parse(fs.readFileSync(image+'.meta','utf8')).uuid+'@f9941';
+    if(object.previewFrame?.__uuid__!==uuid){if(!sync)throw Error('预制体图片预览已过期，请重新导表：'+row.path+'/'+object.frameKey);object.previewFrame={__uuid__:uuid,__expectedType__:'cc.SpriteFrame'};changed=true;}
+    if('previewTexture'in object){delete object.previewTexture;delete object.previewRect;changed=true;}
+
    }
   }
   if(changed)fs.writeFileSync(file,JSON.stringify(data,null,2)+'\n');

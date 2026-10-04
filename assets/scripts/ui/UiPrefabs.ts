@@ -1,8 +1,8 @@
 import { DEBUG } from "cc/env";
-import { assetManager, AssetManager, Color, instantiate, Label, Node, Prefab, Rect, resources, Size, Sprite, SpriteFrame, Texture2D, UITransform, Vec2, Vec3 } from "cc";
+import { assetManager, AssetManager, Color, instantiate, Label, Node, Prefab, resources, Sprite, SpriteFrame, UITransform, Vec3 } from "cc";
 import { numeric, rows } from "../config/ConfigTables";
 import { UiImage } from "./UiImage";
-import { UiShape } from "./UiShape";
+import { UiSkin } from "./UiSkin";
 import { UiText } from "./UiText";
 import type { HitRect } from "../gameplay/battle/BattleLayout";
 
@@ -10,9 +10,11 @@ import type { HitRect } from "../gameplay/battle/BattleLayout";
 export class UiPrefabs {
   private readonly prefabs = new Map<string, Prefab>();
   private readonly frames = new Map<string, SpriteFrame>();
-  private readonly textures: Texture2D[] = [];
   private disposed = false;
+  private readonly nativeFrames: SpriteFrame[] = [];
+  private readonly skinRows = new Map(rows("VisualSkin").map(row=>[row.key,row]));
   private readonly sprites = new Set<Sprite>();
+  private readonly roundedRows=Array.from(this.skinRows.keys()).filter(key=>key.startsWith("round_")).map(key=>({key,radius:Number(key.slice(6).replace("p","."))}));
   private constructor() {}
 
   static async load(): Promise<UiPrefabs> {
@@ -30,22 +32,17 @@ export class UiPrefabs {
         });
       }).then(() => null, error => error)));
       if (loaded.some(error => error)) throw loaded.find(error => error);
-      const atlases = rows("ArtAtlas");
-      const textures = await Promise.all(atlases.map(row => new Promise<Texture2D>((resolve, reject) => {
-        bundle.load(row.path, Texture2D, (error, value) => {
-          if (error || !value) { reject(error || new Error(row.path)); return; }
-          value.addRef(); result.textures.push(value); resolve(value);
+      const art=await Promise.all(rows("ArtFrame").map(row=>new Promise<void>((resolve,reject)=>{
+        bundle.load(row.assetPath,SpriteFrame,(error,frame)=>{if(error||!frame){reject(error||new Error(row.assetPath));return;}
+          frame.addRef();result.nativeFrames.push(frame);result.frames.set("frame:"+row.id,frame);
+          for(const domain of ["menu","ui","battle","scenery"])if(row[domain])result.frames.set(domain+":"+row[domain],frame);resolve();
         });
-      }).then(value => ({ value, error: null }), error => ({ value: null, error }))));
-      if (textures.some(item => item.error)) throw textures.find(item => item.error)!.error;
-      for (const row of rows("ArtFrame")) {
-        const i = atlases.findIndex(a => a.key === row.atlas), texture = textures[i].value!;
-        if (texture.width !== numeric(atlases[i], "width") || texture.height !== numeric(atlases[i], "height")) throw new Error(`Atlas size mismatch: ${row.atlas}`);
-        const frame = new SpriteFrame(), width = numeric(row, "width"), height = numeric(row, "height");
-        frame.reset({ texture, rect: new Rect(numeric(row, "x"), numeric(row, "y"), width, height), originalSize: new Size(width, height), offset: new Vec2(), isRotate: false, isFlipUv: false }, true);
-        frame.packable = false; result.frames.set(`frame:${row.id}`, frame);
-        for (const domain of ["menu", "ui", "battle", "scenery"]) if (row[domain]) result.frames.set(`${domain}:${row[domain]}`, frame);
-      }
+      }).then(()=>null,error=>error)));
+      if(art.some(error=>error))throw art.find(error=>error);
+      const skins=await Promise.all(rows("VisualSkin").map(row=>new Promise<void>((resolve,reject)=>{
+        bundle.load(row.path,SpriteFrame,(error,frame)=>{if(error||!frame){reject(error||new Error(row.path));return;}frame.addRef();result.nativeFrames.push(frame);result.frames.set("skin:"+row.key,frame);resolve();});
+      }).then(()=>null,error=>error)));
+      if(skins.some(error=>error))throw skins.find(error=>error);
       return result;
     } catch (error) { result.destroy(); throw error; }
   }
@@ -58,6 +55,7 @@ export class UiPrefabs {
     if (parent) parent.addChild(node);
     for (const binding of node.getComponentsInChildren(UiText)) binding.refresh();
     for (const image of node.getComponentsInChildren(UiImage)) if (image.frameKey) this.bindImage(image.node, image.frameKey);
+    for(const skin of node.getComponentsInChildren(UiSkin)){this.bindSkin(skin.image!.getComponent(Sprite)!,skin.key);skin.sync();}
     return node;
   }
   bindImage(node: Node, key: string, silhouette = false): void {
@@ -66,16 +64,26 @@ export class UiPrefabs {
     const sprite = node.getComponent(Sprite)!;
     this.sprites.add(sprite); sprite.spriteFrame = frame; sprite.color = silhouette ? Color.BLACK : Color.WHITE;
   }
+  rounded(radius:number):string {
+    // 半径由现有界面/效果几何决定；从资源表中的共享圆角皮肤选取最近尺寸。
+    let best=this.roundedRows[0];for(const row of this.roundedRows)if(Math.abs(row.radius-radius)<Math.abs(best.radius-radius))best=row;return best.key;
+  }
+  frame(key:string):SpriteFrame {const frame=this.frames.get(key);if(!frame)throw new Error("Missing PNG image: "+key);return frame;}
+  skin(key:string) {const row=this.skinRows.get(key);if(!row)throw new Error("Missing PNG skin: "+key);return row;}
+  bindSkin(sprite:Sprite,key:string):void {
+    const frame=this.frames.get("skin:"+key);if(!frame)throw new Error("Missing PNG frame: "+key);
+    this.sprites.add(sprite);if(sprite.spriteFrame!==frame)sprite.spriteFrame=frame;
+    sprite.type=this.skin(key).mode==="sliced"?Sprite.Type.SLICED:Sprite.Type.SIMPLE;
+  }
   destroy(): void {
     if (this.disposed) return;
     this.disposed = true;
     // Node.destroy 延迟到帧末，先解除 Sprite 引用再释放共享图集。
     for (const sprite of this.sprites) if (sprite.isValid) sprite.spriteFrame = null;
     this.sprites.clear();
-    for (const frame of new Set(this.frames.values())) frame.destroy();
+    for(const frame of this.nativeFrames)frame.decRef();this.nativeFrames.length=0;
     this.frames.clear();
-    for (const texture of this.textures) texture.decRef();
-    this.textures.length = 0;
+
     for (const asset of this.prefabs.values()) asset.decRef();
     this.prefabs.clear();
   }
@@ -91,8 +99,8 @@ export function uiNode(root: Node, path: string): Node {
 export function uiText(root: Node, path: string, value: string): void { uiNode(root, path).getComponent(Label)!.string = value; }
 export function uiColor(root: Node, path: string, value: string): void {
   const node = uiNode(root, path), color = new Color(); Color.fromHEX(color, value);
-  const shape = node.getComponent(UiShape);
-  if (shape) { shape.fill = color; shape.redraw(); }
+  const skin = node.getComponent(UiSkin);
+  if (skin) { skin.image!.getComponent(Sprite)!.color=color; }
   else { const visual = node.getComponent(Label) ?? node.getComponent(Sprite); if (visual) visual.color = color; }
 }
 /** 从节点实际变换反算命中区域；调整预制体后显示和命中一同更新。 */

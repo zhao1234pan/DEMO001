@@ -1,6 +1,6 @@
 /** CSV 是运行时唯一配置源；此模块不依赖引擎，可用于导表与回归检查。 */
 export type TableRow = Record<string, string>;
-export const TABLE_NAMES = ["Global", "I18", "Staff", "Enemy", "Theme", "Map", "MapPoint", "Spot", "Obstacle", "Level", "Wave", "WaveGroup", "Collection", "Audio", "Decoration", "ArtAtlas", "ArtFrame", "UiPrefab", "Tutorial", "StaffBranch", "StaffForm", "LevelLoadout", "ChallengeRule", "ChallengePerk"] as const;
+export const TABLE_NAMES = ["Global", "I18", "Staff", "Enemy", "Theme", "Map", "MapPoint", "Spot", "Obstacle", "Level", "Wave", "WaveGroup", "Collection", "Audio", "Decoration", "ArtAtlas", "ArtFrame", "UiPrefab", "Tutorial", "StaffBranch", "StaffForm", "LevelLoadout", "ChallengeRule", "ChallengePerk", "VisualSkin"] as const;
 let data: Record<string, TableRow[]> = Object.create(null);
 let ready = false;
 let byKey:Record<string,Record<string,TableRow>> = Object.create(null);
@@ -40,6 +40,11 @@ export function installConfigs(sources: Record<string, string>): void {
   const requireRef = (table: string, field: string, value: string, owner: string) => { if (!next[table].some(r => r[field] === value)) throw new Error(`Invalid reference: ${owner} -> ${table}/${value}`); };
   for (const name of TABLE_NAMES) { const keys = new Set<string>(); for (const row of next[name]) { if ("key" in row) { if (!row.key || keys.has(row.key)) throw new Error("Duplicate/empty key: " + name + "/" + row.key); keys.add(row.key); } } }
   const positive = (name: string, fields: string[], zero = false) => { for (const row of next[name]) for (const field of fields) { const n = numeric(row, field); if (zero ? n < 0 : n <= 0) throw new Error(`Out of range: ${name}/${row.id}/${field}`); } };
+  positive("VisualSkin",["width","height"]); positive("VisualSkin",["left","right","top","bottom","padding"],true);
+  for(const row of next.VisualSkin) {
+    if(!["simple","sliced"].includes(row.mode)||!/^[-a-zA-Z0-9_/]+\/spriteFrame$/.test(row.path)||row.path.includes(".."))throw new Error("Invalid skin mode/path");
+    if(numeric(row,"left")+numeric(row,"right")>=numeric(row,"width")||numeric(row,"top")+numeric(row,"bottom")>=numeric(row,"height"))throw new Error("Invalid nine slice borders");
+  }
   positive("Decoration",["width","height"]);
   positive("Staff", ["cost", "range", "rate", "damage", "shotSpeed", "targets"]); positive("Enemy", ["hp", "speed", "radius", "damage"]); positive("Enemy", ["reward"], true);
   positive("Level", ["initialLives", "enemyHealthScale", "enemySpeedScale"]); positive("Level", ["initialCoins"], true); positive("Obstacle", ["hp"]); positive("Obstacle", ["reward"], true); positive("Wave", ["spawnInterval", "healthScale"]); positive("WaveGroup", ["count"]);

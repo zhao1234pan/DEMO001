@@ -1,5 +1,9 @@
 # XLSX → 客户端 CSV 配置规范
 
+## 1.6.0资源规范（2026-10-04）
+
+界面、地图、弹道与状态显示统一采用可替换PNG和原生SpriteFrame。拉伸皮肤设置九宫；固定比例图标不任意拉伸。禁止新增Graphics/运行时Canvas资源绘制和手工关闭packable。分类、源文件、原始表、换图与图集流程见[PNG资源工作流](PNG_RESOURCE_WORKFLOW.md)。下文旧版本的矢量绘制方案仅为历史记录，当前实现以本条为准。
+
 ## 1.3.0 配队与预告配置
 
 当前22张表。新增LevelLoadout.xlsx（21条），字段id/levelId/enabled/slots/candidateStaff/defaultStaff；候选与默认均引用Staff.key。Level原表移除availableTowers，默认阵容唯一来源改为LevelLoadout。Staff增加unlockLevel、roleKey、displayOrder；CollectionProgress按明确解锁关管理店员，不按候选池反推。

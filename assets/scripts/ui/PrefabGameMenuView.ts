@@ -1,7 +1,9 @@
+import { UiRoute } from "./UiRoute";
+import { PngSurface } from "./PngSurface";
 import { loadoutRule, loadoutCandidates, requiredLoadoutSize, readLoadout, validLoadout, defaultLoadout, staffRole, levelPreview, bossWaveText } from "../gameplay/battle/LevelLoadout";
 import { TOWER_CONFIG, TowerKind } from "../gameplay/battle/GameConfig";
 import { evolutionChoices } from "../gameplay/battle/StaffEvolution";
-import { Color, Graphics, Label, Node, UITransform } from "cc";
+import { Color, Label, Node, UITransform } from "cc";
 import { globalString, globalNumber, text } from "../config/ConfigTables";
 import { GAME_CONFIG } from "../gameplay/battle/GameConfig";
 import { getLevelConfig } from "../gameplay/battle/LevelConfig";
@@ -29,7 +31,7 @@ export class PrefabGameMenuView {
   private readonly collectionCards: Node[] = [];
   private readonly actions = new Map<Node, () => void>();
   private readonly modalActions = new Map<Node, () => void>();
-  private readonly routeColors = new WeakMap<Node, Color>();
+  private readonly routes = new WeakMap<Node,PngSurface>();
   private readonly platform = new PlatformSettings();
   private page: MenuPage = "home";
   private tab: CollectionTab = "enemies";
@@ -170,15 +172,16 @@ export class PrefabGameMenuView {
     this.pagination(page, this.levelPage, Math.ceil(GAME_CONFIG.maxLevels / count), () => { this.levelPage--; }, () => { this.levelPage++; });
   }
   private routePreview(card: Node, level: ReturnType<typeof getLevelConfig>, unlocked: boolean): void {
-    const route = uiNode(card, "Route"), t = route.getComponent(UITransform)!, g = route.getComponent(Graphics)!;
-    const projection = uiNode(route, "Projection");
-    const project = ([x, y]: readonly number[]) => [projection.position.x + x * projection.scale.x, projection.position.y + y * projection.scale.y];
-    if (!this.routeColors.has(route)) this.routeColors.set(route, g.strokeColor.clone());
-    g.clear(); if (unlocked) Color.fromHEX(g.strokeColor, levelTheme(level).road); else g.strokeColor = this.routeColors.get(route)!.clone(); g.lineCap = Graphics.LineCap.ROUND; g.lineJoin = Graphics.LineJoin.ROUND;
-    level.pathPoints.forEach((point, i) => { const [x, y] = project(point); if (i) g.lineTo(x, y); else g.moveTo(x, y); }); g.stroke();
-    for (const point of level.towerSpots) { const [x, y] = project(point); g.circle(x, y, g.lineWidth * 0.22); g.fill(); }
-    const [x, y] = project(level.pathPoints[level.pathPoints.length - 1]); uiNode(route, "ShopMarker").setPosition(x, y);
+    const route=uiNode(card,"Route"),projection=uiNode(route,"Projection");
+    let layer=this.routes.get(route);if(!layer){layer=new PngSurface(route,this.assets,false);this.routes.set(route,layer);}
+    const style=route.getComponent(UiRoute)!;const lineWidth=style.lineWidth,road=style.lineColor.clone(),spots=style.spotColor;
+    if(unlocked)Color.fromHEX(road,levelTheme(level).road);
+    const project=([x,y]:readonly number[])=>[projection.position.x+x*projection.scale.x,projection.position.y+y*projection.scale.y];
+    layer.clear();for(let i=1;i<level.pathPoints.length;i++){const [x,y]=project(level.pathPoints[i-1]),[bx,by]=project(level.pathPoints[i]);layer.line(x,y,bx,by,road,lineWidth,true);}
+    for(const point of level.towerSpots){const [x,y]=project(point);layer.disc(x,y,lineWidth*.22,spots);}layer.end();
+    const [x,y]=project(level.pathPoints[level.pathPoints.length-1]);const marker=uiNode(route,"ShopMarker");marker.setPosition(x,y);marker.setSiblingIndex(route.children.length-1);
   }
+
   private collectionPageView(page: Node): void {
     for (const tab of COLLECTION_TABS) {
       const name = "Tab-" + tab.id, selected = this.tab === tab.id;

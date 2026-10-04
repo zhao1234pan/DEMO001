@@ -234,16 +234,9 @@
     "_id": "",
     "__type__": "b1e700Lh5tKhK/d7HGuCB08",
     "frameKey": "menu:enemy_normal",
-    "previewTexture": {
-      "__uuid__": "c9065cbb-b4d6-4557-ae47-0dcf308a920b@6c48a",
-      "__expectedType__": "cc.Texture2D"
-    },
-    "previewRect": {
-      "__type__": "cc.Rect",
-      "x": 4,
-      "y": 4,
-      "width": 168,
-      "height": 168
+    "previewFrame": {
+      "__uuid__": "e34e8946-1f4a-4a52-b9b8-6681d74898df@f9941",
+      "__expectedType__": "cc.SpriteFrame"
     }
   },
   {

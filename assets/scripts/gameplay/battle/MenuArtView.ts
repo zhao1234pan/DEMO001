@@ -1,6 +1,7 @@
+import { UiPrefabs } from "../../ui/UiPrefabs";
 import { text, rows, numeric } from "../../config/ConfigTables";
 import type { TowerKind, EnemyKind } from "./GameConfig";
-import { assetManager, AssetManager, Color, Layers, Node, Rect, Size, Sprite, SpriteFrame, Texture2D, UITransform, Vec2 } from "cc";
+import { Color, Layers, Node, Sprite, SpriteFrame, UITransform } from "cc";
 
 export type MenuIconKind = TowerKind | `enemy_${EnemyKind}` | "shop" | "entry" | "tree";
 
@@ -21,22 +22,23 @@ export class MenuArtView {
   private readonly active = new Map<string, IconEntry>();
   private readonly free: IconEntry[] = [];
   private readonly frames = new Map<MenuIconKind, SpriteFrame>();
-  private readonly textures: Texture2D[] = [];
   private loading: Promise<void> | null = null;
   private frameIndex = 0;
   private loaded = false;
   private disposed = false;
 
-  constructor(parent: Node, private readonly width: number, private readonly height: number) {
+  constructor(parent: Node, private readonly width: number, private readonly height: number, private readonly assets:UiPrefabs) {
     this.root = new Node("MenuArtView");
     this.root.layer = Layers.Enum.UI_2D;
     this.root.addComponent(UITransform).setContentSize(width, height);
     parent.addChild(this.root);
+    for(const row of rows("ArtFrame").filter(r=>r.menu))this.frames.set(row.menu as MenuIconKind,assets.frame("menu:"+row.menu));this.loaded=true;
+
   }
 
   get ready(): boolean { return this.loaded && !this.disposed; }
 
-  /** 同一实例只发起一组加载；失败保留文字和程序底板，不阻断战斗。 */
+  /** 资源由启动阶段统一准备，本层复用已导入的PNG切片。 */
   load(): Promise<void> {
     if (this.disposed) return Promise.resolve();
     if (!this.loading) this.loading = this.loadAssets();
@@ -63,7 +65,7 @@ export class MenuArtView {
     entry.sprite.color = silhouette ? new Color(0, 0, 0, 255) : Color.WHITE;
     entry.transform.setContentSize(size, size);
     entry.node.setPosition(x - this.width / 2, this.height / 2 - y);
-    // 本层没有Graphics的负Y缩放，UI图标始终居中、正向显示；未解锁时只保留原图Alpha剪影。
+    // 本层没有负Y缩放，UI图标始终居中、正向显示；未解锁时只保留原图Alpha剪影。
     entry.node.setScale(1, 1, 1);
   }
 
@@ -102,63 +104,7 @@ export class MenuArtView {
     return { node, sprite, transform, frame: -1 };
   }
 
-  private async loadAssets(): Promise<void> {
-    try {
-      const bundle = assetManager.getBundle("battle_art") ?? await new Promise<AssetManager.Bundle | null>((resolve) => {
-        assetManager.loadBundle("battle_art", (error, result) => resolve(error ? null : result));
-      });
-      if (!bundle || this.disposed) return;
-      // 所有回调落定后才启用图标层，避免出现只加载一半的图鉴。
-      const frameRows=rows("ArtFrame").filter(row=>row.menu);
-      const atlasRows=rows("ArtAtlas").filter(row=>frameRows.some(frame=>frame.atlas===row.key));
-      const loaded=await Promise.all(atlasRows.map(row=>this.loadTexture(bundle,row.path)));
-      if (this.disposed || loaded.some((texture) => !texture)) {
-        this.releaseAssets();
-        if (!this.disposed) console.warn(text("ui.MenuArtView.001"));
-        return;
-      }
-      if (loaded.some((texture,i) => texture!.width !== numeric(atlasRows[i],"width") || texture!.height !== numeric(atlasRows[i],"height"))) {
-        throw new Error(text("ui.MenuArtView.002"));
-      }
-      for(const row of frameRows) {
-        const texture=loaded[atlasRows.findIndex(atlas=>atlas.key===row.atlas)]!;
-        const frame=new SpriteFrame(),width=numeric(row,"width"),height=numeric(row,"height");
-        frame.reset({texture,rect:new Rect(numeric(row,"x"),numeric(row,"y"),width,height),originalSize:new Size(width,height),offset:new Vec2(0,0),isRotate:false,isFlipUv:false},true); frame.packable=false;
-        this.frames.set(row.menu as MenuIconKind,frame);
-      }
-      this.loaded = true;
-    } catch (error) {
-      this.releaseAssets();
-      if (!this.disposed) console.warn(text("ui.MenuArtView.003"), error);
-    }
-  }
-
-  private loadTexture(bundle: AssetManager.Bundle, assetPath: string): Promise<Texture2D | null> {
-    return new Promise((resolve) => {
-      let settled = false;
-      try {
-        bundle.load(assetPath, Texture2D, (error, texture) => {
-          if (settled) return;
-          settled = true;
-          if (error || !texture) { resolve(null); return; }
-          texture.addRef();
-          // 每张图到达即记录所有权；提前销毁时释放已到图，晚到图也立即归还引用。
-          if (this.disposed) { texture.decRef(); resolve(null); return; }
-          this.textures.push(texture);
-          resolve(texture);
-        });
-      } catch {
-        settled = true;
-        resolve(null);
-      }
-    });
-  }
-
-  private releaseAssets(): void {
-    for (const frame of this.frames.values()) frame.destroy();
-    this.frames.clear();
-    // 与战场店员共用纹理时只归还本实例addRef，不释放整个Bundle或其他表现层的资源。
-    for (const texture of this.textures) texture.decRef();
-    this.textures.length = 0;
-  }
+  private async loadAssets():Promise<void> {}
+  // 共享切片由UiPrefabs统一持有，本层仅归还节点引用。
+  private releaseAssets():void {this.frames.clear();}
 }

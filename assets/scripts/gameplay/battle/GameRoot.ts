@@ -1,3 +1,4 @@
+import { PngSurface } from "../../ui/PngSurface";
 import { ChallengeRun, ChallengePort, ChallengeShot, challengeRule } from "./ChallengeRun";
 import { ChallengeView } from "../../ui/ChallengeView";
 import { loadoutRule, validLoadout, saveLoadout, resetLoadouts, wavePreview } from "./LevelLoadout";
@@ -5,8 +6,8 @@ import { attackProfile, evolutionChoices, evolutionByKey, StaffEvolution } from 
 import { configsReady, globalNumber, numeric, rows, text } from "../../config/ConfigTables";
 import { loadGameConfigs } from "../../config/ConfigLoader";
 import {
-  _decorator, Color, Component, EventTouch, Graphics, HorizontalTextAlignment,
-  Label, Layers, Mask, Node, ResolutionPolicy, UITransform, Vec3,
+  _decorator, Color, Component, EventTouch, HorizontalTextAlignment,
+  Label, Layers, Mask, Node, Sprite, ResolutionPolicy, UITransform, Vec3,
   VerticalTextAlignment, view, sys, profiler, screen as deviceScreen,
 } from "cc";
 import { DEBUG } from "cc/env";
@@ -98,11 +99,11 @@ export class GameRoot extends Component {
   private contentRoot!: Node;
   private uiPrefabs!: UiPrefabs;
   private battleUi!: BattlePrefabView;
-  private staticG!: Graphics;
+  private staticG!: PngSurface;
   private mapView!: BattleMapView;
   private scenery!: BattleSceneryView;
-  private unitBaseG!: Graphics;
-  private dynamicG!: Graphics;
+  private unitBaseG!: PngSurface;
+  private dynamicG!: PngSurface;
   private art!: BattleArtView;
   private uiArt!: BattleUiView;
   private layoutTop = 0;
@@ -206,7 +207,7 @@ export class GameRoot extends Component {
   }
 
   private boot(): void {
-    configureGmButtons(); this.booted=true;
+    configureGmButtons();
     this.mapReview = readMapStyleReview();
     this.configureResolution();
     const transform = this.node.getComponent(UITransform) ?? this.node.addComponent(UITransform);
@@ -215,17 +216,18 @@ export class GameRoot extends Component {
     this.contentRoot.layer = Layers.Enum.UI_2D;
     this.contentRoot.addComponent(UITransform).setContentSize(W, H);
     // 宽窗口的黑边不能漏出射程圈、边缘特效或装饰；长屏时遮罩随安全高度一起延展。
-    this.contentRoot.addComponent(Mask).type = Mask.Type.GRAPHICS_RECT;
+    this.contentRoot.addComponent(Mask).type = Mask.Type.SPRITE_STENCIL;
+    const stencil=this.contentRoot.getComponent(Sprite)!;stencil.sizeMode=Sprite.SizeMode.CUSTOM;this.uiPrefabs.bindSkin(stencil,"round_0");
     this.contentRoot.setScale(DESIGN_W / W, DESIGN_H / H, 1);
     this.node.addChild(this.contentRoot);
-    this.staticG = this.createGraphics("StaticMap");
+    this.staticG = this.createPngLayer("StaticMap");
     this.mapView = new BattleMapView(this.staticG, W);
-    this.scenery = new BattleSceneryView(this.contentRoot, W, H);
-    this.unitBaseG = this.createGraphics("UnitUnderlay");
+    this.scenery = new BattleSceneryView(this.contentRoot, W, H, this.uiPrefabs);
+    this.unitBaseG = this.createPngLayer("UnitUnderlay");
     // 三层分离：范围和地面在下、精灵居中、血条/投射物/操作菜单在上。
-    this.art = new BattleArtView(this.contentRoot, W, H);
-    this.dynamicG = this.createGraphics("DynamicGame");
-    this.uiArt = new BattleUiView(this.contentRoot, W, H);
+    this.art = new BattleArtView(this.contentRoot, W, H, this.uiPrefabs);
+    this.dynamicG = this.createPngLayer("DynamicGame");
+    this.uiArt = new BattleUiView(this.contentRoot, W, H, this.uiPrefabs);
     this.battleUi = new BattlePrefabView(this.contentRoot, this.uiPrefabs);
     this.challengeView=new ChallengeView(this.contentRoot,this.uiPrefabs);
     this.audio = new AudioService(this.node, !this.mapReview);
@@ -257,6 +259,7 @@ export class GameRoot extends Component {
     PlatformService.onShow(this.showHandler);
     // 体验版默认不让性能统计遮住左下GM与道具；Creator的Show FPS仍可按需手动打开。
     if (DEBUG) profiler.hideStats();
+    this.booted=true;
   }
 
   onDestroy(): void {
@@ -273,11 +276,11 @@ export class GameRoot extends Component {
     this.menu?.destroy();
     this.battleUi?.destroy();
     this.challengeView?.destroy();
-    this.uiPrefabs?.destroy();
     this.audio?.destroy();
     this.art?.destroy();
     this.uiArt?.destroy();
     this.scenery?.destroy();
+    this.uiPrefabs?.destroy();
   }
 
   private applyLayout(): void {
@@ -358,14 +361,14 @@ export class GameRoot extends Component {
     this.render();
   }
 
-  private createGraphics(name: string): Graphics {
+  private createPngLayer(name: string): PngSurface {
     const node = new Node(name);
     node.layer = Layers.Enum.UI_2D;
     node.setPosition(-W / 2, H / 2);
     node.setScale(1, -1, 1);
     this.contentRoot.addChild(node);
     node.addComponent(UITransform).setContentSize(W, H);
-    return node.addComponent(Graphics);
+    return new PngSurface(node,this.uiPrefabs);
   }
 
   private createLabels(): void {
@@ -417,7 +420,7 @@ export class GameRoot extends Component {
       this.art.endFrame(); this.uiArt.endFrame();
       for (const key of this.labels.keys()) this.showLabel(key, false);
       this.menu?.render(this.unlockedLevel, this.layoutTop, this.layoutBottom);
-      this.drawGmPanel(g); this.syncGmLabels();
+      this.drawGmPanel(g); this.syncGmLabels();g.end();this.unitBaseG.end();
       return;
     }
     this.menu?.hide();
@@ -449,11 +452,11 @@ export class GameRoot extends Component {
     this.drawGmPanel(g);
     this.uiArt.endFrame();
     this.syncLabels();
-    this.challengeView?.front();
+    this.challengeView?.front();g.end();this.unitBaseG.end();
   }
 
   /** 弹道仅改变视觉轨迹；命中仍由逻辑坐标和真实目标判定，倍速与暂停保持同步。 */
-  private drawShot(g: Graphics, shot: Shot): void {
+  private drawShot(g: PngSurface, shot: Shot): void {
     const cfg=attackProfile(shot.kind,shot.level,shot.evolutionKey);
     const angle = Math.atan2(shot.target.y - shot.y, shot.target.x - shot.x);
     const ux = Math.cos(angle), uy = Math.sin(angle);
@@ -474,8 +477,7 @@ export class GameRoot extends Component {
       x-=uy*spread;y+=ux*spread;
       line(x-ux*9,y-uy*9,x,y,"#a4bf69",2); this.disc(g,x,y,3.8,"#d4e875"); this.disc(g,x-1,y-1,1.4,"#fffbd4");
     } else if (cfg.projectile === "frost") {
-      g.fillColor=this.color("#bdeafb"); g.moveTo(x+ux*7,y+uy*7); g.lineTo(x-uy*3,y+ux*3); g.lineTo(x-ux*5,y-uy*5); g.lineTo(x+uy*3,y-ux*3); g.close();g.fill();
-      line(x-ux*13,y-uy*13,x-ux*7,y-uy*7,"#e9fbff",2);
+      g.image("frost_shard",x,y,32,20,Color.WHITE,angle*180/Math.PI);
     } else if (cfg.projectile === "scope") {
       line(x-ux*25,y-uy*25,x+ux*5,y+uy*5,cfg.shotColor,3); line(x-ux*17,y-uy*17,x+ux*7,y+uy*7,"#fff0b4",1.5);
     } else if (cfg.projectile === "spark") {
@@ -492,7 +494,7 @@ export class GameRoot extends Component {
     }
   }
 
-  private drawSpots(g: Graphics): void {
+  private drawSpots(g: PngSurface): void {
     for (const spot of this.spots) {
       if (spot.obstacle) {
         // 成组地台已由静态层按真实格位绘制；清除障碍后露出同一格，不再叠22个椭圆石圈。
@@ -504,11 +506,10 @@ export class GameRoot extends Component {
     }
   }
 
-  private drawSpotMarker(g: Graphics, spot: Spot, selected: boolean, blocked: boolean): void {
+  private drawSpotMarker(g: PngSurface, spot: Spot, selected: boolean, blocked: boolean): void {
     if (selected) {
       this.box(g, spot.x - 22, spot.y - 18, 44, 35, 10, "#fff0b4", 0.85);
-      g.strokeColor = this.color("#d99b39"); g.lineWidth = 2;
-      g.roundRect(spot.x - 22, spot.y - 18, 44, 35, 10); g.stroke();
+      g.outline(spot.x-22,spot.y-18,44,35,10,this.color("#d99b39"));
     }
     if (!blocked) {
       // 加号只是视觉提示；所有格位保留独立46×46热区，不以装饰或角色PNG判定点击。
@@ -517,7 +518,7 @@ export class GameRoot extends Component {
     }
   }
 
-  private drawLandmarkStatus(g: Graphics): void {
+  private drawLandmarkStatus(g: PngSurface): void {
     if (this.gmPanelOpen || this.paused || this.screen !== "playing" || this.selectedSpot) return;
     const start = this.level.pathPoints[0]; const end = this.level.pathPoints[this.level.pathPoints.length - 1];
     this.box(g, start[0] - 25, start[1] - 39, 50, 20, 8, "#294f43", 0.94);
@@ -526,27 +527,13 @@ export class GameRoot extends Component {
     this.box(g, end[0] - 23, end[1] + 30, 46 * Math.max(0, this.lives / this.level.initialLives), 3, 1.5, this.lives > 2 ? "#98cd73" : "#ee7866");
   }
 
-  private drawObstacle(g: Graphics, obstacle: Obstacle): void {
+  private drawObstacle(g: PngSurface, obstacle: Obstacle): void {
     const selected = obstacle === this.selectedObstacle;
     if (selected) {
       this.disc(g, obstacle.x, obstacle.y, obstacle.radius + 7, "#fff3c2", 0.45);
       this.ring(g, obstacle.x, obstacle.y, obstacle.radius + 7, "#e6a83e", 0.95, 3);
     }
     if (this.art.ready) this.art.drawObstacle(obstacle, obstacle);
-    else if (obstacle.kind === "crate") {
-      this.box(g, obstacle.x - 14, obstacle.y - 13, 28, 26, 4, obstacle.hitFlash > 0 ? "#fff3c2" : "#a66f43");
-      g.strokeColor = this.color("#6f472f"); g.lineWidth = 2;
-      g.moveTo(obstacle.x - 10, obstacle.y - 9); g.lineTo(obstacle.x + 10, obstacle.y + 9);
-      g.moveTo(obstacle.x + 10, obstacle.y - 9); g.lineTo(obstacle.x - 10, obstacle.y + 9); g.stroke();
-    } else if (obstacle.kind === "basket") {
-      this.disc(g, obstacle.x, obstacle.y + 2, 14, obstacle.hitFlash > 0 ? "#fff3c2" : "#d59b58");
-      this.ring(g, obstacle.x, obstacle.y - 3, 10, "#6f472f", 0.9, 3);
-      this.disc(g, obstacle.x - 5, obstacle.y + 2, 3, "#eb685d"); this.disc(g, obstacle.x + 5, obstacle.y + 2, 3, "#70c963");
-    } else {
-      this.box(g, obstacle.x - 10, obstacle.y + 3, 20, 13, 4, "#b87a50");
-      this.disc(g, obstacle.x - 6, obstacle.y, 8, obstacle.hitFlash > 0 ? "#fff3c2" : "#58a95e");
-      this.disc(g, obstacle.x + 6, obstacle.y - 2, 8, obstacle.hitFlash > 0 ? "#fff3c2" : "#70c963");
-    }
     if (selected || obstacle.hitFlash > 0) {
       const ratio = Math.max(0, obstacle.hp / obstacle.maxHp);
       this.box(this.dynamicG, obstacle.x - 16, obstacle.y - 30, 32, 4, 2, "#17352e", 0.45);
@@ -554,7 +541,7 @@ export class GameRoot extends Component {
     }
   }
 
-  private drawTower(g: Graphics, tower: Tower): void {
+  private drawTower(g: PngSurface, tower: Tower): void {
     const cfg = TOWER_CONFIG[tower.kind];
     if (tower === this.selectedTower) {
       this.disc(g, tower.x, tower.y, this.towerProfile(tower).range, "#57a96a", 0.08);
@@ -566,46 +553,10 @@ export class GameRoot extends Component {
       if (tower.recoil > 0) this.disc(this.dynamicG, tower.x + (Math.cos(tower.angle) < 0 ? -12 : 12), tower.y - 5, 3, cfg.shotColor);
       return;
     }
-    this.disc(g, tower.x, tower.y + 4, 16, "#8c7047");
-    this.disc(g, tower.x, tower.y + 1, 13, cfg.color);
-    this.ring(g, tower.x, tower.y + 1, 13, "#2d6048", 1, 1.5);
-    const barrelLength = tower.recoil > 0 ? 8 : 12;
-    const barrelX = tower.x + Math.cos(tower.angle) * barrelLength;
-    const barrelY = tower.y + 2 + Math.sin(tower.angle) * barrelLength;
-    g.lineWidth = tower.kind === "bloom" ? 4.5 : 3;
-    g.strokeColor = this.color(tower.kind === "frost" ? "#ddfbff" : "#734f35");
-    g.moveTo(tower.x, tower.y + 2); g.lineTo(barrelX, barrelY); g.stroke();
-    if (tower.recoil > 0) this.disc(g, barrelX, barrelY, tower.kind === "bloom" ? 4 : 3, cfg.shotColor, 0.9);
-    if (tower.kind === "sprout") {
-      this.disc(g, tower.x - 5, tower.y - 5, 5.5, "#3d874b"); this.disc(g, tower.x + 5, tower.y - 5, 5.5, "#3d874b");
-      this.disc(g, tower.x, tower.y + 1, 6, "#dcf278");
-    } else if (tower.kind === "frost") {
-      for (let i = 0; i < 6; i += 1) {
-        const a = (Math.PI * 2 * i) / 6;
-        this.disc(g, tower.x + Math.cos(a) * 8, tower.y + 1 + Math.sin(a) * 8, 3, "#ddfbff");
-      }
-      this.disc(g, tower.x, tower.y + 1, 5, "#eefeff");
-    } else {
-      for (let i = 0; i < 6; i += 1) {
-        const a = (Math.PI * 2 * i) / 6;
-        this.disc(g, tower.x + Math.cos(a) * 7, tower.y + 1 + Math.sin(a) * 7, 4, "#ffd0de");
-      }
-      this.disc(g, tower.x, tower.y + 1, 4.5, "#ffe568");
-    }
-    for (let i = 0; i < tower.level; i += 1) this.disc(g, tower.x - 5 + i * 5, tower.y + 14, 1.7, "#ffc34d");
   }
 
-  private drawEnemy(g: Graphics, enemy: Enemy): void {
-    const wobble = Math.sin(enemy.age * 8) * 1.5;
+  private drawEnemy(g: PngSurface, enemy: Enemy): void {
     if (this.art.ready) this.art.drawEnemy(enemy, enemy);
-    else {
-    this.disc(g, enemy.x, enemy.y + 4 + wobble, enemy.radius, enemy.color);
-    this.ring(g, enemy.x, enemy.y + 4 + wobble, enemy.radius, "#17352e", 0.45, 2);
-    this.disc(g, enemy.x - 5, enemy.y + wobble, 2.2, "#fff9df"); this.disc(g, enemy.x + 5, enemy.y + wobble, 2.2, "#fff9df");
-    this.disc(g, enemy.x - 5, enemy.y + wobble, 1.1, "#17352e"); this.disc(g, enemy.x + 5, enemy.y + wobble, 1.1, "#17352e");
-    if (enemy.hitFlash > 0) this.disc(g, enemy.x, enemy.y + 4 + wobble, enemy.radius + 2, "#fff9df", Math.min(0.82, enemy.hitFlash * 7));
-    if (enemy.kind === "tank") this.box(g, enemy.x - 13, enemy.y - 14 + wobble, 26, 8, 4, "#8e7357");
-    }
     if (enemy.burnTime > 0) this.ring(g, enemy.x, enemy.y, enemy.radius + 5, "#ee8e50", 0.8, 2);
     if (enemy.markedTime > 0) this.ring(g, enemy.x, enemy.y, enemy.radius + 3, "#81dfb7", 0.8, 2);
     const ratio = Math.max(0, enemy.hp / enemy.maxHp);
@@ -615,7 +566,7 @@ export class GameRoot extends Component {
   }
 
   private previewVisible():boolean{return this.screen==="playing"&&!this.paused&&!this.gmPanelOpen&&!this.mapReview&&!this.bossCue&&!this.guideCue&&!this.selectedSpot&&!this.selectedTower&&!this.selectedObstacle&&!this.evolutionTower&&!this.challengeBlocked();}
-  private drawPanels(_g: Graphics): void {
+  private drawPanels(_g: PngSurface): void {
     const last=this.wave>=this.level.waves.length,index=Math.min(this.wave,this.level.waves.length-1),entries=wavePreview(this.level.waves[index]);
     const title=last?text("ui.preview.last"):text("ui.preview.title",index+1);
     const bubble=this.waveCountdownPosition(),panelHeight=this.battleUi.wavePreviewHeight(entries.length);
@@ -625,7 +576,7 @@ export class GameRoot extends Component {
       this.gmPanelOpen, this.shouldShowToast() && !this.bossCue && !this.enemies.some(e => ENEMY_CONFIG[e.kind].boss), Boolean(this.mapReview));
   }
 
-  private drawContextMenu(_g: Graphics): void {
+  private drawContextMenu(_g: PngSurface): void {
     if (this.paused || this.screen !== "playing" || this.gmPanelOpen) return;
     if (this.selectedSpot && !this.selectedSpot.tower && !this.selectedSpot.obstacle) {
       for (const item of this.buildMenuItems()) this.battleUi.showBuild(item.kind, item.x, item.y, this.coins >= this.buildCost(item.kind));
@@ -678,14 +629,13 @@ export class GameRoot extends Component {
     return spot ? result(spotRect(spot),text(step.action === "combo" && partner ? step.selectText : "guide.place",config.name)) : null;
   }
 
-  private drawGuide(g: Graphics): void {
+  private drawGuide(g: PngSurface): void {
     const cue = this.guideCue;
     if (!cue || this.toastTime > 0) return;
     this.battleUi.showGuide(cue.text);
     if (!cue.rect) return;
     const pulse = (Math.sin(this.guidePulse * Math.PI * 2 / cue.period)+1)/2, padding = 3+2*pulse;
-    const r=cue.rect; Color.fromHEX(g.strokeColor,cue.color); g.lineWidth=2+2*pulse;
-    g.roundRect(r.x-padding, r.y-padding,r.width+padding*2,r.height+padding*2,8); g.stroke();
+    const r=cue.rect;g.outline(r.x-padding,r.y-padding,r.width+padding*2,r.height+padding*2,8,this.color(cue.color));
     // 提示只绘制，不注册触摸监听；按钮、空白关闭与取消手势继续走原输入链。
   }
 
@@ -738,13 +688,12 @@ export class GameRoot extends Component {
     return fallback.find(point => fits(point)) ?? candidates.find(point => fits(point, false)) ?? fallback.find(point => fits(point, false)) ?? preferred;
   }
 
-  private drawWaveCountdown(g: Graphics): void {
+  private drawWaveCountdown(g: PngSurface): void {
     if (!this.shouldShowWaveCountdown()) return;
     const position = this.waveCountdownPosition();
     const urgent = this.nextWaveTimer <= 3;
     this.box(g, position.x - 56, position.y - 40, 112, 84, 16, "#fff9df", 0.97);
-    g.strokeColor = this.color(urgent ? "#e78954" : "#58a95e"); g.lineWidth = 2;
-    g.roundRect(position.x - 56, position.y - 40, 112, 84, 16); g.stroke();
+    g.outline(position.x-56,position.y-40,112,84,16,this.color(urgent?"#e78954":"#58a95e"));
   }
 
   /** 菜单仍围绕选中格弹出；候选区域避开所有格位，防止邻格点击被升级/出售截走。 */
@@ -862,12 +811,12 @@ export class GameRoot extends Component {
     return this.battleUi.overlayRect("Home", mode);
   }
 
-  private drawOverlay(_g: Graphics): void {
+  private drawOverlay(_g: PngSurface): void {
     const mode = this.paused && this.screen === "playing" ? "pause" : this.screen === "win" ? "win" : this.revived ? "retry" : "lose";
     this.battleUi.showOverlay(mode, this.labels);
   }
 
-  private drawGmPanel(_g: Graphics): void {
+  private drawGmPanel(_g: PngSurface): void {
     if (!DEBUG || this.mapReview) return;
     this.battleUi.showGm(this.gmPanelOpen, this.currentLevelId, this.gmResetArmed);
   }
@@ -1006,16 +955,16 @@ export class GameRoot extends Component {
     return this.propAdUsed[kind] ? text("ui.GameRoot.034", shortName) : text("ui.GameRoot.035", shortName);
   }
 
-  private disc(g: Graphics, x: number, y: number, radius: number, hex: string, alpha = 1): void {
-    g.fillColor = this.color(hex, Math.round(alpha * 255)); g.circle(x, y, radius); g.fill();
+  private disc(g: PngSurface, x: number, y: number, radius: number, hex: string, alpha = 1): void {
+    g.disc(x,y,radius,this.color(hex,Math.round(alpha*255)));
   }
 
-  private ring(g: Graphics, x: number, y: number, radius: number, hex: string, alpha = 1, width = 1): void {
-    g.strokeColor = this.color(hex, Math.round(alpha * 255)); g.lineWidth = width; g.circle(x, y, radius); g.stroke();
+  private ring(g: PngSurface, x: number, y: number, radius: number, hex: string, alpha = 1, width = 1): void {
+    g.ring(x,y,radius,this.color(hex,Math.round(alpha*255)),width);
   }
 
-  private box(g: Graphics, x: number, y: number, width: number, height: number, radius: number, hex: string, alpha = 1): void {
-    g.fillColor = this.color(hex, Math.round(alpha * 255)); g.roundRect(x, y, width, height, radius); g.fill();
+  private box(g: PngSurface, x: number, y: number, width: number, height: number, radius: number, hex: string, alpha = 1): void {
+    g.box(x,y,width,height,radius,this.color(hex,Math.round(alpha*255)));
   }
 
   private setLabel(key: string, value: string): void { const item = this.labels.get(key); if (item) item.string = value; }
@@ -1370,7 +1319,7 @@ export class GameRoot extends Component {
       ...(from ? {fromX:from.x,fromY:from.y} : {})});
   }
 
-  private drawImpacts(g: Graphics): void {
+  private drawImpacts(g: PngSurface): void {
     for (const impact of this.impacts) {
       const cfg = TOWER_CONFIG[impact.kind], alpha = Math.max(0, impact.life / globalNumber("impactSeconds"));
       const radius = impact.radius * (1 - alpha / 2), x = impact.x, y = impact.y;

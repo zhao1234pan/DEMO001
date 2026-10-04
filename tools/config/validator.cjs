@@ -11,7 +11,7 @@ exports.globalString = globalString;
 exports.text = text;
 exports.parseCsv = parseCsv;
 exports.installConfigs = installConfigs;
-exports.TABLE_NAMES = ["Global", "I18", "Staff", "Enemy", "Theme", "Map", "MapPoint", "Spot", "Obstacle", "Level", "Wave", "WaveGroup", "Collection", "Audio", "Decoration", "ArtAtlas", "ArtFrame", "UiPrefab", "Tutorial", "StaffBranch", "StaffForm", "LevelLoadout", "ChallengeRule", "ChallengePerk"];
+exports.TABLE_NAMES = ["Global", "I18", "Staff", "Enemy", "Theme", "Map", "MapPoint", "Spot", "Obstacle", "Level", "Wave", "WaveGroup", "Collection", "Audio", "Decoration", "ArtAtlas", "ArtFrame", "UiPrefab", "Tutorial", "StaffBranch", "StaffForm", "LevelLoadout", "ChallengeRule", "ChallengePerk", "VisualSkin"];
 let data = Object.create(null);
 let ready = false;
 let byKey = Object.create(null);
@@ -119,6 +119,14 @@ function installConfigs(sources) {
             if (zero ? n < 0 : n <= 0)
                 throw new Error(`Out of range: ${name}/${row.id}/${field}`);
         } };
+    positive("VisualSkin", ["width", "height"]);
+    positive("VisualSkin", ["left", "right", "top", "bottom", "padding"], true);
+    for (const row of next.VisualSkin) {
+        if (!["simple", "sliced"].includes(row.mode) || !/^[-a-zA-Z0-9_/]+\/spriteFrame$/.test(row.path) || row.path.includes(".."))
+            throw new Error("Invalid skin mode/path");
+        if (numeric(row, "left") + numeric(row, "right") >= numeric(row, "width") || numeric(row, "top") + numeric(row, "bottom") >= numeric(row, "height"))
+            throw new Error("Invalid nine slice borders");
+    }
     positive("Decoration", ["width", "height"]);
     positive("Staff", ["cost", "range", "rate", "damage", "shotSpeed", "targets"]);
     positive("Enemy", ["hp", "speed", "radius", "damage"]);

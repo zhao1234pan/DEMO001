@@ -1,5 +1,6 @@
+import { UiPrefabs } from "../../ui/UiPrefabs";
 import { text, rows, numeric } from "../../config/ConfigTables";
-import { assetManager, AssetManager, Color, Layers, Node, Rect, Size, Sprite, SpriteFrame, Texture2D, UITransform, Vec2 } from "cc";
+import { Color, Layers, Node, Sprite, SpriteFrame, UITransform } from "cc";
 import type { MapPoint } from "./LevelConfig";
 import type { SceneDecoration } from "./BattleSceneryLayout";
 
@@ -17,16 +18,17 @@ export class BattleSceneryView {
   private entrySprite: ScenerySprite | null = null;
   private goalSprite: ScenerySprite | null = null;
   private latestScene: SceneSnapshot | null = null;
-  private texture: Texture2D | null = null;
   private loading: Promise<void> | null = null;
   private loaded = false;
   private disposed = false;
 
-  constructor(parent: Node, private readonly width: number, private readonly height: number) {
+  constructor(parent: Node, private readonly width: number, private readonly height: number, private readonly assets:UiPrefabs) {
     this.root = this.createLayer("BattleSceneryView", parent);
     // 非交互绿化固定在地标下方，重用节点或切关时也不会颠倒静态层级。
     this.foliageRoot = this.createLayer("SceneryFoliage", this.root);
     this.landmarkRoot = this.createLayer("SceneryLandmarks", this.root);
+    for(const row of rows("ArtFrame").filter(r=>r.scenery))this.frames.set(row.scenery,assets.frame("scenery:"+row.scenery));this.loaded=true;
+
   }
 
   get ready(): boolean { return this.loaded && !this.disposed; }
@@ -118,55 +120,7 @@ export class BattleSceneryView {
     for (let i = scene.decorations.length; i < this.foliageSprites.length; i += 1) this.foliageSprites[i].node.active = false;
   }
 
-  private async loadAssets(): Promise<void> {
-    try {
-      const bundle = assetManager.getBundle("battle_art") ?? await new Promise<AssetManager.Bundle | null>((resolve) => {
-        assetManager.loadBundle("battle_art", (error, value) => resolve(error ? null : value));
-      });
-      if (!bundle || this.disposed) return;
-      const texture = await this.loadTexture(bundle);
-      if (!texture || this.disposed) return;
-      if (texture.width !== numeric(rows("ArtAtlas").find(r=>r.key==="scenery")!,"width") || texture.height !== numeric(rows("ArtAtlas").find(r=>r.key==="scenery")!,"height")) throw new Error(text("ui.BattleSceneryView.001"));
-      rows("ArtFrame").filter(row=>row.scenery).forEach(row => {
-        const kind=row.scenery; const x=numeric(row,"x"),y=numeric(row,"y"),width=numeric(row,"width"),height=numeric(row,"height");
-        const frame = new SpriteFrame();
-        this.frames.set(kind, frame);
-        // 与PNG左上原点一致；导入meta必须flipVertical=false，不能翻转整幅图集。
-        frame.reset({ texture, rect: new Rect(x, y, width, height), originalSize: new Size(width, height),
-          offset: new Vec2(0, 0), isRotate: false, isFlipUv: false }, true);
-        frame.packable = false;
-      });
-      this.loaded = true;
-      this.redraw();
-    } catch (error) {
-      this.loaded = false;
-      this.releaseAssets();
-      if (!this.disposed) console.warn(text("ui.BattleSceneryView.002"), error);
-    }
-  }
-
-  private loadTexture(bundle: AssetManager.Bundle): Promise<Texture2D | null> {
-    return new Promise((resolve) => {
-      let settled = false;
-      try {
-        bundle.load(rows("ArtAtlas").find(row=>row.key==="scenery")!.path, Texture2D, (error, texture) => {
-          if (settled) return;
-          settled = true;
-          if (error || !texture) { resolve(null); return; }
-          texture.addRef();
-          // 销毁先于异步回调时立即归还晚到纹理，不在已销毁场景下创建节点。
-          if (this.disposed) { texture.decRef(); resolve(null); return; }
-          this.texture = texture;
-          resolve(texture);
-        });
-      } catch { settled = true; resolve(null); }
-    });
-  }
-
-  private releaseAssets(): void {
-    for (const frame of this.frames.values()) frame.destroy();
-    this.frames.clear();
-    this.texture?.decRef();
-    this.texture = null;
-  }
+  private async loadAssets():Promise<void> {if(!this.disposed)this.redraw();}
+  // 共享切片由UiPrefabs统一持有，本层仅归还节点引用。
+  private releaseAssets():void {this.frames.clear();}
 }

@@ -1,7 +1,8 @@
+import { UiPrefabs } from "../../ui/UiPrefabs";
 import { evolutionByKey } from "./StaffEvolution";
 import { TOWER_CONFIG, ENEMY_CONFIG, TowerKind, EnemyKind } from "./GameConfig";
 import { text, rows, numeric, globalNumber } from "../../config/ConfigTables";
-import { assetManager, AssetManager, Color, Layers, Node, Rect, Size, Sprite, SpriteFrame, Texture2D, UITransform, Vec2 } from "cc";
+import { Color, Layers, Node, Sprite, SpriteFrame, UITransform } from "cc";
 
 export interface TowerArtState {
   challengeScale?:number;
@@ -30,14 +31,13 @@ export class BattleArtView {
   private readonly units: SpritePool;
   private readonly frames = new Map<string, SpriteFrame>();
   private readonly visibleUnits: SpriteEntry[] = [];
-  private textures: Texture2D[] = [];
   private loading: Promise<void> | null = null;
   private frameIndex = 0;
   private loaded = false;
   private disposed = false;
   private readonly logicalPerDesignPixel: number;
 
-  constructor(parent: Node, private readonly width: number, private readonly height: number) {
+  constructor(parent: Node, private readonly width: number, private readonly height: number, private readonly assets:UiPrefabs) {
     this.logicalPerDesignPixel = width / 750;
     this.root = new Node("BattleArtView");
     this.root.layer = Layers.Enum.UI_2D;
@@ -46,10 +46,12 @@ export class BattleArtView {
     // 固定底座、单位两层，后绘制的空位不会盖住已建成店员。
     this.pads = this.makePool("BuildPads");
     this.units = this.makePool("BattleUnits");
+    for(const row of rows("ArtFrame").filter(r=>r.battle))this.frames.set(row.battle,assets.frame("battle:"+row.battle));this.loaded=true;
+
   }
   get ready(): boolean { return this.loaded && !this.disposed; }
 
-  /** 加载失败不抛到战斗主循环；调用方根据 ready 保留原有程序图形。 */
+  /** 启动阶段已统一加载PNG；本层复用导入切片，不创建运行时切片。 */
   load(): Promise<void> {
     if (!this.loading && !this.disposed) this.loading = this.loadAssets();
     return this.loading ?? Promise.resolve();
@@ -125,6 +127,7 @@ export class BattleArtView {
     if (this.disposed) return;
     this.disposed = true;
     this.loaded = false;
+    for(const pool of [this.pads,this.units])for(const e of Array.from(pool.active.values()).concat(pool.free))e.sprite.spriteFrame=null;
     this.root.destroy();
     this.pads.active.clear(); this.pads.free.length = 0;
     this.units.active.clear(); this.units.free.length = 0;
@@ -175,49 +178,7 @@ export class BattleArtView {
       pool.free.push(entry);
     }
   }
-  private async loadAssets(): Promise<void> {
-    try {
-      const bundle = assetManager.getBundle("battle_art") ?? await new Promise<AssetManager.Bundle | null>((resolve) => {
-        assetManager.loadBundle("battle_art", (error, result) => resolve(error ? null : result));
-      });
-      if (!bundle || this.disposed) return;
-      // 全部请求结束后统一处理；单项失败也不会遗失晚到纹理的引用。
-      const frameRows=rows("ArtFrame").filter(row=>row.battle);
-      const atlasRows=rows("ArtAtlas").filter(row=>frameRows.some(frame=>frame.atlas===row.key));
-      const loaded=await Promise.all(atlasRows.map(row=>this.loadTexture(bundle,row.path)));
-      this.textures = loaded.filter((texture): texture is Texture2D => texture !== null);
-      if (this.disposed || loaded.some((texture) => !texture)) {
-        this.releaseAssets();
-        if (!this.disposed) console.warn(text("ui.BattleArtView.001"));
-        return;
-      }
-      for(const row of frameRows) {
-        const texture=loaded[atlasRows.findIndex(atlas=>atlas.key===row.atlas)]!;
-        const frame=new SpriteFrame(),width=numeric(row,"width"),height=numeric(row,"height");
-        frame.reset({texture,rect:new Rect(numeric(row,"x"),numeric(row,"y"),width,height),originalSize:new Size(width,height),offset:new Vec2(0,0),isRotate:false,isFlipUv:false},true); frame.packable=false;
-        this.frames.set(row.battle as string,frame);
-      }
-      this.loaded = true;
-    } catch (error) {
-      this.releaseAssets();
-      console.warn(text("ui.BattleArtView.002"), error);
-    }
-  }
-  private loadTexture(bundle: AssetManager.Bundle, path: string): Promise<Texture2D | null> {
-    return new Promise((resolve) => {
-      try {
-        bundle.load(path, Texture2D, (error, texture) => {
-          if (error || !texture) { resolve(null); return; }
-          texture.addRef();
-          resolve(texture);
-        });
-      } catch { resolve(null); }
-    });
-  }
-  private releaseAssets(): void {
-    for (const frame of this.frames.values()) frame.destroy();
-    this.frames.clear();
-    for (const texture of this.textures) texture.decRef();
-    this.textures = [];
-  }
+  private async loadAssets():Promise<void> {}
+  // 共享切片由UiPrefabs统一持有，本层仅归还节点引用。
+  private releaseAssets():void {this.frames.clear();}
 }

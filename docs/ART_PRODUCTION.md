@@ -1,5 +1,9 @@
 # 美术资源生产规范
 
+## 1.6.0资源规范（2026-10-04）
+
+界面、地图、弹道与状态显示统一采用可替换PNG和原生SpriteFrame。拉伸皮肤设置九宫；固定比例图标不任意拉伸。禁止新增Graphics/运行时Canvas资源绘制和手工关闭packable。分类、源文件、原始表、换图与图集流程见[PNG资源工作流](PNG_RESOURCE_WORKFLOW.md)。下文旧版本的矢量绘制方案仅为历史记录，当前实现以本条为准。
+
 ## 1.5.1 强化图标柔和扁平修订（2026-10-03）
 
 32帧图集经内置imagegen两轮重绘，最终源图和提示词归档到source_assets/art/production/challenge_perks_soft。运行PNG为1024×2048、398031字节，复用原meta UUID与ArtFrame切片。卡片配色在原生Prefab维护；实际四视口验收见TESTING。
