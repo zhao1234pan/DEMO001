@@ -1,6 +1,6 @@
 /** CSV 是运行时唯一配置源；此模块不依赖引擎，可用于导表与回归检查。 */
 export type TableRow = Record<string, string>;
-export const TABLE_NAMES = ["Global", "I18", "Staff", "Enemy", "Theme", "Map", "MapPoint", "Spot", "Obstacle", "Level", "Wave", "WaveGroup", "Collection", "Audio", "Decoration", "ArtAtlas", "ArtFrame", "UiPrefab", "Tutorial", "StaffBranch", "StaffForm", "LevelLoadout", "ChallengeRule", "ChallengePerk", "VisualSkin"] as const;
+export const TABLE_NAMES = ["Global", "I18", "Staff", "Enemy", "Theme", "Map", "MapPoint", "Spot", "Obstacle", "Level", "Wave", "WaveGroup", "Collection", "Audio", "Decoration", "ArtAtlas", "ArtFrame", "UiPrefab", "Tutorial", "StaffBranch", "StaffForm", "LevelLoadout", "ChallengeRule", "ChallengePerk", "VisualSkin", "Goods"] as const;
 let data: Record<string, TableRow[]> = Object.create(null);
 let ready = false;
 let byKey:Record<string,Record<string,TableRow>> = Object.create(null);
@@ -45,6 +45,7 @@ export function installConfigs(sources: Record<string, string>): void {
     if(!["simple","sliced"].includes(row.mode)||!/^[-a-zA-Z0-9_/]+\/spriteFrame$/.test(row.path)||row.path.includes(".."))throw new Error("Invalid skin mode/path");
     if(numeric(row,"left")+numeric(row,"right")>=numeric(row,"width")||numeric(row,"top")+numeric(row,"bottom")>=numeric(row,"height"))throw new Error("Invalid nine slice borders");
   }
+  positive("Goods",["unlockLevel"]);for(const row of next.Goods){for(const field of ["nameKey","categoryKey","descriptionKey","storyKey"])requireRef("I18","key",row[field],"Goods");requireRef("VisualSkin","key",row.imageKey,"Goods");requireRef("Level","id",row.unlockLevel,"Goods");if(next.Level.find(l=>l.id===row.unlockLevel)!.mode!=="adventure")throw new Error("Invalid goods unlock level");}
   positive("Decoration",["width","height"]);
   positive("Staff", ["cost", "range", "rate", "damage", "shotSpeed", "targets"]); positive("Enemy", ["hp", "speed", "radius", "damage"]); positive("Enemy", ["reward"], true);
   positive("Level", ["initialLives", "enemyHealthScale", "enemySpeedScale"]); positive("Level", ["initialCoins"], true); positive("Obstacle", ["hp"]); positive("Obstacle", ["reward"], true); positive("Wave", ["spawnInterval", "healthScale"]); positive("WaveGroup", ["count"]);

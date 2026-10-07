@@ -353,13 +353,14 @@
     "_isSystemFontUsed": true,
     "_color": {
       "__type__": "cc.Color",
-      "r": 41,
-      "g": 78,
-      "b": 67,
+      "r": 92,
+      "g": 48,
+      "b": 32,
       "a": 255
     },
     "_font": null,
-    "_cacheMode": 0
+    "_cacheMode": 0,
+    "_isBold": true
   },
   {
     "__type__": "cc.CompPrefabInfo",
@@ -475,13 +476,14 @@
     "_isSystemFontUsed": true,
     "_color": {
       "__type__": "cc.Color",
-      "r": 41,
-      "g": 78,
-      "b": 67,
+      "r": 92,
+      "g": 48,
+      "b": 32,
       "a": 255
     },
     "_font": null,
-    "_cacheMode": 0
+    "_cacheMode": 0,
+    "_isBold": true
   },
   {
     "__type__": "cc.CompPrefabInfo",
@@ -597,13 +599,14 @@
     "_isSystemFontUsed": true,
     "_color": {
       "__type__": "cc.Color",
-      "r": 173,
-      "g": 102,
-      "b": 66,
+      "r": 92,
+      "g": 48,
+      "b": 32,
       "a": 255
     },
     "_font": null,
-    "_cacheMode": 0
+    "_cacheMode": 0,
+    "_isBold": true
   },
   {
     "__type__": "cc.CompPrefabInfo",

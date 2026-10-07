@@ -216,7 +216,7 @@
         "__id__": 98
       }
     ],
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 11
@@ -309,13 +309,13 @@
     "__prefab": {
       "__id__": 15
     },
-    "key": "round_15",
+    "key": "window_cream",
     "padding": 0,
     "image": {
       "__id__": 98
     },
     "previewFrame": {
-      "__uuid__": "2d32214d-08d1-4560-8f48-9c01083c0d83@f9941",
+      "__uuid__": "89d6e125-1f54-4484-ad15-bea51596dade@f9941",
       "__expectedType__": "cc.SpriteFrame"
     },
     "_id": ""
@@ -429,13 +429,13 @@
     "__prefab": {
       "__id__": 22
     },
-    "key": "round_15",
+    "key": "window_cream",
     "padding": 0,
     "image": {
       "__id__": 101
     },
     "previewFrame": {
-      "__uuid__": "2d32214d-08d1-4560-8f48-9c01083c0d83@f9941",
+      "__uuid__": "89d6e125-1f54-4484-ad15-bea51596dade@f9941",
       "__expectedType__": "cc.SpriteFrame"
     },
     "_id": ""
@@ -692,13 +692,14 @@
     "_isSystemFontUsed": true,
     "_color": {
       "__type__": "cc.Color",
-      "r": 41,
-      "g": 78,
-      "b": 67,
+      "r": 92,
+      "g": 48,
+      "b": 32,
       "a": 255
     },
     "_font": null,
-    "_cacheMode": 0
+    "_cacheMode": 0,
+    "_isBold": true
   },
   {
     "__type__": "cc.CompPrefabInfo",
@@ -814,13 +815,14 @@
     "_isSystemFontUsed": true,
     "_color": {
       "__type__": "cc.Color",
-      "r": 66,
-      "g": 103,
-      "b": 73,
+      "r": 92,
+      "g": 48,
+      "b": 32,
       "a": 255
     },
     "_font": null,
-    "_cacheMode": 0
+    "_cacheMode": 0,
+    "_isBold": true
   },
   {
     "__type__": "cc.CompPrefabInfo",
@@ -936,13 +938,14 @@
     "_isSystemFontUsed": true,
     "_color": {
       "__type__": "cc.Color",
-      "r": 153,
-      "g": 102,
-      "b": 71,
+      "r": 92,
+      "g": 48,
+      "b": 32,
       "a": 255
     },
     "_font": null,
-    "_cacheMode": 0
+    "_cacheMode": 0,
+    "_isBold": true
   },
   {
     "__type__": "cc.CompPrefabInfo",
@@ -1058,13 +1061,14 @@
     "_isSystemFontUsed": true,
     "_color": {
       "__type__": "cc.Color",
-      "r": 140,
-      "g": 106,
-      "b": 36,
+      "r": 92,
+      "g": 48,
+      "b": 32,
       "a": 255
     },
     "_font": null,
-    "_cacheMode": 0
+    "_cacheMode": 0,
+    "_isBold": true
   },
   {
     "__type__": "cc.CompPrefabInfo",
@@ -1268,7 +1272,7 @@
         "__id__": 104
       }
     ],
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 65
@@ -1361,13 +1365,13 @@
     "__prefab": {
       "__id__": 69
     },
-    "key": "round_16",
+    "key": "window_cream",
     "padding": 0,
     "image": {
       "__id__": 104
     },
     "previewFrame": {
-      "__uuid__": "e1c45357-3f38-4c70-806a-0d75dfbbfc8a@f9941",
+      "__uuid__": "89d6e125-1f54-4484-ad15-bea51596dade@f9941",
       "__expectedType__": "cc.SpriteFrame"
     },
     "_id": ""
@@ -1481,13 +1485,13 @@
     "__prefab": {
       "__id__": 76
     },
-    "key": "round_16",
+    "key": "window_cream",
     "padding": 0,
     "image": {
       "__id__": 107
     },
     "previewFrame": {
-      "__uuid__": "e1c45357-3f38-4c70-806a-0d75dfbbfc8a@f9941",
+      "__uuid__": "89d6e125-1f54-4484-ad15-bea51596dade@f9941",
       "__expectedType__": "cc.SpriteFrame"
     },
     "_id": ""
@@ -1936,10 +1940,10 @@
     "_customMaterial": null,
     "_color": {
       "__type__": "cc.Color",
-      "r": 33,
-      "g": 62,
-      "b": 49,
-      "a": 95
+      "r": 255,
+      "g": 255,
+      "b": 255,
+      "a": 255
     },
     "_srcBlendFactor": 2,
     "_dstBlendFactor": 4,
@@ -2040,8 +2044,8 @@
     "_color": {
       "__type__": "cc.Color",
       "r": 255,
-      "g": 247,
-      "b": 223,
+      "g": 255,
+      "b": 255,
       "a": 255
     },
     "_srcBlendFactor": 2,
@@ -2142,10 +2146,10 @@
     "_customMaterial": null,
     "_color": {
       "__type__": "cc.Color",
-      "r": 51,
-      "g": 73,
-      "b": 51,
-      "a": 107
+      "r": 255,
+      "g": 255,
+      "b": 255,
+      "a": 255
     },
     "_srcBlendFactor": 2,
     "_dstBlendFactor": 4,
@@ -2245,9 +2249,9 @@
     "_customMaterial": null,
     "_color": {
       "__type__": "cc.Color",
-      "r": 198,
-      "g": 206,
-      "b": 192,
+      "r": 255,
+      "g": 255,
+      "b": 255,
       "a": 255
     },
     "_srcBlendFactor": 2,

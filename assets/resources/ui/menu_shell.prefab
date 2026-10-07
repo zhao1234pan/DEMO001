@@ -249,13 +249,13 @@
     "__prefab": {
       "__id__": 11
     },
-    "key": "round_0",
+    "key": "home_city",
     "padding": 0,
     "image": {
       "__id__": 118
     },
     "previewFrame": {
-      "__uuid__": "f9c3b2e2-98bc-4bf2-a9e0-18d7c36092eb@f9941",
+      "__uuid__": "72b7fc86-dc04-411f-86a1-5d7437a4b988@f9941",
       "__expectedType__": "cc.SpriteFrame"
     },
     "_id": ""
@@ -276,7 +276,7 @@
         "__id__": 121
       }
     ],
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 14
@@ -396,7 +396,7 @@
         "__id__": 124
       }
     ],
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 21
@@ -516,7 +516,7 @@
         "__id__": 127
       }
     ],
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 28
@@ -636,7 +636,7 @@
         "__id__": 130
       }
     ],
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 35
@@ -756,7 +756,7 @@
         "__id__": 133
       }
     ],
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 42
@@ -876,7 +876,7 @@
         "__id__": 136
       }
     ],
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 49
@@ -996,7 +996,7 @@
         "__id__": 139
       }
     ],
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 56
@@ -1116,7 +1116,7 @@
         "__id__": 142
       }
     ],
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 63
@@ -1236,7 +1236,7 @@
         "__id__": 145
       }
     ],
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 70
@@ -1356,7 +1356,7 @@
         "__id__": 148
       }
     ],
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 77
@@ -1476,7 +1476,7 @@
         "__id__": 151
       }
     ],
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 84
@@ -1596,7 +1596,7 @@
         "__id__": 154
       }
     ],
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 91
@@ -1716,7 +1716,7 @@
         "__id__": 157
       }
     ],
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 98
@@ -1836,7 +1836,7 @@
         "__id__": 160
       }
     ],
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 105
@@ -2190,9 +2190,9 @@
     "_customMaterial": null,
     "_color": {
       "__type__": "cc.Color",
-      "r": 36,
-      "g": 77,
-      "b": 67,
+      "r": 255,
+      "g": 255,
+      "b": 255,
       "a": 255
     },
     "_srcBlendFactor": 2,

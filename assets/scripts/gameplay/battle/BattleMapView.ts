@@ -1,3 +1,4 @@
+import { globalString } from "../../config/ConfigTables";
 import { Color } from "cc";
 import { levelTheme } from "./LevelTheme";
 import type { LevelConfig } from "./LevelConfig";
@@ -8,7 +9,7 @@ export class BattleMapView {
   constructor(private readonly layer:PngSurface,private readonly width:number){}
   draw(level:LevelConfig,top:number,bottom:number,_landmarksReady:boolean){
     const color=new Color();Color.fromHEX(color,levelTheme(level).ground);this.layer.clear();
-    this.layer.box(0,top,this.width,bottom-top,0,color);
+    const floor=globalString("battleGroundSkin");for(let y=top;y<bottom;y+=this.width)this.layer.image(floor,this.width/2,y+this.width/2,this.width,this.width,color);
     const key="map_"+level.id,height=this.layer.heightFor(key,this.width);
     this.layer.image(key,this.width/2,height/2,this.width,height);this.layer.end();
     return selectSceneDecorations(level,this.width);

@@ -206,13 +206,14 @@
     "_isSystemFontUsed": true,
     "_color": {
       "__type__": "cc.Color",
-      "r": 23,
-      "g": 53,
-      "b": 46,
+      "r": 92,
+      "g": 48,
+      "b": 32,
       "a": 255
     },
     "_font": null,
-    "_cacheMode": 0
+    "_cacheMode": 0,
+    "_isBold": true
   },
   {
     "__type__": "cc.CompPrefabInfo",

@@ -204,13 +204,13 @@
     "__prefab": {
       "__id__": 11
     },
-    "key": "round_14",
+    "key": "window_cream",
     "padding": 0,
     "image": {
       "__id__": 18
     },
     "previewFrame": {
-      "__uuid__": "b36da191-acf2-4976-bb0e-8141e291d7ea@f9941",
+      "__uuid__": "89d6e125-1f54-4484-ad15-bea51596dade@f9941",
       "__expectedType__": "cc.SpriteFrame"
     },
     "_id": ""
@@ -329,13 +329,14 @@
     "_isSystemFontUsed": true,
     "_color": {
       "__type__": "cc.Color",
-      "r": 255,
-      "g": 249,
-      "b": 223,
+      "r": 92,
+      "g": 48,
+      "b": 32,
       "a": 255
     },
     "_font": null,
-    "_cacheMode": 0
+    "_cacheMode": 0,
+    "_isBold": true
   },
   {
     "__type__": "cc.CompPrefabInfo",
@@ -421,10 +422,10 @@
     "_customMaterial": null,
     "_color": {
       "__type__": "cc.Color",
-      "r": 23,
-      "g": 53,
-      "b": 46,
-      "a": 230
+      "r": 255,
+      "g": 255,
+      "b": 255,
+      "a": 255
     },
     "_srcBlendFactor": 2,
     "_dstBlendFactor": 4,

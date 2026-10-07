@@ -1,3 +1,4 @@
+import { LoadingView } from "../../ui/LoadingView";
 import { PngSurface } from "../../ui/PngSurface";
 import { ChallengeRun, ChallengePort, ChallengeShot, challengeRule } from "./ChallengeRun";
 import { ChallengeView } from "../../ui/ChallengeView";
@@ -184,26 +185,24 @@ export class GameRoot extends Component {
   private readonly showHandler = (): void => { this.audio?.setSuspended(false); };
   private readonly resizeHandler = (): void => { this.configureResolution(); this.applyLayout(); this.scheduleOnce(() => this.applyLayout(), 0); };
 
+  private startupLoading:LoadingView|null=null;
+
   onLoad(): void {
+    if(DEBUG)profiler.hideStats();
     // 配置就绪后统一加载预制体；重试期间禁止重复启动同一批资源。
-    const loading = new Node("ConfigLoading"); loading.layer = Layers.Enum.UI_2D; this.node.addChild(loading);
-    loading.addComponent(UITransform).setContentSize(650, 180);
-    const label = loading.addComponent(Label); label.fontSize = 28;
-    let busy = false;
-    const start = async (): Promise<void> => {
-      if (busy || this.disposed) return;
-      busy = true; label.string = "加载中…";
-      try {
-        if (!configsReady()) await loadGameConfigs();
-        const assets = await UiPrefabs.load();
-        if (this.disposed) { assets.destroy(); return; }
-        this.uiPrefabs = assets; loading.destroy(); this.boot();
-      } catch (error) {
-        console.error("Game UI/configuration load failed", error);
-        if (!this.disposed) label.string = "界面加载失败\n点击重试";
-      } finally { busy = false; }
-    };
-    loading.on(Node.EventType.TOUCH_END, () => { void start(); }); void start();
+    let busy=false,loading:LoadingView|null=null;
+    const start=async():Promise<void>=>{
+      if(busy||this.disposed)return;busy=true;
+      try{
+        if(!loading){loading=await LoadingView.load(this.node);this.startupLoading=loading;if(this.disposed){loading.destroy();return;}loading.onRetry(()=>{void start();});}
+        loading.progress(0);
+        if(!configsReady())await loadGameConfigs();
+        const assets=await UiPrefabs.load((loaded,total)=>{if(!this.disposed)loading?.progress(loaded/total);});
+        if(this.disposed){assets.destroy();loading?.destroy();return;}
+        this.uiPrefabs=assets;this.boot();loading.destroy();loading=null;this.startupLoading=null;
+      }catch(error){console.error("Game UI/configuration load failed",error);if(!this.disposed)loading?.failed();}
+      finally{busy=false;}
+    };void start();
   }
 
   private boot(): void {
@@ -264,6 +263,7 @@ export class GameRoot extends Component {
 
   onDestroy(): void {
     this.disposed = true;
+    this.startupLoading?.destroy();this.startupLoading=null;
     this.releaseMapReviewCapture?.();
     view.off("canvas-resize", this.resizeHandler, this);
     view.off("design-resolution-changed", this.resizeHandler, this);
@@ -413,7 +413,7 @@ export class GameRoot extends Component {
     this.unitBaseG.clear();
     this.art.beginFrame();
     this.uiArt.beginFrame();
-    this.battleUi.beginFrame(this.screen === "home");
+    this.battleUi.beginFrame(this.screen === "home",this.menu?.isLandingPage??true);
     this.guideCue = null;
     this.challengeView?.render(this.screen === "playing" && !this.paused && !this.gmPanelOpen ? this.challenge : null);
     if (this.screen === "home") {
@@ -692,7 +692,7 @@ export class GameRoot extends Component {
     if (!this.shouldShowWaveCountdown()) return;
     const position = this.waveCountdownPosition();
     const urgent = this.nextWaveTimer <= 3;
-    this.box(g, position.x - 56, position.y - 40, 112, 84, 16, "#fff9df", 0.97);
+    g.image("window_cream",position.x,position.y+2,112,84);
     g.outline(position.x-56,position.y-40,112,84,16,this.color(urgent?"#e78954":"#58a95e"));
   }
 
@@ -831,7 +831,8 @@ export class GameRoot extends Component {
     this.setLabel("wave", text("ui.GameRoot.009", this.wave, this.level.waves.length));
     this.setLabel("coin", `${this.coins}`); this.setLabel("lives", `${this.lives}`);
     this.setLabel("speed", `×${this.gameSpeed}`); this.setLabel("pause", this.paused ? "▶" : "Ⅱ");
-    ["title", "level", "wave", "coin", "lives", "speed", "pause"].forEach((key) => this.showLabel(key, !this.gmPanelOpen));
+    ["wave", "coin", "lives", "speed"].forEach((key) => this.showLabel(key, !this.gmPanelOpen));
+    ["title","level","pause"].forEach(key=>this.showLabel(key,false));
     const contextVisible = this.screen === "playing" && !this.paused && !this.gmPanelOpen;
     this.showLabel("entry-mark", contextVisible && !this.selectedSpot);
     this.showLabel("goal-mark", contextVisible && !this.selectedSpot);

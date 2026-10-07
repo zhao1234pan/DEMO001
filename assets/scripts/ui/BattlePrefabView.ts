@@ -24,6 +24,9 @@ export class BattlePrefabView {
   private readonly previewPositions = new Map<Node,Vec3>();
   private readonly previewBaseHeight: number;
   private readonly gmEntryPosition: Vec3;
+  private readonly homeGmPosition:Vec3;
+  private readonly menuGmPosition:Vec3;
+  private gmBottomOffset=0;
   private readonly overlays = new Map<Overlay, Node>();
   private readonly builds = new Map<TowerKind, Node>();
   private readonly evolutions = new Map<string,Node>();
@@ -80,6 +83,8 @@ export class BattlePrefabView {
     // 原版 GM 入口在战斗弹窗上方；位置仍取自 HUD 预制体。
     this.gmEntry = uiNode(this.hud, "Footer/Gm");
     this.gmEntryPosition = this.gmEntry.position.clone().add(this.footerPosition);
+    this.homeGmPosition=uiNode(this.hud,"HomeGmAnchor").position.clone();
+    this.menuGmPosition=uiNode(this.hud,"MenuGmAnchor").position.clone();
     this.gmEntry.setParent(parent); this.gmEntry.setPosition(this.gmEntryPosition); this.owned.push(this.gmEntry);
     this.gm = DEBUG ? create("gm") : null;
     this.gmEntry.active = DEBUG;
@@ -97,9 +102,10 @@ export class BattlePrefabView {
     this.register("overlayPrimary", uiNode(node, "Primary/overlayPrimary"));
     this.register("overlaySecondary", uiNode(node, "Secondary/overlaySecondary")); this.register("overlayHome", uiNode(node, "Home/overlayHome"));
   }
-  beginFrame(home: boolean): void {
+  beginFrame(home: boolean,landing=true): void {
     this.guide.active = false; this.boss.active = false;this.preview.active=false;uiNode(this.hud,"PreviewEntry").active=false;
     this.hud.active = !home; this.gmEntry.active = DEBUG;
+    this.gmEntry.setPosition(home?(landing?this.homeGmPosition:this.menuGmPosition):new Vec3(this.gmEntryPosition.x,this.gmEntryPosition.y-this.gmBottomOffset));
     // 菜单晚于战斗UI创建，入口与面板需保持在当前页面之上。
     if (DEBUG) { this.gmEntry.setSiblingIndex(this.parent.children.length - 1); this.gm?.setSiblingIndex(this.parent.children.length - 1); }
     this.upgrade.active = false; this.sell.active = false; this.obstacle.active = false;
@@ -114,7 +120,8 @@ export class BattlePrefabView {
     this.boss.setPosition(this.bossPosition.x, this.bossPosition.y - top);
     uiNode(this.hud, "Header").setPosition(this.headerPosition.x, this.headerPosition.y - top);
     uiNode(this.hud, "Footer").setPosition(this.footerPosition.x, this.footerPosition.y - (bottom - H));
-    this.gmEntry.setPosition(this.gmEntryPosition.x, this.gmEntryPosition.y - (bottom - H));
+    this.gmBottomOffset=bottom-H;
+    this.gmEntry.setPosition(this.gmEntryPosition.x, this.gmEntryPosition.y - this.gmBottomOffset);
     const headerHeight = uiNode(this.hud, "Header/Background").getComponent(UITransform)!.height;
     for (const node of Array.from(this.overlays.values()).concat(this.gm ? [this.gm] : [])) {
       const start = node === this.gm ? top : top + headerHeight;
@@ -130,7 +137,7 @@ export class BattlePrefabView {
     this.toast.active = toast && !gm;
     uiNode(this.hud, "Header/CoinIcon").active = !gm;
     this.gmEntry.active = DEBUG && !mapReview;
-    uiNode(this.hud, "Footer/Shop").active = true;
+    uiNode(this.hud, "Footer/Shop").active = false;
   }
   buildSize(): { width: number; height: number } {
     const node = this.builds.get(TOWER_KINDS[0])!, size = node.getComponent(UITransform)!.contentSize;

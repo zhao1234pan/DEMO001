@@ -207,7 +207,7 @@
         "__id__": 43
       }
     ],
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 11
@@ -300,13 +300,13 @@
     "__prefab": {
       "__id__": 15
     },
-    "key": "round_13",
+    "key": "window_cream",
     "padding": 0,
     "image": {
       "__id__": 43
     },
     "previewFrame": {
-      "__uuid__": "f3c95f38-6f23-4ad4-8328-e5fa1211ed24@f9941",
+      "__uuid__": "89d6e125-1f54-4484-ad15-bea51596dade@f9941",
       "__expectedType__": "cc.SpriteFrame"
     },
     "_id": ""
@@ -420,13 +420,13 @@
     "__prefab": {
       "__id__": 22
     },
-    "key": "round_13",
+    "key": "window_cream",
     "padding": 0,
     "image": {
       "__id__": 46
     },
     "previewFrame": {
-      "__uuid__": "f3c95f38-6f23-4ad4-8328-e5fa1211ed24@f9941",
+      "__uuid__": "89d6e125-1f54-4484-ad15-bea51596dade@f9941",
       "__expectedType__": "cc.SpriteFrame"
     },
     "_id": ""
@@ -785,13 +785,14 @@
     "_isSystemFontUsed": true,
     "_color": {
       "__type__": "cc.Color",
-      "r": 255,
-      "g": 249,
-      "b": 223,
+      "r": 92,
+      "g": 48,
+      "b": 32,
       "a": 255
     },
     "_font": null,
-    "_cacheMode": 0
+    "_cacheMode": 0,
+    "_isBold": true
   },
   {
     "__type__": "cc.CompPrefabInfo",
@@ -877,10 +878,10 @@
     "_customMaterial": null,
     "_color": {
       "__type__": "cc.Color",
-      "r": 51,
-      "g": 73,
-      "b": 51,
-      "a": 107
+      "r": 255,
+      "g": 255,
+      "b": 255,
+      "a": 255
     },
     "_srcBlendFactor": 2,
     "_dstBlendFactor": 4,
@@ -980,9 +981,9 @@
     "_customMaterial": null,
     "_color": {
       "__type__": "cc.Color",
-      "r": 221,
-      "g": 151,
-      "b": 100,
+      "r": 255,
+      "g": 255,
+      "b": 255,
       "a": 255
     },
     "_srcBlendFactor": 2,

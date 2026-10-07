@@ -1,3 +1,4 @@
+import { UiSkin } from "./UiSkin";
 import { UiRoute } from "./UiRoute";
 import { PngSurface } from "./PngSurface";
 import { loadoutRule, loadoutCandidates, requiredLoadoutSize, readLoadout, validLoadout, defaultLoadout, staffRole, levelPreview, bossWaveText } from "../gameplay/battle/LevelLoadout";
@@ -13,7 +14,7 @@ import { AudioService } from "../services/AudioService";
 import { PlatformSettings } from "../services/PlatformSettings";
 import { UiPrefabs, uiNode, uiText, uiRect, uiColor } from "./UiPrefabs";
 
-type MenuPage = "home" | "levels" | "collection" | "settings" | "loadout";
+type MenuPage = "home" | "levels" | "collection" | "settings" | "loadout" | "challenge_loadout";
 type Dialog = { kind: "entry"; entry: CollectionEntry } | { kind: "notice"; title: string; text: string };
 const W = GAME_CONFIG.prototypeLayoutWidth, H = GAME_CONFIG.prototypeLayoutHeight;
 
@@ -27,14 +28,17 @@ export class PrefabGameMenuView {
   private selection: TowerKind[] = [];
   private replacementSlot = -1;
   private selectionHint = "";
+  private readonly challengeLoadoutCards: Node[] = [];
   private readonly levelCards: Node[] = [];
   private readonly collectionCards: Node[] = [];
   private readonly actions = new Map<Node, () => void>();
   private readonly modalActions = new Map<Node, () => void>();
   private readonly routes = new WeakMap<Node,PngSurface>();
   private readonly platform = new PlatformSettings();
+  private readonly collectionSlotPositions=new Map<Node,{x:number;y:number}>();
   private page: MenuPage = "home";
-  private tab: CollectionTab = "enemies";
+  get isLandingPage():boolean{return this.page==="home"&&!this.dialog;}
+  private tab: CollectionTab = "staff";
   private levelPage = 0;
   private detailLevel = 1;
   private detailBaseLevel = 1;
@@ -52,13 +56,14 @@ export class PrefabGameMenuView {
   constructor(private readonly parent: Node, private readonly assets: UiPrefabs, private readonly audio: AudioService,
     private readonly collection: CollectionProgress, private readonly startLevel: (id: number, roster?: TowerKind[]) => void) {
     this.root = assets.create("menu_shell", parent);
-    for (const key of ["home", "levels", "collection", "settings", "loadout"] as MenuPage[]) {
+    for (const key of ["home", "levels", "collection", "settings", "loadout", "challenge_loadout"] as MenuPage[]) {
       const node = assets.create(key, uiNode(this.root, "Pages")); this.pages.set(key, node); node.active = false;
     }
     for (const key of ["notice", "detail"]) { const node = assets.create(key, uiNode(this.root, "Dialogs")); this.dialogs.set(key, node); node.active = false; }
     for (const slot of uiNode(this.pages.get("levels")!, "Cards").children) this.levelCards.push(assets.create("level_card", slot));
-    for (const slot of uiNode(this.pages.get("collection")!, "Cards").children) this.collectionCards.push(assets.create("collection_card", slot));
+    for (const slot of uiNode(this.pages.get("collection")!, "Cards").children){this.collectionCards.push(assets.create("collection_card",slot));this.collectionSlotPositions.set(slot,{x:slot.position.x,y:slot.position.y});}
     for(const slot of uiNode(this.pages.get("loadout")!, "Candidates").children)this.loadoutCards.push(assets.create("loadout_card",slot));
+    for(const slot of uiNode(this.pages.get("challenge_loadout")!,"Candidates").children)this.challengeLoadoutCards.push(assets.create("challenge_staff_card",slot));
     void this.platform.refresh().then(() => { if (!this.disposed) this.dirty = true; });
     this.root.active = false;
   }
@@ -68,10 +73,10 @@ export class PrefabGameMenuView {
     this.dialog = null; this.active = true; this.root.active = true; this.dirty = true;
   }
   showPreparation(unlocked:number,id:number):void {
-    this.show(unlocked,"loadout",id);this.preparationId=id;this.selection=readLoadout(id,unlocked);this.replacementSlot=-1;this.selectionHint="";
+    this.show(unlocked,getLevelConfig(id).mode==="challenge"?"challenge_loadout":"loadout",id);this.preparationId=id;this.selection=readLoadout(id,unlocked);this.replacementSlot=-1;this.selectionHint="";
   }
   showCollection(unlocked: number, tab: CollectionTab): void {
-    this.tab = tab; this.collectionPage = 0; this.show(unlocked, "collection");
+    this.tab = tab==="bosses"?"enemies":tab; this.collectionPage = tab==="bosses"?1:0; this.show(unlocked, "collection");
   }
   hide(): void { if (!this.active) return; this.navigationRevision++; this.active = false; this.root.active = false; this.dialog = null; }
   render(unlocked: number, top: number, bottom: number): void {
@@ -83,10 +88,12 @@ export class PrefabGameMenuView {
       this.root.setScale(scale, scale, 1); this.root.setPosition(0, H / 2 - offset - H * scale / 2);
       // 只有全屏遮罩随视口拉伸，页面内容保持预制体中的比例与位置。
       const visibleTop = (top - offset) / scale, visibleBottom = (bottom - offset) / scale;
-      for (const n of [uiNode(this.root, "Backdrop"), ...Array.from(this.dialogs.values()).map(n => uiNode(n, "Dim"))]) {
+      for (const n of [uiNode(this.pages.get("settings")!,"Dim"),uiNode(this.pages.get("challenge_loadout")!,"BattleDim"), ...Array.from(this.dialogs.values()).map(n => uiNode(n, "Dim"))]) {
         n.getComponent(UITransform)!.height = visibleBottom - visibleTop;
         n.setPosition(n.position.x, H / 2 - (visibleTop + visibleBottom) / 2);
       }
+      const background=uiNode(this.root,"Backdrop"),skin=this.assets.skin(background.getComponent(UiSkin)!.key),height=visibleBottom-visibleTop,ratio=Number(skin.width)/Number(skin.height),width=Math.max(W,height*ratio);
+      background.getComponent(UITransform)!.setContentSize(width,width/ratio);background.setPosition(0,H/2-(visibleTop+visibleBottom)/2);
       this.dirty = true;
     }
     if (unlocked !== this.unlocked) { this.unlocked = getLevelConfig(unlocked).id; this.collection.refresh(this.unlocked); this.dirty = true; }
@@ -98,7 +105,7 @@ export class PrefabGameMenuView {
     if (this.page === "home") this.home(page);
     else if (this.page === "levels") this.levels(page);
     else if (this.page === "collection") this.collectionPageView(page);
-    else if(this.page === "loadout") this.preparation(page);
+    else if(this.page === "loadout" || this.page === "challenge_loadout") this.preparation(page);
     else this.settings(page);
     this.renderDialog();
   }
@@ -119,7 +126,9 @@ export class PrefabGameMenuView {
   private navigate(page: MenuPage): void { this.navigationRevision++; this.page = page; this.dialog = null; this.dirty = true; }
   private notice(title: string, content: string): void { this.dialog = { kind: "notice", title, text: content }; this.dirty = true; }
   private home(page: Node): void {
-    uiText(page, "Brand", GAME_CONFIG.gameName);
+    uiText(page, "Brand", text("ui.redesign.homeTitle"));
+    uiText(page,"Progress",text("ui.redesign.progress",this.unlocked,GAME_CONFIG.maxLevels));uiText(page,"CollectionCount",text("ui.redesign.collection",COLLECTION_ENTRIES.filter(e=>this.collection.isUnlocked(e)).length));
+    this.bind(page,"Store",()=>this.notice(text("ui.redesign.shop"),text("ui.redesign.unavailable")));this.bind(page,"Ranking",()=>this.notice(text("ui.redesign.rank"),text("ui.redesign.unavailable")));
     uiText(page, "Adventure/Note", text("ui.GameMenuView.004", this.unlocked, GAME_CONFIG.maxLevels));
     this.bind(page, "Settings", () => this.navigate("settings"));
     this.bind(page, "Adventure", () => this.navigate("levels"));
@@ -186,13 +195,14 @@ export class PrefabGameMenuView {
     for (const tab of COLLECTION_TABS) {
       const name = "Tab-" + tab.id, selected = this.tab === tab.id;
       uiNode(page, name + "/Selected").active = selected; uiNode(page, name + "/Normal").active = !selected;
-      uiText(page, name + "/Text", text("ui.GameMenuView.025", tab.label));
+      uiText(page, name + "/Text", tab.label);
       this.bind(page, name, () => { this.tab = tab.id; this.collectionPage = 0; });
     }
-    const entries = COLLECTION_ENTRIES.filter(item => item.tab === this.tab), count = this.collectionCards.length;
+    const entries = COLLECTION_ENTRIES.filter(item => item.tab === this.tab || this.tab==="enemies"&&item.tab==="bosses"), firstBoss=entries.findIndex(e=>e.tab==="bosses"),count=this.tab==="enemies"&&firstBoss>0?Math.min(firstBoss,this.collectionCards.length):this.collectionCards.length;
     const pages = Math.max(1, Math.ceil(entries.length / count)); this.collectionPage = Math.max(0, Math.min(this.collectionPage, pages - 1));
     this.collectionCards.forEach((card, i) => {
-      const entry = entries[this.collectionPage * count + i]; card.active = Boolean(entry); if (!entry) return;
+      const original=this.collectionSlotPositions.get(card.parent!)!;card.parent!.setPosition(original.x,original.y);
+      const entry = i<count?entries[this.collectionPage * count + i]:undefined; card.active = Boolean(entry); if (!entry) return;
       const unlocked = this.collection.isUnlocked(entry);
       uiNode(card, "Unlocked").active = unlocked; uiNode(card, "Locked").active = !unlocked;
       uiNode(card, "LockedPortraitBackground").active = !unlocked;
@@ -200,10 +210,14 @@ export class PrefabGameMenuView {
       uiText(card, "Name", unlocked ? entry.name : text("ui.unknown"));
       this.bind(card, "", () => { this.detailLevel = 1; this.detailBaseLevel = 1; this.dialog = { kind: "entry", entry }; });
     });
+    // 未填满的一行按预制体列位置居中，不在代码重复保存美术坐标。
+    const grouped=new Map<number,Node[]>();for(const card of this.collectionCards){const y=this.collectionSlotPositions.get(card.parent!)!.y;const group=grouped.get(y)??[];group.push(card);grouped.set(y,group);}
+    for(const group of Array.from(grouped.values())){const active=group.filter(n=>n.active);if(!active.length)continue;const shift=(group[0].parent!.position.x+group[group.length-1].parent!.position.x-active[0].parent!.position.x-active[active.length-1].parent!.position.x)/2;for(const card of active)card.parent!.setPosition(card.parent!.position.x+shift,card.parent!.position.y);}
     uiText(page, "Count", text("ui.GameMenuView.026", entries.filter(e => this.collection.isUnlocked(e)).length, entries.length));
     this.pagination(page, this.collectionPage, pages, () => { this.collectionPage--; }, () => { this.collectionPage++; });
   }
   private preparation(page:Node):void {
+    if(this.page==="challenge_loadout"){this.challengePreparation(page);return;}
     const id=this.preparationId,level=getLevelConfig(id),pool=loadoutCandidates(id,this.unlocked),count=requiredLoadoutSize(id,this.unlocked);
     this.bind(page,"Back",()=>this.navigate(level.mode==="challenge"?"home":"levels"));uiText(page,"Title",text(level.mode==="challenge"?"challenge.loadout":"ui.loadout.title"));
     uiText(page,"LevelTitle",level.title);uiText(page,"Stats",text("ui.loadout.stats",level.initialCoins,level.waves.length));uiText(page,"Boss",bossWaveText(level));
@@ -224,6 +238,17 @@ export class PrefabGameMenuView {
     uiText(page,"Start/Text",full?text("ui.loadout.start"):text("ui.loadout.need",count-this.selection.length));this.buttonEnabled(page,"Start",full);
     if(validLoadout(id,this.unlocked,this.selection))this.bind(page,"Start",()=>this.startLevel(id,[...this.selection]));
   }
+  /** 八选四直接切换勾选；满员后必须先取消，不自动替换玩家刚选定的店员。 */
+  private challengePreparation(page:Node):void {
+    const id=this.preparationId,pool=loadoutCandidates(id,this.unlocked),count=requiredLoadoutSize(id,this.unlocked),full=this.selection.length===count;
+    this.bind(page,"Back",()=>this.navigate("home"));uiText(page,"Title",text("challenge.loadout"));uiText(page,"SelectedTitle",text("ui.loadout.selected",this.selection.length,count));
+    uiText(page,"Default/Text",text("ui.loadout.default"));this.bind(page,"Default",()=>{this.selection=defaultLoadout(id).filter(k=>pool.includes(k));this.selectionHint="";});
+    uiText(page,"Hint",this.selectionHint||text("ui.redesign.pickHint"));
+    this.challengeLoadoutCards.forEach((card,i)=>{const kind=pool[i];card.active=Boolean(kind);if(!kind)return;this.assets.bindImage(uiNode(card,"Icon"),"menu:"+kind);uiText(card,"Name",TOWER_CONFIG[kind].name);uiText(card,"Role",staffRole(kind));uiNode(card,"Selected").active=this.selection.includes(kind);
+      this.bind(card,"",()=>{const index=this.selection.indexOf(kind);if(index>=0)this.selection.splice(index,1);else if(!full)this.selection.push(kind);else{this.selectionHint=text("ui.redesign.pickFull");return;}this.selectionHint="";});
+    });
+    uiText(page,"Start/Text",full?text("ui.loadout.start"):text("ui.loadout.need",count-this.selection.length));this.buttonEnabled(page,"Start",full);if(validLoadout(id,this.unlocked,this.selection))this.bind(page,"Start",()=>this.startLevel(id,[...this.selection]));
+  }
   private settings(page: Node): void {
     for (const [name, enabled, action] of [
       ["Music", this.audio.musicEnabled, () => this.audio.setMusicEnabled(!this.audio.musicEnabled)],
@@ -239,7 +264,7 @@ export class PrefabGameMenuView {
     const page = this.dialogs.get(dialog.kind === "notice" ? "notice" : "detail")!; page.active = true;
     this.bind(page, "Close", () => { this.dialog = null; }, true);
     if (dialog.kind === "notice") { uiText(page, "Title", dialog.title); uiText(page, "Body", dialog.text); return; }
-    const entry=dialog.entry,trial=this.page==="loadout"&&getLevelConfig(this.preparationId).mode==="challenge"&&Boolean(entry.staffKind),ownerKnown=trial||this.collection.isUnlocked(entry),choices=entry.staffKind?evolutionChoices(entry.staffKind):[];
+    const entry=dialog.entry,trial=(this.page==="loadout"||this.page==="challenge_loadout")&&getLevelConfig(this.preparationId).mode==="challenge"&&Boolean(entry.staffKind),ownerKnown=trial||this.collection.isUnlocked(entry),choices=entry.staffKind?evolutionChoices(entry.staffKind):[];
     const evolution=choices.length&&this.detailLevel>1?choices[this.detailLevel-2]:undefined;
     const unlocked=ownerKnown&&(trial||!evolution||this.collection.isEvolutionUnlocked(evolution.key));
     uiText(page,"Title",unlocked?(evolution?text("ui.evolution.name",entry.name,evolution.name):entry.name):text("ui.evolution.locked"));
@@ -262,7 +287,7 @@ export class PrefabGameMenuView {
       uiText(page,"Known/Category",evolution?text("ui.evolution.profile"):entry.category);
       uiText(page,"Known/Traits",evolution?evolutionTraits(evolution):entry.traits);
       const stats=evolution?evolutionStats(evolution):entry.staffKind?staffStats(entry.staffKind,choices.length?this.detailBaseLevel:this.detailLevel):entry.stats;
-      uiNode(page,"Known/Stats").active=false;stats.forEach((item,index)=>uiText(page,"Known/Stat"+index,item.label+"\n"+item.value));
+      uiNode(page,"Known/Stats").active=false;for(let i=0;i<4;i++)uiNode(page,"Known/Stat"+i).active=i<stats.length;stats.forEach((item,index)=>uiText(page,"Known/Stat"+index,item.label+"\n"+item.value));
       uiNode(page,"Known/Note").active=false;uiText(page,"Known/Story",evolution?evolution.story:entry.story);
     }
     this.layoutDetail(page,unlocked,ownerKnown&&Boolean(entry.staffKind));
@@ -280,7 +305,8 @@ export class PrefabGameMenuView {
     if(staff){rows.push([1,2,3].map(level=>uiNode(page,"Level"+level)));if(uiNode(page,"Base1").active)rows.push([uiNode(page,"Base1"),uiNode(page,"Base2")]);}
     if (unlocked) {
       rows.push([measured("Known/Category")], [measured("Known/Traits")]);
-      rows.push([uiNode(page, "Known/Stat0"), uiNode(page, "Known/Stat1")], [uiNode(page, "Known/Stat2"), uiNode(page, "Known/Stat3")], [uiNode(page, "Known/Rule")], [measured("Known/Story")]);
+      for(const paths of [["Known/Stat0","Known/Stat1"],["Known/Stat2","Known/Stat3"]]){const nodes=paths.map(p=>uiNode(page,p)).filter(n=>n.active);if(nodes.length)rows.push(nodes);}
+      rows.push([uiNode(page,"Known/Rule")],[measured("Known/Story")]);
     } else rows.push([uiNode(page, "Unknown/Title")], [measured("Unknown/Hint")]);
     const heights = rows.map(row => Math.max(...row.map(node => node.getComponent(UITransform)!.height)));
     const height = padding * 2 + heights.reduce((sum, value) => sum + value, 0) + gap * (rows.length - 1);

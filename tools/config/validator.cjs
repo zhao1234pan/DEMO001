@@ -11,7 +11,7 @@ exports.globalString = globalString;
 exports.text = text;
 exports.parseCsv = parseCsv;
 exports.installConfigs = installConfigs;
-exports.TABLE_NAMES = ["Global", "I18", "Staff", "Enemy", "Theme", "Map", "MapPoint", "Spot", "Obstacle", "Level", "Wave", "WaveGroup", "Collection", "Audio", "Decoration", "ArtAtlas", "ArtFrame", "UiPrefab", "Tutorial", "StaffBranch", "StaffForm", "LevelLoadout", "ChallengeRule", "ChallengePerk", "VisualSkin"];
+exports.TABLE_NAMES = ["Global", "I18", "Staff", "Enemy", "Theme", "Map", "MapPoint", "Spot", "Obstacle", "Level", "Wave", "WaveGroup", "Collection", "Audio", "Decoration", "ArtAtlas", "ArtFrame", "UiPrefab", "Tutorial", "StaffBranch", "StaffForm", "LevelLoadout", "ChallengeRule", "ChallengePerk", "VisualSkin", "Goods"];
 let data = Object.create(null);
 let ready = false;
 let byKey = Object.create(null);
@@ -126,6 +126,15 @@ function installConfigs(sources) {
             throw new Error("Invalid skin mode/path");
         if (numeric(row, "left") + numeric(row, "right") >= numeric(row, "width") || numeric(row, "top") + numeric(row, "bottom") >= numeric(row, "height"))
             throw new Error("Invalid nine slice borders");
+    }
+    positive("Goods", ["unlockLevel"]);
+    for (const row of next.Goods) {
+        for (const field of ["nameKey", "categoryKey", "descriptionKey", "storyKey"])
+            requireRef("I18", "key", row[field], "Goods");
+        requireRef("VisualSkin", "key", row.imageKey, "Goods");
+        requireRef("Level", "id", row.unlockLevel, "Goods");
+        if (next.Level.find(l => l.id === row.unlockLevel).mode !== "adventure")
+            throw new Error("Invalid goods unlock level");
     }
     positive("Decoration", ["width", "height"]);
     positive("Staff", ["cost", "range", "rate", "damage", "shotSpeed", "targets"]);

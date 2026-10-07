@@ -371,7 +371,7 @@ id,key,zhCN
 365,ui.evolution.costValue,●{p0}
 366,ui.loadout.title,出战准备
 367,ui.loadout.selected,出战店员 {p0}/{p1}
-368,ui.loadout.start,开始关卡
+368,ui.loadout.start,确认出战
 369,ui.loadout.choose,选择出战店员
 370,ui.loadout.replace,选择要替换的出战位
 371,ui.loadout.empty,空位
@@ -445,15 +445,15 @@ id,key,zhCN
 439,wave.1503.announcement,来客开始增多
 440,wave.2002.announcement,厚实来客随后赶到
 441,wave.2003.announcement,快客混进了队伍
-442,challenge.pick,选一份夜班补给
-443,challenge.pickCount,第 {p0} / {p1} 次补给
+442,challenge.pick,夜班补给
+443,challenge.pickCount,第 {p0}/{p1} 次补给
 444,challenge.refresh,看广告刷新
 445,challenge.refreshEmpty,本次刷新已用完
 446,challenge.inventory,本局强化 {p0}
 447,challenge.close,返回战斗
 449,challenge.empty,本局还没有强化
 450,challenge.result,抵达第 {p0} / {p1} 波 · 获得 {p2} 项强化
-451,challenge.loadout,夜班加时赛 · 选择店员
+451,challenge.loadout,选择出战店员
 452,challenge.category.S,店员
 453,challenge.category.G,全局
 454,challenge.category.E,经济
@@ -528,3 +528,48 @@ id,key,zhCN
 523,challenge.refreshUnavailable,广告暂不可用
 524,challenge.refreshIncomplete,未完整观看，未刷新
 525,challenge.enhanceStaff,强化 {p0}
+526,ui.redesign.homeTitle,我的便利店
+527,ui.redesign.book,图鉴
+528,ui.redesign.shop,商店
+529,ui.redesign.rank,排行榜
+530,ui.redesign.settings,设置
+531,ui.redesign.unavailable,暂未开放
+532,ui.redesign.loading,正在加载 {p0}%
+533,ui.redesign.loadingFailed,加载失败，点击重试
+534,ui.redesign.select,选择
+535,ui.redesign.staff,店员
+536,ui.redesign.monsters,怪物
+537,ui.redesign.goods,商品
+538,ui.redesign.progress,{p0}/{p1}关
+539,ui.redesign.collection,收录 {p0}
+540,ui.redesign.pickHint,点击头像选择或取消
+541,ui.redesign.pickFull,请先取消一名店员
+542,ui.redesign.goodsCategory,便利店商品
+543,ui.redesign.goodsUnlock,第 {p0} 关解锁
+544,goods.cola.name,可乐
+545,goods.cola.description,冰凉爽口
+546,goods.cola.story,一打开罐子，细密的气泡就从杯沿冒出来。
+547,goods.bread.name,面包
+548,goods.bread.description,松软香甜
+549,goods.bread.story,清晨烤好的面包，在夜班也能带来一点温暖。
+550,goods.noodles.name,泡面
+551,goods.noodles.description,热气腾腾
+552,goods.noodles.story,倒上热水，等一会儿，就是一顿夜班小餐。
+553,goods.milk.name,牛奶
+554,goods.milk.description,醇香顺滑
+555,goods.milk.story,蓝白小盒里装着一份简单的日常。
+556,goods.chips.name,薯片
+557,goods.chips.description,咔嚓酥脆
+558,goods.chips.story,袋子里总藏着一片形状特别的薯片。
+559,goods.cookies.name,饼干
+560,goods.cookies.description,香酥可口
+561,goods.cookies.story,小盒饼干很适合和忙完夜班的朋友分享。
+562,goods.jelly.name,果冻
+563,goods.jelly.description,清甜弹软
+564,goods.jelly.story,红色和绿色的小杯，摆在货架上像两颗宝石。
+565,goods.water.name,矿泉水
+566,goods.water.description,清澈解渴
+567,goods.water.story,店员补货时，总会给水瓶排得整整齐齐。
+568,goods.rice.name,饭团
+569,goods.rice.description,一口满足
+570,goods.rice.story,小小的三角饭团，藏着夜班便当的心意。

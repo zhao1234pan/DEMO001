@@ -5,7 +5,7 @@ import { ENEMY_CONFIG, ENEMY_KINDS, EnemyKind, TOWER_CONFIG, TowerKind } from ".
 import { getLevelConfig, LEVEL_CONFIGS } from "./LevelConfig";
 import { PlatformService } from "../../services/PlatformService";
 
-export type CollectionTab = "enemies" | "bosses" | "staff";
+export type CollectionTab = "enemies" | "bosses" | "staff" | "goods";
 export type CollectionImageKey = string;
 
 export interface CollectionEntry {
@@ -19,6 +19,8 @@ export interface CollectionEntry {
   readonly stats: readonly { readonly label: string; readonly value: string }[];
   readonly statNote: string;
   readonly unlockHint: string;
+  readonly goodsKey?: string;
+  readonly unlockLevel?: number;
   readonly enemyKind?: EnemyKind;
   readonly staffKind?: TowerKind;
 }
@@ -53,13 +55,14 @@ function staffUnlockHint(kind: TowerKind): string {
 
 export const COLLECTION_ENTRIES: CollectionEntry[] = [];
 onConfigsReady(()=>{
-  COLLECTION_TABS.splice(0,COLLECTION_TABS.length,{id:"enemies",label:text("ui.CollectionData.012")},{id:"bosses",label:text("ui.boss")},{id:"staff",label:text("ui.CollectionData.013")});
+  COLLECTION_TABS.splice(0,COLLECTION_TABS.length,{id:"staff",label:text("ui.redesign.staff")},{id:"enemies",label:text("ui.redesign.monsters")},{id:"goods",label:text("ui.redesign.goods")});
   for(const kind of ENEMY_KINDS) COLLECTION_ENEMY_KEYS[kind]="night_store_collection_enemy_"+kind;
   COLLECTION_ENTRIES.splice(0,COLLECTION_ENTRIES.length,...rows("Collection").map(row=>{
     const staff=row.tab==="staff",kind=row.kind;
     return {id:row.key,tab:row.tab as CollectionTab,name:staff?TOWER_CONFIG[kind as TowerKind].name:ENEMY_CONFIG[kind as EnemyKind].name!,imageKey:row.imageKey as CollectionImageKey,category:text(row.category),traits:entryTraits(row.traits,kind,staff),story:text(row.story),
       stats:staff?staffStats(kind as TowerKind):enemyStats(kind as EnemyKind),statNote:staff?text("ui.CollectionData.014"):text("ui.CollectionData.015"),unlockHint:staff?staffUnlockHint(kind as TowerKind):text("ui.CollectionData.016"),...(staff?{staffKind:kind as TowerKind}:{enemyKind:kind as EnemyKind})};
   }));
+  COLLECTION_ENTRIES.push(...rows("Goods").map(row=>({id:"goods_"+row.key,tab:"goods" as CollectionTab,name:text(row.nameKey),imageKey:row.imageKey,category:text(row.categoryKey),traits:text(row.descriptionKey),story:text(row.storyKey),stats:[],statNote:"",unlockHint:text("ui.redesign.goodsUnlock",row.unlockLevel),goodsKey:row.key,unlockLevel:numeric(row,"unlockLevel")})));
 });
 /** 调用方只传正式解锁关，并仅在正式战斗出怪时记录遭遇；GM 与美术评审不接入本服务。 */
 export class CollectionProgress {
@@ -67,6 +70,7 @@ export class CollectionProgress {
   private readonly enemies = new Set<EnemyKind>();
   private readonly staff = new Set<TowerKind>();
   private readonly forms = new Set<string>();
+  private highestLevel = 1;
 
   constructor(unlockedLevel = 1) {
     this.refresh(unlockedLevel);
@@ -89,7 +93,7 @@ export class CollectionProgress {
   setGmPreview(tab: CollectionTab | "all" | null): void {
     if (!DEBUG) return;
     if (tab === null) this.previewTabs.clear();
-    else for (const item of COLLECTION_TABS) if (tab === "all" || item.id === tab) this.previewTabs.add(item.id);
+    else if(tab === "all")for(const id of ["staff","enemies","bosses","goods"] as CollectionTab[])this.previewTabs.add(id);else this.previewTabs.add(tab);
   }
 
   resetGmProgress(): void {
@@ -104,6 +108,7 @@ export class CollectionProgress {
   recordEvolution(key:string):boolean {if(!evolutionByKey(key)||this.forms.has(key))return false;this.forms.add(key);PlatformService.setMaximumInteger("night_store_evolution_"+key,1,1);return true;}
   isUnlocked(entry: CollectionEntry): boolean {
     if (DEBUG && this.previewTabs.has(entry.tab)) return true;
+    if(entry.tab==="goods")return this.highestLevel >= (entry.unlockLevel ?? Infinity);
     if (entry.tab === "staff") return entry.staffKind !== undefined && this.staff.has(entry.staffKind);
     return entry.enemyKind !== undefined && this.enemies.has(entry.enemyKind);
   }
@@ -116,7 +121,7 @@ export class CollectionProgress {
   }
 
   migrate(unlockedLevel: number): number {
-    const highest = getLevelConfig(unlockedLevel).id;
+    const highest = getLevelConfig(unlockedLevel).id;this.highestLevel=highest;
     let added = 0;
     this.staff.clear();
     for(const row of rows("Staff"))if(Number(row.unlockLevel)<=highest)this.staff.add(row.key as TowerKind);
