@@ -11,7 +11,7 @@ exports.globalString = globalString;
 exports.text = text;
 exports.parseCsv = parseCsv;
 exports.installConfigs = installConfigs;
-exports.TABLE_NAMES = ["Global", "I18", "Staff", "Enemy", "Theme", "Map", "MapPoint", "Spot", "Obstacle", "Level", "Wave", "WaveGroup", "Collection", "Audio", "Decoration", "ArtAtlas", "ArtFrame", "UiPrefab", "Tutorial", "StaffBranch", "StaffForm", "LevelLoadout", "ChallengeRule", "ChallengePerk", "VisualSkin", "Goods"];
+exports.TABLE_NAMES = ["Global", "I18", "Staff", "Enemy", "Theme", "Map", "MapPoint", "Spot", "Obstacle", "Level", "Wave", "WaveGroup", "Collection", "Audio", "Decoration", "ArtAtlas", "ArtFrame", "UiPrefab", "Tutorial", "StaffBranch", "StaffForm", "LevelLoadout", "ChallengeRule", "ChallengePerk", "VisualSkin", "Goods", "ArtCut"];
 let data = Object.create(null);
 let ready = false;
 let byKey = Object.create(null);
@@ -122,10 +122,21 @@ function installConfigs(sources) {
     positive("VisualSkin", ["width", "height"]);
     positive("VisualSkin", ["left", "right", "top", "bottom", "padding"], true);
     for (const row of next.VisualSkin) {
+        if (!["stretch", "height", "contain", "cover"].includes(row.resizeMode))
+            throw new Error("Invalid skin resize mode");
         if (!["simple", "sliced"].includes(row.mode) || !/^[-a-zA-Z0-9_/]+\/spriteFrame$/.test(row.path) || row.path.includes(".."))
             throw new Error("Invalid skin mode/path");
         if (numeric(row, "left") + numeric(row, "right") >= numeric(row, "width") || numeric(row, "top") + numeric(row, "bottom") >= numeric(row, "height"))
             throw new Error("Invalid nine slice borders");
+    }
+    positive("ArtCut", ["targetId", "width", "height", "threshold"]);
+    positive("ArtCut", ["x", "y", "edge", "padding"], true);
+    for (const row of next.ArtCut) {
+        if (!["skin", "frame"].includes(row.target) || !/^source_assets\/art\/[-a-zA-Z0-9_/]+\.png$/.test(row.source) || row.source.includes("..") || !/^[a-f0-9]{64}$/.test(row.sha256))
+            throw new Error("Invalid cut source");
+        requireRef(row.target === "skin" ? "VisualSkin" : "ArtFrame", "id", row.targetId, "ArtCut");
+        if (row.seeds && !/^\d+:\d+(\|\d+:\d+)*$/.test(row.seeds))
+            throw new Error("Invalid cut seeds");
     }
     positive("Goods", ["unlockLevel"]);
     for (const row of next.Goods) {
@@ -208,7 +219,7 @@ function installConfigs(sources) {
             requireRef("I18", "key", row[field], "Collection");
     }
     positive("ArtAtlas", ["width", "height"]);
-    positive("ArtFrame", ["width", "height"]);
+    positive("ArtFrame", ["width", "height", "canvasWidth", "canvasHeight"]);
     positive("ArtFrame", ["x", "y"], true);
     for (const row of next.ArtFrame) {
         requireRef("ArtAtlas", "key", row.atlas, "ArtFrame");

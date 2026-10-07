@@ -88,7 +88,7 @@ export class PrefabGameMenuView {
       this.root.setScale(scale, scale, 1); this.root.setPosition(0, H / 2 - offset - H * scale / 2);
       // 只有全屏遮罩随视口拉伸，页面内容保持预制体中的比例与位置。
       const visibleTop = (top - offset) / scale, visibleBottom = (bottom - offset) / scale;
-      for (const n of [uiNode(this.pages.get("settings")!,"Dim"),uiNode(this.pages.get("challenge_loadout")!,"BattleDim"), ...Array.from(this.dialogs.values()).map(n => uiNode(n, "Dim"))]) {
+      for (const n of [uiNode(this.pages.get("settings")!,"Dim"),uiNode(this.pages.get("collection")!,"Dim"),uiNode(this.pages.get("challenge_loadout")!,"BattleDim"), ...Array.from(this.dialogs.values()).map(n => uiNode(n, "Dim"))]) {
         n.getComponent(UITransform)!.height = visibleBottom - visibleTop;
         n.setPosition(n.position.x, H / 2 - (visibleTop + visibleBottom) / 2);
       }

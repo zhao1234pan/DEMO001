@@ -1,5 +1,17 @@
 # PNG资源、九宫格与图集工作流
 
+## 1.7.1 切图与替换规范（2026-10-07）
+
+新增ArtCut.xlsx→ArtCut.csv：120项完整裁切、种子、源图SHA、透明边缘和留白。ArtFrame新增canvasWidth/canvasHeight管理独立PNG尺寸；旧width/height仅保留历史图集来源。VisualSkin新增resizeMode管理等比、高度、面板与背景适配。详细标准见[UI资源与层级规范](UI_RESOURCE_STANDARD.md)。
+
+换图保留目标路径和meta UUID。当前导出签名检查要求来源同步：将新源PNG放入source_assets，先在ArtCut原始表更新源路径、SHA、完整选区与种子；整张独立原图可留空seeds。用node tools/art/import-redesign.cjs --from-xlsx导出PNG/meta与签名，再运行node tools/config/export.cjs和--check。不能只覆盖运行PNG而遗漏原始表和来源记录。新增资源先由Creator导入产生meta，再采用同样流程；保持同槽位统一画布。
+
+普通构建只检查，不自动覆盖手工美术。node tools/art/export-png.cjs skins或characters在当前工程转入ArtCut流程，不能再恢复旧图集。node tools/ui/repair-art-layout.cjs是显式、可重复的预制体整理工具；正常导表只同步绑定、文字和适配模式，不移动手工布局。新增布局若调整层级，须遵守语义节点分层规范并跑逐页截图。
+
+修复与验证见[本轮记录](UI_ASSET_AUDIT.md)。以下1.7.0/1.6.0内容是历史，不再作为当前等分切图或直接覆盖PNG的操作依据。
+
+
+
 ## 1.7.0 新版美术与分类（2026-10-07）
 
 当前204张运行PNG、121项VisualSkin、83项ArtFrame。原UUID保留；37张新增资源分组为ui/backgrounds、ui/skins/redesign、ui/windows、ui/icons/common、ui/icons/goods及gameplay/maps。背景/路面独立；小图按文件夹AutoAtlas、九宫禁止旋转。所有美术为PNG，文字为Label/I18，品牌Logo为用户参考美术。

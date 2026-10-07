@@ -207,7 +207,9 @@
       "menu": "string",
       "ui": "string",
       "scenery": "string",
-      "assetPath": "string"
+      "assetPath": "string",
+      "canvasWidth": "int",
+      "canvasHeight": "int"
     }
   },
   "UiPrefab": {
@@ -340,7 +342,8 @@
       "top": "int",
       "bottom": "int",
       "padding": "int",
-      "note": "string"
+      "note": "string",
+      "resizeMode": "string"
     }
   },
   "Goods": {
@@ -353,6 +356,24 @@
       "descriptionKey": "string",
       "storyKey": "string",
       "unlockLevel": "int"
+    }
+  },
+  "ArtCut": {
+    "fields": {
+      "id": "int",
+      "key": "string",
+      "target": "string",
+      "targetId": "int",
+      "source": "string",
+      "sha256": "string",
+      "seeds": "string",
+      "x": "int",
+      "y": "int",
+      "width": "int",
+      "height": "int",
+      "threshold": "int",
+      "edge": "int",
+      "padding": "int"
     }
   }
 }

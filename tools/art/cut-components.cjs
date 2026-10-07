@@ -1,0 +1,3 @@
+/* 源图全局连通块，保留完整对象；不以网格边界切断武器、耳朵和弹丸。 */
+function components(data,w,h,threshold){const labels=new Int32Array(w*h),q=new Int32Array(w*h),items=[];for(let i=0;i<w*h;i++){if(labels[i]||data[i*4+3]<threshold)continue;const id=items.length+1;let head=0,tail=0;q[tail++]=i;labels[i]=id;let x0=w,y0=h,x1=0,y1=0;while(head<tail){const n=q[head++],x=n%w,y=Math.floor(n/w);x0=Math.min(x0,x);x1=Math.max(x1,x);y0=Math.min(y0,y);y1=Math.max(y1,y);for(const d of [-w,w,-1,1]){const k=n+d;if(k<0||k>=w*h||labels[k]||data[k*4+3]<threshold||Math.abs(k%w-x)>1)continue;labels[k]=id;q[tail++]=k;}}items.push({id,seed:i,pixels:tail,x:x0,y:y0,width:x1-x0+1,height:y1-y0+1});}return{labels,items};}
+module.exports={components};

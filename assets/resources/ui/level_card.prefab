@@ -39,9 +39,6 @@
         "__id__": 82
       },
       {
-        "__id__": 88
-      },
-      {
         "__id__": 94
       },
       {
@@ -49,6 +46,9 @@
       },
       {
         "__id__": 106
+      },
+      {
+        "__id__": 88
       }
     ],
     "_active": true,
@@ -330,7 +330,8 @@
       "__uuid__": "89d6e125-1f54-4484-ad15-bea51596dade@f9941",
       "__expectedType__": "cc.SpriteFrame"
     },
-    "_id": ""
+    "_id": "",
+    "resizeMode": "stretch"
   },
   {
     "__type__": "cc.CompPrefabInfo",
@@ -450,7 +451,8 @@
       "__uuid__": "89d6e125-1f54-4484-ad15-bea51596dade@f9941",
       "__expectedType__": "cc.SpriteFrame"
     },
-    "_id": ""
+    "_id": "",
+    "resizeMode": "stretch"
   },
   {
     "__type__": "cc.CompPrefabInfo",
@@ -660,7 +662,8 @@
       "__uuid__": "89d6e125-1f54-4484-ad15-bea51596dade@f9941",
       "__expectedType__": "cc.SpriteFrame"
     },
-    "_id": ""
+    "_id": "",
+    "resizeMode": "stretch"
   },
   {
     "__type__": "cc.CompPrefabInfo",
@@ -780,7 +783,8 @@
       "__uuid__": "89d6e125-1f54-4484-ad15-bea51596dade@f9941",
       "__expectedType__": "cc.SpriteFrame"
     },
-    "_id": ""
+    "_id": "",
+    "resizeMode": "stretch"
   },
   {
     "__type__": "cc.CompPrefabInfo",
@@ -900,7 +904,8 @@
       "__uuid__": "cf7ad327-11e1-4f09-88ad-f8e81d6eb24d@f9941",
       "__expectedType__": "cc.SpriteFrame"
     },
-    "_id": ""
+    "_id": "",
+    "resizeMode": "cover"
   },
   {
     "__type__": "cc.CompPrefabInfo",
@@ -1020,7 +1025,8 @@
       "__uuid__": "89d6e125-1f54-4484-ad15-bea51596dade@f9941",
       "__expectedType__": "cc.SpriteFrame"
     },
-    "_id": ""
+    "_id": "",
+    "resizeMode": "stretch"
   },
   {
     "__type__": "cc.CompPrefabInfo",
@@ -2253,7 +2259,8 @@
       "__uuid__": "49a26987-906a-470a-bf4f-cbcc510934f7@f9941",
       "__expectedType__": "cc.SpriteFrame"
     },
-    "_id": ""
+    "_id": "",
+    "resizeMode": "contain"
   },
   {
     "__type__": "cc.CompPrefabInfo",
@@ -2373,7 +2380,8 @@
       "__uuid__": "7fdb8024-557e-4683-a6bc-a2ee6ae93758@f9941",
       "__expectedType__": "cc.SpriteFrame"
     },
-    "_id": ""
+    "_id": "",
+    "resizeMode": "stretch"
   },
   {
     "__type__": "cc.CompPrefabInfo",
@@ -2493,7 +2501,8 @@
       "__uuid__": "d214642e-9e46-4fe8-96f1-3367a6a2fa63@f9941",
       "__expectedType__": "cc.SpriteFrame"
     },
-    "_id": ""
+    "_id": "",
+    "resizeMode": "contain"
   },
   {
     "__type__": "cc.CompPrefabInfo",

@@ -78,6 +78,7 @@ export class UiPrefabs {
   bindSkin(sprite:Sprite,key:string):void {
     const frame=this.frames.get("skin:"+key);if(!frame)throw new Error("Missing PNG frame: "+key);
     this.sprites.add(sprite);if(sprite.spriteFrame!==frame)sprite.spriteFrame=frame;
+    const binding=sprite.node.parent?.getComponent(UiSkin);if(binding)binding.resizeMode=this.skin(key).resizeMode;
     sprite.type=this.skin(key).mode==="sliced"?Sprite.Type.SLICED:Sprite.Type.SIMPLE;
   }
   destroy(): void {

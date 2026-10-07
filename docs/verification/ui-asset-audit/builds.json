@@ -1,0 +1,30 @@
+[
+  {
+    "platform": "web",
+    "finished": true,
+    "entry": "web-mobile/application.js",
+    "sha256": "3876486e03ffd49f5cb8bce6d5a23b7ec392a533487229483a3b2429530093f2",
+    "builtAt": "2026-10-07T11:37:06.190Z"
+  },
+  {
+    "platform": "release",
+    "finished": true,
+    "entry": "web-mobile/application.js",
+    "sha256": "359f85dd922e2568aa991af95a5c356a0102042c8918252987bfbd37f2153eb2",
+    "builtAt": "2026-10-07T11:37:26.710Z"
+  },
+  {
+    "platform": "douyin",
+    "finished": true,
+    "entry": "bytedance-mini-game/game.js",
+    "sha256": "0f4314f1abbe01bf2bc9ce6d3b66bfbfc341379bf8eb9683e5eced1d2b36c3ef",
+    "builtAt": "2026-10-07T11:37:46.654Z"
+  },
+  {
+    "platform": "wechat",
+    "finished": true,
+    "entry": "wechatgame/game.js",
+    "sha256": "ae7c0256508b4f8c2b0a97e67291c43e9c9317cecfc6db7b2495b0818a22aa05",
+    "builtAt": "2026-10-07T11:38:06.520Z"
+  }
+]

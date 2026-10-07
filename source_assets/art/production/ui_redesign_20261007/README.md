@@ -20,3 +20,7 @@
 前版Prefab基线在prefab_baseline，供布局作者工具重复生成。tools/art/import-redesign.cjs读取本目录、切片并保留既有UUID，九宫尺寸按VisualSkin；tools/ui/apply-redesign.cjs还原基线后应用布局，随后需重新导表。正常构建不重导美术。
 
 [最终UI和测试记录](../../../../docs/UI_REDESIGN_VERIFICATION.md)。已完成图集分组准备，本轮没有性能对比结论。
+
+## 1.7.1 切图复核
+
+本轮保留15张原始源PNG、原始参考和18条实际生图指令，未重新生成角色。ArtCut原始表中的120项选区取代均等网格切图；PNG、完整选区、源图与输出SHA记录在cut-manifest.json。83项角色/道具/场景图统一256×256画布；37项新版皮肤的实际尺寸、九宫及适配信息同步catalog.json。工具及替换步骤见docs/PNG_RESOURCE_WORKFLOW.md，逐页证据见docs/verification/ui-asset-audit。

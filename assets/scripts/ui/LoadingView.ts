@@ -36,7 +36,7 @@ export class LoadingView {
     })().then(value=>({value,error:null}),error=>({value:null,error}))));
     const failed=loaded.find(r=>!r.value);
     if(failed||this.disposed){for(const r of loaded)r.value?.frame.decRef();if(failed)throw failed.error;return;}
-    for(const item of loaded){const {binding,row,frame}=item.value!;this.frames.push(frame);const sprite=binding.image!.getComponent(Sprite)!;sprite.spriteFrame=frame;sprite.type=row.mode==="sliced"?Sprite.Type.SLICED:Sprite.Type.SIMPLE;}
+    for(const item of loaded){const {binding,row,frame}=item.value!;this.frames.push(frame);const sprite=binding.image!.getComponent(Sprite)!;sprite.spriteFrame=frame;binding.resizeMode=row.resizeMode;binding.sync();sprite.type=row.mode==="sliced"?Sprite.Type.SLICED:Sprite.Type.SIMPLE;}
     this.fill.type=Sprite.Type.FILLED;this.fill.fillType=Sprite.FillType.HORIZONTAL;this.fill.fillStart=0;this.fill.fillRange=0;this.artReady=true;
   }
   private layout():void{const visible=view.getVisibleSize(),size=this.root.getComponent(UITransform)!;const scale=Math.min(visible.width/size.width,visible.height/size.height);this.root.setScale(scale,scale,1);}
