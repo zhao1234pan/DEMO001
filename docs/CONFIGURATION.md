@@ -1,5 +1,13 @@
 # XLSX → 客户端 CSV 配置规范
 
+## 当前1.7.0 UI配置（2026-10-07）
+
+当前26张原始表，VisualSkin121项、ArtFrame83项、UiPrefab33套。新增Goods.xlsx九条，字段id/key/nameKey/imageKey/categoryKey/descriptionKey/storyKey/unlockLevel；所有文案引用I18，图标引用VisualSkin，unlockLevel关联冒险进度。商品仅图鉴信息，不产生经济效果；跨表校验缺失引用与非法解锁关。
+
+本轮更新Global/I18/Theme/Collection/UiPrefab/VisualSkin；玩法数值表和关卡路线坐标未改。Global.version与package版本1.7.0，battleGroundSkin引用新地面；Theme控制地图配色并重新离线烘焙。配置修改仍先XLSX、导出和校验。
+
+启动技术例外：业务表全部加载前，loading.prefab的Label预览由导表工具从I18编译，加载失败文案也来自同一原表；不在代码写用户提示。LoadingView只提前读取VisualSkin CSV绑定加载页PNG，不安装半套业务表；初始美术不可用时保留Label兜底。UI固定尺寸/颜色/锚点为Prefab美术数据，残行居中/等比缩放是几何算法。DEBUG和资源包名为技术协议。
+
 ## 1.6.0资源规范（2026-10-04）
 
 界面、地图、弹道与状态显示统一采用可替换PNG和原生SpriteFrame。拉伸皮肤设置九宫；固定比例图标不任意拉伸。禁止新增Graphics/运行时Canvas资源绘制和手工关闭packable。分类、源文件、原始表、换图与图集流程见[PNG资源工作流](PNG_RESOURCE_WORKFLOW.md)。下文旧版本的矢量绘制方案仅为历史记录，当前实现以本条为准。
@@ -51,7 +59,7 @@ MapPoint/Spot/Obstacle/Decoration/I18原始表导出同步；现19表，Spot458�
 
 ## 目录与日常操作
 
-- design/tables：22张原始XLSX，均为可直接编辑的独立工作簿。
+- design/tables：26张原始XLSX，均为可直接编辑的独立工作簿。
 - tools/config：项目自带JAR、客户端Java入口、字段协议和校验器；不依赖参考项目仍存在。
 - assets/resources/config：运行时CSV及manifest.json，Cocos按TextAsset加载。
 - assets/scripts/config：CSV解析、跨表校验和启动加载；业务模块在配置全部就绪后初始化。

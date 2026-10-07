@@ -1,5 +1,17 @@
 # PNG资源、九宫格与图集工作流
 
+## 1.7.0 新版美术与分类（2026-10-07）
+
+当前204张运行PNG、121项VisualSkin、83项ArtFrame。原UUID保留；37张新增资源分组为ui/backgrounds、ui/skins/redesign、ui/windows、ui/icons/common、ui/icons/goods及gameplay/maps。背景/路面独立；小图按文件夹AutoAtlas、九宫禁止旋转。所有美术为PNG，文字为Label/I18，品牌Logo为用户参考美术。
+
+15张选定生图源、十一份参考和18次实际提示词在[新版源目录](../source_assets/art/production/ui_redesign_20261007/README.md)。SpriteFrame.meta与图像同步，固定图标不任意拉伸。大原图中的面板先按VisualSkin尺寸缩小，九宫边距以XLSX→CSV为准，避免角部侵占中心。
+
+作者工具：node tools/art/import-redesign.cjs导出切片并保留既有UUID；node tools/ui/apply-redesign.cjs从归档Prefab基线应用新版布局。工具需要Node和Sharp，无本机绝对输入路径。它们会覆盖源控制下的美术/布局，普通构建不执行；显式使用后须正常导表再检查。
+
+loading.prefab运行SpriteFrame初始为空，UiSkin.previewFrame仅供编辑器预览；容器先加载，随后按同一VisualSkin CSV加载PNG，避免分包失败时无重试入口。销毁先解绑Sprite再释放引用。
+
+本轮未量测Draw Call变化，不把PNG、AutoAtlas分组或资源数量当作性能收益。旧1.6.0目录与数据描述为当时记录；当前数量以本节和运行表为准。
+
 适用版本：1.6.0。保持现有界面布局、命中区域、角色与地图风格；变更的是资源管线。
 
 ## 资源目录

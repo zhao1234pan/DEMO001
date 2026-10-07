@@ -1,6 +1,8 @@
-# 1.7.0 UI改版：换电脑／云端交接
+# 1.7.0 UI改版：历史暂停检查点
 
-状态：用户于2026-10-07要求暂停，当前为开发检查点，尚未最终验收。开发分支 codex/pc-a/ui-redesign；main和软著基线未移动。仓库 https://github.com/zhao1234pan/DEMO001 。
+本文件保留暂停时的状态。用户随后决定远程连接本机继续，当前实现/自动回归已完成，最新结果见[最终记录](UI_REDESIGN_VERIFICATION.md)。以下待续项已按最终记录执行。
+
+历史状态：用户于2026-10-07要求暂停，当前为开发检查点，尚未最终验收。开发分支 codex/pc-a/ui-redesign；main和软著基线未移动。仓库 https://github.com/zhao1234pan/DEMO001 。
 
 ## 已保存的实现
 

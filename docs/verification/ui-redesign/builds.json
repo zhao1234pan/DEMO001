@@ -1,0 +1,116 @@
+[
+  {
+    "platform": "web",
+    "target": "web-mobile",
+    "creator": "3.8.8",
+    "debug": true,
+    "configGate": true,
+    "finished": true,
+    "files": [
+      {
+        "path": "application.js",
+        "sha256": "3876486e03ffd49f5cb8bce6d5a23b7ec392a533487229483a3b2429530093f2",
+        "bytes": 3300
+      },
+      {
+        "path": "src/settings.json",
+        "sha256": "f6ae8623b293b33260bfd0bc8fb5fec79c668ee674c59c3359330aa7832da9b5",
+        "bytes": 22617
+      },
+      {
+        "path": "index.html",
+        "sha256": "6a1b6c89fa67f1e13cf72e00bd54bace2252446469858e3ac072e11d3225858b",
+        "bytes": 2163
+      }
+    ],
+    "lastWrite": "2026-10-07T10:11:15.765Z"
+  },
+  {
+    "platform": "release",
+    "target": "web-mobile",
+    "creator": "3.8.8",
+    "debug": false,
+    "configGate": true,
+    "finished": true,
+    "files": [
+      {
+        "path": "application.js",
+        "sha256": "359f85dd922e2568aa991af95a5c356a0102042c8918252987bfbd37f2153eb2",
+        "bytes": 3302
+      },
+      {
+        "path": "src/settings.json",
+        "sha256": "4993798c003d177e23dc0b68e3bb13a13db280e61a1f3108245fe11abe11b066",
+        "bytes": 21411
+      },
+      {
+        "path": "index.html",
+        "sha256": "6a1b6c89fa67f1e13cf72e00bd54bace2252446469858e3ac072e11d3225858b",
+        "bytes": 2163
+      }
+    ],
+    "lastWrite": "2026-10-07T10:12:38.935Z"
+  },
+  {
+    "platform": "douyin",
+    "target": "bytedance-mini-game",
+    "creator": "3.8.8",
+    "debug": false,
+    "configGate": true,
+    "finished": true,
+    "files": [
+      {
+        "path": "application.js",
+        "sha256": "359f85dd922e2568aa991af95a5c356a0102042c8918252987bfbd37f2153eb2",
+        "bytes": 3302
+      },
+      {
+        "path": "src/settings.json",
+        "sha256": "fcc63a72077ed5652f25916217d8b87c67a9669309794060aab4593f2a7e9a04",
+        "bytes": 21418
+      },
+      {
+        "path": "game.js",
+        "sha256": "0f4314f1abbe01bf2bc9ce6d3b66bfbfc341379bf8eb9683e5eced1d2b36c3ef",
+        "bytes": 1933
+      },
+      {
+        "path": "game.json",
+        "sha256": "35c748c7d697fbb9cd07fb808e7c7c55bfceabe1e574bb009933454d05611225",
+        "bytes": 342
+      }
+    ],
+    "lastWrite": "2026-10-07T10:13:42.596Z"
+  },
+  {
+    "platform": "wechat",
+    "target": "wechatgame",
+    "creator": "3.8.8",
+    "debug": false,
+    "configGate": true,
+    "finished": true,
+    "files": [
+      {
+        "path": "application.js",
+        "sha256": "359f85dd922e2568aa991af95a5c356a0102042c8918252987bfbd37f2153eb2",
+        "bytes": 3302
+      },
+      {
+        "path": "src/settings.json",
+        "sha256": "90a6403db308c8431d75804d3214acdc6070b2044082db1ae16c4b49a76b1aa9",
+        "bytes": 2109
+      },
+      {
+        "path": "game.js",
+        "sha256": "ae7c0256508b4f8c2b0a97e67291c43e9c9317cecfc6db7b2495b0818a22aa05",
+        "bytes": 2608
+      },
+      {
+        "path": "game.json",
+        "sha256": "1dfd477e08b9d67162fe007afbd008eec0fdab7bad282a524d2eacdb78ec3e32",
+        "bytes": 314
+      }
+    ],
+    "lastWrite": "2026-10-07T10:14:47.072Z"
+  }
+]

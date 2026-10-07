@@ -1,0 +1,35 @@
+{
+  "date": "2026-10-07",
+  "version": "1.7.0",
+  "baseline": "8664392c689d95976976c7e67ba4e1f3c4f08cac",
+  "snapshot": {
+    "loadingViewSha256": "41e1267b58ba3e82e9a2b1b393a2b983a1403528d76b6c964976b10b9bcdf83c",
+    "configManifestSha256": "f6b0cbfb7a4e28c16fffec3b7b001f9b22cea5f82a40fdd8b6e484bd60b17ce0"
+  },
+  "typescript": true,
+  "configExport": {
+    "tables": 26,
+    "prefabs": 33,
+    "nodes": 1722,
+    "matched": true
+  },
+  "regressions": {
+    "configuration": 26,
+    "art": 6,
+    "challenge": 26,
+    "challengeRosters": 70,
+    "challengeSeeds": 32
+  },
+  "browser": 28,
+  "pages": 28,
+  "startup": 4,
+  "release": 7,
+  "adventureWins": 20,
+  "challengeWaves": 15,
+  "challengeChoices": 10,
+  "unexpectedPageErrors": 0,
+  "graphicsComponents": 0,
+  "deviceTested": false,
+  "realRewardedAdTested": false,
+  "drawCallCompared": false
+}

@@ -1,0 +1,225 @@
+{
+  "format": 1,
+  "tool": "built-in image_gen.imagegen",
+  "provenance": "从当前任务实际工具调用逐字提取prompt；18次调用含3次修订，15张最终源图。输入引用只记录文件名，消除本机路径；修订前图不作为运行资产。",
+  "records": [
+    {
+      "step": 1,
+      "timestamp": "2026-10-07T05:00:00.350Z",
+      "selected": true,
+      "finalSource": "home_background.png",
+      "sourceSha256": "4cc8de79c57c5ed3e1a5230d82899d452c30aaacc3944baaa005885d9fc611fa",
+      "referenceFileNames": [
+        "主界面.png"
+      ],
+      "transparentBackground": false,
+      "prompt": "Use case: precise-object-edit. This is a production background for a Cocos portrait mobile game. Edit the supplied home-screen illustration: REMOVE every UI overlay, all top avatar/counters/mini-program capsule, shop and book icons at upper left, adventure/challenge buttons, bottom settings/trophy icons, welcome text, every letter and number. Seamlessly restore the city/sky/store/front plaza behind removed overlays. Preserve EXACT colorful cute hand-painted outlined convenience store illustration, main store, blue sky, orange awning, white rabbit cashier, hamster, corgi chef, customers and surrounding plants. Vertical 9:16 composition. Bottom quarter should be clear plaza/soft greenery to accommodate separately rendered buttons. No text, no icons, no controls, no watermarks. Full image background, not a screen mockup."
+    },
+    {
+      "step": 2,
+      "timestamp": "2026-10-07T05:00:39.610Z",
+      "selected": true,
+      "finalSource": "skin_sheet.png",
+      "sourceSha256": "582dc911de7fadfe7a589c1710d8299f547fc85b0d3d1a069d67d82526619d53",
+      "referenceFileNames": [
+        "夜班补给.jpg",
+        "店员图鉴.jpg"
+      ],
+      "transparentBackground": true,
+      "prompt": "Use case: background-extraction. Asset type: transparent PNG production UI sprite atlas. Extract/recreate the reusable UI skin artwork in the two references, with exactly the same bright orange cream warm brown outlined friendly painted style. Arrange 12 isolated components in a strict 3 column by 4 row grid on a transparent 1536x2048 canvas, each cell512x512, with generous 40px transparent padding and no objects crossing cell boundaries. Row1: orange bordered cream rounded square panel (plain center, no title), golden yellow glossy pill button (no text), apple green glossy pill button (no text). Row2: cream brown border round icon backing, brown inactive rounded tab, pale yellow selected tab. Row3: orange close circular button with white X, small wooden horizontal shelf plank, pale white pink brown bordered rectangular name tag (no text). Row4: decorative cream curved horizontal title banner with sleepy yellow crescent moon on left and white blue-cap rabbit leaning on right (NO TEXT, center blank), mint outlined cream rounded square panel, grey-green disabled glossy pill button. These are UI components only; NO screenshot backgrounds, NO other text, labels, logos, numbers, or baked game characters in panels. Panels must have flat uniform centers suitable for nine-slice stretching. True transparency around components, clean edges. Match supplied exact cheerful saturated cartoon UI style."
+    },
+    {
+      "step": 3,
+      "timestamp": "2026-10-07T05:00:52.410Z",
+      "selected": false,
+      "finalSource": "staff_sheet.png",
+      "sourceSha256": null,
+      "referenceFileNames": [
+        "店员.png"
+      ],
+      "transparentBackground": true,
+      "prompt": "Use case: background-extraction. Asset type: transparent 8-character sprite sheet for actual tower defense staff. Reproduce the EXACT eight FRONT VIEW characters in supplied turnaround sheet, same costumes colors tools identity cute round proportions thick warm dark brown linework. Arrange STRICT 4 columns x2rows on 1536x1024 transparent canvas, eachcell384x512, character centered insidecell with at least35px margin. Row1 left to right: 豆包 hamster yellowgreenuniform with sprout hat and green pea cannon; 棉棉 white floppy-eared rabbit blue uniform cloudcap and frost bottle cannon; 布丁 orange striped cat orangeuniform white heart chefhat and black frying pan fried egg; 咕咕 brown owl tan explorerhat and green telescope gun. Row2: 栗栗 purple squirrel purple lightning hat with electric glove; 烘烘 red panda orangeuniform white chefhat holding toast; 薄荷 raccoon mintuniform green clovercap holding green walkietalkie; 啾啾 yellow chick orange hardhat blueuniform and blue water blaster. Only standalone FRONT threequarter sprites, fullbody and all accessories withincell. No side/back views, no labels, no text, no floor, no shadow, no other objects. True transparent background, usable production sprites."
+    },
+    {
+      "step": 4,
+      "timestamp": "2026-10-07T05:01:38.679Z",
+      "selected": true,
+      "finalSource": "loading_background.png",
+      "sourceSha256": "332e843861a45628cf1dd461accf4aa73f8eb43db961ce4111a36dc164844cb3",
+      "referenceFileNames": [
+        "loading界面-这个很好.jpg"
+      ],
+      "transparentBackground": false,
+      "prompt": "Use case: precise-object-edit. Actual portrait game loading background. Preserve supplied blue paw-pattern background, exact Chinese colorful branded title 叮咚！夜班开始！, raccoon on top of orange cat holding flashlight. Remove only the LOADING... lettering, two white paw icons near it, and complete progress bar near bottom. Fill their locations seamlessly with same blue paw-pattern background. Preserve everything else and same vertical9:16 composition, no new text or controls. This will be background PNG with progress bar added by engine."
+    },
+    {
+      "step": 5,
+      "timestamp": "2026-10-07T05:01:50.497Z",
+      "selected": false,
+      "finalSource": "enemy_sheet.png",
+      "sourceSha256": null,
+      "referenceFileNames": [
+        "怪物.png"
+      ],
+      "transparentBackground": true,
+      "prompt": "Use case: background-extraction. Production monster sprites. Reproduce EXACT six FRONT VIEW small monsters from supplied sheet, same cute rounded proportions thick warm dark brown lines bright colors. Strict 3columns x2rows on transparent 1536x1024 canvas, cells512x512, each fullbody centered with40px margin. Row1: orange catlike small paper bag monster; smiling red soda can monster white swash; silver metal pot guard monster. Row2: vividgreen jellycup wanderer; blue white milkcarton monster; cardboardshippingbox monster withtape. No side/backviews no labels or text, no shadows or floor, no extraneous items. True transparent alpha, allsprites isolated insidecells. Match exact identities and costume shapes."
+    },
+    {
+      "step": 6,
+      "timestamp": "2026-10-07T05:02:29.158Z",
+      "selected": true,
+      "finalSource": "goods_sheet.png",
+      "sourceSha256": "564d85df83f313a4a13b2f0315979ac0160e8c444c954e082cf6d7a0d9c82204",
+      "referenceFileNames": [
+        "商品图鉴.jpg"
+      ],
+      "transparentBackground": true,
+      "prompt": "Use case: background-extraction. Asset type: transparent PNG goods icon sprite sheet. Recreate exactly NINE isolated product icons from reference, same warm darkbrown outline friendly colorful cartoon style. STRICT3columns x3rows grid on transparent1536x1536 canvas, each512x512 cell icon centered fullbody with60px margin. Row1 redcola can, bagofbread, redyellow instantnoodle cup. Row2 bluewhite milkcarton, orange potatochips bag, cardboardcookiebox withcookies. Row3 pairpinkgreen jellycups, blue mineralwaterbottle, white triangular seaweed riceball intransparentwrapper. Only icons, no shelves labels letters text background or shadows. True transparentalpha, isolated assets all within cells."
+    },
+    {
+      "step": 7,
+      "timestamp": "2026-10-07T05:02:40.327Z",
+      "selected": true,
+      "finalSource": "icon_sheet.png",
+      "sourceSha256": "2f1faedf9b0c2cf4dd1ce6cca42be79c8ad64b345de442f75dc8eb10ab92b8c8",
+      "referenceFileNames": [
+        "主界面.png",
+        "游戏界面.png"
+      ],
+      "transparentBackground": true,
+      "prompt": "Use case: background-extraction. Asset type: UI icon sprite atlas for actual game. Recreate exactly twelve isolated icons in reference's thick warm brown outlined vivid cheerful cartoon style. Strict4columns x3rows grid1536x1536, each384x512 cell centeredwith50px margins. Row1: redglossyheart, stackofgoldcoins (no letters), openbookwithredpaw emblem, bluegear in white roundedsquare. Row2: little orange-stripedawning convenience store, golden trophy incream roundedsquare, bluecapwhiterabbit avatar(no surroundingframe), green circlewith whitecheckmark. Row3: bluefrost spray bottle with white snowflake, broomwith orangehandle, hamburger menu threegreenhorizontalbars incream circle, twogreenpausebars incream circle. No text words numbers backgrounds or extras. True transparent background, clean separated productionicons."
+    },
+    {
+      "step": 8,
+      "timestamp": "2026-10-07T05:03:22.484Z",
+      "selected": true,
+      "finalSource": "staff_sheet.png",
+      "sourceSha256": "8e8cb3088431342f5e09dbb87d661a8317f4beeac068e3fa293d70f8f3a9d4a7",
+      "referenceFileNames": [
+        "exec-4acf5d4c-5aad-4945-be54-1db091501f4a.png"
+      ],
+      "transparentBackground": true,
+      "prompt": "Change only background transparency. Preserve all8character spritesexactly, their positions sizes costumes and linework. Remove ALL dark gradient backing, blurred colored glow, outer shadow and halos aroundsprites. Background includingbetweencharacters must be FULLY clearalpha0, not black or brown opaque pixels. Keep clean antialiased spriteedges and fullopacityinsidecharacters. Strict4column2row composition stayssame1536x1024. No other changes."
+    },
+    {
+      "step": 9,
+      "timestamp": "2026-10-07T05:03:49.836Z",
+      "selected": true,
+      "finalSource": "enemy_sheet.png",
+      "sourceSha256": "2a802edc30fd5c2e6594474035e36a5f63353f6cb5c6e63628aa3d64067e96ad",
+      "referenceFileNames": [
+        "exec-350c0233-92ba-43e3-9c49-e4beb150a34b.png"
+      ],
+      "transparentBackground": true,
+      "prompt": "Keep allsix monsters unchanged in EXACTsame3column2row layout. Remove all outer blurred colored glows and shadows and dark gradient backing so the space outside crisp monster contours is absolutely alpha0. Preserve all pixels INSIDE the thick brown outlines at fullopacity, clean antialiasing onlyrightattheedges. This is a clean game sprite-sheet cutout, not presentation art. No other changes."
+    },
+    {
+      "step": 10,
+      "timestamp": "2026-10-07T05:04:04.951Z",
+      "selected": false,
+      "finalSource": "book_frame.png",
+      "sourceSha256": null,
+      "referenceFileNames": [
+        "店员图鉴.jpg"
+      ],
+      "transparentBackground": true,
+      "prompt": "Use case: background-extraction. Extract only the large empty scrapbook window frame from the reference. Portrait3:4 standalone transparentPNG. EXACTorangegold thickrounded outerborder with cream papercenter, inner lightbrown dashedstitches, wide tan headerarea attop andtwosilververticalbinder rings nearupperleftandupperright. REMOVE title text, closetopX, alltabs, allcharacters,shelves,labels andothercontent. Blankcreamcenter. Transparent outside roundedwindow, fullyopaqueuniformcream inside. No scene background. SuitableproductionUI nine-slice: topheaderandbottomcornerskept; flat bordersegments/creamcentercanstretch. Do not add any text."
+    },
+    {
+      "step": 11,
+      "timestamp": "2026-10-07T05:07:40.970Z",
+      "selected": true,
+      "finalSource": "ground_tile.png",
+      "sourceSha256": "6da3bdd707b3a991abe224f391c0b0df9edd0fc19e98184fdee2d4ea6fd93fb1",
+      "referenceFileNames": [
+        "游戏界面.png"
+      ],
+      "transparentBackground": false,
+      "prompt": "Use case: stylized-concept. Assettype: seamless square floor texture PNG for tower defense field. Recreate ONLY the turquoise mint courtyard/grass background material visiblearoundroads inreference: brightsoftaqua mint base, faintlarge squaretile seams, scatteredvery small simplifiedlimegreen grass sprouts andleafpatches, softflat colorwithsubtlepapergrain. No roads, no buildings, no trees, nocharacters, no props, no buttons, no UI, no text. Very lowcontrast so unitsandroadsclear. Seamless repeatable square tile1024x1024, no borders, topdown2D."
+    },
+    {
+      "step": 12,
+      "timestamp": "2026-10-07T05:07:55.939Z",
+      "selected": true,
+      "finalSource": "scenery_sheet.png",
+      "sourceSha256": "40e24e6518366676ce78de263bb55cf6e969db017af4715a3be14367f1f2fa23",
+      "referenceFileNames": [
+        "游戏界面.png"
+      ],
+      "transparentBackground": true,
+      "prompt": "Use case: background-extraction. Assettype: environment sprite sheet. Extract/recreate exactly8 scene objects sameasreference, thick warmbrown outline cheeryroundedpaintedcute style. Strict4columns2rows grid1536x1024 transparent, each384x512cell with40px margin. Row1: woodencrate withdiagonalplank; wovenfruitshoppingbasket holdingredpepperyellowfruitgreenleaves; smallterracottapot leafygreenplant; broadround greenstreettree oncream roundbase. Row2: lowcreamrectangularplantergreenbush withwhiteyellow flowers; cozy undergroundmetroentry creamstairsdarkinsidegreenskullsign; tinyorangeawningconveniencestorebuilding; plainroundmintwoodtowerbase pad. No background, no roads/UI/labels/text. Cleantruealpha0outsideoutlines,noshadowsglow. Objects centeredisolated."
+    },
+    {
+      "step": 13,
+      "timestamp": "2026-10-07T05:08:19.634Z",
+      "selected": true,
+      "finalSource": "boss_sheet.png",
+      "sourceSha256": "d4a770b9442e3d1ab15ed64bddc2d4164afef6156c5b32b4e84cfa439484c63d",
+      "referenceFileNames": [
+        "怪物.png",
+        "enemy_postmaster.png",
+        "enemy_lantern.png",
+        "enemy_chef.png",
+        "enemy_clock.png"
+      ],
+      "transparentBackground": true,
+      "prompt": "Usecase: style-transfer. Production4boss spritesheet strict2columns2rows1024x1024 truecleantransparent. Firstimageis targetARTSTYLE: cute rounded bright paintedwiththickwarmbrownoutlines. Other4imagesdefine EXACTbossidentitiesandaccessories, keeprecognizablewhilerefinedinnewstyle. Row1left: cardboardparcelpostmaster withredpostcap scarfmailbag badge; right: goldglowinglanternnightguardian navycape andhat. Row2left: orange mobilefoodtruck boss chefhat steam cookingpot andstripedawning wheels; right: goldalarmclock midnightguardian purplecape goldstars crown/twinbells. Allspritesfullbody centeredwithin512squarecellswith40pxmargin. No text, labels, floor, shadows, outerglows, background. Alpha0outsideoutlines. Friendly expressions likereferencepaperbagmonster."
+    },
+    {
+      "step": 14,
+      "timestamp": "2026-10-07T05:09:39.323Z",
+      "selected": true,
+      "finalSource": "book_frame.png",
+      "sourceSha256": "f11f5354f97c4ad70975f2737c69bf1691e5d848b1a3295e347facdecb9d041f",
+      "referenceFileNames": [
+        "exec-ebe66669-0528-49b5-9f1b-bdcda20108b8.png"
+      ],
+      "transparentBackground": true,
+      "prompt": "Repair THIS UI frame asset: fill the entire inner paper area (all space bounded by the dashed stitched border) with perfectly FLAT uniform fully opaque lightcream RGB255,249,230 alpha255. Remove the large transparent greyblack dirty hole and any glow/gradient/noise in center. Only outside the orange rounded outerborder should be transparentalpha0. Keepexactouterframe,silver ringsandtanheader. No text, no contents. It is a window PANEL, NOT an empty outline/cutout. Center must be solid full-opacity cream so it can be nine-slice stretched."
+    },
+    {
+      "step": 15,
+      "timestamp": "2026-10-07T05:14:47.221Z",
+      "selected": true,
+      "finalSource": "evoA.png",
+      "sourceSha256": "c23c212ca065e45bbe2a2310bdbfc744c063942e7c4faeee8963420fe78b91dd",
+      "referenceFileNames": [
+        "店员.png"
+      ],
+      "transparentBackground": true,
+      "prompt": "Usecase: stylized-concept. Production evolution spritesheet8staffupgradedAforms. ReferenceidentitiesstayEXACT: brightcuteanimals thickwarmbrownoutlines. STRICT4columns2rows1536x1024alpha0outside, 384x512cellsfullbody40pxmargin. Row1lefttoright: yellowgreenhamstersprouthat withONEheavylargepeacannon andgold badge; bluewhitefloppy rabbit cloudcap with icybackpacklargesnowflakecannon; orangechefcateggpan withheavygoldrimfocusbombpan; brown explorerowl withlongprecisiongreen-goldsniperscope andgoldmonocle. Row2: purplelightningsquirrel withlargegoldchargedfist electricgauntlet; orangechef redpanda carryingdarktoastedbread andredglowingovenmitt; mintcloverraccoon withlargegreen-gold radioandfocusedantenna; hardhatyellowchickblueuniform withFIVEsmallblasterbarrelsfanweapon. Samefrontthreequarterviewasreference. These areevolvedforms, addclearlyvisibleequipmentandonegoldbadgebutkeeppersonalitiesandsilhouettes. No text,no glowoutsidecontours, no shadows/backgrounds. Exactcleantransparentbackground."
+    },
+    {
+      "step": 16,
+      "timestamp": "2026-10-07T05:15:00.747Z",
+      "selected": true,
+      "finalSource": "evoB.png",
+      "sourceSha256": "17b4b75d04464713b692d8a2e721a46969812a46972695fd1811511fde71cf73",
+      "referenceFileNames": [
+        "店员.png"
+      ],
+      "transparentBackground": true,
+      "prompt": "Usecase: stylized-concept. Production evolution spritesheet8staffupgradedBforms. ReferenceidentitiesstayEXACT: brightcuteanimals thickwarmbrownoutlines. STRICT4columns2rows1536x1024alpha0outside, 384x512cellsfullbody40pxmargin. Row1lefttoright: yellowgreenhamstersprouthat withTWINgreenpeacannonbarrels andsilver badge; bluewhitefloppy rabbit cloudcap withTWOsmallicecannons; orangechefcateggpan withbroadwideorangefryingpanandclusterofthreesmallfriedeggcharges; brownexplorerowl withlonggreenrifletripodandpiercingcannon. Row2: purplelightningsquirrel withTWOvioletcoilsandchainlightningstaff; orangechef redpanda holdingtoastovenlauncher shootingroundbreadbombs; mintcloverraccoon withTWOsmallgreenwalkietalkies; hardhatyellowchickblueuniform withTWOlargeblueblasterbarrelsandbluebackpack. Samefrontthreequarterviewasreference. These areevolvedforms, visibledual/broadequipmentandsilverbadgebutkeeppersonalitiesandsilhouettes. No text,no glowoutsidecontours, no shadows/backgrounds. Exactcleantransparentbackground."
+    },
+    {
+      "step": 17,
+      "timestamp": "2026-10-07T05:24:58.819Z",
+      "selected": true,
+      "finalSource": "perksA.png",
+      "sourceSha256": "728d46d99a6d34a4175370ad781ebc8a3f5d092741758adf655400d4de14587f",
+      "referenceFileNames": [],
+      "transparentBackground": true,
+      "prompt": "Use case: stylized-concept. Create a production sprite sheet of EXACTLY 16 isolated cute game power-up icons, strict 4 columns x 4 rows equal cells, transparent background alpha. Match the supplied convenience-store tower-defense UI references: cheerful saturated gold/orange, fresh mint green, cream and sky blue, flat rounded color blocks, warm thick brown outline, tiny restrained highlights, NO realistic textures, NO shadows/background glow. Icons MUST be unique objects only with no text, no numbers, no labels or cards. Generous transparent gutters, each icon entirely within its cell. Reading left to right, top to bottom: row1 triple green pea launcher (triple shot); ice delivery bag and snowflake (frost boost); orange frying pan with two sunny-side eggs (double blast); explorer owl green telescope with arrow (range boost). row2 purple battery with lightning (electric rework); orange toast surrounded by little flames (spreading ember); green raccoon radio with star pin (mark); blue wind fan with yellow hardhat (boomerang wind). row3 shop opening door with green speed arrow; two neighboring cream shelving units helping each other; single proud tiny shop tower on a gold pedestal; full cash register with gold coins. row4 green staff attendance clipboard with check; eight multicolor animal paw badges together; small green safe filled with coins; gold coin stack with growing sprout. Keep silhouettes readable at 80px. No character portrait duplication. This is a UI icon asset sheet, not a mockup."
+    },
+    {
+      "step": 18,
+      "timestamp": "2026-10-07T05:26:41.203Z",
+      "selected": true,
+      "finalSource": "perksB.png",
+      "sourceSha256": "c86c19b27219843d785bb8992476c2ebc3763ebbb3562aaaa630a6dfd9e1245a",
+      "referenceFileNames": [],
+      "transparentBackground": true,
+      "prompt": "Use case: stylized-concept. Production sprite sheet EXACTLY 16 isolated convenience-store tower-defense power-up icons, strict 4 columns x 4 rows equal cells, transparent background alpha. Match cheerful new cozy UI: saturated golden orange, fresh mint, cream skyblue, flat rounded blocks and warm dark brown thick outlines, restrained tiny highlight, no realistic texture, no glow. NO letters, numbers, labels, cards. Equal icon sizes, ample transparent gutters, fully contained per cell. Left to right, top to bottom row1 new shelf with gift ribbon (free builds); orange upgrade medal and refund coins (evolution reimbursement); crate swept clean with coin (clearance subsidy); piggy bank with a coin slot (change jar). row2 recycling shopping-return box with looping arrow; sturdy shop doorway curtain with shield; paw-print slow-zone mat; cash register shooting pea projectiles. row3 collapsing chain of wooden crates; last tiny milk carton customer at doorway; oversized animal-paw tower with mushroom (giant staff); miniature animal-paw tower beside leaf (mini staff). row4 surprise parcel with little starburst; blue bowling ball knocking over red soda cans; airborne orange delivery parcel with wings; overstuffed canvas coin purse with golden coins. Readable at 80px, uniquely recognizable object icons, no portrait repetition."
+    }
+  ]
+}

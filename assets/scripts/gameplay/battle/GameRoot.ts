@@ -196,6 +196,7 @@ export class GameRoot extends Component {
       try{
         if(!loading){loading=await LoadingView.load(this.node);this.startupLoading=loading;if(this.disposed){loading.destroy();return;}loading.onRetry(()=>{void start();});}
         loading.progress(0);
+        await loading.loadArt();if(this.disposed)return;
         if(!configsReady())await loadGameConfigs();
         const assets=await UiPrefabs.load((loaded,total)=>{if(!this.disposed)loading?.progress(loaded/total);});
         if(this.disposed){assets.destroy();loading?.destroy();return;}
