@@ -14,8 +14,8 @@ core.installConfigs(sources);
 const keys=new Set(core.rows('I18').map(r=>r.key));
 function inspect(dir){for(const entry of fs.readdirSync(dir,{withFileTypes:true})){const p=path.join(dir,entry.name);if(entry.isDirectory())inspect(p);else if(p.endsWith('.ts'))for(const match of fs.readFileSync(p,'utf8').matchAll(/\btext\("([^"]+)"/g))if(!keys.has(match[1]))throw Error('缺少I18：'+match[1]);}}
 inspect(path.join(root,'assets/scripts'));
-for(const row of core.rows('ArtAtlas'))if(!fs.existsSync(path.join(root,'source_assets/art/atlases',row.path.replace('/texture','.png'))))throw Error('缺少图集资源：'+row.path);
 for(const row of core.rows('Audio'))if(!['.mp3','.wav'].some(ext=>fs.existsSync(path.join(root,'assets/resources',row.path+ext))))throw Error('缺少音频资源：'+row.path);
+const layoutReport=require('../ui/config-layout.cjs').apply(root,core,!process.argv.includes('--check'));console.log('UI布局表：'+layoutReport.rows+'个节点。');
 const uiReport=require('../ui/check-prefabs.cjs').check(root,core,!process.argv.includes('--check'));console.log('UI资源校验：'+uiReport.prefabs+'个预制体，'+uiReport.nodes+'个节点。');
 require('../art/check-resources.cjs').check(root,core,process.argv.includes('--check'));
 const names=fs.readdirSync(input).filter(f=>f.endsWith('.xlsx')&&!f.startsWith('~')).sort();if(names.length!==core.TABLE_NAMES.length||names.some(f=>!core.TABLE_NAMES.includes(path.basename(f,'.xlsx'))))throw Error('发现未接入的表格，请同步 schema 和运行时表清单');

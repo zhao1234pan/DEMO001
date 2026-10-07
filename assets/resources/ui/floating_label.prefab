@@ -200,8 +200,8 @@
     "_fontSize": 13,
     "_actualFontSize": 13,
     "_lineHeight": 17,
-    "_fontFamily": "Arial",
-    "_overflow": 0,
+    "_fontFamily": "Microsoft YaHei",
+    "_overflow": 2,
     "_enableWrapText": true,
     "_isSystemFontUsed": true,
     "_color": {
@@ -213,7 +213,9 @@
     },
     "_font": null,
     "_cacheMode": 0,
-    "_isBold": true
+    "_isBold": true,
+    "_enableOutline": false,
+    "_outlineWidth": 0
   },
   {
     "__type__": "cc.CompPrefabInfo",

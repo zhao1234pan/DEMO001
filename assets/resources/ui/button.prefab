@@ -303,13 +303,13 @@
     "__prefab": {
       "__id__": 15
     },
-    "key": "window_cream",
+    "key": "window_flat",
     "padding": 0,
     "image": {
       "__id__": 75
     },
     "previewFrame": {
-      "__uuid__": "89d6e125-1f54-4484-ad15-bea51596dade@f9941",
+      "__uuid__": "c1209586-340e-43f1-90ed-06715a0d6778@f9941",
       "__expectedType__": "cc.SpriteFrame"
     },
     "_id": "",
@@ -424,13 +424,13 @@
     "__prefab": {
       "__id__": 22
     },
-    "key": "window_cream",
+    "key": "window_flat",
     "padding": 0,
     "image": {
       "__id__": 78
     },
     "previewFrame": {
-      "__uuid__": "89d6e125-1f54-4484-ad15-bea51596dade@f9941",
+      "__uuid__": "c1209586-340e-43f1-90ed-06715a0d6778@f9941",
       "__expectedType__": "cc.SpriteFrame"
     },
     "_id": "",
@@ -452,7 +452,7 @@
         "__id__": 81
       }
     ],
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 25
@@ -573,7 +573,7 @@
         "__id__": 84
       }
     ],
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 32
@@ -883,13 +883,13 @@
     "__prefab": {
       "__id__": 47
     },
-    "key": "window_cream",
+    "key": "window_flat",
     "padding": 0,
     "image": {
       "__id__": 87
     },
     "previewFrame": {
-      "__uuid__": "89d6e125-1f54-4484-ad15-bea51596dade@f9941",
+      "__uuid__": "c1209586-340e-43f1-90ed-06715a0d6778@f9941",
       "__expectedType__": "cc.SpriteFrame"
     },
     "_id": "",
@@ -1004,13 +1004,13 @@
     "__prefab": {
       "__id__": 54
     },
-    "key": "window_cream",
+    "key": "window_flat",
     "padding": 0,
     "image": {
       "__id__": 90
     },
     "previewFrame": {
-      "__uuid__": "89d6e125-1f54-4484-ad15-bea51596dade@f9941",
+      "__uuid__": "c1209586-340e-43f1-90ed-06715a0d6778@f9941",
       "__expectedType__": "cc.SpriteFrame"
     },
     "_id": "",
@@ -1032,7 +1032,7 @@
         "__id__": 93
       }
     ],
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 57
@@ -1153,7 +1153,7 @@
         "__id__": 96
       }
     ],
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 64
@@ -1366,8 +1366,8 @@
     "_fontSize": 16,
     "_actualFontSize": 16,
     "_lineHeight": 20,
-    "_fontFamily": "Arial",
-    "_overflow": 0,
+    "_fontFamily": "Microsoft YaHei",
+    "_overflow": 2,
     "_enableWrapText": true,
     "_isSystemFontUsed": true,
     "_color": {
@@ -1379,7 +1379,9 @@
     },
     "_font": null,
     "_cacheMode": 0,
-    "_isBold": true
+    "_isBold": true,
+    "_enableOutline": false,
+    "_outlineWidth": 0
   },
   {
     "__type__": "cc.CompPrefabInfo",

@@ -369,7 +369,7 @@ id,key,zhCN
 363,ui.evolution.profile,进化形态
 364,ui.evolution.result,新形态 {p0}
 365,ui.evolution.costValue,●{p0}
-366,ui.loadout.title,出战准备
+366,ui.loadout.title,选择出战店员
 367,ui.loadout.selected,出战店员 {p0}/{p1}
 368,ui.loadout.start,确认出战
 369,ui.loadout.choose,选择出战店员
@@ -446,7 +446,7 @@ id,key,zhCN
 440,wave.2002.announcement,厚实来客随后赶到
 441,wave.2003.announcement,快客混进了队伍
 442,challenge.pick,夜班补给
-443,challenge.pickCount,第 {p0}/{p1} 次补给
+443,challenge.pickCount,第 {p0} / {p1} 次补给
 444,challenge.refresh,看广告刷新
 445,challenge.refreshEmpty,本次刷新已用完
 446,challenge.inventory,本局强化 {p0}
@@ -534,14 +534,14 @@ id,key,zhCN
 529,ui.redesign.rank,排行榜
 530,ui.redesign.settings,设置
 531,ui.redesign.unavailable,暂未开放
-532,ui.redesign.loading,正在加载 {p0}%
+532,ui.redesign.loading,LOADING...
 533,ui.redesign.loadingFailed,加载失败，点击重试
 534,ui.redesign.select,选择
 535,ui.redesign.staff,店员
 536,ui.redesign.monsters,怪物
 537,ui.redesign.goods,商品
-538,ui.redesign.progress,{p0}/{p1}关
-539,ui.redesign.collection,收录 {p0}
+538,ui.redesign.progress,{p0}
+539,ui.redesign.collection,{p0}
 540,ui.redesign.pickHint,点击头像选择或取消
 541,ui.redesign.pickFull,请先取消一名店员
 542,ui.redesign.goodsCategory,便利店商品
@@ -573,3 +573,4 @@ id,key,zhCN
 568,goods.rice.name,饭团
 569,goods.rice.description,一口满足
 570,goods.rice.story,小小的三角饭团，藏着夜班便当的心意。
+571,ui.redesign.supplyHint,请选择一份补给，助你轻松度过夜班！

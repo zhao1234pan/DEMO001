@@ -1,6 +1,6 @@
 /** CSV 是运行时唯一配置源；此模块不依赖引擎，可用于导表与回归检查。 */
 export type TableRow = Record<string, string>;
-export const TABLE_NAMES = ["Global", "I18", "Staff", "Enemy", "Theme", "Map", "MapPoint", "Spot", "Obstacle", "Level", "Wave", "WaveGroup", "Collection", "Audio", "Decoration", "ArtAtlas", "ArtFrame", "UiPrefab", "Tutorial", "StaffBranch", "StaffForm", "LevelLoadout", "ChallengeRule", "ChallengePerk", "VisualSkin", "Goods", "ArtCut"] as const;
+export const TABLE_NAMES = ["Global", "I18", "Staff", "Enemy", "Theme", "Map", "MapPoint", "Spot", "Obstacle", "Level", "Wave", "WaveGroup", "Collection", "Audio", "Decoration", "ArtFrame", "UiPrefab", "Tutorial", "StaffBranch", "StaffForm", "LevelLoadout", "ChallengeRule", "ChallengePerk", "VisualSkin", "Goods", "ArtCut", "UiLayout"] as const;
 let data: Record<string, TableRow[]> = Object.create(null);
 let ready = false;
 let byKey:Record<string,Record<string,TableRow>> = Object.create(null);
@@ -46,6 +46,8 @@ export function installConfigs(sources: Record<string, string>): void {
     if(!["simple","sliced"].includes(row.mode)||!/^[-a-zA-Z0-9_/]+\/spriteFrame$/.test(row.path)||row.path.includes(".."))throw new Error("Invalid skin mode/path");
     if(numeric(row,"left")+numeric(row,"right")>=numeric(row,"width")||numeric(row,"top")+numeric(row,"bottom")>=numeric(row,"height"))throw new Error("Invalid nine slice borders");
   }
+  positive("UiLayout",["width","height","fontSize","lineHeight","outlineWidth"],true);
+  for(const row of next.UiLayout){requireRef("UiPrefab","key",row.prefab,"UiLayout");if(row.skinKey)requireRef("VisualSkin","key",row.skinKey,"UiLayout");for(const field of ["x","y","scaleX","scaleY"])numeric(row,field);if(!["0","1"].includes(row.active)||!["0","1","2"].includes(row.horizontalAlign)||!["0","1","2"].includes(row.verticalAlign)||!["0","1","2","3"].includes(row.overflow)||!row.node||row.node.includes(".."))throw new Error("Invalid UI layout");for(const field of ["color","outlineColor"])if(row[field]&&!/^#[a-f0-9]{6}$/i.test(row[field]))throw new Error("Invalid UI color");}
   positive("ArtCut",["targetId","width","height","threshold"]);positive("ArtCut",["x","y","edge","padding"],true);
   for(const row of next.ArtCut){if(!["skin","frame"].includes(row.target)||!/^source_assets\/art\/[-a-zA-Z0-9_/]+\.png$/.test(row.source)||row.source.includes("..")||!/^[a-f0-9]{64}$/.test(row.sha256))throw new Error("Invalid cut source");requireRef(row.target==="skin"?"VisualSkin":"ArtFrame","id",row.targetId,"ArtCut");if(row.seeds&&!/^\d+:\d+(\|\d+:\d+)*$/.test(row.seeds))throw new Error("Invalid cut seeds");}
   positive("Goods",["unlockLevel"]);for(const row of next.Goods){for(const field of ["nameKey","categoryKey","descriptionKey","storyKey"])requireRef("I18","key",row[field],"Goods");requireRef("VisualSkin","key",row.imageKey,"Goods");requireRef("Level","id",row.unlockLevel,"Goods");if(next.Level.find(l=>l.id===row.unlockLevel)!.mode!=="adventure")throw new Error("Invalid goods unlock level");}
@@ -75,8 +77,7 @@ export function installConfigs(sources: Record<string, string>): void {
   for (const row of next.Wave) { requireRef("Level", "id", row.levelId, "Wave"); if (row.announcement) requireRef("I18", "key", row.announcement, "Wave"); }
   for (const row of next.WaveGroup) { requireRef("Wave", "id", row.waveId, "WaveGroup"); requireRef("Enemy", "key", row.enemy, "WaveGroup"); if (!Number.isInteger(numeric(row, "count"))) throw new Error("Fractional enemy count"); }
   for (const row of next.Collection) { if (!["enemies", "bosses", "staff"].includes(row.tab)) throw new Error("Invalid collection tab"); requireRef(row.tab === "staff" ? "Staff" : "Enemy", "key", row.kind, "Collection"); for (const field of ["category", "traits", "story"]) requireRef("I18", "key", row[field], "Collection"); }
-  positive("ArtAtlas",["width","height"]); positive("ArtFrame",["width","height","canvasWidth","canvasHeight"]); positive("ArtFrame",["x","y"],true);
-  for(const row of next.ArtFrame) { requireRef("ArtAtlas","key",row.atlas,"ArtFrame"); const atlas=next.ArtAtlas.find(a=>a.key===row.atlas)!; if(numeric(row,"x")+numeric(row,"width")>numeric(atlas,"width") || numeric(row,"y")+numeric(row,"height")>numeric(atlas,"height"))throw new Error("Art frame outside atlas"); }
+  positive("ArtFrame",["canvasWidth","canvasHeight"]);
   for(const field of ["battle","menu","ui","scenery"]) { const keys=new Set<string>(); for(const row of next.ArtFrame) {if(!row[field])continue;if(keys.has(row[field]))throw new Error("Duplicate art frame key");keys.add(row[field]);} }
   for (const row of next.Tutorial) {
     requireRef("Level", "id", row.levelId, "Tutorial"); requireRef("Staff", "key", row.staffKind, "Tutorial");

@@ -1,5 +1,12 @@
 # PNG资源、九宫格与图集工作流
 
+## 当前：单张PNG工作流（2026-10-08）
+
+- 新增/重做美术直接输出单张PNG，不制作多资源大图再猜切。相同槽位使用统一透明画布/比例/锚点，固定图标等比，面板和按钮按VisualSkin九宫参数适配。
+- 当前ArtFrame不含图集坐标；ArtCut明确单图区域/源签名，UiLayout管理布局。源图在ui_individual_20261007，原图集、旧ArtAtlas表和15组AutoAtlas配置只保留历史归档。
+- 运行assets没有.pac，所有独立PNG/meta及来源入库；不手工关闭packable。下面旧版图集章节是历史流程，不是当前要求。
+- 不自动运行旧repair-art-layout重置新布局；新布局以UiLayout.xlsx→CSV→config-layout.cjs为准。常规构建仅检查。
+
 ## 1.7.1 切图与替换规范（2026-10-07）
 
 新增ArtCut.xlsx→ArtCut.csv：120项完整裁切、种子、源图SHA、透明边缘和留白。ArtFrame新增canvasWidth/canvasHeight管理独立PNG尺寸；旧width/height仅保留历史图集来源。VisualSkin新增resizeMode管理等比、高度、面板与背景适配。详细标准见[UI资源与层级规范](UI_RESOURCE_STANDARD.md)。

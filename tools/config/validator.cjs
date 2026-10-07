@@ -11,7 +11,7 @@ exports.globalString = globalString;
 exports.text = text;
 exports.parseCsv = parseCsv;
 exports.installConfigs = installConfigs;
-exports.TABLE_NAMES = ["Global", "I18", "Staff", "Enemy", "Theme", "Map", "MapPoint", "Spot", "Obstacle", "Level", "Wave", "WaveGroup", "Collection", "Audio", "Decoration", "ArtAtlas", "ArtFrame", "UiPrefab", "Tutorial", "StaffBranch", "StaffForm", "LevelLoadout", "ChallengeRule", "ChallengePerk", "VisualSkin", "Goods", "ArtCut"];
+exports.TABLE_NAMES = ["Global", "I18", "Staff", "Enemy", "Theme", "Map", "MapPoint", "Spot", "Obstacle", "Level", "Wave", "WaveGroup", "Collection", "Audio", "Decoration", "ArtFrame", "UiPrefab", "Tutorial", "StaffBranch", "StaffForm", "LevelLoadout", "ChallengeRule", "ChallengePerk", "VisualSkin", "Goods", "ArtCut", "UiLayout"];
 let data = Object.create(null);
 let ready = false;
 let byKey = Object.create(null);
@@ -129,6 +129,19 @@ function installConfigs(sources) {
         if (numeric(row, "left") + numeric(row, "right") >= numeric(row, "width") || numeric(row, "top") + numeric(row, "bottom") >= numeric(row, "height"))
             throw new Error("Invalid nine slice borders");
     }
+    positive("UiLayout", ["width", "height", "fontSize", "lineHeight", "outlineWidth"], true);
+    for (const row of next.UiLayout) {
+        requireRef("UiPrefab", "key", row.prefab, "UiLayout");
+        if (row.skinKey)
+            requireRef("VisualSkin", "key", row.skinKey, "UiLayout");
+        for (const field of ["x", "y", "scaleX", "scaleY"])
+            numeric(row, field);
+        if (!["0", "1"].includes(row.active) || !["0", "1", "2"].includes(row.horizontalAlign) || !["0", "1", "2"].includes(row.verticalAlign) || !["0", "1", "2", "3"].includes(row.overflow) || !row.node || row.node.includes(".."))
+            throw new Error("Invalid UI layout");
+        for (const field of ["color", "outlineColor"])
+            if (row[field] && !/^#[a-f0-9]{6}$/i.test(row[field]))
+                throw new Error("Invalid UI color");
+    }
     positive("ArtCut", ["targetId", "width", "height", "threshold"]);
     positive("ArtCut", ["x", "y", "edge", "padding"], true);
     for (const row of next.ArtCut) {
@@ -218,15 +231,7 @@ function installConfigs(sources) {
         for (const field of ["category", "traits", "story"])
             requireRef("I18", "key", row[field], "Collection");
     }
-    positive("ArtAtlas", ["width", "height"]);
-    positive("ArtFrame", ["width", "height", "canvasWidth", "canvasHeight"]);
-    positive("ArtFrame", ["x", "y"], true);
-    for (const row of next.ArtFrame) {
-        requireRef("ArtAtlas", "key", row.atlas, "ArtFrame");
-        const atlas = next.ArtAtlas.find(a => a.key === row.atlas);
-        if (numeric(row, "x") + numeric(row, "width") > numeric(atlas, "width") || numeric(row, "y") + numeric(row, "height") > numeric(atlas, "height"))
-            throw new Error("Art frame outside atlas");
-    }
+    positive("ArtFrame", ["canvasWidth", "canvasHeight"]);
     for (const field of ["battle", "menu", "ui", "scenery"]) {
         const keys = new Set();
         for (const row of next.ArtFrame) {

@@ -6,6 +6,7 @@ import { UiSkin } from "./UiSkin";
 export class LoadingView {
   private disposed=false;
   private artReady=false;
+  private amount=0;
   private readonly frames:SpriteFrame[]=[];
   private readonly label:Label;
   private readonly fill:Sprite;
@@ -37,10 +38,11 @@ export class LoadingView {
     const failed=loaded.find(r=>!r.value);
     if(failed||this.disposed){for(const r of loaded)r.value?.frame.decRef();if(failed)throw failed.error;return;}
     for(const item of loaded){const {binding,row,frame}=item.value!;this.frames.push(frame);const sprite=binding.image!.getComponent(Sprite)!;sprite.spriteFrame=frame;binding.resizeMode=row.resizeMode;binding.sync();sprite.type=row.mode==="sliced"?Sprite.Type.SLICED:Sprite.Type.SIMPLE;}
-    this.fill.type=Sprite.Type.FILLED;this.fill.fillType=Sprite.FillType.HORIZONTAL;this.fill.fillStart=0;this.fill.fillRange=0;this.artReady=true;
+    this.fill.type=Sprite.Type.FILLED;this.fill.fillType=Sprite.FillType.HORIZONTAL;this.fill.fillStart=0;this.artReady=true;this.progress(this.amount);
   }
   private layout():void{const visible=view.getVisibleSize(),size=this.root.getComponent(UITransform)!;const scale=Math.min(visible.width/size.width,visible.height/size.height);this.root.setScale(scale,scale,1);}
-  progress(value:number):void{if(this.disposed)return;const amount=Math.max(0,Math.min(1,value));this.fill.fillRange=amount;this.label.string=configsReady()?text("ui.redesign.loading",Math.floor(amount*100)):this.label.string.replace(/\{p0\}/g,"0");}
+  progress(value:number):void{if(this.disposed)return;const amount=this.amount=Number.isFinite(value)?Math.max(0,Math.min(1,value)):0;this.fill.fillRange=amount;
+    const paw=this.root.getChildByName("EndPaw")!,start=this.root.getChildByName("ProgressStart")!,end=this.root.getChildByName("ProgressEnd")!;paw.active=amount>0;paw.setPosition(start.position.x+(end.position.x-start.position.x)*amount,start.position.y);this.label.string=configsReady()?text("ui.redesign.loading",Math.floor(amount*100)):this.label.string.replace(/\{p0\}/g,"0");}
   failed():void{if(!this.disposed)this.label.string=configsReady()?text("ui.redesign.loadingFailed"):this.root.getChildByName("Error")!.getComponent(Label)!.string;}
   onRetry(action:()=>void):void{this.root.on(Node.EventType.TOUCH_END,action);}
   destroy():void{if(this.disposed)return;this.disposed=true;view.off("canvas-resize",this.resize,this);for(const sprite of this.root.getComponentsInChildren(Sprite))sprite.spriteFrame=null;this.root.destroy();for(const frame of this.frames)frame.decRef();this.frames.length=0;this.prefab.decRef();}

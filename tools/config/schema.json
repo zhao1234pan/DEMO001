@@ -186,23 +186,9 @@
       "groupId": "int"
     }
   },
-  "ArtAtlas": {
-    "fields": {
-      "id": "int",
-      "key": "string",
-      "path": "string",
-      "width": "int",
-      "height": "int"
-    }
-  },
   "ArtFrame": {
     "fields": {
       "id": "int",
-      "atlas": "string",
-      "x": "int",
-      "y": "int",
-      "width": "int",
-      "height": "int",
       "battle": "string",
       "menu": "string",
       "ui": "string",
@@ -374,6 +360,32 @@
       "threshold": "int",
       "edge": "int",
       "padding": "int"
+    }
+  },
+  "UiLayout": {
+    "fields": {
+      "id": "int",
+      "key": "string",
+      "prefab": "string",
+      "node": "string",
+      "x": "float",
+      "y": "float",
+      "width": "float",
+      "height": "float",
+      "scaleX": "float",
+      "scaleY": "float",
+      "fontSize": "float",
+      "lineHeight": "float",
+      "fontFamily": "string",
+      "color": "string",
+      "outlineColor": "string",
+      "outlineWidth": "float",
+      "horizontalAlign": "int",
+      "verticalAlign": "int",
+      "overflow": "int",
+      "active": "int",
+      "skinKey": "string",
+      "note": "string"
     }
   }
 }

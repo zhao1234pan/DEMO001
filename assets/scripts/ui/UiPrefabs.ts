@@ -1,3 +1,4 @@
+import { UiMask } from "./UiMask";
 import { DEBUG } from "cc/env";
 import { assetManager, AssetManager, Color, instantiate, Label, Node, Prefab, resources, Sprite, SpriteFrame, UITransform, Vec3 } from "cc";
 import { numeric, rows } from "../config/ConfigTables";
@@ -58,6 +59,7 @@ export class UiPrefabs {
     for (const binding of node.getComponentsInChildren(UiText)) binding.refresh();
     for (const image of node.getComponentsInChildren(UiImage)) if (image.frameKey) this.bindImage(image.node, image.frameKey);
     for(const skin of node.getComponentsInChildren(UiSkin)){this.bindSkin(skin.image!.getComponent(Sprite)!,skin.key);skin.sync();}
+    for(const mask of node.getComponentsInChildren(UiMask))this.bindSkin(mask.getComponent(Sprite)!,mask.maskKey);
     return node;
   }
   bindImage(node: Node, key: string, silhouette = false): void {
@@ -84,7 +86,7 @@ export class UiPrefabs {
   destroy(): void {
     if (this.disposed) return;
     this.disposed = true;
-    // Node.destroy 延迟到帧末，先解除 Sprite 引用再释放共享图集。
+    // Node.destroy 延迟到帧末，先解除 Sprite 引用再释放共享PNG。
     for (const sprite of this.sprites) if (sprite.isValid) sprite.spriteFrame = null;
     this.sprites.clear();this.imageBounds.clear();
     for(const frame of this.nativeFrames)frame.decRef();this.nativeFrames.length=0;

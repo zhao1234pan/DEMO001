@@ -1,5 +1,12 @@
 # XLSX → 客户端 CSV 配置规范
 
+## 当前1.7.2 单张PNG与布局配置（2026-10-08）
+
+- 共27张运行表：移出ArtAtlas，新增UiLayout。ArtFrame以assetPath和统一canvasWidth/canvasHeight管理83张原生图片，不再有图集坐标。
+- UiLayout字段：id/key/prefab/node/x/y/width/height/scaleX/scaleY/fontSize/lineHeight/fontFamily/color/outlineColor/outlineWidth/horizontalAlign/verticalAlign/overflow/active/skinKey/note；覆盖33套Prefab的1759节点。Label色与九宫skinKey按原表编译；skin节点的color可设置PNG色调。
+- node路径属于技术绑定协议，根用@；数值/字色属于原始XLSX。导表调用config-layout回写原生Prefab，检查构建产物是否过期；缺少节点配置也拒绝构建。动态排版只依据已编译几何计算行距/居中/缩放，不保存第二份像素参数。
+- ArtCut133条当前均指向单张PNG及完整明确区域；旧表与图集只归档。新增功能仍先原始表后导表。
+
 ## 当前1.7.0 UI配置（2026-10-07）
 
 当前26张原始表，VisualSkin121项、ArtFrame83项、UiPrefab33套。新增Goods.xlsx九条，字段id/key/nameKey/imageKey/categoryKey/descriptionKey/storyKey/unlockLevel；所有文案引用I18，图标引用VisualSkin，unlockLevel关联冒险进度。商品仅图鉴信息，不产生经济效果；跨表校验缺失引用与非法解锁关。

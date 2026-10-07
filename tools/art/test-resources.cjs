@@ -13,6 +13,6 @@ test('切图源文件变化会阻止构建',()=>mutation(core.rows('ArtCut')[0].
 test('切图被手改或重复旧图会阻止构建',()=>mutation('assets/art/'+image,b=>Buffer.concat([b,Buffer.from([0])]),()=>assert.throws(check,/切图PNG或配置已过期/)));
 test('横幅移到地图背景之后会阻止构建',()=>mutation('assets/resources/ui/challenge_loadout.prefab',b=>{const a=JSON.parse(b),children=a[1]._children,i=children.findIndex(r=>a[r.__id__]._name==='Banner');children.unshift(children.splice(i,1)[0]);return JSON.stringify(a);},()=>assert.throws(ui,/UI层级/)));
 test('按钮表面盖住文字会阻止构建',()=>mutation('assets/resources/ui/home.prefab',b=>{const a=JSON.parse(b),n=a.find(o=>o.__type__==='cc.Node'&&o._name==='Adventure'),i=n._children.findIndex(r=>a[r.__id__]._name==='Surface');n._children.push(n._children.splice(i,1)[0]);return JSON.stringify(a);},()=>assert.throws(ui,/UI层级/)));
-test('固定比例模式与原始表不一致会阻止构建',()=>mutation('assets/resources/ui/home.prefab',b=>{const a=JSON.parse(b);a.find(o=>o.image&&o.key==='button_gold').resizeMode='stretch';return JSON.stringify(a);},()=>assert.throws(ui,/预览或边距过期/)));
+test('固定比例模式与原始表不一致会阻止构建',()=>mutation('assets/resources/ui/home.prefab',b=>{const a=JSON.parse(b);a.find(o=>o.image&&o.key==='home_adventure').resizeMode='stretch';return JSON.stringify(a);},()=>assert.throws(ui,/预览或边距过期/)));
 test('meta仍保留旧裁切尺寸时会阻止构建',()=>mutation('assets/art/'+image+'.meta',b=>{const m=JSON.parse(b);m.subMetas.f9941.userData.width--;return JSON.stringify(m);},()=>assert.throws(check,/导入设置/)));
 console.log(count+'项资源回归通过；隔离证据：'+fixture);

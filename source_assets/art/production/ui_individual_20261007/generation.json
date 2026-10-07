@@ -1,0 +1,21 @@
+{
+  "date": "2026-10-08",
+  "tool": "image_gen.imagegen",
+  "entries": [
+    {
+      "kind": "historical_sheet_before_single_png_request",
+      "file": "../ui_redesign_20261007/loading_home_sheet.png",
+      "prompt": "Create a production PNG UI sprite sheet on a TRUE TRANSPARENT background for this Chinese cozy animal convenience-store tower defense game. Reference image 1 is the loading screen; image 2 is the main menu; image 3 is the staff selection panel; image 4 is night supplies. These are strict style/color references. ONLY isolated text-free UI components, NO page background, NO labels/numbers/words. Smooth flat cartoon, clean contours, minimal gentle gradients, do not redesign colors.\nArrange 10 completely separated components with wide transparent gaps in four rows; do not let parts touch:\nRow 1: a large wide yellow main-menu pill button, exact sunny lemon yellow (#ffea30) with ochre/brown outline, pale yellow inset top highlight matching reference 2; next to it a same-size lime-green main-menu pill button (#83ef2a), dark grass-green outline and inset highlight matching reference 2. Both width:height ratio 3:1 and no text.\nRow 2: long EMPTY loading track width:height 15:1, blue outline #207ea5 and cyan-blue interior #49abd4 matching reference 1; next to it a FULL long yellow diagonal-striped loading fill strip width:height 17:1, rounded left end, flat right end, NO outline around fill; retain yellow stripes; clearly separate two bars.\nRow 3: yellow paw-shaped loading end-cap, blue outline #207ea5, side-facing paw with 3 rounded toes to the RIGHT and rounded pad on left, matching reference 1 progress endpoint; next to it white upright paw icon with blue outline matching loading title paws; next to it white horizontal counter pill with blue outline matching top main-menu counters in reference 2.\nRow 4: a large cream window with thin warm orange outside contour, subtly rounded corners and simple ivory inset border matching reference 3 and 4, NO top shine blobs, no heavy gold bands; next to it a cream circular portrait holder with thin beige outline, and a matching circle with green selection outline (NO check mark).\nEvery sprite complete and fully visible, generous spacing, antialiased alpha, absolutely no random extra corners or sparkles around sprites. Sheet should remain easy to cut into individual PNG components."
+    },
+    {
+      "kind": "single_png",
+      "file": "mint_pill_original.png",
+      "prompt": "Create exactly ONE isolated game UI asset: a wide horizontally rounded pill with pale pastel light green fill (#dcecc2), gently highlighted cream top rim, muted sage green thin outline (#8fb16e) and small rounded bottom shadow. Healing cozy cute flat casual tower defense game UI. Aspect ratio 3.4:1, full pill centered and completely intact with generous transparent margin, no writing, no symbols, no characters, no other assets, no sheet, no grid. Straight edges in center for nine-slice stretching; perfectly round symmetrical semicircular ends. Minimal shading, matte, restrained outline, no glossy jewel style. PNG transparent background."
+    },
+    {
+      "kind": "single_png",
+      "file": "counter_green_original.png",
+      "prompt": "Exactly ONE complete isolated horizontal white counter pill for a cozy flat cartoon game HUD, width to height 3.3:1. Warm ivory-white empty interior, thin deep green outline (#176d4f), extremely subtle pale green bottom shadow, rounded semicircular ends, little soft cream top highlight. Clean restrained healing flat casual tower defense style. No text, no numerals, no icons, no symbols, no other objects, no sheet or grid. Entire pill fully visible in centered generous transparent margins. PNG with true transparent background."
+    }
+  ]
+}

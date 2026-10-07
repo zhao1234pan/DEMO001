@@ -1,18 +1,17 @@
 {
   "format": 1,
   "source": {
-    "ArtAtlas.xlsx": "dc8129f26c782efac34a0f02d575e85b6e41fffa39e28d31cf1804bbf81ec819",
-    "ArtCut.xlsx": "c11dd1d502293d15b7f3896b30338ba8ffb7ccd5e5ac07847fd681ccc87743f9",
-    "ArtFrame.xlsx": "9df6c6fa576c9fa2b5cd5a35f357ddd5a7c55253beb5de5a762bb20c0c47df14",
+    "ArtCut.xlsx": "6f5379b8538131d18d20bab92598ccba9a2dc30e76dbf18c6fa041865d243348",
+    "ArtFrame.xlsx": "f10180c7d45d5836dcd64f1f614b555483b8b004c4ef3bd0d75ce3ab5839a6c5",
     "Audio.xlsx": "25b2886f7cf001e8c64dd03d4c3254e3ed72160b2fab5bf8db4e24ed048fb6fe",
     "ChallengePerk.xlsx": "26a937042292efbac63cbb0c11a7ba06d29760c24d59d73397b65661cf992d68",
     "ChallengeRule.xlsx": "fb68af74328e8afc8351f272cd40d8379269e44d67e0826530c7c1bd38a980b2",
     "Collection.xlsx": "730b5e03291370e65e80f7003ae0d7bf2406f4b8315945c95c9ef63d4e8c2684",
     "Decoration.xlsx": "57d58b6fee572026db71d0dc46ef705651aed0b9b684dbb4413458a1e2f9beba",
     "Enemy.xlsx": "297bb6a48550591190e7ae763d730800528aeced656da228c202cd9f13e35b41",
-    "Global.xlsx": "ff916779b7d1d63241ab865bb3a0951ff1309bfccbc9b3e52ef3e2f4a586fa39",
+    "Global.xlsx": "806d72b7391baa2436e0f2b1582c9d1682d78ea455a69bc0537f689ce0f90bea",
     "Goods.xlsx": "aad276e9efec61b111abf4ceb8635a7f191ced7155520b131d54289ab10b33d7",
-    "I18.xlsx": "acac31c238a99f155c99b756aca8b2e61e779f5f1d69cea22498cbe0f61e7240",
+    "I18.xlsx": "0c385cc0a1c4881df40ad6456033f890a6b54a1dc63001b6344c6da3d29cfa9a",
     "Level.xlsx": "f41f1b055b1b89c3615e764bb49d88cf2f4fbc600efca6af27442503e04d0c90",
     "LevelLoadout.xlsx": "398c951d655e793c14f2f12450a212b8bf2e373627a98354b51d9043e9b0534c",
     "Map.xlsx": "b8ae6d85c7e3a79067759f7168a1b396d435fd4eb54e314c38257737e46a2165",
@@ -24,14 +23,15 @@
     "StaffForm.xlsx": "c7c7912fd9531783748cd1e8035eb996efcf7b80549a4f3457f74d02a5ae15b6",
     "Theme.xlsx": "944c50205106ff98144171438da26a305aad0a39836bfc039f42a0a12b9d547d",
     "Tutorial.xlsx": "c86af3c7bedd9470a4e41b0ec74c57d1a2bbe443eb5c96e9040ba8e23f4c5fdd",
+    "UiLayout.xlsx": "7954f798b2bea7657ca81f5dfeff351613b63d22e5bccd2d8ab65375dad58330",
     "UiPrefab.xlsx": "1124c50c6a5bd9867a5d1755ed9295710563e2c825465bd263d4b35fe8159622",
-    "VisualSkin.xlsx": "ad8f40b3ae8f477a8f7d3830d605cc21312bfd67c510adeb576340b6075816d5",
+    "VisualSkin.xlsx": "8d3524df25bd8d6876770483775a18ba0b78a0e875fc1fe4922875c5dee405d2",
     "Wave.xlsx": "bd2e2a2367f88fccf02021d521118a6019d39fe1436cf8fc0287b6df2f30661a",
     "WaveGroup.xlsx": "c04b47fb1772507a798b049ff0137ad298ceeb0ed19bf2ca618fe642b067140b"
   },
   "csv": {
-    "Global.csv": "33764d4a96306a914fad3ad09e2390261069c8ba048095dc57b83126c87b5fe1",
-    "I18.csv": "2df9be1df280618fa2d8fee5e3a4e0bd03ab5e56616198bcd6302c3edfbb08b8",
+    "Global.csv": "c0e3c6599628733e4324c0eefd2258131359fd88aadbf09b428dd38b79e0cf51",
+    "I18.csv": "4aba7baa8da5de587b7f7afa34e7e7339d81fbd02257f9b5b18ad5fa314b3a10",
     "Staff.csv": "8d82d267841254036b965c649cbc393a8671e6ff598fb786443a742eb3924002",
     "Enemy.csv": "fc0b7ca4d9575da2494d15a2101c9d6008356fa200b3c92371b45be17c740f8e",
     "Theme.csv": "40f906179d9522b2d58e3d4ca82be40d08e81f5f91526fb7e5fa3bead0e10d4e",
@@ -45,8 +45,7 @@
     "Collection.csv": "79d6e1d02617c455eff68e2c5af13a246c3fe8cf970b477a68b2ec658bfafdf4",
     "Audio.csv": "93be1a11c96ec846b72b46d458974aa868e48e597233f5af028f138907604291",
     "Decoration.csv": "de4be03831c32cca23c1138f6f4460167991ddaec22108333e9846c32b241a02",
-    "ArtAtlas.csv": "9750275937b2bdeb799dbff7a133cf0aec22b76d033750b170968df2ccf72bb9",
-    "ArtFrame.csv": "4b20faaa2f7e5a8985af3e9603ae8708a85ef464bbb17fd4e7c5e5c838959aff",
+    "ArtFrame.csv": "3760aba8b05e9abf76c41e32eac5a73fa3e06e69fcd68f5346321952f785cfb5",
     "UiPrefab.csv": "ea4a968cdd3852e1d50b725e2c091f16891b8bc1d5da98c6cd432204d79844c2",
     "Tutorial.csv": "bf66015fde8e7b6cf099e1218ca15a7510636e58986fc3c38daccdbde43ec566",
     "StaffBranch.csv": "1056f17d2d38c95a915b3f1d03a56e9d8c1fb9e76cdfe27c71fb4bbd715b8099",
@@ -54,8 +53,9 @@
     "LevelLoadout.csv": "e9d9cf6e3380f14b9f5f217c0f2c52ce27c0ebcc37d4c5a9abcafbb2fbdb2f78",
     "ChallengeRule.csv": "3fb8dde15ac1867fc5e3a7901b635c58ea271a16871ccc8db614993ce223dca1",
     "ChallengePerk.csv": "2f2c8c8ee3c8c84371985c0e7b379a2622a49e5b70b5269a25e68dab98801502",
-    "VisualSkin.csv": "d4d6409385126b63b5566a779750d57c3bda18af9415d8fccddf5c2f48c633d9",
+    "VisualSkin.csv": "76135210f51f4111db8391a228dd39949e2e83dbf0a97b197b6d1ee20f259036",
     "Goods.csv": "7ecebc108f0000f2a28114dbb935a79f4f859bf62c3b1f75069735184b184721",
-    "ArtCut.csv": "45372f258cec9f968bbd44c659a6bda4a3a8c118467f253aefc83e5dbc5f45bc"
+    "ArtCut.csv": "58d6027e455aa22203846212c27abea3a26b0bc00daac96058e512011669cb40",
+    "UiLayout.csv": "b20dca885efeb78e122ef2d5e91225e4e3f53885e2b01b6ce6993b9f4e014887"
   }
 }

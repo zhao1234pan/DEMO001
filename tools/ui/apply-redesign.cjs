@@ -1,3 +1,4 @@
+if(require('fs').existsSync(require('path').resolve(__dirname,'../../design/tables/UiLayout.xlsx')))throw Error('旧版UI初始化已归档；请修改UiLayout.xlsx并运行config:export，不再从源图集重建界面。');
 /* 用户2026-10-07新版UI的可重复美术布局更新；保留运行时绑定路径和已有meta。 */
 const fs=require('fs'),path=require('path'),crypto=require('crypto');const root=path.resolve(__dirname,'../..'),dir=root+'/assets/resources/ui',source=root+'/source_assets/art/production/ui_redesign_20261007';const templates=JSON.parse(fs.readFileSync(dir+'/home.prefab','utf8'));const clone=x=>structuredClone(x),byType=t=>templates.find(o=>o.__type__===t),textTemplate=templates.find(o=>o.key&&!o.image),skinTemplate=templates.find(o=>o.image&&o.key),imageTemplate=templates.find(o=>o.frameKey);let skins;
 class Prefab{

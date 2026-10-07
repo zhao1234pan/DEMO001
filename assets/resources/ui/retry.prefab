@@ -472,13 +472,13 @@
     "__prefab": {
       "__id__": 22
     },
-    "key": "window_cream",
+    "key": "window_flat",
     "padding": 0,
     "image": {
       "__id__": 366
     },
     "previewFrame": {
-      "__uuid__": "89d6e125-1f54-4484-ad15-bea51596dade@f9941",
+      "__uuid__": "c1209586-340e-43f1-90ed-06715a0d6778@f9941",
       "__expectedType__": "cc.SpriteFrame"
     },
     "_id": "",
@@ -593,13 +593,13 @@
     "__prefab": {
       "__id__": 29
     },
-    "key": "window_cream",
+    "key": "window_flat",
     "padding": 0,
     "image": {
       "__id__": 369
     },
     "previewFrame": {
-      "__uuid__": "89d6e125-1f54-4484-ad15-bea51596dade@f9941",
+      "__uuid__": "c1209586-340e-43f1-90ed-06715a0d6778@f9941",
       "__expectedType__": "cc.SpriteFrame"
     },
     "_id": "",
@@ -621,7 +621,7 @@
         "__id__": 372
       }
     ],
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 32
@@ -742,7 +742,7 @@
         "__id__": 375
       }
     ],
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 39
@@ -863,7 +863,7 @@
         "__id__": 378
       }
     ],
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 46
@@ -984,7 +984,7 @@
         "__id__": 381
       }
     ],
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 53
@@ -1105,7 +1105,7 @@
         "__id__": 384
       }
     ],
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 60
@@ -1226,7 +1226,7 @@
         "__id__": 387
       }
     ],
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 67
@@ -1347,7 +1347,7 @@
         "__id__": 390
       }
     ],
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 74
@@ -1468,7 +1468,7 @@
         "__id__": 393
       }
     ],
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 81
@@ -1589,7 +1589,7 @@
         "__id__": 396
       }
     ],
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 88
@@ -1710,7 +1710,7 @@
         "__id__": 399
       }
     ],
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 95
@@ -1831,7 +1831,7 @@
         "__id__": 402
       }
     ],
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 102
@@ -2373,13 +2373,13 @@
     "__prefab": {
       "__id__": 128
     },
-    "key": "window_cream",
+    "key": "window_flat",
     "padding": 0,
     "image": {
       "__id__": 408
     },
     "previewFrame": {
-      "__uuid__": "89d6e125-1f54-4484-ad15-bea51596dade@f9941",
+      "__uuid__": "c1209586-340e-43f1-90ed-06715a0d6778@f9941",
       "__expectedType__": "cc.SpriteFrame"
     },
     "_id": "",
@@ -2494,13 +2494,13 @@
     "__prefab": {
       "__id__": 135
     },
-    "key": "window_cream",
+    "key": "window_flat",
     "padding": 0,
     "image": {
       "__id__": 411
     },
     "previewFrame": {
-      "__uuid__": "89d6e125-1f54-4484-ad15-bea51596dade@f9941",
+      "__uuid__": "c1209586-340e-43f1-90ed-06715a0d6778@f9941",
       "__expectedType__": "cc.SpriteFrame"
     },
     "_id": "",
@@ -2522,7 +2522,7 @@
         "__id__": 414
       }
     ],
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 138
@@ -2643,7 +2643,7 @@
         "__id__": 417
       }
     ],
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 145
@@ -3006,7 +3006,7 @@
         "__id__": 426
       }
     ],
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 166
@@ -3127,7 +3127,7 @@
         "__id__": 429
       }
     ],
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 173
@@ -3248,7 +3248,7 @@
         "__id__": 432
       }
     ],
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 180
@@ -3369,7 +3369,7 @@
         "__id__": 435
       }
     ],
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 187
@@ -3490,7 +3490,7 @@
         "__id__": 438
       }
     ],
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 194
@@ -3827,8 +3827,8 @@
     "_fontSize": 27,
     "_actualFontSize": 27,
     "_lineHeight": 31,
-    "_fontFamily": "Arial",
-    "_overflow": 0,
+    "_fontFamily": "Microsoft YaHei",
+    "_overflow": 2,
     "_enableWrapText": true,
     "_isSystemFontUsed": true,
     "_color": {
@@ -3840,7 +3840,9 @@
     },
     "_font": null,
     "_cacheMode": 0,
-    "_isBold": true
+    "_isBold": true,
+    "_enableOutline": false,
+    "_outlineWidth": 0
   },
   {
     "__type__": "cc.CompPrefabInfo",
@@ -3968,8 +3970,8 @@
     "_fontSize": 14,
     "_actualFontSize": 14,
     "_lineHeight": 18,
-    "_fontFamily": "Arial",
-    "_overflow": 0,
+    "_fontFamily": "Microsoft YaHei",
+    "_overflow": 2,
     "_enableWrapText": true,
     "_isSystemFontUsed": true,
     "_color": {
@@ -3981,7 +3983,9 @@
     },
     "_font": null,
     "_cacheMode": 0,
-    "_isBold": true
+    "_isBold": true,
+    "_enableOutline": false,
+    "_outlineWidth": 0
   },
   {
     "__type__": "cc.CompPrefabInfo",
@@ -4194,13 +4198,13 @@
     "__prefab": {
       "__id__": 230
     },
-    "key": "window_cream",
+    "key": "window_flat",
     "padding": 0,
     "image": {
       "__id__": 444
     },
     "previewFrame": {
-      "__uuid__": "89d6e125-1f54-4484-ad15-bea51596dade@f9941",
+      "__uuid__": "c1209586-340e-43f1-90ed-06715a0d6778@f9941",
       "__expectedType__": "cc.SpriteFrame"
     },
     "_id": "",
@@ -4343,7 +4347,7 @@
         "__id__": 450
       }
     ],
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 240
@@ -4464,7 +4468,7 @@
         "__id__": 453
       }
     ],
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 247
@@ -4798,8 +4802,8 @@
     "_fontSize": 17,
     "_actualFontSize": 17,
     "_lineHeight": 21,
-    "_fontFamily": "Arial",
-    "_overflow": 0,
+    "_fontFamily": "Microsoft YaHei",
+    "_overflow": 2,
     "_enableWrapText": true,
     "_isSystemFontUsed": true,
     "_color": {
@@ -4811,7 +4815,9 @@
     },
     "_font": null,
     "_cacheMode": 0,
-    "_isBold": true
+    "_isBold": true,
+    "_enableOutline": false,
+    "_outlineWidth": 0
   },
   {
     "__type__": "cc.CompPrefabInfo",
@@ -4921,8 +4927,8 @@
     "_fontSize": 13,
     "_actualFontSize": 13,
     "_lineHeight": 17,
-    "_fontFamily": "Arial",
-    "_overflow": 0,
+    "_fontFamily": "Microsoft YaHei",
+    "_overflow": 2,
     "_enableWrapText": true,
     "_isSystemFontUsed": true,
     "_color": {
@@ -4934,7 +4940,9 @@
     },
     "_font": null,
     "_cacheMode": 0,
-    "_isBold": true
+    "_isBold": true,
+    "_enableOutline": false,
+    "_outlineWidth": 0
   },
   {
     "__type__": "cc.CompPrefabInfo",
@@ -5147,13 +5155,13 @@
     "__prefab": {
       "__id__": 281
     },
-    "key": "window_cream",
+    "key": "window_flat",
     "padding": 0,
     "image": {
       "__id__": 459
     },
     "previewFrame": {
-      "__uuid__": "89d6e125-1f54-4484-ad15-bea51596dade@f9941",
+      "__uuid__": "c1209586-340e-43f1-90ed-06715a0d6778@f9941",
       "__expectedType__": "cc.SpriteFrame"
     },
     "_id": "",
@@ -5296,7 +5304,7 @@
         "__id__": 465
       }
     ],
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 291
@@ -5417,7 +5425,7 @@
         "__id__": 468
       }
     ],
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 298
@@ -5751,8 +5759,8 @@
     "_fontSize": 17,
     "_actualFontSize": 17,
     "_lineHeight": 21,
-    "_fontFamily": "Arial",
-    "_overflow": 0,
+    "_fontFamily": "Microsoft YaHei",
+    "_overflow": 2,
     "_enableWrapText": true,
     "_isSystemFontUsed": true,
     "_color": {
@@ -5764,7 +5772,9 @@
     },
     "_font": null,
     "_cacheMode": 0,
-    "_isBold": true
+    "_isBold": true,
+    "_enableOutline": false,
+    "_outlineWidth": 0
   },
   {
     "__type__": "cc.CompPrefabInfo",
@@ -5977,13 +5987,13 @@
     "__prefab": {
       "__id__": 326
     },
-    "key": "window_cream",
+    "key": "window_flat",
     "padding": 0,
     "image": {
       "__id__": 474
     },
     "previewFrame": {
-      "__uuid__": "89d6e125-1f54-4484-ad15-bea51596dade@f9941",
+      "__uuid__": "c1209586-340e-43f1-90ed-06715a0d6778@f9941",
       "__expectedType__": "cc.SpriteFrame"
     },
     "_id": "",
@@ -6126,7 +6136,7 @@
         "__id__": 480
       }
     ],
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 336
@@ -6247,7 +6257,7 @@
         "__id__": 483
       }
     ],
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 343
@@ -6584,8 +6594,8 @@
     "_fontSize": 16,
     "_actualFontSize": 16,
     "_lineHeight": 20,
-    "_fontFamily": "Arial",
-    "_overflow": 0,
+    "_fontFamily": "Microsoft YaHei",
+    "_overflow": 2,
     "_enableWrapText": true,
     "_isSystemFontUsed": true,
     "_color": {
@@ -6597,7 +6607,9 @@
     },
     "_font": null,
     "_cacheMode": 0,
-    "_isBold": true
+    "_isBold": true,
+    "_enableOutline": false,
+    "_outlineWidth": 0
   },
   {
     "__type__": "cc.CompPrefabInfo",

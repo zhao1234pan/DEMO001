@@ -1,0 +1,33 @@
+{
+  "checks": [
+    "ui-home",
+    "ui-settings",
+    "音乐开关真实点击",
+    "ui-collection-locked",
+    "ui-collection-staff",
+    "ui-detail-staff",
+    "ui-detail-evolution",
+    "ui-collection-enemies",
+    "ui-detail-enemy",
+    "ui-collection-bosses",
+    "ui-detail-boss",
+    "ui-collection-goods",
+    "ui-detail-goods",
+    "三页图鉴、首领分页及商品无空统计",
+    "ui-unavailable",
+    "ui-levels",
+    "ui-adventure-loadout",
+    "ui-build",
+    "ui-upgrade",
+    "ui-evolution-menu",
+    "空白点击关闭菜单",
+    "ui-pause",
+    "ui-lose",
+    "ui-retry",
+    "ui-win",
+    "ui-gm",
+    "真实启动加载页",
+    "启动结束释放加载页"
+  ],
+  "errors": []
+}

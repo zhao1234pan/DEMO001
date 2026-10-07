@@ -4,7 +4,7 @@ import { PngSurface } from "./PngSurface";
 import { loadoutRule, loadoutCandidates, requiredLoadoutSize, readLoadout, validLoadout, defaultLoadout, staffRole, levelPreview, bossWaveText } from "../gameplay/battle/LevelLoadout";
 import { TOWER_CONFIG, TowerKind } from "../gameplay/battle/GameConfig";
 import { evolutionChoices } from "../gameplay/battle/StaffEvolution";
-import { Color, Label, Node, UITransform } from "cc";
+import { Color, Label, Node, Sprite, UITransform } from "cc";
 import { globalString, globalNumber, text } from "../config/ConfigTables";
 import { GAME_CONFIG } from "../gameplay/battle/GameConfig";
 import { getLevelConfig } from "../gameplay/battle/LevelConfig";
@@ -35,6 +35,8 @@ export class PrefabGameMenuView {
   private readonly modalActions = new Map<Node, () => void>();
   private readonly routes = new WeakMap<Node,PngSurface>();
   private readonly platform = new PlatformSettings();
+  private readonly preparationSlots=new Map<Node,{x:number;y:number}>();
+  private readonly preparationGeometry=new Map<Node,{y:number;height:number}>();
   private readonly collectionSlotPositions=new Map<Node,{x:number;y:number}>();
   private page: MenuPage = "home";
   get isLandingPage():boolean{return this.page==="home"&&!this.dialog;}
@@ -64,6 +66,7 @@ export class PrefabGameMenuView {
     for (const slot of uiNode(this.pages.get("collection")!, "Cards").children){this.collectionCards.push(assets.create("collection_card",slot));this.collectionSlotPositions.set(slot,{x:slot.position.x,y:slot.position.y});}
     for(const slot of uiNode(this.pages.get("loadout")!, "Candidates").children)this.loadoutCards.push(assets.create("loadout_card",slot));
     for(const slot of uiNode(this.pages.get("challenge_loadout")!,"Candidates").children)this.challengeLoadoutCards.push(assets.create("challenge_staff_card",slot));
+    for(const key of ['loadout','challenge_loadout'] as MenuPage[]){const page=this.pages.get(key)!;for(const slot of uiNode(page,'Candidates').children)this.preparationSlots.set(slot,{x:slot.position.x,y:slot.position.y});for(const nodePath of ['Panel','Panel/Surface','Hint','Start']){const n=uiNode(page,nodePath);this.preparationGeometry.set(n,{y:n.position.y,height:n.getComponent(UITransform)!.height});}}
     void this.platform.refresh().then(() => { if (!this.disposed) this.dirty = true; });
     this.root.active = false;
   }
@@ -88,7 +91,7 @@ export class PrefabGameMenuView {
       this.root.setScale(scale, scale, 1); this.root.setPosition(0, H / 2 - offset - H * scale / 2);
       // 只有全屏遮罩随视口拉伸，页面内容保持预制体中的比例与位置。
       const visibleTop = (top - offset) / scale, visibleBottom = (bottom - offset) / scale;
-      for (const n of [uiNode(this.pages.get("settings")!,"Dim"),uiNode(this.pages.get("collection")!,"Dim"),uiNode(this.pages.get("challenge_loadout")!,"BattleDim"), ...Array.from(this.dialogs.values()).map(n => uiNode(n, "Dim"))]) {
+      for (const n of [uiNode(this.pages.get("settings")!,"Dim"),uiNode(this.pages.get("collection")!,"Dim"),uiNode(this.pages.get("challenge_loadout")!,"BattleDim"),uiNode(this.pages.get("loadout")!,"BattleDim"), ...Array.from(this.dialogs.values()).map(n => uiNode(n, "Dim"))]) {
         n.getComponent(UITransform)!.height = visibleBottom - visibleTop;
         n.setPosition(n.position.x, H / 2 - (visibleTop + visibleBottom) / 2);
       }
@@ -185,7 +188,10 @@ export class PrefabGameMenuView {
     let layer=this.routes.get(route);if(!layer){layer=new PngSurface(route,this.assets,false);this.routes.set(route,layer);}
     const style=route.getComponent(UiRoute)!;const lineWidth=style.lineWidth,road=style.lineColor.clone(),spots=style.spotColor;
     if(unlocked)Color.fromHEX(road,levelTheme(level).road);
-    const project=([x,y]:readonly number[])=>[projection.position.x+x*projection.scale.x,projection.position.y+y*projection.scale.y];
+    // 路线和塔位统一适配投影内框；不能按主地图固定倍率溢出缩略图。
+    const bounds=projection.getComponent(UITransform)!,points=[...level.pathPoints,...level.towerSpots],xs=points.map(p=>p[0]),ys=points.map(p=>p[1]),minX=Math.min(...xs),maxX=Math.max(...xs),minY=Math.min(...ys),maxY=Math.max(...ys);
+    const scale=Math.min(bounds.width/Math.max(1,maxX-minX),bounds.height/Math.max(1,maxY-minY));
+    const project=([x,y]:readonly number[])=>[projection.position.x+(x-(minX+maxX)/2)*scale,projection.position.y-(y-(minY+maxY)/2)*scale];
     layer.clear();for(let i=1;i<level.pathPoints.length;i++){const [x,y]=project(level.pathPoints[i-1]),[bx,by]=project(level.pathPoints[i]);layer.line(x,y,bx,by,road,lineWidth,true);}
     for(const point of level.towerSpots){const [x,y]=project(point);layer.disc(x,y,lineWidth*.22,spots);}layer.end();
     const [x,y]=project(level.pathPoints[level.pathPoints.length-1]);const marker=uiNode(route,"ShopMarker");marker.setPosition(x,y);marker.setSiblingIndex(route.children.length-1);
@@ -214,39 +220,24 @@ export class PrefabGameMenuView {
     const grouped=new Map<number,Node[]>();for(const card of this.collectionCards){const y=this.collectionSlotPositions.get(card.parent!)!.y;const group=grouped.get(y)??[];group.push(card);grouped.set(y,group);}
     for(const group of Array.from(grouped.values())){const active=group.filter(n=>n.active);if(!active.length)continue;const shift=(group[0].parent!.position.x+group[group.length-1].parent!.position.x-active[0].parent!.position.x-active[active.length-1].parent!.position.x)/2;for(const card of active)card.parent!.setPosition(card.parent!.position.x+shift,card.parent!.position.y);}
     uiText(page, "Count", text("ui.GameMenuView.026", entries.filter(e => this.collection.isUnlocked(e)).length, entries.length));
+    let shelf=0;for(const group of Array.from(grouped.values()))uiNode(page,'ShelfRow'+shelf++).active=group.some(n=>n.active);
     this.pagination(page, this.collectionPage, pages, () => { this.collectionPage--; }, () => { this.collectionPage++; });
   }
+  /** 冒险和挑战共用勾选式店员选择；候选范围与人数仍由关卡表决定。 */
   private preparation(page:Node):void {
-    if(this.page==="challenge_loadout"){this.challengePreparation(page);return;}
-    const id=this.preparationId,level=getLevelConfig(id),pool=loadoutCandidates(id,this.unlocked),count=requiredLoadoutSize(id,this.unlocked);
-    this.bind(page,"Back",()=>this.navigate(level.mode==="challenge"?"home":"levels"));uiText(page,"Title",text(level.mode==="challenge"?"challenge.loadout":"ui.loadout.title"));
-    uiText(page,"LevelTitle",level.title);uiText(page,"Stats",text("ui.loadout.stats",level.initialCoins,level.waves.length));uiText(page,"Boss",bossWaveText(level));
-    const map=uiNode(page,"Map");uiColor(map,"Thumbnail",levelTheme(level).ground);this.routePreview(map,level,true);
-    uiText(page,"EnemyTitle",text("ui.loadout.enemies"));const enemies=levelPreview(level).filter(e=>level.mode!=="challenge"||!e.boss),enemySlots=uiNode(page,"Enemies").children;
-    enemySlots.forEach((slot,i)=>{const e=enemies[i];slot.active=Boolean(e);if(!e)return;this.assets.bindImage(uiNode(slot,"Icon"),"menu:"+e.imageKey);uiText(slot,"Name",e.name);});
-    uiText(page,"SelectedTitle",text("ui.loadout.selected",this.selection.length,count));uiText(page,"Default/Text",text("ui.loadout.default"));
-    this.bind(page,"Default",()=>{this.selection=defaultLoadout(id).filter(k=>pool.includes(k));this.replacementSlot=-1;this.selectionHint="";});
-    const full=this.selection.length===count;
-    uiNode(page,"Selected").children.forEach((slot,i)=>{slot.active=i<count;const kind=this.selection[i];uiNode(slot,"Icon").active=Boolean(kind);if(kind)this.assets.bindImage(uiNode(slot,"Icon"),"menu:"+kind);uiText(slot,"Name",kind?TOWER_CONFIG[kind].name:text("ui.loadout.empty"));uiColor(slot,"Surface",this.replacementSlot===i?"#edc87c":"#e0e7ca");this.bind(slot,"",()=>{if(!kind)return;if(this.replacementSlot===i){this.selection.splice(i,1);this.replacementSlot=-1;}else this.replacementSlot=i;this.selectionHint="";});});
-    uiText(page,"Hint",this.selectionHint||(this.replacementSlot>=0?text("ui.loadout.choose"):""));
-    this.loadoutCards.forEach((card,i)=>{const kind=pool[i];card.active=Boolean(kind);if(!kind)return;const entry=COLLECTION_ENTRIES.find(e=>e.staffKind===kind)!;
-      this.assets.bindImage(uiNode(card,"Icon"),"menu:"+entry.imageKey);uiText(card,"Name",text("ui.evolution.costValue",TOWER_CONFIG[kind].cost)+" "+TOWER_CONFIG[kind].name);uiText(card,"Role",staffRole(kind));uiNode(card,"Selected").active=this.selection.includes(kind);
-      // 小详情按钮先于整卡响应；查看不会改变阵容或图鉴收录。
-      this.bind(card,"Info",()=>{this.detailLevel=1;this.detailBaseLevel=1;this.dialog={kind:"entry",entry};});
-      this.bind(card,"",()=>{const ix=this.selection.indexOf(kind);if(ix>=0){this.selection.splice(ix,1);this.replacementSlot=-1;}else if(this.replacementSlot>=0){this.selection[this.replacementSlot]=kind;this.replacementSlot=-1;}else if(!full)this.selection.push(kind);else{this.selectionHint=text("ui.loadout.replace");return;}this.selectionHint="";});
-    });
-    uiText(page,"Start/Text",full?text("ui.loadout.start"):text("ui.loadout.need",count-this.selection.length));this.buttonEnabled(page,"Start",full);
-    if(validLoadout(id,this.unlocked,this.selection))this.bind(page,"Start",()=>this.startLevel(id,[...this.selection]));
-  }
-  /** 八选四直接切换勾选；满员后必须先取消，不自动替换玩家刚选定的店员。 */
-  private challengePreparation(page:Node):void {
-    const id=this.preparationId,pool=loadoutCandidates(id,this.unlocked),count=requiredLoadoutSize(id,this.unlocked),full=this.selection.length===count;
-    this.bind(page,"Back",()=>this.navigate("home"));uiText(page,"Title",text("challenge.loadout"));uiText(page,"SelectedTitle",text("ui.loadout.selected",this.selection.length,count));
+    const id=this.preparationId,challenge=this.page==="challenge_loadout",pool=loadoutCandidates(id,this.unlocked),count=requiredLoadoutSize(id,this.unlocked),full=this.selection.length===count;
+    const cards=challenge?this.challengeLoadoutCards:this.loadoutCards;
+    this.assets.bindSkin(uiNode(page,"BattleRoad/Artwork").getComponent(Sprite)!,"map_"+id);
+    this.bind(page,"Back",()=>this.navigate(challenge?"home":"levels"));uiText(page,"Title",text(challenge?"challenge.loadout":"ui.loadout.title"));uiText(page,"SelectedTitle",text("ui.loadout.selected",this.selection.length,count));
     uiText(page,"Default/Text",text("ui.loadout.default"));this.bind(page,"Default",()=>{this.selection=defaultLoadout(id).filter(k=>pool.includes(k));this.selectionHint="";});
     uiText(page,"Hint",this.selectionHint||text("ui.redesign.pickHint"));
-    this.challengeLoadoutCards.forEach((card,i)=>{const kind=pool[i];card.active=Boolean(kind);if(!kind)return;this.assets.bindImage(uiNode(card,"Icon"),"menu:"+kind);uiText(card,"Name",TOWER_CONFIG[kind].name);uiText(card,"Role",staffRole(kind));uiNode(card,"Selected").active=this.selection.includes(kind);
+    cards.forEach((card,i)=>{const kind=pool[i];card.active=Boolean(kind);if(!kind)return;this.assets.bindImage(uiNode(card,"Icon/Portrait"),"menu:"+kind);uiText(card,"Name",TOWER_CONFIG[kind].name);uiText(card,"Role",staffRole(kind));const selected=this.selection.includes(kind);uiNode(card,"Selected").active=selected;uiNode(card,"SelectedRing").active=selected;
       this.bind(card,"",()=>{const index=this.selection.indexOf(kind);if(index>=0)this.selection.splice(index,1);else if(!full)this.selection.push(kind);else{this.selectionHint=text("ui.redesign.pickFull");return;}this.selectionHint="";});
     });
+    // 按配置中已有行距收紧短名单，未满的一行居中；八选四保持参考图原布局。
+    const rows=new Map<number,Node[]>();for(const card of cards){const pos=this.preparationSlots.get(card.parent!)!;card.parent!.setPosition(pos.x,pos.y);const list=rows.get(pos.y)??[];list.push(card);rows.set(pos.y,list);}
+    let last=Infinity;for(const [y,list]of rows){const shown=list.filter(n=>n.active);if(!shown.length)continue;last=Math.min(last,y);const dx=(list[0].parent!.position.x+list[list.length-1].parent!.position.x-shown[0].parent!.position.x-shown[shown.length-1].parent!.position.x)/2;for(const card of shown)card.parent!.setPosition(card.parent!.position.x+dx,y);}
+    const gap=Number.isFinite(last)?last-Math.min(...Array.from(rows.keys())):0;for(const nodePath of ['Panel','Panel/Surface','Hint','Start']){const n=uiNode(page,nodePath),base=this.preparationGeometry.get(n)!;if(nodePath==='Panel'){n.setPosition(n.position.x,base.y+gap/2);n.getComponent(UITransform)!.height=base.height-gap;}else if(nodePath==='Panel/Surface'){n.getComponent(UITransform)!.height=base.height-gap;}else n.setPosition(n.position.x,base.y+gap);}
     uiText(page,"Start/Text",full?text("ui.loadout.start"):text("ui.loadout.need",count-this.selection.length));this.buttonEnabled(page,"Start",full);if(validLoadout(id,this.unlocked,this.selection))this.bind(page,"Start",()=>this.startLevel(id,[...this.selection]));
   }
   private settings(page: Node): void {

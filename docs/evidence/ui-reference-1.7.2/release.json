@@ -1,0 +1,33 @@
+{
+  "checks": [
+    {
+      "name": "正式构建屏蔽GM入口、面板与重置",
+      "passed": true
+    },
+    {
+      "name": "正式包GM形态预览无效，正常进化可收录且重置无效",
+      "passed": true
+    },
+    {
+      "name": "四位首领正式构建画像与血量显示",
+      "passed": true
+    },
+    {
+      "name": "正式末关结算终章与再挑战",
+      "passed": true
+    },
+    {
+      "name": "正式包配队准备、保存与重试",
+      "passed": true
+    },
+    {
+      "name": "正式包预告可见且不提前解锁",
+      "passed": true
+    },
+    {
+      "name": "正式包挑战三选一可用且屏蔽GM",
+      "passed": true
+    }
+  ],
+  "errors": []
+}

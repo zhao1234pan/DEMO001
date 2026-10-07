@@ -23,6 +23,7 @@ export class ChallengeView {
       const card=run.card(list[i]);node.active=Boolean(card);if(!card)return;
       uiText(node,'Title',card.name);uiText(node,'Description',card.description);this.assets.bindImage(uiNode(node,'Icon'),'ui:'+card.icon);
       uiNode(node,'Staff').active=Boolean(card.staff);
+      const description=uiNode(node,'Description'),box=uiNode(node,card.staff?'StaffDescriptionBox':'GlobalDescriptionBox');description.setPosition(box.position);description.getComponent(UITransform)!.setContentSize(box.getComponent(UITransform)!.contentSize);
       if(card.staff){uiText(node,'Staff/Text',text('challenge.enhanceStaff',TOWER_CONFIG[card.staff as TowerKind].name));this.assets.bindImage(uiNode(node,'Staff/Icon'),'ui:'+card.staff);}
     });
     uiNode(this.panel,'Refresh').active=run.pending;uiNode(this.panel,'Refresh/Disabled').active=run.refreshBusy||run.refreshLeft<=0;
