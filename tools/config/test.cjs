@@ -13,6 +13,7 @@ function run(){return cp.spawnSync(process.execPath,[path.join(fixture,'tools/co
 function digest(){return fs.readFileSync(path.join(fixture,'assets/resources/config/manifest.json'),'utf8');}
 test('CSV 保留引号、逗号与换行',()=>assert.equal(core.parseCsv('id,text\r\n1,"a,b\n""c"""\r\n')[0].text,'a,b\n"c"'));
 test('完整原始表与CSV一致',()=>{const r=run();assert.equal(r.status,0,r.stderr);});
+test('校验器源码LF与CRLF换行不影响跨机导表',()=>{const file=path.join(fixture,'assets/scripts/config/ConfigTables.ts'),before=fs.readFileSync(file);try{fs.writeFileSync(file,before.toString().replace(/\r?\n/g,'\r\n'));const result=run();assert.equal(result.status,0,result.stderr);}finally{fs.writeFileSync(file,before);}});
 const csv=path.join(fixture,'assets/resources/config/I18.csv'),originalCsv=fs.readFileSync(csv),manifest=digest();
 test('手改CSV会阻止构建且不覆盖文件',()=>{fs.appendFileSync(csv,'\n');const r=run();assert.notEqual(r.status,0);assert.match(r.stderr,/CSV已过期/);assert.equal(digest(),manifest);assert.equal(fs.readFileSync(csv).length,originalCsv.length+1);fs.writeFileSync(csv,originalCsv);});
 const xlsx=path.join(fixture,'design/tables/I18.xlsx'),originalXlsx=fs.readFileSync(xlsx);
@@ -55,7 +56,7 @@ test('强化参数缺字段、类型错误、负阈值与错误引用被拒绝',
 test('挑战界面和卡牌缺少绑定时阻止构建',()=>{for(const [key,name]of [['challenge_pick','Refresh'],['challenge_card','Description']]){const file=path.join(fixture,'assets/resources/ui',key+'.prefab'),original=fs.readFileSync(file),d=JSON.parse(original);d.find(n=>n.__type__==='cc.Node'&&n._name===name)._name='Missing';fs.writeFileSync(file,JSON.stringify(d));try{assert.throws(()=>uiCheck(fixture,core),/缺少运行时节点/);}finally{fs.writeFileSync(file,original);}}});
 const code=path.join(fixture,'assets/scripts/config/ConfigTables.ts');
 test('商品图鉴拒绝缺失文案、图片与非法解锁关',()=>{for(const [field,value]of [['nameKey','missing'],['imageKey','missing'],['unlockLevel','21']])assert.throws(()=>core.installConfigs(changeLoadout('Goods',1,field,value)));core.installConfigs(configSources);});
-test('未同步校验器会阻止导出',()=>{fs.appendFileSync(code,'\n');const r=run();assert.notEqual(r.status,0);assert.match(r.stderr,/配置校验器已修改/);assert.equal(digest(),manifest);});
+test('未同步校验器会阻止导出',()=>{const before=fs.readFileSync(code);try{fs.appendFileSync(code,'\n');const r=run();assert.notEqual(r.status,0);assert.match(r.stderr,/配置校验器已修改/);assert.equal(digest(),manifest);}finally{fs.writeFileSync(code,before);}});
 test('原生布局被修改或漏配节点时阻止构建',()=>{const apply=require('../ui/config-layout.cjs').apply,d=JSON.parse(originalHome);d.find(n=>n.__type__==='cc.Node'&&n._name==='Settings')._lpos.x+=7;fs.writeFileSync(home,JSON.stringify(d));try{assert.throws(()=>apply(fixture,core,false),/UI布局已过期/);apply(fixture,core,true);assert.doesNotThrow(()=>apply(fixture,core,false));}finally{fs.writeFileSync(home,originalHome);}const rows=core.rows.bind(core);try{core.rows=n=>n==='UiLayout'?rows(n).filter(r=>r.key!=='home:Settings'):rows(n);assert.throws(()=>apply(fixture,core,false),/缺少原始布局配置/);}finally{core.rows=rows;}});
 
 test('等级形象重复槽位、错误分支归属、丢图与非法尺寸被拒绝',()=>{

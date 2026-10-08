@@ -4,7 +4,7 @@
 
 - 统一圆体字体与彩色按钮白字描边，调整顺利打烊标题和三选一补给排版。
 - 新增8张2级店员图，重做16个进化分支和金色等级星星；战斗/图鉴共享StaffVisual配置。
-- 28表/33预制体门禁、68项回归及TypeScript通过；Web两包产出，但Creator退出36、真实运行视觉待验收。详见[本轮记录](docs/UI_ROUNDED_SUPPLY_AND_STAFF.md)。
+- 28表/33预制体门禁、69项回归及TypeScript通过；Web两包产出，但Creator退出36、真实运行视觉待验收。详见[本轮记录](docs/UI_ROUNDED_SUPPLY_AND_STAFF.md)。
 
 ## 1.7.2（2026-10-08）
 

@@ -188,3 +188,5 @@ UiPrefab是第18张表。config:export同步Prefab内I18预览与ArtFrame切片�
 ## 1.7.3 等级形象与字体配置
 
 新增StaffVisual.xlsx，字段id/key/staffKey/level/branchKey/battleImageKey/portraitImageKey/spriteScale，共32条。基础1/2级与所有进化必须完整；分支归属、StaffForm图片一致性、资源、重复槽位与尺寸校验。UiLayout新增fontPath，经导表编译为TTFFont；238个Label统一字体。Global新增星星资源键、尺寸/间距/偏移。原始源PNG、字体与许可/子集签名入库；check-font检查缺字，新增I18字符须先运行tools/art/export-font.py，再正常导表。共28张运行表。技术边界与验证见UI_ROUNDED_SUPPLY_AND_STAFF.md。
+
+校验器源码签名先把CRLF规范成LF，再计算SHA；Git统一LF与Windows作者工具输出CRLF都使用同一签名。实际算法修改仍必须重新生成validator，不能仅改签名。

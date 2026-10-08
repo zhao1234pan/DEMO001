@@ -4,7 +4,7 @@ const root=path.resolve(__dirname,'../..'),hash=value=>crypto.createHash('sha256
 const input=path.join(root,'design/tables'),output=path.join(root,'assets/resources/config');
 const tempRoot=process.env.CONFIG_WORK_DIR||path.join(path.parse(root).root,'gptwork','config-export');fs.mkdirSync(tempRoot,{recursive:true});const stage=fs.mkdtempSync(path.join(tempRoot,'run-'));
 const source=path.join(root,'assets/scripts/config/ConfigTables.ts'),sourceHash=fs.readFileSync(path.join(__dirname,'validator-source.sha256'),'utf8').trim();
-if(hash(fs.readFileSync(source))!==sourceHash)throw Error('配置校验器已修改，请先运行 regenerate-validator.cjs 更新导表校验器。');
+if(hash(fs.readFileSync(source,'utf8').replace(/\r\n/g,'\n'))!==sourceHash)throw Error('配置校验器已修改，请先运行 regenerate-validator.cjs 更新导表校验器。');
 const java=process.env.JAVA_HOME?path.join(process.env.JAVA_HOME,'bin',process.platform==='win32'?'java.exe':'java'):'java';
 const run=cp.spawnSync(java,['-Dfile.encoding=UTF-8','--class-path',path.join(__dirname,'vendor/zz-excel2csv.jar'),path.join(__dirname,'ClientExport.java'),input,stage],{encoding:'utf8',cwd:stage,maxBuffer:8*1024*1024,windowsHide:true});
 fs.writeFileSync(path.join(stage,'export.log'),(run.stdout||'')+(run.stderr||''));if(run.error||run.status!==0)throw Error('Excel 导出失败，未改动现有CSV。日志：'+path.join(stage,'export.log')+'\n'+(run.error||run.stderr));
