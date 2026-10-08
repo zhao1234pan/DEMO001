@@ -11,7 +11,7 @@ exports.globalString = globalString;
 exports.text = text;
 exports.parseCsv = parseCsv;
 exports.installConfigs = installConfigs;
-exports.TABLE_NAMES = ["Global", "I18", "Staff", "Enemy", "Theme", "Map", "MapPoint", "Spot", "Obstacle", "Level", "Wave", "WaveGroup", "Collection", "Audio", "Decoration", "ArtFrame", "UiPrefab", "Tutorial", "StaffBranch", "StaffForm", "LevelLoadout", "ChallengeRule", "ChallengePerk", "VisualSkin", "Goods", "ArtCut", "UiLayout"];
+exports.TABLE_NAMES = ["Global", "I18", "Staff", "Enemy", "Theme", "Map", "MapPoint", "Spot", "Obstacle", "Level", "Wave", "WaveGroup", "Collection", "Audio", "Decoration", "ArtFrame", "UiPrefab", "Tutorial", "StaffBranch", "StaffForm", "LevelLoadout", "ChallengeRule", "ChallengePerk", "VisualSkin", "Goods", "ArtCut", "UiLayout", "StaffVisual"];
 let data = Object.create(null);
 let ready = false;
 let byKey = Object.create(null);
@@ -92,7 +92,7 @@ function parseCsv(source) {
         throw new Error("Invalid CSV row/id: " + (i + 2)); ids.add(cells[0]); const row = Object.create(null); fields.forEach((field, j) => row[field] = cells[j]); return row; });
 }
 function installConfigs(sources) {
-    var _a;
+    var _a, _b, _c;
     const next = Object.create(null);
     for (const name of exports.TABLE_NAMES) {
         if (typeof sources[name] !== "string")
@@ -131,6 +131,8 @@ function installConfigs(sources) {
     }
     positive("UiLayout", ["width", "height", "fontSize", "lineHeight", "outlineWidth"], true);
     for (const row of next.UiLayout) {
+        if (row.fontPath && (!/^[a-zA-Z0-9_/-]+$/.test(row.fontPath) || row.fontPath.includes("..")))
+            throw new Error("Invalid UI font path");
         requireRef("UiPrefab", "key", row.prefab, "UiLayout");
         if (row.skinKey)
             requireRef("VisualSkin", "key", row.skinKey, "UiLayout");
@@ -334,6 +336,44 @@ function installConfigs(sources) {
         if (!Number.isInteger(v) || v < 1 || v > Number(next.Global.find(r => r.key === "maxLevels").value))
             throw new Error("Invalid evolution gate");
     }
+    // 每个基础等级和每个进化分支必须都有独立的形象记录。
+    const visualSlots = new Set();
+    for (const row of next.StaffVisual) {
+        requireRef("Staff", "key", row.staffKey, "StaffVisual");
+        const level = numeric(row, "level"), scale = numeric(row, "spriteScale");
+        if (!Number.isInteger(level) || level < 1 || level > Number(next.Global.find(r => r.key === "maxStaffLevel").value) || scale <= 0 || scale > 1.5)
+            throw new Error("Invalid staff visual level/scale");
+        const slot = row.staffKey + ":" + level + ":" + row.branchKey;
+        if (visualSlots.has(slot))
+            throw new Error("Duplicate staff visual slot");
+        visualSlots.add(slot);
+        if (row.branchKey) {
+            requireRef("StaffBranch", "key", row.branchKey, "StaffVisual");
+            const branch = next.StaffBranch.find(b => b.key === row.branchKey);
+            if (branch.staffKey !== row.staffKey || Number(branch.toLevel) !== level)
+                throw new Error("Staff visual branch mismatch");
+            const form = next.StaffForm.find(f => f.key === branch.formKey);
+            if (row.battleImageKey !== form.battleImageKey || row.portraitImageKey !== form.portraitImageKey)
+                throw new Error("Staff visual form mismatch");
+        }
+        else if (level >= Number(next.Global.find(r => r.key === "maxStaffLevel").value))
+            throw new Error("Staff visual evolution needs branch");
+        if (!next.ArtFrame.some(f => f.battle === row.battleImageKey) || !next.ArtFrame.some(f => f.menu === row.portraitImageKey && f.ui === row.portraitImageKey))
+            throw new Error("Missing staff visual art");
+    }
+    for (const staff of next.Staff)
+        for (const level of [1, 2])
+            if (!visualSlots.has(staff.key + ":" + level + ":"))
+                throw new Error("Missing basic staff visual");
+    for (const branch of next.StaffBranch)
+        if (!visualSlots.has(branch.staffKey + ":" + branch.toLevel + ":" + branch.key))
+            throw new Error("Missing evolved staff visual");
+    for (const key of ["staffLevelStarSize", "staffLevelStarGap", "staffLevelStarOffsetY"]) {
+        requireRef("Global", "key", key, "StaffVisual");
+        if (numeric(next.Global.find(r => r.key === key), "value") <= 0)
+            throw new Error("Invalid staff star geometry");
+    }
+    requireRef("VisualSkin", "key", (_b = (_a = next.Global.find(r => r.key === "staffLevelStarIcon")) === null || _a === void 0 ? void 0 : _a.value) !== null && _b !== void 0 ? _b : "", "StaffVisual");
     positive("Wave", ["bossHealthScale"]);
     const perkKeys = ["S01", "S02", "S03", "S04", "S05", "S06", "S07", "S08", "G01", "G02", "G03", "G04", "G05", "G06", "E01", "E02", "E03", "E04", "E05", "E06", "X01", "X02", "X03", "X04", "X05", "X06", "F01", "F02", "F03", "F04", "F05", "F06"];
     if (new Set(next.ChallengePerk.map(row => row.iconKey)).size !== next.ChallengePerk.length)
@@ -447,7 +487,7 @@ function installConfigs(sources) {
         if (value < min || value > max || (integer && !Number.isInteger(value)))
             throw new Error("Invalid feedback parameter: " + key);
     }
-    const max = Number((_a = next.Global.find(r => r.key === "maxLevels")) === null || _a === void 0 ? void 0 : _a.value);
+    const max = Number((_c = next.Global.find(r => r.key === "maxLevels")) === null || _c === void 0 ? void 0 : _c.value);
     if (!Number.isInteger(max) || max !== next.Level.filter(r => r.mode === "adventure").length)
         throw new Error("maxLevels mismatch");
     for (let id = 1; id <= max; id++) {

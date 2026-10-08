@@ -184,3 +184,7 @@ UiPrefab是第18张表。config:export同步Prefab内I18预览与ArtFrame切片�
 - ChallengePerk.iconKey 逐卡引用 ArtFrame 的 perk_* 切片，禁止重复或缺失；ArtAtlas 新增 challengePerks 透明图集。staffKey 仍是专属归属依据，底栏从 Staff 名称与现有头像引用读取。category 仅参与候选池算法，不显示标签。
 - adRefreshPerChoice 在新选择节点初始化，当前1；请求中、取消、失败、模拟回调不消耗额度，成功后换三张并减一。旧局或旧节点回调失效属于生命周期协议，无新业务硬编码。
 - I18 新增广告状态、剩余次数和“强化 {p0}”；移除结束按钮文本。六张原始表、CSV与manifest同步；固定几何保存于原生Prefab。
+
+## 1.7.3 等级形象与字体配置
+
+新增StaffVisual.xlsx，字段id/key/staffKey/level/branchKey/battleImageKey/portraitImageKey/spriteScale，共32条。基础1/2级与所有进化必须完整；分支归属、StaffForm图片一致性、资源、重复槽位与尺寸校验。UiLayout新增fontPath，经导表编译为TTFFont；238个Label统一字体。Global新增星星资源键、尺寸/间距/偏移。原始源PNG、字体与许可/子集签名入库；check-font检查缺字，新增I18字符须先运行tools/art/export-font.py，再正常导表。共28张运行表。技术边界与验证见UI_ROUNDED_SUPPLY_AND_STAFF.md。

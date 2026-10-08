@@ -4,7 +4,7 @@ import { ChallengeRun, ChallengePort, ChallengeShot, challengeRule } from "./Cha
 import { ChallengeView } from "../../ui/ChallengeView";
 import { loadoutRule, validLoadout, saveLoadout, resetLoadouts, wavePreview } from "./LevelLoadout";
 import { attackProfile, evolutionChoices, evolutionByKey, StaffEvolution } from "./StaffEvolution";
-import { configsReady, globalNumber, numeric, rows, text } from "../../config/ConfigTables";
+import { configsReady, globalNumber, globalString, numeric, rows, text } from "../../config/ConfigTables";
 import { loadGameConfigs } from "../../config/ConfigLoader";
 import {
   _decorator, Color, Component, EventTouch, HorizontalTextAlignment,
@@ -550,7 +550,7 @@ export class GameRoot extends Component {
     }
     if (this.art.ready) {
       this.art.drawTower(tower, {...tower,challengeScale:this.challenge?.visualScale(tower)??1});
-      for (let i = 0; i < tower.level; i += 1) this.disc(this.dynamicG, tower.x + (i - (tower.level - 1) / 2) * 6, tower.y + 16, 2, "#ffbc45");
+      for (let i = 0; i < tower.level; i += 1) this.dynamicG.image(globalString("staffLevelStarIcon"), tower.x + (i - (tower.level - 1) / 2) * globalNumber("staffLevelStarGap"), tower.y + globalNumber("staffLevelStarOffsetY"), globalNumber("staffLevelStarSize"), globalNumber("staffLevelStarSize"));
       if (tower.recoil > 0) this.disc(this.dynamicG, tower.x + (Math.cos(tower.angle) < 0 ? -12 : 12), tower.y - 5, 3, cfg.shotColor);
       return;
     }
@@ -947,7 +947,6 @@ export class GameRoot extends Component {
       const key = `gm-level-${item.levelId}`;
       this.showLabel(key, this.gmPanelOpen);
       this.setLabel(key, text("ui.GameRoot.030", item.levelId, ""));
-      this.setLabelColor(key, item.levelId === this.currentLevelId ? "#6f472f" : "#17352e");
     });
   }
 

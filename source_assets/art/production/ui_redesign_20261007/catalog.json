@@ -798,5 +798,21 @@
     "padding": "0",
     "note": "单独生成完整PNG；战斗白底绿边计数框",
     "resizeMode": "height"
+  },
+  {
+    "id": "135",
+    "key": "rank_star",
+    "path": "gameplay/effects/rank_star/spriteFrame",
+    "group": "gameplay/effects",
+    "mode": "simple",
+    "width": "256",
+    "height": "256",
+    "left": "0",
+    "right": "0",
+    "top": "0",
+    "bottom": "0",
+    "padding": "0",
+    "note": "单张透明等级星星PNG",
+    "resizeMode": "contain"
   }
 ]

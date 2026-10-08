@@ -4,7 +4,7 @@ const root=path.resolve(__dirname,'../..'),core=require('./validator.cjs');
 const temp=process.env.CONFIG_WORK_DIR||path.join(path.parse(root).root,'gptwork','config-export');
 fs.mkdirSync(temp,{recursive:true});
 const fixture=fs.mkdtempSync(path.join(temp,'regression-'));
-for(const dir of ['tools/config','tools/ui','tools/art','source_assets/art','assets/resources/ui','design/tables','assets/scripts','assets/resources/config','assets/resources/audio','assets/art']) {
+for(const dir of ['tools/config','tools/ui','tools/art','source_assets/fonts','assets/resources/fonts','source_assets/art','assets/resources/ui','design/tables','assets/scripts','assets/resources/config','assets/resources/audio','assets/art']) {
   const src=path.join(root,dir);if(fs.existsSync(src))fs.cpSync(src,path.join(fixture,dir),{recursive:true});
 }
 let passed=0;
@@ -57,4 +57,14 @@ const code=path.join(fixture,'assets/scripts/config/ConfigTables.ts');
 test('商品图鉴拒绝缺失文案、图片与非法解锁关',()=>{for(const [field,value]of [['nameKey','missing'],['imageKey','missing'],['unlockLevel','21']])assert.throws(()=>core.installConfigs(changeLoadout('Goods',1,field,value)));core.installConfigs(configSources);});
 test('未同步校验器会阻止导出',()=>{fs.appendFileSync(code,'\n');const r=run();assert.notEqual(r.status,0);assert.match(r.stderr,/配置校验器已修改/);assert.equal(digest(),manifest);});
 test('原生布局被修改或漏配节点时阻止构建',()=>{const apply=require('../ui/config-layout.cjs').apply,d=JSON.parse(originalHome);d.find(n=>n.__type__==='cc.Node'&&n._name==='Settings')._lpos.x+=7;fs.writeFileSync(home,JSON.stringify(d));try{assert.throws(()=>apply(fixture,core,false),/UI布局已过期/);apply(fixture,core,true);assert.doesNotThrow(()=>apply(fixture,core,false));}finally{fs.writeFileSync(home,originalHome);}const rows=core.rows.bind(core);try{core.rows=n=>n==='UiLayout'?rows(n).filter(r=>r.key!=='home:Settings'):rows(n);assert.throws(()=>apply(fixture,core,false),/缺少原始布局配置/);}finally{core.rows=rows;}});
+
+test('等级形象重复槽位、错误分支归属、丢图与非法尺寸被拒绝',()=>{
+ for(const [id,field,value]of [[2,'level','1'],[3,'staffKey','frost'],[2,'battleImageKey','missing'],[2,'spriteScale','0'],[2,'spriteScale','1.6'],[2,'level','3'],[3,'portraitImageKey','sprout']])
+   assert.throws(()=>core.installConfigs(changeLoadout('StaffVisual',id,field,value)),/visual|Visual/);
+ core.installConfigs(configSources);
+});
+test('等级星星参数非数字或负数时阻止加载',()=>{
+ for(const value of ['NaN','-1'])assert.throws(()=>core.installConfigs(changeLoadout('Global',45,'value',value)),/number|star/);
+ core.installConfigs(configSources);
+});
 console.log(passed+'项通过；隔离证据：'+fixture);

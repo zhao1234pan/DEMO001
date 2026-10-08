@@ -133,3 +133,4 @@ id,key,path,group,mode,width,height,left,right,top,bottom,padding,note,resizeMod
 132,preview_ground,ui/windows/adventure/preview_ground/spriteFrame,ui/windows/adventure,simple,256,256,0,0,0,0,0,缩略图底纹仅在卡片内适配，不能cover溢出,stretch
 133,mint_pill,ui/windows/common/mint_pill/spriteFrame,ui/windows/common,sliced,616,166,90,90,28,28,0,单独生成完整PNG；淡绿圆角按钮/选卡标题,height
 134,counter_green,ui/hud/counters/counter_green/spriteFrame,ui/hud/counters,sliced,616,166,90,90,28,28,0,单独生成完整PNG；战斗白底绿边计数框,height
+135,rank_star,gameplay/effects/rank_star/spriteFrame,gameplay/effects,simple,256,256,0,0,0,0,0,单张透明等级星星PNG,contain

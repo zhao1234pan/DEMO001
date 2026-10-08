@@ -1,0 +1,139 @@
+{
+  "staticOnly": true,
+  "preview": "http://127.0.0.1:4344/",
+  "builds": [
+    {
+      "target": "web",
+      "tables": 28,
+      "newPng": 25,
+      "fontBytes": 302628,
+      "debug": true,
+      "http": [
+        {
+          "path": "index.html",
+          "status": 200
+        },
+        {
+          "path": "application.js",
+          "status": 200
+        },
+        {
+          "path": "assets/resources/config.json",
+          "status": 200
+        },
+        {
+          "path": "assets\\resources\\native\\f4\\f490dbdc-ebf6-49b2-b9b8-e3dbebb4ea52\\night_shift_rounded.ttf",
+          "status": 200
+        },
+        {
+          "path": "assets\\battle_art\\native\\c0\\c0764dcd-70a4-4c15-8501-b6caf760337c.png",
+          "status": 200
+        },
+        {
+          "path": "assets\\battle_art\\native\\c7\\c7896c66-67e4-40b2-8551-fda76f67ac41.png",
+          "status": 200
+        },
+        {
+          "path": "assets\\battle_art\\native\\ea\\ea5391d5-d228-4427-b0f3-57b5ea0c2eae.png",
+          "status": 200
+        },
+        {
+          "path": "assets\\battle_art\\native\\f8\\f8959827-ed3f-4c07-bab3-a83c8e8601c7.png",
+          "status": 200
+        },
+        {
+          "path": "assets\\battle_art\\native\\ab\\ab95fc81-a653-4f11-87a8-154b16897fbd.png",
+          "status": 200
+        },
+        {
+          "path": "assets\\battle_art\\native\\fa\\fac2b26c-e3fc-48ba-b228-ccc288093786.png",
+          "status": 200
+        },
+        {
+          "path": "assets\\battle_art\\native\\6c\\6cc8cda4-dea4-4eb5-95f4-1850a6dda26f.png",
+          "status": 200
+        },
+        {
+          "path": "assets\\battle_art\\native\\77\\7728ecb8-b907-4505-b0e1-ffaa0611c880.png",
+          "status": 200
+        },
+        {
+          "path": "assets\\battle_art\\native\\13\\133779f1-5d8e-450c-afe9-25d2c56ffd0d.png",
+          "status": 200
+        },
+        {
+          "path": "assets\\battle_art\\native\\ec\\ec69d4bf-e7b9-44d4-945f-7468168a8761.png",
+          "status": 200
+        },
+        {
+          "path": "assets\\battle_art\\native\\86\\865cc0c6-758c-4a7b-bb8e-e8145ab30308.png",
+          "status": 200
+        },
+        {
+          "path": "assets\\battle_art\\native\\9a\\9a0f9860-968d-4a00-89fe-072bfe0e8979.png",
+          "status": 200
+        },
+        {
+          "path": "assets\\battle_art\\native\\fa\\fadca1f5-3d41-456c-ae25-f9fc398e83a9.png",
+          "status": 200
+        },
+        {
+          "path": "assets\\battle_art\\native\\e7\\e7a41758-b27d-4e56-81af-7746835c08f9.png",
+          "status": 200
+        },
+        {
+          "path": "assets\\battle_art\\native\\cb\\cb3a28b6-1b47-411d-a3e2-ba66c5813122.png",
+          "status": 200
+        },
+        {
+          "path": "assets\\battle_art\\native\\d5\\d50dea3c-6ada-47d3-85f3-f5285b06bb1c.png",
+          "status": 200
+        },
+        {
+          "path": "assets\\battle_art\\native\\1c\\1c9a5378-daa0-455a-975a-7fd91509b1e4.png",
+          "status": 200
+        },
+        {
+          "path": "assets\\battle_art\\native\\1b\\1bc38bee-a0ab-4fa9-b71f-cdf836e62b52.png",
+          "status": 200
+        },
+        {
+          "path": "assets\\battle_art\\native\\28\\28ec35e8-7694-472a-94ba-09e5539661e8.png",
+          "status": 200
+        },
+        {
+          "path": "assets\\battle_art\\native\\5c\\5c1e3517-87bc-4fa8-8d3f-c4d4c5ae9027.png",
+          "status": 200
+        },
+        {
+          "path": "assets\\battle_art\\native\\da\\da4c9c1d-9a14-4a81-a2b0-5e3404c13812.png",
+          "status": 200
+        },
+        {
+          "path": "assets\\battle_art\\native\\48\\48f1fb92-3df2-47e4-b2bf-179b92cc1d25.png",
+          "status": 200
+        },
+        {
+          "path": "assets\\battle_art\\native\\65\\650b98a3-bae3-4a5f-8b61-01a51d7e8f01.png",
+          "status": 200
+        },
+        {
+          "path": "assets\\battle_art\\native\\d1\\d189b220-cbc4-4e32-9561-5f0312fe3a83.png",
+          "status": 200
+        },
+        {
+          "path": "assets\\battle_art\\native\\34\\3475a089-e200-48f6-b600-db156302c6e1.png",
+          "status": 200
+        }
+      ]
+    },
+    {
+      "target": "release",
+      "tables": 28,
+      "newPng": 25,
+      "fontBytes": 302628,
+      "debug": false,
+      "http": []
+    }
+  ]
+}

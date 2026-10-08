@@ -1,0 +1,553 @@
+{
+  "type": "offline-static-audit-not-runtime-screenshot",
+  "cards": [
+    {
+      "key": "S01",
+      "fontSize": 13.0,
+      "lines": 4,
+      "height": 64.0,
+      "boxHeight": 98.0
+    },
+    {
+      "key": "S02",
+      "fontSize": 13.0,
+      "lines": 5,
+      "height": 80.0,
+      "boxHeight": 98.0
+    },
+    {
+      "key": "S03",
+      "fontSize": 13.0,
+      "lines": 4,
+      "height": 64.0,
+      "boxHeight": 98.0
+    },
+    {
+      "key": "S04",
+      "fontSize": 13.0,
+      "lines": 4,
+      "height": 64.0,
+      "boxHeight": 98.0
+    },
+    {
+      "key": "S05",
+      "fontSize": 13.0,
+      "lines": 4,
+      "height": 64.0,
+      "boxHeight": 98.0
+    },
+    {
+      "key": "S06",
+      "fontSize": 13.0,
+      "lines": 6,
+      "height": 96.0,
+      "boxHeight": 98.0
+    },
+    {
+      "key": "S07",
+      "fontSize": 13.0,
+      "lines": 6,
+      "height": 96.0,
+      "boxHeight": 98.0
+    },
+    {
+      "key": "S08",
+      "fontSize": 13.0,
+      "lines": 5,
+      "height": 80.0,
+      "boxHeight": 98.0
+    },
+    {
+      "key": "G01",
+      "fontSize": 13.0,
+      "lines": 3,
+      "height": 48.0,
+      "boxHeight": 122.0
+    },
+    {
+      "key": "G02",
+      "fontSize": 13.0,
+      "lines": 3,
+      "height": 48.0,
+      "boxHeight": 122.0
+    },
+    {
+      "key": "G03",
+      "fontSize": 13.0,
+      "lines": 4,
+      "height": 64.0,
+      "boxHeight": 122.0
+    },
+    {
+      "key": "G04",
+      "fontSize": 13.0,
+      "lines": 4,
+      "height": 64.0,
+      "boxHeight": 122.0
+    },
+    {
+      "key": "G05",
+      "fontSize": 13.0,
+      "lines": 4,
+      "height": 64.0,
+      "boxHeight": 122.0
+    },
+    {
+      "key": "G06",
+      "fontSize": 13.0,
+      "lines": 3,
+      "height": 48.0,
+      "boxHeight": 122.0
+    },
+    {
+      "key": "E01",
+      "fontSize": 13.0,
+      "lines": 2,
+      "height": 32.0,
+      "boxHeight": 122.0
+    },
+    {
+      "key": "E02",
+      "fontSize": 13.0,
+      "lines": 5,
+      "height": 80.0,
+      "boxHeight": 122.0
+    },
+    {
+      "key": "E03",
+      "fontSize": 13.0,
+      "lines": 3,
+      "height": 48.0,
+      "boxHeight": 122.0
+    },
+    {
+      "key": "E04",
+      "fontSize": 13.0,
+      "lines": 3,
+      "height": 48.0,
+      "boxHeight": 122.0
+    },
+    {
+      "key": "E05",
+      "fontSize": 13.0,
+      "lines": 4,
+      "height": 64.0,
+      "boxHeight": 122.0
+    },
+    {
+      "key": "E06",
+      "fontSize": 13.0,
+      "lines": 3,
+      "height": 48.0,
+      "boxHeight": 122.0
+    },
+    {
+      "key": "X01",
+      "fontSize": 13.0,
+      "lines": 5,
+      "height": 80.0,
+      "boxHeight": 122.0
+    },
+    {
+      "key": "X02",
+      "fontSize": 13.0,
+      "lines": 2,
+      "height": 32.0,
+      "boxHeight": 122.0
+    },
+    {
+      "key": "X03",
+      "fontSize": 13.0,
+      "lines": 5,
+      "height": 80.0,
+      "boxHeight": 122.0
+    },
+    {
+      "key": "X04",
+      "fontSize": 13.0,
+      "lines": 5,
+      "height": 80.0,
+      "boxHeight": 122.0
+    },
+    {
+      "key": "X05",
+      "fontSize": 13.0,
+      "lines": 5,
+      "height": 80.0,
+      "boxHeight": 122.0
+    },
+    {
+      "key": "X06",
+      "fontSize": 13.0,
+      "lines": 4,
+      "height": 64.0,
+      "boxHeight": 122.0
+    },
+    {
+      "key": "F01",
+      "fontSize": 13.0,
+      "lines": 6,
+      "height": 96.0,
+      "boxHeight": 122.0
+    },
+    {
+      "key": "F02",
+      "fontSize": 13.0,
+      "lines": 4,
+      "height": 64.0,
+      "boxHeight": 122.0
+    },
+    {
+      "key": "F03",
+      "fontSize": 13.0,
+      "lines": 7,
+      "height": 112.0,
+      "boxHeight": 122.0
+    },
+    {
+      "key": "F04",
+      "fontSize": 13.0,
+      "lines": 6,
+      "height": 96.0,
+      "boxHeight": 122.0
+    },
+    {
+      "key": "F05",
+      "fontSize": 13.0,
+      "lines": 7,
+      "height": 112.0,
+      "boxHeight": 122.0
+    },
+    {
+      "key": "F06",
+      "fontSize": 13.0,
+      "lines": 4,
+      "height": 64.0,
+      "boxHeight": 122.0
+    }
+  ],
+  "visuals": [
+    {
+      "key": "sprout_level1",
+      "bbox": [
+        12,
+        8,
+        243,
+        248
+      ],
+      "spriteScale": "0.83"
+    },
+    {
+      "key": "sprout_level2",
+      "bbox": [
+        17,
+        8,
+        246,
+        243
+      ],
+      "spriteScale": "0.96"
+    },
+    {
+      "key": "sprout_heavy",
+      "bbox": [
+        12,
+        9,
+        248,
+        247
+      ],
+      "spriteScale": "1.08"
+    },
+    {
+      "key": "sprout_burst",
+      "bbox": [
+        8,
+        22,
+        248,
+        240
+      ],
+      "spriteScale": "1.08"
+    },
+    {
+      "key": "frost_level1",
+      "bbox": [
+        8,
+        15,
+        248,
+        241
+      ],
+      "spriteScale": "0.83"
+    },
+    {
+      "key": "frost_level2",
+      "bbox": [
+        15,
+        10,
+        245,
+        241
+      ],
+      "spriteScale": "0.96"
+    },
+    {
+      "key": "frost_deep",
+      "bbox": [
+        11,
+        14,
+        248,
+        225
+      ],
+      "spriteScale": "1.08"
+    },
+    {
+      "key": "frost_dual",
+      "bbox": [
+        11,
+        21,
+        245,
+        244
+      ],
+      "spriteScale": "1.08"
+    },
+    {
+      "key": "bloom_level1",
+      "bbox": [
+        8,
+        14,
+        248,
+        241
+      ],
+      "spriteScale": "0.83"
+    },
+    {
+      "key": "bloom_level2",
+      "bbox": [
+        9,
+        11,
+        246,
+        238
+      ],
+      "spriteScale": "0.96"
+    },
+    {
+      "key": "bloom_focus",
+      "bbox": [
+        8,
+        16,
+        248,
+        246
+      ],
+      "spriteScale": "1.08"
+    },
+    {
+      "key": "bloom_wide",
+      "bbox": [
+        8,
+        21,
+        248,
+        212
+      ],
+      "spriteScale": "1.08"
+    },
+    {
+      "key": "scope_level1",
+      "bbox": [
+        8,
+        15,
+        248,
+        240
+      ],
+      "spriteScale": "0.83"
+    },
+    {
+      "key": "scope_level2",
+      "bbox": [
+        10,
+        17,
+        245,
+        238
+      ],
+      "spriteScale": "0.96"
+    },
+    {
+      "key": "scope_precision",
+      "bbox": [
+        8,
+        10,
+        248,
+        232
+      ],
+      "spriteScale": "1.08"
+    },
+    {
+      "key": "scope_pierce",
+      "bbox": [
+        9,
+        10,
+        248,
+        238
+      ],
+      "spriteScale": "1.08"
+    },
+    {
+      "key": "spark_level1",
+      "bbox": [
+        8,
+        25,
+        248,
+        230
+      ],
+      "spriteScale": "0.83"
+    },
+    {
+      "key": "spark_level2",
+      "bbox": [
+        8,
+        20,
+        248,
+        227
+      ],
+      "spriteScale": "0.96"
+    },
+    {
+      "key": "spark_focus",
+      "bbox": [
+        10,
+        10,
+        248,
+        244
+      ],
+      "spriteScale": "1.08"
+    },
+    {
+      "key": "spark_chain",
+      "bbox": [
+        8,
+        18,
+        248,
+        237
+      ],
+      "spriteScale": "1.08"
+    },
+    {
+      "key": "ember_level1",
+      "bbox": [
+        8,
+        15,
+        248,
+        241
+      ],
+      "spriteScale": "0.83"
+    },
+    {
+      "key": "ember_level2",
+      "bbox": [
+        8,
+        8,
+        248,
+        232
+      ],
+      "spriteScale": "0.96"
+    },
+    {
+      "key": "ember_scorch",
+      "bbox": [
+        13,
+        14,
+        248,
+        240
+      ],
+      "spriteScale": "1.08"
+    },
+    {
+      "key": "ember_burst",
+      "bbox": [
+        8,
+        20,
+        248,
+        239
+      ],
+      "spriteScale": "1.08"
+    },
+    {
+      "key": "mint_level1",
+      "bbox": [
+        8,
+        20,
+        248,
+        236
+      ],
+      "spriteScale": "0.83"
+    },
+    {
+      "key": "mint_level2",
+      "bbox": [
+        15,
+        15,
+        248,
+        246
+      ],
+      "spriteScale": "0.96"
+    },
+    {
+      "key": "mint_focus",
+      "bbox": [
+        11,
+        10,
+        248,
+        242
+      ],
+      "spriteScale": "1.08"
+    },
+    {
+      "key": "mint_dual",
+      "bbox": [
+        12,
+        13,
+        248,
+        245
+      ],
+      "spriteScale": "1.08"
+    },
+    {
+      "key": "fan_level1",
+      "bbox": [
+        8,
+        19,
+        248,
+        236
+      ],
+      "spriteScale": "0.83"
+    },
+    {
+      "key": "fan_level2",
+      "bbox": [
+        11,
+        17,
+        247,
+        245
+      ],
+      "spriteScale": "0.96"
+    },
+    {
+      "key": "fan_spread",
+      "bbox": [
+        10,
+        12,
+        246,
+        231
+      ],
+      "spriteScale": "1.08"
+    },
+    {
+      "key": "fan_volley",
+      "bbox": [
+        8,
+        24,
+        248,
+        230
+      ],
+      "spriteScale": "1.08"
+    }
+  ],
+  "minimumEstimatedFont": 13.0,
+  "preservedEvolutionUuids": 16
+}

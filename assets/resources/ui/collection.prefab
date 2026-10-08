@@ -831,22 +831,32 @@
     "_fontSize": 15,
     "_actualFontSize": 15,
     "_lineHeight": 21,
-    "_fontFamily": "Microsoft YaHei",
+    "_fontFamily": "NightShiftRounded",
     "_overflow": 2,
     "_enableWrapText": true,
-    "_isSystemFontUsed": true,
+    "_isSystemFontUsed": false,
     "_color": {
       "__type__": "cc.Color",
-      "r": 92,
-      "g": 48,
-      "b": 32,
+      "r": 255,
+      "g": 255,
+      "b": 255,
       "a": 255
     },
-    "_font": null,
+    "_font": {
+      "__uuid__": "f490dbdc-ebf6-49b2-b9b8-e3dbebb4ea52",
+      "__expectedType__": "cc.TTFFont"
+    },
     "_cacheMode": 0,
-    "_isBold": true,
-    "_enableOutline": false,
-    "_outlineWidth": 0
+    "_isBold": false,
+    "_enableOutline": true,
+    "_outlineWidth": 1.6,
+    "_outlineColor": {
+      "__type__": "cc.Color",
+      "r": 43,
+      "g": 102,
+      "b": 52,
+      "a": 255
+    }
   },
   {
     "__type__": "cc.CompPrefabInfo",
@@ -977,10 +987,10 @@
     "_fontSize": 28,
     "_actualFontSize": 28,
     "_lineHeight": 33,
-    "_fontFamily": "Microsoft YaHei",
+    "_fontFamily": "NightShiftRounded",
     "_overflow": 2,
     "_enableWrapText": true,
-    "_isSystemFontUsed": true,
+    "_isSystemFontUsed": false,
     "_color": {
       "__type__": "cc.Color",
       "r": 255,
@@ -988,9 +998,12 @@
       "b": 255,
       "a": 255
     },
-    "_font": null,
+    "_font": {
+      "__uuid__": "f490dbdc-ebf6-49b2-b9b8-e3dbebb4ea52",
+      "__expectedType__": "cc.TTFFont"
+    },
     "_cacheMode": 0,
-    "_isBold": true,
+    "_isBold": false,
     "_enableOutline": true,
     "_outlineColor": {
       "__type__": "cc.Color",
@@ -1127,10 +1140,10 @@
     "_fontSize": 11,
     "_actualFontSize": 11,
     "_lineHeight": 16,
-    "_fontFamily": "Microsoft YaHei",
+    "_fontFamily": "NightShiftRounded",
     "_overflow": 2,
     "_enableWrapText": true,
-    "_isSystemFontUsed": true,
+    "_isSystemFontUsed": false,
     "_color": {
       "__type__": "cc.Color",
       "r": 92,
@@ -1138,9 +1151,12 @@
       "b": 32,
       "a": 255
     },
-    "_font": null,
+    "_font": {
+      "__uuid__": "f490dbdc-ebf6-49b2-b9b8-e3dbebb4ea52",
+      "__expectedType__": "cc.TTFFont"
+    },
     "_cacheMode": 0,
-    "_isBold": true,
+    "_isBold": false,
     "_enableOutline": false,
     "_outlineWidth": 0
   },
@@ -2009,10 +2025,10 @@
     "_fontSize": 20,
     "_actualFontSize": 20,
     "_lineHeight": 25,
-    "_fontFamily": "Microsoft YaHei",
+    "_fontFamily": "NightShiftRounded",
     "_overflow": 2,
     "_enableWrapText": true,
-    "_isSystemFontUsed": true,
+    "_isSystemFontUsed": false,
     "_color": {
       "__type__": "cc.Color",
       "r": 92,
@@ -2020,9 +2036,12 @@
       "b": 32,
       "a": 255
     },
-    "_font": null,
+    "_font": {
+      "__uuid__": "f490dbdc-ebf6-49b2-b9b8-e3dbebb4ea52",
+      "__expectedType__": "cc.TTFFont"
+    },
     "_cacheMode": 0,
-    "_isBold": true,
+    "_isBold": false,
     "_enableOutline": false,
     "_outlineWidth": 0
   },
@@ -2891,10 +2910,10 @@
     "_fontSize": 20,
     "_actualFontSize": 20,
     "_lineHeight": 25,
-    "_fontFamily": "Microsoft YaHei",
+    "_fontFamily": "NightShiftRounded",
     "_overflow": 2,
     "_enableWrapText": true,
-    "_isSystemFontUsed": true,
+    "_isSystemFontUsed": false,
     "_color": {
       "__type__": "cc.Color",
       "r": 92,
@@ -2902,9 +2921,12 @@
       "b": 32,
       "a": 255
     },
-    "_font": null,
+    "_font": {
+      "__uuid__": "f490dbdc-ebf6-49b2-b9b8-e3dbebb4ea52",
+      "__expectedType__": "cc.TTFFont"
+    },
     "_cacheMode": 0,
-    "_isBold": true,
+    "_isBold": false,
     "_enableOutline": false,
     "_outlineWidth": 0
   },
@@ -3773,10 +3795,10 @@
     "_fontSize": 20,
     "_actualFontSize": 20,
     "_lineHeight": 25,
-    "_fontFamily": "Microsoft YaHei",
+    "_fontFamily": "NightShiftRounded",
     "_overflow": 2,
     "_enableWrapText": true,
-    "_isSystemFontUsed": true,
+    "_isSystemFontUsed": false,
     "_color": {
       "__type__": "cc.Color",
       "r": 92,
@@ -3784,9 +3806,12 @@
       "b": 32,
       "a": 255
     },
-    "_font": null,
+    "_font": {
+      "__uuid__": "f490dbdc-ebf6-49b2-b9b8-e3dbebb4ea52",
+      "__expectedType__": "cc.TTFFont"
+    },
     "_cacheMode": 0,
-    "_isBold": true,
+    "_isBold": false,
     "_enableOutline": false,
     "_outlineWidth": 0
   },
@@ -4806,22 +4831,32 @@
     "_fontSize": 12,
     "_actualFontSize": 12,
     "_lineHeight": 17,
-    "_fontFamily": "Microsoft YaHei",
+    "_fontFamily": "NightShiftRounded",
     "_overflow": 2,
     "_enableWrapText": true,
-    "_isSystemFontUsed": true,
+    "_isSystemFontUsed": false,
     "_color": {
       "__type__": "cc.Color",
-      "r": 92,
-      "g": 48,
-      "b": 32,
+      "r": 255,
+      "g": 255,
+      "b": 255,
       "a": 255
     },
-    "_font": null,
+    "_font": {
+      "__uuid__": "f490dbdc-ebf6-49b2-b9b8-e3dbebb4ea52",
+      "__expectedType__": "cc.TTFFont"
+    },
     "_cacheMode": 0,
-    "_isBold": true,
-    "_enableOutline": false,
-    "_outlineWidth": 0
+    "_isBold": false,
+    "_enableOutline": true,
+    "_outlineWidth": 1.6,
+    "_outlineColor": {
+      "__type__": "cc.Color",
+      "r": 43,
+      "g": 102,
+      "b": 52,
+      "a": 255
+    }
   },
   {
     "__type__": "cc.CompPrefabInfo",
@@ -4952,22 +4987,32 @@
     "_fontSize": 12,
     "_actualFontSize": 12,
     "_lineHeight": 17,
-    "_fontFamily": "Microsoft YaHei",
+    "_fontFamily": "NightShiftRounded",
     "_overflow": 2,
     "_enableWrapText": true,
-    "_isSystemFontUsed": true,
+    "_isSystemFontUsed": false,
     "_color": {
       "__type__": "cc.Color",
-      "r": 92,
-      "g": 48,
-      "b": 32,
+      "r": 255,
+      "g": 255,
+      "b": 255,
       "a": 255
     },
-    "_font": null,
+    "_font": {
+      "__uuid__": "f490dbdc-ebf6-49b2-b9b8-e3dbebb4ea52",
+      "__expectedType__": "cc.TTFFont"
+    },
     "_cacheMode": 0,
-    "_isBold": true,
-    "_enableOutline": false,
-    "_outlineWidth": 0
+    "_isBold": false,
+    "_enableOutline": true,
+    "_outlineWidth": 1.6,
+    "_outlineColor": {
+      "__type__": "cc.Color",
+      "r": 43,
+      "g": 102,
+      "b": 52,
+      "a": 255
+    }
   },
   {
     "__type__": "cc.CompPrefabInfo",
@@ -5560,22 +5605,32 @@
     "_fontSize": 12,
     "_actualFontSize": 12,
     "_lineHeight": 17,
-    "_fontFamily": "Microsoft YaHei",
+    "_fontFamily": "NightShiftRounded",
     "_overflow": 2,
     "_enableWrapText": true,
-    "_isSystemFontUsed": true,
+    "_isSystemFontUsed": false,
     "_color": {
       "__type__": "cc.Color",
-      "r": 92,
-      "g": 48,
-      "b": 32,
+      "r": 255,
+      "g": 255,
+      "b": 255,
       "a": 255
     },
-    "_font": null,
+    "_font": {
+      "__uuid__": "f490dbdc-ebf6-49b2-b9b8-e3dbebb4ea52",
+      "__expectedType__": "cc.TTFFont"
+    },
     "_cacheMode": 0,
-    "_isBold": true,
-    "_enableOutline": false,
-    "_outlineWidth": 0
+    "_isBold": false,
+    "_enableOutline": true,
+    "_outlineWidth": 1.6,
+    "_outlineColor": {
+      "__type__": "cc.Color",
+      "r": 43,
+      "g": 102,
+      "b": 52,
+      "a": 255
+    }
   },
   {
     "__type__": "cc.CompPrefabInfo",
@@ -5706,22 +5761,32 @@
     "_fontSize": 12,
     "_actualFontSize": 12,
     "_lineHeight": 17,
-    "_fontFamily": "Microsoft YaHei",
+    "_fontFamily": "NightShiftRounded",
     "_overflow": 2,
     "_enableWrapText": true,
-    "_isSystemFontUsed": true,
+    "_isSystemFontUsed": false,
     "_color": {
       "__type__": "cc.Color",
-      "r": 92,
-      "g": 48,
-      "b": 32,
+      "r": 255,
+      "g": 255,
+      "b": 255,
       "a": 255
     },
-    "_font": null,
+    "_font": {
+      "__uuid__": "f490dbdc-ebf6-49b2-b9b8-e3dbebb4ea52",
+      "__expectedType__": "cc.TTFFont"
+    },
     "_cacheMode": 0,
-    "_isBold": true,
-    "_enableOutline": false,
-    "_outlineWidth": 0
+    "_isBold": false,
+    "_enableOutline": true,
+    "_outlineWidth": 1.6,
+    "_outlineColor": {
+      "__type__": "cc.Color",
+      "r": 43,
+      "g": 102,
+      "b": 52,
+      "a": 255
+    }
   },
   {
     "__type__": "cc.CompPrefabInfo",
@@ -5849,10 +5914,10 @@
     "_fontSize": 12,
     "_actualFontSize": 12,
     "_lineHeight": 17,
-    "_fontFamily": "Microsoft YaHei",
+    "_fontFamily": "NightShiftRounded",
     "_overflow": 2,
     "_enableWrapText": true,
-    "_isSystemFontUsed": true,
+    "_isSystemFontUsed": false,
     "_color": {
       "__type__": "cc.Color",
       "r": 92,
@@ -5860,9 +5925,12 @@
       "b": 32,
       "a": 255
     },
-    "_font": null,
+    "_font": {
+      "__uuid__": "f490dbdc-ebf6-49b2-b9b8-e3dbebb4ea52",
+      "__expectedType__": "cc.TTFFont"
+    },
     "_cacheMode": 0,
-    "_isBold": true,
+    "_isBold": false,
     "_enableOutline": false,
     "_outlineWidth": 0
   },
@@ -5977,10 +6045,10 @@
     "_fontSize": 13,
     "_actualFontSize": 13,
     "_lineHeight": 19,
-    "_fontFamily": "Microsoft YaHei",
+    "_fontFamily": "NightShiftRounded",
     "_overflow": 2,
     "_enableWrapText": true,
-    "_isSystemFontUsed": true,
+    "_isSystemFontUsed": false,
     "_color": {
       "__type__": "cc.Color",
       "r": 92,
@@ -5988,9 +6056,12 @@
       "b": 32,
       "a": 255
     },
-    "_font": null,
+    "_font": {
+      "__uuid__": "f490dbdc-ebf6-49b2-b9b8-e3dbebb4ea52",
+      "__expectedType__": "cc.TTFFont"
+    },
     "_cacheMode": 0,
-    "_isBold": true,
+    "_isBold": false,
     "_enableOutline": false,
     "_outlineWidth": 0
   },

@@ -2,6 +2,7 @@
 const fs=require('node:fs'),path=require('node:path');
 function compressed(uuid){const h=uuid.replace(/-/g,''),chars='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';let s=h.slice(0,5);for(let i=5;i<32;i+=3){const n=parseInt(h.slice(i,i+3),16);s+=chars[n>>6]+chars[n&63];}return s;}
 function check(root,core,sync=false){
+ require("../art/check-font.cjs").check(root,core);
  for(const skin of core.rows('VisualSkin')){
   const file=path.join(root,'assets/art',skin.path.replace('/spriteFrame','.png'));
   if(!fs.existsSync(file)||!fs.existsSync(file+'.meta'))throw Error('缺少PNG资源：'+skin.path);

@@ -3,7 +3,7 @@ const fs=require('node:fs'),path=require('node:path'),assert=require('node:asser
 const root=path.resolve(__dirname,'../..'),ts=require(process.argv[2]||'typescript'),cache=new Map();
 function load(file){file=path.resolve(file);if(cache.has(file))return cache.get(file).exports;const module={exports:{}};cache.set(file,module);const code=ts.transpileModule(fs.readFileSync(file,'utf8'),{compilerOptions:{target:ts.ScriptTarget.ES2018,module:ts.ModuleKind.CommonJS}}).outputText;new Function('require','module','exports',code)(id=>id.startsWith('.')?load(path.resolve(path.dirname(file),id+'.ts')):require(id),module,module.exports);return module.exports;}
 const core=load(root+'/assets/scripts/config/ConfigTables.ts'),sources={};for(const n of core.TABLE_NAMES)sources[n]=fs.readFileSync(root+'/assets/resources/config/'+n+'.csv','utf8');core.installConfigs(sources);
-const {ChallengeRun,challengeRule}=load(root+'/assets/scripts/gameplay/battle/ChallengeRun.ts'),{attackProfile}=load(root+'/assets/scripts/gameplay/battle/StaffEvolution.ts');
+const {ChallengeRun,challengeRule}=load(root+'/assets/scripts/gameplay/battle/ChallengeRun.ts'),{attackProfile,staffVisual}=load(root+'/assets/scripts/gameplay/battle/StaffEvolution.ts');
 let passed=0;const near=(a,b)=>assert.ok(Math.abs(a-b)<1e-7,`${a} != ${b}`);function test(name,fn){fn();passed++;console.log('PASS '+name);}
 const kinds=core.rows('Staff').map(r=>r.key);
 function enemy(x=0,extra={}){return {kind:'normal',x,y:0,distance:x,hp:1000,maxHp:1000,reward:8,damage:1,radius:15,slow:0,markedTime:0,burnTime:0,burnDamage:0,...extra};}
@@ -36,4 +36,19 @@ test('远程奖励与最后一位按加法口径叠加，非主攻击不会触�
 test('布丁双响保留原爆点和延迟，额外爆炸不清障',()=>{const {run,port}=setup(['S03']),target=enemy(),other=enemy(10);port.enemies=[target,other];const shot={kind:'bloom',challenge:{round:3,profile:attackProfile('bloom',1)}};run.afterHit(shot,target,port);target.x=200;run.update(.34,port);assert.equal(other.hp,1000);run.update(.02,port);near(other.hp,1000-shot.challenge.profile.damage*.8);assert.equal(target.hp,1000);});
 test('栗栗第三轮附加链保持目标数与逐跳衰减',()=>{const {run,port}=setup(['S05']);port.enemies=[enemy(),enemy(10),enemy(20)];const profile=attackProfile('spark',3,'spark_chain');run.afterHit({kind:'spark',challenge:{round:3,profile}},port.enemies[0],port);near(port.enemies[0].hp,1000-profile.damage*.6);near(port.enemies[1].hp,1000-profile.damage*.6*profile.chainRatio);near(port.enemies[2].hp,1000-profile.damage*.6*profile.chainRatio**2);});
 test('回旋小风只命中另一名最近来客且不再弹跳',()=>{const {run,port}=setup(['S08']);port.enemies=[enemy(),enemy(10),enemy(20)];const profile=attackProfile('fan',1);run.afterHit({kind:'fan',challenge:{round:1,profile}},port.enemies[0],port);assert.equal(port.enemies[0].hp,1000);near(port.enemies[1].hp,1000-profile.damage*.6);assert.equal(port.enemies[2].hp,1000);});
+
+test('八店员基础1/2级与十六分支读取独立形象且缓存更新',()=>{
+  for(const kind of kinds) {
+    const a=staffVisual(kind,1),b=staffVisual(kind,2);
+    assert.notEqual(a.battleImageKey,b.battleImageKey);assert.notEqual(a.portraitImageKey,b.portraitImageKey);assert.ok(b.spriteScale>a.spriteScale);
+    for(const branch of core.rows('StaffBranch').filter(r=>r.staffKey===kind)) {
+      const v=staffVisual(kind,3,branch.key),form=core.rows('StaffForm').find(r=>r.key===branch.formKey);
+      assert.equal(v.battleImageKey,form.battleImageKey);assert.equal(v.portraitImageKey,form.portraitImageKey);assert.ok(v.spriteScale>b.spriteScale);
+    }
+    assert.deepEqual(staffVisual(kind,3),b);
+  }
+  assert.throws(()=>staffVisual('sprout',3,'frost_deep'),/owner/);
+  assert.throws(()=>staffVisual('sprout',2,'sprout_heavy'),/level/);
+  const before=staffVisual('sprout',2);core.installConfigs(sources);assert.notEqual(staffVisual('sprout',2),before);
+});
 console.log(passed+' 项挑战规则测试通过');

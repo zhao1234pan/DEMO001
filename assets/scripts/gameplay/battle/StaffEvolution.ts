@@ -52,3 +52,20 @@ export function attackProfile(kind: TowerKind, level: number, evolutionKey?: str
     slowRatio:evolution?.slowRatio ?? (base.slow ? globalNumber("slowSpeedRatio") : 1),
     slowSeconds:evolution?.slowSeconds ?? (base.slow ? base.slowBase+level*base.slowPerLevel : 0),splashOuterRatio:evolution?.splashOuterRatio ?? 1};
 }
+
+
+// 战斗和图鉴共用同一份形象表，换图不改变攻击数值。
+const visualCache = new Map<string, {battleImageKey:string;portraitImageKey:string;spriteScale:number}>();
+onConfigsReady(()=>visualCache.clear());
+export function staffVisual(kind:TowerKind, level:number, evolutionKey?:string) {
+  const branch = evolutionByKey(evolutionKey);
+  if (branch && (branch.staffKind !== kind || branch.toLevel !== level)) throw new Error("Visual evolution owner/level mismatch");
+  // 历史GM存档没有分支键的最高等级，用基础2级形象保证可显示。
+  const displayLevel = branch ? level : Math.min(2, Math.max(1, level));
+  const key = kind + ":" + displayLevel + ":" + (branch?.key ?? "");
+  const cached = visualCache.get(key); if (cached) return cached;
+  const row = rows("StaffVisual").find(r=>r.staffKey===kind && numeric(r,"level")===displayLevel && r.branchKey===(branch?.key ?? ""));
+  if (!row) throw new Error("Missing staff visual: " + key);
+  const visual = {battleImageKey:row.battleImageKey,portraitImageKey:row.portraitImageKey,spriteScale:numeric(row,"spriteScale")};
+  visualCache.set(key,visual);return visual;
+}

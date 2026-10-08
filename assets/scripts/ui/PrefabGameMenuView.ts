@@ -3,7 +3,7 @@ import { UiRoute } from "./UiRoute";
 import { PngSurface } from "./PngSurface";
 import { loadoutRule, loadoutCandidates, requiredLoadoutSize, readLoadout, validLoadout, defaultLoadout, staffRole, levelPreview, bossWaveText } from "../gameplay/battle/LevelLoadout";
 import { TOWER_CONFIG, TowerKind } from "../gameplay/battle/GameConfig";
-import { evolutionChoices } from "../gameplay/battle/StaffEvolution";
+import { evolutionChoices, staffVisual } from "../gameplay/battle/StaffEvolution";
 import { Color, Label, Node, Sprite, UITransform } from "cc";
 import { globalString, globalNumber, text } from "../config/ConfigTables";
 import { GAME_CONFIG } from "../gameplay/battle/GameConfig";
@@ -259,7 +259,8 @@ export class PrefabGameMenuView {
     const evolution=choices.length&&this.detailLevel>1?choices[this.detailLevel-2]:undefined;
     const unlocked=ownerKnown&&(trial||!evolution||this.collection.isEvolutionUnlocked(evolution.key));
     uiText(page,"Title",unlocked?(evolution?text("ui.evolution.name",entry.name,evolution.name):entry.name):text("ui.evolution.locked"));
-    this.assets.bindImage(uiNode(page,"Portrait"),"menu:"+(evolution?.imageKey??entry.imageKey),!unlocked);
+    const portrait = entry.staffKind ? staffVisual(entry.staffKind, evolution ? evolution.toLevel : this.detailBaseLevel, evolution?.key).portraitImageKey : entry.imageKey;
+    this.assets.bindImage(uiNode(page,"Portrait"),"menu:"+portrait,!unlocked);
     uiNode(page,"Known").active=unlocked;uiNode(page,"Unknown").active=!unlocked;
     uiText(page,"Unknown/Hint",evolution?text("ui.evolution.lockedHint"):entry.unlockHint);
     for(const level of [1,2,3]){

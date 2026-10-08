@@ -1,6 +1,6 @@
 /** CSV 是运行时唯一配置源；此模块不依赖引擎，可用于导表与回归检查。 */
 export type TableRow = Record<string, string>;
-export const TABLE_NAMES = ["Global", "I18", "Staff", "Enemy", "Theme", "Map", "MapPoint", "Spot", "Obstacle", "Level", "Wave", "WaveGroup", "Collection", "Audio", "Decoration", "ArtFrame", "UiPrefab", "Tutorial", "StaffBranch", "StaffForm", "LevelLoadout", "ChallengeRule", "ChallengePerk", "VisualSkin", "Goods", "ArtCut", "UiLayout"] as const;
+export const TABLE_NAMES = ["Global", "I18", "Staff", "Enemy", "Theme", "Map", "MapPoint", "Spot", "Obstacle", "Level", "Wave", "WaveGroup", "Collection", "Audio", "Decoration", "ArtFrame", "UiPrefab", "Tutorial", "StaffBranch", "StaffForm", "LevelLoadout", "ChallengeRule", "ChallengePerk", "VisualSkin", "Goods", "ArtCut", "UiLayout", "StaffVisual"] as const;
 let data: Record<string, TableRow[]> = Object.create(null);
 let ready = false;
 let byKey:Record<string,Record<string,TableRow>> = Object.create(null);
@@ -47,7 +47,7 @@ export function installConfigs(sources: Record<string, string>): void {
     if(numeric(row,"left")+numeric(row,"right")>=numeric(row,"width")||numeric(row,"top")+numeric(row,"bottom")>=numeric(row,"height"))throw new Error("Invalid nine slice borders");
   }
   positive("UiLayout",["width","height","fontSize","lineHeight","outlineWidth"],true);
-  for(const row of next.UiLayout){requireRef("UiPrefab","key",row.prefab,"UiLayout");if(row.skinKey)requireRef("VisualSkin","key",row.skinKey,"UiLayout");for(const field of ["x","y","scaleX","scaleY"])numeric(row,field);if(!["0","1"].includes(row.active)||!["0","1","2"].includes(row.horizontalAlign)||!["0","1","2"].includes(row.verticalAlign)||!["0","1","2","3"].includes(row.overflow)||!row.node||row.node.includes(".."))throw new Error("Invalid UI layout");for(const field of ["color","outlineColor"])if(row[field]&&!/^#[a-f0-9]{6}$/i.test(row[field]))throw new Error("Invalid UI color");}
+  for(const row of next.UiLayout){if(row.fontPath&&(!/^[a-zA-Z0-9_/-]+$/.test(row.fontPath)||row.fontPath.includes("..")))throw new Error("Invalid UI font path");requireRef("UiPrefab","key",row.prefab,"UiLayout");if(row.skinKey)requireRef("VisualSkin","key",row.skinKey,"UiLayout");for(const field of ["x","y","scaleX","scaleY"])numeric(row,field);if(!["0","1"].includes(row.active)||!["0","1","2"].includes(row.horizontalAlign)||!["0","1","2"].includes(row.verticalAlign)||!["0","1","2","3"].includes(row.overflow)||!row.node||row.node.includes(".."))throw new Error("Invalid UI layout");for(const field of ["color","outlineColor"])if(row[field]&&!/^#[a-f0-9]{6}$/i.test(row[field]))throw new Error("Invalid UI color");}
   positive("ArtCut",["targetId","width","height","threshold"]);positive("ArtCut",["x","y","edge","padding"],true);
   for(const row of next.ArtCut){if(!["skin","frame"].includes(row.target)||!/^source_assets\/art\/[-a-zA-Z0-9_/]+\.png$/.test(row.source)||row.source.includes("..")||!/^[a-f0-9]{64}$/.test(row.sha256))throw new Error("Invalid cut source");requireRef(row.target==="skin"?"VisualSkin":"ArtFrame","id",row.targetId,"ArtCut");if(row.seeds&&!/^\d+:\d+(\|\d+:\d+)*$/.test(row.seeds))throw new Error("Invalid cut seeds");}
   positive("Goods",["unlockLevel"]);for(const row of next.Goods){for(const field of ["nameKey","categoryKey","descriptionKey","storyKey"])requireRef("I18","key",row[field],"Goods");requireRef("VisualSkin","key",row.imageKey,"Goods");requireRef("Level","id",row.unlockLevel,"Goods");if(next.Level.find(l=>l.id===row.unlockLevel)!.mode!=="adventure")throw new Error("Invalid goods unlock level");}
@@ -125,6 +125,32 @@ export function installConfigs(sources: Record<string, string>): void {
     if(numeric(row,"spriteWidth")<=0||!Number.isInteger(numeric(row,"displayOrder"))||numeric(row,"displayOrder")<1)throw new Error("Invalid form geometry/order");
   }
   for(const key of ["branchUnlockProgress","branchAdventureStartLevel"]){requireRef("Global","key",key,"Evolution");const v=Number(next.Global.find(r=>r.key===key)!.value);if(!Number.isInteger(v)||v<1||v>Number(next.Global.find(r=>r.key==="maxLevels")!.value))throw new Error("Invalid evolution gate");}
+
+  // 每个基础等级和每个进化分支必须都有独立的形象记录。
+  const visualSlots = new Set<string>();
+  for (const row of next.StaffVisual) {
+    requireRef("Staff", "key", row.staffKey, "StaffVisual");
+    const level = numeric(row, "level"), scale = numeric(row, "spriteScale");
+    if (!Number.isInteger(level) || level < 1 || level > Number(next.Global.find(r=>r.key==="maxStaffLevel")!.value) || scale <= 0 || scale > 1.5) throw new Error("Invalid staff visual level/scale");
+    const slot = row.staffKey + ":" + level + ":" + row.branchKey;
+    if (visualSlots.has(slot)) throw new Error("Duplicate staff visual slot");
+    visualSlots.add(slot);
+    if (row.branchKey) {
+      requireRef("StaffBranch", "key", row.branchKey, "StaffVisual");
+      const branch = next.StaffBranch.find(b=>b.key===row.branchKey)!;
+      if (branch.staffKey !== row.staffKey || Number(branch.toLevel) !== level) throw new Error("Staff visual branch mismatch");
+      const form = next.StaffForm.find(f=>f.key===branch.formKey)!;
+      if (row.battleImageKey !== form.battleImageKey || row.portraitImageKey !== form.portraitImageKey) throw new Error("Staff visual form mismatch");
+    } else if (level >= Number(next.Global.find(r=>r.key==="maxStaffLevel")!.value)) throw new Error("Staff visual evolution needs branch");
+    if (!next.ArtFrame.some(f=>f.battle===row.battleImageKey) || !next.ArtFrame.some(f=>f.menu===row.portraitImageKey && f.ui===row.portraitImageKey)) throw new Error("Missing staff visual art");
+  }
+  for (const staff of next.Staff) for (const level of [1,2]) if (!visualSlots.has(staff.key+":"+level+":")) throw new Error("Missing basic staff visual");
+  for (const branch of next.StaffBranch) if (!visualSlots.has(branch.staffKey+":"+branch.toLevel+":"+branch.key)) throw new Error("Missing evolved staff visual");
+  for (const key of ["staffLevelStarSize","staffLevelStarGap","staffLevelStarOffsetY"]) {
+    requireRef("Global","key",key,"StaffVisual");
+    if (numeric(next.Global.find(r=>r.key===key)!,"value")<=0) throw new Error("Invalid staff star geometry");
+  }
+  requireRef("VisualSkin","key",next.Global.find(r=>r.key==="staffLevelStarIcon")?.value ?? "", "StaffVisual");
 
   positive("Wave",["bossHealthScale"]);
   const perkKeys=["S01","S02","S03","S04","S05","S06","S07","S08","G01","G02","G03","G04","G05","G06","E01","E02","E03","E04","E05","E06","X01","X02","X03","X04","X05","X06","F01","F02","F03","F04","F05","F06"];

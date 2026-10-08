@@ -1,6 +1,6 @@
 import { UiPrefabs } from "../../ui/UiPrefabs";
-import { evolutionByKey } from "./StaffEvolution";
-import { TOWER_CONFIG, ENEMY_CONFIG, TowerKind, EnemyKind } from "./GameConfig";
+import { staffVisual } from "./StaffEvolution";
+import { ENEMY_CONFIG, TowerKind, EnemyKind } from "./GameConfig";
 import { text, rows, numeric, globalNumber } from "../../config/ConfigTables";
 import { Color, Layers, Node, Sprite, SpriteFrame, UITransform } from "cc";
 
@@ -22,7 +22,7 @@ interface SpritePool {
 }
 const CANVAS_DESIGN_PIXELS = 96;
 const WARM_HIT = new Color(255, 216, 168, 255);
-// 来自本轮导出清单；兔耳和工具更宽，升级时也要给相邻网格留出轮廓间隙。
+// 角色统一透明画布；各等级显示比例由StaffVisual表管理。
 
 /** 只负责精灵表现；输入为左上原点、向下为正的逻辑坐标，父节点统一缩放。 */
 export class BattleArtView {
@@ -71,12 +71,9 @@ export class BattleArtView {
   }
   drawTower(key: object, state: TowerArtState): void {
     if (!this.ready) return;
-    const kind = state.kind === "frost" ? "mianmian" : state.kind === "bloom" ? "buding" : state.kind === "sprout" ? "doubao" : state.kind;
-    const evolution=evolutionByKey(state.evolutionKey);
-    const entry = this.acquire(this.units, key, evolution?.battleImageKey ?? kind, false);
-    // 升级仅小幅放大，最高级主体不超过约 88 设计像素。
-    const levelScale = 1 + (Math.min(3, Math.max(1, state.level)) - 1) * 0.1;
-    const scale = (evolution ? Math.min(1,88/evolution.spriteWidth) : Math.min(levelScale, 88 / TOWER_CONFIG[state.kind as TowerKind].spriteWidth))*(state.challengeScale??1);
+    const visual = staffVisual(state.kind as TowerKind, state.level, state.evolutionKey);
+    const entry = this.acquire(this.units, key, visual.battleImageKey, false);
+    const scale = visual.spriteScale * (state.challengeScale ?? 1);
     const facing = Math.cos(state.angle) < 0 ? -1 : 1;
     const recoil = state.recoil > 0 ? 1 : 0;
     this.placeUnit(entry, state.x - facing * recoil * 1.1, state.y, 8, scale);

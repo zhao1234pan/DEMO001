@@ -385,7 +385,20 @@
       "overflow": "int",
       "active": "int",
       "skinKey": "string",
-      "note": "string"
+      "note": "string",
+      "fontPath": "string"
+    }
+  },
+  "StaffVisual": {
+    "fields": {
+      "id": "int",
+      "key": "string",
+      "staffKey": "string",
+      "level": "int",
+      "branchKey": "string",
+      "battleImageKey": "string",
+      "portraitImageKey": "string",
+      "spriteScale": "float"
     }
   }
 }

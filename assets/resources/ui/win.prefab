@@ -24,6 +24,9 @@
         "__id__": 12
       },
       {
+        "__id__": 407
+      },
+      {
         "__id__": 30
       },
       {
@@ -307,7 +310,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": -28.160000000000025,
+      "y": -37,
       "z": 0
     },
     "_lrot": {
@@ -358,7 +361,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 330,
-      "height": 410
+      "height": 356
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -448,7 +451,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 330,
-      "height": 410
+      "height": 356
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -569,7 +572,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 330,
-      "height": 410
+      "height": 356
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -1726,8 +1729,8 @@
     },
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": 0,
-      "y": 130.83999999999997,
+      "x": -7,
+      "y": 203,
       "z": 0
     },
     "_lrot": {
@@ -1777,8 +1780,8 @@
     "__type__": "cc.UITransform",
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 286,
-      "height": 45
+      "width": 169,
+      "height": 43
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -1805,25 +1808,35 @@
     "_string": "顺利打烊！",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_fontSize": 27,
-    "_actualFontSize": 27,
-    "_lineHeight": 31,
-    "_fontFamily": "Microsoft YaHei",
+    "_fontSize": 28,
+    "_actualFontSize": 28,
+    "_lineHeight": 36,
+    "_fontFamily": "NightShiftRounded",
     "_overflow": 2,
     "_enableWrapText": true,
-    "_isSystemFontUsed": true,
+    "_isSystemFontUsed": false,
     "_color": {
       "__type__": "cc.Color",
-      "r": 92,
-      "g": 48,
-      "b": 32,
+      "r": 75,
+      "g": 28,
+      "b": 18,
       "a": 255
     },
-    "_font": null,
+    "_font": {
+      "__uuid__": "f490dbdc-ebf6-49b2-b9b8-e3dbebb4ea52",
+      "__expectedType__": "cc.TTFFont"
+    },
     "_cacheMode": 0,
-    "_isBold": true,
-    "_enableOutline": false,
-    "_outlineWidth": 0
+    "_isBold": false,
+    "_enableOutline": true,
+    "_outlineWidth": 2.4,
+    "_outlineColor": {
+      "__type__": "cc.Color",
+      "r": 255,
+      "g": 255,
+      "b": 255,
+      "a": 255
+    }
   },
   {
     "__type__": "cc.CompPrefabInfo",
@@ -1870,7 +1883,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": 79.83999999999997,
+      "y": 144,
       "z": 0
     },
     "_lrot": {
@@ -1920,8 +1933,8 @@
     "__type__": "cc.UITransform",
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 270,
-      "height": 58
+      "width": 303,
+      "height": 38
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -1948,23 +1961,26 @@
     "_string": "",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_fontSize": 14,
-    "_actualFontSize": 14,
-    "_lineHeight": 18,
-    "_fontFamily": "Microsoft YaHei",
+    "_fontSize": 13,
+    "_actualFontSize": 13,
+    "_lineHeight": 17,
+    "_fontFamily": "NightShiftRounded",
     "_overflow": 2,
     "_enableWrapText": true,
-    "_isSystemFontUsed": true,
+    "_isSystemFontUsed": false,
     "_color": {
       "__type__": "cc.Color",
-      "r": 92,
-      "g": 48,
-      "b": 32,
+      "r": 75,
+      "g": 28,
+      "b": 18,
       "a": 255
     },
-    "_font": null,
+    "_font": {
+      "__uuid__": "f490dbdc-ebf6-49b2-b9b8-e3dbebb4ea52",
+      "__expectedType__": "cc.TTFFont"
+    },
     "_cacheMode": 0,
-    "_isBold": true,
+    "_isBold": false,
     "_enableOutline": false,
     "_outlineWidth": 0
   },
@@ -2011,7 +2027,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": -121.16000000000003,
+      "y": -97,
       "z": 0
     },
     "_lrot": {
@@ -2752,8 +2768,8 @@
     "__type__": "cc.UITransform",
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 238,
-      "height": 44
+      "width": 225,
+      "height": 43
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -2780,25 +2796,35 @@
     "_string": "",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_fontSize": 17,
-    "_actualFontSize": 17,
-    "_lineHeight": 21,
-    "_fontFamily": "Microsoft YaHei",
+    "_fontSize": 20,
+    "_actualFontSize": 20,
+    "_lineHeight": 27,
+    "_fontFamily": "NightShiftRounded",
     "_overflow": 2,
     "_enableWrapText": true,
-    "_isSystemFontUsed": true,
+    "_isSystemFontUsed": false,
     "_color": {
       "__type__": "cc.Color",
-      "r": 92,
-      "g": 48,
-      "b": 32,
+      "r": 255,
+      "g": 255,
+      "b": 255,
       "a": 255
     },
-    "_font": null,
+    "_font": {
+      "__uuid__": "f490dbdc-ebf6-49b2-b9b8-e3dbebb4ea52",
+      "__expectedType__": "cc.TTFFont"
+    },
     "_cacheMode": 0,
-    "_isBold": true,
-    "_enableOutline": false,
-    "_outlineWidth": 0
+    "_isBold": false,
+    "_enableOutline": true,
+    "_outlineWidth": 1.6,
+    "_outlineColor": {
+      "__type__": "cc.Color",
+      "r": 152,
+      "g": 82,
+      "b": 14,
+      "a": 255
+    }
   },
   {
     "__type__": "cc.CompPrefabInfo",
@@ -2908,10 +2934,10 @@
     "_fontSize": 13,
     "_actualFontSize": 13,
     "_lineHeight": 17,
-    "_fontFamily": "Microsoft YaHei",
+    "_fontFamily": "NightShiftRounded",
     "_overflow": 2,
     "_enableWrapText": true,
-    "_isSystemFontUsed": true,
+    "_isSystemFontUsed": false,
     "_color": {
       "__type__": "cc.Color",
       "r": 92,
@@ -2919,9 +2945,12 @@
       "b": 32,
       "a": 255
     },
-    "_font": null,
+    "_font": {
+      "__uuid__": "f490dbdc-ebf6-49b2-b9b8-e3dbebb4ea52",
+      "__expectedType__": "cc.TTFFont"
+    },
     "_cacheMode": 0,
-    "_isBold": true,
+    "_isBold": false,
     "_enableOutline": false,
     "_outlineWidth": 0
   },
@@ -3740,22 +3769,32 @@
     "_fontSize": 17,
     "_actualFontSize": 17,
     "_lineHeight": 21,
-    "_fontFamily": "Microsoft YaHei",
+    "_fontFamily": "NightShiftRounded",
     "_overflow": 2,
     "_enableWrapText": true,
-    "_isSystemFontUsed": true,
+    "_isSystemFontUsed": false,
     "_color": {
       "__type__": "cc.Color",
-      "r": 92,
-      "g": 48,
-      "b": 32,
+      "r": 255,
+      "g": 255,
+      "b": 255,
       "a": 255
     },
-    "_font": null,
+    "_font": {
+      "__uuid__": "f490dbdc-ebf6-49b2-b9b8-e3dbebb4ea52",
+      "__expectedType__": "cc.TTFFont"
+    },
     "_cacheMode": 0,
-    "_isBold": true,
-    "_enableOutline": false,
-    "_outlineWidth": 0
+    "_isBold": false,
+    "_enableOutline": true,
+    "_outlineWidth": 1.6,
+    "_outlineColor": {
+      "__type__": "cc.Color",
+      "r": 43,
+      "g": 102,
+      "b": 52,
+      "a": 255
+    }
   },
   {
     "__type__": "cc.CompPrefabInfo",
@@ -3800,7 +3839,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": -187.16000000000003,
+      "y": -163,
       "z": 0
     },
     "_lrot": {
@@ -4544,8 +4583,8 @@
     "__type__": "cc.UITransform",
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 238,
-      "height": 44
+      "width": 225,
+      "height": 43
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -4572,25 +4611,35 @@
     "_string": "返回首页",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_fontSize": 16,
-    "_actualFontSize": 16,
-    "_lineHeight": 20,
-    "_fontFamily": "Microsoft YaHei",
+    "_fontSize": 20,
+    "_actualFontSize": 20,
+    "_lineHeight": 27,
+    "_fontFamily": "NightShiftRounded",
     "_overflow": 2,
     "_enableWrapText": true,
-    "_isSystemFontUsed": true,
+    "_isSystemFontUsed": false,
     "_color": {
       "__type__": "cc.Color",
-      "r": 92,
-      "g": 48,
-      "b": 32,
+      "r": 255,
+      "g": 255,
+      "b": 255,
       "a": 255
     },
-    "_font": null,
+    "_font": {
+      "__uuid__": "f490dbdc-ebf6-49b2-b9b8-e3dbebb4ea52",
+      "__expectedType__": "cc.TTFFont"
+    },
     "_cacheMode": 0,
-    "_isBold": true,
-    "_enableOutline": false,
-    "_outlineWidth": 0
+    "_isBold": false,
+    "_enableOutline": true,
+    "_outlineWidth": 1.6,
+    "_outlineColor": {
+      "__type__": "cc.Color",
+      "r": 43,
+      "g": 102,
+      "b": 52,
+      "a": 255
+    }
   },
   {
     "__type__": "cc.CompPrefabInfo",
@@ -4637,7 +4686,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": 30.839999999999975,
+      "y": 72,
       "z": 0
     },
     "_lrot": {
@@ -4687,7 +4736,7 @@
     "__type__": "cc.UITransform",
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 280,
+      "width": 286,
       "height": 66
     },
     "_anchorPoint": {
@@ -4718,10 +4767,10 @@
     "_fontSize": 14,
     "_actualFontSize": 14,
     "_lineHeight": 20,
-    "_fontFamily": "Microsoft YaHei",
+    "_fontFamily": "NightShiftRounded",
     "_overflow": 2,
     "_enableWrapText": true,
-    "_isSystemFontUsed": true,
+    "_isSystemFontUsed": false,
     "_color": {
       "__type__": "cc.Color",
       "r": 92,
@@ -4729,9 +4778,12 @@
       "b": 32,
       "a": 255
     },
-    "_font": null,
+    "_font": {
+      "__uuid__": "f490dbdc-ebf6-49b2-b9b8-e3dbebb4ea52",
+      "__expectedType__": "cc.TTFFont"
+    },
     "_cacheMode": 0,
-    "_isBold": true,
+    "_isBold": false,
     "_enableOutline": false,
     "_outlineWidth": 0
   },
@@ -4769,7 +4821,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": -41.160000000000025,
+      "y": -1,
       "z": 0
     },
     "_lrot": {
@@ -5164,10 +5216,10 @@
     "_fontSize": 13,
     "_actualFontSize": 13,
     "_lineHeight": 19,
-    "_fontFamily": "Microsoft YaHei",
+    "_fontFamily": "NightShiftRounded",
     "_overflow": 2,
     "_enableWrapText": true,
-    "_isSystemFontUsed": true,
+    "_isSystemFontUsed": false,
     "_color": {
       "__type__": "cc.Color",
       "r": 92,
@@ -5175,9 +5227,12 @@
       "b": 32,
       "a": 255
     },
-    "_font": null,
+    "_font": {
+      "__uuid__": "f490dbdc-ebf6-49b2-b9b8-e3dbebb4ea52",
+      "__expectedType__": "cc.TTFFont"
+    },
     "_cacheMode": 0,
-    "_isBold": true,
+    "_isBold": false,
     "_enableOutline": false,
     "_outlineWidth": 0
   },
@@ -5517,10 +5572,10 @@
     "_fontSize": 13,
     "_actualFontSize": 13,
     "_lineHeight": 19,
-    "_fontFamily": "Microsoft YaHei",
+    "_fontFamily": "NightShiftRounded",
     "_overflow": 2,
     "_enableWrapText": true,
-    "_isSystemFontUsed": true,
+    "_isSystemFontUsed": false,
     "_color": {
       "__type__": "cc.Color",
       "r": 92,
@@ -5528,9 +5583,12 @@
       "b": 32,
       "a": 255
     },
-    "_font": null,
+    "_font": {
+      "__uuid__": "f490dbdc-ebf6-49b2-b9b8-e3dbebb4ea52",
+      "__expectedType__": "cc.TTFFont"
+    },
     "_cacheMode": 0,
-    "_isBold": true,
+    "_isBold": false,
     "_enableOutline": false,
     "_outlineWidth": 0
   },
@@ -5870,10 +5928,10 @@
     "_fontSize": 13,
     "_actualFontSize": 13,
     "_lineHeight": 19,
-    "_fontFamily": "Microsoft YaHei",
+    "_fontFamily": "NightShiftRounded",
     "_overflow": 2,
     "_enableWrapText": true,
-    "_isSystemFontUsed": true,
+    "_isSystemFontUsed": false,
     "_color": {
       "__type__": "cc.Color",
       "r": 92,
@@ -5881,9 +5939,12 @@
       "b": 32,
       "a": 255
     },
-    "_font": null,
+    "_font": {
+      "__uuid__": "f490dbdc-ebf6-49b2-b9b8-e3dbebb4ea52",
+      "__expectedType__": "cc.TTFFont"
+    },
     "_cacheMode": 0,
-    "_isBold": true,
+    "_isBold": false,
     "_enableOutline": false,
     "_outlineWidth": 0
   },
@@ -5911,7 +5972,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": -28.160000000000025,
+      "y": -37,
       "z": 0
     },
     "_lrot": {
@@ -5962,7 +6023,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 330,
-      "height": 410
+      "height": 356
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -5994,7 +6055,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": -121.16000000000003,
+      "y": -97,
       "z": 0
     },
     "_lrot": {
@@ -6077,7 +6138,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": -187.16000000000003,
+      "y": -163,
       "z": 0
     },
     "_lrot": {
@@ -8920,5 +8981,235 @@
     "_useGrayscale": false,
     "_atlas": null,
     "_id": ""
+  },
+  {
+    "__type__": "cc.Node",
+    "_name": "Banner",
+    "_objFlags": 0,
+    "_parent": {
+      "__id__": 1
+    },
+    "_children": [
+      {
+        "__id__": 411
+      }
+    ],
+    "_active": true,
+    "_components": [
+      {
+        "__id__": 409
+      },
+      {
+        "__id__": 417
+      }
+    ],
+    "_prefab": {
+      "__id__": 408
+    },
+    "_lpos": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": 189,
+      "z": 0
+    },
+    "_lrot": {
+      "__type__": "cc.Quat",
+      "x": 0,
+      "y": 0,
+      "z": 0,
+      "w": 1
+    },
+    "_lscale": {
+      "__type__": "cc.Vec3",
+      "x": 1,
+      "y": 1,
+      "z": 1
+    },
+    "_mobility": 0,
+    "_layer": 33554432,
+    "_euler": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "_id": ""
+  },
+  {
+    "__type__": "cc.PrefabInfo",
+    "root": {
+      "__id__": 1
+    },
+    "asset": {
+      "__id__": 0
+    },
+    "fileId": "ae7fe8b6e0ea4762b4642a"
+  },
+  {
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 407
+    },
+    "_enabled": true,
+    "__prefab": {
+      "__id__": 410
+    },
+    "_id": "",
+    "__type__": "cc.UITransform",
+    "_contentSize": {
+      "__type__": "cc.Size",
+      "width": 350,
+      "height": 129.35
+    },
+    "_anchorPoint": {
+      "__type__": "cc.Vec2",
+      "x": 0.5,
+      "y": 0.5
+    }
+  },
+  {
+    "__type__": "cc.CompPrefabInfo",
+    "fileId": "b0dbbda8719449df92b0c0"
+  },
+  {
+    "__type__": "cc.Node",
+    "_name": "Artwork",
+    "_objFlags": 0,
+    "_parent": {
+      "__id__": 407
+    },
+    "_children": [],
+    "_active": true,
+    "_components": [
+      {
+        "__id__": 413
+      },
+      {
+        "__id__": 415
+      }
+    ],
+    "_prefab": {
+      "__id__": 412
+    },
+    "_lpos": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "_lrot": {
+      "__type__": "cc.Quat",
+      "x": 0,
+      "y": 0,
+      "z": 0,
+      "w": 1
+    },
+    "_lscale": {
+      "__type__": "cc.Vec3",
+      "x": 1,
+      "y": 1,
+      "z": 1
+    },
+    "_mobility": 0,
+    "_layer": 33554432,
+    "_euler": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "_id": ""
+  },
+  {
+    "__type__": "cc.PrefabInfo",
+    "root": {
+      "__id__": 1
+    },
+    "asset": {
+      "__id__": 0
+    },
+    "fileId": "928afc76744d4ba2a67863"
+  },
+  {
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 411
+    },
+    "_enabled": true,
+    "__prefab": {
+      "__id__": 414
+    },
+    "_id": "",
+    "__type__": "cc.UITransform",
+    "_contentSize": {
+      "__type__": "cc.Size",
+      "width": 350,
+      "height": 129.35
+    },
+    "_anchorPoint": {
+      "__type__": "cc.Vec2",
+      "x": 0.5,
+      "y": 0.5
+    }
+  },
+  {
+    "__type__": "cc.CompPrefabInfo",
+    "fileId": "130e7fa7e07f4e369ccd3a"
+  },
+  {
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 411
+    },
+    "_enabled": true,
+    "__prefab": {
+      "__id__": 416
+    },
+    "_id": "",
+    "__type__": "cc.Sprite",
+    "_spriteFrame": null,
+    "_sizeMode": 0,
+    "_type": 0,
+    "_color": {
+      "__type__": "cc.Color",
+      "r": 255,
+      "g": 255,
+      "b": 255,
+      "a": 255
+    }
+  },
+  {
+    "__type__": "cc.CompPrefabInfo",
+    "fileId": "4520afffeb3b40cc8358c3"
+  },
+  {
+    "__type__": "3af5aWiQAJKE50TNndxa/O0",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 407
+    },
+    "_enabled": true,
+    "__prefab": {
+      "__id__": 418
+    },
+    "key": "night_banner",
+    "padding": 0,
+    "image": {
+      "__id__": 411
+    },
+    "previewFrame": {
+      "__uuid__": "8ce3b2a8-1426-46e4-b03e-feaaba97257e@f9941",
+      "__expectedType__": "cc.SpriteFrame"
+    },
+    "_id": "",
+    "resizeMode": "contain"
+  },
+  {
+    "__type__": "cc.CompPrefabInfo",
+    "fileId": "0d0149a1855f46d8899b1a"
   }
 ]

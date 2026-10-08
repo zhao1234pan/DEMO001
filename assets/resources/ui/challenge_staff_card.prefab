@@ -698,10 +698,10 @@
     "_fontSize": 17,
     "_actualFontSize": 17,
     "_lineHeight": 21,
-    "_fontFamily": "Microsoft YaHei",
+    "_fontFamily": "NightShiftRounded",
     "_overflow": 2,
     "_enableWrapText": true,
-    "_isSystemFontUsed": true,
+    "_isSystemFontUsed": false,
     "_color": {
       "__type__": "cc.Color",
       "r": 7,
@@ -709,9 +709,12 @@
       "b": 68,
       "a": 255
     },
-    "_font": null,
+    "_font": {
+      "__uuid__": "f490dbdc-ebf6-49b2-b9b8-e3dbebb4ea52",
+      "__expectedType__": "cc.TTFFont"
+    },
     "_cacheMode": 0,
-    "_isBold": true,
+    "_isBold": false,
     "_enableOutline": false,
     "_outlineWidth": 0
   },
@@ -823,10 +826,10 @@
     "_fontSize": 12,
     "_actualFontSize": 12,
     "_lineHeight": 16,
-    "_fontFamily": "Microsoft YaHei",
+    "_fontFamily": "NightShiftRounded",
     "_overflow": 2,
     "_enableWrapText": true,
-    "_isSystemFontUsed": true,
+    "_isSystemFontUsed": false,
     "_color": {
       "__type__": "cc.Color",
       "r": 102,
@@ -834,9 +837,12 @@
       "b": 67,
       "a": 255
     },
-    "_font": null,
+    "_font": {
+      "__uuid__": "f490dbdc-ebf6-49b2-b9b8-e3dbebb4ea52",
+      "__expectedType__": "cc.TTFFont"
+    },
     "_cacheMode": 0,
-    "_isBold": true,
+    "_isBold": false,
     "_enableOutline": false,
     "_outlineWidth": 0
   },
@@ -1407,10 +1413,10 @@
     "_fontSize": 14,
     "_actualFontSize": 14,
     "_lineHeight": 20,
-    "_fontFamily": "Microsoft YaHei",
+    "_fontFamily": "NightShiftRounded",
     "_overflow": 2,
     "_enableWrapText": true,
-    "_isSystemFontUsed": true,
+    "_isSystemFontUsed": false,
     "_color": {
       "__type__": "cc.Color",
       "r": 92,
@@ -1418,9 +1424,12 @@
       "b": 32,
       "a": 255
     },
-    "_font": null,
+    "_font": {
+      "__uuid__": "f490dbdc-ebf6-49b2-b9b8-e3dbebb4ea52",
+      "__expectedType__": "cc.TTFFont"
+    },
     "_cacheMode": 0,
-    "_isBold": true,
+    "_isBold": false,
     "_enableOutline": false,
     "_outlineWidth": 0
   },
