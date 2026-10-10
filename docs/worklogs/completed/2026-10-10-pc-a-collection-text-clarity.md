@@ -10,5 +10,5 @@
 - 下一轮：挑战扩为四关与20件商品经营方案已归档CHALLENGE_SHOP_PROPOSAL.md，未提前实施。
 - 验证：配置31、资源12、挑战27、图鉴模型13，合计83项；TypeScript及导表门禁通过。调试/正式Web生成，Creator均退出36；入口及关键资源请求200。
 - 证据：docs/evidence/collection-text-clarity-1.7.4/checks.json；本地G:/gptwork/collection-text-clarity。
-- 提交：认领eff3482；实现6d1f7cf5cc74078264ced2069a6cdbb5dfba03d7，已推送任务分支并核对远端SHA；随后按用户已有授权快进集成main。
+- 提交：认领eff3482；实现6d1f7cf5cc74078264ced2069a6cdbb5dfba03d7，已推送任务分支、快进合入main并核对GitHub远端SHA。
 - 遗留：浏览器工具策略阻止真实运行截图和点击，本轮不冒充视觉验收；构建日志锁/缓存告警仍在。用户此前授权UI修复后提交main，本轮沿用，不移动软著归档标签，不平台发布。
