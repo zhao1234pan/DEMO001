@@ -431,7 +431,7 @@
     "_string": "我的便利店",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_actualFontSize": 16,
+    "_actualFontSize": 15,
     "_fontSize": 15,
     "_fontFamily": "NightShiftRounded",
     "_lineHeight": 21,
@@ -2656,7 +2656,7 @@
     "_string": "冒险模式",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_actualFontSize": 32,
+    "_actualFontSize": 31,
     "_fontSize": 31,
     "_fontFamily": "NightShiftRounded",
     "_lineHeight": 35,
@@ -2838,7 +2838,7 @@
     "_string": "已解锁 {p0} / {p1} 关",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_actualFontSize": 13,
+    "_actualFontSize": 12,
     "_fontSize": 12,
     "_fontFamily": "NightShiftRounded",
     "_lineHeight": 19,
@@ -3638,7 +3638,7 @@
     "_string": "挑战模式",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_actualFontSize": 32,
+    "_actualFontSize": 31,
     "_fontSize": 31,
     "_fontFamily": "NightShiftRounded",
     "_lineHeight": 35,
@@ -3820,7 +3820,7 @@
     "_string": "15波夜班 · 自选4名店员",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_actualFontSize": 13,
+    "_actualFontSize": 12,
     "_fontSize": 12,
     "_fontFamily": "NightShiftRounded",
     "_lineHeight": 19,
@@ -5286,7 +5286,7 @@
     "_string": "欢迎回来，店长",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_actualFontSize": 15,
+    "_actualFontSize": 14,
     "_fontSize": 14,
     "_fontFamily": "NightShiftRounded",
     "_lineHeight": 18,
@@ -5521,7 +5521,7 @@
     "_string": "侧边栏再玩",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_actualFontSize": 14,
+    "_actualFontSize": 13,
     "_fontSize": 13,
     "_fontFamily": "NightShiftRounded",
     "_lineHeight": 19,
@@ -5912,7 +5912,7 @@
         "__id__": 267
       }
     ],
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 273
@@ -6171,7 +6171,7 @@
         "__id__": 279
       }
     ],
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 285
@@ -6426,7 +6426,7 @@
       "__id__": 1
     },
     "_children": [],
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 291
@@ -6520,7 +6520,7 @@
     "_string": "",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_actualFontSize": 20,
+    "_actualFontSize": 19,
     "_fontSize": 19,
     "_fontFamily": "NightShiftRounded",
     "_lineHeight": 24,
@@ -8310,7 +8310,7 @@
     "_string": "排行榜",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_actualFontSize": 18,
+    "_actualFontSize": 17,
     "_fontSize": 17,
     "_fontFamily": "NightShiftRounded",
     "_lineHeight": 21,
@@ -8629,6 +8629,9 @@
       },
       {
         "__id__": 391
+      },
+      {
+        "__id__": 561
       }
     ],
     "_prefab": {
@@ -8713,10 +8716,10 @@
       "b": 18,
       "a": 255
     },
-    "_string": "",
+    "_string": "{p0}",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_actualFontSize": 20,
+    "_actualFontSize": 19,
     "_fontSize": 19,
     "_fontFamily": "NightShiftRounded",
     "_lineHeight": 24,
@@ -12227,7 +12230,7 @@
     "_string": "设置",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_actualFontSize": 18,
+    "_actualFontSize": 17,
     "_fontSize": 17,
     "_fontFamily": "NightShiftRounded",
     "_lineHeight": 21,
@@ -12385,5 +12388,24 @@
     "fileId": "3aa14500ce1b4a89a6a0a8",
     "instance": null,
     "targetOverrides": null
+  },
+  {
+    "__type__": "65e14RwFspDvqtfhU+nwVLC",
+    "_name": "",
+    "_objFlags": 0,
+    "__editorExtras__": {},
+    "node": {
+      "__id__": 388
+    },
+    "_enabled": true,
+    "__prefab": {
+      "__id__": 562
+    },
+    "key": "ui.homeGold",
+    "_id": ""
+  },
+  {
+    "__type__": "cc.CompPrefabInfo",
+    "fileId": "924b001ca2b542c3822ba8"
   }
 ]

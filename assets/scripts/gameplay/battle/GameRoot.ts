@@ -7,7 +7,7 @@ import { attackProfile, evolutionChoices, evolutionByKey, StaffEvolution } from 
 import { configsReady, globalNumber, globalString, numeric, rows, text } from "../../config/ConfigTables";
 import { loadGameConfigs } from "../../config/ConfigLoader";
 import {
-  _decorator, Color, Component, EventTouch, HorizontalTextAlignment,
+  _decorator, Color, Component, EventMouse, EventTouch, HorizontalTextAlignment,
   Label, Layers, Mask, Node, Sprite, ResolutionPolicy, UITransform, Vec3,
   VerticalTextAlignment, view, sys, profiler, screen as deviceScreen,
 } from "cc";
@@ -211,14 +211,14 @@ export class GameRoot extends Component {
     this.mapReview = readMapStyleReview();
     this.configureResolution();
     const transform = this.node.getComponent(UITransform) ?? this.node.addComponent(UITransform);
-    transform.setContentSize(DESIGN_W, DESIGN_H);
+    transform.setContentSize(W, H);
     this.contentRoot = new Node("PrototypeContent");
     this.contentRoot.layer = Layers.Enum.UI_2D;
     this.contentRoot.addComponent(UITransform).setContentSize(W, H);
     // 宽窗口的黑边不能漏出射程圈、边缘特效或装饰；长屏时遮罩随安全高度一起延展。
     this.contentRoot.addComponent(Mask).type = Mask.Type.SPRITE_STENCIL;
     const stencil=this.contentRoot.getComponent(Sprite)!;stencil.sizeMode=Sprite.SizeMode.CUSTOM;this.uiPrefabs.bindSkin(stencil,"round_0");
-    this.contentRoot.setScale(DESIGN_W / W, DESIGN_H / H, 1);
+    this.contentRoot.setScale(1, 1, 1);
     this.node.addChild(this.contentRoot);
     this.staticG = this.createPngLayer("StaticMap");
     this.mapView = new BattleMapView(this.staticG, W);
@@ -251,6 +251,7 @@ export class GameRoot extends Component {
       () => this.art.ready && this.uiArt.ready && this.scenery.ready);
     view.on("canvas-resize", this.resizeHandler, this);
     view.on("design-resolution-changed", this.resizeHandler, this);
+    this.node.on(Node.EventType.MOUSE_WHEEL, this.onMouseWheel, this);
     this.node.on(Node.EventType.TOUCH_START, this.onTouchStart, this);
     this.node.on(Node.EventType.TOUCH_MOVE, this.onTouchMove, this);
     this.node.on(Node.EventType.TOUCH_CANCEL, this.onTouchCancel, this);
@@ -268,6 +269,7 @@ export class GameRoot extends Component {
     this.releaseMapReviewCapture?.();
     view.off("canvas-resize", this.resizeHandler, this);
     view.off("design-resolution-changed", this.resizeHandler, this);
+    this.node.off(Node.EventType.MOUSE_WHEEL, this.onMouseWheel, this);
     this.node.off(Node.EventType.TOUCH_START, this.onTouchStart, this);
     this.node.off(Node.EventType.TOUCH_MOVE, this.onTouchMove, this);
     this.node.off(Node.EventType.TOUCH_CANCEL, this.onTouchCancel, this);
@@ -297,12 +299,13 @@ export class GameRoot extends Component {
     this.hitSize = Math.min(BATTLE_UI.minimumHit, layout.hitSize);
     for (const [key, label] of this.labels) {
       if (this.battleUi.fixedLabels.has(key)) continue;
-      label.fontSize = Math.max(this.labelSizes.get(key) ?? 13, 24 / layout.scale);
+      label.fontSize = Math.max(this.labelSizes.get(key) ?? 13, 24 * W / DESIGN_W / layout.scale);
       label.lineHeight = label.fontSize + 4;
     }
     this.drawStaticMap();
     // 顶栏贴安全区顶部，道具贴安全区底部；地图保持等比居中，不拉长道路。
     this.battleUi.layout(this.layoutTop, this.layoutBottom);
+    for (const label of this.node.getComponentsInChildren(Label)) label.updateRenderData(true);
     this.challengeView?.layout(this.layoutTop,this.layoutBottom);
   }
 
@@ -315,7 +318,8 @@ export class GameRoot extends Component {
     if (policy === this.appliedResolutionPolicy) return;
     // 先记录再设置，避免design-resolution-changed同步回调形成递归。
     this.appliedResolutionPolicy = policy;
-    view.setDesignResolutionSize(DESIGN_W, DESIGN_H, policy);
+    // Label按view比例生成字纹理，设计坐标与390逻辑坐标一致，避免父层再放大文字。
+    view.setDesignResolutionSize(W, H, policy);
   }
 
   private footerRect(rect: HitRect): HitRect {
@@ -329,7 +333,7 @@ export class GameRoot extends Component {
 
   private buttonHit(rect: HitRect, x: number, y: number): boolean {
     // 按钮允许透明热区大于底板；按钮之间预留空隙，安全区压缩时也保持88设计像素的点击范围。
-    const minimum = 88 / this.contentRoot.scale.x;
+    const minimum = 88 * W / DESIGN_W / this.contentRoot.scale.x;
     const width = Math.max(rect.width, minimum); const height = Math.max(rect.height, minimum);
     const headerButton = rect.y >= this.layoutTop && rect.y + rect.height <= this.layoutTop + 60;
     // 顶栏只向上扩热区；即使未来收紧地图顶部留白，也不能向下抢走棋盘点击。
@@ -1473,7 +1477,7 @@ export class GameRoot extends Component {
     finally { if (revision === this.battleRevision) this.adRequesting = false; }
   }
 
-  private touchPoint(event: EventTouch): { x: number; y: number } {
+  private touchPoint(event: EventTouch | EventMouse): { x: number; y: number } {
     const p = event.getUILocation();
     const local = this.contentRoot.getComponent(UITransform)!.convertToNodeSpaceAR(new Vec3(p.x, p.y));
     return { x: local.x + W / 2, y: H / 2 - local.y };
@@ -1484,19 +1488,27 @@ export class GameRoot extends Component {
     this.audio.unlock();
     this.activeTouchIds.add(event.getID());
     // 第二指即使仍留在屏幕上也会锁住后续点击，直到本组触点全部结束。
-    if (this.activeTouchIds.size !== 1 || this.touchStart) { this.touchTravelCancelled = true; return; }
+    if (this.activeTouchIds.size !== 1 || this.touchStart) { this.touchTravelCancelled = true; this.menu?.endScroll(); return; }
     const point = this.touchPoint(event);
     this.touchStart = { x: point.x, y: point.y };
     this.touchId = event.getID(); this.touchTravelCancelled = false;
+    if (!this.gmPanelOpen) this.menu?.beginScroll(point.x, point.y);
   }
 
   private onTouchMove(event: EventTouch): void {
-    if (!this.touchStart || event.getID() !== this.touchId) return;
+    if (!this.touchStart || event.getID() !== this.touchId || this.activeTouchIds.size !== 1) return;
     const point = this.touchPoint(event);
+    if (!this.gmPanelOpen) this.menu?.moveScroll(point.x, point.y);
     if (Math.hypot(point.x - this.touchStart.x, point.y - this.touchStart.y) > globalNumber("touchTravelTolerance")) this.touchTravelCancelled = true;
   }
 
+  private onMouseWheel(event: EventMouse): void {
+    if (this.mapReview || this.gmPanelOpen || this.adRequesting) return;
+    const point = this.touchPoint(event); this.menu?.wheelScroll(point.x, point.y, event.getScrollY());
+  }
+
   private onTouchCancel(event?: EventTouch): void {
+    this.menu?.endScroll();
     if (event) this.activeTouchIds.delete(event.getID()); else this.activeTouchIds.clear();
     this.touchStart = null; this.touchId = null;
     this.touchTravelCancelled = this.activeTouchIds.size > 0;
@@ -1511,6 +1523,7 @@ export class GameRoot extends Component {
     }
     const point = this.touchPoint(event);
     const start = this.touchStart;
+    this.menu?.endScroll();
     const cancelled = this.touchTravelCancelled || this.activeTouchIds.size > 0;
     this.touchStart = null; this.touchId = null;
     this.touchTravelCancelled = this.activeTouchIds.size > 0;

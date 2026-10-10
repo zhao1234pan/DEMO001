@@ -46,6 +46,11 @@ export function installConfigs(sources: Record<string, string>): void {
     if(!["simple","sliced"].includes(row.mode)||!/^[-a-zA-Z0-9_/]+\/spriteFrame$/.test(row.path)||row.path.includes(".."))throw new Error("Invalid skin mode/path");
     if(numeric(row,"left")+numeric(row,"right")>=numeric(row,"width")||numeric(row,"top")+numeric(row,"bottom")>=numeric(row,"height"))throw new Error("Invalid nine slice borders");
   }
+  for (const key of ["collectionScrollPadding", "collectionWheelScale", "walletInitialCoins", "walletSaveKey"]) requireRef("Global", "key", key, "UI");
+  const setting = (key: string) => next.Global.find(row => row.key === key)!;
+  if (numeric(setting("collectionScrollPadding"), "value") < 0 || numeric(setting("collectionWheelScale"), "value") <= 0) throw new Error("Invalid collection scroll setting");
+  const initialCoins = numeric(setting("walletInitialCoins"), "value");
+  if (!Number.isSafeInteger(initialCoins) || initialCoins < 0 || !/^[-a-zA-Z0-9_]+$/.test(setting("walletSaveKey").value)) throw new Error("Invalid wallet setting");
   positive("UiLayout",["width","height","fontSize","lineHeight","outlineWidth"],true);
   for(const row of next.UiLayout){if(row.fontPath&&(!/^[a-zA-Z0-9_/-]+$/.test(row.fontPath)||row.fontPath.includes("..")))throw new Error("Invalid UI font path");requireRef("UiPrefab","key",row.prefab,"UiLayout");if(row.skinKey)requireRef("VisualSkin","key",row.skinKey,"UiLayout");for(const field of ["x","y","scaleX","scaleY"])numeric(row,field);if(!["0","1"].includes(row.active)||!["0","1","2"].includes(row.horizontalAlign)||!["0","1","2"].includes(row.verticalAlign)||!["0","1","2","3"].includes(row.overflow)||!row.node||row.node.includes(".."))throw new Error("Invalid UI layout");for(const field of ["color","outlineColor"])if(row[field]&&!/^#[a-f0-9]{6}$/i.test(row[field]))throw new Error("Invalid UI color");}
   positive("ArtCut",["targetId","width","height","threshold"]);positive("ArtCut",["x","y","edge","padding"],true);

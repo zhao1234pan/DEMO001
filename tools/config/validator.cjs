@@ -129,6 +129,14 @@ function installConfigs(sources) {
         if (numeric(row, "left") + numeric(row, "right") >= numeric(row, "width") || numeric(row, "top") + numeric(row, "bottom") >= numeric(row, "height"))
             throw new Error("Invalid nine slice borders");
     }
+    for (const key of ["collectionScrollPadding", "collectionWheelScale", "walletInitialCoins", "walletSaveKey"])
+        requireRef("Global", "key", key, "UI");
+    const setting = (key) => next.Global.find(row => row.key === key);
+    if (numeric(setting("collectionScrollPadding"), "value") < 0 || numeric(setting("collectionWheelScale"), "value") <= 0)
+        throw new Error("Invalid collection scroll setting");
+    const initialCoins = numeric(setting("walletInitialCoins"), "value");
+    if (!Number.isSafeInteger(initialCoins) || initialCoins < 0 || !/^[-a-zA-Z0-9_]+$/.test(setting("walletSaveKey").value))
+        throw new Error("Invalid wallet setting");
     positive("UiLayout", ["width", "height", "fontSize", "lineHeight", "outlineWidth"], true);
     for (const row of next.UiLayout) {
         if (row.fontPath && (!/^[a-zA-Z0-9_/-]+$/.test(row.fontPath) || row.fontPath.includes("..")))

@@ -56,11 +56,14 @@ export class UiPrefabs {
     if (!asset) throw new Error(`Unknown UI prefab: ${key}`);
     const node = instantiate(asset);
     if (parent) parent.addChild(node);
+    this.bindTree(node); return node;
+  }
+  /** 动态复制图鉴行时同样登记资源引用和PNG绑定。 */
+  bindTree(node: Node): void {
     for (const binding of node.getComponentsInChildren(UiText)) binding.refresh();
     for (const image of node.getComponentsInChildren(UiImage)) if (image.frameKey) this.bindImage(image.node, image.frameKey);
     for(const skin of node.getComponentsInChildren(UiSkin)){this.bindSkin(skin.image!.getComponent(Sprite)!,skin.key);skin.sync();}
     for(const mask of node.getComponentsInChildren(UiMask))this.bindSkin(mask.getComponent(Sprite)!,mask.maskKey);
-    return node;
   }
   bindImage(node: Node, key: string, silhouette = false): void {
     const frame = this.frames.get(key);

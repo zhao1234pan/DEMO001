@@ -68,4 +68,9 @@ test('等级星星参数非数字或负数时阻止加载',()=>{
  for(const value of ['NaN','-1'])assert.throws(()=>core.installConfigs(changeLoadout('Global',45,'value',value)),/number|star/);
  core.installConfigs(configSources);
 });
+test('图鉴滚动与局外余额非法配置阻止加载',()=>{
+ for(const [id,value]of [[48,'-1'],[49,'0'],[49,'NaN'],[50,'../coins'],[51,'-1'],[51,'0.5']])
+  assert.throws(()=>core.installConfigs(changeLoadout('Global',id,'value',value)),/collection|wallet|number/);
+ core.installConfigs(configSources);
+});
 console.log(passed+'项通过；隔离证据：'+fixture);

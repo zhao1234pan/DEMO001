@@ -1,0 +1,139 @@
+{
+  "date": "2026-10-10",
+  "version": "1.7.4",
+  "baseline": "41e495a23ddb2d21b3a61436a69ab0bd26ddc0b3",
+  "tests": [
+    {
+      "file": "config-tests.log",
+      "passed": 31,
+      "scope": "配置回归",
+      "sha256": "970076b884942c8473420ac5b11ca60d7ac946e8bbf55f4343e83d5f36dc7fb3"
+    },
+    {
+      "file": "art-tests.log",
+      "passed": 12,
+      "scope": "PNG资源回归",
+      "sha256": "2190b997491beb98f17af0a90b5c15f0bb193c9963a15b0729ac8ecbe3508e67"
+    },
+    {
+      "file": "challenge-tests.log",
+      "passed": 27,
+      "scope": "挑战规则回归",
+      "sha256": "3fcd1f98ebed764ef1926c81b316090e0fcbf7a67648d1fd3be43db0d1fe9de3"
+    },
+    {
+      "file": "collection-tests.log",
+      "passed": 13,
+      "scope": "真实TS与Prefab模型，不是实际Cocos渲染",
+      "sha256": "a465c46c699b22c59353d2f8f249039876f02e95f4f5c333836f327d3a436bff"
+    }
+  ],
+  "totalPassed": 83,
+  "typescriptExitCode": 0,
+  "config": {
+    "tables": 28,
+    "prefabs": 33,
+    "nodes": 1733,
+    "xlsxCsvConsistent": true
+  },
+  "builds": [
+    {
+      "kind": "web",
+      "root": "G:/gptwork/collection-text-clarity-web-build/web-mobile",
+      "settingsSha256": "1ab952ccb1ca0c89e058017cf8b2be3d7e097cb965e9feb82d9d6008c74517b2",
+      "debug": true,
+      "mainBundleDebug": true,
+      "designResolution": {
+        "width": 390,
+        "height": 693.68,
+        "policy": 4
+      },
+      "creatorExitCode": 36,
+      "finished": true,
+      "staticPrecheckOnly": true
+    },
+    {
+      "kind": "release",
+      "root": "G:/gptwork/collection-text-clarity-release-build/web-mobile",
+      "settingsSha256": "58ec2c39837d648ee9288cdee0c74c84d638276b680c68bf2029b8b6fe7c4063",
+      "debug": false,
+      "mainBundleDebug": false,
+      "designResolution": {
+        "width": 390,
+        "height": 693.68,
+        "policy": 4
+      },
+      "creatorExitCode": 36,
+      "finished": true,
+      "staticPrecheckOnly": true
+    }
+  ],
+  "http": [
+    {
+      "path": "/",
+      "status": 200,
+      "bytes": 2163,
+      "sha256": "6a1b6c89fa67f1e13cf72e00bd54bace2252446469858e3ac072e11d3225858b"
+    },
+    {
+      "path": "/src/settings.json",
+      "status": 200,
+      "bytes": 22619,
+      "sha256": "1ab952ccb1ca0c89e058017cf8b2be3d7e097cb965e9feb82d9d6008c74517b2"
+    },
+    {
+      "path": "/assets/main/index.js",
+      "status": 200,
+      "bytes": 482534,
+      "sha256": "33765da6ac77cab9fb67c9327e8e56c5ac3a83bbd72a369743fdde9ced4318e9"
+    },
+    {
+      "path": "/assets/resources/native/f4/f490dbdc-ebf6-49b2-b9b8-e3dbebb4ea52/night_shift_rounded.ttf",
+      "status": 200,
+      "bytes": 302628,
+      "sha256": "311c6e793a37d35bf0d3f2db89e99b85d3470475d82c7bb5e79ed2f757f299e2"
+    },
+    {
+      "path": "/assets/battle_art/native/00/001a6f67-0eca-4d99-97b7-10dfe0af4832.png",
+      "status": 200,
+      "bytes": 91614,
+      "sha256": "f3c64f3c211937ef1bf7b29ffe6caf568c9a01a175a6313a377b93015fff09e6"
+    }
+  ],
+  "files": [
+    {
+      "path": "design/tables/Global.xlsx",
+      "sha256": "352b1d3832cb4315b38860550267f54562332ec5b528b55a099c36608e9ae20c"
+    },
+    {
+      "path": "design/tables/I18.xlsx",
+      "sha256": "8462c97b6980e773200c0bbf552e55fdb1fd9757876596a4a126e4a5dd132045"
+    },
+    {
+      "path": "design/tables/UiLayout.xlsx",
+      "sha256": "5197695e8fd322be8aefc4dd47b8b86ad841fa6db2a17d58d781abbbae637170"
+    },
+    {
+      "path": "assets/resources/config/manifest.json",
+      "sha256": "a028acefdd760a1f8cfd1ba71106b4bb1b2f64c5c1018a5e9c83c3777ea8cc5b"
+    },
+    {
+      "path": "assets/resources/ui/home.prefab",
+      "sha256": "8481903845a1f18a88b5cc296e5ca9623830be221255f1dd9690b7b16524387c"
+    },
+    {
+      "path": "assets/resources/ui/collection.prefab",
+      "sha256": "bb17880e65616ba0b829c61d6eecd41d8b78800c9ebda37fa38e02a02d41e3bf"
+    },
+    {
+      "path": "assets/resources/ui/collection_card.prefab",
+      "sha256": "552370e3bdb591dfc56500959f69cc8e490fae86e3cc3b7668b79350e77e4fcd"
+    }
+  ],
+  "limitations": [
+    "无本轮真实浏览器截图、运行点击或20关通关；本地浏览器工具策略拒绝，未绕过",
+    "Creator调试和正式包均退出36，存在日志锁与缓存告警；Finished不等于退出0",
+    "HTTP仅证明资源可访问；正式debug=false仅为静态预检，不冒充GM运行验收",
+    "未验实体手机或平台真实广告"
+  ]
+}

@@ -190,3 +190,11 @@ UiPrefab是第18张表。config:export同步Prefab内I18预览与ArtFrame切片�
 新增StaffVisual.xlsx，字段id/key/staffKey/level/branchKey/battleImageKey/portraitImageKey/spriteScale，共32条。基础1/2级与所有进化必须完整；分支归属、StaffForm图片一致性、资源、重复槽位与尺寸校验。UiLayout新增fontPath，经导表编译为TTFFont；238个Label统一字体。Global新增星星资源键、尺寸/间距/偏移。原始源PNG、字体与许可/子集签名入库；check-font检查缺字，新增I18字符须先运行tools/art/export-font.py，再正常导表。共28张运行表。技术边界与验证见UI_ROUNDED_SUPPLY_AND_STAFF.md。
 
 校验器源码签名先把CRLF规范成LF，再计算SHA；Git统一LF与Windows作者工具输出CRLF都使用同一签名。实际算法修改仍必须重新生成validator，不能仅改签名。
+
+## 1.7.4 图鉴滚动与局外余额
+
+- UiLayout继续为唯一布局原表，记录用户41e495a确认的首页和图鉴标题页签位置。图鉴ScrollViewport/Content/RowTemplate统一三列模板，行距、台面、肖像、姓名牌和文字从原始表导出；删除旧分页节点。
+- Global.collectionScrollPadding为底部滚动留白，collectionWheelScale为滚轮事件换算系数；触摸沿用touchTravelTolerance。校验前者非负、后者大于0。
+- Global.walletSaveKey和walletInitialCoins管理局外钱包，初始值必须是非负安全整数，存储键通过协议字符校验。I18.ui.homeGold只格式化余额，禁止读取战斗金币、当前耐久或图鉴数量填充首页资产。
+- 本轮钱包仅有读取和安全回退，商品解锁、售卖、领取、购买与首通迁移待方案确认；不要为尚未实施的经济逻辑伪造存档数据。
+- 运行view和工程启动分辨率改为390×693.68，与GameConfig既有逻辑坐标一致。750×1334仍为原始效果图比例；两者为引擎坐标技术常量，不是业务配置。88设计像素热区、24设计像素动态字下限按390/750换算，以保持屏幕中的原尺寸。分辨率改变后更新Label纹理属于引擎采样流程，不写成可调战斗数值。

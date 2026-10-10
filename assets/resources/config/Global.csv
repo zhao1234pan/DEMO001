@@ -2,7 +2,7 @@ id,key,type,value,note
 1,gameName,string,game.name,游戏名I18键
 6,maxLevels,float,20,当前关卡上限
 7,rewardAdUnitId,string,replace-with-douyin-ad-unit-id,抖音激励视频广告位
-8,version,string,1.7.3,客户端版本
+8,version,string,1.7.4,客户端版本
 9,upgradeDamage,float,0.52,升级伤害增幅
 10,upgradeRange,float,0.08,升级射程增幅
 11,upgradeRate,float,0.12,升级攻速增幅
@@ -42,3 +42,7 @@ id,key,type,value,note
 45,staffLevelStarSize,float,7.5,等级星星逻辑尺寸
 46,staffLevelStarGap,float,8.8,等级星星中心间距
 47,staffLevelStarOffsetY,float,17.5,等级星星相对塔位纵向偏移
+48,collectionScrollPadding,float,44,图鉴列表底部留白，逻辑像素
+49,collectionWheelScale,float,0.1,鼠标滚轮位移系数，与引擎滚动方向一致
+50,walletSaveKey,string,night_store_wallet_gold_v1,局外金币独立存储，不迁移战斗金币或收录数
+51,walletInitialCoins,float,0,局外金币初始值；商品经营尚未实装

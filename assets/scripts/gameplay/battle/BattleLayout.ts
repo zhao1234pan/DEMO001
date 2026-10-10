@@ -27,6 +27,6 @@ export function computeBattleLayout(width: number, height: number, safe: HitRect
   return {
     scale, centerX: (left + right - width) / 2, centerY: (bottom + top - height) / 2,
     top: -extraHeight / 2, bottom: boardHeight + extraHeight / 2,
-    hitSize: Math.max(BATTLE_UI.minimumHit, 88 / scale),
+    hitSize: Math.max(BATTLE_UI.minimumHit, 88 * boardWidth / 750 / scale),
   };
 }

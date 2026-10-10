@@ -1,10 +1,12 @@
+import { CollectionScrollState } from "./CollectionScrollState";
+import { readWalletCoins } from "../services/PlayerWallet";
 import { UiSkin } from "./UiSkin";
 import { UiRoute } from "./UiRoute";
 import { PngSurface } from "./PngSurface";
 import { loadoutRule, loadoutCandidates, requiredLoadoutSize, readLoadout, validLoadout, defaultLoadout, staffRole, levelPreview, bossWaveText } from "../gameplay/battle/LevelLoadout";
 import { TOWER_CONFIG, TowerKind } from "../gameplay/battle/GameConfig";
 import { evolutionChoices, staffVisual } from "../gameplay/battle/StaffEvolution";
-import { Color, Label, Node, Sprite, UITransform } from "cc";
+import { Color, instantiate, Label, Node, Sprite, UITransform } from "cc";
 import { globalString, globalNumber, text } from "../config/ConfigTables";
 import { GAME_CONFIG } from "../gameplay/battle/GameConfig";
 import { getLevelConfig } from "../gameplay/battle/LevelConfig";
@@ -37,14 +39,15 @@ export class PrefabGameMenuView {
   private readonly platform = new PlatformSettings();
   private readonly preparationSlots=new Map<Node,{x:number;y:number}>();
   private readonly preparationGeometry=new Map<Node,{y:number;height:number}>();
-  private readonly collectionSlotPositions=new Map<Node,{x:number;y:number}>();
+  private readonly collectionRows: Node[] = [];
+  private readonly collectionScroll = new CollectionScrollState();
+  private focusBoss = false;
   private page: MenuPage = "home";
   get isLandingPage():boolean{return this.page==="home"&&!this.dialog;}
   private tab: CollectionTab = "staff";
   private levelPage = 0;
   private detailLevel = 1;
   private detailBaseLevel = 1;
-  private collectionPage = 0;
   private unlocked = 1;
   private dialog: Dialog | null = null;
   private dirty = true;
@@ -63,7 +66,6 @@ export class PrefabGameMenuView {
     }
     for (const key of ["notice", "detail"]) { const node = assets.create(key, uiNode(this.root, "Dialogs")); this.dialogs.set(key, node); node.active = false; }
     for (const slot of uiNode(this.pages.get("levels")!, "Cards").children) this.levelCards.push(assets.create("level_card", slot));
-    for (const slot of uiNode(this.pages.get("collection")!, "Cards").children){this.collectionCards.push(assets.create("collection_card",slot));this.collectionSlotPositions.set(slot,{x:slot.position.x,y:slot.position.y});}
     for(const slot of uiNode(this.pages.get("loadout")!, "Candidates").children)this.loadoutCards.push(assets.create("loadout_card",slot));
     for(const slot of uiNode(this.pages.get("challenge_loadout")!,"Candidates").children)this.challengeLoadoutCards.push(assets.create("challenge_staff_card",slot));
     for(const key of ['loadout','challenge_loadout'] as MenuPage[]){const page=this.pages.get(key)!;for(const slot of uiNode(page,'Candidates').children)this.preparationSlots.set(slot,{x:slot.position.x,y:slot.position.y});for(const nodePath of ['Panel','Panel/Surface','Hint','Start']){const n=uiNode(page,nodePath);this.preparationGeometry.set(n,{y:n.position.y,height:n.getComponent(UITransform)!.height});}}
@@ -73,15 +75,15 @@ export class PrefabGameMenuView {
   show(unlocked: number, page: MenuPage = "home", focusLevel = unlocked): void {
     this.navigationRevision++; this.unlocked = getLevelConfig(unlocked).id; this.collection.refresh(this.unlocked);
     this.page = page; this.levelPage = Math.floor((getLevelConfig(focusLevel).id - 1) / this.levelCards.length);
-    this.dialog = null; this.active = true; this.root.active = true; this.dirty = true;
+    this.dialog = null; this.collectionScroll.end(); this.active = true; this.root.active = true; this.dirty = true;
   }
   showPreparation(unlocked:number,id:number):void {
     this.show(unlocked,getLevelConfig(id).mode==="challenge"?"challenge_loadout":"loadout",id);this.preparationId=id;this.selection=readLoadout(id,unlocked);this.replacementSlot=-1;this.selectionHint="";
   }
   showCollection(unlocked: number, tab: CollectionTab): void {
-    this.tab = tab==="bosses"?"enemies":tab; this.collectionPage = tab==="bosses"?1:0; this.show(unlocked, "collection");
+    this.tab = tab==="bosses"?"enemies":tab; this.focusBoss = tab === "bosses"; this.collectionScroll.set(0); this.show(unlocked, "collection");
   }
-  hide(): void { if (!this.active) return; this.navigationRevision++; this.active = false; this.root.active = false; this.dialog = null; }
+  hide(): void { if (!this.active) return; this.navigationRevision++; this.active = false; this.root.active = false; this.dialog = null; this.collectionScroll.end(); }
   render(unlocked: number, top: number, bottom: number): void {
     if (!this.active || this.disposed) return;
     if (this.top !== top || this.bottom !== bottom) {
@@ -118,6 +120,7 @@ export class PrefabGameMenuView {
     const actions = this.dialog ? this.modalActions : this.actions;
     for (const [node, action] of actions) {
       if (!node.activeInHierarchy) continue;
+      if (this.page === "collection" && !this.dialog && this.collectionCards.includes(node) && !this.inCollectionViewport(x, y)) continue;
       const rect = uiRect(node, this.parent, W, H);
       if (x >= rect.x && x <= rect.x + rect.width && y >= rect.y && y <= rect.y + rect.height) {
         this.audio.play("build", 0.24); action(); this.dirty = true; return;
@@ -126,11 +129,11 @@ export class PrefabGameMenuView {
   }
   destroy(): void { this.disposed = true; this.active = false; this.actions.clear(); this.modalActions.clear(); this.root.destroy(); }
   private bind(root: Node, path: string, action: () => void, modal = false): void { (modal ? this.modalActions : this.actions).set(path ? uiNode(root, path) : root, action); }
-  private navigate(page: MenuPage): void { this.navigationRevision++; this.page = page; this.dialog = null; this.dirty = true; }
+  private navigate(page: MenuPage): void { this.navigationRevision++; this.page = page; this.dialog = null; this.collectionScroll.end(); if(page==="collection")this.collectionScroll.set(0); this.dirty = true; }
   private notice(title: string, content: string): void { this.dialog = { kind: "notice", title, text: content }; this.dirty = true; }
   private home(page: Node): void {
     uiText(page, "Brand", text("ui.redesign.homeTitle"));
-    uiText(page,"Progress",text("ui.redesign.progress",this.unlocked,GAME_CONFIG.maxLevels));uiText(page,"CollectionCount",text("ui.redesign.collection",COLLECTION_ENTRIES.filter(e=>this.collection.isUnlocked(e)).length));
+    uiText(page,"Progress",text("ui.redesign.progress",this.unlocked,GAME_CONFIG.maxLevels));uiText(page,"CollectionCount",text("ui.homeGold",readWalletCoins()));
     this.bind(page,"Store",()=>this.notice(text("ui.redesign.shop"),text("ui.redesign.unavailable")));this.bind(page,"Ranking",()=>this.notice(text("ui.redesign.rank"),text("ui.redesign.unavailable")));
     uiText(page, "Adventure/Note", text("ui.GameMenuView.004", this.unlocked, GAME_CONFIG.maxLevels));
     this.bind(page, "Settings", () => this.navigate("settings"));
@@ -197,31 +200,80 @@ export class PrefabGameMenuView {
     const [x,y]=project(level.pathPoints[level.pathPoints.length-1]);const marker=uiNode(route,"ShopMarker");marker.setPosition(x,y);marker.setSiblingIndex(route.children.length-1);
   }
 
+  private inCollectionViewport(x: number, y: number): boolean {
+    if (!this.active || this.disposed || this.page !== "collection" || this.dialog) return false;
+    const rect = uiRect(uiNode(this.pages.get("collection")!, "ScrollViewport"), this.parent, W, H);
+    return x >= rect.x && x <= rect.x + rect.width && y >= rect.y && y <= rect.y + rect.height;
+  }
+  private collectionViewportScale(): number {
+    const viewport = uiNode(this.pages.get("collection")!, "ScrollViewport");
+    return uiRect(viewport, this.parent, W, H).height / viewport.getComponent(UITransform)!.height;
+  }
+  beginScroll(x: number, y: number): void {
+    this.collectionScroll.end();
+    if (this.inCollectionViewport(x, y)) this.collectionScroll.begin(y / this.collectionViewportScale());
+  }
+  moveScroll(x: number, y: number): void {
+    if (!this.active || this.page !== "collection" || this.dialog) return;
+    this.collectionScroll.move(y / this.collectionViewportScale(), globalNumber("touchTravelTolerance") / this.collectionViewportScale());
+    this.positionCollectionContent();
+  }
+  endScroll(): void { this.collectionScroll.end(); }
+  wheelScroll(x: number, y: number, amount: number): void {
+    if (!this.inCollectionViewport(x, y)) return;
+    this.collectionScroll.end();
+    this.collectionScroll.set(this.collectionScroll.offset - amount * globalNumber("collectionWheelScale"));
+    this.positionCollectionContent();
+  }
+  private positionCollectionContent(): void {
+    const page = this.pages.get("collection")!, viewport = uiNode(page, "ScrollViewport");
+    const content = uiNode(viewport, "Content");
+    content.setPosition(content.position.x, viewport.getComponent(UITransform)!.height / 2 + this.collectionScroll.offset);
+  }
   private collectionPageView(page: Node): void {
     for (const tab of COLLECTION_TABS) {
       const name = "Tab-" + tab.id, selected = this.tab === tab.id;
       uiNode(page, name + "/Selected").active = selected; uiNode(page, name + "/Normal").active = !selected;
       uiText(page, name + "/Text", tab.label);
-      this.bind(page, name, () => { this.tab = tab.id; this.collectionPage = 0; });
+      this.bind(page, name, () => { this.tab = tab.id; this.focusBoss = false; this.collectionScroll.end(); this.collectionScroll.set(0); });
     }
-    const entries = COLLECTION_ENTRIES.filter(item => item.tab === this.tab || this.tab==="enemies"&&item.tab==="bosses"), firstBoss=entries.findIndex(e=>e.tab==="bosses"),count=this.tab==="enemies"&&firstBoss>0?Math.min(firstBoss,this.collectionCards.length):this.collectionCards.length;
-    const pages = Math.max(1, Math.ceil(entries.length / count)); this.collectionPage = Math.max(0, Math.min(this.collectionPage, pages - 1));
-    this.collectionCards.forEach((card, i) => {
-      const original=this.collectionSlotPositions.get(card.parent!)!;card.parent!.setPosition(original.x,original.y);
-      const entry = i<count?entries[this.collectionPage * count + i]:undefined; card.active = Boolean(entry); if (!entry) return;
-      const unlocked = this.collection.isUnlocked(entry);
-      uiNode(card, "Unlocked").active = unlocked; uiNode(card, "Locked").active = !unlocked;
-      uiNode(card, "LockedPortraitBackground").active = !unlocked;
-      this.assets.bindImage(uiNode(card, "Portrait"), "menu:" + entry.imageKey, !unlocked);
-      uiText(card, "Name", unlocked ? entry.name : text("ui.unknown"));
-      this.bind(card, "", () => { this.detailLevel = 1; this.detailBaseLevel = 1; this.dialog = { kind: "entry", entry }; });
+    const entries = COLLECTION_ENTRIES.filter(item => item.tab === this.tab || this.tab === "enemies" && item.tab === "bosses");
+    const viewport = uiNode(page, "ScrollViewport"), content = uiNode(viewport, "Content"), template = uiNode(content, "RowTemplate");
+    const slots = uiNode(template, "Cards").children, columns = slots.length, pitch = template.getComponent(UITransform)!.height;
+    const needed = Math.ceil(entries.length / columns), viewportHeight = viewport.getComponent(UITransform)!.height;
+    while (this.collectionRows.length < needed) {
+      const row = instantiate(template); row.name = "Row" + this.collectionRows.length; content.addChild(row);
+      this.assets.bindTree(row); this.collectionRows.push(row);
+      for (const slot of uiNode(row, "Cards").children) this.collectionCards.push(this.assets.create("collection_card", slot));
+    }
+    this.collectionRows.forEach((row, index) => {
+      row.active = index < needed;
+      row.setPosition(template.position.x, template.position.y - pitch * index);
+      const rowSlots = uiNode(row, "Cards").children, count = Math.min(columns, entries.length - index * columns);
+      const center = count > 0 ? (slots[0].position.x + slots[count - 1].position.x) / 2 : 0;
+      const shelf = uiNode(row, "Shelf"), full = uiNode(template, "Shelf").getComponent(UITransform)!.width;
+      // 两人行稍收短，单人行只保留本人的台面；姓名牌始终在立绘前方。
+      shelf.getComponent(UITransform)!.width = count === 1 ? rowSlots[0].getComponent(UITransform)!.width : full - (columns - count) * (slots[1].position.x - slots[0].position.x) / columns;
+      rowSlots.forEach((slot, column) => {
+        slot.setPosition(slots[column].position.x - center, slots[column].position.y);
+        const card = this.collectionCards[index * columns + column], entry = entries[index * columns + column];
+        card.active = index < needed && column < count; if (!card.active) return;
+        const unlocked = this.collection.isUnlocked(entry);
+        uiNode(card, "Unlocked").active = unlocked; uiNode(card, "Locked").active = !unlocked;
+        uiNode(card, "LockedPortraitBackground").active = !unlocked;
+        this.assets.bindImage(uiNode(card, "Portrait"), "menu:" + entry.imageKey, !unlocked);
+        uiText(card, "Name", unlocked ? entry.name : text("ui.unknown"));
+        this.bind(card, "", () => { this.collectionScroll.end(); this.detailLevel = 1; this.detailBaseLevel = 1; this.dialog = { kind: "entry", entry }; });
+      });
     });
-    // 未填满的一行按预制体列位置居中，不在代码重复保存美术坐标。
-    const grouped=new Map<number,Node[]>();for(const card of this.collectionCards){const y=this.collectionSlotPositions.get(card.parent!)!.y;const group=grouped.get(y)??[];group.push(card);grouped.set(y,group);}
-    for(const group of Array.from(grouped.values())){const active=group.filter(n=>n.active);if(!active.length)continue;const shift=(group[0].parent!.position.x+group[group.length-1].parent!.position.x-active[0].parent!.position.x-active[active.length-1].parent!.position.x)/2;for(const card of active)card.parent!.setPosition(card.parent!.position.x+shift,card.parent!.position.y);}
-    uiText(page, "Count", text("ui.GameMenuView.026", entries.filter(e => this.collection.isUnlocked(e)).length, entries.length));
-    let shelf=0;for(const group of Array.from(grouped.values()))uiNode(page,'ShelfRow'+shelf++).active=group.some(n=>n.active);
-    this.pagination(page, this.collectionPage, pages, () => { this.collectionPage--; }, () => { this.collectionPage++; });
+    const contentHeight = Math.max(viewportHeight, needed * pitch + globalNumber("collectionScrollPadding"));
+    content.getComponent(UITransform)!.height = contentHeight;
+    this.collectionScroll.resize(contentHeight, viewportHeight);
+    if (this.focusBoss) {
+      const index = entries.findIndex(entry => entry.tab === "bosses");
+      this.collectionScroll.set(Math.max(0, Math.floor(index / columns)) * pitch); this.focusBoss = false;
+    }
+    this.positionCollectionContent();
   }
   /** 冒险和挑战共用勾选式店员选择；候选范围与人数仍由关卡表决定。 */
   private preparation(page:Node):void {
