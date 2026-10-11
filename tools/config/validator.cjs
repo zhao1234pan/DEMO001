@@ -11,7 +11,7 @@ exports.globalString = globalString;
 exports.text = text;
 exports.parseCsv = parseCsv;
 exports.installConfigs = installConfigs;
-exports.TABLE_NAMES = ["Global", "I18", "Staff", "Enemy", "Theme", "Map", "MapPoint", "Spot", "Obstacle", "Level", "Wave", "WaveGroup", "Collection", "Audio", "Decoration", "ArtFrame", "UiPrefab", "Tutorial", "StaffBranch", "StaffForm", "LevelLoadout", "ChallengeRule", "ChallengePerk", "VisualSkin", "Goods", "ArtCut", "UiLayout", "StaffVisual", "ShopRule", "ShopGoods", "ShopStaff", "ShopUpgrade", "ShopCustomer", "ShopPoint", "ChallengeTopic"];
+exports.TABLE_NAMES = ["Global", "I18", "Staff", "Enemy", "Theme", "Map", "MapPoint", "Spot", "Obstacle", "Level", "Wave", "WaveGroup", "Collection", "Audio", "Decoration", "ArtFrame", "UiPrefab", "Tutorial", "StaffBranch", "StaffForm", "LevelLoadout", "ChallengeRule", "ChallengePerk", "VisualSkin", "Goods", "ArtCut", "UiLayout", "StaffVisual", "ShopRule", "ShopGoods", "ShopStaff", "ShopUpgrade", "ShopCustomer", "ShopPoint", "ChallengeTopic", "ShopStage", "ShopResearch", "ShopUniform"];
 let data = Object.create(null);
 let ready = false;
 let byKey = Object.create(null);
@@ -172,7 +172,7 @@ function installConfigs(sources) {
     }
     // 经营配置按客户端协议校验，避免价格、升级链或解锁缺行导致存档错误。
     const shopRules = new Map(next.ShopRule.map(r => [r.key, r.value]));
-    for (const key of ["welcomeCoins", "offlineSeconds", "tickSeconds", "arrivalSeconds", "checkoutSeconds", "restockSeconds", "browseSeconds", "enterSeconds", "exitSeconds", "walkRestockSeconds", "initialShelves", "maxShelves", "shelfCapacity", "customerLimit", "tipCoins", "saveSeconds", "visibleStaff", "staffRotateSeconds", "uiRefreshSeconds", "coinLimit", "customerWalkSeconds", "workerWalkSeconds", "walkBobFrequency", "idleBobFrequency", "pickupSeconds", "saleFlightSeconds"]) {
+    for (const key of ["welcomeCoins", "offlineSeconds", "tickSeconds", "arrivalSeconds", "checkoutSeconds", "restockSeconds", "browseSeconds", "enterSeconds", "exitSeconds", "walkRestockSeconds", "initialShelves", "maxShelves", "shelfCapacity", "customerLimit", "tipCoins", "saveSeconds", "visibleStaff", "uiRefreshSeconds", "coinLimit", "customerWalkSeconds", "workerWalkSeconds", "walkBobFrequency", "idleBobFrequency", "pickupSeconds", "saleFlightSeconds"]) {
         const n = Number(shopRules.get(key));
         if (!Number.isFinite(n) || n <= 0)
             throw new Error("Invalid shop rule: " + key);
@@ -182,13 +182,13 @@ function installConfigs(sources) {
         if (!Number.isFinite(n) || n < 0 || n > 1)
             throw new Error("Invalid shop fraction: " + key);
     }
-    if (!/^[-a-zA-Z0-9_]+$/.test((_a = shopRules.get("saveKey")) !== null && _a !== void 0 ? _a : "") || Number(shopRules.get("tickSeconds")) !== 0.25 || Number(shopRules.get("initialShelves")) !== 2 || Number(shopRules.get("maxShelves")) !== 4 || Number(shopRules.get("customerLimit")) !== 6 || Number(shopRules.get("visibleStaff")) > 4)
+    if (!/^[-a-zA-Z0-9_]+$/.test((_a = shopRules.get("saveKey")) !== null && _a !== void 0 ? _a : "") || Number(shopRules.get("tickSeconds")) !== 0.25 || Number(shopRules.get("initialShelves")) !== 2 || Number(shopRules.get("maxShelves")) !== 8 || Number(shopRules.get("customerLimit")) !== 12 || Number(shopRules.get("visibleStaff")) !== 8)
         throw new Error("Invalid shop protocol capacity");
     for (const key of ["welcomeCoins", "offlineSeconds", "tipCoins", "visibleStaff", "shelfCapacity", "coinLimit"]) {
         if (!Number.isSafeInteger(Number(shopRules.get(key))))
             throw new Error("Invalid shop integer: " + key);
     }
-    positive("ShopGoods", ["price"]);
+    positive("ShopGoods", ["price", "demand", "attraction"]);
     positive("ShopGoods", ["unlockAfter"], true);
     for (const row of next.ShopGoods) {
         requireRef("Goods", "key", row.goodsKey, "ShopGoods");
@@ -201,6 +201,9 @@ function installConfigs(sources) {
         throw new Error("Missing shop goods");
     positive("ShopStaff", ["cost", "value"], true);
     for (const row of next.ShopStaff) {
+        requireRef("I18", "key", row.roleKey, "ShopStaff");
+        if (!["cashier", "cold", "pack", "guide", "tidy", "hot", "porter", "welcome"].includes(row.role))
+            throw new Error("Invalid shop role");
         requireRef("Staff", "key", row.staffKey, "ShopStaff");
         requireRef("I18", "key", row.descriptionKey, "ShopStaff");
         if (!["base", "cold", "double", "tip", "checkout", "hot", "restock", "arrival"].includes(row.effect) || !Number.isInteger(numeric(row, "cost")) || numeric(row, "value") > 1)
@@ -209,7 +212,7 @@ function installConfigs(sources) {
     if (next.ShopStaff.length !== next.Staff.length || new Set(next.ShopStaff.map(r => r.staffKey)).size !== next.Staff.length || next.ShopStaff.filter(r => r.cost === "0").length !== 1)
         throw new Error("Missing shop staff");
     positive("ShopUpgrade", ["tier", "cost", "value"]);
-    for (const group of ["checkout", "restock", "shelves"]) {
+    for (const group of ["checkout", "restock", "shelves", "capacity", "attraction", "service"]) {
         const list = next.ShopUpgrade.filter(r => r.group === group).sort((a, b) => Number(a.tier) - Number(b.tier));
         if (!list.length || list.some((r, i) => Number(r.tier) !== i + 1))
             throw new Error("Invalid shop upgrade sequence");
@@ -217,9 +220,61 @@ function installConfigs(sources) {
     for (const row of next.ShopUpgrade) {
         for (const field of ["nameKey", "descriptionKey"])
             requireRef("I18", "key", row[field], "ShopUpgrade");
-        if (!["checkout", "restock", "shelves"].includes(row.group) || !Number.isInteger(numeric(row, "tier")) || !Number.isInteger(numeric(row, "cost")) || (row.group === "shelves" && (numeric(row, "value") > Number(shopRules.get("maxShelves")) || numeric(row, "value") !== numeric(row, "tier") + Number(shopRules.get("initialShelves")))))
+        if (!["checkout", "restock", "shelves", "capacity", "attraction", "service"].includes(row.group) || !Number.isInteger(numeric(row, "tier")) || !Number.isInteger(numeric(row, "cost")) || (row.group === "shelves" && (numeric(row, "value") > Number(shopRules.get("maxShelves")) || ![3, 4, 6, 8].includes(numeric(row, "value")))))
             throw new Error("Invalid shop upgrade");
     }
+    for (const r of next.ShopUpgrade) {
+        requireRef("VisualSkin", "key", r.imageKey, "ShopUpgrade");
+        if (!Number.isSafeInteger(numeric(r, "minSold")) || !Number.isSafeInteger(numeric(r, "minShelves")) || (["capacity", "shelves"].includes(r.group) && !Number.isSafeInteger(numeric(r, "value"))))
+            throw new Error("Invalid upgrade integer");
+    }
+    positive("ShopUpgrade", ["minShelves"]);
+    positive("ShopUpgrade", ["minSold"], true);
+    positive("ShopStage", ["shelves", "checkouts", "checkoutCap", "restockCap", "capacityCap", "attractionCap", "serviceCap"]);
+    if (next.ShopStage.length !== 4 || next.ShopStage.some((r, i) => numeric(r, "shelves") !== [2, 4, 6, 8][i] || numeric(r, "checkouts") !== (i < 2 ? 1 : 2)))
+        throw new Error("Invalid shop stages");
+    for (const r of next.ShopStage) {
+        requireRef("I18", "key", r.nameKey, "ShopStage");
+        for (const g of ["checkout", "restock", "capacity", "attraction", "service"])
+            if (!next.ShopUpgrade.some(u => u.group === g && u.tier === r[g + "Cap"]))
+                throw new Error("Invalid stage cap");
+    }
+    positive("ShopResearch", ["tier", "cost", "priceRatio", "minShelves"]);
+    for (const g of next.ShopGoods) {
+        const rs = next.ShopResearch.filter(r => r.goodsKey === g.key).sort((a, b) => Number(a.tier) - Number(b.tier));
+        if (rs.length !== Number(shopRules.get("researchMax")) || rs.some((r, i) => numeric(r, "tier") !== i + 1 || !Number.isSafeInteger(numeric(r, "cost")) || numeric(r, "priceRatio") <= 1 || ![2, 4, 6, 8].includes(numeric(r, "minShelves"))))
+            throw new Error("Invalid research sequence");
+    }
+    for (const r of next.ShopResearch)
+        requireRef("ShopGoods", "key", r.goodsKey, "ShopResearch");
+    positive("ShopUniform", ["cost"]);
+    if (new Set(next.ShopUniform.map(r => r.staffKey)).size !== next.ShopStaff.length || next.ShopUniform.some(r => r.key !== r.staffKey || !Number.isSafeInteger(numeric(r, "cost"))))
+        throw new Error("Invalid uniform ownership");
+    if (next.ShopUniform.length !== next.ShopStaff.length)
+        throw new Error("Missing uniforms");
+    for (const r of next.ShopUniform) {
+        requireRef("ShopStaff", "staffKey", r.staffKey, "ShopUniform");
+        requireRef("VisualSkin", "key", r.imageKey, "ShopUniform");
+        requireRef("I18", "key", r.nameKey, "ShopUniform");
+    }
+    for (const key of ["restockTrigger", "serviceMaxChance"]) {
+        if (Number(shopRules.get(key)) > 1)
+            throw new Error("Invalid growth probability");
+    }
+    for (const key of ["restockCarry", "researchMax"]) {
+        if (!Number.isSafeInteger(Number(shopRules.get(key))))
+            throw new Error("Invalid growth integer");
+    }
+    for (const key of ["restockCarry", "restockTrigger", "stockBonusStep", "serviceMaxChance", "packSpeed", "guideSpeed", "tidySpeed", "workerTaskSeconds", "shopRowHeight", "shopViewportHeight", "shopScrollWheel", "researchMax"]) {
+        if (!Number.isFinite(Number(shopRules.get(key))) || Number(shopRules.get(key)) <= 0)
+            throw new Error("Invalid growth rule: " + key);
+    }
+    for (let i = 0; i < 8; i++) {
+        requireRef("ShopPoint", "key", "shelf" + i, "Shop growth");
+        requireRef("ShopPoint", "key", "worker" + i, "Shop growth");
+    }
+    for (const k of ["checkout2", "cashier2", "stockroom", "pack", "welcome"])
+        requireRef("ShopPoint", "key", k, "Shop work point");
     positive("ShopCustomer", ["weight"]);
     positive("ShopCustomer", ["doubleChance", "tipChance"], true);
     for (const row of next.ShopCustomer) {

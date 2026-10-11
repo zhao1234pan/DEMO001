@@ -10,7 +10,7 @@ import { loadoutRule, loadoutCandidates, requiredLoadoutSize, readLoadout, valid
 import { TOWER_CONFIG, TowerKind } from "../gameplay/battle/GameConfig";
 import { evolutionChoices, staffVisual } from "../gameplay/battle/StaffEvolution";
 import { Color, instantiate, Label, Node, Sprite, UITransform } from "cc";
-import { globalString, globalNumber, text } from "../config/ConfigTables";
+import { globalString, globalNumber, text, rows } from "../config/ConfigTables";
 import { GAME_CONFIG } from "../gameplay/battle/GameConfig";
 import { getLevelConfig } from "../gameplay/battle/LevelConfig";
 import { levelTheme } from "../gameplay/battle/LevelTheme";
@@ -45,6 +45,7 @@ export class PrefabGameMenuView {
   private readonly preparationSlots=new Map<Node,{x:number;y:number}>();
   private readonly preparationGeometry=new Map<Node,{y:number;height:number}>();
   private readonly collectionRows: Node[] = [];
+  private detailUniform=false;
   private readonly collectionScroll = new CollectionScrollState();
   private focusBoss = false;
   private page: MenuPage = "home";
@@ -134,6 +135,7 @@ export class PrefabGameMenuView {
     const actions = this.dialog ? this.modalActions : this.actions;
     for (const [node, action] of actions) {
       if (!node.activeInHierarchy) continue;
+      if(this.page==="shop"&&!this.shop.allowPress(node,x,y,this.parent,W,H))continue;
       if (this.page === "collection" && !this.dialog && this.collectionCards.includes(node) && !this.inCollectionViewport(x, y)) continue;
       const rect = uiRect(node, this.parent, W, H);
       if (x >= rect.x && x <= rect.x + rect.width && y >= rect.y && y <= rect.y + rect.height) {
@@ -224,16 +226,19 @@ export class PrefabGameMenuView {
     return uiRect(viewport, this.parent, W, H).height / viewport.getComponent(UITransform)!.height;
   }
   beginScroll(x: number, y: number): void {
+    if(this.page==="shop"){this.shop.beginScroll(x,y,this.parent,W,H);return;}
     this.collectionScroll.end();
     if (this.inCollectionViewport(x, y)) this.collectionScroll.begin(y / this.collectionViewportScale());
   }
   moveScroll(x: number, y: number): void {
+    if(this.page==="shop"){this.shop.moveScroll(y,this.parent,W,H);return;}
     if (!this.active || this.page !== "collection" || this.dialog) return;
     this.collectionScroll.move(y / this.collectionViewportScale(), globalNumber("touchTravelTolerance") / this.collectionViewportScale());
     this.positionCollectionContent();
   }
-  endScroll(): void { this.collectionScroll.end(); }
+  endScroll(): void { this.collectionScroll.end();this.shop.endScroll(); }
   wheelScroll(x: number, y: number, amount: number): void {
+    if(this.page==="shop"){this.shop.wheelScroll(x,y,amount,this.parent,W,H);return;}
     if (!this.inCollectionViewport(x, y)) return;
     this.collectionScroll.end();
     this.collectionScroll.set(this.collectionScroll.offset - amount * globalNumber("collectionWheelScale"));
@@ -277,7 +282,7 @@ export class PrefabGameMenuView {
         uiNode(card, "LockedPortraitBackground").active = !unlocked;
         this.assets.bindImage(uiNode(card, "Portrait"), "menu:" + entry.imageKey, !unlocked);
         uiText(card, "Name", unlocked ? entry.name : text("ui.unknown"));
-        this.bind(card, "", () => { this.collectionScroll.end(); this.detailLevel = 1; this.detailBaseLevel = 1; this.dialog = { kind: "entry", entry }; });
+        this.bind(card, "", () => { this.collectionScroll.end(); this.detailLevel = 1; this.detailBaseLevel = 1; this.detailUniform=false; this.dialog = { kind: "entry", entry }; });
       });
     });
     const contentHeight = Math.max(viewportHeight, needed * pitch + globalNumber("collectionScrollPadding"));
@@ -322,31 +327,34 @@ export class PrefabGameMenuView {
     this.bind(page, "Close", () => { this.dialog = null; }, true);
     if (dialog.kind === "notice") { uiText(page, "Title", dialog.title); uiText(page, "Body", dialog.text); return; }
     const entry=dialog.entry,trial=(this.page==="loadout"||this.page==="challenge_loadout")&&getLevelConfig(this.preparationId).mode==="challenge"&&Boolean(entry.staffKind),ownerKnown=trial||this.collection.isUnlocked(entry),choices=entry.staffKind?evolutionChoices(entry.staffKind):[];
-    const evolution=choices.length&&this.detailLevel>1?choices[this.detailLevel-2]:undefined;
-    const unlocked=ownerKnown&&(trial||!evolution||this.collection.isEvolutionUnlocked(evolution.key));
+    const uniform=entry.staffKind?rows("ShopUniform").find(r=>r.staffKey===entry.staffKind):undefined,uniformOwned=Boolean(uniform&&ShopService.shared.state?.uniforms.includes(uniform.key));
+    const evolution=!this.detailUniform&&choices.length&&this.detailLevel>1?choices[this.detailLevel-2]:undefined;
+    const unlocked=ownerKnown&&(this.detailUniform?uniformOwned:trial||!evolution||this.collection.isEvolutionUnlocked(evolution.key));
     uiText(page,"Title",unlocked?(evolution?text("ui.evolution.name",entry.name,evolution.name):entry.name):text("ui.evolution.locked"));
     const portrait = entry.staffKind ? staffVisual(entry.staffKind, evolution ? evolution.toLevel : this.detailBaseLevel, evolution?.key).portraitImageKey : entry.imageKey;
-    this.assets.bindImage(uiNode(page,"Portrait"),"menu:"+portrait,!unlocked);
+    this.assets.bindImage(uiNode(page,"Portrait"),this.detailUniform&&uniform?"skin:"+uniform.imageKey:"menu:"+portrait,!unlocked);
+    const uniformButton=uiNode(page,"Uniform");uniformButton.active=ownerKnown&&Boolean(uniform)&&!trial;if(uniformButton.active){uiText(uniformButton,"Text",text("shop.uniformDetail",uniformOwned?1:0));this.bind(page,"Uniform",()=>{this.detailUniform=!this.detailUniform;},true);}
     uiNode(page,"Known").active=unlocked;uiNode(page,"Unknown").active=!unlocked;
-    uiText(page,"Unknown/Hint",evolution?text("ui.evolution.lockedHint"):entry.unlockHint);
+    uiText(page,"Unknown/Hint",this.detailUniform?text("shop.uniformDescription"):evolution?text("ui.evolution.lockedHint"):entry.unlockHint);
     for(const level of [1,2,3]){
       const key="Level"+level,button=uiNode(page,key);button.active=ownerKnown&&Boolean(entry.staffKind);
       if(!button.active)continue;
       const e=choices[level-2],known=trial||!e||this.collection.isEvolutionUnlocked(e.key);
       const title=choices.length?(level===1?text("ui.evolution.base"):known?e.name:text("ui.evolution.locked")):text(["ui.opt.staffLevel1","ui.opt.staffLevel2","ui.opt.staffLevel3"][level-1]);
       uiText(button,"Text",title);this.assets.bindImage(uiNode(button,"Icon"),"menu:"+(e?.imageKey??entry.imageKey),!known);
-      uiColor(button,"Surface",this.detailLevel===level?"#96bb77":"#efe7c8");this.bind(page,key,()=>{this.detailLevel=level;},true);
+      uiColor(button,"Surface",this.detailLevel===level?"#96bb77":"#efe7c8");this.bind(page,key,()=>{this.detailLevel=level;this.detailUniform=false;},true);
     }
     for(const level of [1,2]){
       const button=uiNode(page,"Base"+level);button.active=ownerKnown&&choices.length>0&&this.detailLevel===1;
-      if(button.active){uiText(button,"Text",text("ui.evolution.base"+level));uiColor(button,"Surface",this.detailBaseLevel===level?"#96bb77":"#efe7c8");this.bind(page,"Base"+level,()=>{this.detailBaseLevel=level;},true);}
+      if(button.active){uiText(button,"Text",text("ui.evolution.base"+level));uiColor(button,"Surface",this.detailBaseLevel===level?"#96bb77":"#efe7c8");this.bind(page,"Base"+level,()=>{this.detailBaseLevel=level;this.detailUniform=false;},true);}
     }
     if(unlocked){
-      uiText(page,"Known/Category",evolution?text("ui.evolution.profile"):entry.category);
-      uiText(page,"Known/Traits",evolution?evolutionTraits(evolution):entry.traits);
-      const stats=evolution?evolutionStats(evolution):entry.staffKind?staffStats(entry.staffKind,choices.length?this.detailBaseLevel:this.detailLevel):entry.stats;
+      uiText(page,"Known/Category",this.detailUniform?text("shop.uniformOwned"):evolution?text("ui.evolution.profile"):entry.category);
+      uiText(page,"Known/Traits",this.detailUniform?text("shop.uniformDescription"):evolution?evolutionTraits(evolution):entry.traits);
+      const sim=ShopService.shared.simulation;
+      const stats=this.detailUniform?[]:evolution?evolutionStats(evolution):entry.goodsKey?[{label:text("shop.researchLevel",sim?.state.research[entry.goodsKey]??0),value:text("shop.price",sim?.price(entry.goodsKey)??rows("ShopGoods").find(r=>r.key===entry.goodsKey)!.price)},{label:text("shop.soldUnits"),value:String(sim?.state.sales[entry.goodsKey]??0)}]:entry.staffKind?staffStats(entry.staffKind,choices.length?this.detailBaseLevel:this.detailLevel):entry.stats;
       uiNode(page,"Known/Stats").active=false;for(let i=0;i<4;i++)uiNode(page,"Known/Stat"+i).active=i<stats.length;stats.forEach((item,index)=>uiText(page,"Known/Stat"+index,item.label+"\n"+item.value));
-      uiNode(page,"Known/Note").active=false;uiText(page,"Known/Story",evolution?evolution.story:entry.story);
+      uiNode(page,"Known/Note").active=false;uiText(page,"Known/Story",this.detailUniform?text(rows("ShopStaff").find(r=>r.staffKey===entry.staffKind)!.roleKey):evolution?evolution.story:entry.story);
     }
     this.layoutDetail(page,unlocked,ownerKnown&&Boolean(entry.staffKind));
   }
@@ -361,6 +369,7 @@ export class PrefabGameMenuView {
       return node;
     };
     if(staff){rows.push([1,2,3].map(level=>uiNode(page,"Level"+level)));if(uiNode(page,"Base1").active)rows.push([uiNode(page,"Base1"),uiNode(page,"Base2")]);}
+    if(uiNode(page,"Uniform").active)rows.push([uiNode(page,"Uniform")]);
     if (unlocked) {
       rows.push([measured("Known/Category")], [measured("Known/Traits")]);
       for(const paths of [["Known/Stat0","Known/Stat1"],["Known/Stat2","Known/Stat3"]]){const nodes=paths.map(p=>uiNode(page,p)).filter(n=>n.active);if(nodes.length)rows.push(nodes);}

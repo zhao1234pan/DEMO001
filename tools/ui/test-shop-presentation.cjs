@@ -36,5 +36,6 @@ test('补货店员沿中央过道走动且保持目标精度',()=>{const p=contr
 test('收银进度受真实剩余时间约束，未收银时不显示',()=>{const p=controller(),c=customer(1,'checkout'),s=state([c]);c.remaining=1.5;assert.equal(p.customer(c,s).progress,.5);c.phase='queue';assert.equal(p.customer(c,s).progress,-1);});
 test('打开关闭与顾客移除会清理表现缓存，重复帧不改变订单',()=>{const p=controller(),c=customer(1,'queue'),s=state([c]),before=JSON.stringify(s);for(let i=0;i<300;i++)p.customer(c,s);assert.equal(JSON.stringify(s),before);p.prune([]);assert.equal(p.customers.size,0);p.worker(0,points.get('worker0'),1);p.reset();assert.equal(p.workers.size,0);});
 
-test('收银进度填充从左边开始，完整值仍在轨道内',()=>{const page=prefab('shop'),fill=uiNode(page,'Floor/Customer0/CheckoutProgress/Fill'),art=uiNode(fill,'Artwork'),width=art.getComponent(UITransform).width;near(fill.position.x+art.position.x-width/2,-18);near(fill.position.x+art.position.x+width/2,18);});
+test('收银进度填充从左边开始，完整值仍在轨道内',()=>{const page=prefab('shop'),fill=uiNode(page,'Floor/Content/Customer0/CheckoutProgress/Fill'),art=uiNode(fill,'Artwork'),width=art.getComponent(UITransform).width;near(fill.position.x+art.position.x-width/2,-18);near(fill.position.x+art.position.x+width/2,18);});
+test('加速搬运使用真实任务时长，完成时能到达货架',()=>{const p=controller(),base=points.get('worker1'),target=points.get('shelf7');p.worker(1,base,0);p.worker(1,target,1,.5);assert.deepEqual(p.worker(1,target,1.5,.5).position,target);});
 console.log(passed+' 项商店表现模型测试通过');

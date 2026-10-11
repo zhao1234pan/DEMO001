@@ -416,7 +416,9 @@
       "goodsKey": "string",
       "unlockAfter": "int",
       "price": "int",
-      "category": "string"
+      "category": "string",
+      "demand": "float",
+      "attraction": "float"
     }
   },
   "ShopStaff": {
@@ -427,7 +429,9 @@
       "cost": "int",
       "effect": "string",
       "value": "float",
-      "descriptionKey": "string"
+      "descriptionKey": "string",
+      "role": "string",
+      "roleKey": "string"
     }
   },
   "ShopUpgrade": {
@@ -439,7 +443,10 @@
       "cost": "int",
       "value": "float",
       "nameKey": "string",
-      "descriptionKey": "string"
+      "descriptionKey": "string",
+      "minShelves": "int",
+      "minSold": "int",
+      "imageKey": "string"
     }
   },
   "ShopCustomer": {
@@ -473,6 +480,41 @@
       "iconKey": "string",
       "startPerks": "string",
       "unlockAfter": "string"
+    }
+  },
+  "ShopStage": {
+    "fields": {
+      "id": "int",
+      "key": "string",
+      "shelves": "int",
+      "checkouts": "int",
+      "checkoutCap": "int",
+      "restockCap": "int",
+      "capacityCap": "int",
+      "attractionCap": "int",
+      "serviceCap": "int",
+      "nameKey": "string"
+    }
+  },
+  "ShopResearch": {
+    "fields": {
+      "id": "int",
+      "key": "string",
+      "goodsKey": "string",
+      "tier": "int",
+      "cost": "int",
+      "priceRatio": "float",
+      "minShelves": "int"
+    }
+  },
+  "ShopUniform": {
+    "fields": {
+      "id": "int",
+      "key": "string",
+      "staffKey": "string",
+      "cost": "int",
+      "imageKey": "string",
+      "nameKey": "string"
     }
   }
 }

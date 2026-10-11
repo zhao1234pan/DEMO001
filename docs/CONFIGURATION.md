@@ -208,3 +208,7 @@ UiPrefab是第18张表。config:export同步Prefab内I18预览与ArtFrame切片�
 ### 1.8.1 商店视图
 - ShopPoint新增entryLane/checkoutLane，原货架和人物坐标统一为脚底；ShopRule.customerWalkSeconds仅控制视觉沿过道移动，不更改订单结算。
 - UiLayout覆盖管理列表／明细及六个库存槽；VisualSkin独立PNG，所有可调布局与文案仍从原始XLSX导出。
+
+## 1.10.0 经营成长
+
+新增ShopStage/ShopResearch/ShopUniform，扩展ShopGoods需求与吸引力、ShopStaff固定岗位、ShopUpgrade等级/阶段/客流/图标、ShopRule和ShopPoint，统一原始XLSX→CSV。Uniform图片引用不拼接资源路径，设备图标由ShopUpgrade.imageKey引用VisualSkin。38表/35Prefab/2268节点门禁，新增资源与字体子集一并版本化。存档版本2、岗位与任务枚举、篮子容量2、0.25秒定步和预制体槽位为技术协议；详见SHOP_GROWTH.md。

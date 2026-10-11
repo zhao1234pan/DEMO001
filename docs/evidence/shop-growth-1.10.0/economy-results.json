@@ -1,0 +1,156 @@
+{
+  "collectionProgress": [
+    {
+      "seed": 1,
+      "allResearchUniformDay": 15,
+      "coins": 1938384
+    },
+    {
+      "seed": 2,
+      "allResearchUniformDay": 15,
+      "coins": 1937749
+    },
+    {
+      "seed": 3,
+      "allResearchUniformDay": 15,
+      "coins": 1941820
+    },
+    {
+      "seed": 4,
+      "allResearchUniformDay": 15,
+      "coins": 1900013
+    },
+    {
+      "seed": 5,
+      "allResearchUniformDay": 15,
+      "coins": 1939099
+    }
+  ],
+  "conditions": "10种子各2小时；成长策略每日上线2次（每次至多2小时收益），每天约推进1冒险关；优先雇佣/扩店/设备，不含研发制服。非真人留存",
+  "totalEquipmentCost": 267320,
+  "totalResearchCost": 265943,
+  "totalUniformCost": 33200,
+  "results": [
+    {
+      "name": "初期两架",
+      "mean": 1579,
+      "min": 1554,
+      "max": 1615
+    },
+    {
+      "name": "社区四架",
+      "mean": 7264,
+      "min": 7169,
+      "max": 7399
+    },
+    {
+      "name": "人气六架",
+      "mean": 17853,
+      "min": 17727,
+      "max": 17957
+    },
+    {
+      "name": "完整八架",
+      "mean": 42547,
+      "min": 42183,
+      "max": 42975
+    },
+    {
+      "name": "八架只摆饭团",
+      "mean": 3380,
+      "min": 3100,
+      "max": 3645
+    },
+    {
+      "name": "收银瓶颈基准",
+      "mean": 17770,
+      "min": 17644,
+      "max": 18019
+    },
+    {
+      "name": "补货瓶颈基准",
+      "mean": 29983,
+      "min": 29868,
+      "max": 30088
+    },
+    {
+      "name": "招揽基准",
+      "mean": 17027,
+      "min": 16759,
+      "max": 17222
+    },
+    {
+      "name": "服务基准",
+      "mean": 33207,
+      "min": 32937,
+      "max": 33391
+    }
+  ],
+  "progress": [
+    {
+      "seed": 1,
+      "mainGrowthDay": 15,
+      "coins": 1011194,
+      "upgrades": {
+        "shelves": 4,
+        "checkout": 10,
+        "restock": 10,
+        "capacity": 5,
+        "attraction": 10,
+        "service": 5
+      }
+    },
+    {
+      "seed": 2,
+      "mainGrowthDay": 15,
+      "coins": 1011960,
+      "upgrades": {
+        "shelves": 4,
+        "checkout": 10,
+        "restock": 10,
+        "capacity": 5,
+        "attraction": 10,
+        "service": 5
+      }
+    },
+    {
+      "seed": 3,
+      "mainGrowthDay": 15,
+      "coins": 1013161,
+      "upgrades": {
+        "shelves": 4,
+        "checkout": 10,
+        "restock": 10,
+        "capacity": 5,
+        "attraction": 10,
+        "service": 5
+      }
+    },
+    {
+      "seed": 4,
+      "mainGrowthDay": 15,
+      "coins": 996422,
+      "upgrades": {
+        "shelves": 4,
+        "checkout": 10,
+        "restock": 10,
+        "capacity": 5,
+        "attraction": 10,
+        "service": 5
+      }
+    },
+    {
+      "seed": 5,
+      "mainGrowthDay": 15,
+      "coins": 1011840,
+      "upgrades": {
+        "shelves": 4,
+        "checkout": 10,
+        "restock": 10,
+        "capacity": 5,
+        "attraction": 10,
+        "service": 5
+      }
+    }
+  ]
+}

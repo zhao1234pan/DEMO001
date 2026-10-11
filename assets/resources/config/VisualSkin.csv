@@ -146,3 +146,11 @@ id,key,path,group,mode,width,height,left,right,top,bottom,padding,note,resizeMod
 145,shop_entrance,ui/windows/shop/shop_entrance/spriteFrame,ui/windows/shop,simple,1254,1254,0,0,0,0,0,商店表现独立PNG；完整透明画布，无图集切片,contain
 146,shop_bag,ui/windows/shop/shop_bag/spriteFrame,ui/windows/shop,simple,1254,1254,0,0,0,0,0,商店表现独立PNG；完整透明画布，无图集切片,contain
 147,shop_crate,ui/windows/shop/shop_crate/spriteFrame,ui/windows/shop,simple,1254,1254,0,0,0,0,0,商店表现独立PNG；完整透明画布，无图集切片,contain
+148,shop_uniform_sprout,ui/windows/shop/uniforms/sprout/spriteFrame,ui/windows/shop/uniforms,simple,512,512,0,0,0,0,0,独立制服PNG，统一透明画布与脚底，完整源图归档,contain
+149,shop_uniform_frost,ui/windows/shop/uniforms/frost/spriteFrame,ui/windows/shop/uniforms,simple,512,512,0,0,0,0,0,独立制服PNG，统一透明画布与脚底，完整源图归档,contain
+150,shop_uniform_bloom,ui/windows/shop/uniforms/bloom/spriteFrame,ui/windows/shop/uniforms,simple,512,512,0,0,0,0,0,独立制服PNG，统一透明画布与脚底，完整源图归档,contain
+151,shop_uniform_scope,ui/windows/shop/uniforms/scope/spriteFrame,ui/windows/shop/uniforms,simple,512,512,0,0,0,0,0,独立制服PNG，统一透明画布与脚底，完整源图归档,contain
+152,shop_uniform_spark,ui/windows/shop/uniforms/spark/spriteFrame,ui/windows/shop/uniforms,simple,512,512,0,0,0,0,0,独立制服PNG，统一透明画布与脚底，完整源图归档,contain
+153,shop_uniform_ember,ui/windows/shop/uniforms/ember/spriteFrame,ui/windows/shop/uniforms,simple,512,512,0,0,0,0,0,独立制服PNG，统一透明画布与脚底，完整源图归档,contain
+154,shop_uniform_mint,ui/windows/shop/uniforms/mint/spriteFrame,ui/windows/shop/uniforms,simple,512,512,0,0,0,0,0,独立制服PNG，统一透明画布与脚底，完整源图归档,contain
+155,shop_uniform_fan,ui/windows/shop/uniforms/fan/spriteFrame,ui/windows/shop/uniforms,simple,512,512,0,0,0,0,0,独立制服PNG，统一透明画布与脚底，完整源图归档,contain

@@ -656,3 +656,58 @@ id,key,zhCN
 651,topics.midnight.rule,每波一位高等级店员变大，伤害与射程提高。
 652,shop.checkingOut,收银中
 653,shop.restocking,补货中
+654,shop.stage.1,街角小店
+655,shop.stage.2,社区便利店
+656,shop.stage.3,人气便利店
+657,shop.stage.4,热闹便利店
+658,shop.stageSummary,{p0} · 已接待 {p1} 位顾客
+659,shop.needStage,扩店至{p0}后开放
+660,shop.needSold,接待{p0}/{p1}位顾客
+661,shop.compare,{p0} → {p1}
+662,shop.upgrade.capacity,货架容量
+663,shop.upgrade.attraction,街坊口碑
+664,shop.upgrade.service,购物服务
+665,shop.unit.seconds,{p0}秒/单
+666,shop.unit.restock,{p0}秒 · 每次{p1}件
+667,shop.unit.capacity,每架{p0}件
+668,shop.unit.arrival,约{p0}秒/客
+669,shop.unit.service,加购概率{p0}%
+670,shop.unit.shelves,{p0}货架 · {p1}收银台
+671,shop.researchMenu,商品研发
+672,shop.uniformMenu,店员制服
+673,shop.research,研发 {p0}金币
+674,shop.researchInfo,售价 {p0} → {p1} · 累计售出{p2}份
+675,shop.researchLevel,研发 Lv.{p0}
+676,shop.soldUnits,累计售出
+677,shop.uniformOwned,制服已收藏
+678,shop.uniformBuy,收藏 {p0}金币
+679,shop.uniformWear,穿上制服
+680,shop.uniformTakeOff,换回原装
+681,shop.uniformDescription,经营专用制服 · 不改变战斗属性
+682,shop.uniformName,{p0}·工作制服
+683,shop.goodsTitle,货架{p0} · 选择商品
+684,shop.shelfPick,货架{p0}：{p1}
+685,shop.shelfChoose,调整上架
+686,shop.picked,已上架
+687,shop.shift,岗位：{p0}
+688,shop.role.cashier,收银
+689,shop.role.cold,冷藏补货
+690,shop.role.pack,打包
+691,shop.role.guide,导购 / 二号收银
+692,shop.role.tidy,理货
+693,shop.role.hot,热食补货
+694,shop.role.porter,仓库搬运
+695,shop.role.welcome,迎宾
+696,shop.job.source,取货
+697,shop.job.travel,搬运
+698,shop.job.unload,上架
+699,shop.job.pack,打包
+700,shop.job.guide,导购
+701,shop.job.tidy,理货
+702,shop.job.welcome,迎宾
+703,shop.job.cashier,收银
+704,shop.job.ready,待客
+705,shop.scroll,上下滑动查看货架
+706,shop.researchDetail,{p0} · 售出{p1}份
+707,shop.uniformDetail,经营制服 {p0}/1
+708,shop.owned,已收藏

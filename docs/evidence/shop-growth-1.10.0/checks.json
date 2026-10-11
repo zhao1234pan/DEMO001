@@ -1,0 +1,129 @@
+{
+  "date": "2026-10-12",
+  "version": "1.10.0",
+  "automaticRegressions": 149,
+  "tables": 38,
+  "prefabs": 35,
+  "nodes": 2268,
+  "strictTypeScript": true,
+  "actualGameRootLogicRuns": {
+    "adventure": 20,
+    "challenge": 6,
+    "allWon": true,
+    "rendered": false
+  },
+  "consoles": {
+    "debug": {
+      "errors": 0,
+      "warnings": 7
+    },
+    "release": {
+      "errors": 0,
+      "warnings": 0
+    },
+    "preview": {
+      "errors": 0,
+      "warnings": 0
+    }
+  },
+  "builds": [
+    {
+      "kind": "web",
+      "exitCode": 36,
+      "finished": "2026-10-12 01:11:18 - debug: ================================ build Task (web-mobile) Finished in (9 s)ms ================================"
+    },
+    {
+      "kind": "release",
+      "exitCode": 36,
+      "finished": "2026-10-12 01:11:40 - debug: ================================ build Task (web-mobile) Finished in (12 s)ms ================================"
+    }
+  ],
+  "screenshots": [
+    {
+      "file": "release-home.jpg",
+      "width": 1280,
+      "height": 720
+    },
+    {
+      "file": "release-shop.jpg",
+      "width": 1280,
+      "height": 720
+    },
+    {
+      "file": "release-manage.jpg",
+      "width": 1280,
+      "height": 720
+    },
+    {
+      "file": "release-goods-picker.jpg",
+      "width": 1280,
+      "height": 720
+    },
+    {
+      "file": "release-research.jpg",
+      "width": 1280,
+      "height": 720
+    },
+    {
+      "file": "release-research-purchased.jpg",
+      "width": 1280,
+      "height": 720
+    },
+    {
+      "file": "release-uniform.jpg",
+      "width": 1280,
+      "height": 720
+    },
+    {
+      "file": "release-challenge-supply.jpg",
+      "width": 1280,
+      "height": 720
+    },
+    {
+      "file": "collection-owned-uniform.jpg",
+      "width": 1280,
+      "height": 720
+    },
+    {
+      "file": "collection-goods.jpg",
+      "width": 1280,
+      "height": 720
+    },
+    {
+      "file": "shop-375x667.jpg",
+      "width": 375,
+      "height": 667
+    },
+    {
+      "file": "shop-390x844.jpg",
+      "width": 390,
+      "height": 844
+    },
+    {
+      "file": "shop-750x1334.jpg",
+      "width": 750,
+      "height": 1334
+    },
+    {
+      "file": "shop-1280x720.jpg",
+      "width": 1280,
+      "height": 720
+    },
+    {
+      "file": "preview-home-preserved.jpg",
+      "width": 1280,
+      "height": 720
+    },
+    {
+      "file": "preview-shop-migrated.jpg",
+      "width": 1280,
+      "height": 720
+    }
+  ],
+  "manifestSha256": "9b112f49fb5465f3008477a67b03199d388f1c051fe3fce154889e7227326134",
+  "limits": [
+    "浏览器真实经营阶段为2架与4架；6/8架业务和滚动边界由模型与预制体检查覆盖",
+    "未完成实体手机、真实广告、真人15天成长或留存验收",
+    "Creator均退出36，不能声称构建零诊断"
+  ]
+}
