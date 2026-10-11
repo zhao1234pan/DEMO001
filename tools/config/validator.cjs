@@ -172,10 +172,15 @@ function installConfigs(sources) {
     }
     // 经营配置按客户端协议校验，避免价格、升级链或解锁缺行导致存档错误。
     const shopRules = new Map(next.ShopRule.map(r => [r.key, r.value]));
-    for (const key of ["welcomeCoins", "offlineSeconds", "tickSeconds", "arrivalSeconds", "checkoutSeconds", "restockSeconds", "browseSeconds", "enterSeconds", "exitSeconds", "walkRestockSeconds", "initialShelves", "maxShelves", "shelfCapacity", "customerLimit", "tipCoins", "saveSeconds", "visibleStaff", "staffRotateSeconds", "uiRefreshSeconds", "coinLimit"]) {
+    for (const key of ["welcomeCoins", "offlineSeconds", "tickSeconds", "arrivalSeconds", "checkoutSeconds", "restockSeconds", "browseSeconds", "enterSeconds", "exitSeconds", "walkRestockSeconds", "initialShelves", "maxShelves", "shelfCapacity", "customerLimit", "tipCoins", "saveSeconds", "visibleStaff", "staffRotateSeconds", "uiRefreshSeconds", "coinLimit", "customerWalkSeconds", "workerWalkSeconds", "walkBobFrequency", "idleBobFrequency", "pickupSeconds", "saleFlightSeconds"]) {
         const n = Number(shopRules.get(key));
         if (!Number.isFinite(n) || n <= 0)
             throw new Error("Invalid shop rule: " + key);
+    }
+    for (const key of ["saleTextHideFraction", "saleShrinkRatio"]) {
+        const n = Number(shopRules.get(key));
+        if (!Number.isFinite(n) || n < 0 || n > 1)
+            throw new Error("Invalid shop fraction: " + key);
     }
     if (!/^[-a-zA-Z0-9_]+$/.test((_a = shopRules.get("saveKey")) !== null && _a !== void 0 ? _a : "") || Number(shopRules.get("tickSeconds")) !== 0.25 || Number(shopRules.get("initialShelves")) !== 2 || Number(shopRules.get("maxShelves")) !== 4 || Number(shopRules.get("customerLimit")) !== 6 || Number(shopRules.get("visibleStaff")) > 4)
         throw new Error("Invalid shop protocol capacity");

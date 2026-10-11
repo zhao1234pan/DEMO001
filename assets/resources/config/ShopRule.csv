@@ -21,3 +21,14 @@ id,key,value,note
 20,uiRefreshSeconds,0.2,经营可调参数
 21,coinLimit,1000000000,安全余额上限
 22,customerWalkSeconds,2,仅顾客视觉沿过道移动，不改变经营结算时钟
+23,workerWalkSeconds,0.8,仅经营表现，不参与收入、订单、补货或结算时钟
+24,walkBobPixels,1.25,仅经营表现，不参与收入、订单、补货或结算时钟
+25,walkBobFrequency,11,仅经营表现，不参与收入、订单、补货或结算时钟
+26,idleBobFrequency,2.4,仅经营表现，不参与收入、订单、补货或结算时钟
+27,idleScaleAmplitude,0.012,仅经营表现，不参与收入、订单、补货或结算时钟
+28,pickupSeconds,0.65,仅经营表现，不参与收入、订单、补货或结算时钟
+29,pickupLift,14,仅经营表现，不参与收入、订单、补货或结算时钟
+30,saleFlightSeconds,1.4,仅经营表现，不参与收入、订单、补货或结算时钟
+31,saleArcHeight,28,仅经营表现，不参与收入、订单、补货或结算时钟
+34,saleTextHideFraction,0.3,仅成交表现，不参与经营收入或结算
+35,saleShrinkRatio,0.5,仅成交表现，不参与经营收入或结算

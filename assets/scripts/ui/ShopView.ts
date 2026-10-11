@@ -1,3 +1,4 @@
+import {ShopPresentation} from "./ShopPresentation";
 import { Node, Sprite } from "cc";
 import { numeric, rows, text } from "../config/ConfigTables";
 import { ShopService, shopClearedLevel, shopNumber } from "../services/ShopService";
@@ -17,10 +18,11 @@ export class ShopView {
   private lastSold=0;
   private readonly images=new Map<Node,string>();
   private readonly points=new Map(rows("ShopPoint").map(r=>[r.key,r]));
-  private readonly motions=new Map<number,{phase:string;start:Point;at:number;position:Point}>();
+  private readonly presentation=new ShopPresentation(key=>this.point(key),shopNumber);
+  private saleAt=-Infinity;
   constructor(private readonly root:Node,private readonly assets:UiPrefabs){}
   get isOverlayOpen():boolean{return this.mode!=="closed";}
-  open(fresh:boolean):void {this.mode="closed";this.page=0;this.targetShelf=0;this.motions.clear();this.lastSold=ShopService.shared.state?.sold??0;if(fresh)this.notify(text("shop.welcome",shopNumber("welcomeCoins")));}
+  open(fresh:boolean):void {this.mode="closed";this.page=0;this.targetShelf=0;this.presentation.reset();this.saleAt=-Infinity;this.lastSold=ShopService.shared.state?.sold??0;if(fresh)this.notify(text("shop.welcome",shopNumber("welcomeCoins")));}
   private details(tab:ShopTab):void{this.mode="details";this.tab=tab;this.page=0;}
   private notify(message:string):void {this.notification=message;this.notificationUntil=Date.now()+shopNumber("saveSeconds")*1000;}
   private image(node:Node,key:string):void {if(this.images.get(node)===key)return;this.images.set(node,key);this.assets.bindImage(node,key);}
@@ -28,8 +30,8 @@ export class ShopView {
   private point(key:string):Point {const r=this.points.get(key)!;return{x:numeric(r,"x"),y:numeric(r,"y")};}
   render(bind:(node:Node,action:()=>void)=>void):void {
     const service=ShopService.shared,sim=service.simulation;if(!sim)return;const state=sim.state;
-    if(service.offlineIncome>0){this.notify(text("shop.offline",service.offlineIncome));service.offlineIncome=0;}
-    else if(state.sold!==this.lastSold){this.lastSold=state.sold;this.notify(text("shop.sold",sim.lastSale));}
+    if(service.offlineIncome>0){this.lastSold=state.sold;this.saleAt=-Infinity;this.notify(text("shop.offline",service.offlineIncome));service.offlineIncome=0;}
+    else if(state.sold!==this.lastSold){this.lastSold=state.sold;this.saleAt=state.elapsed+state.remainder;this.notify(text("shop.sold",sim.lastSale));}
     uiText(this.root,"Wallet/Text",text("shop.balance",state.coins));uiText(this.root,"Summary",text("shop.summary",state.sold));uiText(this.root,"Receipt",Date.now()<this.notificationUntil?this.notification:"");
     for(let i=0;i<shopNumber("maxShelves");i++){
       const node=uiNode(this.root,"Floor/Shelf"+i),s=state.shelves[i],products=uiNode(node,"Products");products.active=Boolean(s);
@@ -38,8 +40,14 @@ export class ShopView {
       if(!this.isOverlayOpen)bind(node,()=>{this.targetShelf=i;this.details(s?"goods":"upgrade");});
     }
     this.workers();
-    for(let i=0;i<shopNumber("customerLimit");i++){const node=uiNode(this.root,"Floor/Customer"+i),c=state.customers[i];node.active=Boolean(c);if(!c)continue;this.image(node,sim.config.customers.find(t=>t.key===c.kind)!.imageKey);const p=this.customerPosition(c);node.setPosition(p.x,p.y);const basket=uiNode(node,"Basket");basket.active=c.basket.length>0;if(basket.active){const good=rows("Goods").find(g=>g.key===c.basket[0])!;this.skin(basket,good.imageKey);}}
-    for(const id of this.motions.keys())if(!state.customers.some(c=>c.id===id))this.motions.delete(id);
+    for(let i=0;i<shopNumber("customerLimit");i++){
+      const node=uiNode(this.root,"Floor/Customer"+i),c=state.customers[i];node.active=Boolean(c);if(!c)continue;
+      this.image(node,sim.config.customers.find(t=>t.key===c.kind)!.imageKey);const pose=this.presentation.customer(c,state);node.setPosition(pose.position.x,pose.position.y+pose.bob);node.setScale(pose.scale,1/pose.scale);
+      const basket=uiNode(node,"Basket"),pickup=uiNode(node,"Pickup"),progress=uiNode(node,"CheckoutProgress");basket.active=c.basket.length>0;pickup.active=basket.active&&pose.pickup>0;
+      if(pickup.active){const good=rows("Goods").find(g=>g.key===c.basket[0])!;this.skin(pickup,good.imageKey);const base=rows("UiLayout").find(r=>r.key==="shop:Floor/Customer"+i+"/Pickup")!;pickup.setPosition(numeric(base,"x"),numeric(base,"y")+pose.pickup*shopNumber("pickupLift"));pickup.setScale(pose.pickup,pose.pickup);}
+      progress.active=pose.progress>=0;uiNode(progress,"Fill").setScale(Math.max(0,pose.progress),1);
+    }
+    this.presentation.prune(state.customers.map(c=>c.id));this.saleFeedback();
     // 地面节点都以脚底为深度依据；角色走到货架前后时，遮挡关系随位置更新。
     uiNode(this.root,"Floor").children.slice().sort((a,b)=>b.position.y-a.position.y).forEach((n,i)=>n.setSiblingIndex(i));
     const overlay=uiNode(this.root,"ShopOverlay");overlay.active=this.isOverlayOpen;uiNode(this.root,"ManageButton").active=!this.isOverlayOpen;
@@ -69,24 +77,19 @@ export class ShopView {
     });
   }
   private workers():void {
-    const sim=ShopService.shared.simulation!,s=sim.state,rotation=Math.floor(s.elapsed/shopNumber("staffRotateSeconds"));
-    for(let i=0;i<shopNumber("visibleStaff");i++){const node=uiNode(this.root,"Floor/Worker"+i);node.active=i<s.hired.length;if(!node.active)continue;const key=s.hired[(i+rotation)%s.hired.length];this.image(node,"menu:"+sim.config.staff.find(r=>r.key===key)!.staffKey);let p=this.point("worker"+i);if(i===1&&s.restockShelf>=0){const target=this.point("shelf"+s.restockShelf),offset=this.point("restockOffset");p={x:target.x+offset.x,y:target.y+offset.y};}node.setPosition(p.x,p.y);}
+    const sim=ShopService.shared.simulation!,s=sim.state,now=s.elapsed+s.remainder,rotation=Math.floor(s.elapsed/shopNumber("staffRotateSeconds")),restocker=s.hired.length>1?1:0;
+    for(let i=0;i<shopNumber("visibleStaff");i++){
+      const node=uiNode(this.root,"Floor/Worker"+i);node.active=i<s.hired.length;if(!node.active)continue;
+      const key=s.hired[(i+rotation)%s.hired.length];this.image(node,"menu:"+sim.config.staff.find(r=>r.key===key)!.staffKey);let target=this.point("worker"+i);const restocking=i===restocker&&s.restockShelf>=0;
+      if(restocking){const shelf=this.point("shelf"+s.restockShelf),offset=this.point("restockOffset");target={x:shelf.x+offset.x,y:shelf.y+offset.y};}
+      const pose=this.presentation.worker(i,target,now);node.setPosition(pose.position.x,pose.position.y+pose.bob);node.setScale(pose.scale,1/pose.scale);uiNode(node,"Carry").active=restocking;
+      const checking=i===0&&!restocking&&s.customers.some(c=>c.phase==="checkout"),work=uiNode(node,"Work");work.active=(restocking&&!pose.moving)||checking;uiText(work,"Text",text(restocking?"shop.restocking":"shop.checkingOut"));
+    }
   }
-  private along(points:Point[],f:number):Point{
-    const lengths=points.slice(1).map((p,i)=>Math.hypot(p.x-points[i].x,p.y-points[i].y)),total=lengths.reduce((a,b)=>a+b,0);let distance=Math.max(0,Math.min(1,f))*total;
-    for(let i=0;i<lengths.length;i++){if(distance<=lengths[i]&&lengths[i]>0){const t=distance/lengths[i];return{x:points[i].x+(points[i+1].x-points[i].x)*t,y:points[i].y+(points[i+1].y-points[i].y)*t};}distance-=lengths[i];}return points[points.length-1];
+  private saleFeedback():void{
+    const state=ShopService.shared.state!,effect=uiNode(this.root,"SaleEffect"),fraction=(state.elapsed+state.remainder-this.saleAt)/shopNumber("saleFlightSeconds");effect.active=fraction>=0&&fraction<1;if(!effect.active)return;
+    const start=this.point("checkoutEffect"),end=this.point("walletEffect"),f=1-(1-fraction)**2;effect.setPosition(start.x+(end.x-start.x)*f,start.y+(end.y-start.y)*f+Math.sin(fraction*Math.PI)*shopNumber("saleArcHeight"));effect.setScale(1-fraction*shopNumber("saleShrinkRatio"),1-fraction*shopNumber("saleShrinkRatio"));uiNode(effect,"Amount").active=fraction<shopNumber("saleTextHideFraction");uiText(effect,"Amount",text("shop.sold",ShopService.shared.simulation!.lastSale));
   }
-  private customerPosition(c:ShopCustomer):Point {
-    const s=ShopService.shared.state!,entry=this.point("entry"),lane=this.point("entryLane"),atShelf=this.point("shelf"+Math.min(c.shelf,s.shelves.length-1)),offset=this.point("browseOffset"),shelf={x:atShelf.x+offset.x,y:atShelf.y+offset.y},checkout=this.point("checkout"),checkoutLane=this.point("checkoutLane"),exit=this.point("exit"),queue=this.point("queue"),step=this.point("queueStep"),now=s.elapsed+s.remainder;
-    const f=Math.max(0,Math.min(1,1-(c.remaining-s.remainder)/c.duration));let motion=this.motions.get(c.id);
-    const index=s.customers.filter(x=>x.phase==="queue").findIndex(x=>x.id===c.id),target=c.phase==="queue"?{x:queue.x+step.x*index,y:queue.y+step.y*index}:checkout;
-    if(!motion){motion={phase:c.phase,start:c.phase==="exit"?checkout:c.phase==="queue"?shelf:target,at:now,position:target};this.motions.set(c.id,motion);}
-    if(motion.phase!==c.phase){motion.start=motion.position;motion.at=now;motion.phase=c.phase;}
-    let p:Point;
-    if(c.phase==="enter")p=this.along([entry,lane,{x:lane.x,y:shelf.y},shelf],f);
-    else if(c.phase==="browse")p=shelf;
-    else if(c.phase==="exit")p=this.along([motion.start,{x:lane.x,y:motion.start.y},lane,exit],f);
-    else p=this.along([motion.start,{x:lane.x,y:motion.start.y},{x:lane.x,y:target.y},target],(now-motion.at)/shopNumber("customerWalkSeconds"));
-    motion.position=p;return p;
-  }
+  private along(points:Point[],fraction:number):Point{return this.presentation.along(points,fraction);}
+
 }

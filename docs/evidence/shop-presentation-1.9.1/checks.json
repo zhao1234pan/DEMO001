@@ -1,0 +1,52 @@
+{
+  "version": "1.9.1",
+  "tests": 133,
+  "adventure": 20,
+  "challenge": 6,
+  "challengePicksEach": 10,
+  "playthrough": "隔离存档，无渲染适配，实际GameRoot逻辑自动策略；不代表26关触屏实玩",
+  "browser": {
+    "debugErrors": 0,
+    "releaseErrors": 0,
+    "viewports": [
+      [
+        375,
+        667
+      ],
+      [
+        390,
+        844
+      ],
+      [
+        750,
+        1334
+      ],
+      [
+        1280,
+        720
+      ]
+    ],
+    "releaseGmHidden": true,
+    "flows": [
+      "冒险进入与暂停退出",
+      "挑战配队、首轮三选一、选择后暂停退出",
+      "图鉴店员/商品/怪物页签与滚动",
+      "商店营业、管理列表、升级、商品上架状态",
+      "正式包雇佣列表、返回首页与刷新保留余额",
+      "设置窗口与1.9.1版本显示"
+    ]
+  },
+  "build": {
+    "debugFinished": true,
+    "releaseFinished": true,
+    "debugExit": 36,
+    "releaseExit": 36,
+    "diagnostics": "Creator缓存与build-script子进程SIGTERM诊断，未记录为无警告构建"
+  },
+  "notVerified": [
+    "实体手机",
+    "真实平台广告",
+    "性能提升",
+    "每个阵容的真人难度"
+  ]
+}

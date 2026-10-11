@@ -143,3 +143,6 @@ id,key,path,group,mode,width,height,left,right,top,bottom,padding,note,resizeMod
 142,map_24,gameplay/maps/map_24/spriteFrame,gameplay/maps,simple,780,1388,0,0,0,0,0,挑战专题零钱狂欢；复用成熟路线并烘焙独立PNG,stretch
 143,map_25,gameplay/maps/map_25/spriteFrame,gameplay/maps,simple,780,1388,0,0,0,0,0,挑战专题迷你流水线；复用成熟路线并烘焙独立PNG,stretch
 144,map_26,gameplay/maps/map_26/spriteFrame,gameplay/maps,simple,780,1388,0,0,0,0,0,挑战专题午夜压轴；复用成熟路线并烘焙独立PNG,stretch
+145,shop_entrance,ui/windows/shop/shop_entrance/spriteFrame,ui/windows/shop,simple,1254,1254,0,0,0,0,0,商店表现独立PNG；完整透明画布，无图集切片,contain
+146,shop_bag,ui/windows/shop/shop_bag/spriteFrame,ui/windows/shop,simple,1254,1254,0,0,0,0,0,商店表现独立PNG；完整透明画布，无图集切片,contain
+147,shop_crate,ui/windows/shop/shop_crate/spriteFrame,ui/windows/shop,simple,1254,1254,0,0,0,0,0,商店表现独立PNG；完整透明画布，无图集切片,contain
