@@ -1,6 +1,6 @@
 /** CSV 是运行时唯一配置源；此模块不依赖引擎，可用于导表与回归检查。 */
 export type TableRow = Record<string, string>;
-export const TABLE_NAMES = ["Global", "I18", "Staff", "Enemy", "Theme", "Map", "MapPoint", "Spot", "Obstacle", "Level", "Wave", "WaveGroup", "Collection", "Audio", "Decoration", "ArtFrame", "UiPrefab", "Tutorial", "StaffBranch", "StaffForm", "LevelLoadout", "ChallengeRule", "ChallengePerk", "VisualSkin", "Goods", "ArtCut", "UiLayout", "StaffVisual"] as const;
+export const TABLE_NAMES = ["Global", "I18", "Staff", "Enemy", "Theme", "Map", "MapPoint", "Spot", "Obstacle", "Level", "Wave", "WaveGroup", "Collection", "Audio", "Decoration", "ArtFrame", "UiPrefab", "Tutorial", "StaffBranch", "StaffForm", "LevelLoadout", "ChallengeRule", "ChallengePerk", "VisualSkin", "Goods", "ArtCut", "UiLayout", "StaffVisual", "ShopRule", "ShopGoods", "ShopStaff", "ShopUpgrade", "ShopCustomer", "ShopPoint"] as const;
 let data: Record<string, TableRow[]> = Object.create(null);
 let ready = false;
 let byKey:Record<string,Record<string,TableRow>> = Object.create(null);
@@ -56,6 +56,25 @@ export function installConfigs(sources: Record<string, string>): void {
   positive("ArtCut",["targetId","width","height","threshold"]);positive("ArtCut",["x","y","edge","padding"],true);
   for(const row of next.ArtCut){if(!["skin","frame"].includes(row.target)||!/^source_assets\/art\/[-a-zA-Z0-9_/]+\.png$/.test(row.source)||row.source.includes("..")||!/^[a-f0-9]{64}$/.test(row.sha256))throw new Error("Invalid cut source");requireRef(row.target==="skin"?"VisualSkin":"ArtFrame","id",row.targetId,"ArtCut");if(row.seeds&&!/^\d+:\d+(\|\d+:\d+)*$/.test(row.seeds))throw new Error("Invalid cut seeds");}
   positive("Goods",["unlockLevel"]);for(const row of next.Goods){for(const field of ["nameKey","categoryKey","descriptionKey","storyKey"])requireRef("I18","key",row[field],"Goods");requireRef("VisualSkin","key",row.imageKey,"Goods");requireRef("Level","id",row.unlockLevel,"Goods");if(next.Level.find(l=>l.id===row.unlockLevel)!.mode!=="adventure")throw new Error("Invalid goods unlock level");}
+  // 经营配置按客户端协议校验，避免价格、升级链或解锁缺行导致存档错误。
+  const shopRules=new Map(next.ShopRule.map(r=>[r.key,r.value]));
+  for(const key of ["welcomeCoins","offlineSeconds","tickSeconds","arrivalSeconds","checkoutSeconds","restockSeconds","browseSeconds","enterSeconds","exitSeconds","walkRestockSeconds","initialShelves","maxShelves","shelfCapacity","customerLimit","tipCoins","saveSeconds","visibleStaff","staffRotateSeconds","uiRefreshSeconds","coinLimit"]){const n=Number(shopRules.get(key));if(!Number.isFinite(n)||n<=0)throw new Error("Invalid shop rule: "+key);}
+  if(!/^[-a-zA-Z0-9_]+$/.test(shopRules.get("saveKey")??"")||Number(shopRules.get("tickSeconds"))!==0.25||Number(shopRules.get("initialShelves"))!==2||Number(shopRules.get("maxShelves"))!==4||Number(shopRules.get("customerLimit"))!==6||Number(shopRules.get("visibleStaff"))>4)throw new Error("Invalid shop protocol capacity");
+  for(const key of ["welcomeCoins","offlineSeconds","tipCoins","visibleStaff","shelfCapacity","coinLimit"]){if(!Number.isSafeInteger(Number(shopRules.get(key))))throw new Error("Invalid shop integer: "+key);}
+  positive("ShopGoods",["price"]);positive("ShopGoods",["unlockAfter"],true);
+  for(const row of next.ShopGoods){requireRef("Goods","key",row.goodsKey,"ShopGoods");if(row.key!==row.goodsKey||!Number.isInteger(numeric(row,"price"))||!Number.isInteger(numeric(row,"unlockAfter"))||numeric(row,"unlockAfter")>=Number(next.Global.find(r=>r.key==="maxLevels")!.value)||!["hot","cold","normal"].includes(row.category))throw new Error("Invalid shop goods");if(Number(next.Goods.find(g=>g.key===row.goodsKey)!.unlockLevel)!==numeric(row,"unlockAfter")+1)throw new Error("Goods collection unlock mismatch");}
+  if(next.ShopGoods.length!==next.Goods.length||new Set(next.ShopGoods.map(r=>r.goodsKey)).size!==next.Goods.length||next.ShopGoods.filter(r=>r.unlockAfter==="0").length!==2)throw new Error("Missing shop goods");
+  positive("ShopStaff",["cost","value"],true);
+  for(const row of next.ShopStaff){requireRef("Staff","key",row.staffKey,"ShopStaff");requireRef("I18","key",row.descriptionKey,"ShopStaff");if(!["base","cold","double","tip","checkout","hot","restock","arrival"].includes(row.effect)||!Number.isInteger(numeric(row,"cost"))||numeric(row,"value")>1)throw new Error("Invalid shop staff");}
+  if(next.ShopStaff.length!==next.Staff.length||new Set(next.ShopStaff.map(r=>r.staffKey)).size!==next.Staff.length||next.ShopStaff.filter(r=>r.cost==="0").length!==1)throw new Error("Missing shop staff");
+  positive("ShopUpgrade",["tier","cost","value"]);
+  for(const group of ["checkout","restock","shelves"]){const list=next.ShopUpgrade.filter(r=>r.group===group).sort((a,b)=>Number(a.tier)-Number(b.tier));if(!list.length||list.some((r,i)=>Number(r.tier)!==i+1))throw new Error("Invalid shop upgrade sequence");}
+  for(const row of next.ShopUpgrade){for(const field of ["nameKey","descriptionKey"])requireRef("I18","key",row[field],"ShopUpgrade");if(!["checkout","restock","shelves"].includes(row.group)||!Number.isInteger(numeric(row,"tier"))||!Number.isInteger(numeric(row,"cost"))||(row.group==="shelves"&&(numeric(row,"value")>Number(shopRules.get("maxShelves"))||numeric(row,"value")!==numeric(row,"tier")+Number(shopRules.get("initialShelves")))))throw new Error("Invalid shop upgrade");}
+  positive("ShopCustomer",["weight"]);positive("ShopCustomer",["doubleChance","tipChance"],true);
+  for(const row of next.ShopCustomer){if(!row.imageKey.startsWith("menu:")||!next.ArtFrame.some(f=>"menu:"+f.menu===row.imageKey)||numeric(row,"doubleChance")>1||numeric(row,"tipChance")>1)throw new Error("Invalid shop customer");}
+  positive("ShopPoint",["width","height"]);for(const row of next.ShopPoint){numeric(row,"x");numeric(row,"y");}
+  for(const key of ["entry","checkout","exit","shelf0","shelf1","shelf2","shelf3","worker0","worker1","worker2","worker3","queue","queueStep","browseOffset","restockOffset"])requireRef("ShopPoint","key",key,"Shop scene");
+
   positive("Decoration",["width","height"]);
   positive("Staff", ["cost", "range", "rate", "damage", "shotSpeed", "targets"]); positive("Enemy", ["hp", "speed", "radius", "damage"]); positive("Enemy", ["reward"], true);
   positive("Level", ["initialLives", "enemyHealthScale", "enemySpeedScale"]); positive("Level", ["initialCoins"], true); positive("Obstacle", ["hp"]); positive("Obstacle", ["reward"], true); positive("Wave", ["spawnInterval", "healthScale"]); positive("WaveGroup", ["count"]);

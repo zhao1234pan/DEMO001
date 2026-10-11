@@ -1,3 +1,4 @@
+import { shopGoodsUnlocked } from "../../services/ShopService";
 import { evolutionByKey, evolutionChoices, StaffEvolution } from "./StaffEvolution";
 import { DEBUG } from "cc/env";
 import { rows, numeric, text, globalNumber, globalString, onConfigsReady } from "../../config/ConfigTables";
@@ -62,7 +63,7 @@ onConfigsReady(()=>{
     return {id:row.key,tab:row.tab as CollectionTab,name:staff?TOWER_CONFIG[kind as TowerKind].name:ENEMY_CONFIG[kind as EnemyKind].name!,imageKey:row.imageKey as CollectionImageKey,category:text(row.category),traits:entryTraits(row.traits,kind,staff),story:text(row.story),
       stats:staff?staffStats(kind as TowerKind):enemyStats(kind as EnemyKind),statNote:staff?text("ui.CollectionData.014"):text("ui.CollectionData.015"),unlockHint:staff?staffUnlockHint(kind as TowerKind):text("ui.CollectionData.016"),...(staff?{staffKind:kind as TowerKind}:{enemyKind:kind as EnemyKind})};
   }));
-  COLLECTION_ENTRIES.push(...rows("Goods").map(row=>({id:"goods_"+row.key,tab:"goods" as CollectionTab,name:text(row.nameKey),imageKey:row.imageKey,category:text(row.categoryKey),traits:text(row.descriptionKey),story:text(row.storyKey),stats:[],statNote:"",unlockHint:text("ui.redesign.goodsUnlock",row.unlockLevel),goodsKey:row.key,unlockLevel:numeric(row,"unlockLevel")})));
+  COLLECTION_ENTRIES.push(...rows("Goods").map(row=>({id:"goods_"+row.key,tab:"goods" as CollectionTab,name:text(row.nameKey),imageKey:row.imageKey,category:text(row.categoryKey),traits:text(row.descriptionKey),story:text(row.storyKey),stats:[],statNote:"",unlockHint:text("shop.goodsLocked",Number(row.unlockLevel)-1),goodsKey:row.key,unlockLevel:numeric(row,"unlockLevel")})));
 });
 /** 调用方只传正式解锁关，并仅在正式战斗出怪时记录遭遇；GM 与美术评审不接入本服务。 */
 export class CollectionProgress {
@@ -108,7 +109,7 @@ export class CollectionProgress {
   recordEvolution(key:string):boolean {if(!evolutionByKey(key)||this.forms.has(key))return false;this.forms.add(key);PlatformService.setMaximumInteger("night_store_evolution_"+key,1,1);return true;}
   isUnlocked(entry: CollectionEntry): boolean {
     if (DEBUG && this.previewTabs.has(entry.tab)) return true;
-    if(entry.tab==="goods")return this.highestLevel >= (entry.unlockLevel ?? Infinity);
+    if(entry.tab==="goods")return shopGoodsUnlocked(entry.goodsKey??"");
     if (entry.tab === "staff") return entry.staffKind !== undefined && this.staff.has(entry.staffKind);
     return entry.enemyKind !== undefined && this.enemies.has(entry.enemyKind);
   }

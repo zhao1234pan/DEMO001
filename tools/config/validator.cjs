@@ -11,7 +11,7 @@ exports.globalString = globalString;
 exports.text = text;
 exports.parseCsv = parseCsv;
 exports.installConfigs = installConfigs;
-exports.TABLE_NAMES = ["Global", "I18", "Staff", "Enemy", "Theme", "Map", "MapPoint", "Spot", "Obstacle", "Level", "Wave", "WaveGroup", "Collection", "Audio", "Decoration", "ArtFrame", "UiPrefab", "Tutorial", "StaffBranch", "StaffForm", "LevelLoadout", "ChallengeRule", "ChallengePerk", "VisualSkin", "Goods", "ArtCut", "UiLayout", "StaffVisual"];
+exports.TABLE_NAMES = ["Global", "I18", "Staff", "Enemy", "Theme", "Map", "MapPoint", "Spot", "Obstacle", "Level", "Wave", "WaveGroup", "Collection", "Audio", "Decoration", "ArtFrame", "UiPrefab", "Tutorial", "StaffBranch", "StaffForm", "LevelLoadout", "ChallengeRule", "ChallengePerk", "VisualSkin", "Goods", "ArtCut", "UiLayout", "StaffVisual", "ShopRule", "ShopGoods", "ShopStaff", "ShopUpgrade", "ShopCustomer", "ShopPoint"];
 let data = Object.create(null);
 let ready = false;
 let byKey = Object.create(null);
@@ -92,7 +92,7 @@ function parseCsv(source) {
         throw new Error("Invalid CSV row/id: " + (i + 2)); ids.add(cells[0]); const row = Object.create(null); fields.forEach((field, j) => row[field] = cells[j]); return row; });
 }
 function installConfigs(sources) {
-    var _a, _b, _c;
+    var _a, _b, _c, _d;
     const next = Object.create(null);
     for (const name of exports.TABLE_NAMES) {
         if (typeof sources[name] !== "string")
@@ -170,6 +170,64 @@ function installConfigs(sources) {
         if (next.Level.find(l => l.id === row.unlockLevel).mode !== "adventure")
             throw new Error("Invalid goods unlock level");
     }
+    // 经营配置按客户端协议校验，避免价格、升级链或解锁缺行导致存档错误。
+    const shopRules = new Map(next.ShopRule.map(r => [r.key, r.value]));
+    for (const key of ["welcomeCoins", "offlineSeconds", "tickSeconds", "arrivalSeconds", "checkoutSeconds", "restockSeconds", "browseSeconds", "enterSeconds", "exitSeconds", "walkRestockSeconds", "initialShelves", "maxShelves", "shelfCapacity", "customerLimit", "tipCoins", "saveSeconds", "visibleStaff", "staffRotateSeconds", "uiRefreshSeconds", "coinLimit"]) {
+        const n = Number(shopRules.get(key));
+        if (!Number.isFinite(n) || n <= 0)
+            throw new Error("Invalid shop rule: " + key);
+    }
+    if (!/^[-a-zA-Z0-9_]+$/.test((_a = shopRules.get("saveKey")) !== null && _a !== void 0 ? _a : "") || Number(shopRules.get("tickSeconds")) !== 0.25 || Number(shopRules.get("initialShelves")) !== 2 || Number(shopRules.get("maxShelves")) !== 4 || Number(shopRules.get("customerLimit")) !== 6 || Number(shopRules.get("visibleStaff")) > 4)
+        throw new Error("Invalid shop protocol capacity");
+    for (const key of ["welcomeCoins", "offlineSeconds", "tipCoins", "visibleStaff", "shelfCapacity", "coinLimit"]) {
+        if (!Number.isSafeInteger(Number(shopRules.get(key))))
+            throw new Error("Invalid shop integer: " + key);
+    }
+    positive("ShopGoods", ["price"]);
+    positive("ShopGoods", ["unlockAfter"], true);
+    for (const row of next.ShopGoods) {
+        requireRef("Goods", "key", row.goodsKey, "ShopGoods");
+        if (row.key !== row.goodsKey || !Number.isInteger(numeric(row, "price")) || !Number.isInteger(numeric(row, "unlockAfter")) || numeric(row, "unlockAfter") >= Number(next.Global.find(r => r.key === "maxLevels").value) || !["hot", "cold", "normal"].includes(row.category))
+            throw new Error("Invalid shop goods");
+        if (Number(next.Goods.find(g => g.key === row.goodsKey).unlockLevel) !== numeric(row, "unlockAfter") + 1)
+            throw new Error("Goods collection unlock mismatch");
+    }
+    if (next.ShopGoods.length !== next.Goods.length || new Set(next.ShopGoods.map(r => r.goodsKey)).size !== next.Goods.length || next.ShopGoods.filter(r => r.unlockAfter === "0").length !== 2)
+        throw new Error("Missing shop goods");
+    positive("ShopStaff", ["cost", "value"], true);
+    for (const row of next.ShopStaff) {
+        requireRef("Staff", "key", row.staffKey, "ShopStaff");
+        requireRef("I18", "key", row.descriptionKey, "ShopStaff");
+        if (!["base", "cold", "double", "tip", "checkout", "hot", "restock", "arrival"].includes(row.effect) || !Number.isInteger(numeric(row, "cost")) || numeric(row, "value") > 1)
+            throw new Error("Invalid shop staff");
+    }
+    if (next.ShopStaff.length !== next.Staff.length || new Set(next.ShopStaff.map(r => r.staffKey)).size !== next.Staff.length || next.ShopStaff.filter(r => r.cost === "0").length !== 1)
+        throw new Error("Missing shop staff");
+    positive("ShopUpgrade", ["tier", "cost", "value"]);
+    for (const group of ["checkout", "restock", "shelves"]) {
+        const list = next.ShopUpgrade.filter(r => r.group === group).sort((a, b) => Number(a.tier) - Number(b.tier));
+        if (!list.length || list.some((r, i) => Number(r.tier) !== i + 1))
+            throw new Error("Invalid shop upgrade sequence");
+    }
+    for (const row of next.ShopUpgrade) {
+        for (const field of ["nameKey", "descriptionKey"])
+            requireRef("I18", "key", row[field], "ShopUpgrade");
+        if (!["checkout", "restock", "shelves"].includes(row.group) || !Number.isInteger(numeric(row, "tier")) || !Number.isInteger(numeric(row, "cost")) || (row.group === "shelves" && (numeric(row, "value") > Number(shopRules.get("maxShelves")) || numeric(row, "value") !== numeric(row, "tier") + Number(shopRules.get("initialShelves")))))
+            throw new Error("Invalid shop upgrade");
+    }
+    positive("ShopCustomer", ["weight"]);
+    positive("ShopCustomer", ["doubleChance", "tipChance"], true);
+    for (const row of next.ShopCustomer) {
+        if (!row.imageKey.startsWith("menu:") || !next.ArtFrame.some(f => "menu:" + f.menu === row.imageKey) || numeric(row, "doubleChance") > 1 || numeric(row, "tipChance") > 1)
+            throw new Error("Invalid shop customer");
+    }
+    positive("ShopPoint", ["width", "height"]);
+    for (const row of next.ShopPoint) {
+        numeric(row, "x");
+        numeric(row, "y");
+    }
+    for (const key of ["entry", "checkout", "exit", "shelf0", "shelf1", "shelf2", "shelf3", "worker0", "worker1", "worker2", "worker3", "queue", "queueStep", "browseOffset", "restockOffset"])
+        requireRef("ShopPoint", "key", key, "Shop scene");
     positive("Decoration", ["width", "height"]);
     positive("Staff", ["cost", "range", "rate", "damage", "shotSpeed", "targets"]);
     positive("Enemy", ["hp", "speed", "radius", "damage"]);
@@ -381,7 +439,7 @@ function installConfigs(sources) {
         if (numeric(next.Global.find(r => r.key === key), "value") <= 0)
             throw new Error("Invalid staff star geometry");
     }
-    requireRef("VisualSkin", "key", (_b = (_a = next.Global.find(r => r.key === "staffLevelStarIcon")) === null || _a === void 0 ? void 0 : _a.value) !== null && _b !== void 0 ? _b : "", "StaffVisual");
+    requireRef("VisualSkin", "key", (_c = (_b = next.Global.find(r => r.key === "staffLevelStarIcon")) === null || _b === void 0 ? void 0 : _b.value) !== null && _c !== void 0 ? _c : "", "StaffVisual");
     positive("Wave", ["bossHealthScale"]);
     const perkKeys = ["S01", "S02", "S03", "S04", "S05", "S06", "S07", "S08", "G01", "G02", "G03", "G04", "G05", "G06", "E01", "E02", "E03", "E04", "E05", "E06", "X01", "X02", "X03", "X04", "X05", "X06", "F01", "F02", "F03", "F04", "F05", "F06"];
     if (new Set(next.ChallengePerk.map(row => row.iconKey)).size !== next.ChallengePerk.length)
@@ -495,7 +553,7 @@ function installConfigs(sources) {
         if (value < min || value > max || (integer && !Number.isInteger(value)))
             throw new Error("Invalid feedback parameter: " + key);
     }
-    const max = Number((_c = next.Global.find(r => r.key === "maxLevels")) === null || _c === void 0 ? void 0 : _c.value);
+    const max = Number((_d = next.Global.find(r => r.key === "maxLevels")) === null || _d === void 0 ? void 0 : _d.value);
     if (!Number.isInteger(max) || max !== next.Level.filter(r => r.mode === "adventure").length)
         throw new Error("maxLevels mismatch");
     for (let id = 1; id <= max; id++) {

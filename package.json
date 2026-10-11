@@ -1,7 +1,7 @@
 {
   "name": "ding-dong-night-shift",
   "uuid": "3bdce58e-bebf-4d67-8f58-f3590d4a23d4",
-  "version": "1.7.4",
+  "version": "1.8.0",
   "creator": {
     "version": "3.8.8"
   },
@@ -14,6 +14,7 @@
     "challenge:test": "node tools/gameplay/test-challenge.cjs",
     "art:test": "node tools/art/test-resources.cjs",
     "art:skins": "node tools/art/export-png.cjs skins",
-    "ui:test": "node tools/ui/test-collection.cjs"
+    "ui:test": "node tools/ui/test-collection.cjs",
+    "shop:test": "node tools/gameplay/test-shop.cjs"
   }
 }

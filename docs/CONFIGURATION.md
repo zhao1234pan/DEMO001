@@ -1,5 +1,11 @@
 # XLSX → 客户端 CSV 配置规范
 
+## 独立经营配置（2026-10-11）
+
+- ShopRule：时钟、容量、离线封顶、礼金、存档键；ShopGoods：原商品引用、真实首通、价格和冷热属性；ShopStaff：店员引用、雇佣费、效果与描述；ShopUpgrade：逐级设备与货架；ShopCustomer：画像和概率；ShopPoint：内景位置。
+- 固定页面仍由UiLayout与UiPrefab管理，全部文案I18、PNG路径VisualSkin。原Goods.unlockLevel与ShopGoods.unlockAfter＋1校验一致，经营与商品图鉴使用同一真实首通服务。
+- 例外：存档版本、随机数生成器、毫秒换算与四分之一秒离散推进是技术协议；订单阶段、效果类型、设备分组是算法枚举。首版Prefab提供6来客/4员工/4货架/3操作卡槽，配置门禁限制容量，扩展容量时必须同步Prefab。可调数值仍来自表，不由动画发金币。
+
 ## 当前1.7.2 单张PNG与布局配置（2026-10-08）
 
 - 共27张运行表：移出ArtAtlas，新增UiLayout。ArtFrame以assetPath和统一canvasWidth/canvasHeight管理83张原生图片，不再有图集坐标。

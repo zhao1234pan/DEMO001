@@ -1,5 +1,11 @@
 # UI资源与层级规范
 
+## 独立便利店Demo（2026-10-11）
+
+- 固定内景使用单张完整shop_interior.png，1024×1536，归入ui/windows/shop；源图、来源和提示词另存source_assets/art/production/auto_shop_20261011。
+- 不切内景、不新建图集；商品、店员、按钮和货架继续独立PNG与既有九宫。背景、货架、员工、顾客与管理卡分层；地图/角色运动位置由ShopPoint管理，文字与固定页面由UiLayout管理。
+- Demo复用既有动物店员画像作来客，不新增正式角色；后续替换按同槽画布与锚点规范执行。
+
 同一替换槽位使用同尺寸透明画布。店员、进化、怪物、首领、道具与强化图标统一256×256；角色保留完整耳朵、武器和有意设计的独立弹丸，等比缩放，四周至少8像素透明留白。角色头像与全身图不混用裁切规则。原图不按均等网格猜测切割，ArtCut.xlsx明确源图、选区、完整连通块种子和源图SHA；换源图必须复核切图。
 
 ArtFrame的width/height保留历史源图集区域；canvasWidth/canvasHeight才是独立PNG的画布尺寸。VisualSkin记录PNG尺寸、九宫边距和resizeMode。资源仅使用导入SpriteFrame，保留UUID、trimType=none、packable=true。PNG、meta、原始源图、XLSX、CSV和导出签名必须一并提交。

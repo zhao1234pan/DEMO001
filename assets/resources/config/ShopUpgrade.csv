@@ -1,0 +1,9 @@
+id,key,group,tier,cost,value,nameKey,descriptionKey
+1,checkout_1,checkout,1,60,0.2,shop.upgrade.checkout,shop.upgrade.checkout.1
+2,checkout_2,checkout,2,180,0.45,shop.upgrade.checkout,shop.upgrade.checkout.2
+3,checkout_3,checkout,3,420,0.75,shop.upgrade.checkout,shop.upgrade.checkout.3
+4,restock_1,restock,1,60,0.3,shop.upgrade.restock,shop.upgrade.restock.1
+5,restock_2,restock,2,180,0.65,shop.upgrade.restock,shop.upgrade.restock.2
+6,restock_3,restock,3,420,1,shop.upgrade.restock,shop.upgrade.restock.3
+7,shelves_1,shelves,1,120,3,shop.upgrade.shelves,shop.upgrade.shelves.1
+8,shelves_2,shelves,2,320,4,shop.upgrade.shelves,shop.upgrade.shelves.2

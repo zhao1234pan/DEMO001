@@ -1,3 +1,5 @@
+import { ShopView } from "./ShopView";
+import { ShopService } from "../services/ShopService";
 import { CollectionScrollState } from "./CollectionScrollState";
 import { readWalletCoins } from "../services/PlayerWallet";
 import { UiSkin } from "./UiSkin";
@@ -16,13 +18,14 @@ import { AudioService } from "../services/AudioService";
 import { PlatformSettings } from "../services/PlatformSettings";
 import { UiPrefabs, uiNode, uiText, uiRect, uiColor } from "./UiPrefabs";
 
-type MenuPage = "home" | "levels" | "collection" | "settings" | "loadout" | "challenge_loadout";
+type MenuPage = "home" | "levels" | "collection" | "settings" | "loadout" | "challenge_loadout" | "shop";
 type Dialog = { kind: "entry"; entry: CollectionEntry } | { kind: "notice"; title: string; text: string };
 const W = GAME_CONFIG.prototypeLayoutWidth, H = GAME_CONFIG.prototypeLayoutHeight;
 
 /** 固定布局属于 prefab；本类只负责状态、数据绑定和既有触控入口的分派。 */
 export class PrefabGameMenuView {
   private readonly root: Node;
+  private readonly shop: ShopView;
   private readonly pages = new Map<MenuPage, Node>();
   private readonly dialogs = new Map<string, Node>();
   private readonly loadoutCards: Node[] = [];
@@ -43,7 +46,7 @@ export class PrefabGameMenuView {
   private readonly collectionScroll = new CollectionScrollState();
   private focusBoss = false;
   private page: MenuPage = "home";
-  get isLandingPage():boolean{return this.page==="home"&&!this.dialog;}
+  get isLandingPage():boolean{return (this.page==="home"||this.page==="shop")&&!this.dialog;}
   private tab: CollectionTab = "staff";
   private levelPage = 0;
   private detailLevel = 1;
@@ -61,7 +64,7 @@ export class PrefabGameMenuView {
   constructor(private readonly parent: Node, private readonly assets: UiPrefabs, private readonly audio: AudioService,
     private readonly collection: CollectionProgress, private readonly startLevel: (id: number, roster?: TowerKind[]) => void) {
     this.root = assets.create("menu_shell", parent);
-    for (const key of ["home", "levels", "collection", "settings", "loadout", "challenge_loadout"] as MenuPage[]) {
+    for (const key of ["home", "levels", "collection", "settings", "loadout", "challenge_loadout", "shop"] as MenuPage[]) {
       const node = assets.create(key, uiNode(this.root, "Pages")); this.pages.set(key, node); node.active = false;
     }
     for (const key of ["notice", "detail"]) { const node = assets.create(key, uiNode(this.root, "Dialogs")); this.dialogs.set(key, node); node.active = false; }
@@ -69,6 +72,7 @@ export class PrefabGameMenuView {
     for(const slot of uiNode(this.pages.get("loadout")!, "Candidates").children)this.loadoutCards.push(assets.create("loadout_card",slot));
     for(const slot of uiNode(this.pages.get("challenge_loadout")!,"Candidates").children)this.challengeLoadoutCards.push(assets.create("challenge_staff_card",slot));
     for(const key of ['loadout','challenge_loadout'] as MenuPage[]){const page=this.pages.get(key)!;for(const slot of uiNode(page,'Candidates').children)this.preparationSlots.set(slot,{x:slot.position.x,y:slot.position.y});for(const nodePath of ['Panel','Panel/Surface','Hint','Start']){const n=uiNode(page,nodePath);this.preparationGeometry.set(n,{y:n.position.y,height:n.getComponent(UITransform)!.height});}}
+    this.shop=new ShopView(this.pages.get("shop")!,this.assets);
     void this.platform.refresh().then(() => { if (!this.disposed) this.dirty = true; });
     this.root.active = false;
   }
@@ -99,9 +103,14 @@ export class PrefabGameMenuView {
       }
       const background=uiNode(this.root,"Backdrop"),skin=this.assets.skin(background.getComponent(UiSkin)!.key),height=visibleBottom-visibleTop,ratio=Number(skin.width)/Number(skin.height),width=Math.max(W,height*ratio);
       background.getComponent(UITransform)!.setContentSize(width,width/ratio);background.setPosition(0,H/2-(visibleTop+visibleBottom)/2);
+      // 商店内景覆盖长屏可见区域，控件仍使用已配置的固定布局。
+      const shopPage=this.pages.get("shop")!,shopBackground=uiNode(shopPage,"Background"),shopBounds=shopPage.getComponent(UITransform)!,shopRatio=shopBounds.width/shopBounds.height,shopWidth=Math.max(W,height*shopRatio);
+      shopBackground.getComponent(UITransform)!.setContentSize(shopWidth,shopWidth/shopRatio);shopBackground.setPosition(0,H/2-(visibleTop+visibleBottom)/2);
       this.dirty = true;
     }
     if (unlocked !== this.unlocked) { this.unlocked = getLevelConfig(unlocked).id; this.collection.refresh(this.unlocked); this.dirty = true; }
+    if(this.page==="home")uiText(this.pages.get("home")!,"CollectionCount",text("ui.homeGold",readWalletCoins()));
+    if(this.page==="shop")this.dirty=true;
     if (!this.dirty) return;
     this.dirty = false; this.actions.clear(); this.modalActions.clear();
     for (const [key, node] of this.pages) node.active = key === this.page;
@@ -111,6 +120,7 @@ export class PrefabGameMenuView {
     else if (this.page === "levels") this.levels(page);
     else if (this.page === "collection") this.collectionPageView(page);
     else if(this.page === "loadout" || this.page === "challenge_loadout") this.preparation(page);
+    else if(this.page==="shop")this.shop.render((node,action)=>this.actions.set(node,action));
     else this.settings(page);
     this.renderDialog();
   }
@@ -134,7 +144,7 @@ export class PrefabGameMenuView {
   private home(page: Node): void {
     uiText(page, "Brand", text("ui.redesign.homeTitle"));
     uiText(page,"Progress",text("ui.redesign.progress",this.unlocked,GAME_CONFIG.maxLevels));uiText(page,"CollectionCount",text("ui.homeGold",readWalletCoins()));
-    this.bind(page,"Store",()=>this.notice(text("ui.redesign.shop"),text("ui.redesign.unavailable")));this.bind(page,"Ranking",()=>this.notice(text("ui.redesign.rank"),text("ui.redesign.unavailable")));
+    this.bind(page,"Store",()=>{const fresh=ShopService.shared.open();this.shop.open(fresh);this.navigate("shop");});this.bind(page,"Ranking",()=>this.notice(text("ui.redesign.rank"),text("ui.redesign.unavailable")));
     uiText(page, "Adventure/Note", text("ui.GameMenuView.004", this.unlocked, GAME_CONFIG.maxLevels));
     this.bind(page, "Settings", () => this.navigate("settings"));
     this.bind(page, "Adventure", () => this.navigate("levels"));

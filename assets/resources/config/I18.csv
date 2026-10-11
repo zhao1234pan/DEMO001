@@ -575,3 +575,52 @@ id,key,zhCN
 570,goods.rice.story,小小的三角饭团，藏着夜班便当的心意。
 571,ui.redesign.supplyHint,请选择一份补给，助你轻松度过夜班！
 572,ui.homeGold,{p0}
+573,shop.title,我的便利店
+574,shop.balance,{p0}
+575,shop.summary,营业中  ·  已接待 {p0} 位顾客
+576,shop.staffTab,店员
+577,shop.upgradeTab,改进
+578,shop.goodsTab,商品
+579,shop.hire,雇佣 {p0}
+580,shop.hired,已雇佣
+581,shop.locked,第{p0}关解锁
+582,shop.upgrade,改进 {p0}
+583,shop.max,已满级
+584,shop.tier,{p0} Lv.{p1}
+585,shop.product,{p0}  ·  {p1}金币
+586,shop.inventory,库存 {p0}/{p1}
+587,shop.closedShelf,新增货架
+588,shop.offline,离线营业 +{p0}金币
+589,shop.insufficient,金币不足
+590,shop.welcome,开店礼金 +{p0}金币
+591,shop.sold,成交 +{p0}
+592,shop.auto,自动营业
+593,shop.order,{p0}件
+594,shop.goodsCount,已解锁商品 {p0}/{p1}
+595,shop.goodsLocked,通关第{p0}关解锁
+596,shop.goodsUnlocked,已解锁
+597,shop.pickGoods,上架商品
+598,shop.price,售价 {p0}
+599,shop.purchaseDenied,暂时无法购买
+600,shop.staff.sprout,自动收银与补货
+601,shop.staff.frost,冷藏商品售价 +20%
+602,shop.staff.bloom,双件订单概率 +15%
+603,shop.staff.scope,小费概率 +25%
+604,shop.staff.spark,收银效率 +25%
+605,shop.staff.ember,热食商品售价 +20%
+606,shop.staff.mint,补货效率 +40%
+607,shop.staff.fan,来客效率 +25%
+608,shop.upgrade.checkout,收银提速
+609,shop.upgrade.checkout.1,收银效率 +20%
+610,shop.upgrade.checkout.2,收银效率 +45%
+611,shop.upgrade.checkout.3,收银效率 +75%
+612,shop.upgrade.restock,补货提速
+613,shop.upgrade.restock.1,补货效率 +30%
+614,shop.upgrade.restock.2,补货效率 +65%
+615,shop.upgrade.restock.3,补货效率 +100%
+616,shop.upgrade.shelves,增加货架
+617,shop.upgrade.shelves.1,货架增加至3组
+618,shop.upgrade.shelves.2,货架增加至4组
+619,shop.back,返回
+620,shop.previous,‹
+621,shop.next,›

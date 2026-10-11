@@ -1,3 +1,4 @@
+import { ShopService } from "../../services/ShopService";
 import { LoadingView } from "../../ui/LoadingView";
 import { PngSurface } from "../../ui/PngSurface";
 import { ChallengeRun, ChallengePort, ChallengeShot, challengeRule } from "./ChallengeRun";
@@ -181,8 +182,8 @@ export class GameRoot extends Component {
   private newEncounterKinds: EnemyKind[] = [];
   private newStaffKinds: TowerKind[] = [];
   private resultNextLevel = 0;
-  private readonly hideHandler = (): void => { this.paused = true; this.audio?.setSuspended(true); this.onTouchCancel(); };
-  private readonly showHandler = (): void => { this.audio?.setSuspended(false); };
+  private readonly hideHandler = (): void => { ShopService.shared.hide(); this.paused = true; this.audio?.setSuspended(true); this.onTouchCancel(); };
+  private readonly showHandler = (): void => { ShopService.shared.show(); this.audio?.setSuspended(false); };
   private readonly resizeHandler = (): void => { this.configureResolution(); this.applyLayout(); this.scheduleOnce(() => this.applyLayout(), 0); };
 
   private startupLoading:LoadingView|null=null;
@@ -207,8 +208,10 @@ export class GameRoot extends Component {
   }
 
   private boot(): void {
+
     configureGmButtons();
     this.mapReview = readMapStyleReview();
+    if(!this.mapReview)ShopService.shared.boot();
     this.configureResolution();
     const transform = this.node.getComponent(UITransform) ?? this.node.addComponent(UITransform);
     transform.setContentSize(W, H);
@@ -276,6 +279,7 @@ export class GameRoot extends Component {
     this.node.off(Node.EventType.TOUCH_END, this.onTouchEnd, this);
     PlatformService.offHide(this.hideHandler);
     PlatformService.offShow(this.showHandler);
+    ShopService.shared.save();
     this.menu?.destroy();
     this.battleUi?.destroy();
     this.challengeView?.destroy();
@@ -347,6 +351,7 @@ export class GameRoot extends Component {
     if (this.mapReview) { this.paused = false; this.render(); return; }
     // 先限制单帧追赶时间，再把倍速后的游戏时间拆成稳定小步长，避免低帧率或三倍速时穿透目标。
     // 准备时钟独立于倍速，后台/暂停/广告期间不推进；战斗仍用稳定子步长。
+    ShopService.shared.update();
     const realDelta = Math.max(0, dt);
     if (this.screen === "playing" && !this.paused && !this.gmPanelOpen && !this.adRequesting && !this.challengeBlocked()) {
       this.guidePulse += realDelta;
@@ -795,6 +800,7 @@ export class GameRoot extends Component {
     PlatformService.setNumber("night_store_best_level", 0);
     PlatformService.setNumber("night_store_game_speed", 1);
     for (const row of rows("Tutorial")) PlatformService.setNumber("night_store_tutorial_" + row.id, 0);
+    ShopService.shared.reset();
     this.collection?.resetGmProgress();resetLoadouts();
     this.gmResetArmed = false; this.gmSessionActive = false; this.gmPanelOpen = false;
     this.gameSpeed = 1; this.unlockedLevel = 1; this.onTouchCancel();

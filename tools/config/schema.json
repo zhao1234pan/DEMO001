@@ -400,5 +400,66 @@
       "portraitImageKey": "string",
       "spriteScale": "float"
     }
+  },
+  "ShopRule": {
+    "fields": {
+      "id": "int",
+      "key": "string",
+      "value": "string",
+      "note": "string"
+    }
+  },
+  "ShopGoods": {
+    "fields": {
+      "id": "int",
+      "key": "string",
+      "goodsKey": "string",
+      "unlockAfter": "int",
+      "price": "int",
+      "category": "string"
+    }
+  },
+  "ShopStaff": {
+    "fields": {
+      "id": "int",
+      "key": "string",
+      "staffKey": "string",
+      "cost": "int",
+      "effect": "string",
+      "value": "float",
+      "descriptionKey": "string"
+    }
+  },
+  "ShopUpgrade": {
+    "fields": {
+      "id": "int",
+      "key": "string",
+      "group": "string",
+      "tier": "int",
+      "cost": "int",
+      "value": "float",
+      "nameKey": "string",
+      "descriptionKey": "string"
+    }
+  },
+  "ShopCustomer": {
+    "fields": {
+      "id": "int",
+      "key": "string",
+      "imageKey": "string",
+      "weight": "int",
+      "doubleChance": "float",
+      "tipChance": "float"
+    }
+  },
+  "ShopPoint": {
+    "fields": {
+      "id": "int",
+      "key": "string",
+      "x": "float",
+      "y": "float",
+      "width": "float",
+      "height": "float"
+    }
   }
 }

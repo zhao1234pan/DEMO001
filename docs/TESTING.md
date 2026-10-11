@@ -1,5 +1,11 @@
 # 测试与验收
 
+## 自动经营Demo 1.8.0（2026-10-11）
+
+- 新增命令：node tools/gameplay/test-shop.cjs <TypeScript模块路径>，27项经营/时间/存档/配置边界回归。
+- 配置31、挑战27、资源12、图鉴13，合计110项；严格TypeScript、34表过期与34Prefab/1840节点门禁通过。
+- 实际运行截图、构建退出状态及未代验边界见[evidence/auto-shop-demo-1.8.0/README.md](evidence/auto-shop-demo-1.8.0/README.md)。
+
 ## 自动经营设计收敛检查（2026-10-11）
 
 - 按用户新要求替换手动经营和装饰方案，明确自动补货、收银、入账、后台营业与玩家低频投资操作；8名店员名称和解锁方向与既有Staff/I18核对。
