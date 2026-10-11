@@ -204,3 +204,7 @@ UiPrefab是第18张表。config:export同步Prefab内I18预览与ArtFrame切片�
 - Global.walletSaveKey和walletInitialCoins管理局外钱包，初始值必须是非负安全整数，存储键通过协议字符校验。I18.ui.homeGold只格式化余额，禁止读取战斗金币、当前耐久或图鉴数量填充首页资产。
 - 本轮钱包仅有读取和安全回退，商品解锁、售卖、领取、购买与首通迁移待方案确认；不要为尚未实施的经济逻辑伪造存档数据。
 - 运行view和工程启动分辨率改为390×693.68，与GameConfig既有逻辑坐标一致。750×1334仍为原始效果图比例；两者为引擎坐标技术常量，不是业务配置。88设计像素热区、24设计像素动态字下限按390/750换算，以保持屏幕中的原尺寸。分辨率改变后更新Label纹理属于引擎采样流程，不写成可调战斗数值。
+
+### 1.8.1 商店视图
+- ShopPoint新增entryLane/checkoutLane，原货架和人物坐标统一为脚底；ShopRule.customerWalkSeconds仅控制视觉沿过道移动，不更改订单结算。
+- UiLayout覆盖管理列表／明细及六个库存槽；VisualSkin独立PNG，所有可调布局与文案仍从原始XLSX导出。

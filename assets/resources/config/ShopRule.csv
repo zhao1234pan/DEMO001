@@ -20,3 +20,4 @@ id,key,value,note
 19,staffRotateSeconds,12,经营可调参数
 20,uiRefreshSeconds,0.2,经营可调参数
 21,coinLimit,1000000000,安全余额上限
+22,customerWalkSeconds,2,仅顾客视觉沿过道移动，不改变经营结算时钟

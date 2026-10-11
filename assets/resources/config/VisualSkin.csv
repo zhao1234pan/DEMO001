@@ -135,3 +135,6 @@ id,key,path,group,mode,width,height,left,right,top,bottom,padding,note,resizeMod
 134,counter_green,ui/hud/counters/counter_green/spriteFrame,ui/hud/counters,sliced,616,166,90,90,28,28,0,单独生成完整PNG；战斗白底绿边计数框,height
 135,rank_star,gameplay/effects/rank_star/spriteFrame,gameplay/effects,simple,256,256,0,0,0,0,0,单张透明等级星星PNG,contain
 136,shop_interior,ui/windows/shop/shop_interior/spriteFrame,ui/windows/shop,simple,1024,1536,0,0,0,0,0,单张完整PNG，内置图像生成；固定便利店内景,cover
+137,shop_floor,ui/windows/shop/shop_floor/spriteFrame,ui/windows/shop,simple,1024,1536,0,0,0,0,0,独立PNG；统一俯视斜角便利店视角,cover
+138,shop_shelf,ui/windows/shop/shop_shelf/spriteFrame,ui/windows/shop,simple,1254,1254,0,0,0,0,0,独立PNG；统一俯视斜角便利店视角,contain
+139,shop_checkout,ui/windows/shop/shop_checkout/spriteFrame,ui/windows/shop,simple,1254,1254,0,0,0,0,0,独立PNG；统一俯视斜角便利店视角,contain

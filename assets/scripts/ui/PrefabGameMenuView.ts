@@ -46,7 +46,7 @@ export class PrefabGameMenuView {
   private readonly collectionScroll = new CollectionScrollState();
   private focusBoss = false;
   private page: MenuPage = "home";
-  get isLandingPage():boolean{return (this.page==="home"||this.page==="shop")&&!this.dialog;}
+  get isLandingPage():boolean{return (this.page==="home"||(this.page==="shop"&&!this.shop.isOverlayOpen))&&!this.dialog;}
   private tab: CollectionTab = "staff";
   private levelPage = 0;
   private detailLevel = 1;
@@ -97,7 +97,7 @@ export class PrefabGameMenuView {
       this.root.setScale(scale, scale, 1); this.root.setPosition(0, H / 2 - offset - H * scale / 2);
       // 只有全屏遮罩随视口拉伸，页面内容保持预制体中的比例与位置。
       const visibleTop = (top - offset) / scale, visibleBottom = (bottom - offset) / scale;
-      for (const n of [uiNode(this.pages.get("settings")!,"Dim"),uiNode(this.pages.get("collection")!,"Dim"),uiNode(this.pages.get("challenge_loadout")!,"BattleDim"),uiNode(this.pages.get("loadout")!,"BattleDim"), ...Array.from(this.dialogs.values()).map(n => uiNode(n, "Dim"))]) {
+      for (const n of [uiNode(this.pages.get("shop")!,"ShopOverlay/Dim"),uiNode(this.pages.get("settings")!,"Dim"),uiNode(this.pages.get("collection")!,"Dim"),uiNode(this.pages.get("challenge_loadout")!,"BattleDim"),uiNode(this.pages.get("loadout")!,"BattleDim"), ...Array.from(this.dialogs.values()).map(n => uiNode(n, "Dim"))]) {
         n.getComponent(UITransform)!.height = visibleBottom - visibleTop;
         n.setPosition(n.position.x, H / 2 - (visibleTop + visibleBottom) / 2);
       }
@@ -115,7 +115,7 @@ export class PrefabGameMenuView {
     this.dirty = false; this.actions.clear(); this.modalActions.clear();
     for (const [key, node] of this.pages) node.active = key === this.page;
     const page = this.pages.get(this.page)!;
-    if (this.page !== "home") this.bind(page, "Back", () => this.navigate("home"));
+    if (this.page !== "home" && !(this.page === "shop" && this.shop.isOverlayOpen)) this.bind(page, "Back", () => this.navigate("home"));
     if (this.page === "home") this.home(page);
     else if (this.page === "levels") this.levels(page);
     else if (this.page === "collection") this.collectionPageView(page);
@@ -372,3 +372,4 @@ export class PrefabGameMenuView {
   }
 
 }
+

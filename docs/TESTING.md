@@ -770,3 +770,7 @@ TypeScript、27表一致性、26配置/12资源/26规则、四屏32项、逐页2
 - [ ] 真实手机对升级形象、字体与广告的验收。
 
 证据与边界见[本轮记录](UI_ROUNDED_SUPPLY_AND_STAFF.md)。
+
+## 1.8.1 商店视角与管理入口
+- 34表／34Prefab／1926节点过期门禁和TypeScript通过；经营27、图鉴与首页13、商店视图9项通过。新增测试命令：node tools/ui/test-shop-view.cjs <TypeScript模块路径>。
+- 真实运行证据见evidence/shop-view-and-management-1.8.1；Creator产物生成但退出36及既有缓存诊断继续保留，不记为无警告构建。
