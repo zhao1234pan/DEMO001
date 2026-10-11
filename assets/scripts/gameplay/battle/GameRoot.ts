@@ -1,3 +1,4 @@
+import {challengeTopic,challengeTopicUnlocked,completeChallengeTopic,nextChallengeTopic,resetChallengeTopics} from "../../services/ChallengeTopics";
 import { ShopService } from "../../services/ShopService";
 import { LoadingView } from "../../ui/LoadingView";
 import { PngSurface } from "../../ui/PngSurface";
@@ -784,7 +785,7 @@ export class GameRoot extends Component {
   private previewOpen = false;
   private startOfficialLevel(levelId: number, roster?: TowerKind[]): void {
     const level = getLevelConfig(levelId);
-    if (level.mode !== "challenge" && level.id > this.readUnlockedLevel()) return;
+    if (level.mode === "challenge" ? !challengeTopicUnlocked(level.id) : level.id > this.readUnlockedLevel()) return;
     this.gmSessionActive = false; this.gmPanelOpen = false;
     const unlocked=this.readUnlockedLevel();this.unlockedLevel=unlocked;
     if(loadoutRule(level.id).enabled==="1"){
@@ -800,7 +801,7 @@ export class GameRoot extends Component {
     PlatformService.setNumber("night_store_best_level", 0);
     PlatformService.setNumber("night_store_game_speed", 1);
     for (const row of rows("Tutorial")) PlatformService.setNumber("night_store_tutorial_" + row.id, 0);
-    ShopService.shared.reset();
+    ShopService.shared.reset();resetChallengeTopics();
     this.collection?.resetGmProgress();resetLoadouts();
     this.gmResetArmed = false; this.gmSessionActive = false; this.gmPanelOpen = false;
     this.gameSpeed = 1; this.unlockedLevel = 1; this.onTouchCancel();
@@ -814,7 +815,7 @@ export class GameRoot extends Component {
     this.onTouchCancel(); this.unlockedLevel = this.readUnlockedLevel();
     this.resetLevel(this.unlockedLevel); this.screen = "home";
     this.collection?.refresh(this.unlockedLevel);
-    this.menu?.show(this.unlockedLevel, challenge ? "home" : "levels", challenge ? this.unlockedLevel : focus);
+    this.menu?.show(this.unlockedLevel, challenge ? "challenge_topics" : "levels", challenge ? this.unlockedLevel : focus);
   }
 
   private overlayHomeButton(): HitRect {
@@ -928,6 +929,7 @@ export class GameRoot extends Component {
           : this.level.mode === "adventure" && this.level.id === GAME_CONFIG.maxLevels ? text("result.complete")
           : text("result.progress", this.wave, this.level.waves.length);
         const details = [this.challenge?text("challenge.result",this.wave,this.level.waves.length,this.challenge.selected.length):progress];
+        if(this.challenge&&!this.gmSessionActive&&nextChallengeTopic(this.level.id)&&challengeTopicUnlocked(numeric(nextChallengeTopic(this.level.id)!,"levelId")))details.push(text("topics.opened",text(nextChallengeTopic(this.level.id)!.titleKey)));
         if (this.newStaffKinds.length) details.push(text("result.staff", this.newStaffKinds.length));
         if(this.newEvolutionKeys.length)details.push(text("ui.evolution.result",this.newEvolutionKeys.map(key=>evolutionByKey(key)!.name).join("、")));
         if (this.newEncounterKinds.length) details.push(text("result.collection", this.newEncounterKinds.length));
@@ -937,7 +939,7 @@ export class GameRoot extends Component {
           ...this.newEncounterKinds.map(k => ({name:ENEMY_CONFIG[k].name!,image:"menu:enemy_"+k})),
         ]);
       }
-      this.setLabel("overlayPrimary", win ? (this.level.id < GAME_CONFIG.maxLevels ? text("result.next", this.level.id + 1) : text("ui.GameRoot.024")) : !this.revived ? text("ui.GameRoot.025") : text("ui.GameRoot.026"));
+      this.setLabel("overlayPrimary", win ? (this.challenge ? text(this.gmSessionActive?"ui.GameRoot.024":nextChallengeTopic(this.level.id)?"topics.next":"topics.list") : this.level.id < GAME_CONFIG.maxLevels ? text("result.next", this.level.id + 1) : text("ui.GameRoot.024")) : !this.revived ? text("ui.GameRoot.025") : text("ui.GameRoot.026"));
       this.setLabel("overlayNote", !win && !this.revived ? (this.adFeedback || text("ui.GameRoot.027")) : "");
       this.setLabel("overlaySecondary", !win && !this.revived ? text("ui.GameRoot.028") : "");
     }
@@ -1051,7 +1053,7 @@ export class GameRoot extends Component {
     this.impacts = []; this.bossCue = null; this.newEncounterKinds = []; this.newStaffKinds = []; this.resultNextLevel = 0;
     this.damageFlash = 0; this.battleFeedbackTime = 0; this.battleFeedbackText = "";
     const rule=challengeRule(this.level.id);this.challenge=rule?new ChallengeRun(rule,this.level.availableTowers):null;
-    if(this.challenge){this.propCounts={freeze:numeric(rule!,"freeProps"),clear:numeric(rule!,"freeProps"),cash:numeric(rule!,"freeProps")};this.nextWaveTimer=numeric(rule!,"firstDelay");this.challenge.offer(this.challengePort());this.previewOpen=false;}
+    if(this.challenge){this.challenge.grantInitial(this.challengePort());this.propCounts={freeze:numeric(rule!,"freeProps"),clear:numeric(rule!,"freeProps"),cash:numeric(rule!,"freeProps")};this.nextWaveTimer=numeric(rule!,"firstDelay");this.challenge.offer(this.challengePort());this.previewOpen=false;}
   }
 
   private updateGame(dt: number): void {
@@ -1143,6 +1145,7 @@ export class GameRoot extends Component {
       if (this.wave >= this.level.waves.length) {
         this.screen = "win"; this.cancelPendingAttacks();
         this.audio.play("win", 0.8);
+        if(!this.gmSessionActive&&!this.mapReview&&this.level.mode==="challenge")completeChallengeTopic(this.level.id);
         // GM 选关用于隔离测试，通关不能污染玩家的正式解锁进度。
         if (!this.gmSessionActive && this.level.mode === "adventure") {
           const previous = this.readUnlockedLevel();
@@ -1643,6 +1646,7 @@ export class GameRoot extends Component {
   }
 
   private advanceLevel(): void {
+    if(this.challenge){if(this.gmSessionActive){this.resetLevel();return;}const next=nextChallengeTopic(this.level.id);if(next&&challengeTopicUnlocked(numeric(next,"levelId")))this.startOfficialLevel(numeric(next,"levelId"));else this.returnHome();return;}
     const next = this.level.mode === "adventure" && this.currentLevelId < GAME_CONFIG.maxLevels ? this.currentLevelId + 1 : this.currentLevelId;
     if(this.gmSessionActive)this.resetLevel(next);else if(next===this.currentLevelId)this.resetLevel();else this.startOfficialLevel(next);
   }

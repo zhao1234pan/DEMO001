@@ -461,5 +461,18 @@
       "width": "float",
       "height": "float"
     }
+  },
+  "ChallengeTopic": {
+    "fields": {
+      "id": "int",
+      "key": "string",
+      "levelId": "int",
+      "order": "int",
+      "titleKey": "string",
+      "ruleKey": "string",
+      "iconKey": "string",
+      "startPerks": "string",
+      "unlockAfter": "string"
+    }
   }
 }

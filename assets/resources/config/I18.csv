@@ -277,7 +277,7 @@ id,key,zhCN
 274,challenge.bossWave,首领来访
 275,challenge.hud,夜班加时赛
 276,challenge.win,夜班挑战完成！
-277,challenge.return,返回首页
+277,challenge.return,返回挑战
 278,challenge.enter,夜班加时赛
 279,ui.opt.startWave,开始下一波
 280,ui.gm.enemies,解锁怪物
@@ -631,3 +631,26 @@ id,key,zhCN
 626,shop.currentGoods,已上架
 627,shop.shelfNumber,货架 {p0}
 628,shop.coins,金币 {p0}
+629,topics.title,挑战夜班
+630,topics.summary,15波夜班 · 10次补给 · 自选4名店员
+631,topics.play,开始夜班
+632,topics.replay,再次挑战
+633,topics.locked,通关「{p0}」解锁
+634,topics.number,夜班 {p0}
+635,topics.next,下个夜班
+636,topics.allClear,全部夜班已完成
+637,topics.opened,已解锁：{p0}
+638,topics.list,返回挑战
+639,topics.prepare,选择出战店员
+640,topics.opening.title,夜班试营业
+641,topics.opening.rule,经典夜班，自选店员与补给。
+642,topics.express.title,急件专场
+643,topics.express.rule,每波开场6秒，攻速提高35%。
+644,topics.warehouse.title,仓库清点
+645,topics.warehouse.rule,清除障碍时，对附近障碍造成伤害。
+646,topics.coins.title,零钱狂欢
+647,topics.coins.rule,普通来客的基础金币奖励增加25%。
+648,topics.mini.title,迷你流水线
+649,topics.mini.rule,店员变小，攻速提高25%，伤害降低10%。
+650,topics.midnight.title,午夜压轴
+651,topics.midnight.rule,每波一位高等级店员变大，伤害与射程提高。

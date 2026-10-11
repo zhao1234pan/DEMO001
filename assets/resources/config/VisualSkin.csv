@@ -138,3 +138,8 @@ id,key,path,group,mode,width,height,left,right,top,bottom,padding,note,resizeMod
 137,shop_floor,ui/windows/shop/shop_floor/spriteFrame,ui/windows/shop,simple,1024,1536,0,0,0,0,0,独立PNG；统一俯视斜角便利店视角,cover
 138,shop_shelf,ui/windows/shop/shop_shelf/spriteFrame,ui/windows/shop,simple,1254,1254,0,0,0,0,0,独立PNG；统一俯视斜角便利店视角,contain
 139,shop_checkout,ui/windows/shop/shop_checkout/spriteFrame,ui/windows/shop,simple,1254,1254,0,0,0,0,0,独立PNG；统一俯视斜角便利店视角,contain
+140,map_22,gameplay/maps/map_22/spriteFrame,gameplay/maps,simple,780,1388,0,0,0,0,0,挑战专题急件专场；复用成熟路线并烘焙独立PNG,stretch
+141,map_23,gameplay/maps/map_23/spriteFrame,gameplay/maps,simple,780,1388,0,0,0,0,0,挑战专题仓库清点；复用成熟路线并烘焙独立PNG,stretch
+142,map_24,gameplay/maps/map_24/spriteFrame,gameplay/maps,simple,780,1388,0,0,0,0,0,挑战专题零钱狂欢；复用成熟路线并烘焙独立PNG,stretch
+143,map_25,gameplay/maps/map_25/spriteFrame,gameplay/maps,simple,780,1388,0,0,0,0,0,挑战专题迷你流水线；复用成熟路线并烘焙独立PNG,stretch
+144,map_26,gameplay/maps/map_26/spriteFrame,gameplay/maps,simple,780,1388,0,0,0,0,0,挑战专题午夜压轴；复用成熟路线并烘焙独立PNG,stretch

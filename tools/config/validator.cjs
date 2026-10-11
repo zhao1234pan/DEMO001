@@ -11,7 +11,7 @@ exports.globalString = globalString;
 exports.text = text;
 exports.parseCsv = parseCsv;
 exports.installConfigs = installConfigs;
-exports.TABLE_NAMES = ["Global", "I18", "Staff", "Enemy", "Theme", "Map", "MapPoint", "Spot", "Obstacle", "Level", "Wave", "WaveGroup", "Collection", "Audio", "Decoration", "ArtFrame", "UiPrefab", "Tutorial", "StaffBranch", "StaffForm", "LevelLoadout", "ChallengeRule", "ChallengePerk", "VisualSkin", "Goods", "ArtCut", "UiLayout", "StaffVisual", "ShopRule", "ShopGoods", "ShopStaff", "ShopUpgrade", "ShopCustomer", "ShopPoint"];
+exports.TABLE_NAMES = ["Global", "I18", "Staff", "Enemy", "Theme", "Map", "MapPoint", "Spot", "Obstacle", "Level", "Wave", "WaveGroup", "Collection", "Audio", "Decoration", "ArtFrame", "UiPrefab", "Tutorial", "StaffBranch", "StaffForm", "LevelLoadout", "ChallengeRule", "ChallengePerk", "VisualSkin", "Goods", "ArtCut", "UiLayout", "StaffVisual", "ShopRule", "ShopGoods", "ShopStaff", "ShopUpgrade", "ShopCustomer", "ShopPoint", "ChallengeTopic"];
 let data = Object.create(null);
 let ready = false;
 let byKey = Object.create(null);
@@ -489,6 +489,30 @@ function installConfigs(sources) {
         if (!['0', '1'].includes(row.allowAllStaff) || numeric(row, 'minIntervalRatio') <= 0 || numeric(row, 'minIntervalRatio') > 1 || numeric(row, 'waveReward') < 0 || numeric(row, 'firstDelay') <= 0 || numeric(row, 'nextDelay') <= 0 || !Number.isInteger(numeric(row, 'adRefreshPerChoice')) || numeric(row, 'adRefreshPerChoice') < 0)
             throw Error('Invalid challenge rule');
     }
+    // 专题只引用已有强化算法，解锁链必须连续且无环。
+    const topics = next.ChallengeTopic.slice().sort((a, b) => numeric(a, 'order') - numeric(b, 'order'));
+    if (topics.length !== next.Level.filter(r => r.mode === 'challenge').length || new Set(topics.map(r => r.levelId)).size !== topics.length)
+        throw Error('Invalid challenge topic coverage');
+    for (const [i, row] of topics.entries()) {
+        requireRef('Level', 'id', row.levelId, 'ChallengeTopic');
+        requireRef('I18', 'key', row.titleKey, 'ChallengeTopic');
+        requireRef('I18', 'key', row.ruleKey, 'ChallengeTopic');
+        requireRef('ArtFrame', 'ui', row.iconKey, 'ChallengeTopic');
+        if (next.Level.find(r => r.id === row.levelId).mode !== 'challenge' || numeric(row, 'order') !== i + 1 || row.unlockAfter !== (i ? topics[i - 1].key : ''))
+            throw Error('Invalid challenge unlock chain');
+        const perks = row.startPerks ? row.startPerks.split('|') : [];
+        if (new Set(perks).size !== perks.length)
+            throw Error('Duplicate initial challenge perk');
+        for (const key of perks) {
+            requireRef('ChallengePerk', 'key', key, 'ChallengeTopic');
+            const perk = next.ChallengePerk.find(r => r.key === key);
+            if (perk.staffKey || perks.includes(perk.exclusive))
+                throw Error('Invalid initial challenge perk');
+        }
+    }
+    const topicSave = next.Global.find(r => r.key === 'challengeProgressSaveKey');
+    if (!topicSave || topicSave.type !== 'string' || !/^[-a-zA-Z0-9_]+$/.test(topicSave.value))
+        throw Error('Invalid challenge progress key');
     const requiredGlobals = ["gameName", "maxLevels", "rewardAdUnitId", "version", "upgradeDamage", "upgradeRange", "upgradeRate", "upgradeCostBase", "upgradeCostStep", "maxStaffLevel", "sellRatio", "waveHealthGrowth", "waveBonusBase", "waveBonusStep", "firstWaveDelay", "nextWaveDelay", "reviveWaveDelay", "reviveMinLives", "reviveLifeRatio", "freezeSeconds", "cashBase", "cashPerLevel", "freePropCount", "slowSpeedRatio", "markDamageRatio", "musicVolume", "maxEffectSources", "toastSeconds", "challengeLevelId", "touchTravelTolerance"];
     for (const key of requiredGlobals) {
         requireRef("Global", "key", key, "Global contract");

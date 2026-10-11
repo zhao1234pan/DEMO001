@@ -1,0 +1,7 @@
+id,key,levelId,order,titleKey,ruleKey,iconKey,startPerks,unlockAfter
+1,opening,21,1,topics.opening.title,topics.opening.rule,perk_G05,,
+2,express,22,2,topics.express.title,topics.express.rule,perk_G01,G01,opening
+3,warehouse,23,3,topics.warehouse.title,topics.warehouse.rule,perk_X05,X05,express
+4,coins,24,4,topics.coins.title,topics.coins.rule,perk_E06,E06,warehouse
+5,mini,25,5,topics.mini.title,topics.mini.rule,perk_F02,F02,coins
+6,midnight,26,6,topics.midnight.title,topics.midnight.rule,perk_F01,F01,mini

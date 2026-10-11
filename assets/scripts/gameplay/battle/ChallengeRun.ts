@@ -26,6 +26,9 @@ export class ChallengeRun {
   constructor(readonly rule:TableRow,readonly roster:readonly TowerKind[],seed=Math.floor(Math.random()*0x100000000)){
     this.seed=seed>>>0||1;this.choiceWaves=rule.choiceWaves.split('|').map(Number);
   }
+  /** 初始专题强化不是三选一次数；发放复用相同激活规则并保证幂等。 */
+  grantInitial(port:ChallengePort):void{const topic=rows('ChallengeTopic').find(r=>r.levelId===this.rule.levelId);for(const key of topic?.startPerks.split('|').filter(Boolean)??[])if(!this.has(key)){this.selected.push(key);this.activate(key,port);}}
+  private activate(key:string,port:ChallengePort):void{const p=this.p(key);if(key==='E01'||key==='E05')port.addCoins(p.coins);if(key==='E02')this.interestLeft=p.waves;if(key==='E03')this.freeBuild=p.charges;if(key==='E04')this.freeEvolution=p.charges;}
   random():number{let x=this.seed;x^=x<<13;x^=x>>>17;x^=x<<5;this.seed=x>>>0;return this.seed/0x100000000;}
   has(key:string):boolean{return this.selected.includes(key);}
   p(key:string):Record<string,number>{const c=this.cards.find(c=>c.key===key);if(!c)throw Error('Unknown challenge card: '+key);return c.params;}
@@ -48,8 +51,7 @@ export class ChallengeRun {
   choose(key:string,port:ChallengePort):boolean{
     if(this.refreshBusy||!this.pending||!this.offers.includes(key)||this.has(key))return false;
     this.selected.push(key);this.completedChoices.push(port.wave);this.pending=false;this.offers=[];
-    const p=this.p(key);if(key==='E01'||key==='E05')port.addCoins(p.coins);
-    if(key==='E02')this.interestLeft=p.waves;if(key==='E03')this.freeBuild=p.charges;if(key==='E04')this.freeEvolution=p.charges;
+    this.activate(key,port);
     return true;
   }
   income(amount:number):void{if(!this.has('X04')||amount<=0)return;const p=this.p('X04');this.cashMeter+=amount;if(this.cashMeter>=p.coins){this.cashMeter%=p.coins;this.cashTime=p.seconds;}}
