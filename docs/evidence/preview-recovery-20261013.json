@@ -1,0 +1,55 @@
+{
+  "date": "2026-10-13",
+  "version": "1.10.0",
+  "address": "http://127.0.0.1:4344/",
+  "cause": "4344无监听，原预览进程不存在；具体退出原因未能从日志确认",
+  "action": "重启既有本机隐藏预览服务，复用原构建与原端口，未改动游戏存档",
+  "requests": [
+    {
+      "path": "/",
+      "status": 200,
+      "bytes": 2163
+    },
+    {
+      "path": "/src/polyfills.bundle.js",
+      "status": 200,
+      "bytes": 14750
+    },
+    {
+      "path": "/src/system.bundle.js",
+      "status": 200,
+      "bytes": 37168
+    },
+    {
+      "path": "/src/import-map.json",
+      "status": 200,
+      "bytes": 54
+    },
+    {
+      "path": "/index.js",
+      "status": 200,
+      "bytes": 818
+    },
+    {
+      "path": "/application.js",
+      "status": 200,
+      "bytes": 3300
+    },
+    {
+      "path": "/style.css",
+      "status": 200,
+      "bytes": 1283
+    },
+    {
+      "path": "/cocos-js/cc.js",
+      "status": 200,
+      "bytes": 11052
+    },
+    {
+      "path": "/src/settings.json",
+      "status": 200,
+      "bytes": 22619
+    }
+  ],
+  "visualVerification": "浏览器自动访问被工具安全策略拦截，本次未复核渲染，不沿用旧截图冒充本次验证"
+}
