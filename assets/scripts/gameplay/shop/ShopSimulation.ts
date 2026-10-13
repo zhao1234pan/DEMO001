@@ -11,19 +11,22 @@ export interface ShopConfig {rules:ShopRules;goods:ShopGoods[];staff:ShopEmploye
 export interface ShopShelf {goods:string;stock:number;}
 export interface ShopCustomer {id:number;kind:string;phase:'enter'|'browse'|'queue'|'checkout'|'exit';remaining:number;duration:number;shelf:number;basket:string[];quote:number;wants:string[];station:number;}
 export interface ShopRestock {employee:string;shelf:number;goods:string;phase:'source'|'travel'|'unload';remaining:number;duration:number;amount:number;}
-export interface ShopState {version:number;coins:number;lastMs:number;remainder:number;seed:number;elapsed:number;nextArrival:number;nextId:number;sold:number;income:number;hired:string[];upgrades:Record<string,number>;shelves:ShopShelf[];customers:ShopCustomer[];restockShelf:number;restockRemaining:number;restocks:ShopRestock[];research:Record<string,number>;sales:Record<string,number>;uniforms:string[];equipped:string[];}
+export interface ShopState {version:number;offlineCreditRemainder:number;coins:number;lastMs:number;remainder:number;seed:number;elapsed:number;nextArrival:number;nextId:number;sold:number;income:number;hired:string[];upgrades:Record<string,number>;shelves:ShopShelf[];customers:ShopCustomer[];restockShelf:number;restockRemaining:number;restocks:ShopRestock[];research:Record<string,number>;sales:Record<string,number>;uniforms:string[];equipped:string[];}
 function capacity(c:ShopConfig,s:ShopState):number{return c.rules.shelfCapacity+(c.upgrades.find(r=>r.group==='capacity'&&r.tier===s.upgrades.capacity)?.value??0);}
 function stage(c:ShopConfig,s:ShopState):ShopStage{return c.stages.filter(r=>r.shelves<=s.shelves.length).slice(-1)[0];}
-/** v1已有余额、库存、等级和锁价订单保留；旧免费补货改为一个待完成搬运任务。迁移只执行一次。 */
+/** 迁移只补齐新增状态，保留余额、所有权、库存、锁价订单及时间戳。 */
 export function migrateShopState(c:ShopConfig,input:ShopState):ShopState {
- const s=JSON.parse(JSON.stringify(input)) as ShopState;if(s?.version!==1)return s;
- s.version=2;s.research={};s.sales={};s.uniforms=[];s.equipped=[];s.restocks=[];
- for(const customer of s.customers??[]){customer.wants=[];customer.station=customer.phase==='checkout'?0:-1;}
- if(s.restockShelf>=0&&s.shelves?.[s.restockShelf]){const shelf=s.shelves[s.restockShelf];s.restocks.push({employee:s.hired?.find(k=>c.staff.some(r=>r.key===k&&['cold','hot','porter'].includes(r.role)))??s.hired?.[0],shelf:s.restockShelf,goods:shelf.goods,phase:'unload',remaining:Math.max(c.rules.tickSeconds,s.restockRemaining),duration:Math.max(c.rules.tickSeconds,s.restockRemaining),amount:Math.max(0,c.rules.shelfCapacity-shelf.stock)});}
+ const s=JSON.parse(JSON.stringify(input)) as ShopState;
+ if(s?.version===1){
+  s.version=2;s.research={};s.sales={};s.uniforms=[];s.equipped=[];s.restocks=[];
+  for(const customer of s.customers??[]){customer.wants=[];customer.station=customer.phase==='checkout'?0:-1;}
+  if(s.restockShelf>=0&&s.shelves?.[s.restockShelf]){const shelf=s.shelves[s.restockShelf];s.restocks.push({employee:s.hired?.find(k=>c.staff.some(r=>r.key===k&&['cold','hot','porter'].includes(r.role)))??s.hired?.[0],shelf:s.restockShelf,goods:shelf.goods,phase:'unload',remaining:Math.max(c.rules.tickSeconds,s.restockRemaining),duration:Math.max(c.rules.tickSeconds,s.restockRemaining),amount:Math.max(0,c.rules.shelfCapacity-shelf.stock)});}
+ }
+ if(s?.version===2){s.version=3;s.offlineCreditRemainder=0;}
  return s;
 }
 export function validShopState(c:ShopConfig,s:ShopState):boolean {
- if(!s||s.version!==2||!Number.isSafeInteger(s.coins)||s.coins<0||s.coins>c.rules.coinLimit||!Number.isFinite(s.lastMs)||s.lastMs<0)return false;
+ if(!s||s.version!==3||!Number.isFinite(s.offlineCreditRemainder)||s.offlineCreditRemainder<0||s.offlineCreditRemainder>=1||!Number.isSafeInteger(s.coins)||s.coins<0||s.coins>c.rules.coinLimit||!Number.isFinite(s.lastMs)||s.lastMs<0)return false;
  for(const k of ['elapsed','nextArrival','restockRemaining','remainder','income']as const)if(!Number.isFinite(s[k])||s[k]<0)return false;
  for(const k of ['seed','sold','nextId']as const)if(!Number.isSafeInteger(s[k])||s[k]<0)return false;
  if(s.remainder>=c.rules.tickSeconds||s.nextId<1||!Array.isArray(s.hired)||new Set(s.hired).size!==s.hired.length||s.hired.some(k=>!c.staff.some(r=>r.key===k))||c.staff.some(r=>!r.cost&&!s.hired.includes(r.key)))return false;
@@ -41,7 +44,7 @@ export function validShopState(c:ShopConfig,s:ShopState):boolean {
  return s.restocks.every(j=>j&&s.hired.includes(j.employee)&&Number.isInteger(j.shelf)&&j.shelf>=0&&j.shelf<count&&j.goods===s.shelves[j.shelf].goods&&['source','travel','unload'].includes(j.phase)&&Number.isFinite(j.remaining)&&j.remaining>=0&&Number.isFinite(j.duration)&&j.duration>0&&Number.isInteger(j.amount)&&j.amount>=0&&j.amount<=capacity(c,s));
 }
 export function newShopState(c:ShopConfig,now:number,coins=0,grant=true):ShopState {
- const s:ShopState={version:2,coins:Math.min(c.rules.coinLimit,coins+(grant?c.rules.welcomeCoins:0)),lastMs:now,remainder:0,seed:Math.floor(now)>>>0,elapsed:0,nextArrival:c.rules.arrivalSeconds,nextId:1,sold:0,income:0,hired:c.staff.filter(r=>!r.cost).map(r=>r.key),upgrades:{},shelves:[],customers:[],restockShelf:-1,restockRemaining:0,restocks:[],research:{},sales:{},uniforms:[],equipped:[]};
+ const s:ShopState={version:3,offlineCreditRemainder:0,coins:Math.min(c.rules.coinLimit,coins+(grant?c.rules.welcomeCoins:0)),lastMs:now,remainder:0,seed:Math.floor(now)>>>0,elapsed:0,nextArrival:c.rules.arrivalSeconds,nextId:1,sold:0,income:0,hired:c.staff.filter(r=>!r.cost).map(r=>r.key),upgrades:{},shelves:[],customers:[],restockShelf:-1,restockRemaining:0,restocks:[],research:{},sales:{},uniforms:[],equipped:[]};
  const goods=c.goods.filter(g=>!g.unlockAfter);for(let i=0;i<c.rules.initialShelves;i++)s.shelves.push({goods:goods[i%goods.length].key,stock:c.rules.shelfCapacity});return s;
 }
 export class ShopSimulation {
@@ -63,7 +66,33 @@ export class ShopSimulation {
  get arrivalSeconds():number{const unique=new Set(this.state.shelves.map(s=>s.goods)),variety=this.config.goods.filter(g=>unique.has(g.key)).reduce((sum,g)=>sum+g.attraction,0);return this.config.rules.arrivalSeconds/(1+variety*this.config.rules.stockBonusStep+this.value('attraction')+this.effect('arrival'));}
  price(key:string,tier=this.state.research[key]??0):number{const g=this.config.goods.find(g=>g.key===key)!;return Math.max(1,Math.round(g.price*(this.config.research.find(r=>r.goodsKey===key&&r.tier===tier)?.priceRatio??1)*(1+this.effect(g.category))));}
  unlockedGoods(cleared:number):ShopGoods[]{return this.config.goods.filter(g=>g.unlockAfter<=cleared);}
- canUpgrade(row:ShopImprovement):boolean{const s=this.state,cap=this.stage[(row.group+'Cap')as keyof ShopStage];return row.tier===(s.upgrades[row.group]??0)+1&&s.coins>=row.cost&&s.shelves.length>=row.minShelves&&s.sold>=row.minSold&&(row.group==='shelves'||typeof cap==='number'&&row.tier<=cap);}
+ private upgradeUnlocked(row:ShopImprovement,checkCustomers=true):boolean {
+  const s=this.state,cap=this.stage[(row.group+'Cap')as keyof ShopStage];
+  return row.tier===(s.upgrades[row.group]??0)+1&&s.shelves.length>=row.minShelves&&(!checkCustomers||s.sold>=row.minSold)&&(row.group==='shelves'||typeof cap==='number'&&row.tier<=cap);
+ }
+ canUpgrade(row:ShopImprovement):boolean{return this.upgradeUnlocked(row)&&this.state.coins>=row.cost;}
+ /** 优先以当前设备改进为预算，阶段已满再参考其他经营消费；不补差价或扣回旧钱。 */
+ offlineBudget(cleared:number):number {
+  const s=this.state,c=this.config,goods=new Set(this.unlockedGoods(cleared).map(g=>g.key));
+  // 预算允许提前储备扩店费；客流门槛只在购买时检查，避免被动接待改变预算而让拆段登录获利。
+  const equipment=c.upgrades.filter(r=>this.upgradeUnlocked(r,false)).map(r=>r.cost);
+  const costs=equipment.length?equipment:[];
+  if(!equipment.length)costs.push(...c.research.filter(r=>goods.has(r.goodsKey)&&r.tier===(s.research[r.goodsKey]??0)+1&&r.minShelves<=s.shelves.length).map(r=>r.cost));
+  if(!equipment.length)costs.push(...c.staff.filter(r=>r.cost>0&&!s.hired.includes(r.key)&&r.unlockLevel<=cleared+1).map(r=>r.cost));
+  if(!equipment.length)costs.push(...c.uniforms.filter(r=>s.hired.includes(r.staffKey)&&!s.uniforms.includes(r.key)).map(r=>r.cost));
+  return costs.sort((a,b)=>a-b).slice(0,c.rules.offlineBudgetPurchases).reduce((sum,cost)=>sum+cost,0)||c.rules.offlineCompleteBudget;
+ }
+ /** 离线订单仍按同一经营算法推进，只有新增利润折算；短段预算按时间分摊，零头持久化避免反复切后台吃掉金币。 */
+ advanceOffline(now:number,cleared:number):number {
+  const s=this.state,r=this.config.rules;
+  if(!Number.isFinite(now)||now<=s.lastMs)return 0;
+  const fraction=Math.min(now-s.lastMs,r.offlineSeconds*1000)/(r.offlineSeconds*1000),gross=this.advance(now,cleared),budget=this.offlineBudget(cleared)*fraction;
+  const credit=Math.min(gross*r.offlineIncomeRatio,budget)+s.offlineCreditRemainder;
+  const whole=Math.floor(credit),net=Math.min(gross,whole);
+  s.coins-=gross-net;s.income-=gross-net;s.offlineCreditRemainder=credit-whole;
+  this.lastSale=0;
+  return net;
+ }
  advance(now:number,cleared:number):number {
  const s=this.state;if(!Number.isFinite(now)||now<=s.lastMs)return 0;const income=s.income,total=Math.round(s.remainder*1000)+Math.min(Math.floor(now-s.lastMs),this.config.rules.offlineSeconds*1000),tick=this.config.rules.tickSeconds*1000,ticks=Math.floor(total/tick);s.lastMs=now;s.remainder=(total-ticks*tick)/1000;for(let i=0;i<ticks;i++)this.tick(this.config.rules.tickSeconds,cleared);return s.income-income;
  }

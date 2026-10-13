@@ -1,0 +1,18 @@
+[
+  {
+    "kind": "web",
+    "debug": true,
+    "rulesMatchFinalCsv": true,
+    "newLogicPresent": true,
+    "exitCode": 36,
+    "finished": "2026-10-13 19:43:27 - debug: ================================ build Task (web-mobile) Finished in (9 s)ms ================================"
+  },
+  {
+    "kind": "release",
+    "debug": false,
+    "rulesMatchFinalCsv": true,
+    "newLogicPresent": true,
+    "exitCode": 36,
+    "finished": "2026-10-13 19:43:48 - debug: ================================ build Task (web-mobile) Finished in (11 s)ms ================================"
+  }
+]

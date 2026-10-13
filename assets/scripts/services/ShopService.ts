@@ -31,15 +31,22 @@ export class ShopService {
     let recoveredCoins=PlatformService.getNumber(globalString("walletSaveKey"),globalNumber("walletInitialCoins"));
     try{state=migrateShopState(c,JSON.parse(raw));if(Number.isSafeInteger(state?.coins)&&state.coins>=0)recoveredCoins=Math.min(state.coins,c.rules.coinLimit);if(!validShopState(c,state))throw new Error("Invalid shop save");}
     catch{state=newShopState(c,now,Number.isSafeInteger(recoveredCoins)&&recoveredCoins>=0?recoveredCoins:0,false);}
-    this.simulation=new ShopSimulation(c,state);this.offlineIncome=this.simulation.advance(now,shopClearedLevel());this.save(now);
+    this.simulation=new ShopSimulation(c,state);this.offlineIncome=this.simulation.advanceOffline(now,shopClearedLevel());this.save(now);
   }
   open(now=Date.now()):boolean {
     this.boot(now);if(this.simulation)return false;
     const legacy=PlatformService.getNumber(globalString("walletSaveKey"),globalNumber("walletInitialCoins"));this.simulation=new ShopSimulation(config(),newShopState(config(),now,Number.isSafeInteger(legacy)&&legacy>=0?legacy:0));this.save(now);return true;
   }
-  update(now=Date.now()):void {if(!this.simulation||this.suspended)return;const income=this.simulation.advance(now,shopClearedLevel());if(income||now-this.savedAt>=shopNumber("saveSeconds")*1000)this.save(now);}
+  update(now=Date.now()):void {
+    if(!this.simulation||this.suspended)return;
+    // 系统睡眠或停帧可能没有前后台事件，长间隔也必须遵循离线预算。
+    const offline=now-this.simulation.state.lastMs>=shopNumber("onlineGapSeconds")*1000;
+    const income=offline?this.simulation.advanceOffline(now,shopClearedLevel()):this.simulation.advance(now,shopClearedLevel());
+    if(offline)this.offlineIncome+=income;
+    if(income||now-this.savedAt>=shopNumber("saveSeconds")*1000)this.save(now);
+  }
   hide(now=Date.now()):void {this.update(now);this.save(now);this.suspended=true;}
-  show(now=Date.now()):void {this.suspended=false;if(!this.simulation)return;this.offlineIncome+=this.simulation.advance(now,shopClearedLevel());this.save(now);}
+  show(now=Date.now()):void {this.suspended=false;if(!this.simulation)return;this.offlineIncome+=this.simulation.advanceOffline(now,shopClearedLevel());this.save(now);}
   hire(key:string):boolean {this.update();const result=this.simulation?.hire(key,shopClearedLevel()+1)??false;if(result)this.save();return result;}
   upgrade(key:string):boolean {this.update();const result=this.simulation?.upgrade(key,shopClearedLevel())??false;if(result)this.save();return result;}
   assign(index:number,key:string):boolean {this.update();const result=this.simulation?.assign(index,key,shopClearedLevel())??false;if(result)this.save();return result;}

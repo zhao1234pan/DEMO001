@@ -1,0 +1,16 @@
+{
+  "date": "2026-10-13",
+  "version": "1.10.1",
+  "regressions": 164,
+  "shopRegressions": 52,
+  "shopUiRegressions": 13,
+  "tables": 38,
+  "prefabs": 35,
+  "nodes": 2268,
+  "strictTypeScript": true,
+  "fontGlyphs": 957,
+  "missingGlyphs": 0,
+  "manifestSha256": "2adf3517d1e611cda462135e8b37ebb8366a828f7b9d53014d4d3faddf87147b",
+  "visualVerification": "本轮未做浏览器或真机画面复核。此前浏览器访问被工具安全策略阻止，未尝试绕过。",
+  "playerSave": "未直接操作、重置或扣回玩家金币；代码在下次刷新后迁移旧存档。"
+}

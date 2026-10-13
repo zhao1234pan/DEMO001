@@ -188,6 +188,13 @@ function installConfigs(sources) {
         if (!Number.isSafeInteger(Number(shopRules.get(key))))
             throw new Error("Invalid shop integer: " + key);
     }
+    for (const key of ["offlineIncomeRatio", "offlineBudgetPurchases", "offlineCompleteBudget", "onlineGapSeconds"]) {
+        const n = Number(shopRules.get(key));
+        if (!Number.isFinite(n) || n <= 0)
+            throw new Error("Invalid offline rule: " + key);
+    }
+    if (Number(shopRules.get("offlineIncomeRatio")) > 1 || ["offlineBudgetPurchases", "offlineCompleteBudget", "onlineGapSeconds"].some(key => !Number.isSafeInteger(Number(shopRules.get(key)))) || Number(shopRules.get("onlineGapSeconds")) >= Number(shopRules.get("offlineSeconds")))
+        throw new Error("Invalid offline income policy");
     positive("ShopGoods", ["price", "demand", "attraction"]);
     positive("ShopGoods", ["unlockAfter"], true);
     for (const row of next.ShopGoods) {

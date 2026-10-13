@@ -212,3 +212,7 @@ UiPrefab是第18张表。config:export同步Prefab内I18预览与ArtFrame切片�
 ## 1.10.0 经营成长
 
 新增ShopStage/ShopResearch/ShopUniform，扩展ShopGoods需求与吸引力、ShopStaff固定岗位、ShopUpgrade等级/阶段/客流/图标、ShopRule和ShopPoint，统一原始XLSX→CSV。Uniform图片引用不拼接资源路径，设备图标由ShopUpgrade.imageKey引用VisualSkin。38表/35Prefab/2268节点门禁，新增资源与字体子集一并版本化。存档版本2、岗位与任务枚举、篮子容量2、0.25秒定步和预制体槽位为技术协议；详见SHOP_GROWTH.md。
+
+## 1.10.1 离线收益
+
+ShopRule增加offlineIncomeRatio、offlineBudgetPurchases、offlineCompleteBudget、onlineGapSeconds；分别校验有效比例、正整数预算项数、正整数完成预算及小于离线上限的正整数停帧阈值。原始XLSX→CSV，算法共用运行时和导表校验器。存档v3及offlineCreditRemainder的[0,1)范围属于货币记账协议，不是散落的调参常量。所有成本仍引用原有经营表，算法不写死奖励金额；详见SHOP_OFFLINE_INCOME.md。

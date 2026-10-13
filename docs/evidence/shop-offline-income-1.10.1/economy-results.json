@@ -1,0 +1,183 @@
+{
+  "collectionProgress": [
+    {
+      "seed": 1,
+      "allResearchUniformDay": 26,
+      "coins": 145641
+    },
+    {
+      "seed": 2,
+      "allResearchUniformDay": 27,
+      "coins": 138410
+    },
+    {
+      "seed": 3,
+      "allResearchUniformDay": 28,
+      "coins": 123345
+    },
+    {
+      "seed": 4,
+      "allResearchUniformDay": 28,
+      "coins": 124810
+    },
+    {
+      "seed": 5,
+      "allResearchUniformDay": 28,
+      "coins": 131204
+    }
+  ],
+  "conditions": "10种子各2小时在线与离线对照；5种子成长每日上线2次，每次至多2小时离线净收益，每日在线20分钟，观察35天，每天约推进1冒险关；progress优先雇佣扩店设备，collectionProgress在设备完成后购买研发制服。非真人留存",
+  "totalEquipmentCost": 267320,
+  "totalResearchCost": 265943,
+  "totalUniformCost": 33200,
+  "results": [
+    {
+      "name": "初期两架",
+      "mean": 1579,
+      "min": 1554,
+      "max": 1615,
+      "offlineMean": 120,
+      "offlineMin": 120,
+      "offlineMax": 120
+    },
+    {
+      "name": "社区四架",
+      "mean": 7264,
+      "min": 7169,
+      "max": 7399,
+      "offlineMean": 160,
+      "offlineMin": 160,
+      "offlineMax": 160
+    },
+    {
+      "name": "人气六架",
+      "mean": 17853,
+      "min": 17727,
+      "max": 17957,
+      "offlineMean": 6400,
+      "offlineMin": 6400,
+      "offlineMax": 6400
+    },
+    {
+      "name": "完整八架",
+      "mean": 42547,
+      "min": 42183,
+      "max": 42975,
+      "offlineMean": 371,
+      "offlineMin": 371,
+      "offlineMax": 371
+    },
+    {
+      "name": "八架只摆饭团",
+      "mean": 3380,
+      "min": 3100,
+      "max": 3645,
+      "offlineMean": 371,
+      "offlineMin": 371,
+      "offlineMax": 371
+    },
+    {
+      "name": "收银瓶颈基准",
+      "mean": 17770,
+      "min": 17644,
+      "max": 18019,
+      "offlineMean": 60,
+      "offlineMin": 60,
+      "offlineMax": 60
+    },
+    {
+      "name": "补货瓶颈基准",
+      "mean": 29983,
+      "min": 29868,
+      "max": 30088,
+      "offlineMean": 160,
+      "offlineMin": 160,
+      "offlineMax": 160
+    },
+    {
+      "name": "招揽基准",
+      "mean": 17027,
+      "min": 16759,
+      "max": 17222,
+      "offlineMean": 60,
+      "offlineMin": 60,
+      "offlineMax": 60
+    },
+    {
+      "name": "服务基准",
+      "mean": 33207,
+      "min": 32937,
+      "max": 33391,
+      "offlineMean": 100,
+      "offlineMin": 100,
+      "offlineMax": 100
+    }
+  ],
+  "progress": [
+    {
+      "seed": 1,
+      "mainGrowthDay": 16,
+      "coins": 152225,
+      "upgrades": {
+        "shelves": 4,
+        "checkout": 10,
+        "restock": 10,
+        "attraction": 10,
+        "capacity": 5,
+        "service": 5
+      }
+    },
+    {
+      "seed": 2,
+      "mainGrowthDay": 17,
+      "coins": 133937,
+      "upgrades": {
+        "shelves": 4,
+        "checkout": 10,
+        "restock": 10,
+        "capacity": 5,
+        "attraction": 10,
+        "service": 5
+      }
+    },
+    {
+      "seed": 3,
+      "mainGrowthDay": 17,
+      "coins": 134736,
+      "upgrades": {
+        "shelves": 4,
+        "checkout": 10,
+        "restock": 10,
+        "capacity": 5,
+        "attraction": 10,
+        "service": 5
+      }
+    },
+    {
+      "seed": 4,
+      "mainGrowthDay": 17,
+      "coins": 136177,
+      "upgrades": {
+        "shelves": 4,
+        "checkout": 10,
+        "restock": 10,
+        "capacity": 5,
+        "attraction": 10,
+        "service": 5
+      }
+    },
+    {
+      "seed": 5,
+      "mainGrowthDay": 16,
+      "coins": 137653,
+      "upgrades": {
+        "shelves": 4,
+        "checkout": 10,
+        "restock": 10,
+        "attraction": 10,
+        "capacity": 5,
+        "service": 5
+      }
+    }
+  ]
+}

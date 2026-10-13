@@ -33,7 +33,8 @@ export class ShopView {
   render(bind:(node:Node,action:()=>void)=>void):void {
     const service=ShopService.shared,sim=service.simulation;if(!sim)return;const state=sim.state;
     if(service.offlineIncome>0){this.lastSold=state.sold;this.saleAt=-Infinity;this.notify(text("shop.offline",service.offlineIncome));service.offlineIncome=0;}
-    else if(state.sold!==this.lastSold){this.lastSold=state.sold;this.saleAt=state.elapsed+state.remainder;this.notify(text("shop.sold",sim.lastSale));}
+    else if(state.sold!==this.lastSold){this.lastSold=state.sold;if(sim.lastSale>0){this.saleAt=state.elapsed+state.remainder;this.notify(text("shop.sold",sim.lastSale));}}
+    if(sim.lastSale<=0)this.saleAt=-Infinity;
     uiText(this.root,"Wallet/Text",text("shop.balance",state.coins));uiText(this.root,"Summary",text("shop.stageSummary",text(sim.stage.nameKey),state.sold));uiText(this.root,"Receipt",Date.now()<this.notificationUntil?this.notification:"");
     for(let i=0;i<shopNumber("maxShelves");i++){
       const node=uiNode(this.root,"Floor/Content/Shelf"+i),s=state.shelves[i],products=uiNode(node,"Products");node.active=Boolean(s)||i===state.shelves.length;products.active=Boolean(s);

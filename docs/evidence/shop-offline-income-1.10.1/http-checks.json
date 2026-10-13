@@ -1,0 +1,52 @@
+[
+  {
+    "path": "/",
+    "status": 200,
+    "bytes": 2163
+  },
+  {
+    "path": "/index.js",
+    "status": 200,
+    "bytes": 818
+  },
+  {
+    "path": "/application.js",
+    "status": 200,
+    "bytes": 3300
+  },
+  {
+    "path": "/style.css",
+    "status": 200,
+    "bytes": 1283
+  },
+  {
+    "path": "/src/polyfills.bundle.js",
+    "status": 200,
+    "bytes": 14750
+  },
+  {
+    "path": "/src/system.bundle.js",
+    "status": 200,
+    "bytes": 37168
+  },
+  {
+    "path": "/src/import-map.json",
+    "status": 200,
+    "bytes": 54
+  },
+  {
+    "path": "/cocos-js/cc.js",
+    "status": 200,
+    "bytes": 11052
+  },
+  {
+    "path": "/src/settings.json",
+    "status": 200,
+    "bytes": 22619
+  },
+  {
+    "path": "/assets/main/index.js",
+    "status": 200,
+    "bytes": 593937
+  }
+]
