@@ -479,7 +479,8 @@
       "ruleKey": "string",
       "iconKey": "string",
       "startPerks": "string",
-      "unlockAfter": "string"
+      "unlockAfter": "string",
+      "thumbnailKey": "string"
     }
   },
   "ShopStage": {
@@ -515,6 +516,16 @@
       "cost": "int",
       "imageKey": "string",
       "nameKey": "string"
+    }
+  },
+  "RankingEntry": {
+    "fields": {
+      "id": "int",
+      "key": "string",
+      "nameKey": "string",
+      "portraitKey": "string",
+      "score": "int",
+      "friend": "int"
     }
   }
 }

@@ -216,3 +216,9 @@ UiPrefab是第18张表。config:export同步Prefab内I18预览与ArtFrame切片�
 ## 1.10.1 离线收益
 
 ShopRule增加offlineIncomeRatio、offlineBudgetPurchases、offlineCompleteBudget、onlineGapSeconds；分别校验有效比例、正整数预算项数、正整数完成预算及小于离线上限的正整数停帧阈值。原始XLSX→CSV，算法共用运行时和导表校验器。存档v3及offlineCreditRemainder的[0,1)范围属于货币记账协议，不是散落的调参常量。所有成本仍引用原有经营表，算法不写死奖励金额；详见SHOP_OFFLINE_INCOME.md。
+
+## 1.11.0 界面协议与排行榜演示
+
+- RankingEntry.xlsx管理演示名字I18键、画像皮肤、分数和演示好友标记；Global管理演示开关及本机展示评分权重。正式环境强制不显示示例，示例不会成为平台排名或存档。
+- ChallengeTopic.thumbnailKey显式引用VisualSkin，沿用原levelId／unlockAfter链。UiLayout、VisualSkin管理新卡片、九宫、字色及命中框；货架弹窗列数、行距和收缩量从布局表推导。
+- 本轮保留的代码常量例外属于界面技术协议：节点绑定路径、状态皮肤逻辑键、前三领奖槽的显示顺序、两位数关卡编号，以及居中／九宫使用的几何二分。它们不承载可调业务数值；实际资源路径、尺寸、颜色、边距、文字、评分权重和解锁条件仍由原始表管理。

@@ -1,0 +1,65 @@
+[
+  {
+    "key": "adventure_banner",
+    "reference": "adventure",
+    "prompt": "ONE isolated small heading decoration on transparent background. Focus ONLY on the game reference in center right, ignore browser chrome. Reproduce a warm cream short orange-edged horizontal ribbon with folded green paper map and red pin LEFT, cute white floppy-eared bunny wearing blue nightcap peeking over RIGHT. Center ribbon must be EMPTY for runtime title Label, no letters/numbers. Soft rounded flat cartoon warm brown outlines, golden little highlights. One complete banner only, aspect 3.2:1, no background, UI panels, or screenshot.",
+    "transparent": true,
+    "tool": "builtin imagegen"
+  },
+  {
+    "key": "challenge_banner",
+    "reference": "challenge",
+    "prompt": "ONE isolated small heading decoration on transparent background. Focus ONLY on game image center right, ignore browser chrome. Reproduce short warm cream orange-edged ribbon, sleepy yellow crescent moon and tiny stars LEFT, cute white bunny in blue nightcap peeking from RIGHT. EMPTY center for Cocos text Label. Flat cute rounded cartoon brown outlines, no writing/numbers/background/panels/screenshot. One complete horizontal banner only, aspect 3.2:1.",
+    "transparent": true,
+    "tool": "builtin imagegen"
+  },
+  {
+    "key": "ranking_banner",
+    "reference": "ranking",
+    "prompt": "ONE isolated small heading decoration on transparent background. Focus ONLY on game image in center right, ignore browser chrome. Reproduce short cream orange-edged ribbon, gold trophy with cream rabbit emblem LEFT and cute white bunny wearing blue nightcap RIGHT, small golden sparkles. EMPTY center ribbon for runtime text. Gentle flat rounded cartoon brown outlines. No writing/numbers/background/panels/screenshot. One complete horizontal banner only, aspect 3.2:1.",
+    "transparent": true,
+    "tool": "builtin imagegen"
+  },
+  {
+    "key": "topic_opening",
+    "reference": "challenge",
+    "prompt": "ONE square game thumbnail inspired by first challenge card illustration in center-right game reference. Cute wooden clipboard displaying blue-nightcap white bunny portrait, small green check badge lower right, pastel streetlamp and cozy mint shop behind. Soft flat rounded cartoon brown outlines, warm cream and mint background. No text, no numbers, no lock, no UI panel or browser chrome. Fill square with one illustration.",
+    "transparent": false,
+    "tool": "builtin imagegen"
+  },
+  {
+    "key": "topic_express",
+    "reference": "challenge",
+    "prompt": "ONE square game thumbnail for Express Night Shift. Small warm orange delivery trolley carrying cardboard parcel, little speed streaks, cozy green convenience store and streetlamp behind. Match center-right reference GAME artwork style only: flat rounded cute cartoon brown outlines, cream mint pastel backdrop. No text, numbers, lock, browser chrome, screenshot or UI panels.",
+    "transparent": false,
+    "tool": "builtin imagegen"
+  },
+  {
+    "key": "topic_warehouse",
+    "reference": "challenge",
+    "prompt": "ONE square game thumbnail for Warehouse Stocktaking. Two honey brown cardboard boxes with tiny cream rabbit emblems, blank inventory clipboard and green sprout. Match reference GAME artwork in center right: gentle flat rounded cartoon brown outlines, warm cream mint backdrop. No text/numbers/lock/browser chrome/UI panels. Fill square.",
+    "transparent": false,
+    "tool": "builtin imagegen"
+  },
+  {
+    "key": "topic_coins",
+    "reference": "challenge",
+    "prompt": "ONE square game thumbnail for Coin Carnival Night Shift. Cute round green-lidded coin jar, three shiny golden coins and tiny confetti, small shop shapes behind. Match center-right game reference style: soft flat rounded cartoon brown outlines, warm cream mint backdrop. No text, numbers, lock, browser chrome, screenshot or UI panels.",
+    "transparent": false,
+    "tool": "builtin imagegen"
+  },
+  {
+    "key": "topic_mini",
+    "reference": "challenge",
+    "prompt": "ONE square game thumbnail for Mini Assembly Line Night Shift. Tiny cute orange hamster clerk with green apron pushing little cart of bottles beside miniature shelf. A few speed marks, cream mint backdrop. Match center-right GAME reference style: soft flat rounded cartoon brown outlines. No text, numbers, lock, browser chrome, screenshot or UI panels.",
+    "transparent": false,
+    "tool": "builtin imagegen"
+  },
+  {
+    "key": "topic_midnight",
+    "reference": "challenge",
+    "prompt": "ONE square game thumbnail for Midnight Pressure Night Shift. Cozy tiny green convenience store with orange awning beneath large yellow crescent moon, two stars on soft teal night backdrop, friendly blue-nightcap white bunny peeking beside shop. Match GAME reference center right only: healing flat rounded cartoon brown outlines, cream mint accents. No text, numbers, lock, browser chrome, screenshot or UI panel.",
+    "transparent": false,
+    "tool": "builtin imagegen"
+  }
+]

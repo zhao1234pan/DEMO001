@@ -1,0 +1,56 @@
+[
+  {
+    "key": "room",
+    "prompt": "Using input ONLY as style/composition reference, create a single clean portrait 9:16 GAME BACKGROUND layer for this exact cute convenience-store UI. Match warm cream tiled floor, peach wood upper wall, glass fridge on upper left, narrow side shop cabinets and plants against left/right edges, soft flat rounded hand-painted cartoon textures, brown outlines. The top 1/4 is back wall and upper fixtures, lower 3/4 is a continuous spacious cream tiled floor. Leave the middle and near floor completely empty for separately rendered characters and movable shelves. Remove ALL people, customers, animals, the cashier counter, all four central shelves, all HUD, title, numbers, nav buttons, signs with writing, UI, text, and logos. Do NOT render a screenshot or UI. One full background only, no grids. Reference palette/composition closely, clear central aisle, minimal perspective convergence, view from slightly elevated front.",
+    "transparent": false,
+    "tool": "builtin imagegen"
+  },
+  {
+    "key": "shelf",
+    "prompt": "Use reference as style guide. Create ONE separate isolated EMPTY convenience-store double-tier shelf game sprite, transparent background. Match reference's light honey wood frame, cream horizontal shelves, GREEN top rail, green foot caps, soft brown cartoon outlines, slight elevated FRONT view. Two empty decks, front surfaces clearly visible. Include a cream BLANK small rounded nameplate centered above top rail, and cream blank rounded stock-label plaque beneath base. Both decks EMPTY, no products, no words, no icons, no animals. Entire shelf and feet visible, centered with modest transparent padding. Single sprite, no atlas, no extra object. Wide square canvas.",
+    "transparent": true,
+    "tool": "builtin imagegen"
+  },
+  {
+    "key": "counter",
+    "prompt": "Use reference only as style guide. Single isolated convenience-store cashier counter GAME SPRITE transparent background. Reference right rear counter: warm light wood rectangular top with rounded corners, green vertical front with little plain cream rabbit emblem, black point-of-sale monitor on left side of countertop, small card terminal on right. Slight elevated FRONT view matching shelves. Wide rectangle, all edges/feet visible with modest transparent padding, NO character behind desk, NO text, no goods, no animals, no surroundings, no ground plane, no UI. Single object only.",
+    "transparent": true,
+    "tool": "builtin imagegen"
+  },
+  {
+    "key": "nav_staff",
+    "prompt": "Single isolated cute game UI icon for HIRE STAFF, transparent square canvas. Reference bottom left icon style: friendly orange hamster convenience store worker wearing orange cap and green apron, bust portrait, small round green plus badge lower right. Soft flat rounded cartoon, warm brown outlines, bright green/orange/cream palette, minimal shading, no text, no button background, no UI frame, centered complete silhouette. Only one icon.",
+    "transparent": true,
+    "tool": "builtin imagegen"
+  },
+  {
+    "key": "nav_upgrade",
+    "prompt": "Single isolated cute game UI icon for EQUIPMENT IMPROVEMENT: crossing rounded blue-gray wrench and gear, transparent square canvas. Match reference bottom row style exactly: soft flat cartoon, brown blue outlines, gentle highlights, minimal shading, centered complete silhouette, no text, no frame, no button background, only one icon.",
+    "transparent": true,
+    "tool": "builtin imagegen"
+  },
+  {
+    "key": "nav_goods",
+    "prompt": "Single isolated cute game UI icon for STOCK GOODS: warm honey brown small cardboard crate with a big bright green UP ARROW emerging from it. Transparent square canvas. Match bottom row of supplied reference, soft flat rounded cartoon with brown outlines, gentle highlights, minimal shading, centered entire silhouette. No text, no frame, no button background, single icon.",
+    "transparent": true,
+    "tool": "builtin imagegen"
+  },
+  {
+    "key": "nav_research",
+    "prompt": "Single isolated cute game UI icon for PRODUCT RESEARCH: small blue round glass flask and yellow glowing light bulb next to it. Transparent square canvas. Match bottom row of reference, soft flat rounded cartoon with warm brown outlines, minimal shading, gentle highlights, centered entire silhouette. No text, no frame, no button background, no atlas, single icon.",
+    "transparent": true,
+    "tool": "builtin imagegen"
+  },
+  {
+    "key": "nav_uniform",
+    "prompt": "Single isolated cute game UI icon for STAFF UNIFORM: blue short sleeved work shirt with white collar and small cream rabbit emblem on chest. Transparent square canvas. Match reference bottom row style, soft flat rounded cartoon, dark blue brown outlines, minimal shading, gentle highlights, entire shirt centered complete. No text, no frame, no button background, single icon.",
+    "transparent": true,
+    "tool": "builtin imagegen"
+  },
+  {
+    "key": "goods_card",
+    "prompt": "Create a single OPAQUE filled game UI card image, portrait ratio4:5. Entire canvas must be fully opaque. Fill central 90% with a clean pale pistachio green rounded rectangle (#e4edba), muted sage outline and thin cream inner highlight, soft corner radius18% of width. The entire INSIDE of rectangle is smooth SOLID LIGHT GREEN. OUTSIDE the rounded corners use plain warm cream #fffbea (not transparent). No empty hole, no black, no transparency, no dark gradient inside, no objects, no text, no scene, no multiple cards. Flat simple healing cute game aesthetic. Panel almost touches canvas edges. This will become a 9-slice PNG background behind merchandise icons.",
+    "tool": "builtin imagegen",
+    "note": "初稿中空已弃用，正式资源内部不透明"
+  }
+]

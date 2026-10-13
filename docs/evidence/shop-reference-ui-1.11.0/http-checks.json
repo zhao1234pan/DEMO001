@@ -1,0 +1,47 @@
+[
+  {
+    "url": "http://127.0.0.1:4344/",
+    "status": 200,
+    "type": "text/html; charset=utf-8"
+  },
+  {
+    "url": "http://127.0.0.1:4344/src/settings.json",
+    "status": 200,
+    "type": "application/json"
+  },
+  {
+    "url": "http://127.0.0.1:4344/assets/main/index.js",
+    "status": 200,
+    "type": "text/javascript"
+  },
+  {
+    "url": "http://127.0.0.1:4344/assets/resources/index.js",
+    "status": 200,
+    "type": "text/javascript"
+  },
+  {
+    "url": "http://127.0.0.1:4344/assets/battle_art/index.js",
+    "status": 200,
+    "type": "text/javascript"
+  },
+  {
+    "url": "http://127.0.0.1:4344/style.css",
+    "status": 200,
+    "type": "text/css"
+  },
+  {
+    "url": "http://127.0.0.1:4344/src/polyfills.bundle.js",
+    "status": 200,
+    "type": "text/javascript"
+  },
+  {
+    "url": "http://127.0.0.1:4344/src/system.bundle.js",
+    "status": 200,
+    "type": "text/javascript"
+  },
+  {
+    "url": "http://127.0.0.1:4344/src/import-map.json",
+    "status": 200,
+    "type": "application/json"
+  }
+]

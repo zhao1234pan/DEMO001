@@ -1,6 +1,6 @@
 /** CSV 是运行时唯一配置源；此模块不依赖引擎，可用于导表与回归检查。 */
 export type TableRow = Record<string, string>;
-export const TABLE_NAMES = ["Global", "I18", "Staff", "Enemy", "Theme", "Map", "MapPoint", "Spot", "Obstacle", "Level", "Wave", "WaveGroup", "Collection", "Audio", "Decoration", "ArtFrame", "UiPrefab", "Tutorial", "StaffBranch", "StaffForm", "LevelLoadout", "ChallengeRule", "ChallengePerk", "VisualSkin", "Goods", "ArtCut", "UiLayout", "StaffVisual", "ShopRule", "ShopGoods", "ShopStaff", "ShopUpgrade", "ShopCustomer", "ShopPoint", "ChallengeTopic", "ShopStage", "ShopResearch", "ShopUniform"] as const;
+export const TABLE_NAMES = ["Global", "I18", "Staff", "Enemy", "Theme", "Map", "MapPoint", "Spot", "Obstacle", "Level", "Wave", "WaveGroup", "Collection", "Audio", "Decoration", "ArtFrame", "UiPrefab", "Tutorial", "StaffBranch", "StaffForm", "LevelLoadout", "ChallengeRule", "ChallengePerk", "VisualSkin", "Goods", "ArtCut", "UiLayout", "StaffVisual", "ShopRule", "ShopGoods", "ShopStaff", "ShopUpgrade", "ShopCustomer", "ShopPoint", "ChallengeTopic", "ShopStage", "ShopResearch", "ShopUniform", "RankingEntry"] as const;
 let data: Record<string, TableRow[]> = Object.create(null);
 let ready = false;
 let byKey:Record<string,Record<string,TableRow>> = Object.create(null);
@@ -40,6 +40,9 @@ export function installConfigs(sources: Record<string, string>): void {
   const requireRef = (table: string, field: string, value: string, owner: string) => { if (!next[table].some(r => r[field] === value)) throw new Error(`Invalid reference: ${owner} -> ${table}/${value}`); };
   for (const name of TABLE_NAMES) { const keys = new Set<string>(); for (const row of next[name]) { if ("key" in row) { if (!row.key || keys.has(row.key)) throw new Error("Duplicate/empty key: " + name + "/" + row.key); keys.add(row.key); } } }
   const positive = (name: string, fields: string[], zero = false) => { for (const row of next[name]) for (const field of fields) { const n = numeric(row, field); if (zero ? n < 0 : n <= 0) throw new Error(`Out of range: ${name}/${row.id}/${field}`); } };
+  positive("RankingEntry",["score"],true);
+  for(const row of next.RankingEntry){requireRef("I18","key",row.nameKey,"RankingEntry");requireRef("VisualSkin","key",row.portraitKey,"RankingEntry");if(!["0","1"].includes(row.friend)||!Number.isSafeInteger(numeric(row,"score")))throw Error("Invalid ranking preview entry");}
+  for(const key of ["rankingPreview","rankingAdventureWeight","rankingChallengeWeight"]){requireRef("Global","key",key,"RankingEntry");const value=numeric(next.Global.find(r=>r.key===key)!,"value");if(!Number.isSafeInteger(value)||value<0||(key==="rankingPreview"?value>1:value===0))throw Error("Invalid ranking display rule");}
   positive("VisualSkin",["width","height"]); positive("VisualSkin",["left","right","top","bottom","padding"],true);
   for(const row of next.VisualSkin) {
     if(!["stretch","height","contain","cover"].includes(row.resizeMode))throw new Error("Invalid skin resize mode");
@@ -226,7 +229,7 @@ export function installConfigs(sources: Record<string, string>): void {
   const topics=next.ChallengeTopic.slice().sort((a,b)=>numeric(a,'order')-numeric(b,'order'));
   if(topics.length!==next.Level.filter(r=>r.mode==='challenge').length||new Set(topics.map(r=>r.levelId)).size!==topics.length)throw Error('Invalid challenge topic coverage');
   for(const [i,row]of topics.entries()){
-    requireRef('Level','id',row.levelId,'ChallengeTopic');requireRef('I18','key',row.titleKey,'ChallengeTopic');requireRef('I18','key',row.ruleKey,'ChallengeTopic');requireRef('ArtFrame','ui',row.iconKey,'ChallengeTopic');
+    requireRef('Level','id',row.levelId,'ChallengeTopic');requireRef('I18','key',row.titleKey,'ChallengeTopic');requireRef('I18','key',row.ruleKey,'ChallengeTopic');requireRef('ArtFrame','ui',row.iconKey,'ChallengeTopic');requireRef('VisualSkin','key',row.thumbnailKey,'ChallengeTopic');
     if(next.Level.find(r=>r.id===row.levelId)!.mode!=='challenge'||numeric(row,'order')!==i+1||row.unlockAfter!==(i?topics[i-1].key:''))throw Error('Invalid challenge unlock chain');
     const perks=row.startPerks?row.startPerks.split('|'):[];if(new Set(perks).size!==perks.length)throw Error('Duplicate initial challenge perk');
     for(const key of perks){requireRef('ChallengePerk','key',key,'ChallengeTopic');const perk=next.ChallengePerk.find(r=>r.key===key)!;if(perk.staffKey||perks.includes(perk.exclusive))throw Error('Invalid initial challenge perk');}

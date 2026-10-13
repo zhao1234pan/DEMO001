@@ -11,7 +11,7 @@ exports.globalString = globalString;
 exports.text = text;
 exports.parseCsv = parseCsv;
 exports.installConfigs = installConfigs;
-exports.TABLE_NAMES = ["Global", "I18", "Staff", "Enemy", "Theme", "Map", "MapPoint", "Spot", "Obstacle", "Level", "Wave", "WaveGroup", "Collection", "Audio", "Decoration", "ArtFrame", "UiPrefab", "Tutorial", "StaffBranch", "StaffForm", "LevelLoadout", "ChallengeRule", "ChallengePerk", "VisualSkin", "Goods", "ArtCut", "UiLayout", "StaffVisual", "ShopRule", "ShopGoods", "ShopStaff", "ShopUpgrade", "ShopCustomer", "ShopPoint", "ChallengeTopic", "ShopStage", "ShopResearch", "ShopUniform"];
+exports.TABLE_NAMES = ["Global", "I18", "Staff", "Enemy", "Theme", "Map", "MapPoint", "Spot", "Obstacle", "Level", "Wave", "WaveGroup", "Collection", "Audio", "Decoration", "ArtFrame", "UiPrefab", "Tutorial", "StaffBranch", "StaffForm", "LevelLoadout", "ChallengeRule", "ChallengePerk", "VisualSkin", "Goods", "ArtCut", "UiLayout", "StaffVisual", "ShopRule", "ShopGoods", "ShopStaff", "ShopUpgrade", "ShopCustomer", "ShopPoint", "ChallengeTopic", "ShopStage", "ShopResearch", "ShopUniform", "RankingEntry"];
 let data = Object.create(null);
 let ready = false;
 let byKey = Object.create(null);
@@ -119,6 +119,19 @@ function installConfigs(sources) {
             if (zero ? n < 0 : n <= 0)
                 throw new Error(`Out of range: ${name}/${row.id}/${field}`);
         } };
+    positive("RankingEntry", ["score"], true);
+    for (const row of next.RankingEntry) {
+        requireRef("I18", "key", row.nameKey, "RankingEntry");
+        requireRef("VisualSkin", "key", row.portraitKey, "RankingEntry");
+        if (!["0", "1"].includes(row.friend) || !Number.isSafeInteger(numeric(row, "score")))
+            throw Error("Invalid ranking preview entry");
+    }
+    for (const key of ["rankingPreview", "rankingAdventureWeight", "rankingChallengeWeight"]) {
+        requireRef("Global", "key", key, "RankingEntry");
+        const value = numeric(next.Global.find(r => r.key === key), "value");
+        if (!Number.isSafeInteger(value) || value < 0 || (key === "rankingPreview" ? value > 1 : value === 0))
+            throw Error("Invalid ranking display rule");
+    }
     positive("VisualSkin", ["width", "height"]);
     positive("VisualSkin", ["left", "right", "top", "bottom", "padding"], true);
     for (const row of next.VisualSkin) {
@@ -565,6 +578,7 @@ function installConfigs(sources) {
         requireRef('I18', 'key', row.titleKey, 'ChallengeTopic');
         requireRef('I18', 'key', row.ruleKey, 'ChallengeTopic');
         requireRef('ArtFrame', 'ui', row.iconKey, 'ChallengeTopic');
+        requireRef('VisualSkin', 'key', row.thumbnailKey, 'ChallengeTopic');
         if (next.Level.find(r => r.id === row.levelId).mode !== 'challenge' || numeric(row, 'order') !== i + 1 || row.unlockAfter !== (i ? topics[i - 1].key : ''))
             throw Error('Invalid challenge unlock chain');
         const perks = row.startPerks ? row.startPerks.split('|') : [];

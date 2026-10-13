@@ -1,0 +1,18 @@
+[
+  {
+    "kind": "web",
+    "debug": true,
+    "finished": "2026-10-14 03:18:58 - debug: ================================ build Task (web-mobile) Finished in (10 s)ms ================================",
+    "exitCode": 36,
+    "finalCsvMatch": true,
+    "path": "G:/gptwork/shop-reference-ui-ship-web-build/web-mobile"
+  },
+  {
+    "kind": "release",
+    "debug": false,
+    "finished": "2026-10-14 03:19:20 - debug: ================================ build Task (web-mobile) Finished in (12 s)ms ================================",
+    "exitCode": 36,
+    "finalCsvMatch": true,
+    "path": "G:/gptwork/shop-reference-ui-ship-release-build/web-mobile"
+  }
+]
