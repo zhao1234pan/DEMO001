@@ -38,4 +38,31 @@ test('打开关闭与顾客移除会清理表现缓存，重复帧不改变订�
 
 test('收银进度填充从左边开始，完整值仍在轨道内',()=>{const page=prefab('shop'),fill=uiNode(page,'Floor/Content/Customer0/CheckoutProgress/Fill'),art=uiNode(fill,'Artwork'),width=art.getComponent(UITransform).width;near(fill.position.x+art.position.x-width/2,-18);near(fill.position.x+art.position.x+width/2,18);});
 test('加速搬运使用真实任务时长，完成时能到达货架',()=>{const p=controller(),base=points.get('worker1'),target=points.get('shelf7');p.worker(1,base,0);p.worker(1,target,1,.5);assert.deepEqual(p.worker(1,target,1.5,.5).position,target);});
+test('进店从可见地面下方进入，各扩店与视口全路径避开后墙冰柜',()=>{
+ const height=Number(core.rows('UiLayout').find(r=>r.key==='shop:Floor/Content/Customer0').height)*(1+shopNumber('idleScaleAmplitude'))+shopNumber('walkBobPixels');
+ for(const count of [2,4,6,8])for(const viewport of [504,650,850])for(let shelf=0;shelf<count;shelf++){
+  const p=controller(),c=customer(1,'enter'),s=state([c]);c.shelf=shelf;s.shelves=Array.from({length:count},()=>({goods:'bread',stock:6}));
+  const scroll=new CollectionScrollState();scroll.resize(shopNumber('shopViewportHeight')+Math.max(0,Math.ceil(count/2)-2)*shopNumber('shopRowHeight')+(viewport-shopNumber('shopViewportHeight'))/2,viewport);
+  const target=points.get('shelf'+shelf),offset=points.get('browseOffset'),y=target.y+offset.y;
+  for(let n=0;n<=100;n++){c.remaining=c.duration*(1-n/100);const q=p.customer(c,s,viewport).position;
+   if(n===0)assert.ok(q.y+height+scroll.maximum<-viewport/2,'整个角色必须在可见地面下方生成');
+   assert.ok(q.y<=y+1e-8,'进店不得绕到货架上方或后墙');assert.ok(Math.abs(q.x-points.get('entryLane').x)<1e-8||Math.abs(q.y-y)<1e-8,'从中央走到货架前方');
+   if(n===100){near(q.x,target.x+offset.x);near(q.y,y);}
+  }
+ }
+});
+test('双收银离店只向中央及前方走，满扩店滚到底也不在场内消失',()=>{
+ for(const count of [2,4,6,8])for(const viewport of [504,650,850])for(const station of [0,1]){
+  const p=controller(),c=customer(1,'exit'),s=state([c]);c.station=station;s.shelves=Array(count).fill({goods:'bread',stock:6});
+  const checkout=points.get(station?'checkout2':'checkout');let previous=checkout;
+  const scroll=new CollectionScrollState();scroll.resize(shopNumber('shopViewportHeight')+Math.max(0,Math.ceil(count/2)-2)*shopNumber('shopRowHeight')+(viewport-shopNumber('shopViewportHeight'))/2,viewport);
+  for(let n=0;n<=100;n++){c.remaining=c.duration*(1-n/100);const q=p.customer(c,s,viewport).position;assert.ok(q.y<=previous.y+1e-8,'离店不可向后墙走');assert.ok(Math.abs(q.x-checkout.x)<=Math.abs(checkout.x)+1e-8);previous=q;}
+  assert.ok(previous.y+60+scroll.maximum<-viewport/2,'离场终点需要完整越过底部裁切区');
+ }
+});
+test('空手离店的重开与视口变大仍走向场外，不跳到收银台',()=>{
+ const p=controller(),c=customer(1,'exit'),s=state([c]);c.basket=[];c.remaining=c.duration;
+ assert.deepEqual(p.customer(c,s).position,{x:points.get('shelf0').x,y:points.get('shelf0').y+points.get('browseOffset').y});
+ c.remaining=0;assert.ok(p.customer(c,s,850).position.y+60<-850/2);
+});
 console.log(passed+' 项商店表现模型测试通过');

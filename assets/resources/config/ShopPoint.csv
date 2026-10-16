@@ -1,7 +1,7 @@
 id,key,x,y,width,height
-1,entry,-145,228,46,46
+1,entry,0,-340,46,46
 2,checkout,75,151,46,46
-3,exit,-145,228,46,46
+3,exit,0,-340,46,46
 4,shelf0,-103,-20,140,159
 5,shelf1,103,-20,140,159
 6,shelf2,-103,-200,140,159
@@ -14,7 +14,7 @@ id,key,x,y,width,height
 13,queueStep,0,-34,1,1
 14,browseOffset,0,-72,1,1
 15,restockOffset,65,-45,1,1
-16,entryLane,0,228,1,1
+16,entryLane,0,-260,1,1
 17,checkoutLane,0,151,1,1
 18,stockroom,-148,180,44,44
 19,checkoutEffect,94,170,1,1

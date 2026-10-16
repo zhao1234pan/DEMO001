@@ -54,7 +54,7 @@ export class ShopView {
     this.workers();
     for(let i=0;i<shopNumber("customerLimit");i++){
       const node=uiNode(this.root,"Floor/Content/Customer"+i),c=state.customers[i];node.active=Boolean(c);if(!c)continue;
-      this.image(node,sim.config.customers.find(t=>t.key===c.kind)!.imageKey);const pose=this.presentation.customer(c,state);node.setPosition(pose.position.x,pose.position.y+pose.bob);node.setScale(pose.scale,1/pose.scale);
+      this.image(node,sim.config.customers.find(t=>t.key===c.kind)!.imageKey);const pose=this.presentation.customer(c,state,viewport);node.setPosition(pose.position.x,pose.position.y+pose.bob);node.setScale(pose.scale,1/pose.scale);
       const basket=uiNode(node,"Basket"),pickup=uiNode(node,"Pickup"),progress=uiNode(node,"CheckoutProgress");basket.active=c.basket.length>0;pickup.active=basket.active&&pose.pickup>0;
       if(pickup.active){const good=rows("Goods").find(g=>g.key===c.basket[0])!;this.skin(pickup,good.imageKey);const base=rows("UiLayout").find(r=>r.key==="shop:Floor/Content/Customer"+i+"/Pickup")!;pickup.setPosition(numeric(base,"x"),numeric(base,"y")+pose.pickup*shopNumber("pickupLift"));pickup.setScale(pose.pickup,pose.pickup);}
       progress.active=pose.progress>=0;uiNode(progress,"Fill").setScale(Math.max(0,pose.progress),1);

@@ -1,0 +1,35 @@
+{
+  "changes": [
+    {
+      "key": "entry",
+      "column": "x",
+      "before": -145,
+      "after": 0
+    },
+    {
+      "key": "entry",
+      "column": "y",
+      "before": 228,
+      "after": -340
+    },
+    {
+      "key": "exit",
+      "column": "x",
+      "before": -145,
+      "after": 0
+    },
+    {
+      "key": "exit",
+      "column": "y",
+      "before": 228,
+      "after": -340
+    },
+    {
+      "key": "entryLane",
+      "column": "y",
+      "before": 228,
+      "after": -260
+    }
+  ],
+  "reason": "顾客经画面下方中央过道进出；基准为504高营业区，表现层按真实视口与扩店平移入口。"
+}
