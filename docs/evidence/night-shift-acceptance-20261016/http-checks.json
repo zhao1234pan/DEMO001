@@ -1,0 +1,80 @@
+[
+  {
+    "path": "index.html",
+    "status": 200,
+    "sha256MatchesFinalBuild": true,
+    "bytes": 2163
+  },
+  {
+    "path": "src/settings.json",
+    "status": 200,
+    "sha256MatchesFinalBuild": true,
+    "bytes": 22619
+  },
+  {
+    "path": "src/polyfills.bundle.js",
+    "status": 200,
+    "sha256MatchesFinalBuild": true,
+    "bytes": 14750
+  },
+  {
+    "path": "src/system.bundle.js",
+    "status": 200,
+    "sha256MatchesFinalBuild": true,
+    "bytes": 37168
+  },
+  {
+    "path": "src/import-map.json",
+    "status": 200,
+    "sha256MatchesFinalBuild": true,
+    "bytes": 54
+  },
+  {
+    "path": "index.js",
+    "status": 200,
+    "sha256MatchesFinalBuild": true,
+    "bytes": 818
+  },
+  {
+    "path": "application.js",
+    "status": 200,
+    "sha256MatchesFinalBuild": true,
+    "bytes": 3300
+  },
+  {
+    "path": "style.css",
+    "status": 200,
+    "sha256MatchesFinalBuild": true,
+    "bytes": 1283
+  },
+  {
+    "path": "assets/main/index.js",
+    "status": 200,
+    "sha256MatchesFinalBuild": true,
+    "bytes": 606430
+  },
+  {
+    "path": "assets/resources/index.js",
+    "status": 200,
+    "sha256MatchesFinalBuild": true,
+    "bytes": 624
+  },
+  {
+    "path": "assets/battle_art/index.js",
+    "status": 200,
+    "sha256MatchesFinalBuild": true,
+    "bytes": 627
+  },
+  {
+    "path": "assets/resources/import/45/456e7aee-c78a-41ba-86a6-d7981937d81a.json",
+    "status": 200,
+    "sha256MatchesFinalBuild": true,
+    "bytes": 430119
+  },
+  {
+    "path": "assets/resources/import/5d/5d15c6d2-2e85-4c49-a69f-f285f961ceae.json",
+    "status": 200,
+    "sha256MatchesFinalBuild": true,
+    "bytes": 38123
+  }
+]

@@ -1,0 +1,64 @@
+{
+  "results": [
+    {
+      "name": "配置一致",
+      "status": 0,
+      "stdout": "UI布局表：2598个节点。\nUI资源校验：36个预制体，2598个节点。\n39张表校验通过，XLSX 与 CSV 一致。\n日志：G:\\gptwork\\config-export\\run-lkdkrz\n",
+      "stderr": ""
+    },
+    {
+      "name": "预制体门禁",
+      "status": 0,
+      "stdout": "{\n  \"prefabs\": 36,\n  \"nodes\": 2598,\n  \"labels\": 405,\n  \"images\": 80\n}\n",
+      "stderr": ""
+    },
+    {
+      "name": "严格TypeScript",
+      "status": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ],
+  "builds": [
+    {
+      "kind": "web",
+      "path": "G:/gptwork/night-shift-acceptance-web-build/web-mobile",
+      "finished": "2026-10-16 20:03:57 - debug: ================================ build Task (web-mobile) Finished in (9 s)ms ================================",
+      "exitCode": 36,
+      "all39CsvMatch": true
+    },
+    {
+      "kind": "release",
+      "path": "G:/gptwork/night-shift-acceptance-release-build/web-mobile",
+      "finished": "2026-10-16 20:04:18 - debug: ================================ build Task (web-mobile) Finished in (11 s)ms ================================",
+      "exitCode": 36,
+      "all39CsvMatch": true
+    }
+  ],
+  "layoutChange": {
+    "changes": [
+      {
+        "key": "win:Unlocks",
+        "row": 1671,
+        "column": 6,
+        "before": -1,
+        "after": -13
+      },
+      {
+        "key": "win:overlayStats",
+        "row": 1685,
+        "column": 6,
+        "before": 144,
+        "after": 112
+      },
+      {
+        "key": "win:Summary",
+        "row": 1687,
+        "column": 6,
+        "before": 72,
+        "after": 60
+      }
+    ],
+    "reason": "两行战绩移到内容面板，解锁摘要与头像继续下移12像素留出行距；字号和操作按钮保持"
+  }
+}

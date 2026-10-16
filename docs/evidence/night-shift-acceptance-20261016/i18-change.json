@@ -1,0 +1,11 @@
+{
+  "key": "topics.locked",
+  "changes": [
+    {
+      "row": 637,
+      "column": 3,
+      "before": "通关「{p0}」解锁",
+      "after": "通关「{p0}」\n解锁"
+    }
+  ]
+}

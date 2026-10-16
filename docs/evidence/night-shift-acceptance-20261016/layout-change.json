@@ -1,0 +1,26 @@
+{
+  "changes": [
+    {
+      "key": "win:Unlocks",
+      "row": 1671,
+      "column": 6,
+      "before": -1,
+      "after": -13
+    },
+    {
+      "key": "win:overlayStats",
+      "row": 1685,
+      "column": 6,
+      "before": 144,
+      "after": 112
+    },
+    {
+      "key": "win:Summary",
+      "row": 1687,
+      "column": 6,
+      "before": 72,
+      "after": 60
+    }
+  ],
+  "reason": "两行战绩移到内容面板，解锁摘要与头像继续下移12像素留出行距；字号和操作按钮保持"
+}

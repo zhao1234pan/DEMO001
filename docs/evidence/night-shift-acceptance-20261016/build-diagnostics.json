@@ -1,0 +1,20 @@
+[
+  {
+    "kind": "web",
+    "exitCode": "36",
+    "diagnostics": [
+      "[builder-ui][ota] {\"stage\":\"verify\",\"status\":\"failure\",\"errorCode\":\"OTA_VERSION_CONFLICT\",\"durationMs\":4059,\"id\":6,\"at\":\"2026-10-16T20:03:48.340+08:00\"}",
+      "2026-10-16 20:03:56 - debug: Error: Exit process with code:null, signal:SIGTERM in task build-script",
+      "2026-10-16 20:03:57 - debug: ================================ build Task (web-mobile) Finished in (9 s)ms ================================"
+    ]
+  },
+  {
+    "kind": "release",
+    "exitCode": "36",
+    "diagnostics": [
+      "[builder-ui][ota] {\"stage\":\"verify\",\"status\":\"failure\",\"errorCode\":\"OTA_VERSION_CONFLICT\",\"durationMs\":5565,\"id\":6,\"at\":\"2026-10-16T20:04:09.697+08:00\"}",
+      "2026-10-16 20:04:17 - debug: Error: Exit process with code:null, signal:SIGTERM in task build-script",
+      "2026-10-16 20:04:18 - debug: ================================ build Task (web-mobile) Finished in (11 s)ms ================================"
+    ]
+  }
+]

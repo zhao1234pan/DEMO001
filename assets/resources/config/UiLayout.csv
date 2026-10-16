@@ -1664,7 +1664,7 @@ id,key,prefab,node,x,y,width,height,scaleX,scaleY,fontSize,lineHeight,fontFamily
 1694,win:Awning7/Artwork,win,Awning7/Artwork,0,0,29.11111111111111,12,1,1,0,0,,,,0,1,1,0,1,,参考图逐页复核；保留节点绑定,
 1695,win:Awning8,win,Awning8,116.44444444444446,160.83999999999997,29.11111111111111,12,1,1,0,0,,,,0,1,1,0,0,round_4,参考图逐页复核；保留节点绑定,
 1696,win:Awning8/Artwork,win,Awning8/Artwork,0,0,29.11111111111111,12,1,1,0,0,,,,0,1,1,0,1,,参考图逐页复核；保留节点绑定,
-1697,win:Unlocks,win,Unlocks,0,-1,258,72,1,1,0,0,,,,0,1,1,0,1,,参考图逐页复核；保留节点绑定,
+1697,win:Unlocks,win,Unlocks,0,-13,258,72,1,1,0,0,,,,0,1,1,0,1,,参考图逐页复核；保留节点绑定,
 1698,win:Unlocks/Slot0,win,Unlocks/Slot0,-86,0,86,72,1,1,0,0,,,,0,1,1,0,1,,参考图逐页复核；保留节点绑定,
 1699,win:Unlocks/Slot0/Portrait,win,Unlocks/Slot0/Portrait,0,8,53,53,1,1,0,0,,,,0,1,1,0,1,,参考图逐页复核；保留节点绑定,
 1700,win:Unlocks/Slot0/Name,win,Unlocks/Slot0/Name,0,-26,84,20,1,1,13,19,NightShiftRounded,#5c3020,,0,1,1,2,1,,参考图逐页复核；保留节点绑定,fonts/night_shift_rounded
@@ -1678,9 +1678,9 @@ id,key,prefab,node,x,y,width,height,scaleX,scaleY,fontSize,lineHeight,fontFamily
 1708,win:PrimaryAnchor,win,PrimaryAnchor,0,-97,246,48,1,1,0,0,,,,0,1,1,0,0,,参考图逐页复核；保留节点绑定,
 1709,win:HomeAnchor,win,HomeAnchor,0,-163,246,48,1,1,0,0,,,,0,1,1,0,0,,参考图逐页复核；保留节点绑定,
 1710,win:overlayTitle,win,overlayTitle,-7,203,169,43,1,1,28,36,NightShiftRounded,#4b1c12,#ffffff,2.4,1,1,2,1,,参考图逐页复核；保留节点绑定,fonts/night_shift_rounded
-1711,win:overlayStats,win,overlayStats,0,144,303,38,1,1,13,17,NightShiftRounded,#4b1c12,,0,1,1,2,1,,参考图逐页复核；保留节点绑定,fonts/night_shift_rounded
+1711,win:overlayStats,win,overlayStats,0,112,303,38,1,1,13,17,NightShiftRounded,#4b1c12,,0,1,1,2,1,,参考图逐页复核；保留节点绑定,fonts/night_shift_rounded
 1712,win:overlayNote,win,overlayNote,0,-107.16000000000003,270,24,1,1,13,17,NightShiftRounded,#5c3020,,0,1,1,2,1,,参考图逐页复核；保留节点绑定,fonts/night_shift_rounded
-1713,win:Summary,win,Summary,0,72,286,66,1,1,14,20,NightShiftRounded,#5c3020,,0,1,1,2,1,,参考图逐页复核；保留节点绑定,fonts/night_shift_rounded
+1713,win:Summary,win,Summary,0,60,286,66,1,1,14,20,NightShiftRounded,#5c3020,,0,1,1,2,1,,参考图逐页复核；保留节点绑定,fonts/night_shift_rounded
 1714,win:Primary,win,Primary,0,-97,246,48,1,1,0,0,,,,0,1,1,0,1,,参考图逐页复核；保留节点绑定,
 1715,win:Primary/Shadow,win,Primary/Shadow,0,-3,246,48,1,1,0,0,,,,0,1,1,0,0,window_flat,参考图逐页复核；保留节点绑定,
 1716,win:Primary/Shadow/Artwork,win,Primary/Shadow/Artwork,0,0,246,48,1,1,0,0,,,,0,1,1,0,1,,参考图逐页复核；保留节点绑定,
