@@ -1,0 +1,2136 @@
+[
+  {
+    "table": "ShopPoint",
+    "changes": [
+      {
+        "key": "shelf0",
+        "column": "x",
+        "before": -103,
+        "after": -124
+      },
+      {
+        "key": "shelf1",
+        "column": "x",
+        "before": 103,
+        "after": 124
+      },
+      {
+        "key": "shelf2",
+        "column": "x",
+        "before": -103,
+        "after": -124
+      },
+      {
+        "key": "shelf3",
+        "column": "x",
+        "before": 103,
+        "after": 124
+      },
+      {
+        "key": "queue",
+        "column": "x",
+        "before": 14,
+        "after": 0
+      },
+      {
+        "key": "queue",
+        "column": "y",
+        "before": 118,
+        "after": 84
+      },
+      {
+        "key": "queueStep",
+        "column": "y",
+        "before": -34,
+        "after": -52
+      },
+      {
+        "key": "restockOffset",
+        "column": "x",
+        "before": 65,
+        "after": 45
+      },
+      {
+        "key": "shelf4",
+        "column": "x",
+        "before": -103,
+        "after": -124
+      },
+      {
+        "key": "shelf5",
+        "column": "x",
+        "before": 103,
+        "after": 124
+      },
+      {
+        "key": "shelf6",
+        "column": "x",
+        "before": -103,
+        "after": -124
+      },
+      {
+        "key": "shelf7",
+        "column": "x",
+        "before": 103,
+        "after": 124
+      },
+      {
+        "key": "walkLeft",
+        "column": "id",
+        "before": null,
+        "after": 33
+      },
+      {
+        "key": "walkLeft",
+        "column": "key",
+        "before": null,
+        "after": "walkLeft"
+      },
+      {
+        "key": "walkLeft",
+        "column": "x",
+        "before": null,
+        "after": -44
+      },
+      {
+        "key": "walkLeft",
+        "column": "y",
+        "before": null,
+        "after": -260
+      },
+      {
+        "key": "walkLeft",
+        "column": "width",
+        "before": null,
+        "after": 1
+      },
+      {
+        "key": "walkLeft",
+        "column": "height",
+        "before": null,
+        "after": 1
+      },
+      {
+        "key": "walkRight",
+        "column": "id",
+        "before": null,
+        "after": 34
+      },
+      {
+        "key": "walkRight",
+        "column": "key",
+        "before": null,
+        "after": "walkRight"
+      },
+      {
+        "key": "walkRight",
+        "column": "x",
+        "before": null,
+        "after": 44
+      },
+      {
+        "key": "walkRight",
+        "column": "y",
+        "before": null,
+        "after": -260
+      },
+      {
+        "key": "walkRight",
+        "column": "width",
+        "before": null,
+        "after": 1
+      },
+      {
+        "key": "walkRight",
+        "column": "height",
+        "before": null,
+        "after": 1
+      },
+      {
+        "key": "customerClearance",
+        "column": "id",
+        "before": null,
+        "after": 35
+      },
+      {
+        "key": "customerClearance",
+        "column": "key",
+        "before": null,
+        "after": "customerClearance"
+      },
+      {
+        "key": "customerClearance",
+        "column": "x",
+        "before": null,
+        "after": 0
+      },
+      {
+        "key": "customerClearance",
+        "column": "y",
+        "before": null,
+        "after": 0
+      },
+      {
+        "key": "customerClearance",
+        "column": "width",
+        "before": null,
+        "after": 44
+      },
+      {
+        "key": "customerClearance",
+        "column": "height",
+        "before": null,
+        "after": 46
+      }
+    ]
+  },
+  {
+    "table": "UiLayout",
+    "changes": [
+      {
+        "key": "shop:Floor/Content/Shelf0",
+        "column": "x",
+        "before": -103,
+        "after": -124
+      },
+      {
+        "key": "shop:Floor/Content/Shelf0",
+        "column": "scaleX",
+        "before": 1,
+        "after": 0.85
+      },
+      {
+        "key": "shop:Floor/Content/Shelf0",
+        "column": "scaleY",
+        "before": 1,
+        "after": 0.85
+      },
+      {
+        "key": "shop:Floor/Content/Shelf1",
+        "column": "x",
+        "before": 103,
+        "after": 124
+      },
+      {
+        "key": "shop:Floor/Content/Shelf1",
+        "column": "scaleX",
+        "before": 1,
+        "after": 0.85
+      },
+      {
+        "key": "shop:Floor/Content/Shelf1",
+        "column": "scaleY",
+        "before": 1,
+        "after": 0.85
+      },
+      {
+        "key": "shop:Floor/Content/Shelf2",
+        "column": "x",
+        "before": -103,
+        "after": -124
+      },
+      {
+        "key": "shop:Floor/Content/Shelf2",
+        "column": "scaleX",
+        "before": 1,
+        "after": 0.85
+      },
+      {
+        "key": "shop:Floor/Content/Shelf2",
+        "column": "scaleY",
+        "before": 1,
+        "after": 0.85
+      },
+      {
+        "key": "shop:Floor/Content/Shelf3",
+        "column": "x",
+        "before": 103,
+        "after": 124
+      },
+      {
+        "key": "shop:Floor/Content/Shelf3",
+        "column": "scaleX",
+        "before": 1,
+        "after": 0.85
+      },
+      {
+        "key": "shop:Floor/Content/Shelf3",
+        "column": "scaleY",
+        "before": 1,
+        "after": 0.85
+      },
+      {
+        "key": "shop:Floor/Content/Customer0",
+        "column": "width",
+        "before": 56,
+        "after": 36
+      },
+      {
+        "key": "shop:Floor/Content/Customer0",
+        "column": "height",
+        "before": 56,
+        "after": 36
+      },
+      {
+        "key": "shop:Floor/Content/Customer0/Basket",
+        "column": "x",
+        "before": 20,
+        "after": 12.857
+      },
+      {
+        "key": "shop:Floor/Content/Customer0/Basket",
+        "column": "y",
+        "before": 13,
+        "after": 8.357
+      },
+      {
+        "key": "shop:Floor/Content/Customer0/Basket",
+        "column": "width",
+        "before": 25,
+        "after": 16.071
+      },
+      {
+        "key": "shop:Floor/Content/Customer0/Basket",
+        "column": "height",
+        "before": 28,
+        "after": 18
+      },
+      {
+        "key": "shop:Floor/Content/Customer0/Basket/Artwork",
+        "column": "width",
+        "before": 25,
+        "after": 16.071
+      },
+      {
+        "key": "shop:Floor/Content/Customer0/Basket/Artwork",
+        "column": "height",
+        "before": 28,
+        "after": 18
+      },
+      {
+        "key": "shop:Floor/Content/Customer0/Pickup",
+        "column": "x",
+        "before": 17,
+        "after": 10.929
+      },
+      {
+        "key": "shop:Floor/Content/Customer0/Pickup",
+        "column": "y",
+        "before": 36,
+        "after": 23.143
+      },
+      {
+        "key": "shop:Floor/Content/Customer0/Pickup",
+        "column": "width",
+        "before": 19,
+        "after": 12.214
+      },
+      {
+        "key": "shop:Floor/Content/Customer0/Pickup",
+        "column": "height",
+        "before": 22,
+        "after": 14.143
+      },
+      {
+        "key": "shop:Floor/Content/Customer0/Pickup/Artwork",
+        "column": "width",
+        "before": 19,
+        "after": 12.214
+      },
+      {
+        "key": "shop:Floor/Content/Customer0/Pickup/Artwork",
+        "column": "height",
+        "before": 22,
+        "after": 14.143
+      },
+      {
+        "key": "shop:Floor/Content/Customer0/CheckoutProgress",
+        "column": "y",
+        "before": 61,
+        "after": 39.214
+      },
+      {
+        "key": "shop:Floor/Content/Customer0/CheckoutProgress",
+        "column": "width",
+        "before": 42,
+        "after": 27
+      },
+      {
+        "key": "shop:Floor/Content/Customer0/CheckoutProgress",
+        "column": "height",
+        "before": 8,
+        "after": 5.143
+      },
+      {
+        "key": "shop:Floor/Content/Customer0/CheckoutProgress/Artwork",
+        "column": "width",
+        "before": 42,
+        "after": 27
+      },
+      {
+        "key": "shop:Floor/Content/Customer0/CheckoutProgress/Artwork",
+        "column": "height",
+        "before": 8,
+        "after": 5.143
+      },
+      {
+        "key": "shop:Floor/Content/Customer0/CheckoutProgress/Fill",
+        "column": "x",
+        "before": -18,
+        "after": -11.571
+      },
+      {
+        "key": "shop:Floor/Content/Customer0/CheckoutProgress/Fill",
+        "column": "width",
+        "before": 36,
+        "after": 23.143
+      },
+      {
+        "key": "shop:Floor/Content/Customer0/CheckoutProgress/Fill",
+        "column": "height",
+        "before": 4,
+        "after": 2.571
+      },
+      {
+        "key": "shop:Floor/Content/Customer0/CheckoutProgress/Fill/Artwork",
+        "column": "x",
+        "before": 18,
+        "after": 11.571
+      },
+      {
+        "key": "shop:Floor/Content/Customer0/CheckoutProgress/Fill/Artwork",
+        "column": "width",
+        "before": 36,
+        "after": 23.143
+      },
+      {
+        "key": "shop:Floor/Content/Customer0/CheckoutProgress/Fill/Artwork",
+        "column": "height",
+        "before": 4,
+        "after": 2.571
+      },
+      {
+        "key": "shop:Floor/Content/Customer1",
+        "column": "width",
+        "before": 56,
+        "after": 36
+      },
+      {
+        "key": "shop:Floor/Content/Customer1",
+        "column": "height",
+        "before": 56,
+        "after": 36
+      },
+      {
+        "key": "shop:Floor/Content/Customer1/Basket",
+        "column": "x",
+        "before": 20,
+        "after": 12.857
+      },
+      {
+        "key": "shop:Floor/Content/Customer1/Basket",
+        "column": "y",
+        "before": 13,
+        "after": 8.357
+      },
+      {
+        "key": "shop:Floor/Content/Customer1/Basket",
+        "column": "width",
+        "before": 25,
+        "after": 16.071
+      },
+      {
+        "key": "shop:Floor/Content/Customer1/Basket",
+        "column": "height",
+        "before": 28,
+        "after": 18
+      },
+      {
+        "key": "shop:Floor/Content/Customer1/Basket/Artwork",
+        "column": "width",
+        "before": 25,
+        "after": 16.071
+      },
+      {
+        "key": "shop:Floor/Content/Customer1/Basket/Artwork",
+        "column": "height",
+        "before": 28,
+        "after": 18
+      },
+      {
+        "key": "shop:Floor/Content/Customer1/Pickup",
+        "column": "x",
+        "before": 17,
+        "after": 10.929
+      },
+      {
+        "key": "shop:Floor/Content/Customer1/Pickup",
+        "column": "y",
+        "before": 36,
+        "after": 23.143
+      },
+      {
+        "key": "shop:Floor/Content/Customer1/Pickup",
+        "column": "width",
+        "before": 19,
+        "after": 12.214
+      },
+      {
+        "key": "shop:Floor/Content/Customer1/Pickup",
+        "column": "height",
+        "before": 22,
+        "after": 14.143
+      },
+      {
+        "key": "shop:Floor/Content/Customer1/Pickup/Artwork",
+        "column": "width",
+        "before": 19,
+        "after": 12.214
+      },
+      {
+        "key": "shop:Floor/Content/Customer1/Pickup/Artwork",
+        "column": "height",
+        "before": 22,
+        "after": 14.143
+      },
+      {
+        "key": "shop:Floor/Content/Customer1/CheckoutProgress",
+        "column": "y",
+        "before": 61,
+        "after": 39.214
+      },
+      {
+        "key": "shop:Floor/Content/Customer1/CheckoutProgress",
+        "column": "width",
+        "before": 42,
+        "after": 27
+      },
+      {
+        "key": "shop:Floor/Content/Customer1/CheckoutProgress",
+        "column": "height",
+        "before": 8,
+        "after": 5.143
+      },
+      {
+        "key": "shop:Floor/Content/Customer1/CheckoutProgress/Artwork",
+        "column": "width",
+        "before": 42,
+        "after": 27
+      },
+      {
+        "key": "shop:Floor/Content/Customer1/CheckoutProgress/Artwork",
+        "column": "height",
+        "before": 8,
+        "after": 5.143
+      },
+      {
+        "key": "shop:Floor/Content/Customer1/CheckoutProgress/Fill",
+        "column": "x",
+        "before": -18,
+        "after": -11.571
+      },
+      {
+        "key": "shop:Floor/Content/Customer1/CheckoutProgress/Fill",
+        "column": "width",
+        "before": 36,
+        "after": 23.143
+      },
+      {
+        "key": "shop:Floor/Content/Customer1/CheckoutProgress/Fill",
+        "column": "height",
+        "before": 4,
+        "after": 2.571
+      },
+      {
+        "key": "shop:Floor/Content/Customer1/CheckoutProgress/Fill/Artwork",
+        "column": "x",
+        "before": 18,
+        "after": 11.571
+      },
+      {
+        "key": "shop:Floor/Content/Customer1/CheckoutProgress/Fill/Artwork",
+        "column": "width",
+        "before": 36,
+        "after": 23.143
+      },
+      {
+        "key": "shop:Floor/Content/Customer1/CheckoutProgress/Fill/Artwork",
+        "column": "height",
+        "before": 4,
+        "after": 2.571
+      },
+      {
+        "key": "shop:Floor/Content/Customer2",
+        "column": "width",
+        "before": 56,
+        "after": 36
+      },
+      {
+        "key": "shop:Floor/Content/Customer2",
+        "column": "height",
+        "before": 56,
+        "after": 36
+      },
+      {
+        "key": "shop:Floor/Content/Customer2/Basket",
+        "column": "x",
+        "before": 20,
+        "after": 12.857
+      },
+      {
+        "key": "shop:Floor/Content/Customer2/Basket",
+        "column": "y",
+        "before": 13,
+        "after": 8.357
+      },
+      {
+        "key": "shop:Floor/Content/Customer2/Basket",
+        "column": "width",
+        "before": 25,
+        "after": 16.071
+      },
+      {
+        "key": "shop:Floor/Content/Customer2/Basket",
+        "column": "height",
+        "before": 28,
+        "after": 18
+      },
+      {
+        "key": "shop:Floor/Content/Customer2/Basket/Artwork",
+        "column": "width",
+        "before": 25,
+        "after": 16.071
+      },
+      {
+        "key": "shop:Floor/Content/Customer2/Basket/Artwork",
+        "column": "height",
+        "before": 28,
+        "after": 18
+      },
+      {
+        "key": "shop:Floor/Content/Customer2/Pickup",
+        "column": "x",
+        "before": 17,
+        "after": 10.929
+      },
+      {
+        "key": "shop:Floor/Content/Customer2/Pickup",
+        "column": "y",
+        "before": 36,
+        "after": 23.143
+      },
+      {
+        "key": "shop:Floor/Content/Customer2/Pickup",
+        "column": "width",
+        "before": 19,
+        "after": 12.214
+      },
+      {
+        "key": "shop:Floor/Content/Customer2/Pickup",
+        "column": "height",
+        "before": 22,
+        "after": 14.143
+      },
+      {
+        "key": "shop:Floor/Content/Customer2/Pickup/Artwork",
+        "column": "width",
+        "before": 19,
+        "after": 12.214
+      },
+      {
+        "key": "shop:Floor/Content/Customer2/Pickup/Artwork",
+        "column": "height",
+        "before": 22,
+        "after": 14.143
+      },
+      {
+        "key": "shop:Floor/Content/Customer2/CheckoutProgress",
+        "column": "y",
+        "before": 61,
+        "after": 39.214
+      },
+      {
+        "key": "shop:Floor/Content/Customer2/CheckoutProgress",
+        "column": "width",
+        "before": 42,
+        "after": 27
+      },
+      {
+        "key": "shop:Floor/Content/Customer2/CheckoutProgress",
+        "column": "height",
+        "before": 8,
+        "after": 5.143
+      },
+      {
+        "key": "shop:Floor/Content/Customer2/CheckoutProgress/Artwork",
+        "column": "width",
+        "before": 42,
+        "after": 27
+      },
+      {
+        "key": "shop:Floor/Content/Customer2/CheckoutProgress/Artwork",
+        "column": "height",
+        "before": 8,
+        "after": 5.143
+      },
+      {
+        "key": "shop:Floor/Content/Customer2/CheckoutProgress/Fill",
+        "column": "x",
+        "before": -18,
+        "after": -11.571
+      },
+      {
+        "key": "shop:Floor/Content/Customer2/CheckoutProgress/Fill",
+        "column": "width",
+        "before": 36,
+        "after": 23.143
+      },
+      {
+        "key": "shop:Floor/Content/Customer2/CheckoutProgress/Fill",
+        "column": "height",
+        "before": 4,
+        "after": 2.571
+      },
+      {
+        "key": "shop:Floor/Content/Customer2/CheckoutProgress/Fill/Artwork",
+        "column": "x",
+        "before": 18,
+        "after": 11.571
+      },
+      {
+        "key": "shop:Floor/Content/Customer2/CheckoutProgress/Fill/Artwork",
+        "column": "width",
+        "before": 36,
+        "after": 23.143
+      },
+      {
+        "key": "shop:Floor/Content/Customer2/CheckoutProgress/Fill/Artwork",
+        "column": "height",
+        "before": 4,
+        "after": 2.571
+      },
+      {
+        "key": "shop:Floor/Content/Customer3",
+        "column": "width",
+        "before": 56,
+        "after": 36
+      },
+      {
+        "key": "shop:Floor/Content/Customer3",
+        "column": "height",
+        "before": 56,
+        "after": 36
+      },
+      {
+        "key": "shop:Floor/Content/Customer3/Basket",
+        "column": "x",
+        "before": 20,
+        "after": 12.857
+      },
+      {
+        "key": "shop:Floor/Content/Customer3/Basket",
+        "column": "y",
+        "before": 13,
+        "after": 8.357
+      },
+      {
+        "key": "shop:Floor/Content/Customer3/Basket",
+        "column": "width",
+        "before": 25,
+        "after": 16.071
+      },
+      {
+        "key": "shop:Floor/Content/Customer3/Basket",
+        "column": "height",
+        "before": 28,
+        "after": 18
+      },
+      {
+        "key": "shop:Floor/Content/Customer3/Basket/Artwork",
+        "column": "width",
+        "before": 25,
+        "after": 16.071
+      },
+      {
+        "key": "shop:Floor/Content/Customer3/Basket/Artwork",
+        "column": "height",
+        "before": 28,
+        "after": 18
+      },
+      {
+        "key": "shop:Floor/Content/Customer3/Pickup",
+        "column": "x",
+        "before": 17,
+        "after": 10.929
+      },
+      {
+        "key": "shop:Floor/Content/Customer3/Pickup",
+        "column": "y",
+        "before": 36,
+        "after": 23.143
+      },
+      {
+        "key": "shop:Floor/Content/Customer3/Pickup",
+        "column": "width",
+        "before": 19,
+        "after": 12.214
+      },
+      {
+        "key": "shop:Floor/Content/Customer3/Pickup",
+        "column": "height",
+        "before": 22,
+        "after": 14.143
+      },
+      {
+        "key": "shop:Floor/Content/Customer3/Pickup/Artwork",
+        "column": "width",
+        "before": 19,
+        "after": 12.214
+      },
+      {
+        "key": "shop:Floor/Content/Customer3/Pickup/Artwork",
+        "column": "height",
+        "before": 22,
+        "after": 14.143
+      },
+      {
+        "key": "shop:Floor/Content/Customer3/CheckoutProgress",
+        "column": "y",
+        "before": 61,
+        "after": 39.214
+      },
+      {
+        "key": "shop:Floor/Content/Customer3/CheckoutProgress",
+        "column": "width",
+        "before": 42,
+        "after": 27
+      },
+      {
+        "key": "shop:Floor/Content/Customer3/CheckoutProgress",
+        "column": "height",
+        "before": 8,
+        "after": 5.143
+      },
+      {
+        "key": "shop:Floor/Content/Customer3/CheckoutProgress/Artwork",
+        "column": "width",
+        "before": 42,
+        "after": 27
+      },
+      {
+        "key": "shop:Floor/Content/Customer3/CheckoutProgress/Artwork",
+        "column": "height",
+        "before": 8,
+        "after": 5.143
+      },
+      {
+        "key": "shop:Floor/Content/Customer3/CheckoutProgress/Fill",
+        "column": "x",
+        "before": -18,
+        "after": -11.571
+      },
+      {
+        "key": "shop:Floor/Content/Customer3/CheckoutProgress/Fill",
+        "column": "width",
+        "before": 36,
+        "after": 23.143
+      },
+      {
+        "key": "shop:Floor/Content/Customer3/CheckoutProgress/Fill",
+        "column": "height",
+        "before": 4,
+        "after": 2.571
+      },
+      {
+        "key": "shop:Floor/Content/Customer3/CheckoutProgress/Fill/Artwork",
+        "column": "x",
+        "before": 18,
+        "after": 11.571
+      },
+      {
+        "key": "shop:Floor/Content/Customer3/CheckoutProgress/Fill/Artwork",
+        "column": "width",
+        "before": 36,
+        "after": 23.143
+      },
+      {
+        "key": "shop:Floor/Content/Customer3/CheckoutProgress/Fill/Artwork",
+        "column": "height",
+        "before": 4,
+        "after": 2.571
+      },
+      {
+        "key": "shop:Floor/Content/Customer4",
+        "column": "width",
+        "before": 56,
+        "after": 36
+      },
+      {
+        "key": "shop:Floor/Content/Customer4",
+        "column": "height",
+        "before": 56,
+        "after": 36
+      },
+      {
+        "key": "shop:Floor/Content/Customer4/Basket",
+        "column": "x",
+        "before": 20,
+        "after": 12.857
+      },
+      {
+        "key": "shop:Floor/Content/Customer4/Basket",
+        "column": "y",
+        "before": 13,
+        "after": 8.357
+      },
+      {
+        "key": "shop:Floor/Content/Customer4/Basket",
+        "column": "width",
+        "before": 25,
+        "after": 16.071
+      },
+      {
+        "key": "shop:Floor/Content/Customer4/Basket",
+        "column": "height",
+        "before": 28,
+        "after": 18
+      },
+      {
+        "key": "shop:Floor/Content/Customer4/Basket/Artwork",
+        "column": "width",
+        "before": 25,
+        "after": 16.071
+      },
+      {
+        "key": "shop:Floor/Content/Customer4/Basket/Artwork",
+        "column": "height",
+        "before": 28,
+        "after": 18
+      },
+      {
+        "key": "shop:Floor/Content/Customer4/Pickup",
+        "column": "x",
+        "before": 17,
+        "after": 10.929
+      },
+      {
+        "key": "shop:Floor/Content/Customer4/Pickup",
+        "column": "y",
+        "before": 36,
+        "after": 23.143
+      },
+      {
+        "key": "shop:Floor/Content/Customer4/Pickup",
+        "column": "width",
+        "before": 19,
+        "after": 12.214
+      },
+      {
+        "key": "shop:Floor/Content/Customer4/Pickup",
+        "column": "height",
+        "before": 22,
+        "after": 14.143
+      },
+      {
+        "key": "shop:Floor/Content/Customer4/Pickup/Artwork",
+        "column": "width",
+        "before": 19,
+        "after": 12.214
+      },
+      {
+        "key": "shop:Floor/Content/Customer4/Pickup/Artwork",
+        "column": "height",
+        "before": 22,
+        "after": 14.143
+      },
+      {
+        "key": "shop:Floor/Content/Customer4/CheckoutProgress",
+        "column": "y",
+        "before": 61,
+        "after": 39.214
+      },
+      {
+        "key": "shop:Floor/Content/Customer4/CheckoutProgress",
+        "column": "width",
+        "before": 42,
+        "after": 27
+      },
+      {
+        "key": "shop:Floor/Content/Customer4/CheckoutProgress",
+        "column": "height",
+        "before": 8,
+        "after": 5.143
+      },
+      {
+        "key": "shop:Floor/Content/Customer4/CheckoutProgress/Artwork",
+        "column": "width",
+        "before": 42,
+        "after": 27
+      },
+      {
+        "key": "shop:Floor/Content/Customer4/CheckoutProgress/Artwork",
+        "column": "height",
+        "before": 8,
+        "after": 5.143
+      },
+      {
+        "key": "shop:Floor/Content/Customer4/CheckoutProgress/Fill",
+        "column": "x",
+        "before": -18,
+        "after": -11.571
+      },
+      {
+        "key": "shop:Floor/Content/Customer4/CheckoutProgress/Fill",
+        "column": "width",
+        "before": 36,
+        "after": 23.143
+      },
+      {
+        "key": "shop:Floor/Content/Customer4/CheckoutProgress/Fill",
+        "column": "height",
+        "before": 4,
+        "after": 2.571
+      },
+      {
+        "key": "shop:Floor/Content/Customer4/CheckoutProgress/Fill/Artwork",
+        "column": "x",
+        "before": 18,
+        "after": 11.571
+      },
+      {
+        "key": "shop:Floor/Content/Customer4/CheckoutProgress/Fill/Artwork",
+        "column": "width",
+        "before": 36,
+        "after": 23.143
+      },
+      {
+        "key": "shop:Floor/Content/Customer4/CheckoutProgress/Fill/Artwork",
+        "column": "height",
+        "before": 4,
+        "after": 2.571
+      },
+      {
+        "key": "shop:Floor/Content/Customer5",
+        "column": "width",
+        "before": 56,
+        "after": 36
+      },
+      {
+        "key": "shop:Floor/Content/Customer5",
+        "column": "height",
+        "before": 56,
+        "after": 36
+      },
+      {
+        "key": "shop:Floor/Content/Customer5/Basket",
+        "column": "x",
+        "before": 20,
+        "after": 12.857
+      },
+      {
+        "key": "shop:Floor/Content/Customer5/Basket",
+        "column": "y",
+        "before": 13,
+        "after": 8.357
+      },
+      {
+        "key": "shop:Floor/Content/Customer5/Basket",
+        "column": "width",
+        "before": 25,
+        "after": 16.071
+      },
+      {
+        "key": "shop:Floor/Content/Customer5/Basket",
+        "column": "height",
+        "before": 28,
+        "after": 18
+      },
+      {
+        "key": "shop:Floor/Content/Customer5/Basket/Artwork",
+        "column": "width",
+        "before": 25,
+        "after": 16.071
+      },
+      {
+        "key": "shop:Floor/Content/Customer5/Basket/Artwork",
+        "column": "height",
+        "before": 28,
+        "after": 18
+      },
+      {
+        "key": "shop:Floor/Content/Customer5/Pickup",
+        "column": "x",
+        "before": 17,
+        "after": 10.929
+      },
+      {
+        "key": "shop:Floor/Content/Customer5/Pickup",
+        "column": "y",
+        "before": 36,
+        "after": 23.143
+      },
+      {
+        "key": "shop:Floor/Content/Customer5/Pickup",
+        "column": "width",
+        "before": 19,
+        "after": 12.214
+      },
+      {
+        "key": "shop:Floor/Content/Customer5/Pickup",
+        "column": "height",
+        "before": 22,
+        "after": 14.143
+      },
+      {
+        "key": "shop:Floor/Content/Customer5/Pickup/Artwork",
+        "column": "width",
+        "before": 19,
+        "after": 12.214
+      },
+      {
+        "key": "shop:Floor/Content/Customer5/Pickup/Artwork",
+        "column": "height",
+        "before": 22,
+        "after": 14.143
+      },
+      {
+        "key": "shop:Floor/Content/Customer5/CheckoutProgress",
+        "column": "y",
+        "before": 61,
+        "after": 39.214
+      },
+      {
+        "key": "shop:Floor/Content/Customer5/CheckoutProgress",
+        "column": "width",
+        "before": 42,
+        "after": 27
+      },
+      {
+        "key": "shop:Floor/Content/Customer5/CheckoutProgress",
+        "column": "height",
+        "before": 8,
+        "after": 5.143
+      },
+      {
+        "key": "shop:Floor/Content/Customer5/CheckoutProgress/Artwork",
+        "column": "width",
+        "before": 42,
+        "after": 27
+      },
+      {
+        "key": "shop:Floor/Content/Customer5/CheckoutProgress/Artwork",
+        "column": "height",
+        "before": 8,
+        "after": 5.143
+      },
+      {
+        "key": "shop:Floor/Content/Customer5/CheckoutProgress/Fill",
+        "column": "x",
+        "before": -18,
+        "after": -11.571
+      },
+      {
+        "key": "shop:Floor/Content/Customer5/CheckoutProgress/Fill",
+        "column": "width",
+        "before": 36,
+        "after": 23.143
+      },
+      {
+        "key": "shop:Floor/Content/Customer5/CheckoutProgress/Fill",
+        "column": "height",
+        "before": 4,
+        "after": 2.571
+      },
+      {
+        "key": "shop:Floor/Content/Customer5/CheckoutProgress/Fill/Artwork",
+        "column": "x",
+        "before": 18,
+        "after": 11.571
+      },
+      {
+        "key": "shop:Floor/Content/Customer5/CheckoutProgress/Fill/Artwork",
+        "column": "width",
+        "before": 36,
+        "after": 23.143
+      },
+      {
+        "key": "shop:Floor/Content/Customer5/CheckoutProgress/Fill/Artwork",
+        "column": "height",
+        "before": 4,
+        "after": 2.571
+      },
+      {
+        "key": "shop:Floor/Content/Shelf4",
+        "column": "x",
+        "before": -103,
+        "after": -124
+      },
+      {
+        "key": "shop:Floor/Content/Shelf4",
+        "column": "scaleX",
+        "before": 1,
+        "after": 0.85
+      },
+      {
+        "key": "shop:Floor/Content/Shelf4",
+        "column": "scaleY",
+        "before": 1,
+        "after": 0.85
+      },
+      {
+        "key": "shop:Floor/Content/Shelf5",
+        "column": "x",
+        "before": 103,
+        "after": 124
+      },
+      {
+        "key": "shop:Floor/Content/Shelf5",
+        "column": "scaleX",
+        "before": 1,
+        "after": 0.85
+      },
+      {
+        "key": "shop:Floor/Content/Shelf5",
+        "column": "scaleY",
+        "before": 1,
+        "after": 0.85
+      },
+      {
+        "key": "shop:Floor/Content/Shelf6",
+        "column": "x",
+        "before": -103,
+        "after": -124
+      },
+      {
+        "key": "shop:Floor/Content/Shelf6",
+        "column": "scaleX",
+        "before": 1,
+        "after": 0.85
+      },
+      {
+        "key": "shop:Floor/Content/Shelf6",
+        "column": "scaleY",
+        "before": 1,
+        "after": 0.85
+      },
+      {
+        "key": "shop:Floor/Content/Shelf7",
+        "column": "x",
+        "before": 103,
+        "after": 124
+      },
+      {
+        "key": "shop:Floor/Content/Shelf7",
+        "column": "scaleX",
+        "before": 1,
+        "after": 0.85
+      },
+      {
+        "key": "shop:Floor/Content/Shelf7",
+        "column": "scaleY",
+        "before": 1,
+        "after": 0.85
+      },
+      {
+        "key": "shop:Floor/Content/Customer6",
+        "column": "width",
+        "before": 56,
+        "after": 36
+      },
+      {
+        "key": "shop:Floor/Content/Customer6",
+        "column": "height",
+        "before": 56,
+        "after": 36
+      },
+      {
+        "key": "shop:Floor/Content/Customer6/Basket",
+        "column": "x",
+        "before": 20,
+        "after": 12.857
+      },
+      {
+        "key": "shop:Floor/Content/Customer6/Basket",
+        "column": "y",
+        "before": 13,
+        "after": 8.357
+      },
+      {
+        "key": "shop:Floor/Content/Customer6/Basket",
+        "column": "width",
+        "before": 25,
+        "after": 16.071
+      },
+      {
+        "key": "shop:Floor/Content/Customer6/Basket",
+        "column": "height",
+        "before": 28,
+        "after": 18
+      },
+      {
+        "key": "shop:Floor/Content/Customer6/Basket/Artwork",
+        "column": "width",
+        "before": 25,
+        "after": 16.071
+      },
+      {
+        "key": "shop:Floor/Content/Customer6/Basket/Artwork",
+        "column": "height",
+        "before": 28,
+        "after": 18
+      },
+      {
+        "key": "shop:Floor/Content/Customer6/Pickup",
+        "column": "x",
+        "before": 17,
+        "after": 10.929
+      },
+      {
+        "key": "shop:Floor/Content/Customer6/Pickup",
+        "column": "y",
+        "before": 36,
+        "after": 23.143
+      },
+      {
+        "key": "shop:Floor/Content/Customer6/Pickup",
+        "column": "width",
+        "before": 19,
+        "after": 12.214
+      },
+      {
+        "key": "shop:Floor/Content/Customer6/Pickup",
+        "column": "height",
+        "before": 22,
+        "after": 14.143
+      },
+      {
+        "key": "shop:Floor/Content/Customer6/Pickup/Artwork",
+        "column": "width",
+        "before": 19,
+        "after": 12.214
+      },
+      {
+        "key": "shop:Floor/Content/Customer6/Pickup/Artwork",
+        "column": "height",
+        "before": 22,
+        "after": 14.143
+      },
+      {
+        "key": "shop:Floor/Content/Customer6/CheckoutProgress",
+        "column": "y",
+        "before": 61,
+        "after": 39.214
+      },
+      {
+        "key": "shop:Floor/Content/Customer6/CheckoutProgress",
+        "column": "width",
+        "before": 42,
+        "after": 27
+      },
+      {
+        "key": "shop:Floor/Content/Customer6/CheckoutProgress",
+        "column": "height",
+        "before": 8,
+        "after": 5.143
+      },
+      {
+        "key": "shop:Floor/Content/Customer6/CheckoutProgress/Artwork",
+        "column": "width",
+        "before": 42,
+        "after": 27
+      },
+      {
+        "key": "shop:Floor/Content/Customer6/CheckoutProgress/Artwork",
+        "column": "height",
+        "before": 8,
+        "after": 5.143
+      },
+      {
+        "key": "shop:Floor/Content/Customer6/CheckoutProgress/Fill",
+        "column": "x",
+        "before": -18,
+        "after": -11.571
+      },
+      {
+        "key": "shop:Floor/Content/Customer6/CheckoutProgress/Fill",
+        "column": "width",
+        "before": 36,
+        "after": 23.143
+      },
+      {
+        "key": "shop:Floor/Content/Customer6/CheckoutProgress/Fill",
+        "column": "height",
+        "before": 4,
+        "after": 2.571
+      },
+      {
+        "key": "shop:Floor/Content/Customer6/CheckoutProgress/Fill/Artwork",
+        "column": "x",
+        "before": 18,
+        "after": 11.571
+      },
+      {
+        "key": "shop:Floor/Content/Customer6/CheckoutProgress/Fill/Artwork",
+        "column": "width",
+        "before": 36,
+        "after": 23.143
+      },
+      {
+        "key": "shop:Floor/Content/Customer6/CheckoutProgress/Fill/Artwork",
+        "column": "height",
+        "before": 4,
+        "after": 2.571
+      },
+      {
+        "key": "shop:Floor/Content/Customer7",
+        "column": "width",
+        "before": 56,
+        "after": 36
+      },
+      {
+        "key": "shop:Floor/Content/Customer7",
+        "column": "height",
+        "before": 56,
+        "after": 36
+      },
+      {
+        "key": "shop:Floor/Content/Customer7/Basket",
+        "column": "x",
+        "before": 20,
+        "after": 12.857
+      },
+      {
+        "key": "shop:Floor/Content/Customer7/Basket",
+        "column": "y",
+        "before": 13,
+        "after": 8.357
+      },
+      {
+        "key": "shop:Floor/Content/Customer7/Basket",
+        "column": "width",
+        "before": 25,
+        "after": 16.071
+      },
+      {
+        "key": "shop:Floor/Content/Customer7/Basket",
+        "column": "height",
+        "before": 28,
+        "after": 18
+      },
+      {
+        "key": "shop:Floor/Content/Customer7/Basket/Artwork",
+        "column": "width",
+        "before": 25,
+        "after": 16.071
+      },
+      {
+        "key": "shop:Floor/Content/Customer7/Basket/Artwork",
+        "column": "height",
+        "before": 28,
+        "after": 18
+      },
+      {
+        "key": "shop:Floor/Content/Customer7/Pickup",
+        "column": "x",
+        "before": 17,
+        "after": 10.929
+      },
+      {
+        "key": "shop:Floor/Content/Customer7/Pickup",
+        "column": "y",
+        "before": 36,
+        "after": 23.143
+      },
+      {
+        "key": "shop:Floor/Content/Customer7/Pickup",
+        "column": "width",
+        "before": 19,
+        "after": 12.214
+      },
+      {
+        "key": "shop:Floor/Content/Customer7/Pickup",
+        "column": "height",
+        "before": 22,
+        "after": 14.143
+      },
+      {
+        "key": "shop:Floor/Content/Customer7/Pickup/Artwork",
+        "column": "width",
+        "before": 19,
+        "after": 12.214
+      },
+      {
+        "key": "shop:Floor/Content/Customer7/Pickup/Artwork",
+        "column": "height",
+        "before": 22,
+        "after": 14.143
+      },
+      {
+        "key": "shop:Floor/Content/Customer7/CheckoutProgress",
+        "column": "y",
+        "before": 61,
+        "after": 39.214
+      },
+      {
+        "key": "shop:Floor/Content/Customer7/CheckoutProgress",
+        "column": "width",
+        "before": 42,
+        "after": 27
+      },
+      {
+        "key": "shop:Floor/Content/Customer7/CheckoutProgress",
+        "column": "height",
+        "before": 8,
+        "after": 5.143
+      },
+      {
+        "key": "shop:Floor/Content/Customer7/CheckoutProgress/Artwork",
+        "column": "width",
+        "before": 42,
+        "after": 27
+      },
+      {
+        "key": "shop:Floor/Content/Customer7/CheckoutProgress/Artwork",
+        "column": "height",
+        "before": 8,
+        "after": 5.143
+      },
+      {
+        "key": "shop:Floor/Content/Customer7/CheckoutProgress/Fill",
+        "column": "x",
+        "before": -18,
+        "after": -11.571
+      },
+      {
+        "key": "shop:Floor/Content/Customer7/CheckoutProgress/Fill",
+        "column": "width",
+        "before": 36,
+        "after": 23.143
+      },
+      {
+        "key": "shop:Floor/Content/Customer7/CheckoutProgress/Fill",
+        "column": "height",
+        "before": 4,
+        "after": 2.571
+      },
+      {
+        "key": "shop:Floor/Content/Customer7/CheckoutProgress/Fill/Artwork",
+        "column": "x",
+        "before": 18,
+        "after": 11.571
+      },
+      {
+        "key": "shop:Floor/Content/Customer7/CheckoutProgress/Fill/Artwork",
+        "column": "width",
+        "before": 36,
+        "after": 23.143
+      },
+      {
+        "key": "shop:Floor/Content/Customer7/CheckoutProgress/Fill/Artwork",
+        "column": "height",
+        "before": 4,
+        "after": 2.571
+      },
+      {
+        "key": "shop:Floor/Content/Customer8",
+        "column": "width",
+        "before": 56,
+        "after": 36
+      },
+      {
+        "key": "shop:Floor/Content/Customer8",
+        "column": "height",
+        "before": 56,
+        "after": 36
+      },
+      {
+        "key": "shop:Floor/Content/Customer8/Basket",
+        "column": "x",
+        "before": 20,
+        "after": 12.857
+      },
+      {
+        "key": "shop:Floor/Content/Customer8/Basket",
+        "column": "y",
+        "before": 13,
+        "after": 8.357
+      },
+      {
+        "key": "shop:Floor/Content/Customer8/Basket",
+        "column": "width",
+        "before": 25,
+        "after": 16.071
+      },
+      {
+        "key": "shop:Floor/Content/Customer8/Basket",
+        "column": "height",
+        "before": 28,
+        "after": 18
+      },
+      {
+        "key": "shop:Floor/Content/Customer8/Basket/Artwork",
+        "column": "width",
+        "before": 25,
+        "after": 16.071
+      },
+      {
+        "key": "shop:Floor/Content/Customer8/Basket/Artwork",
+        "column": "height",
+        "before": 28,
+        "after": 18
+      },
+      {
+        "key": "shop:Floor/Content/Customer8/Pickup",
+        "column": "x",
+        "before": 17,
+        "after": 10.929
+      },
+      {
+        "key": "shop:Floor/Content/Customer8/Pickup",
+        "column": "y",
+        "before": 36,
+        "after": 23.143
+      },
+      {
+        "key": "shop:Floor/Content/Customer8/Pickup",
+        "column": "width",
+        "before": 19,
+        "after": 12.214
+      },
+      {
+        "key": "shop:Floor/Content/Customer8/Pickup",
+        "column": "height",
+        "before": 22,
+        "after": 14.143
+      },
+      {
+        "key": "shop:Floor/Content/Customer8/Pickup/Artwork",
+        "column": "width",
+        "before": 19,
+        "after": 12.214
+      },
+      {
+        "key": "shop:Floor/Content/Customer8/Pickup/Artwork",
+        "column": "height",
+        "before": 22,
+        "after": 14.143
+      },
+      {
+        "key": "shop:Floor/Content/Customer8/CheckoutProgress",
+        "column": "y",
+        "before": 61,
+        "after": 39.214
+      },
+      {
+        "key": "shop:Floor/Content/Customer8/CheckoutProgress",
+        "column": "width",
+        "before": 42,
+        "after": 27
+      },
+      {
+        "key": "shop:Floor/Content/Customer8/CheckoutProgress",
+        "column": "height",
+        "before": 8,
+        "after": 5.143
+      },
+      {
+        "key": "shop:Floor/Content/Customer8/CheckoutProgress/Artwork",
+        "column": "width",
+        "before": 42,
+        "after": 27
+      },
+      {
+        "key": "shop:Floor/Content/Customer8/CheckoutProgress/Artwork",
+        "column": "height",
+        "before": 8,
+        "after": 5.143
+      },
+      {
+        "key": "shop:Floor/Content/Customer8/CheckoutProgress/Fill",
+        "column": "x",
+        "before": -18,
+        "after": -11.571
+      },
+      {
+        "key": "shop:Floor/Content/Customer8/CheckoutProgress/Fill",
+        "column": "width",
+        "before": 36,
+        "after": 23.143
+      },
+      {
+        "key": "shop:Floor/Content/Customer8/CheckoutProgress/Fill",
+        "column": "height",
+        "before": 4,
+        "after": 2.571
+      },
+      {
+        "key": "shop:Floor/Content/Customer8/CheckoutProgress/Fill/Artwork",
+        "column": "x",
+        "before": 18,
+        "after": 11.571
+      },
+      {
+        "key": "shop:Floor/Content/Customer8/CheckoutProgress/Fill/Artwork",
+        "column": "width",
+        "before": 36,
+        "after": 23.143
+      },
+      {
+        "key": "shop:Floor/Content/Customer8/CheckoutProgress/Fill/Artwork",
+        "column": "height",
+        "before": 4,
+        "after": 2.571
+      },
+      {
+        "key": "shop:Floor/Content/Customer9",
+        "column": "width",
+        "before": 56,
+        "after": 36
+      },
+      {
+        "key": "shop:Floor/Content/Customer9",
+        "column": "height",
+        "before": 56,
+        "after": 36
+      },
+      {
+        "key": "shop:Floor/Content/Customer9/Basket",
+        "column": "x",
+        "before": 20,
+        "after": 12.857
+      },
+      {
+        "key": "shop:Floor/Content/Customer9/Basket",
+        "column": "y",
+        "before": 13,
+        "after": 8.357
+      },
+      {
+        "key": "shop:Floor/Content/Customer9/Basket",
+        "column": "width",
+        "before": 25,
+        "after": 16.071
+      },
+      {
+        "key": "shop:Floor/Content/Customer9/Basket",
+        "column": "height",
+        "before": 28,
+        "after": 18
+      },
+      {
+        "key": "shop:Floor/Content/Customer9/Basket/Artwork",
+        "column": "width",
+        "before": 25,
+        "after": 16.071
+      },
+      {
+        "key": "shop:Floor/Content/Customer9/Basket/Artwork",
+        "column": "height",
+        "before": 28,
+        "after": 18
+      },
+      {
+        "key": "shop:Floor/Content/Customer9/Pickup",
+        "column": "x",
+        "before": 17,
+        "after": 10.929
+      },
+      {
+        "key": "shop:Floor/Content/Customer9/Pickup",
+        "column": "y",
+        "before": 36,
+        "after": 23.143
+      },
+      {
+        "key": "shop:Floor/Content/Customer9/Pickup",
+        "column": "width",
+        "before": 19,
+        "after": 12.214
+      },
+      {
+        "key": "shop:Floor/Content/Customer9/Pickup",
+        "column": "height",
+        "before": 22,
+        "after": 14.143
+      },
+      {
+        "key": "shop:Floor/Content/Customer9/Pickup/Artwork",
+        "column": "width",
+        "before": 19,
+        "after": 12.214
+      },
+      {
+        "key": "shop:Floor/Content/Customer9/Pickup/Artwork",
+        "column": "height",
+        "before": 22,
+        "after": 14.143
+      },
+      {
+        "key": "shop:Floor/Content/Customer9/CheckoutProgress",
+        "column": "y",
+        "before": 61,
+        "after": 39.214
+      },
+      {
+        "key": "shop:Floor/Content/Customer9/CheckoutProgress",
+        "column": "width",
+        "before": 42,
+        "after": 27
+      },
+      {
+        "key": "shop:Floor/Content/Customer9/CheckoutProgress",
+        "column": "height",
+        "before": 8,
+        "after": 5.143
+      },
+      {
+        "key": "shop:Floor/Content/Customer9/CheckoutProgress/Artwork",
+        "column": "width",
+        "before": 42,
+        "after": 27
+      },
+      {
+        "key": "shop:Floor/Content/Customer9/CheckoutProgress/Artwork",
+        "column": "height",
+        "before": 8,
+        "after": 5.143
+      },
+      {
+        "key": "shop:Floor/Content/Customer9/CheckoutProgress/Fill",
+        "column": "x",
+        "before": -18,
+        "after": -11.571
+      },
+      {
+        "key": "shop:Floor/Content/Customer9/CheckoutProgress/Fill",
+        "column": "width",
+        "before": 36,
+        "after": 23.143
+      },
+      {
+        "key": "shop:Floor/Content/Customer9/CheckoutProgress/Fill",
+        "column": "height",
+        "before": 4,
+        "after": 2.571
+      },
+      {
+        "key": "shop:Floor/Content/Customer9/CheckoutProgress/Fill/Artwork",
+        "column": "x",
+        "before": 18,
+        "after": 11.571
+      },
+      {
+        "key": "shop:Floor/Content/Customer9/CheckoutProgress/Fill/Artwork",
+        "column": "width",
+        "before": 36,
+        "after": 23.143
+      },
+      {
+        "key": "shop:Floor/Content/Customer9/CheckoutProgress/Fill/Artwork",
+        "column": "height",
+        "before": 4,
+        "after": 2.571
+      },
+      {
+        "key": "shop:Floor/Content/Customer10",
+        "column": "width",
+        "before": 56,
+        "after": 36
+      },
+      {
+        "key": "shop:Floor/Content/Customer10",
+        "column": "height",
+        "before": 56,
+        "after": 36
+      },
+      {
+        "key": "shop:Floor/Content/Customer10/Basket",
+        "column": "x",
+        "before": 20,
+        "after": 12.857
+      },
+      {
+        "key": "shop:Floor/Content/Customer10/Basket",
+        "column": "y",
+        "before": 13,
+        "after": 8.357
+      },
+      {
+        "key": "shop:Floor/Content/Customer10/Basket",
+        "column": "width",
+        "before": 25,
+        "after": 16.071
+      },
+      {
+        "key": "shop:Floor/Content/Customer10/Basket",
+        "column": "height",
+        "before": 28,
+        "after": 18
+      },
+      {
+        "key": "shop:Floor/Content/Customer10/Basket/Artwork",
+        "column": "width",
+        "before": 25,
+        "after": 16.071
+      },
+      {
+        "key": "shop:Floor/Content/Customer10/Basket/Artwork",
+        "column": "height",
+        "before": 28,
+        "after": 18
+      },
+      {
+        "key": "shop:Floor/Content/Customer10/Pickup",
+        "column": "x",
+        "before": 17,
+        "after": 10.929
+      },
+      {
+        "key": "shop:Floor/Content/Customer10/Pickup",
+        "column": "y",
+        "before": 36,
+        "after": 23.143
+      },
+      {
+        "key": "shop:Floor/Content/Customer10/Pickup",
+        "column": "width",
+        "before": 19,
+        "after": 12.214
+      },
+      {
+        "key": "shop:Floor/Content/Customer10/Pickup",
+        "column": "height",
+        "before": 22,
+        "after": 14.143
+      },
+      {
+        "key": "shop:Floor/Content/Customer10/Pickup/Artwork",
+        "column": "width",
+        "before": 19,
+        "after": 12.214
+      },
+      {
+        "key": "shop:Floor/Content/Customer10/Pickup/Artwork",
+        "column": "height",
+        "before": 22,
+        "after": 14.143
+      },
+      {
+        "key": "shop:Floor/Content/Customer10/CheckoutProgress",
+        "column": "y",
+        "before": 61,
+        "after": 39.214
+      },
+      {
+        "key": "shop:Floor/Content/Customer10/CheckoutProgress",
+        "column": "width",
+        "before": 42,
+        "after": 27
+      },
+      {
+        "key": "shop:Floor/Content/Customer10/CheckoutProgress",
+        "column": "height",
+        "before": 8,
+        "after": 5.143
+      },
+      {
+        "key": "shop:Floor/Content/Customer10/CheckoutProgress/Artwork",
+        "column": "width",
+        "before": 42,
+        "after": 27
+      },
+      {
+        "key": "shop:Floor/Content/Customer10/CheckoutProgress/Artwork",
+        "column": "height",
+        "before": 8,
+        "after": 5.143
+      },
+      {
+        "key": "shop:Floor/Content/Customer10/CheckoutProgress/Fill",
+        "column": "x",
+        "before": -18,
+        "after": -11.571
+      },
+      {
+        "key": "shop:Floor/Content/Customer10/CheckoutProgress/Fill",
+        "column": "width",
+        "before": 36,
+        "after": 23.143
+      },
+      {
+        "key": "shop:Floor/Content/Customer10/CheckoutProgress/Fill",
+        "column": "height",
+        "before": 4,
+        "after": 2.571
+      },
+      {
+        "key": "shop:Floor/Content/Customer10/CheckoutProgress/Fill/Artwork",
+        "column": "x",
+        "before": 18,
+        "after": 11.571
+      },
+      {
+        "key": "shop:Floor/Content/Customer10/CheckoutProgress/Fill/Artwork",
+        "column": "width",
+        "before": 36,
+        "after": 23.143
+      },
+      {
+        "key": "shop:Floor/Content/Customer10/CheckoutProgress/Fill/Artwork",
+        "column": "height",
+        "before": 4,
+        "after": 2.571
+      },
+      {
+        "key": "shop:Floor/Content/Customer11",
+        "column": "width",
+        "before": 56,
+        "after": 36
+      },
+      {
+        "key": "shop:Floor/Content/Customer11",
+        "column": "height",
+        "before": 56,
+        "after": 36
+      },
+      {
+        "key": "shop:Floor/Content/Customer11/Basket",
+        "column": "x",
+        "before": 20,
+        "after": 12.857
+      },
+      {
+        "key": "shop:Floor/Content/Customer11/Basket",
+        "column": "y",
+        "before": 13,
+        "after": 8.357
+      },
+      {
+        "key": "shop:Floor/Content/Customer11/Basket",
+        "column": "width",
+        "before": 25,
+        "after": 16.071
+      },
+      {
+        "key": "shop:Floor/Content/Customer11/Basket",
+        "column": "height",
+        "before": 28,
+        "after": 18
+      },
+      {
+        "key": "shop:Floor/Content/Customer11/Basket/Artwork",
+        "column": "width",
+        "before": 25,
+        "after": 16.071
+      },
+      {
+        "key": "shop:Floor/Content/Customer11/Basket/Artwork",
+        "column": "height",
+        "before": 28,
+        "after": 18
+      },
+      {
+        "key": "shop:Floor/Content/Customer11/Pickup",
+        "column": "x",
+        "before": 17,
+        "after": 10.929
+      },
+      {
+        "key": "shop:Floor/Content/Customer11/Pickup",
+        "column": "y",
+        "before": 36,
+        "after": 23.143
+      },
+      {
+        "key": "shop:Floor/Content/Customer11/Pickup",
+        "column": "width",
+        "before": 19,
+        "after": 12.214
+      },
+      {
+        "key": "shop:Floor/Content/Customer11/Pickup",
+        "column": "height",
+        "before": 22,
+        "after": 14.143
+      },
+      {
+        "key": "shop:Floor/Content/Customer11/Pickup/Artwork",
+        "column": "width",
+        "before": 19,
+        "after": 12.214
+      },
+      {
+        "key": "shop:Floor/Content/Customer11/Pickup/Artwork",
+        "column": "height",
+        "before": 22,
+        "after": 14.143
+      },
+      {
+        "key": "shop:Floor/Content/Customer11/CheckoutProgress",
+        "column": "y",
+        "before": 61,
+        "after": 39.214
+      },
+      {
+        "key": "shop:Floor/Content/Customer11/CheckoutProgress",
+        "column": "width",
+        "before": 42,
+        "after": 27
+      },
+      {
+        "key": "shop:Floor/Content/Customer11/CheckoutProgress",
+        "column": "height",
+        "before": 8,
+        "after": 5.143
+      },
+      {
+        "key": "shop:Floor/Content/Customer11/CheckoutProgress/Artwork",
+        "column": "width",
+        "before": 42,
+        "after": 27
+      },
+      {
+        "key": "shop:Floor/Content/Customer11/CheckoutProgress/Artwork",
+        "column": "height",
+        "before": 8,
+        "after": 5.143
+      },
+      {
+        "key": "shop:Floor/Content/Customer11/CheckoutProgress/Fill",
+        "column": "x",
+        "before": -18,
+        "after": -11.571
+      },
+      {
+        "key": "shop:Floor/Content/Customer11/CheckoutProgress/Fill",
+        "column": "width",
+        "before": 36,
+        "after": 23.143
+      },
+      {
+        "key": "shop:Floor/Content/Customer11/CheckoutProgress/Fill",
+        "column": "height",
+        "before": 4,
+        "after": 2.571
+      },
+      {
+        "key": "shop:Floor/Content/Customer11/CheckoutProgress/Fill/Artwork",
+        "column": "x",
+        "before": 18,
+        "after": 11.571
+      },
+      {
+        "key": "shop:Floor/Content/Customer11/CheckoutProgress/Fill/Artwork",
+        "column": "width",
+        "before": 36,
+        "after": 23.143
+      },
+      {
+        "key": "shop:Floor/Content/Customer11/CheckoutProgress/Fill/Artwork",
+        "column": "height",
+        "before": 4,
+        "after": 2.571
+      }
+    ]
+  }
+]

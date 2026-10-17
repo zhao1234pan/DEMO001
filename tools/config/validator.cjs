@@ -293,8 +293,11 @@ function installConfigs(sources) {
         requireRef("ShopPoint", "key", "shelf" + i, "Shop growth");
         requireRef("ShopPoint", "key", "worker" + i, "Shop growth");
     }
-    for (const k of ["checkout2", "cashier2", "stockroom", "pack", "welcome"])
+    for (const k of ["checkout2", "cashier2", "stockroom", "pack", "welcome", "walkLeft", "walkRight", "customerClearance"])
         requireRef("ShopPoint", "key", k, "Shop work point");
+    const clearance = next.ShopPoint.find(r => r.key === 'customerClearance'), queueStep = next.ShopPoint.find(r => r.key === 'queueStep'), leftWalk = next.ShopPoint.find(r => r.key === 'walkLeft'), rightWalk = next.ShopPoint.find(r => r.key === 'walkRight');
+    if (numeric(queueStep, 'y') > -numeric(clearance, 'height') || numeric(rightWalk, 'x') - numeric(leftWalk, 'x') < 2 * numeric(clearance, 'width'))
+        throw Error('Invalid shop customer spacing');
     positive("ShopCustomer", ["weight"]);
     positive("ShopCustomer", ["doubleChance", "tipChance"], true);
     for (const row of next.ShopCustomer) {

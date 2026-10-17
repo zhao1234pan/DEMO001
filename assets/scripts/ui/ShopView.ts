@@ -50,11 +50,13 @@ export class ShopView {
       else{uiText(node,"Stock","");uiText(node,"Name",text("shop.closedShelf"));uiNode(node,"GoodMark").active=false;}
       if(!this.isOverlayOpen)bind(node,()=>{this.targetShelf=i;this.pickerReturn="closed";if(s)this.mode="picker";else this.details("upgrade");});
     }
-    const viewport=uiNode(this.root,"Floor").getComponent(UITransform)!.height,extra=viewport-shopNumber("shopViewportHeight");this.scroll.resize(shopNumber("shopViewportHeight")+Math.max(0,Math.ceil(state.shelves.length/2)-2)*shopNumber("shopRowHeight")+extra/2,viewport);uiNode(this.root,"Floor/Content").setPosition(0,this.scroll.offset);uiNode(this.root,"Floor/Content/Checkout2").active=sim.stage.checkouts>1;
+    const clearanceRow=this.points.get("customerClearance")!,clearance={width:numeric(clearanceRow,"width"),height:numeric(clearanceRow,"height")};
+    const viewport=uiNode(this.root,"Floor").getComponent(UITransform)!.height,extra=viewport-shopNumber("shopViewportHeight");this.scroll.resize(shopNumber("shopViewportHeight")+this.presentation.contentExtra(state,clearance.height)+extra/2,viewport);uiNode(this.root,"Floor/Content").setPosition(0,this.scroll.offset);uiNode(this.root,"Floor/Content/Checkout2").active=sim.stage.checkouts>1;
+    const customerPoses=this.presentation.customerPoses(state,viewport,clearance);
     this.workers();
     for(let i=0;i<shopNumber("customerLimit");i++){
       const node=uiNode(this.root,"Floor/Content/Customer"+i),c=state.customers[i];node.active=Boolean(c);if(!c)continue;
-      this.image(node,sim.config.customers.find(t=>t.key===c.kind)!.imageKey);const pose=this.presentation.customer(c,state,viewport);node.setPosition(pose.position.x,pose.position.y+pose.bob);node.setScale(pose.scale,1/pose.scale);
+      this.image(node,sim.config.customers.find(t=>t.key===c.kind)!.imageKey);const pose=customerPoses.get(c.id)!;node.setPosition(pose.position.x,pose.position.y+pose.bob);node.setScale(pose.scale,1/pose.scale);
       const basket=uiNode(node,"Basket"),pickup=uiNode(node,"Pickup"),progress=uiNode(node,"CheckoutProgress");basket.active=c.basket.length>0;pickup.active=basket.active&&pose.pickup>0;
       if(pickup.active){const good=rows("Goods").find(g=>g.key===c.basket[0])!;this.skin(pickup,good.imageKey);const base=rows("UiLayout").find(r=>r.key==="shop:Floor/Content/Customer"+i+"/Pickup")!;pickup.setPosition(numeric(base,"x"),numeric(base,"y")+pose.pickup*shopNumber("pickupLift"));pickup.setScale(pose.pickup,pose.pickup);}
       progress.active=pose.progress>=0;uiNode(progress,"Fill").setScale(Math.max(0,pose.progress),1);

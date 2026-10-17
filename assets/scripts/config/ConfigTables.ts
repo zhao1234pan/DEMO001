@@ -88,7 +88,9 @@ export function installConfigs(sources: Record<string, string>): void {
   for(const key of ["restockCarry","researchMax"]){if(!Number.isSafeInteger(Number(shopRules.get(key))))throw new Error("Invalid growth integer");}
   for(const key of ["restockCarry","restockTrigger","stockBonusStep","serviceMaxChance","packSpeed","guideSpeed","tidySpeed","workerTaskSeconds","shopRowHeight","shopViewportHeight","shopScrollWheel","researchMax"]){if(!Number.isFinite(Number(shopRules.get(key)))||Number(shopRules.get(key))<=0)throw new Error("Invalid growth rule: "+key);}
   for(let i=0;i<8;i++){requireRef("ShopPoint","key","shelf"+i,"Shop growth");requireRef("ShopPoint","key","worker"+i,"Shop growth");}
-  for(const k of ["checkout2","cashier2","stockroom","pack","welcome"])requireRef("ShopPoint","key",k,"Shop work point");
+  for(const k of ["checkout2","cashier2","stockroom","pack","welcome","walkLeft","walkRight","customerClearance"])requireRef("ShopPoint","key",k,"Shop work point");
+  const clearance=next.ShopPoint.find(r=>r.key==='customerClearance')!,queueStep=next.ShopPoint.find(r=>r.key==='queueStep')!,leftWalk=next.ShopPoint.find(r=>r.key==='walkLeft')!,rightWalk=next.ShopPoint.find(r=>r.key==='walkRight')!;
+  if(numeric(queueStep,'y')>-numeric(clearance,'height')||numeric(rightWalk,'x')-numeric(leftWalk,'x')<2*numeric(clearance,'width'))throw Error('Invalid shop customer spacing');
   positive("ShopCustomer",["weight"]);positive("ShopCustomer",["doubleChance","tipChance"],true);
   for(const row of next.ShopCustomer){if(!row.imageKey.startsWith("menu:")||!next.ArtFrame.some(f=>"menu:"+f.menu===row.imageKey)||numeric(row,"doubleChance")>1||numeric(row,"tipChance")>1)throw new Error("Invalid shop customer");}
   positive("ShopPoint",["width","height"]);for(const row of next.ShopPoint){numeric(row,"x");numeric(row,"y");}
