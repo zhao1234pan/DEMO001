@@ -1,0 +1,536 @@
+{
+  "baselineCommit": "0b9d24c9261d750b0fc4dc7228fa60d07e843e0b",
+  "gameVersion": "1.18.0",
+  "files": [
+    {
+      "file": "docs/evidence/challenge-manual-30-20261017/config-audit.json",
+      "bytes": 3111,
+      "sha256": "2ed29450b4a9e519b1a5af6e81fe206294cd546b7862fdf1e8cc2478beffb43c"
+    },
+    {
+      "file": "docs/evidence/challenge-manual-30-20261017/manual-log.json",
+      "bytes": 4982,
+      "sha256": "71f5b549057811bfb707324e705dd78e185ae72537d3c5c35da1c9f6c025fe76"
+    },
+    {
+      "file": "docs/evidence/challenge-manual-30-20261017/roster.jpg",
+      "bytes": 67016,
+      "sha256": "f1b1ebc21685301dc6634d356a2de417d90ec2cc7a03f2f5a201a51d242c1d2c"
+    },
+    {
+      "file": "docs/evidence/challenge-manual-30-20261017/run01-wave02-rescue.jpg",
+      "bytes": 52038,
+      "sha256": "80555b736f0fa1a177674beeac79a15f7df4056753e1de71ada007e28198f4f3"
+    },
+    {
+      "file": "docs/evidence/challenge-manual-30-20261017/run02-loss-wave18.jpg",
+      "bytes": 53126,
+      "sha256": "10d4b159db37e24585ab3fe11fe06ecce92a6211d7b121d9ddd7192b34e46897"
+    },
+    {
+      "file": "docs/evidence/challenge-manual-30-20261017/run02-perk04.jpg",
+      "bytes": 51855,
+      "sha256": "5eb28730c70fda1a20546c4a7d0f32b51e6ca473a35a9aef748af599722cd574"
+    },
+    {
+      "file": "docs/evidence/challenge-manual-30-20261017/run02-perks-at08.jpg",
+      "bytes": 72990,
+      "sha256": "25a497d622773f02603f239efd6b87663acc370f6f5375e7eace00e8c0e31829"
+    },
+    {
+      "file": "docs/evidence/challenge-manual-30-20261017/run02-supply01.jpg",
+      "bytes": 69653,
+      "sha256": "73e9bdb56d0df45c990690451769505ba4cdd52b8f6ddddee6580beb59450c1f"
+    },
+    {
+      "file": "docs/evidence/challenge-manual-30-20261017/run02-supply02.jpg",
+      "bytes": 68462,
+      "sha256": "a7a37387fe6ff3ea5507d9dca64996508e76f838d49281d3c2a888d6a219e068"
+    },
+    {
+      "file": "docs/evidence/challenge-manual-30-20261017/run02-supply03.jpg",
+      "bytes": 67960,
+      "sha256": "0b4aae5335e8a05fdb3610b0aa5d5d9fbc66936d20acf279a55abf19b1a7af3a"
+    },
+    {
+      "file": "docs/evidence/challenge-manual-30-20261017/run02-supply05.jpg",
+      "bytes": 72592,
+      "sha256": "ae29998ca90ea57fbba368844deb7a02be3ca4616ba5e2b7f3c157be39653179"
+    },
+    {
+      "file": "docs/evidence/challenge-manual-30-20261017/run02-wave01-evolved.jpg",
+      "bytes": 84021,
+      "sha256": "4200475421a0095509dd92223f8f95a887b16bb3239a055d952f6bead89c0203"
+    },
+    {
+      "file": "docs/evidence/challenge-manual-30-20261017/run02-wave04-mid.jpg",
+      "bytes": 88671,
+      "sha256": "3367c222122f8840dd3203e26b4e571d5cc7d2e520ba944de34b561adff8937c"
+    },
+    {
+      "file": "docs/evidence/challenge-manual-30-20261017/run02-wave04-start.jpg",
+      "bytes": 87042,
+      "sha256": "56b231cf1c5d661f1843947cf2adf801aef340487b8f7b28f5bd07ecba4b1627"
+    },
+    {
+      "file": "docs/evidence/challenge-manual-30-20261017/run02-wave05-core.jpg",
+      "bytes": 88757,
+      "sha256": "b040154dc123468d393c4eb73e1d2e1a1b82dad461ca9af57fc720bdcd9f916f"
+    },
+    {
+      "file": "docs/evidence/challenge-manual-30-20261017/run02-wave06-line.jpg",
+      "bytes": 89707,
+      "sha256": "88de351372ab8e8f7006bf8368a3e3b4cff04e697bd8c3986444e58fae642b1d"
+    },
+    {
+      "file": "docs/evidence/challenge-manual-30-20261017/run02-wave07.jpg",
+      "bytes": 92753,
+      "sha256": "2c58d4341674bfbdca425a4f6bf514165caeff16c98914f697dc8b86dccc1e82"
+    },
+    {
+      "file": "docs/evidence/challenge-manual-30-20261017/run02-wave10-before-boss.jpg",
+      "bytes": 92600,
+      "sha256": "ab5db14c5ec4930f263a3d1bfc7f07659bc3aff4d6f21f3af820dd7143b25a34"
+    },
+    {
+      "file": "docs/evidence/challenge-manual-30-20261017/run02-wave10-boss-mid.jpg",
+      "bytes": 96442,
+      "sha256": "5394c9612d8a36666ab3451fc3978d8d987e0fdabeee19c8d42de17494c59c9a"
+    },
+    {
+      "file": "docs/evidence/challenge-manual-30-20261017/run02-wave12-investment.jpg",
+      "bytes": 96519,
+      "sha256": "509096d5c771db05ee0902495800aac825cfd9929eb58e6221d8a073d39a2418"
+    },
+    {
+      "file": "docs/evidence/challenge-manual-30-20261017/run03-supply01.jpg",
+      "bytes": 71342,
+      "sha256": "b7237dfde177f4e75723bc3ae79714e13968c260a09cbebb9c9b5a931b9b47f8"
+    },
+    {
+      "file": "docs/evidence/challenge-manual-30-20261017/run03-wave04.jpg",
+      "bytes": 91425,
+      "sha256": "657f34b45f15e724da99d5e09ad67fc4aeb9813e67ff313cebd77e0693c721cc"
+    },
+    {
+      "file": "docs/evidence/challenge-manual-30-20261017/run04-loss-wave07.jpg",
+      "bytes": 53021,
+      "sha256": "49d2e832507cfc6b70c2df39b8a05215c9b78cd83cf66a3aa6320d587d461c78"
+    },
+    {
+      "file": "docs/evidence/challenge-manual-30-20261017/run04-supply01.jpg",
+      "bytes": 71037,
+      "sha256": "aa2df93c36355b89cc039d4ae937aea3f6b0676e64b3514b38aad4c9fe00aca8"
+    },
+    {
+      "file": "docs/evidence/challenge-manual-30-20261017/run04-supply02.jpg",
+      "bytes": 69424,
+      "sha256": "52e0af610f6007fa4fdbcbe80c11499d538a072bc6be6bbac5a226d941bb00fc"
+    },
+    {
+      "file": "docs/evidence/challenge-manual-30-20261017/run04-supply03.jpg",
+      "bytes": 72149,
+      "sha256": "de759d422d0fb9236fd032e66a25638ec54cf7fa55b04fe69b4d3e2c0bb03efc"
+    },
+    {
+      "file": "docs/evidence/challenge-manual-30-20261017/run05-loss-wave17.jpg",
+      "bytes": 53418,
+      "sha256": "e47199a3e504d15c1002f18fdc2985a5082a5894c0e7175a6ec31f2f196ba833"
+    },
+    {
+      "file": "docs/evidence/challenge-manual-30-20261017/run05-perks02.jpg",
+      "bytes": 70053,
+      "sha256": "2f1518171c4d3ac333edc0f55a7b2b0a1ded1af8fcee18001ab4d06b0be30e4c"
+    },
+    {
+      "file": "docs/evidence/challenge-manual-30-20261017/run05-supply01.jpg",
+      "bytes": 68696,
+      "sha256": "7b5ec7735c8f057e58b68e12e2f708fdb7218c17cf62fd9b7d1f01e0c03a15cc"
+    },
+    {
+      "file": "docs/evidence/challenge-manual-30-20261017/run05-supply03.jpg",
+      "bytes": 70063,
+      "sha256": "8fa6b44d834044b6ad38bcafd0da88fe76898e868482406a80058aa022c7ce21"
+    },
+    {
+      "file": "docs/evidence/challenge-manual-30-20261017/run05-supply06.jpg",
+      "bytes": 67861,
+      "sha256": "617eff191ce01c724cbd3d8474ce8a0a827e0be412c34009e24ef796ea7dc8fd"
+    },
+    {
+      "file": "docs/evidence/challenge-manual-30-20261017/run05-wave08.jpg",
+      "bytes": 69617,
+      "sha256": "0a00c0966e42b3fe33806b113c0d2a76ad147ecb5b21509067e3563a197932b8"
+    },
+    {
+      "file": "docs/evidence/challenge-manual-30-20261017/run05-wave10-late.jpg",
+      "bytes": 68846,
+      "sha256": "315e509a4822f25ab7bed5c4bc850fe70121d35c620411cafb6e3614a66446e2"
+    },
+    {
+      "file": "docs/evidence/challenge-manual-30-20261017/run05-wave10.jpg",
+      "bytes": 97464,
+      "sha256": "ab67923c56250160f799d4c8294e69e3f1c364419460ec1ab0b87f62e5aa5526"
+    },
+    {
+      "file": "docs/evidence/challenge-manual-30-20261017/run05-wave15-invested.jpg",
+      "bytes": 97183,
+      "sha256": "e7f958d6bd1069185482ead524e09b33181004dc5d5ce2c8b237494c59a69865"
+    },
+    {
+      "file": "docs/evidence/challenge-manual-30-20261017/run06-loss-wave14-resize.jpg",
+      "bytes": 65472,
+      "sha256": "26fca1e400e4865e7d1c64d01a1da587013e154e8cf648936ac1cf77d7e8cc45"
+    },
+    {
+      "file": "docs/evidence/challenge-manual-30-20261017/run06-supply01.jpg",
+      "bytes": 68006,
+      "sha256": "604e19ef0acaf1ce3c7aa97d3b8fbaf1f93661b8ee16f11d997ce415d44924d5"
+    },
+    {
+      "file": "docs/evidence/challenge-manual-30-20261017/run06-supply02.jpg",
+      "bytes": 71210,
+      "sha256": "017614456fdbd7ee07f3cb92e71cd2a52af95cb7628d26362c7f5caec702c20d"
+    },
+    {
+      "file": "docs/evidence/challenge-manual-30-20261017/run06-supply03.jpg",
+      "bytes": 69755,
+      "sha256": "2804b1444e8c2e95bf703bb62056a7462aa61524d01eb250d33a8bd8d4334432"
+    },
+    {
+      "file": "docs/evidence/challenge-manual-30-20261017/run06-supply04.jpg",
+      "bytes": 69862,
+      "sha256": "ba7454739d6d6fdfe8546d99285a363c39422e5a18e1d4100f27c4b5460a8786"
+    },
+    {
+      "file": "docs/evidence/challenge-manual-30-20261017/run06-supply05.jpg",
+      "bytes": 68071,
+      "sha256": "a1dc2c13eccc0603723a98a29d0a358c08dc708b14fff62ca639899378d5e148"
+    },
+    {
+      "file": "docs/evidence/challenge-manual-30-20261017/run06-wave05.jpg",
+      "bytes": 89232,
+      "sha256": "e8bf46bb33236514852cf3604c37be843f297c6a4ab4dc492b64346e96a4674c"
+    },
+    {
+      "file": "docs/evidence/challenge-manual-30-20261017/run06-wave06.jpg",
+      "bytes": 87503,
+      "sha256": "84a2576c450e31dc7534b9900f5beeaa1eb35704ac5469911744ab4ffe248ebf"
+    },
+    {
+      "file": "docs/evidence/challenge-manual-30-20261017/run06-wave07.jpg",
+      "bytes": 88110,
+      "sha256": "196341a2dbca6005c3eeaa394ccae22cebd72e7447e2ab7f71d9e0a51099b60f"
+    },
+    {
+      "file": "docs/evidence/challenge-manual-30-20261017/run06-wave09.jpg",
+      "bytes": 93181,
+      "sha256": "00fa9359b995655b4fcc2d6d5a7a3cf8ac9f04a92cfaf0fe6e940fdd2748ad2d"
+    },
+    {
+      "file": "docs/evidence/challenge-manual-30-20261017/run06-wave10-boss-mid.jpg",
+      "bytes": 95210,
+      "sha256": "cd5fb8a82f34473610aaa7807de58c7186f5fcb12bef4748f93a1a406aaef22c"
+    },
+    {
+      "file": "docs/evidence/challenge-manual-30-20261017/run06-wave10.jpg",
+      "bytes": 90469,
+      "sha256": "18d3c9bfaec5e76488413479cac66b32fce1dea06353a034296d7da25a9c9bde"
+    },
+    {
+      "file": "docs/evidence/challenge-manual-30-20261017/run06-wave11.jpg",
+      "bytes": 92376,
+      "sha256": "a34403dacc9eba714165df75e7b50e4c9e59deda46377e28701d95a63987b333"
+    },
+    {
+      "file": "docs/evidence/challenge-manual-30-20261017/run06-wave12.jpg",
+      "bytes": 94270,
+      "sha256": "016845ab9415a996d47db80f8a88ecfa5da6892b3ad614dbdf2a9c2f9b658432"
+    },
+    {
+      "file": "docs/evidence/challenge-manual-30-20261017/run06-wave13.jpg",
+      "bytes": 120082,
+      "sha256": "aac066ee625af234a6a7da21250c8d53afefefc6a71313738f14c3a22fc9390e"
+    },
+    {
+      "file": "docs/evidence/challenge-manual-30-20261017/run07-loss-wave30.jpg",
+      "bytes": 60421,
+      "sha256": "d4c11a6eb5937126d749ff1b5d1a2a009d2f4ec265a121dccaf0a0d93389918c"
+    },
+    {
+      "file": "docs/evidence/challenge-manual-30-20261017/run07-supply01.jpg",
+      "bytes": 91892,
+      "sha256": "ba42fd7ed6c05afa2339e6a48d6b892d256e43ce72326d56dc875c38fb3fddf8"
+    },
+    {
+      "file": "docs/evidence/challenge-manual-30-20261017/run07-supply02.jpg",
+      "bytes": 86326,
+      "sha256": "45ae86e14a03eaa2e6306f36c914b192a846fcb72a8a8aee499b705b8f57e406"
+    },
+    {
+      "file": "docs/evidence/challenge-manual-30-20261017/run07-supply03.jpg",
+      "bytes": 91328,
+      "sha256": "72b25a67385481edf90b76c56629d082a3f5f9501c10958411a3692d645d7857"
+    },
+    {
+      "file": "docs/evidence/challenge-manual-30-20261017/run07-supply04.jpg",
+      "bytes": 91049,
+      "sha256": "2ad7a1e07ca05ebe3ca3b467e6a0dc1d3d7da714adaedbc1ea47177130c8e468"
+    },
+    {
+      "file": "docs/evidence/challenge-manual-30-20261017/run07-supply05.jpg",
+      "bytes": 81913,
+      "sha256": "c3be6b5a10fc9f9c331d9c5394017a399bda83341da99beebd7a58be2f4fa79e"
+    },
+    {
+      "file": "docs/evidence/challenge-manual-30-20261017/run07-supply06.jpg",
+      "bytes": 91743,
+      "sha256": "62ee9f5a598e306696cdfc03aa24ee725824db5f3d3af9dd97012c292d3b93be"
+    },
+    {
+      "file": "docs/evidence/challenge-manual-30-20261017/run07-supply07.jpg",
+      "bytes": 89467,
+      "sha256": "c1e5efa4437e055349ae0abff12fc2b0c95b342691df994ef2fb084ce6817a4b"
+    },
+    {
+      "file": "docs/evidence/challenge-manual-30-20261017/run07-supply08.jpg",
+      "bytes": 89875,
+      "sha256": "45633afe9aa9669093cbf30d363920fd6141b749e13e67e0015f4a90bc076b81"
+    },
+    {
+      "file": "docs/evidence/challenge-manual-30-20261017/run07-supply09.jpg",
+      "bytes": 90902,
+      "sha256": "e2709d09040025a259d468cd745de3c7f8141489c791e66af30dbcec327b8462"
+    },
+    {
+      "file": "docs/evidence/challenge-manual-30-20261017/run07-supply10.jpg",
+      "bytes": 91075,
+      "sha256": "7f35de392d2ac1fcabc53d52e6ab45ba9bddcb38a333c75e712cb9f10f8b426b"
+    },
+    {
+      "file": "docs/evidence/challenge-manual-30-20261017/run07-wave01.jpg",
+      "bytes": 111941,
+      "sha256": "3478eefa527689190453a7c05053fe8f8222e3b8385f657dfeab4c82243c0eae"
+    },
+    {
+      "file": "docs/evidence/challenge-manual-30-20261017/run07-wave03.jpg",
+      "bytes": 108352,
+      "sha256": "d875efdd47a26ddcfbe9d92d05baba5b288e9dc4d091ac78249521bbf5ee3c97"
+    },
+    {
+      "file": "docs/evidence/challenge-manual-30-20261017/run07-wave05.jpg",
+      "bytes": 111005,
+      "sha256": "37a2f6d833a95f58da0a0fbacd3fdfde3d1682bf0bf09261b84396a4d26ba346"
+    },
+    {
+      "file": "docs/evidence/challenge-manual-30-20261017/run07-wave07.jpg",
+      "bytes": 116094,
+      "sha256": "09590a0a4819c9fcedf601fabadad2fa9635db39a1f910c99b110c47ee5dc1fd"
+    },
+    {
+      "file": "docs/evidence/challenge-manual-30-20261017/run07-wave09.jpg",
+      "bytes": 114870,
+      "sha256": "93cfa9a7092d39dd8dc1e4c15b8f3bd95d619ac330506457f34b5c6cfe80370a"
+    },
+    {
+      "file": "docs/evidence/challenge-manual-30-20261017/run07-wave10.jpg",
+      "bytes": 117383,
+      "sha256": "72e0770a957f21f8ff1713b3f8e4a2bdf348bc27ff174b2d5043c46c155f18d6"
+    },
+    {
+      "file": "docs/evidence/challenge-manual-30-20261017/run07-wave11.jpg",
+      "bytes": 114138,
+      "sha256": "b9519230fdd02a8a437f5695a11c49f2b8d0a80cb4316a70a98a51a8d62033fc"
+    },
+    {
+      "file": "docs/evidence/challenge-manual-30-20261017/run07-wave12.jpg",
+      "bytes": 117352,
+      "sha256": "d92d9beb0b8f6307a380e1bddeb16a4e037e2ad4f3ffd036a0d000a2a9cc74f1"
+    },
+    {
+      "file": "docs/evidence/challenge-manual-30-20261017/run07-wave13.jpg",
+      "bytes": 117965,
+      "sha256": "107c392b379a3fce0e0829cfcbf179f5ad0ee981ebfe19e1988a945837f8686b"
+    },
+    {
+      "file": "docs/evidence/challenge-manual-30-20261017/run07-wave15.jpg",
+      "bytes": 118249,
+      "sha256": "8df2ca9aa204b83d59c415fcda9a2eae898450417c907f5bbcd9e58bd1528946"
+    },
+    {
+      "file": "docs/evidence/challenge-manual-30-20261017/run07-wave16.jpg",
+      "bytes": 118593,
+      "sha256": "13779188810b728e21a7377b5d1c678f5e14e18252979a00ffe66ecd9641d2a8"
+    },
+    {
+      "file": "docs/evidence/challenge-manual-30-20261017/run07-wave17-late.jpg",
+      "bytes": 122700,
+      "sha256": "5d09f456c3db3100a04f39755a2b965729c465cb133cfd74a19fdfb5d5b6b6c0"
+    },
+    {
+      "file": "docs/evidence/challenge-manual-30-20261017/run07-wave17.jpg",
+      "bytes": 121601,
+      "sha256": "8c34b292d4fd20200a86accd1584152ac97d68cbdfd07ed3d22f247d9e95735a"
+    },
+    {
+      "file": "docs/evidence/challenge-manual-30-20261017/run07-wave18-late.jpg",
+      "bytes": 89467,
+      "sha256": "c1e5efa4437e055349ae0abff12fc2b0c95b342691df994ef2fb084ce6817a4b"
+    },
+    {
+      "file": "docs/evidence/challenge-manual-30-20261017/run07-wave18.jpg",
+      "bytes": 124780,
+      "sha256": "7ab13e21e4c78c748ddaaf56aba411976d5f7c55ea00f92e4b588c9bffd0c4a3"
+    },
+    {
+      "file": "docs/evidence/challenge-manual-30-20261017/run07-wave19.jpg",
+      "bytes": 126355,
+      "sha256": "b15f9e5305a9bc92573ca1740451293ea6bb75c2b2d9f8e8bf157a183374a850"
+    },
+    {
+      "file": "docs/evidence/challenge-manual-30-20261017/run07-wave20-late.jpg",
+      "bytes": 89875,
+      "sha256": "45633afe9aa9669093cbf30d363920fd6141b749e13e67e0015f4a90bc076b81"
+    },
+    {
+      "file": "docs/evidence/challenge-manual-30-20261017/run07-wave20-observation-b.jpg",
+      "bytes": 127265,
+      "sha256": "5f4cd074ac6d7acbd2659a6c8263e6660ab28c8d884226410658d341300c884f"
+    },
+    {
+      "file": "docs/evidence/challenge-manual-30-20261017/run07-wave20.jpg",
+      "bytes": 125488,
+      "sha256": "c02b8a4332e192f02ab0c3852a1b08c95bdc1da84d42676709b4840164a6cd74"
+    },
+    {
+      "file": "docs/evidence/challenge-manual-30-20261017/run07-wave21.jpg",
+      "bytes": 125193,
+      "sha256": "ae619fef5f1f0ccb02dc7977caddc1936ccf95e7c23dba705b20223adba559e4"
+    },
+    {
+      "file": "docs/evidence/challenge-manual-30-20261017/run07-wave22.jpg",
+      "bytes": 126101,
+      "sha256": "7ed5a0acf4ed04a06c6bdea3387a130bc222ad0eac9d6068bb83ff02a31f3aad"
+    },
+    {
+      "file": "docs/evidence/challenge-manual-30-20261017/run07-wave23.jpg",
+      "bytes": 123121,
+      "sha256": "d240f0daa5555e8894af1a3f0d3f38802a1d7874abc4a2cee0a1cb3e23800566"
+    },
+    {
+      "file": "docs/evidence/challenge-manual-30-20261017/run07-wave24-late.jpg",
+      "bytes": 90902,
+      "sha256": "e2709d09040025a259d468cd745de3c7f8141489c791e66af30dbcec327b8462"
+    },
+    {
+      "file": "docs/evidence/challenge-manual-30-20261017/run07-wave24.jpg",
+      "bytes": 126221,
+      "sha256": "9bfe8a9cc015c0d96725a39e76bb2d9149097320dfe3b24963cb476e2c51cb45"
+    },
+    {
+      "file": "docs/evidence/challenge-manual-30-20261017/run07-wave25-rescue-build.jpg",
+      "bytes": 124464,
+      "sha256": "fe283cf22a05e2251b331bdc5f4fc6f7071dd37b260a5712b37c61b1818d7586"
+    },
+    {
+      "file": "docs/evidence/challenge-manual-30-20261017/run07-wave25.jpg",
+      "bytes": 130005,
+      "sha256": "7cef5325dea0449a6c34363e62b36bcecde19225bde490af8670cdc1d965a9a3"
+    },
+    {
+      "file": "docs/evidence/challenge-manual-30-20261017/run07-wave26-full-defense.jpg",
+      "bytes": 140431,
+      "sha256": "36cc0b6520823c8884a823856db354a0aa97a466ecb17eee6c3ca9fd4ed9a852"
+    },
+    {
+      "file": "docs/evidence/challenge-manual-30-20261017/run07-wave26-late.jpg",
+      "bytes": 91075,
+      "sha256": "7f35de392d2ac1fcabc53d52e6ab45ba9bddcb38a333c75e712cb9f10f8b426b"
+    },
+    {
+      "file": "docs/evidence/challenge-manual-30-20261017/run07-wave27.jpg",
+      "bytes": 136842,
+      "sha256": "172fd8d64f62fdb791a7e5cda7a6aae56791f25fbb10e78fa74992285d7d643f"
+    },
+    {
+      "file": "docs/evidence/challenge-manual-30-20261017/run07-wave28.jpg",
+      "bytes": 137165,
+      "sha256": "02d26ae698c94b77a7b0715cf748d220d9954e2454fcb6aa4220901045c666dd"
+    },
+    {
+      "file": "docs/evidence/challenge-manual-30-20261017/run07-wave29-late.jpg",
+      "bytes": 131154,
+      "sha256": "fc45d135fd4f1aee942be84cc4f622acfffd1dcd711b942b857e3d2c6f778420"
+    },
+    {
+      "file": "docs/evidence/challenge-manual-30-20261017/run07-wave29.jpg",
+      "bytes": 136000,
+      "sha256": "5540721c8df2b262c95373c32d7b3291c7c82323c0f3f47aef7361e76286b980"
+    },
+    {
+      "file": "docs/evidence/challenge-manual-30-20261017/run07-wave30-boss-cleared.jpg",
+      "bytes": 136740,
+      "sha256": "52b449f75fd1578a5a8c24b87ea39fcdea5e9c233d05a727baf890cb29ea298a"
+    },
+    {
+      "file": "docs/evidence/challenge-manual-30-20261017/run07-wave30-boss-entry.jpg",
+      "bytes": 134981,
+      "sha256": "bf0d4f4257dbaca35e7deae6185c9085dca3295d699b3c9ae60594197ddff9d4"
+    },
+    {
+      "file": "docs/evidence/challenge-manual-30-20261017/run07-wave30-boss-mid.jpg",
+      "bytes": 135897,
+      "sha256": "c6d83e778441e58aa476c93a733eaf795a70f3908d430f44b8d23eef28c497cc"
+    },
+    {
+      "file": "docs/evidence/challenge-manual-30-20261017/supply-01.jpg",
+      "bytes": 68937,
+      "sha256": "869ddf29b734b3360bb528412cb45dcf24e5b65fc143b840f8567cd14b4fc81b"
+    },
+    {
+      "file": "docs/evidence/challenge-manual-30-20261017/wave01-first-line.jpg",
+      "bytes": 86309,
+      "sha256": "6414cf47f134bae8545cd2ee7774dd44dad60685a8155b30c9aa04a6a093f8e2"
+    },
+    {
+      "file": "docs/evidence/challenge-manual-30-20261017/wave02-midline.jpg",
+      "bytes": 91039,
+      "sha256": "2a18c720c6697b54dd938f81c76c200b917265c60332f23f1dd698f484537e3c"
+    },
+    {
+      "file": "assets/scripts/gameplay/battle/GameRoot.ts",
+      "bytes": 112382,
+      "sha256": "71afae8dea8a75fe4ebf1e7fecae63f4d261dff20920ca27e08f11e19629e59a"
+    },
+    {
+      "file": "assets/scripts/gameplay/battle/ChallengeRun.ts",
+      "bytes": 18168,
+      "sha256": "f621016edf6df53a31a4d9fd3be389bc4677815a1e86c49d43247e3e52d4e4a0"
+    },
+    {
+      "file": "assets/resources/config/Wave.csv",
+      "bytes": 23932,
+      "sha256": "8843b30033d8c6a7cf49956a2ec043fb9b5b9fb8222c5da28ad682103567f63a"
+    },
+    {
+      "file": "assets/resources/config/WaveGroup.csv",
+      "bytes": 1064255,
+      "sha256": "3321598a40f3abefd6e8e0a54fd1e84b0b5c9d11d35e9879af121c72e01a1e7a"
+    },
+    {
+      "file": "assets/resources/config/ChallengeRule.csv",
+      "bytes": 1353,
+      "sha256": "8949865bd95bd8f814d434d9679431c406305de3085b6a5cff0f6640289966b3"
+    },
+    {
+      "file": "assets/resources/config/ChallengePerk.csv",
+      "bytes": 3144,
+      "sha256": "3b126c17f8a8c907b1fe8c8ac5ddcf13644348de57ce135d1ac3dfe8a887214e"
+    },
+    {
+      "file": "assets/resources/config/Enemy.csv",
+      "bytes": 882,
+      "sha256": "4c959601a3043b63840b4791dc29e49f6a3ddf565ffa465ef8b64324b8cf44db"
+    }
+  ]
+}

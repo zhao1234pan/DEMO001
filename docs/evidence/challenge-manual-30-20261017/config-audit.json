@@ -1,0 +1,145 @@
+{
+  "kind": "只读配置配方分析；不是实际出生统计、DPS测量或新增自动试玩",
+  "version": "1.18.0",
+  "levelId": 21,
+  "mixes": [
+    {
+      "wave": 14,
+      "mix": {
+        "swift": 164,
+        "shield": 123
+      },
+      "ordinaryTemplateCount": 287,
+      "meanBaseHp": 77.429,
+      "healthScale": 6.13793,
+      "meanPhaseStartHp": 475.251
+    },
+    {
+      "wave": 15,
+      "mix": {
+        "normal": 164,
+        "jelly": 98,
+        "tank": 33
+      },
+      "ordinaryTemplateCount": 295,
+      "meanBaseHp": 86.054,
+      "healthScale": 6.37931,
+      "meanPhaseStartHp": 548.967
+    },
+    {
+      "wave": 20,
+      "mix": {
+        "swift": 177,
+        "shield": 134
+      },
+      "ordinaryTemplateCount": 311,
+      "meanBaseHp": 77.608,
+      "healthScale": 8.2069,
+      "meanPhaseStartHp": 636.919
+    },
+    {
+      "wave": 21,
+      "mix": {
+        "jelly": 150,
+        "runner": 113,
+        "tank": 56
+      },
+      "ordinaryTemplateCount": 319,
+      "meanBaseHp": 104.94,
+      "healthScale": 8.78621,
+      "meanPhaseStartHp": 922.029
+    },
+    {
+      "wave": 24,
+      "mix": {
+        "normal": 150,
+        "swift": 101,
+        "shield": 75
+      },
+      "ordinaryTemplateCount": 326,
+      "meanBaseHp": 68.387,
+      "healthScale": 10.07241,
+      "meanPhaseStartHp": 688.817
+    },
+    {
+      "wave": 25,
+      "mix": {
+        "runner": 148,
+        "tank": 111,
+        "shield": 75
+      },
+      "ordinaryTemplateCount": 334,
+      "meanBaseHp": 122.443,
+      "healthScale": 10.41034,
+      "meanPhaseStartHp": 1274.674
+    },
+    {
+      "wave": 26,
+      "mix": {
+        "runner": 148,
+        "tank": 111,
+        "shield": 75
+      },
+      "ordinaryTemplateCount": 334,
+      "meanBaseHp": 122.443,
+      "healthScale": 10.74828,
+      "meanPhaseStartHp": 1316.053
+    },
+    {
+      "wave": 27,
+      "mix": {
+        "jelly": 142,
+        "swift": 143,
+        "tank": 57
+      },
+      "ordinaryTemplateCount": 342,
+      "meanBaseHp": 90.754,
+      "healthScale": 11.08621,
+      "meanPhaseStartHp": 1006.122
+    },
+    {
+      "wave": 28,
+      "mix": {
+        "jelly": 142,
+        "swift": 143,
+        "tank": 57
+      },
+      "ordinaryTemplateCount": 342,
+      "meanBaseHp": 90.754,
+      "healthScale": 11.42759,
+      "meanPhaseStartHp": 1037.104
+    },
+    {
+      "wave": 29,
+      "mix": {
+        "normal": 146,
+        "runner": 87,
+        "shield": 117
+      },
+      "ordinaryTemplateCount": 350,
+      "meanBaseHp": 82.874,
+      "healthScale": 11.81379,
+      "meanPhaseStartHp": 979.059
+    },
+    {
+      "wave": 30,
+      "mix": {
+        "normal": 146,
+        "runner": 87,
+        "shield": 117
+      },
+      "ordinaryTemplateCount": 350,
+      "meanBaseHp": 82.874,
+      "healthScale": 12.2,
+      "meanPhaseStartHp": 1011.066
+    }
+  ],
+  "templateHpRatio25Over24": 1.8505,
+  "finalBoss": {
+    "kind": "clock",
+    "baseHp": 1800,
+    "bossHealthScale": 17.6,
+    "hp": 31680
+  },
+  "scope": "单一四人配队、单一专题的实际UI试玩；不推广到其他阵容、专题或盲测胜率"
+}
