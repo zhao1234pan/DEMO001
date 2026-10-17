@@ -47,3 +47,4 @@ id,key,value,note
 49,offlineBudgetPurchases,2,满2小时预算取后续最低购买费用，短离线按时长分摊
 50,offlineCompleteBudget,200,全部经营消费完成后的满2小时收益预算
 51,onlineGapSeconds,60,前台连续停帧达到此秒数按离线结算
+52,shelfGoodsSlots,3,每架最多三种商品，共享货架总容量；额外位初始为空

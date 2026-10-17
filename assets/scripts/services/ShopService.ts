@@ -49,7 +49,7 @@ export class ShopService {
   show(now=Date.now()):void {this.suspended=false;if(!this.simulation)return;this.offlineIncome+=this.simulation.advanceOffline(now,shopClearedLevel());this.save(now);}
   hire(key:string):boolean {this.update();const result=this.simulation?.hire(key,shopClearedLevel()+1)??false;if(result)this.save();return result;}
   upgrade(key:string):boolean {this.update();const result=this.simulation?.upgrade(key,shopClearedLevel())??false;if(result)this.save();return result;}
-  assign(index:number,key:string):boolean {this.update();const result=this.simulation?.assign(index,key,shopClearedLevel())??false;if(result)this.save();return result;}
+  assign(index:number,key:string,slot=0):boolean {this.update();const result=this.simulation?.assign(index,key,shopClearedLevel(),slot)??false;if(result)this.save();return result;}
   research(key:string):boolean {this.update();const result=this.simulation?.research(key,shopClearedLevel())??false;if(result)this.save();return result;}
   buyUniform(key:string):boolean {this.update();const result=this.simulation?.buyUniform(key)??false;if(result)this.save();return result;}
   equip(key:string):boolean {this.update();const result=this.simulation?.equip(key)??false;if(result)this.save();return result;}

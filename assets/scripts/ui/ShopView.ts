@@ -4,7 +4,7 @@ import { Node, Sprite, UITransform } from "cc";
 import { numeric, rows, text, globalNumber, TableRow } from "../config/ConfigTables";
 import { ShopService, shopClearedLevel, shopNumber } from "../services/ShopService";
 import { UiPrefabs, uiNode, uiText, uiRect } from "./UiPrefabs";
-import { ShopCustomer } from "../gameplay/shop/ShopSimulation";
+import { ShopCustomer,ShopShelf,shelfSlot,shelfGoods,shelfStock,shelfGoodCapacity } from "../gameplay/shop/ShopSimulation";
 
 type ShopTab="staff"|"upgrade"|"goods"|"research"|"uniform";
 type Point={x:number;y:number};
@@ -16,6 +16,7 @@ export class ShopView {
   private page=0;
   private readonly scroll=new CollectionScrollState();
   private targetShelf=0;
+  private targetSlot=0;
   private notification="";
   private notificationUntil=0;
   private lastSold=0;
@@ -26,7 +27,7 @@ export class ShopView {
   private saleAt=-Infinity;
   constructor(private readonly root:Node,private readonly assets:UiPrefabs){}
   get isOverlayOpen():boolean{return this.mode!=="closed";}
-  open(fresh:boolean):void {this.mode="closed";this.pickerReturn="closed";this.page=0;this.targetShelf=0;this.presentation.reset();this.scroll.set(0);this.saleAt=-Infinity;this.lastSold=ShopService.shared.state?.sold??0;if(fresh)this.notify(text("shop.welcome",shopNumber("welcomeCoins")));}
+  open(fresh:boolean):void {this.mode="closed";this.pickerReturn="closed";this.page=0;this.targetShelf=0;this.targetSlot=0;this.presentation.reset();this.scroll.set(0);this.saleAt=-Infinity;this.lastSold=ShopService.shared.state?.sold??0;if(fresh)this.notify(text("shop.welcome",shopNumber("welcomeCoins")));}
   /** 页头和底栏贴可见安全区，营业场景与弹窗保留配置比例。 */
   fitViewport(top:number,bottom:number):void{
     const height=this.root.getComponent(UITransform)!.height;
@@ -38,6 +39,7 @@ export class ShopView {
   private image(node:Node,key:string):void {if(this.images.get(node)===key)return;this.images.set(node,key);this.assets.bindImage(node,key);}
   private skin(node:Node,key:string):void{this.assets.bindSkin(uiNode(node,"Artwork").getComponent(Sprite)!,key);}
   private point(key:string):Point {const r=this.points.get(key)!;return{x:numeric(r,"x"),y:numeric(r,"y")};}
+  private shelfName(shelf:ShopShelf):string{return shelfGoods(shelf).map(g=>text(rows("Goods").find(r=>r.key===g.goods)!.nameKey)).join(text("shop.goodsSeparator"));}
   render(bind:(node:Node,action:()=>void)=>void):void {
     const service=ShopService.shared,sim=service.simulation;if(!sim)return;const state=sim.state;
     if(service.offlineIncome>0){this.lastSold=state.sold;this.saleAt=-Infinity;this.notify(text("shop.offline",service.offlineIncome));service.offlineIncome=0;}
@@ -46,9 +48,12 @@ export class ShopView {
     uiText(this.root,"Wallet/Text",text("shop.balance",state.coins));uiText(this.root,"Summary",text("shop.stageSummary",text(sim.stage.nameKey),state.sold));uiText(this.root,"Receipt",Date.now()<this.notificationUntil?this.notification:"");uiNode(this.root,"ReceiptPlate").active=Date.now()<this.notificationUntil&&Boolean(this.notification);
     for(let i=0;i<shopNumber("maxShelves");i++){
       const node=uiNode(this.root,"Floor/Content/Shelf"+i),s=state.shelves[i],products=uiNode(node,"Products");node.active=Boolean(s)||i===state.shelves.length;products.active=Boolean(s);
-      if(s){const good=rows("Goods").find(g=>g.key===s.goods)!;products.children.forEach((unit,j)=>{unit.active=j<Math.ceil(s.stock/sim.capacity*products.children.length);this.skin(unit,good.imageKey);});uiText(node,"Stock",text("shop.inventory",s.stock,sim.capacity));uiText(node,"Name",text(good.nameKey));this.skin(uiNode(node,"GoodMark"),good.imageKey);uiNode(node,"GoodMark").active=true;}
+      if(s){const goods=shelfGoods(s),columns=Array.from(new Set(products.children.map(unit=>unit.position.x))).sort((a,b)=>a-b),groups=goods.map((_,i)=>products.children.filter(unit=>columns.indexOf(unit.position.x)%goods.length===i));
+        goods.forEach((g,i)=>{const image=rows("Goods").find(r=>r.key===g.goods)!.imageKey,limit=shelfGoodCapacity(s,g,sim.capacity);groups[i].forEach((unit,j)=>{unit.active=j<Math.ceil(g.stock/limit*groups[i].length);this.skin(unit,image);});});
+        uiText(node,"Stock",text(goods.length>1?"shop.mixedInventory":"shop.inventory",goods.length>1?goods.map(g=>g.stock).join(text("shop.goodsSeparator")):s.stock,sim.capacity));uiText(node,"Name",this.shelfName(s));this.skin(uiNode(node,"GoodMark"),rows("Goods").find(g=>g.key===s.goods)!.imageKey);uiNode(node,"GoodMark").active=goods.length===1;
+      }
       else{uiText(node,"Stock","");uiText(node,"Name",text("shop.closedShelf"));uiNode(node,"GoodMark").active=false;}
-      if(!this.isOverlayOpen)bind(node,()=>{this.targetShelf=i;this.pickerReturn="closed";if(s)this.mode="picker";else this.details("upgrade");});
+      if(!this.isOverlayOpen)bind(node,()=>{this.targetShelf=i;this.targetSlot=0;this.pickerReturn="closed";if(s)this.mode="picker";else this.details("upgrade");});
     }
     const clearanceRow=this.points.get("customerClearance")!,clearance={width:numeric(clearanceRow,"width"),height:numeric(clearanceRow,"height")};
     const viewport=uiNode(this.root,"Floor").getComponent(UITransform)!.height,extra=viewport-shopNumber("shopViewportHeight");this.scroll.resize(shopNumber("shopViewportHeight")+this.presentation.contentExtra(state,clearance.height)+extra/2,viewport);uiNode(this.root,"Floor/Content").setPosition(0,this.scroll.offset);uiNode(this.root,"Floor/Content/Checkout2").active=sim.stage.checkouts>1;
@@ -85,18 +90,20 @@ export class ShopView {
     uiNode(root,"Shelf0").parent!.children.filter(n=>/^Shelf\d+$/.test(n.name)).forEach((card,i)=>{
       const shelf=sim.state.shelves[i];card.active=Boolean(shelf);if(!shelf)return;const position=this.layout.get("ShopOverlay/ShelfPicker/"+card.name)!;card.setPosition(numeric(position,"x"),numeric(position,"y")-shrink/2);
       const good=rows("Goods").find(g=>g.key===shelf.goods)!;this.skin(uiNode(card,"Icon"),good.imageKey);
-      uiText(card,"Name",text("shop.shelfPick",i+1,text(good.nameKey)));uiText(card,"Stock",text("shop.inventory",shelf.stock,sim.capacity));
-      bind(uiNode(card,"Pick"),()=>{this.targetShelf=i;this.pickerReturn="shelves";this.mode="picker";});
+      uiText(card,"Name",text("shop.shelfPick",i+1,this.shelfName(shelf)));uiText(card,"Stock",text("shop.inventory",shelfStock(shelf),sim.capacity));
+      bind(uiNode(card,"Pick"),()=>{this.targetShelf=i;this.targetSlot=0;this.pickerReturn="shelves";this.mode="picker";});
     });
   }
   private renderPicker(root:Node,bind:(node:Node,action:()=>void)=>void):void {
-    const service=ShopService.shared,sim=service.simulation!,s=sim.state;this.targetShelf=Math.min(this.targetShelf,s.shelves.length-1);uiText(root,"Title",text("shop.goodsTitle",this.targetShelf+1));
+    const service=ShopService.shared,sim=service.simulation!,s=sim.state;this.targetShelf=Math.min(this.targetShelf,s.shelves.length-1);const shelf=s.shelves[this.targetShelf];uiText(root,"Title",text("shop.goodsSlotTitle",this.targetShelf+1,this.targetSlot+1));
+    for(let slot=0;slot<shopNumber("shelfGoodsSlots");slot++){const node=uiNode(root,"Slot"+slot),g=shelfSlot(shelf,slot);this.skin(node,slot===this.targetSlot?"button_gold":"button_green");uiText(node,"Text",text("shop.goodsSlotCaption",slot+1,g?text(rows("Goods").find(r=>r.key===g.goods)!.nameKey):text("shop.emptySlot")));bind(node,()=>{this.targetSlot=slot;});}
+    const canClear=this.targetSlot>0&&Boolean(shelfSlot(shelf,this.targetSlot));this.skin(uiNode(root,"Clear"),canClear?"button_green":"button_disabled");uiText(root,"Clear/Text",text(this.targetSlot?"shop.clearSlot":"shop.keepFirstSlot"));if(canClear)bind(uiNode(root,"Clear"),()=>{service.assign(this.targetShelf,"",this.targetSlot);});
     rows("ShopGoods").forEach((r,i)=>{
-      const card=uiNode(root,"Good"+i),g=rows("Goods").find(g=>g.key===r.goodsKey)!,unlocked=numeric(r,"unlockAfter")<=shopClearedLevel(),selected=s.shelves[this.targetShelf].goods===r.key;
+      const card=uiNode(root,"Good"+i),g=rows("Goods").find(g=>g.key===r.goodsKey)!,unlocked=numeric(r,"unlockAfter")<=shopClearedLevel(),selected=shelfSlot(shelf,this.targetSlot)?.goods===r.key,used=Array.from({length:shopNumber("shelfGoodsSlots")},(_,slot)=>slot).find(slot=>shelfSlot(shelf,slot)?.goods===r.key);
       this.skin(card,"shop_goods_card_v2");this.skin(uiNode(card,"Icon"),g.imageKey);uiNode(card,"Icon/Artwork").getComponent(Sprite)!.grayscale=!unlocked;
-      this.skin(uiNode(card,"Pick"),unlocked&&!selected?"button_green":"button_disabled");
-      uiText(card,"Name",text(g.nameKey));uiText(card,"Price",text("shop.price",sim.price(r.key)));uiText(card,"Status",!unlocked?text("shop.goodsLocked",r.unlockAfter):selected?text("shop.picked"):text("shop.pickGoods"));
-      if(unlocked&&!selected)bind(uiNode(card,"Pick"),()=>{if(service.assign(this.targetShelf,r.key))this.mode="closed";});
+      this.skin(uiNode(card,"Pick"),unlocked&&used===undefined?"button_green":"button_disabled");
+      uiText(card,"Name",text(g.nameKey));uiText(card,"Price",text("shop.price",sim.price(r.key)));uiText(card,"Status",!unlocked?text("shop.goodsLocked",r.unlockAfter):selected?text("shop.picked"):used!==undefined?text("shop.slotUsed",used+1):text("shop.pickGoods"));
+      if(unlocked&&used===undefined)bind(uiNode(card,"Pick"),()=>{if(service.assign(this.targetShelf,r.key,this.targetSlot)&&!this.targetSlot)this.mode="closed";});
     });
   }
   private improvementValue(group:string,tier:number):string {

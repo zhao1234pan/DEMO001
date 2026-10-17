@@ -1,0 +1,2086 @@
+[
+  {
+    "table": "ShopRule",
+    "changes": [
+      {
+        "key": "shelfGoodsSlots",
+        "column": "id",
+        "before": null,
+        "after": 52
+      },
+      {
+        "key": "shelfGoodsSlots",
+        "column": "key",
+        "before": null,
+        "after": "shelfGoodsSlots"
+      },
+      {
+        "key": "shelfGoodsSlots",
+        "column": "value",
+        "before": null,
+        "after": 3
+      },
+      {
+        "key": "shelfGoodsSlots",
+        "column": "note",
+        "before": null,
+        "after": "每架最多三种商品，共享货架总容量；额外位初始为空"
+      }
+    ]
+  },
+  {
+    "table": "I18",
+    "changes": [
+      {
+        "key": "shop.goodsSlotTitle",
+        "column": "id",
+        "before": null,
+        "after": 729
+      },
+      {
+        "key": "shop.goodsSlotTitle",
+        "column": "key",
+        "before": null,
+        "after": "shop.goodsSlotTitle"
+      },
+      {
+        "key": "shop.goodsSlotTitle",
+        "column": "zhCN",
+        "before": null,
+        "after": "货架{p0} · 商品位{p1}"
+      },
+      {
+        "key": "shop.goodsSlotCaption",
+        "column": "id",
+        "before": null,
+        "after": 730
+      },
+      {
+        "key": "shop.goodsSlotCaption",
+        "column": "key",
+        "before": null,
+        "after": "shop.goodsSlotCaption"
+      },
+      {
+        "key": "shop.goodsSlotCaption",
+        "column": "zhCN",
+        "before": null,
+        "after": "{p0} · {p1}"
+      },
+      {
+        "key": "shop.emptySlot",
+        "column": "id",
+        "before": null,
+        "after": 731
+      },
+      {
+        "key": "shop.emptySlot",
+        "column": "key",
+        "before": null,
+        "after": "shop.emptySlot"
+      },
+      {
+        "key": "shop.emptySlot",
+        "column": "zhCN",
+        "before": null,
+        "after": "未上架"
+      },
+      {
+        "key": "shop.slotUsed",
+        "column": "id",
+        "before": null,
+        "after": 732
+      },
+      {
+        "key": "shop.slotUsed",
+        "column": "key",
+        "before": null,
+        "after": "shop.slotUsed"
+      },
+      {
+        "key": "shop.slotUsed",
+        "column": "zhCN",
+        "before": null,
+        "after": "已在商品位{p0}"
+      },
+      {
+        "key": "shop.clearSlot",
+        "column": "id",
+        "before": null,
+        "after": 733
+      },
+      {
+        "key": "shop.clearSlot",
+        "column": "key",
+        "before": null,
+        "after": "shop.clearSlot"
+      },
+      {
+        "key": "shop.clearSlot",
+        "column": "zhCN",
+        "before": null,
+        "after": "清空此商品位"
+      },
+      {
+        "key": "shop.keepFirstSlot",
+        "column": "id",
+        "before": null,
+        "after": 734
+      },
+      {
+        "key": "shop.keepFirstSlot",
+        "column": "key",
+        "before": null,
+        "after": "shop.keepFirstSlot"
+      },
+      {
+        "key": "shop.keepFirstSlot",
+        "column": "zhCN",
+        "before": null,
+        "after": "首位需保留商品"
+      },
+      {
+        "key": "shop.goodsSeparator",
+        "column": "id",
+        "before": null,
+        "after": 735
+      },
+      {
+        "key": "shop.goodsSeparator",
+        "column": "key",
+        "before": null,
+        "after": "shop.goodsSeparator"
+      },
+      {
+        "key": "shop.goodsSeparator",
+        "column": "zhCN",
+        "before": null,
+        "after": "·"
+      },
+      {
+        "key": "shop.mixedInventory",
+        "column": "id",
+        "before": null,
+        "after": 736
+      },
+      {
+        "key": "shop.mixedInventory",
+        "column": "key",
+        "before": null,
+        "after": "shop.mixedInventory"
+      },
+      {
+        "key": "shop.mixedInventory",
+        "column": "zhCN",
+        "before": null,
+        "after": "库存 {p0}/{p1}"
+      }
+    ]
+  },
+  {
+    "table": "UiLayout",
+    "changes": [
+      {
+        "key": "shop:Floor/Content/Shelf0/Stock",
+        "column": "fontSize",
+        "before": 12,
+        "after": 10
+      },
+      {
+        "key": "shop:Floor/Content/Shelf0/Stock",
+        "column": "lineHeight",
+        "before": 16,
+        "after": 14
+      },
+      {
+        "key": "shop:Floor/Content/Shelf0/Name",
+        "column": "fontSize",
+        "before": 16,
+        "after": 12
+      },
+      {
+        "key": "shop:Floor/Content/Shelf0/Name",
+        "column": "lineHeight",
+        "before": 20,
+        "after": 16
+      },
+      {
+        "key": "shop:Floor/Content/Shelf1/Stock",
+        "column": "fontSize",
+        "before": 12,
+        "after": 10
+      },
+      {
+        "key": "shop:Floor/Content/Shelf1/Stock",
+        "column": "lineHeight",
+        "before": 16,
+        "after": 14
+      },
+      {
+        "key": "shop:Floor/Content/Shelf1/Name",
+        "column": "fontSize",
+        "before": 16,
+        "after": 12
+      },
+      {
+        "key": "shop:Floor/Content/Shelf1/Name",
+        "column": "lineHeight",
+        "before": 20,
+        "after": 16
+      },
+      {
+        "key": "shop:Floor/Content/Shelf2/Stock",
+        "column": "fontSize",
+        "before": 12,
+        "after": 10
+      },
+      {
+        "key": "shop:Floor/Content/Shelf2/Stock",
+        "column": "lineHeight",
+        "before": 16,
+        "after": 14
+      },
+      {
+        "key": "shop:Floor/Content/Shelf2/Name",
+        "column": "fontSize",
+        "before": 16,
+        "after": 12
+      },
+      {
+        "key": "shop:Floor/Content/Shelf2/Name",
+        "column": "lineHeight",
+        "before": 20,
+        "after": 16
+      },
+      {
+        "key": "shop:Floor/Content/Shelf3/Stock",
+        "column": "fontSize",
+        "before": 12,
+        "after": 10
+      },
+      {
+        "key": "shop:Floor/Content/Shelf3/Stock",
+        "column": "lineHeight",
+        "before": 16,
+        "after": 14
+      },
+      {
+        "key": "shop:Floor/Content/Shelf3/Name",
+        "column": "fontSize",
+        "before": 16,
+        "after": 12
+      },
+      {
+        "key": "shop:Floor/Content/Shelf3/Name",
+        "column": "lineHeight",
+        "before": 20,
+        "after": 16
+      },
+      {
+        "key": "shop:Floor/Content/Shelf4/Stock",
+        "column": "fontSize",
+        "before": 12,
+        "after": 10
+      },
+      {
+        "key": "shop:Floor/Content/Shelf4/Stock",
+        "column": "lineHeight",
+        "before": 16,
+        "after": 14
+      },
+      {
+        "key": "shop:Floor/Content/Shelf4/Name",
+        "column": "fontSize",
+        "before": 16,
+        "after": 12
+      },
+      {
+        "key": "shop:Floor/Content/Shelf4/Name",
+        "column": "lineHeight",
+        "before": 20,
+        "after": 16
+      },
+      {
+        "key": "shop:Floor/Content/Shelf5/Stock",
+        "column": "fontSize",
+        "before": 12,
+        "after": 10
+      },
+      {
+        "key": "shop:Floor/Content/Shelf5/Stock",
+        "column": "lineHeight",
+        "before": 16,
+        "after": 14
+      },
+      {
+        "key": "shop:Floor/Content/Shelf5/Name",
+        "column": "fontSize",
+        "before": 16,
+        "after": 12
+      },
+      {
+        "key": "shop:Floor/Content/Shelf5/Name",
+        "column": "lineHeight",
+        "before": 20,
+        "after": 16
+      },
+      {
+        "key": "shop:Floor/Content/Shelf6/Stock",
+        "column": "fontSize",
+        "before": 12,
+        "after": 10
+      },
+      {
+        "key": "shop:Floor/Content/Shelf6/Stock",
+        "column": "lineHeight",
+        "before": 16,
+        "after": 14
+      },
+      {
+        "key": "shop:Floor/Content/Shelf6/Name",
+        "column": "fontSize",
+        "before": 16,
+        "after": 12
+      },
+      {
+        "key": "shop:Floor/Content/Shelf6/Name",
+        "column": "lineHeight",
+        "before": 20,
+        "after": 16
+      },
+      {
+        "key": "shop:Floor/Content/Shelf7/Stock",
+        "column": "fontSize",
+        "before": 12,
+        "after": 10
+      },
+      {
+        "key": "shop:Floor/Content/Shelf7/Stock",
+        "column": "lineHeight",
+        "before": 16,
+        "after": 14
+      },
+      {
+        "key": "shop:Floor/Content/Shelf7/Name",
+        "column": "fontSize",
+        "before": 16,
+        "after": 12
+      },
+      {
+        "key": "shop:Floor/Content/Shelf7/Name",
+        "column": "lineHeight",
+        "before": 20,
+        "after": 16
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker",
+        "column": "height",
+        "before": 462,
+        "after": 532
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Panel",
+        "column": "height",
+        "before": 462,
+        "after": 532
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Title",
+        "column": "y",
+        "before": 199,
+        "after": 234
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Title",
+        "column": "fontSize",
+        "before": 22,
+        "after": 18
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Title",
+        "column": "lineHeight",
+        "before": 26,
+        "after": 24
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Close",
+        "column": "y",
+        "before": 199,
+        "after": 234
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Back",
+        "column": "y",
+        "before": 199,
+        "after": 234
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot0",
+        "column": "id",
+        "before": null,
+        "after": 2971
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot0",
+        "column": "key",
+        "before": null,
+        "after": "shop:ShopOverlay/GoodsPicker/Slot0"
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot0",
+        "column": "prefab",
+        "before": null,
+        "after": "shop"
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot0",
+        "column": "node",
+        "before": null,
+        "after": "ShopOverlay/GoodsPicker/Slot0"
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot0",
+        "column": "x",
+        "before": null,
+        "after": -99
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot0",
+        "column": "y",
+        "before": null,
+        "after": 194
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot0",
+        "column": "width",
+        "before": null,
+        "after": 92
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot0",
+        "column": "height",
+        "before": null,
+        "after": 28
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot0",
+        "column": "scaleX",
+        "before": null,
+        "after": 1
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot0",
+        "column": "scaleY",
+        "before": null,
+        "after": 1
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot0",
+        "column": "fontSize",
+        "before": null,
+        "after": 0
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot0",
+        "column": "lineHeight",
+        "before": null,
+        "after": 0
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot0",
+        "column": "fontFamily",
+        "before": null,
+        "after": ""
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot0",
+        "column": "color",
+        "before": null,
+        "after": "#ffffff"
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot0",
+        "column": "outlineColor",
+        "before": null,
+        "after": ""
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot0",
+        "column": "outlineWidth",
+        "before": null,
+        "after": 0
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot0",
+        "column": "horizontalAlign",
+        "before": null,
+        "after": 1
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot0",
+        "column": "verticalAlign",
+        "before": null,
+        "after": 1
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot0",
+        "column": "overflow",
+        "before": null,
+        "after": 0
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot0",
+        "column": "active",
+        "before": null,
+        "after": 1
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot0",
+        "column": "skinKey",
+        "before": null,
+        "after": "button_green"
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot0",
+        "column": "note",
+        "before": null,
+        "after": "三商品位独立选择，复用PNG九宫按钮"
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot0",
+        "column": "fontPath",
+        "before": null,
+        "after": ""
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot0/Artwork",
+        "column": "id",
+        "before": null,
+        "after": 2972
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot0/Artwork",
+        "column": "key",
+        "before": null,
+        "after": "shop:ShopOverlay/GoodsPicker/Slot0/Artwork"
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot0/Artwork",
+        "column": "prefab",
+        "before": null,
+        "after": "shop"
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot0/Artwork",
+        "column": "node",
+        "before": null,
+        "after": "ShopOverlay/GoodsPicker/Slot0/Artwork"
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot0/Artwork",
+        "column": "x",
+        "before": null,
+        "after": 0
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot0/Artwork",
+        "column": "y",
+        "before": null,
+        "after": 0
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot0/Artwork",
+        "column": "width",
+        "before": null,
+        "after": 92
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot0/Artwork",
+        "column": "height",
+        "before": null,
+        "after": 28
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot0/Artwork",
+        "column": "scaleX",
+        "before": null,
+        "after": 1
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot0/Artwork",
+        "column": "scaleY",
+        "before": null,
+        "after": 1
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot0/Artwork",
+        "column": "fontSize",
+        "before": null,
+        "after": 0
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot0/Artwork",
+        "column": "lineHeight",
+        "before": null,
+        "after": 0
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot0/Artwork",
+        "column": "fontFamily",
+        "before": null,
+        "after": ""
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot0/Artwork",
+        "column": "color",
+        "before": null,
+        "after": "#ffffff"
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot0/Artwork",
+        "column": "outlineColor",
+        "before": null,
+        "after": ""
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot0/Artwork",
+        "column": "outlineWidth",
+        "before": null,
+        "after": 0
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot0/Artwork",
+        "column": "horizontalAlign",
+        "before": null,
+        "after": 1
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot0/Artwork",
+        "column": "verticalAlign",
+        "before": null,
+        "after": 1
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot0/Artwork",
+        "column": "overflow",
+        "before": null,
+        "after": 0
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot0/Artwork",
+        "column": "active",
+        "before": null,
+        "after": 1
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot0/Artwork",
+        "column": "skinKey",
+        "before": null,
+        "after": ""
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot0/Artwork",
+        "column": "note",
+        "before": null,
+        "after": "商品位按钮PNG"
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot0/Artwork",
+        "column": "fontPath",
+        "before": null,
+        "after": ""
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot0/Text",
+        "column": "id",
+        "before": null,
+        "after": 2973
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot0/Text",
+        "column": "key",
+        "before": null,
+        "after": "shop:ShopOverlay/GoodsPicker/Slot0/Text"
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot0/Text",
+        "column": "prefab",
+        "before": null,
+        "after": "shop"
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot0/Text",
+        "column": "node",
+        "before": null,
+        "after": "ShopOverlay/GoodsPicker/Slot0/Text"
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot0/Text",
+        "column": "x",
+        "before": null,
+        "after": 0
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot0/Text",
+        "column": "y",
+        "before": null,
+        "after": 0
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot0/Text",
+        "column": "width",
+        "before": null,
+        "after": 84
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot0/Text",
+        "column": "height",
+        "before": null,
+        "after": 26
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot0/Text",
+        "column": "scaleX",
+        "before": null,
+        "after": 1
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot0/Text",
+        "column": "scaleY",
+        "before": null,
+        "after": 1
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot0/Text",
+        "column": "fontSize",
+        "before": null,
+        "after": 11
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot0/Text",
+        "column": "lineHeight",
+        "before": null,
+        "after": 16
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot0/Text",
+        "column": "fontFamily",
+        "before": null,
+        "after": "NightShiftRounded"
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot0/Text",
+        "column": "color",
+        "before": null,
+        "after": "#ffffff"
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot0/Text",
+        "column": "outlineColor",
+        "before": null,
+        "after": "#000000"
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot0/Text",
+        "column": "outlineWidth",
+        "before": null,
+        "after": 1
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot0/Text",
+        "column": "horizontalAlign",
+        "before": null,
+        "after": 1
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot0/Text",
+        "column": "verticalAlign",
+        "before": null,
+        "after": 1
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot0/Text",
+        "column": "overflow",
+        "before": null,
+        "after": 2
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot0/Text",
+        "column": "active",
+        "before": null,
+        "after": 1
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot0/Text",
+        "column": "skinKey",
+        "before": null,
+        "after": ""
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot0/Text",
+        "column": "note",
+        "before": null,
+        "after": "商品位名称与清空文案来自I18"
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot0/Text",
+        "column": "fontPath",
+        "before": null,
+        "after": "fonts/night_shift_rounded"
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot1",
+        "column": "id",
+        "before": null,
+        "after": 2974
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot1",
+        "column": "key",
+        "before": null,
+        "after": "shop:ShopOverlay/GoodsPicker/Slot1"
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot1",
+        "column": "prefab",
+        "before": null,
+        "after": "shop"
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot1",
+        "column": "node",
+        "before": null,
+        "after": "ShopOverlay/GoodsPicker/Slot1"
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot1",
+        "column": "x",
+        "before": null,
+        "after": 0
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot1",
+        "column": "y",
+        "before": null,
+        "after": 194
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot1",
+        "column": "width",
+        "before": null,
+        "after": 92
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot1",
+        "column": "height",
+        "before": null,
+        "after": 28
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot1",
+        "column": "scaleX",
+        "before": null,
+        "after": 1
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot1",
+        "column": "scaleY",
+        "before": null,
+        "after": 1
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot1",
+        "column": "fontSize",
+        "before": null,
+        "after": 0
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot1",
+        "column": "lineHeight",
+        "before": null,
+        "after": 0
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot1",
+        "column": "fontFamily",
+        "before": null,
+        "after": ""
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot1",
+        "column": "color",
+        "before": null,
+        "after": "#ffffff"
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot1",
+        "column": "outlineColor",
+        "before": null,
+        "after": ""
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot1",
+        "column": "outlineWidth",
+        "before": null,
+        "after": 0
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot1",
+        "column": "horizontalAlign",
+        "before": null,
+        "after": 1
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot1",
+        "column": "verticalAlign",
+        "before": null,
+        "after": 1
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot1",
+        "column": "overflow",
+        "before": null,
+        "after": 0
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot1",
+        "column": "active",
+        "before": null,
+        "after": 1
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot1",
+        "column": "skinKey",
+        "before": null,
+        "after": "button_green"
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot1",
+        "column": "note",
+        "before": null,
+        "after": "三商品位独立选择，复用PNG九宫按钮"
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot1",
+        "column": "fontPath",
+        "before": null,
+        "after": ""
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot1/Artwork",
+        "column": "id",
+        "before": null,
+        "after": 2975
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot1/Artwork",
+        "column": "key",
+        "before": null,
+        "after": "shop:ShopOverlay/GoodsPicker/Slot1/Artwork"
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot1/Artwork",
+        "column": "prefab",
+        "before": null,
+        "after": "shop"
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot1/Artwork",
+        "column": "node",
+        "before": null,
+        "after": "ShopOverlay/GoodsPicker/Slot1/Artwork"
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot1/Artwork",
+        "column": "x",
+        "before": null,
+        "after": 0
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot1/Artwork",
+        "column": "y",
+        "before": null,
+        "after": 0
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot1/Artwork",
+        "column": "width",
+        "before": null,
+        "after": 92
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot1/Artwork",
+        "column": "height",
+        "before": null,
+        "after": 28
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot1/Artwork",
+        "column": "scaleX",
+        "before": null,
+        "after": 1
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot1/Artwork",
+        "column": "scaleY",
+        "before": null,
+        "after": 1
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot1/Artwork",
+        "column": "fontSize",
+        "before": null,
+        "after": 0
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot1/Artwork",
+        "column": "lineHeight",
+        "before": null,
+        "after": 0
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot1/Artwork",
+        "column": "fontFamily",
+        "before": null,
+        "after": ""
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot1/Artwork",
+        "column": "color",
+        "before": null,
+        "after": "#ffffff"
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot1/Artwork",
+        "column": "outlineColor",
+        "before": null,
+        "after": ""
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot1/Artwork",
+        "column": "outlineWidth",
+        "before": null,
+        "after": 0
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot1/Artwork",
+        "column": "horizontalAlign",
+        "before": null,
+        "after": 1
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot1/Artwork",
+        "column": "verticalAlign",
+        "before": null,
+        "after": 1
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot1/Artwork",
+        "column": "overflow",
+        "before": null,
+        "after": 0
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot1/Artwork",
+        "column": "active",
+        "before": null,
+        "after": 1
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot1/Artwork",
+        "column": "skinKey",
+        "before": null,
+        "after": ""
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot1/Artwork",
+        "column": "note",
+        "before": null,
+        "after": "商品位按钮PNG"
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot1/Artwork",
+        "column": "fontPath",
+        "before": null,
+        "after": ""
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot1/Text",
+        "column": "id",
+        "before": null,
+        "after": 2976
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot1/Text",
+        "column": "key",
+        "before": null,
+        "after": "shop:ShopOverlay/GoodsPicker/Slot1/Text"
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot1/Text",
+        "column": "prefab",
+        "before": null,
+        "after": "shop"
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot1/Text",
+        "column": "node",
+        "before": null,
+        "after": "ShopOverlay/GoodsPicker/Slot1/Text"
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot1/Text",
+        "column": "x",
+        "before": null,
+        "after": 0
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot1/Text",
+        "column": "y",
+        "before": null,
+        "after": 0
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot1/Text",
+        "column": "width",
+        "before": null,
+        "after": 84
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot1/Text",
+        "column": "height",
+        "before": null,
+        "after": 26
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot1/Text",
+        "column": "scaleX",
+        "before": null,
+        "after": 1
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot1/Text",
+        "column": "scaleY",
+        "before": null,
+        "after": 1
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot1/Text",
+        "column": "fontSize",
+        "before": null,
+        "after": 11
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot1/Text",
+        "column": "lineHeight",
+        "before": null,
+        "after": 16
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot1/Text",
+        "column": "fontFamily",
+        "before": null,
+        "after": "NightShiftRounded"
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot1/Text",
+        "column": "color",
+        "before": null,
+        "after": "#ffffff"
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot1/Text",
+        "column": "outlineColor",
+        "before": null,
+        "after": "#000000"
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot1/Text",
+        "column": "outlineWidth",
+        "before": null,
+        "after": 1
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot1/Text",
+        "column": "horizontalAlign",
+        "before": null,
+        "after": 1
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot1/Text",
+        "column": "verticalAlign",
+        "before": null,
+        "after": 1
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot1/Text",
+        "column": "overflow",
+        "before": null,
+        "after": 2
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot1/Text",
+        "column": "active",
+        "before": null,
+        "after": 1
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot1/Text",
+        "column": "skinKey",
+        "before": null,
+        "after": ""
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot1/Text",
+        "column": "note",
+        "before": null,
+        "after": "商品位名称与清空文案来自I18"
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot1/Text",
+        "column": "fontPath",
+        "before": null,
+        "after": "fonts/night_shift_rounded"
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot2",
+        "column": "id",
+        "before": null,
+        "after": 2977
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot2",
+        "column": "key",
+        "before": null,
+        "after": "shop:ShopOverlay/GoodsPicker/Slot2"
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot2",
+        "column": "prefab",
+        "before": null,
+        "after": "shop"
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot2",
+        "column": "node",
+        "before": null,
+        "after": "ShopOverlay/GoodsPicker/Slot2"
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot2",
+        "column": "x",
+        "before": null,
+        "after": 99
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot2",
+        "column": "y",
+        "before": null,
+        "after": 194
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot2",
+        "column": "width",
+        "before": null,
+        "after": 92
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot2",
+        "column": "height",
+        "before": null,
+        "after": 28
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot2",
+        "column": "scaleX",
+        "before": null,
+        "after": 1
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot2",
+        "column": "scaleY",
+        "before": null,
+        "after": 1
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot2",
+        "column": "fontSize",
+        "before": null,
+        "after": 0
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot2",
+        "column": "lineHeight",
+        "before": null,
+        "after": 0
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot2",
+        "column": "fontFamily",
+        "before": null,
+        "after": ""
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot2",
+        "column": "color",
+        "before": null,
+        "after": "#ffffff"
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot2",
+        "column": "outlineColor",
+        "before": null,
+        "after": ""
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot2",
+        "column": "outlineWidth",
+        "before": null,
+        "after": 0
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot2",
+        "column": "horizontalAlign",
+        "before": null,
+        "after": 1
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot2",
+        "column": "verticalAlign",
+        "before": null,
+        "after": 1
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot2",
+        "column": "overflow",
+        "before": null,
+        "after": 0
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot2",
+        "column": "active",
+        "before": null,
+        "after": 1
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot2",
+        "column": "skinKey",
+        "before": null,
+        "after": "button_green"
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot2",
+        "column": "note",
+        "before": null,
+        "after": "三商品位独立选择，复用PNG九宫按钮"
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot2",
+        "column": "fontPath",
+        "before": null,
+        "after": ""
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot2/Artwork",
+        "column": "id",
+        "before": null,
+        "after": 2978
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot2/Artwork",
+        "column": "key",
+        "before": null,
+        "after": "shop:ShopOverlay/GoodsPicker/Slot2/Artwork"
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot2/Artwork",
+        "column": "prefab",
+        "before": null,
+        "after": "shop"
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot2/Artwork",
+        "column": "node",
+        "before": null,
+        "after": "ShopOverlay/GoodsPicker/Slot2/Artwork"
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot2/Artwork",
+        "column": "x",
+        "before": null,
+        "after": 0
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot2/Artwork",
+        "column": "y",
+        "before": null,
+        "after": 0
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot2/Artwork",
+        "column": "width",
+        "before": null,
+        "after": 92
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot2/Artwork",
+        "column": "height",
+        "before": null,
+        "after": 28
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot2/Artwork",
+        "column": "scaleX",
+        "before": null,
+        "after": 1
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot2/Artwork",
+        "column": "scaleY",
+        "before": null,
+        "after": 1
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot2/Artwork",
+        "column": "fontSize",
+        "before": null,
+        "after": 0
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot2/Artwork",
+        "column": "lineHeight",
+        "before": null,
+        "after": 0
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot2/Artwork",
+        "column": "fontFamily",
+        "before": null,
+        "after": ""
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot2/Artwork",
+        "column": "color",
+        "before": null,
+        "after": "#ffffff"
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot2/Artwork",
+        "column": "outlineColor",
+        "before": null,
+        "after": ""
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot2/Artwork",
+        "column": "outlineWidth",
+        "before": null,
+        "after": 0
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot2/Artwork",
+        "column": "horizontalAlign",
+        "before": null,
+        "after": 1
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot2/Artwork",
+        "column": "verticalAlign",
+        "before": null,
+        "after": 1
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot2/Artwork",
+        "column": "overflow",
+        "before": null,
+        "after": 0
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot2/Artwork",
+        "column": "active",
+        "before": null,
+        "after": 1
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot2/Artwork",
+        "column": "skinKey",
+        "before": null,
+        "after": ""
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot2/Artwork",
+        "column": "note",
+        "before": null,
+        "after": "商品位按钮PNG"
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot2/Artwork",
+        "column": "fontPath",
+        "before": null,
+        "after": ""
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot2/Text",
+        "column": "id",
+        "before": null,
+        "after": 2979
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot2/Text",
+        "column": "key",
+        "before": null,
+        "after": "shop:ShopOverlay/GoodsPicker/Slot2/Text"
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot2/Text",
+        "column": "prefab",
+        "before": null,
+        "after": "shop"
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot2/Text",
+        "column": "node",
+        "before": null,
+        "after": "ShopOverlay/GoodsPicker/Slot2/Text"
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot2/Text",
+        "column": "x",
+        "before": null,
+        "after": 0
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot2/Text",
+        "column": "y",
+        "before": null,
+        "after": 0
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot2/Text",
+        "column": "width",
+        "before": null,
+        "after": 84
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot2/Text",
+        "column": "height",
+        "before": null,
+        "after": 26
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot2/Text",
+        "column": "scaleX",
+        "before": null,
+        "after": 1
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot2/Text",
+        "column": "scaleY",
+        "before": null,
+        "after": 1
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot2/Text",
+        "column": "fontSize",
+        "before": null,
+        "after": 11
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot2/Text",
+        "column": "lineHeight",
+        "before": null,
+        "after": 16
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot2/Text",
+        "column": "fontFamily",
+        "before": null,
+        "after": "NightShiftRounded"
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot2/Text",
+        "column": "color",
+        "before": null,
+        "after": "#ffffff"
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot2/Text",
+        "column": "outlineColor",
+        "before": null,
+        "after": "#000000"
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot2/Text",
+        "column": "outlineWidth",
+        "before": null,
+        "after": 1
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot2/Text",
+        "column": "horizontalAlign",
+        "before": null,
+        "after": 1
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot2/Text",
+        "column": "verticalAlign",
+        "before": null,
+        "after": 1
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot2/Text",
+        "column": "overflow",
+        "before": null,
+        "after": 2
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot2/Text",
+        "column": "active",
+        "before": null,
+        "after": 1
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot2/Text",
+        "column": "skinKey",
+        "before": null,
+        "after": ""
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot2/Text",
+        "column": "note",
+        "before": null,
+        "after": "商品位名称与清空文案来自I18"
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Slot2/Text",
+        "column": "fontPath",
+        "before": null,
+        "after": "fonts/night_shift_rounded"
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Clear",
+        "column": "id",
+        "before": null,
+        "after": 2980
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Clear",
+        "column": "key",
+        "before": null,
+        "after": "shop:ShopOverlay/GoodsPicker/Clear"
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Clear",
+        "column": "prefab",
+        "before": null,
+        "after": "shop"
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Clear",
+        "column": "node",
+        "before": null,
+        "after": "ShopOverlay/GoodsPicker/Clear"
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Clear",
+        "column": "x",
+        "before": null,
+        "after": 0
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Clear",
+        "column": "y",
+        "before": null,
+        "after": -234
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Clear",
+        "column": "width",
+        "before": null,
+        "after": 180
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Clear",
+        "column": "height",
+        "before": null,
+        "after": 28
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Clear",
+        "column": "scaleX",
+        "before": null,
+        "after": 1
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Clear",
+        "column": "scaleY",
+        "before": null,
+        "after": 1
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Clear",
+        "column": "fontSize",
+        "before": null,
+        "after": 0
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Clear",
+        "column": "lineHeight",
+        "before": null,
+        "after": 0
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Clear",
+        "column": "fontFamily",
+        "before": null,
+        "after": ""
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Clear",
+        "column": "color",
+        "before": null,
+        "after": "#ffffff"
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Clear",
+        "column": "outlineColor",
+        "before": null,
+        "after": ""
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Clear",
+        "column": "outlineWidth",
+        "before": null,
+        "after": 0
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Clear",
+        "column": "horizontalAlign",
+        "before": null,
+        "after": 1
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Clear",
+        "column": "verticalAlign",
+        "before": null,
+        "after": 1
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Clear",
+        "column": "overflow",
+        "before": null,
+        "after": 0
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Clear",
+        "column": "active",
+        "before": null,
+        "after": 1
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Clear",
+        "column": "skinKey",
+        "before": null,
+        "after": "button_green"
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Clear",
+        "column": "note",
+        "before": null,
+        "after": "三商品位独立选择，复用PNG九宫按钮"
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Clear",
+        "column": "fontPath",
+        "before": null,
+        "after": ""
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Clear/Artwork",
+        "column": "id",
+        "before": null,
+        "after": 2981
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Clear/Artwork",
+        "column": "key",
+        "before": null,
+        "after": "shop:ShopOverlay/GoodsPicker/Clear/Artwork"
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Clear/Artwork",
+        "column": "prefab",
+        "before": null,
+        "after": "shop"
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Clear/Artwork",
+        "column": "node",
+        "before": null,
+        "after": "ShopOverlay/GoodsPicker/Clear/Artwork"
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Clear/Artwork",
+        "column": "x",
+        "before": null,
+        "after": 0
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Clear/Artwork",
+        "column": "y",
+        "before": null,
+        "after": 0
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Clear/Artwork",
+        "column": "width",
+        "before": null,
+        "after": 180
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Clear/Artwork",
+        "column": "height",
+        "before": null,
+        "after": 28
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Clear/Artwork",
+        "column": "scaleX",
+        "before": null,
+        "after": 1
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Clear/Artwork",
+        "column": "scaleY",
+        "before": null,
+        "after": 1
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Clear/Artwork",
+        "column": "fontSize",
+        "before": null,
+        "after": 0
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Clear/Artwork",
+        "column": "lineHeight",
+        "before": null,
+        "after": 0
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Clear/Artwork",
+        "column": "fontFamily",
+        "before": null,
+        "after": ""
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Clear/Artwork",
+        "column": "color",
+        "before": null,
+        "after": "#ffffff"
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Clear/Artwork",
+        "column": "outlineColor",
+        "before": null,
+        "after": ""
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Clear/Artwork",
+        "column": "outlineWidth",
+        "before": null,
+        "after": 0
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Clear/Artwork",
+        "column": "horizontalAlign",
+        "before": null,
+        "after": 1
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Clear/Artwork",
+        "column": "verticalAlign",
+        "before": null,
+        "after": 1
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Clear/Artwork",
+        "column": "overflow",
+        "before": null,
+        "after": 0
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Clear/Artwork",
+        "column": "active",
+        "before": null,
+        "after": 1
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Clear/Artwork",
+        "column": "skinKey",
+        "before": null,
+        "after": ""
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Clear/Artwork",
+        "column": "note",
+        "before": null,
+        "after": "商品位按钮PNG"
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Clear/Artwork",
+        "column": "fontPath",
+        "before": null,
+        "after": ""
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Clear/Text",
+        "column": "id",
+        "before": null,
+        "after": 2982
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Clear/Text",
+        "column": "key",
+        "before": null,
+        "after": "shop:ShopOverlay/GoodsPicker/Clear/Text"
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Clear/Text",
+        "column": "prefab",
+        "before": null,
+        "after": "shop"
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Clear/Text",
+        "column": "node",
+        "before": null,
+        "after": "ShopOverlay/GoodsPicker/Clear/Text"
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Clear/Text",
+        "column": "x",
+        "before": null,
+        "after": 0
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Clear/Text",
+        "column": "y",
+        "before": null,
+        "after": 0
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Clear/Text",
+        "column": "width",
+        "before": null,
+        "after": 172
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Clear/Text",
+        "column": "height",
+        "before": null,
+        "after": 26
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Clear/Text",
+        "column": "scaleX",
+        "before": null,
+        "after": 1
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Clear/Text",
+        "column": "scaleY",
+        "before": null,
+        "after": 1
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Clear/Text",
+        "column": "fontSize",
+        "before": null,
+        "after": 11
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Clear/Text",
+        "column": "lineHeight",
+        "before": null,
+        "after": 16
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Clear/Text",
+        "column": "fontFamily",
+        "before": null,
+        "after": "NightShiftRounded"
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Clear/Text",
+        "column": "color",
+        "before": null,
+        "after": "#ffffff"
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Clear/Text",
+        "column": "outlineColor",
+        "before": null,
+        "after": "#000000"
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Clear/Text",
+        "column": "outlineWidth",
+        "before": null,
+        "after": 1
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Clear/Text",
+        "column": "horizontalAlign",
+        "before": null,
+        "after": 1
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Clear/Text",
+        "column": "verticalAlign",
+        "before": null,
+        "after": 1
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Clear/Text",
+        "column": "overflow",
+        "before": null,
+        "after": 2
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Clear/Text",
+        "column": "active",
+        "before": null,
+        "after": 1
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Clear/Text",
+        "column": "skinKey",
+        "before": null,
+        "after": ""
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Clear/Text",
+        "column": "note",
+        "before": null,
+        "after": "商品位名称与清空文案来自I18"
+      },
+      {
+        "key": "shop:ShopOverlay/GoodsPicker/Clear/Text",
+        "column": "fontPath",
+        "before": null,
+        "after": "fonts/night_shift_rounded"
+      }
+    ]
+  },
+  {
+    "table": "Global",
+    "changes": [
+      {
+        "key": "version",
+        "column": "value",
+        "before": "1.11.0",
+        "after": "1.12.0"
+      }
+    ]
+  }
+]

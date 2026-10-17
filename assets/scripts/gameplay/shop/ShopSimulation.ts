@@ -8,7 +8,13 @@ export interface ShopResearch {key:string;goodsKey:string;tier:number;cost:numbe
 export interface ShopUniform {key:string;staffKey:string;cost:number;imageKey:string;}
 export interface ShopCustomerType {key:string;imageKey:string;weight:number;doubleChance:number;tipChance:number;}
 export interface ShopConfig {rules:ShopRules;goods:ShopGoods[];staff:ShopEmployee[];upgrades:ShopImprovement[];customers:ShopCustomerType[];stages:ShopStage[];research:ShopResearch[];uniforms:ShopUniform[];}
-export interface ShopShelf {goods:string;stock:number;}
+export interface ShopShelfGood {goods:string;stock:number;}
+export interface ShopShelf extends ShopShelfGood {extraGoods?:Array<ShopShelfGood|null>;}
+/** 首位沿用v3字段；额外商品位是可选扩展，旧存档无需清空或重新发放库存。 */
+export function shelfSlot(shelf:ShopShelf,index:number):ShopShelfGood|undefined{return index===0?shelf:shelf.extraGoods?.[index-1]??undefined;}
+export function shelfGoods(shelf:ShopShelf):ShopShelfGood[]{return[shelf,...(shelf.extraGoods??[]).filter((g):g is ShopShelfGood=>Boolean(g))];}
+export function shelfStock(shelf:ShopShelf):number{return shelfGoods(shelf).reduce((sum,g)=>sum+g.stock,0);}
+export function shelfGoodCapacity(shelf:ShopShelf,good:ShopShelfGood,total:number):number{const all=shelfGoods(shelf),index=all.indexOf(good);return Math.floor(total/all.length)+(index<total%all.length?1:0);}
 export interface ShopCustomer {id:number;kind:string;phase:'enter'|'browse'|'queue'|'checkout'|'exit';remaining:number;duration:number;shelf:number;basket:string[];quote:number;wants:string[];station:number;}
 export interface ShopRestock {employee:string;shelf:number;goods:string;phase:'source'|'travel'|'unload';remaining:number;duration:number;amount:number;}
 export interface ShopState {version:number;offlineCreditRemainder:number;coins:number;lastMs:number;remainder:number;seed:number;elapsed:number;nextArrival:number;nextId:number;sold:number;income:number;hired:string[];upgrades:Record<string,number>;shelves:ShopShelf[];customers:ShopCustomer[];restockShelf:number;restockRemaining:number;restocks:ShopRestock[];research:Record<string,number>;sales:Record<string,number>;uniforms:string[];equipped:string[];}
@@ -33,7 +39,10 @@ export function validShopState(c:ShopConfig,s:ShopState):boolean {
  const record=(x:unknown):x is Record<string,number>=>Boolean(x&&typeof x==='object'&&!Array.isArray(x));
  if(!record(s.upgrades)||Object.entries(s.upgrades).some(([g,t])=>!c.upgrades.some(r=>r.group===g&&r.tier===t)))return false;
  const count=c.upgrades.find(r=>r.group==='shelves'&&r.tier===s.upgrades.shelves)?.value??c.rules.initialShelves;
- if(!Array.isArray(s.shelves)||s.shelves.length!==count||s.shelves.some(x=>!x||!c.goods.some(g=>g.key===x.goods)||!Number.isInteger(x.stock)||x.stock<0||x.stock>capacity(c,s)))return false;
+ if(!Array.isArray(s.shelves)||s.shelves.length!==count||s.shelves.some(x=>{
+  if(!x||x.extraGoods!==undefined&&(!Array.isArray(x.extraGoods)||x.extraGoods.length>c.rules.shelfGoodsSlots-1||x.extraGoods.some(g=>g!==null&&(!g||typeof g!=='object'))))return true;
+  const goods=shelfGoods(x);return goods.some(g=>!c.goods.some(r=>r.key===g.goods)||!Number.isInteger(g.stock)||g.stock<0)||new Set(goods.map(g=>g.goods)).size!==goods.length||shelfStock(x)>capacity(c,s);
+ }))return false;
  if(!record(s.research)||Object.entries(s.research).some(([k,t])=>!c.research.some(r=>r.goodsKey===k&&r.tier===t))||!record(s.sales)||Object.entries(s.sales).some(([k,n])=>!c.goods.some(g=>g.key===k)||!Number.isSafeInteger(n)||n<0))return false;
  for(const list of [s.uniforms,s.equipped])if(!Array.isArray(list)||new Set(list).size!==list.length||list.some(k=>!c.uniforms.some(r=>r.key===k)))return false;
  if(s.equipped.some(k=>!s.uniforms.includes(k))||s.uniforms.some(k=>!s.hired.includes(c.uniforms.find(r=>r.key===k)!.staffKey)))return false;
@@ -41,7 +50,7 @@ export function validShopState(c:ShopConfig,s:ShopState):boolean {
  const stations=s.customers.filter(x=>x?.phase==='checkout').map(x=>x.station);if(new Set(stations).size!==stations.length||stations.some(n=>!Number.isInteger(n)||n<0||n>=stage(c,s).checkouts))return false;
  if(!s.customers.every(x=>x&&Number.isSafeInteger(x.id)&&x.id>0&&x.id<s.nextId&&c.customers.some(r=>r.key===x.kind)&&['enter','browse','queue','checkout','exit'].includes(x.phase)&&Number.isFinite(x.remaining)&&Number.isFinite(x.duration)&&x.duration>0&&Number.isInteger(x.shelf)&&x.shelf>=0&&x.shelf<count&&Array.isArray(x.basket)&&x.basket.length<=2&&x.basket.every(k=>c.goods.some(g=>g.key===k))&&Array.isArray(x.wants)&&x.wants.length<=2&&new Set(x.wants).size===x.wants.length&&x.wants.every(k=>c.goods.some(g=>g.key===k))&&Number.isSafeInteger(x.quote)&&x.quote>=0&&(!['queue','checkout'].includes(x.phase)||x.basket.length>0)))return false;
  if(!Number.isInteger(s.restockShelf)||s.restockShelf< -1||s.restockShelf>=count||!Array.isArray(s.restocks)||new Set(s.restocks.map(j=>j.employee)).size!==s.restocks.length||new Set(s.restocks.map(j=>j.shelf)).size!==s.restocks.length)return false;
- return s.restocks.every(j=>j&&s.hired.includes(j.employee)&&Number.isInteger(j.shelf)&&j.shelf>=0&&j.shelf<count&&j.goods===s.shelves[j.shelf].goods&&['source','travel','unload'].includes(j.phase)&&Number.isFinite(j.remaining)&&j.remaining>=0&&Number.isFinite(j.duration)&&j.duration>0&&Number.isInteger(j.amount)&&j.amount>=0&&j.amount<=capacity(c,s));
+ return s.restocks.every(j=>j&&s.hired.includes(j.employee)&&Number.isInteger(j.shelf)&&j.shelf>=0&&j.shelf<count&&shelfGoods(s.shelves[j.shelf]).some(g=>g.goods===j.goods)&&['source','travel','unload'].includes(j.phase)&&Number.isFinite(j.remaining)&&j.remaining>=0&&Number.isFinite(j.duration)&&j.duration>0&&Number.isInteger(j.amount)&&j.amount>=0&&j.amount<=capacity(c,s));
 }
 export function newShopState(c:ShopConfig,now:number,coins=0,grant=true):ShopState {
  const s:ShopState={version:3,offlineCreditRemainder:0,coins:Math.min(c.rules.coinLimit,coins+(grant?c.rules.welcomeCoins:0)),lastMs:now,remainder:0,seed:Math.floor(now)>>>0,elapsed:0,nextArrival:c.rules.arrivalSeconds,nextId:1,sold:0,income:0,hired:c.staff.filter(r=>!r.cost).map(r=>r.key),upgrades:{},shelves:[],customers:[],restockShelf:-1,restockRemaining:0,restocks:[],research:{},sales:{},uniforms:[],equipped:[]};
@@ -50,6 +59,7 @@ export function newShopState(c:ShopConfig,now:number,coins=0,grant=true):ShopSta
 export class ShopSimulation {
  lastSale=0;
  constructor(readonly config:ShopConfig,readonly state:ShopState){}
+ private items():Array<{shelf:ShopShelf;good:ShopShelfGood;index:number}>{const all:Array<{shelf:ShopShelf;good:ShopShelfGood;index:number}>=[];this.state.shelves.forEach((shelf,index)=>shelfGoods(shelf).forEach(good=>all.push({shelf,good,index})));return all;}
  private random():number{this.state.seed=(Math.imul(this.state.seed,1664525)+1013904223)>>>0;return this.state.seed/4294967296;}
  private choose<T>(list:T[],weight:(r:T)=>number):T{let n=this.random()*list.reduce((sum,r)=>sum+weight(r),0);return list.find(r=>(n-=weight(r))<0)??list[list.length-1];}
  effect(key:string):number{return this.config.staff.filter(r=>this.state.hired.includes(r.key)&&r.effect===key).reduce((n,r)=>n+r.value,0);}
@@ -63,7 +73,7 @@ export class ShopSimulation {
  get checkoutSeconds():number{return this.config.rules.checkoutSeconds/(1+this.efficiency('checkout')+(this.hasRole('pack')?this.config.rules.packSpeed:0));}
  private restockTime(seconds:number):number{return seconds/(1+this.efficiency('restock')+(this.hasRole('tidy')?this.config.rules.tidySpeed:0));}
  get restockSeconds():number{return this.restockTime(this.config.rules.restockSeconds+this.config.rules.walkRestockSeconds+this.config.rules.workerTaskSeconds);}
- get arrivalSeconds():number{const unique=new Set(this.state.shelves.map(s=>s.goods)),variety=this.config.goods.filter(g=>unique.has(g.key)).reduce((sum,g)=>sum+g.attraction,0);return this.config.rules.arrivalSeconds/(1+variety*this.config.rules.stockBonusStep+this.value('attraction')+this.effect('arrival'));}
+ get arrivalSeconds():number{const unique=new Set(this.items().map(x=>x.good.goods)),variety=this.config.goods.filter(g=>unique.has(g.key)).reduce((sum,g)=>sum+g.attraction,0);return this.config.rules.arrivalSeconds/(1+variety*this.config.rules.stockBonusStep+this.value('attraction')+this.effect('arrival'));}
  price(key:string,tier=this.state.research[key]??0):number{const g=this.config.goods.find(g=>g.key===key)!;return Math.max(1,Math.round(g.price*(this.config.research.find(r=>r.goodsKey===key&&r.tier===tier)?.priceRatio??1)*(1+this.effect(g.category))));}
  unlockedGoods(cleared:number):ShopGoods[]{return this.config.goods.filter(g=>g.unlockAfter<=cleared);}
  private upgradeUnlocked(row:ShopImprovement,checkCustomers=true):boolean {
@@ -98,12 +108,12 @@ export class ShopSimulation {
  }
  private restock(dt:number):void {
  const s=this.state,r=this.config.rules;
- for(const j of s.restocks){j.remaining-=dt;if(j.remaining>0)continue;if(j.phase==='source'){j.phase='travel';j.duration=j.remaining=this.restockTime(r.walkRestockSeconds);}else if(j.phase==='travel'){j.phase='unload';j.duration=j.remaining=this.restockTime(r.restockSeconds);}else{const shelf=s.shelves[j.shelf];if(shelf.goods===j.goods)shelf.stock=Math.min(this.capacity,shelf.stock+j.amount);j.remaining=0;}}
+ for(const j of s.restocks){j.remaining-=dt;if(j.remaining>0)continue;if(j.phase==='source'){j.phase='travel';j.duration=j.remaining=this.restockTime(r.walkRestockSeconds);}else if(j.phase==='travel'){j.phase='unload';j.duration=j.remaining=this.restockTime(r.restockSeconds);}else{const shelf=s.shelves[j.shelf],good=shelfGoods(shelf).find(g=>g.goods===j.goods);if(good)good.stock+=Math.min(j.amount,Math.max(0,this.capacity-shelfStock(shelf)));j.remaining=0;}}
  s.restocks=s.restocks.filter(j=>j.phase!=='unload'||j.remaining>0);
  const candidates=this.config.staff.filter(e=>s.hired.includes(e.key)&&['cold','hot','porter'].includes(e.role));
  // 未雇佣专业补货员时豆包兼岗；有收银订单时不离开岗位，避免同一个人同时完成两项任务。
  if(!candidates.length&&!s.customers.some(c=>c.phase==='checkout'))candidates.push(this.config.staff.find(e=>e.role==='cashier')!);
- for(const e of candidates){if(s.restocks.some(j=>j.employee===e.key))continue;const eligible=s.shelves.map((shelf,index)=>({shelf,index,category:this.config.goods.find(g=>g.key===shelf.goods)!.category})).filter(x=>x.shelf.stock<this.capacity*r.restockTrigger&&!s.restocks.some(j=>j.shelf===x.index));eligible.sort((a,b)=>a.shelf.stock-b.shelf.stock||Number(b.category===e.role)-Number(a.category===e.role));const target=eligible[0];if(target)s.restocks.push({employee:e.key,shelf:target.index,goods:target.shelf.goods,phase:'source',duration:this.restockTime(r.workerTaskSeconds),remaining:this.restockTime(r.workerTaskSeconds),amount:Math.min(this.carry,this.capacity-target.shelf.stock)});}
+ for(const e of candidates){if(s.restocks.some(j=>j.employee===e.key))continue;const eligible=this.items().map(x=>({...x,limit:shelfGoodCapacity(x.shelf,x.good,this.capacity),category:this.config.goods.find(g=>g.key===x.good.goods)!.category})).filter(x=>shelfStock(x.shelf)<this.capacity&&x.good.stock<x.limit*r.restockTrigger&&!s.restocks.some(j=>j.shelf===x.index));eligible.sort((a,b)=>a.good.stock-b.good.stock||Number(b.category===e.role)-Number(a.category===e.role));const target=eligible[0];if(target)s.restocks.push({employee:e.key,shelf:target.index,goods:target.good.goods,phase:'source',duration:this.restockTime(r.workerTaskSeconds),remaining:this.restockTime(r.workerTaskSeconds),amount:Math.min(this.carry,target.limit-target.good.stock,this.capacity-shelfStock(target.shelf))});}
  s.restockShelf=s.restocks[0]?.shelf??-1;s.restockRemaining=Math.max(0,s.restocks[0]?.remaining??0);
  }
  private tick(dt:number,cleared:number):void {
@@ -111,18 +121,23 @@ export class ShopSimulation {
  for(const c of s.customers){if(c.phase==='queue')continue;c.remaining-=dt;if(c.remaining>0)continue;
  if(c.phase==='enter'){c.phase='browse';c.duration=c.remaining=r.browseSeconds/(1+(this.hasRole('guide')&&this.checkouts===1?r.guideSpeed:0));}
  else if(c.phase==='browse'){
- for(const key of c.wants){const available=s.shelves.map((shelf,index)=>({shelf,index})).filter(x=>x.shelf.goods===key&&x.shelf.stock>0);if(!available.length)continue;available.sort((a,b)=>b.shelf.stock-a.shelf.stock);const chosen=available[0];chosen.shelf.stock--;c.shelf=chosen.index;c.basket.push(key);}
+ for(const key of c.wants){const available=this.items().filter(x=>x.good.goods===key&&x.good.stock>0);if(!available.length)continue;available.sort((a,b)=>b.good.stock-a.good.stock);const chosen=available[0];chosen.good.stock--;c.shelf=chosen.index;c.basket.push(key);}
  const type=this.config.customers.find(t=>t.key===c.kind)!;c.quote=c.basket.reduce((sum,k)=>sum+this.price(k),0)+(c.basket.length&&this.random()<Math.min(1,type.tipChance+this.effect('tip'))?r.tipCoins:0);
  if(c.basket.length)c.phase='queue';else{c.phase='exit';c.duration=c.remaining=r.exitSeconds;}
  }else if(c.phase==='checkout'){const paid=Math.min(c.quote,r.coinLimit-s.coins);s.coins+=paid;s.income+=paid;s.sold++;for(const k of c.basket)s.sales[k]=(s.sales[k]??0)+1;this.lastSale=paid;c.phase='exit';c.duration=c.remaining=r.exitSeconds;}
  }
  s.customers=s.customers.filter(c=>c.phase!=='exit'||c.remaining>0);
  for(let station=0;station<this.checkouts;station++){if(s.customers.some(c=>c.phase==='checkout'&&c.station===station))continue;if(station===0&&s.restocks.some(j=>this.config.staff.find(e=>e.key===j.employee)!.role==='cashier'))continue;const next=s.customers.find(c=>c.phase==='queue');if(next){next.phase='checkout';next.station=station;next.duration=next.remaining=this.checkoutSeconds;}}
- s.nextArrival-=dt;if(s.nextArrival<=0){s.nextArrival=this.arrivalSeconds;if(s.customers.length<r.customerLimit){const type=this.choose(this.config.customers,x=>x.weight),goods=this.unlockedGoods(cleared),first=this.choose(goods,g=>g.demand),wants=[first.key];if(this.random()<Math.min(r.serviceMaxChance,type.doubleChance+this.effect('double')+this.value('service'))&&goods.length>1)wants.push(this.choose(goods.filter(g=>g.key!==first.key),g=>g.demand).key);const shelf=Math.max(0,s.shelves.findIndex(x=>x.goods===first.key));s.customers.push({id:s.nextId++,kind:type.key,phase:'enter',remaining:r.enterSeconds,duration:r.enterSeconds,shelf,basket:[],quote:0,wants,station:-1});}}
+ s.nextArrival-=dt;if(s.nextArrival<=0){s.nextArrival=this.arrivalSeconds;if(s.customers.length<r.customerLimit){const type=this.choose(this.config.customers,x=>x.weight),goods=this.unlockedGoods(cleared),first=this.choose(goods,g=>g.demand),wants=[first.key];if(this.random()<Math.min(r.serviceMaxChance,type.doubleChance+this.effect('double')+this.value('service'))&&goods.length>1)wants.push(this.choose(goods.filter(g=>g.key!==first.key),g=>g.demand).key);const shelf=Math.max(0,s.shelves.findIndex(x=>shelfGoods(x).some(g=>g.goods===first.key)));s.customers.push({id:s.nextId++,kind:type.key,phase:'enter',remaining:r.enterSeconds,duration:r.enterSeconds,shelf,basket:[],quote:0,wants,station:-1});}}
  }
  hire(key:string,unlocked:number):boolean{const row=this.config.staff.find(r=>r.key===key),s=this.state;if(!row||s.hired.includes(key)||row.unlockLevel>unlocked||s.coins<row.cost)return false;s.coins-=row.cost;s.hired.push(key);return true;}
  upgrade(key:string,cleared:number):boolean{const row=this.config.upgrades.find(r=>r.key===key),s=this.state;if(!row||!this.canUpgrade(row))return false;s.coins-=row.cost;s.upgrades[row.group]=row.tier;if(row.group==='shelves'){const goods=this.unlockedGoods(cleared);while(s.shelves.length<row.value){const used=new Set(s.shelves.map(x=>x.goods)),good=goods.find(g=>!used.has(g.key))??goods[s.shelves.length%goods.length];s.shelves.push({goods:good.key,stock:this.capacity});}}return true;}
- assign(index:number,key:string,cleared:number):boolean{const shelf=this.state.shelves[index];if(!shelf||shelf.goods===key||!this.unlockedGoods(cleared).some(g=>g.key===key))return false;shelf.goods=key;shelf.stock=0;this.state.restocks=this.state.restocks.filter(j=>j.shelf!==index);this.state.restockShelf=this.state.restocks[0]?.shelf??-1;this.state.restockRemaining=this.state.restocks[0]?.remaining??0;return true;}
+ assign(index:number,key:string,cleared:number,slot=0):boolean{
+  const shelf=this.state.shelves[index];if(!shelf||!Number.isInteger(slot)||slot<0||slot>=this.config.rules.shelfGoodsSlots||!key&&!slot)return false;
+  const previous=shelfSlot(shelf,slot),previousKey=previous?.goods;if(!key&&!previous||previousKey===key||key&&(!this.unlockedGoods(cleared).some(g=>g.key===key)||shelfGoods(shelf).some(g=>g.goods===key)))return false;
+  if(slot===0){shelf.goods=key;shelf.stock=0;}else{if(!shelf.extraGoods)shelf.extraGoods=Array(this.config.rules.shelfGoodsSlots-1).fill(null);shelf.extraGoods[slot-1]=key?{goods:key,stock:0}:null;}
+  this.state.restocks=this.state.restocks.filter(j=>j.shelf!==index||j.goods!==previousKey);this.state.restockShelf=this.state.restocks[0]?.shelf??-1;this.state.restockRemaining=this.state.restocks[0]?.remaining??0;return true;
+ }
  research(key:string,cleared:number):boolean{const row=this.config.research.find(r=>r.key===key),s=this.state;if(!row||row.tier!==(s.research[row.goodsKey]??0)+1||s.coins<row.cost||s.shelves.length<row.minShelves||!this.unlockedGoods(cleared).some(g=>g.key===row.goodsKey))return false;s.coins-=row.cost;s.research[row.goodsKey]=row.tier;return true;}
  buyUniform(key:string):boolean{const row=this.config.uniforms.find(r=>r.key===key),s=this.state;if(!row||s.uniforms.includes(key)||!s.hired.includes(row.staffKey)||s.coins<row.cost)return false;s.coins-=row.cost;s.uniforms.push(key);s.equipped.push(key);return true;}
  equip(key:string):boolean{const s=this.state;if(!s.uniforms.includes(key))return false;s.equipped=s.equipped.includes(key)?s.equipped.filter(k=>k!==key):[...s.equipped,key];return true;}

@@ -732,3 +732,11 @@ id,key,zhCN
 726,ranking.name.6,夜灯小店
 727,ranking.name.7,柚子补给站
 728,ranking.name.8,元气杂货铺
+729,shop.goodsSlotTitle,货架{p0} · 商品位{p1}
+730,shop.goodsSlotCaption,{p0} · {p1}
+731,shop.emptySlot,未上架
+732,shop.slotUsed,已在商品位{p0}
+733,shop.clearSlot,清空此商品位
+734,shop.keepFirstSlot,首位需保留商品
+735,shop.goodsSeparator,·
+736,shop.mixedInventory,库存 {p0}/{p1}

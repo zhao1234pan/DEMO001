@@ -1,5 +1,13 @@
 # XLSX → 客户端 CSV 配置规范
 
+## 1.12.0 三商品位（2026-10-17）
+
+- ShopRule.shelfGoodsSlots原始值3；UiLayout新增Slot0～2与Clear按钮及Label，三位上架文案新增于I18，Global版本1.12.0。按钮仍是既有PNG九宫，商品沿用独立SpriteFrame，字体按原始I18重新导出。
+- 每架共享原容量，按已占用商品位均分补货目标，除不尽的余量按位序分配；原库存即使超过新均分目标也保留，售出腾出空间后再补其他商品。未免费填满额外位。
+- 主商品字段goods／stock保持v3协议；可选extraGoods数组保存额外位（空位null）。原存档缺少该字段仍有效，不重发礼金、不改锁价订单。最多三位属于Prefab节点容量协议，改变上限需同步原表与节点。
+- tools/ui/add-shop-goods-slots.cjs根据已设计原表导出的暂存CSV补节点，然后正常导表校验全部Prefab；可重复执行，不重建资源UUID。运行层不依赖临时目录。
+- 货架商品PNG按既有产品节点的列映射各商品，图标数量按该商品库存与目标容量比例展示；铭牌依序列出商品和各自库存，总容量仍显示在分母。
+
 ## 顾客队列与步行空间（2026-10-17）
 
 - ShopPoint.queue为(0,84)，queueStep为(0,-52)；walkLeft／walkRight为(-44,-260)／(44,-260)，customerClearance.width／height为44／46。三个新增点复用现有字段，不新增配置协议。步行点的y为基准转弯高度，进出端点使用原entry／exit的场外高度。

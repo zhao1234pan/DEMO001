@@ -66,4 +66,30 @@ test('离线比例、预算与停帧阈值拒绝越界配置',()=>{invalid('Shop
 test('非法离线零头拒绝恢复，合法旧余额不会被当成奖励重复发放',()=>{const a=simulation();a.state.offlineCreditRemainder=1;assert.equal(validShopState(a.config,a.state),false);a.state.offlineCreditRemainder=-0.1;assert.equal(validShopState(a.config,a.state),false);a.state.offlineCreditRemainder=NaN;assert.equal(validShopState(a.config,a.state),false);});
 test('临近余额上限的离线折算不溢出，历史零头仍合法保留',()=>{const a=simulation();a.state.coins=a.config.rules.coinLimit-1;a.state.offlineCreditRemainder=0.9;const net=a.advanceOffline(clock+7200000,0);assert.equal(net,1);assert.equal(a.state.coins,a.config.rules.coinLimit);assert.equal(a.state.income,1);assert.ok(a.state.offlineCreditRemainder>=0&&a.state.offlineCreditRemainder<1);assert.ok(validShopState(a.config,a.state));});
 test('被动接待跨扩店门槛时预算不跳变，短段登录不能比整段多领',()=>{const a=simulation();a.state.coins=1000000;for(const r of a.config.staff)a.hire(r.key,20);a.upgrade('shelves_1',7);a.upgrade('shelves_2',7);for(const r of a.config.upgrades.filter(r=>r.group!=='shelves'))a.upgrade(r.key,7);for(const r of a.config.research)a.research(r.key,7);for(const r of a.config.uniforms.filter(r=>!['mint','fan'].includes(r.key)))a.buyUniform(r.key);a.state.sold=499;assert.equal(a.upgrade('shelves_3',7),false);const before=a.offlineBudget(7);assert.equal(before,6000);const b=new ShopSimulation(a.config,structuredClone(a.state));a.advanceOffline(clock+7200000,7);for(let t=60000;t<=7200000;t+=60000)b.advanceOffline(clock+t,7);assert.ok(a.state.sold>=500);assert.equal(a.offlineBudget(7),before);assert.equal(b.offlineBudget(7),before);assert.ok(b.state.income<=a.state.income);assert.ok(validShopState(a.config,a.state));assert.ok(validShopState(b.config,b.state));});
+const {shelfGoods,shelfSlot,shelfStock,shelfGoodCapacity}=load(root+'/assets/scripts/gameplay/shop/ShopSimulation.ts');
+test('旧v3货架和余额原样恢复，新增商品位空仓且只取消被替换商品任务',()=>{
+ const a=simulation(),s=a.state.shelves[0];s.stock=4;a.state.coins=12345;const old=structuredClone(a.state);assert.deepEqual(migrateShopState(a.config,old),old);
+ assert.ok(a.assign(0,'milk',0,1));assert.equal(s.stock,4);assert.equal(shelfSlot(s,1).stock,0);assert.equal(a.state.coins,12345);
+ a.state.restocks=[{employee:'sprout',shelf:0,goods:'bread',phase:'source',remaining:1,duration:1,amount:2}];assert.ok(a.assign(0,'cola',7,1));assert.equal(a.state.restocks.length,1);assert.equal(a.state.restocks[0].goods,'bread');assert.ok(a.assign(0,'rice',7,0));assert.equal(a.state.restocks.length,0);
+});
+test('三商品位拒绝重复与未解锁商品，允许先选第三位和只清空额外位',()=>{
+ const a=simulation();assert.ok(a.assign(0,'milk',0,2));assert.equal(shelfSlot(a.state.shelves[0],1),undefined);assert.equal(a.assign(0,'milk',7,1),false);assert.equal(a.assign(0,'cola',0,1),false);assert.equal(a.assign(0,'cola',7,3),false);assert.equal(a.assign(0,'',7,0),false);assert.ok(a.assign(0,'',7,2));assert.equal(shelfSlot(a.state.shelves[0],2),undefined);assert.equal(a.state.shelves[0].stock,6);
+});
+test('同架两种商品各扣对应库存，篮子锁价与旧主商品库存保持',()=>{
+ const a=simulation(),s=a.state.shelves[0];s.stock=2;a.assign(0,'milk',7,1);a.assign(0,'cola',7,2);shelfSlot(s,1).stock=2;shelfSlot(s,2).stock=2;a.state.shelves[1].stock=0;
+ a.state.customers=[{id:1,kind:a.config.customers[0].key,phase:'browse',remaining:0,duration:3,shelf:0,basket:[],quote:0,wants:['milk','cola'],station:-1}];a.state.nextId=2;a.advance(clock+250,7);
+ assert.deepEqual(a.state.customers[0].basket,['milk','cola']);assert.equal(s.stock,2);assert.equal(shelfSlot(s,1).stock,1);assert.equal(shelfSlot(s,2).stock,1);assert.ok(validShopState(a.config,a.state));
+});
+test('混合货架共享容量并持续补货购物，保存重开与拆帧无重复收益',()=>{
+ const a=simulation();a.state.coins=10000;a.hire('frost',20);a.assign(0,'milk',7,1);a.assign(0,'cola',7,2);a.state.shelves[0].stock=0;
+ const b=new ShopSimulation(a.config,structuredClone(a.state));for(let t=250;t<=600000;t+=250){a.advance(clock+t,7);assert.ok(a.state.shelves.every(s=>shelfStock(s)<=a.capacity));assert.ok(validShopState(a.config,a.state));}b.advance(clock+600000,7);assert.deepEqual(a.state,b.state);assert.ok(a.state.sales.cola>0);assert.ok(a.state.sold>0);
+ for(const good of shelfGoods(a.state.shelves[0]))assert.ok(shelfGoodCapacity(a.state.shelves[0],good,a.capacity)>0);
+});
+test('容量填满后旧补货到达不溢出，损坏额外商品位拒绝恢复',()=>{
+ const a=simulation(),s=a.state.shelves[0];a.assign(0,'milk',7,1);a.state.restocks=[{employee:'sprout',shelf:0,goods:'milk',phase:'unload',remaining:0,duration:1,amount:2}];a.advance(clock+250,7);assert.equal(shelfStock(s),6);assert.equal(shelfSlot(s,1).stock,0);
+ const good=structuredClone(a.state);for(const extras of [[{goods:'bread',stock:0}],[{goods:'milk',stock:-1}],[{goods:'milk',stock:1}],[null,null,null],['invalid']]){const bad=structuredClone(good);bad.shelves[0].extraGoods=extras;assert.equal(validShopState(a.config,bad),false);}
+});
+test('三商品位经经营服务原子保存，刷新不重置原金币和库存',()=>{
+ const a=service();a.state.shelves[0].stock=3;assert.ok(a.assign(0,'milk',2));const snapshot=structuredClone(a.state),b=new ShopService();b.boot(clock);assert.deepEqual(b.state,snapshot);assert.equal(b.state.coins,100);assert.equal(shelfSlot(b.state.shelves[0],2).goods,'milk');assert.equal(b.state.shelves[0].stock,3);
+});
 console.log(JSON.stringify({passed,kind:'独立经营逻辑与存档回归'}));

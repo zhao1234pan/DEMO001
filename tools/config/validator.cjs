@@ -185,6 +185,9 @@ function installConfigs(sources) {
     }
     // 经营配置按客户端协议校验，避免价格、升级链或解锁缺行导致存档错误。
     const shopRules = new Map(next.ShopRule.map(r => [r.key, r.value]));
+    const shelfGoodsSlots = Number(shopRules.get('shelfGoodsSlots'));
+    if (!Number.isSafeInteger(shelfGoodsSlots) || shelfGoodsSlots < 1 || shelfGoodsSlots > 3 || Number(shopRules.get('shelfCapacity')) < shelfGoodsSlots)
+        throw Error('Invalid shelf goods slots');
     for (const key of ["welcomeCoins", "offlineSeconds", "tickSeconds", "arrivalSeconds", "checkoutSeconds", "restockSeconds", "browseSeconds", "enterSeconds", "exitSeconds", "walkRestockSeconds", "initialShelves", "maxShelves", "shelfCapacity", "customerLimit", "tipCoins", "saveSeconds", "visibleStaff", "uiRefreshSeconds", "coinLimit", "customerWalkSeconds", "workerWalkSeconds", "walkBobFrequency", "idleBobFrequency", "pickupSeconds", "saleFlightSeconds"]) {
         const n = Number(shopRules.get(key));
         if (!Number.isFinite(n) || n <= 0)
