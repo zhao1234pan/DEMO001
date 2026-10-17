@@ -1,0 +1,154 @@
+{
+  "status": "通过",
+  "regressions": 212,
+  "adventureAndChallengeWins": 26,
+  "all90PhaseBirthRatiosGrow": true,
+  "finalSamples": [
+    {
+      "id": 21,
+      "seed": 42,
+      "seconds": 895,
+      "towers": 22,
+      "spots": 22,
+      "lives": 10,
+      "peakEnemies": 35
+    },
+    {
+      "id": 22,
+      "seed": 7,
+      "seconds": 894,
+      "towers": 22,
+      "spots": 22,
+      "lives": 4,
+      "peakEnemies": 27
+    },
+    {
+      "id": 23,
+      "seed": 42,
+      "seconds": 890,
+      "towers": 21,
+      "spots": 21,
+      "lives": 6,
+      "peakEnemies": 33
+    },
+    {
+      "id": 24,
+      "seed": 42,
+      "seconds": 888,
+      "towers": 22,
+      "spots": 22,
+      "lives": 8,
+      "peakEnemies": 21
+    },
+    {
+      "id": 25,
+      "seed": 7,
+      "seconds": 891,
+      "towers": 20,
+      "spots": 22,
+      "lives": 3,
+      "peakEnemies": 24
+    },
+    {
+      "id": 26,
+      "seed": 42,
+      "seconds": 897,
+      "towers": 19,
+      "spots": 22,
+      "lives": 7,
+      "peakEnemies": 39
+    }
+  ],
+  "sources": "A的21／24／25／26，22全图种子7，23增幅20%样本；最后实际配置另行重跑26关全部通过",
+  "holdComparison": [
+    {
+      "scenario": "守住前段后停投_固定强度",
+      "result": "win",
+      "lives": 10
+    },
+    {
+      "scenario": "守住前段后停投_波内成长",
+      "result": "win",
+      "lives": 7
+    }
+  ],
+  "phase3Example": [
+    {
+      "scenario": "固定强度对照",
+      "phase3": {
+        "0": {
+          "samples": 37,
+          "meanAlive": 5.486,
+          "meanRemainingHp": 330,
+          "spawned": 95,
+          "meanSpawnRatio": 1,
+          "meanOrdinaryHp": 46.429,
+          "killed": 93,
+          "meanKillProgress": 0.111,
+          "entryKillRatio": 1
+        },
+        "1": {
+          "samples": 36,
+          "meanAlive": 6.194,
+          "meanRemainingHp": 369,
+          "spawned": 94,
+          "meanSpawnRatio": 1,
+          "meanOrdinaryHp": 46.598,
+          "killed": 95,
+          "meanKillProgress": 0.126,
+          "entryKillRatio": 1
+        },
+        "2": {
+          "samples": 37,
+          "meanAlive": 5.595,
+          "meanRemainingHp": 355,
+          "spawned": 95,
+          "meanSpawnRatio": 1,
+          "meanOrdinaryHp": 46.446,
+          "killed": 95,
+          "meanKillProgress": 0.116,
+          "entryKillRatio": 1
+        }
+      }
+    },
+    {
+      "scenario": "波内成长",
+      "phase3": {
+        "0": {
+          "samples": 37,
+          "meanAlive": 6.378,
+          "meanRemainingHp": 407,
+          "spawned": 95,
+          "meanSpawnRatio": 1.042,
+          "meanOrdinaryHp": 48.81,
+          "killed": 97,
+          "meanKillProgress": 0.127,
+          "entryKillRatio": 0.99
+        },
+        "1": {
+          "samples": 36,
+          "meanAlive": 6.861,
+          "meanRemainingHp": 492,
+          "spawned": 94,
+          "meanSpawnRatio": 1.197,
+          "meanOrdinaryHp": 56.293,
+          "killed": 93,
+          "meanKillProgress": 0.136,
+          "entryKillRatio": 0.957
+        },
+        "2": {
+          "samples": 37,
+          "meanAlive": 7.784,
+          "meanRemainingHp": 679,
+          "spawned": 95,
+          "meanSpawnRatio": 1.42,
+          "meanOrdinaryHp": 66.554,
+          "killed": 93,
+          "meanKillProgress": 0.155,
+          "entryKillRatio": 0.914
+        }
+      }
+    }
+  ],
+  "note": "前中后三段记录是战斗逻辑采样，不能保证所有升级策略的实际战线都单调变化，也不代表真人或设备性能"
+}

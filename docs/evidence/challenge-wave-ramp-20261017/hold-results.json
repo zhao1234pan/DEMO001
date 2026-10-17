@@ -1,0 +1,1550 @@
+{
+  "kind": "真实GameRoot、3倍速、隔离存档、无广告与道具、无渲染自动策略",
+  "input": {
+    "ids": [
+      21
+    ],
+    "verify": false,
+    "maxSeconds": 1200,
+    "scenarios": [
+      {
+        "name": "守住前段后停投_固定强度",
+        "cap": 1,
+        "tech": "build",
+        "seed": 42,
+        "holdAfterProgress": 0.34,
+        "phaseGrowth": 0
+      },
+      {
+        "name": "守住前段后停投_波内成长",
+        "cap": 1,
+        "tech": "build",
+        "seed": 42,
+        "holdAfterProgress": 0.34
+      }
+    ]
+  },
+  "scenarios": [
+    {
+      "name": "守住前段后停投_固定强度",
+      "cap": 1,
+      "tech": "build",
+      "seed": 42,
+      "holdAfterProgress": 0.34,
+      "phaseGrowth": 0
+    },
+    {
+      "name": "守住前段后停投_波内成长",
+      "cap": 1,
+      "tech": "build",
+      "seed": 42,
+      "holdAfterProgress": 0.34
+    }
+  ],
+  "results": [
+    {
+      "id": 21,
+      "scenario": "守住前段后停投_固定强度",
+      "seed": 42,
+      "roster": [
+        "sprout",
+        "frost",
+        "bloom",
+        "scope"
+      ],
+      "result": "win",
+      "wave": 15,
+      "realSeconds": 892,
+      "lives": 10,
+      "spawned": 4282,
+      "killed": 4282,
+      "peakEnemies": 33,
+      "peakElites": 6,
+      "carryovers": 14,
+      "peakKillsPerSecond": 12,
+      "minBodyClearance": 3,
+      "towers": 22,
+      "spots": 22,
+      "occupancy": 1,
+      "upgraded": 22,
+      "maxLevel": 21,
+      "coins": 389,
+      "picks": 10,
+      "tech": [
+        "S01",
+        "F02",
+        "E03",
+        "G03",
+        "G02",
+        "S04",
+        "E06",
+        "G06",
+        "S02",
+        "G04"
+      ],
+      "killsByPhase": {
+        "1": {
+          "count": 233,
+          "meanProgress": 0.323,
+          "entryKillRatio": 0.253
+        },
+        "2": {
+          "count": 291,
+          "meanProgress": 0.194,
+          "entryKillRatio": 0.759
+        },
+        "3": {
+          "count": 285,
+          "meanProgress": 0.167,
+          "entryKillRatio": 0.807
+        },
+        "4": {
+          "count": 278,
+          "meanProgress": 0.28,
+          "entryKillRatio": 0.388
+        },
+        "5": {
+          "count": 293,
+          "meanProgress": 0.213,
+          "entryKillRatio": 0.515
+        },
+        "6": {
+          "count": 314,
+          "meanProgress": 0.155,
+          "entryKillRatio": 0.876
+        },
+        "7": {
+          "count": 310,
+          "meanProgress": 0.259,
+          "entryKillRatio": 0.365
+        },
+        "8": {
+          "count": 287,
+          "meanProgress": 0.292,
+          "entryKillRatio": 0.275
+        },
+        "9": {
+          "count": 305,
+          "meanProgress": 0.358,
+          "entryKillRatio": 0.151
+        },
+        "10": {
+          "count": 287,
+          "meanProgress": 0.383,
+          "entryKillRatio": 0.15
+        },
+        "11": {
+          "count": 288,
+          "meanProgress": 0.308,
+          "entryKillRatio": 0.319
+        },
+        "12": {
+          "count": 339,
+          "meanProgress": 0.294,
+          "entryKillRatio": 0.354
+        },
+        "13": {
+          "count": 228,
+          "meanProgress": 0.398,
+          "entryKillRatio": 0.114
+        },
+        "14": {
+          "count": 264,
+          "meanProgress": 0.397,
+          "entryKillRatio": 0.106
+        },
+        "15": {
+          "count": 280,
+          "meanProgress": 0.409,
+          "entryKillRatio": 0.079
+        }
+      },
+      "waves": [
+        {
+          "wave": 1,
+          "seconds": 10,
+          "towers": 6,
+          "lives": 10,
+          "coins": 108
+        },
+        {
+          "wave": 2,
+          "seconds": 68,
+          "towers": 6,
+          "lives": 10,
+          "coins": 188
+        },
+        {
+          "wave": 3,
+          "seconds": 127,
+          "towers": 6,
+          "lives": 10,
+          "coins": 291
+        },
+        {
+          "wave": 4,
+          "seconds": 185,
+          "towers": 6,
+          "lives": 10,
+          "coins": 322
+        },
+        {
+          "wave": 5,
+          "seconds": 243,
+          "towers": 6,
+          "lives": 10,
+          "coins": 304
+        },
+        {
+          "wave": 6,
+          "seconds": 302,
+          "towers": 8,
+          "lives": 10,
+          "coins": 238
+        },
+        {
+          "wave": 7,
+          "seconds": 360,
+          "towers": 10,
+          "lives": 10,
+          "coins": 277
+        },
+        {
+          "wave": 8,
+          "seconds": 419,
+          "towers": 11,
+          "lives": 10,
+          "coins": 321
+        },
+        {
+          "wave": 9,
+          "seconds": 477,
+          "towers": 12,
+          "lives": 10,
+          "coins": 319
+        },
+        {
+          "wave": 10,
+          "seconds": 535,
+          "towers": 14,
+          "lives": 10,
+          "coins": 373
+        },
+        {
+          "wave": 11,
+          "seconds": 594,
+          "towers": 15,
+          "lives": 10,
+          "coins": 362
+        },
+        {
+          "wave": 12,
+          "seconds": 652,
+          "towers": 16,
+          "lives": 10,
+          "coins": 501
+        },
+        {
+          "wave": 13,
+          "seconds": 710,
+          "towers": 18,
+          "lives": 10,
+          "coins": 361
+        },
+        {
+          "wave": 14,
+          "seconds": 769,
+          "towers": 19,
+          "lives": 10,
+          "coins": 443
+        },
+        {
+          "wave": 15,
+          "seconds": 827,
+          "towers": 21,
+          "lives": 10,
+          "coins": 325
+        }
+      ],
+      "phaseSections": {
+        "1": {
+          "0": {
+            "samples": 38,
+            "meanAlive": 10.684,
+            "meanRemainingHp": 316,
+            "spawned": 90,
+            "meanSpawnRatio": 1,
+            "meanOrdinaryHp": 36.5,
+            "killed": 73,
+            "meanKillProgress": 0.197,
+            "entryKillRatio": 0.466
+          },
+          "1": {
+            "samples": 36,
+            "meanAlive": 23.639,
+            "meanRemainingHp": 676,
+            "spawned": 85,
+            "meanSpawnRatio": 1,
+            "meanOrdinaryHp": 36.518,
+            "killed": 76,
+            "meanKillProgress": 0.357,
+            "entryKillRatio": 0.171
+          },
+          "2": {
+            "samples": 37,
+            "meanAlive": 27.216,
+            "meanRemainingHp": 807,
+            "spawned": 86,
+            "meanSpawnRatio": 1,
+            "meanOrdinaryHp": 36.535,
+            "killed": 84,
+            "meanKillProgress": 0.401,
+            "entryKillRatio": 0.143
+          }
+        },
+        "2": {
+          "0": {
+            "samples": 36,
+            "meanAlive": 18.194,
+            "meanRemainingHp": 785,
+            "spawned": 87,
+            "meanSpawnRatio": 1,
+            "meanOrdinaryHp": 51.862,
+            "killed": 102,
+            "meanKillProgress": 0.263,
+            "entryKillRatio": 0.412
+          },
+          "1": {
+            "samples": 37,
+            "meanAlive": 9.649,
+            "meanRemainingHp": 475,
+            "spawned": 92,
+            "meanSpawnRatio": 1,
+            "meanOrdinaryHp": 51.685,
+            "killed": 96,
+            "meanKillProgress": 0.165,
+            "entryKillRatio": 0.896
+          },
+          "2": {
+            "samples": 36,
+            "meanAlive": 8.722,
+            "meanRemainingHp": 441,
+            "spawned": 92,
+            "meanSpawnRatio": 1,
+            "meanOrdinaryHp": 51.685,
+            "killed": 93,
+            "meanKillProgress": 0.149,
+            "entryKillRatio": 1
+          }
+        },
+        "3": {
+          "0": {
+            "samples": 37,
+            "meanAlive": 8.541,
+            "meanRemainingHp": 539,
+            "spawned": 95,
+            "meanSpawnRatio": 1,
+            "meanOrdinaryHp": 46.429,
+            "killed": 94,
+            "meanKillProgress": 0.168,
+            "entryKillRatio": 0.809
+          },
+          "1": {
+            "samples": 36,
+            "meanAlive": 8.694,
+            "meanRemainingHp": 531,
+            "spawned": 95,
+            "meanSpawnRatio": 1,
+            "meanOrdinaryHp": 46.578,
+            "killed": 96,
+            "meanKillProgress": 0.173,
+            "entryKillRatio": 0.75
+          },
+          "2": {
+            "samples": 37,
+            "meanAlive": 7.892,
+            "meanRemainingHp": 481,
+            "spawned": 94,
+            "meanSpawnRatio": 1,
+            "meanOrdinaryHp": 46.463,
+            "killed": 95,
+            "meanKillProgress": 0.158,
+            "entryKillRatio": 0.863
+          }
+        },
+        "4": {
+          "0": {
+            "samples": 36,
+            "meanAlive": 12.139,
+            "meanRemainingHp": 1092,
+            "spawned": 98,
+            "meanSpawnRatio": 1,
+            "meanOrdinaryHp": 61.302,
+            "killed": 89,
+            "meanKillProgress": 0.225,
+            "entryKillRatio": 0.506
+          },
+          "1": {
+            "samples": 37,
+            "meanAlive": 16.378,
+            "meanRemainingHp": 1551,
+            "spawned": 96,
+            "meanSpawnRatio": 1,
+            "meanOrdinaryHp": 60.571,
+            "killed": 94,
+            "meanKillProgress": 0.289,
+            "entryKillRatio": 0.351
+          },
+          "2": {
+            "samples": 36,
+            "meanAlive": 18.694,
+            "meanRemainingHp": 1754,
+            "spawned": 97,
+            "meanSpawnRatio": 1,
+            "meanOrdinaryHp": 61.376,
+            "killed": 95,
+            "meanKillProgress": 0.324,
+            "entryKillRatio": 0.316
+          }
+        },
+        "5": {
+          "0": {
+            "samples": 38,
+            "meanAlive": 13.447,
+            "meanRemainingHp": 2393,
+            "spawned": 90,
+            "meanSpawnRatio": 1,
+            "meanOrdinaryHp": 93.359,
+            "killed": 97,
+            "meanKillProgress": 0.229,
+            "entryKillRatio": 0.443
+          },
+          "1": {
+            "samples": 39,
+            "meanAlive": 14.385,
+            "meanRemainingHp": 1904,
+            "spawned": 98,
+            "meanSpawnRatio": 1,
+            "meanOrdinaryHp": 94.628,
+            "killed": 101,
+            "meanKillProgress": 0.228,
+            "entryKillRatio": 0.436
+          },
+          "2": {
+            "samples": 39,
+            "meanAlive": 10.846,
+            "meanRemainingHp": 1570,
+            "spawned": 99,
+            "meanSpawnRatio": 1,
+            "meanOrdinaryHp": 94.333,
+            "killed": 95,
+            "meanKillProgress": 0.181,
+            "entryKillRatio": 0.674
+          }
+        },
+        "6": {
+          "0": {
+            "samples": 38,
+            "meanAlive": 8.5,
+            "meanRemainingHp": 1362,
+            "spawned": 103,
+            "meanSpawnRatio": 1,
+            "meanOrdinaryHp": 109.143,
+            "killed": 109,
+            "meanKillProgress": 0.168,
+            "entryKillRatio": 0.761
+          },
+          "1": {
+            "samples": 39,
+            "meanAlive": 7.872,
+            "meanRemainingHp": 1201,
+            "spawned": 103,
+            "meanSpawnRatio": 1,
+            "meanOrdinaryHp": 109.167,
+            "killed": 104,
+            "meanKillProgress": 0.154,
+            "entryKillRatio": 0.913
+          },
+          "2": {
+            "samples": 39,
+            "meanAlive": 7.359,
+            "meanRemainingHp": 1165,
+            "spawned": 103,
+            "meanSpawnRatio": 1,
+            "meanOrdinaryHp": 109.4,
+            "killed": 101,
+            "meanKillProgress": 0.144,
+            "entryKillRatio": 0.96
+          }
+        },
+        "7": {
+          "0": {
+            "samples": 39,
+            "meanAlive": 11.333,
+            "meanRemainingHp": 2917,
+            "spawned": 106,
+            "meanSpawnRatio": 1,
+            "meanOrdinaryHp": 142.387,
+            "killed": 102,
+            "meanKillProgress": 0.208,
+            "entryKillRatio": 0.529
+          },
+          "1": {
+            "samples": 39,
+            "meanAlive": 16.385,
+            "meanRemainingHp": 3824,
+            "spawned": 106,
+            "meanSpawnRatio": 1,
+            "meanOrdinaryHp": 145.484,
+            "killed": 103,
+            "meanKillProgress": 0.286,
+            "entryKillRatio": 0.262
+          },
+          "2": {
+            "samples": 39,
+            "meanAlive": 16.077,
+            "meanRemainingHp": 4126,
+            "spawned": 106,
+            "meanSpawnRatio": 1,
+            "meanOrdinaryHp": 142.387,
+            "killed": 105,
+            "meanKillProgress": 0.28,
+            "entryKillRatio": 0.305
+          }
+        },
+        "8": {
+          "0": {
+            "samples": 39,
+            "meanAlive": 18.231,
+            "meanRemainingHp": 6072,
+            "spawned": 98,
+            "meanSpawnRatio": 1,
+            "meanOrdinaryHp": 198.802,
+            "killed": 96,
+            "meanKillProgress": 0.28,
+            "entryKillRatio": 0.26
+          },
+          "1": {
+            "samples": 39,
+            "meanAlive": 20.462,
+            "meanRemainingHp": 7542,
+            "spawned": 96,
+            "meanSpawnRatio": 1,
+            "meanOrdinaryHp": 195.69,
+            "killed": 93,
+            "meanKillProgress": 0.295,
+            "entryKillRatio": 0.269
+          },
+          "2": {
+            "samples": 39,
+            "meanAlive": 21.128,
+            "meanRemainingHp": 7926,
+            "spawned": 97,
+            "meanSpawnRatio": 1,
+            "meanOrdinaryHp": 194.953,
+            "killed": 98,
+            "meanKillProgress": 0.302,
+            "entryKillRatio": 0.296
+          }
+        },
+        "9": {
+          "0": {
+            "samples": 39,
+            "meanAlive": 22.513,
+            "meanRemainingHp": 9360,
+            "spawned": 103,
+            "meanSpawnRatio": 1,
+            "meanOrdinaryHp": 233.538,
+            "killed": 102,
+            "meanKillProgress": 0.335,
+            "entryKillRatio": 0.147
+          },
+          "1": {
+            "samples": 38,
+            "meanAlive": 25.079,
+            "meanRemainingHp": 11268,
+            "spawned": 106,
+            "meanSpawnRatio": 1,
+            "meanOrdinaryHp": 235.12,
+            "killed": 102,
+            "meanKillProgress": 0.375,
+            "entryKillRatio": 0.157
+          },
+          "2": {
+            "samples": 37,
+            "meanAlive": 24.568,
+            "meanRemainingHp": 10601,
+            "spawned": 101,
+            "meanSpawnRatio": 1,
+            "meanOrdinaryHp": 232.708,
+            "killed": 101,
+            "meanKillProgress": 0.365,
+            "entryKillRatio": 0.149
+          }
+        },
+        "10": {
+          "0": {
+            "samples": 36,
+            "meanAlive": 22.556,
+            "meanRemainingHp": 15489,
+            "spawned": 86,
+            "meanSpawnRatio": 1,
+            "meanOrdinaryHp": 259.787,
+            "killed": 83,
+            "meanKillProgress": 0.358,
+            "entryKillRatio": 0.193
+          },
+          "1": {
+            "samples": 36,
+            "meanAlive": 26.861,
+            "meanRemainingHp": 15244,
+            "spawned": 99,
+            "meanSpawnRatio": 1,
+            "meanOrdinaryHp": 260.721,
+            "killed": 100,
+            "meanKillProgress": 0.401,
+            "entryKillRatio": 0.13
+          },
+          "2": {
+            "samples": 37,
+            "meanAlive": 25.73,
+            "meanRemainingHp": 13873,
+            "spawned": 99,
+            "meanSpawnRatio": 1,
+            "meanOrdinaryHp": 253.402,
+            "killed": 104,
+            "meanKillProgress": 0.386,
+            "entryKillRatio": 0.135
+          }
+        },
+        "11": {
+          "0": {
+            "samples": 36,
+            "meanAlive": 21.056,
+            "meanRemainingHp": 16793,
+            "spawned": 94,
+            "meanSpawnRatio": 1,
+            "meanOrdinaryHp": 420.988,
+            "killed": 98,
+            "meanKillProgress": 0.32,
+            "entryKillRatio": 0.296
+          },
+          "1": {
+            "samples": 37,
+            "meanAlive": 20.27,
+            "meanRemainingHp": 19975,
+            "spawned": 96,
+            "meanSpawnRatio": 1,
+            "meanOrdinaryHp": 419.393,
+            "killed": 93,
+            "meanKillProgress": 0.291,
+            "entryKillRatio": 0.366
+          },
+          "2": {
+            "samples": 36,
+            "meanAlive": 21.222,
+            "meanRemainingHp": 19678,
+            "spawned": 95,
+            "meanSpawnRatio": 1,
+            "meanOrdinaryHp": 415.313,
+            "killed": 97,
+            "meanKillProgress": 0.312,
+            "entryKillRatio": 0.299
+          }
+        },
+        "12": {
+          "0": {
+            "samples": 37,
+            "meanAlive": 21.324,
+            "meanRemainingHp": 15768,
+            "spawned": 111,
+            "meanSpawnRatio": 1,
+            "meanOrdinaryHp": 322.745,
+            "killed": 111,
+            "meanKillProgress": 0.306,
+            "entryKillRatio": 0.333
+          },
+          "1": {
+            "samples": 36,
+            "meanAlive": 19.694,
+            "meanRemainingHp": 14017,
+            "spawned": 114,
+            "meanSpawnRatio": 1,
+            "meanOrdinaryHp": 318.535,
+            "killed": 114,
+            "meanKillProgress": 0.289,
+            "entryKillRatio": 0.342
+          },
+          "2": {
+            "samples": 37,
+            "meanAlive": 20.324,
+            "meanRemainingHp": 14622,
+            "spawned": 113,
+            "meanSpawnRatio": 1,
+            "meanOrdinaryHp": 323.96,
+            "killed": 114,
+            "meanKillProgress": 0.287,
+            "entryKillRatio": 0.386
+          }
+        },
+        "13": {
+          "0": {
+            "samples": 36,
+            "meanAlive": 23.583,
+            "meanRemainingHp": 33855,
+            "spawned": 84,
+            "meanSpawnRatio": 1,
+            "meanOrdinaryHp": 664.905,
+            "killed": 75,
+            "meanKillProgress": 0.354,
+            "entryKillRatio": 0.187
+          },
+          "1": {
+            "samples": 37,
+            "meanAlive": 27.459,
+            "meanRemainingHp": 40744,
+            "spawned": 78,
+            "meanSpawnRatio": 1,
+            "meanOrdinaryHp": 667.368,
+            "killed": 78,
+            "meanKillProgress": 0.401,
+            "entryKillRatio": 0.115
+          },
+          "2": {
+            "samples": 36,
+            "meanAlive": 30.111,
+            "meanRemainingHp": 43645,
+            "spawned": 78,
+            "meanSpawnRatio": 1,
+            "meanOrdinaryHp": 671.382,
+            "killed": 75,
+            "meanKillProgress": 0.44,
+            "entryKillRatio": 0.04
+          }
+        },
+        "14": {
+          "0": {
+            "samples": 37,
+            "meanAlive": 28.162,
+            "meanRemainingHp": 41188,
+            "spawned": 87,
+            "meanSpawnRatio": 1,
+            "meanOrdinaryHp": 567.39,
+            "killed": 89,
+            "meanKillProgress": 0.407,
+            "entryKillRatio": 0.09
+          },
+          "1": {
+            "samples": 36,
+            "meanAlive": 27.972,
+            "meanRemainingHp": 37937,
+            "spawned": 86,
+            "meanSpawnRatio": 1,
+            "meanOrdinaryHp": 575.133,
+            "killed": 88,
+            "meanKillProgress": 0.398,
+            "entryKillRatio": 0.114
+          },
+          "2": {
+            "samples": 37,
+            "meanAlive": 26.784,
+            "meanRemainingHp": 37261,
+            "spawned": 87,
+            "meanSpawnRatio": 1,
+            "meanOrdinaryHp": 571.211,
+            "killed": 87,
+            "meanKillProgress": 0.386,
+            "entryKillRatio": 0.115
+          }
+        },
+        "15": {
+          "0": {
+            "samples": 36,
+            "meanAlive": 24.917,
+            "meanRemainingHp": 49743,
+            "spawned": 76,
+            "meanSpawnRatio": 1,
+            "meanOrdinaryHp": 583.152,
+            "killed": 81,
+            "meanKillProgress": 0.403,
+            "entryKillRatio": 0.074
+          },
+          "1": {
+            "samples": 37,
+            "meanAlive": 28.054,
+            "meanRemainingHp": 40398,
+            "spawned": 84,
+            "meanSpawnRatio": 1,
+            "meanOrdinaryHp": 610.877,
+            "killed": 78,
+            "meanKillProgress": 0.416,
+            "entryKillRatio": 0.09
+          },
+          "2": {
+            "samples": 47,
+            "meanAlive": 24.617,
+            "meanRemainingHp": 32338,
+            "spawned": 93,
+            "meanSpawnRatio": 1,
+            "meanOrdinaryHp": 604.585,
+            "killed": 121,
+            "meanKillProgress": 0.408,
+            "entryKillRatio": 0.074
+          }
+        }
+      }
+    },
+    {
+      "id": 21,
+      "scenario": "守住前段后停投_波内成长",
+      "seed": 42,
+      "roster": [
+        "sprout",
+        "frost",
+        "bloom",
+        "scope"
+      ],
+      "result": "win",
+      "wave": 15,
+      "realSeconds": 894,
+      "lives": 7,
+      "spawned": 4325,
+      "killed": 4322,
+      "peakEnemies": 35,
+      "peakElites": 6,
+      "carryovers": 14,
+      "peakKillsPerSecond": 12,
+      "minBodyClearance": 3,
+      "towers": 22,
+      "spots": 22,
+      "occupancy": 1,
+      "upgraded": 22,
+      "maxLevel": 21,
+      "coins": 472,
+      "picks": 10,
+      "tech": [
+        "S01",
+        "F02",
+        "E03",
+        "G03",
+        "G02",
+        "S04",
+        "E06",
+        "G06",
+        "S02",
+        "G04"
+      ],
+      "killsByPhase": {
+        "1": {
+          "count": 228,
+          "meanProgress": 0.328,
+          "entryKillRatio": 0.237
+        },
+        "2": {
+          "count": 289,
+          "meanProgress": 0.216,
+          "entryKillRatio": 0.491
+        },
+        "3": {
+          "count": 271,
+          "meanProgress": 0.272,
+          "entryKillRatio": 0.417
+        },
+        "4": {
+          "count": 285,
+          "meanProgress": 0.374,
+          "entryKillRatio": 0.239
+        },
+        "5": {
+          "count": 272,
+          "meanProgress": 0.303,
+          "entryKillRatio": 0.294
+        },
+        "6": {
+          "count": 323,
+          "meanProgress": 0.193,
+          "entryKillRatio": 0.706
+        },
+        "7": {
+          "count": 305,
+          "meanProgress": 0.3,
+          "entryKillRatio": 0.289
+        },
+        "8": {
+          "count": 285,
+          "meanProgress": 0.319,
+          "entryKillRatio": 0.253
+        },
+        "9": {
+          "count": 294,
+          "meanProgress": 0.388,
+          "entryKillRatio": 0.15
+        },
+        "10": {
+          "count": 296,
+          "meanProgress": 0.405,
+          "entryKillRatio": 0.115
+        },
+        "11": {
+          "count": 297,
+          "meanProgress": 0.342,
+          "entryKillRatio": 0.189
+        },
+        "12": {
+          "count": 363,
+          "meanProgress": 0.272,
+          "entryKillRatio": 0.46
+        },
+        "13": {
+          "count": 245,
+          "meanProgress": 0.408,
+          "entryKillRatio": 0.082
+        },
+        "14": {
+          "count": 270,
+          "meanProgress": 0.43,
+          "entryKillRatio": 0.07
+        },
+        "15": {
+          "count": 299,
+          "meanProgress": 0.461,
+          "entryKillRatio": 0.043
+        }
+      },
+      "waves": [
+        {
+          "wave": 1,
+          "seconds": 10,
+          "towers": 6,
+          "lives": 10,
+          "coins": 108
+        },
+        {
+          "wave": 2,
+          "seconds": 68,
+          "towers": 6,
+          "lives": 10,
+          "coins": 184
+        },
+        {
+          "wave": 3,
+          "seconds": 127,
+          "towers": 6,
+          "lives": 10,
+          "coins": 285
+        },
+        {
+          "wave": 4,
+          "seconds": 185,
+          "towers": 6,
+          "lives": 10,
+          "coins": 304
+        },
+        {
+          "wave": 5,
+          "seconds": 243,
+          "towers": 6,
+          "lives": 10,
+          "coins": 289
+        },
+        {
+          "wave": 6,
+          "seconds": 302,
+          "towers": 8,
+          "lives": 10,
+          "coins": 336
+        },
+        {
+          "wave": 7,
+          "seconds": 360,
+          "towers": 10,
+          "lives": 10,
+          "coins": 249
+        },
+        {
+          "wave": 8,
+          "seconds": 419,
+          "towers": 11,
+          "lives": 10,
+          "coins": 353
+        },
+        {
+          "wave": 9,
+          "seconds": 477,
+          "towers": 12,
+          "lives": 10,
+          "coins": 282
+        },
+        {
+          "wave": 10,
+          "seconds": 535,
+          "towers": 14,
+          "lives": 8,
+          "coins": 323
+        },
+        {
+          "wave": 11,
+          "seconds": 594,
+          "towers": 14,
+          "lives": 7,
+          "coins": 431
+        },
+        {
+          "wave": 12,
+          "seconds": 652,
+          "towers": 16,
+          "lives": 7,
+          "coins": 475
+        },
+        {
+          "wave": 13,
+          "seconds": 710,
+          "towers": 18,
+          "lives": 7,
+          "coins": 371
+        },
+        {
+          "wave": 14,
+          "seconds": 769,
+          "towers": 19,
+          "lives": 7,
+          "coins": 484
+        },
+        {
+          "wave": 15,
+          "seconds": 827,
+          "towers": 21,
+          "lives": 7,
+          "coins": 452
+        }
+      ],
+      "phaseSections": {
+        "1": {
+          "0": {
+            "samples": 38,
+            "meanAlive": 10.684,
+            "meanRemainingHp": 331,
+            "spawned": 90,
+            "meanSpawnRatio": 1.042,
+            "meanOrdinaryHp": 37.722,
+            "killed": 73,
+            "meanKillProgress": 0.197,
+            "entryKillRatio": 0.466
+          },
+          "1": {
+            "samples": 36,
+            "meanAlive": 23.75,
+            "meanRemainingHp": 821,
+            "spawned": 85,
+            "meanSpawnRatio": 1.194,
+            "meanOrdinaryHp": 43.224,
+            "killed": 76,
+            "meanKillProgress": 0.361,
+            "entryKillRatio": 0.171
+          },
+          "2": {
+            "samples": 37,
+            "meanAlive": 27.486,
+            "meanRemainingHp": 1135,
+            "spawned": 81,
+            "meanSpawnRatio": 1.418,
+            "meanOrdinaryHp": 51.173,
+            "killed": 79,
+            "meanKillProgress": 0.416,
+            "entryKillRatio": 0.089
+          }
+        },
+        "2": {
+          "0": {
+            "samples": 36,
+            "meanAlive": 17.278,
+            "meanRemainingHp": 858,
+            "spawned": 89,
+            "meanSpawnRatio": 1.043,
+            "meanOrdinaryHp": 53.685,
+            "killed": 104,
+            "meanKillProgress": 0.249,
+            "entryKillRatio": 0.442
+          },
+          "1": {
+            "samples": 37,
+            "meanAlive": 13.216,
+            "meanRemainingHp": 731,
+            "spawned": 91,
+            "meanSpawnRatio": 1.197,
+            "meanOrdinaryHp": 61.824,
+            "killed": 91,
+            "meanKillProgress": 0.195,
+            "entryKillRatio": 0.538
+          },
+          "2": {
+            "samples": 36,
+            "meanAlive": 12.861,
+            "meanRemainingHp": 820,
+            "spawned": 92,
+            "meanSpawnRatio": 1.421,
+            "meanOrdinaryHp": 73.859,
+            "killed": 94,
+            "meanKillProgress": 0.201,
+            "entryKillRatio": 0.5
+          }
+        },
+        "3": {
+          "0": {
+            "samples": 37,
+            "meanAlive": 9.243,
+            "meanRemainingHp": 619,
+            "spawned": 95,
+            "meanSpawnRatio": 1.042,
+            "meanOrdinaryHp": 48.798,
+            "killed": 95,
+            "meanKillProgress": 0.178,
+            "entryKillRatio": 0.674
+          },
+          "1": {
+            "samples": 36,
+            "meanAlive": 14,
+            "meanRemainingHp": 1048,
+            "spawned": 94,
+            "meanSpawnRatio": 1.197,
+            "meanOrdinaryHp": 56.28,
+            "killed": 86,
+            "meanKillProgress": 0.256,
+            "entryKillRatio": 0.384
+          },
+          "2": {
+            "samples": 37,
+            "meanAlive": 22.108,
+            "meanRemainingHp": 1850,
+            "spawned": 95,
+            "meanSpawnRatio": 1.42,
+            "meanOrdinaryHp": 66.554,
+            "killed": 90,
+            "meanKillProgress": 0.386,
+            "entryKillRatio": 0.178
+          }
+        },
+        "4": {
+          "0": {
+            "samples": 36,
+            "meanAlive": 21.444,
+            "meanRemainingHp": 1978,
+            "spawned": 97,
+            "meanSpawnRatio": 1.042,
+            "meanOrdinaryHp": 63.965,
+            "killed": 101,
+            "meanKillProgress": 0.346,
+            "entryKillRatio": 0.287
+          },
+          "1": {
+            "samples": 37,
+            "meanAlive": 22.432,
+            "meanRemainingHp": 2503,
+            "spawned": 97,
+            "meanSpawnRatio": 1.197,
+            "meanOrdinaryHp": 72.4,
+            "killed": 93,
+            "meanKillProgress": 0.375,
+            "entryKillRatio": 0.247
+          },
+          "2": {
+            "samples": 36,
+            "meanAlive": 26.528,
+            "meanRemainingHp": 3439,
+            "spawned": 96,
+            "meanSpawnRatio": 1.421,
+            "meanOrdinaryHp": 87.56,
+            "killed": 91,
+            "meanKillProgress": 0.403,
+            "entryKillRatio": 0.176
+          }
+        },
+        "5": {
+          "0": {
+            "samples": 38,
+            "meanAlive": 20.868,
+            "meanRemainingHp": 3602,
+            "spawned": 85,
+            "meanSpawnRatio": 1.041,
+            "meanOrdinaryHp": 96.108,
+            "killed": 94,
+            "meanKillProgress": 0.317,
+            "entryKillRatio": 0.245
+          },
+          "1": {
+            "samples": 39,
+            "meanAlive": 18.103,
+            "meanRemainingHp": 3236,
+            "spawned": 93,
+            "meanSpawnRatio": 1.198,
+            "meanOrdinaryHp": 113.63,
+            "killed": 93,
+            "meanKillProgress": 0.262,
+            "entryKillRatio": 0.398
+          },
+          "2": {
+            "samples": 39,
+            "meanAlive": 23.026,
+            "meanRemainingHp": 4494,
+            "spawned": 93,
+            "meanSpawnRatio": 1.421,
+            "meanOrdinaryHp": 133.134,
+            "killed": 85,
+            "meanKillProgress": 0.331,
+            "entryKillRatio": 0.235
+          }
+        },
+        "6": {
+          "0": {
+            "samples": 38,
+            "meanAlive": 16.605,
+            "meanRemainingHp": 2639,
+            "spawned": 100,
+            "meanSpawnRatio": 1.043,
+            "meanOrdinaryHp": 113.659,
+            "killed": 121,
+            "meanKillProgress": 0.261,
+            "entryKillRatio": 0.397
+          },
+          "1": {
+            "samples": 39,
+            "meanAlive": 7.051,
+            "meanRemainingHp": 1311,
+            "spawned": 103,
+            "meanSpawnRatio": 1.197,
+            "meanOrdinaryHp": 130.922,
+            "killed": 103,
+            "meanKillProgress": 0.139,
+            "entryKillRatio": 0.961
+          },
+          "2": {
+            "samples": 39,
+            "meanAlive": 8.462,
+            "meanRemainingHp": 1925,
+            "spawned": 103,
+            "meanSpawnRatio": 1.421,
+            "meanOrdinaryHp": 155.456,
+            "killed": 99,
+            "meanKillProgress": 0.166,
+            "entryKillRatio": 0.818
+          }
+        },
+        "7": {
+          "0": {
+            "samples": 39,
+            "meanAlive": 13.872,
+            "meanRemainingHp": 3644,
+            "spawned": 106,
+            "meanSpawnRatio": 1.042,
+            "meanOrdinaryHp": 148.011,
+            "killed": 101,
+            "meanKillProgress": 0.254,
+            "entryKillRatio": 0.386
+          },
+          "1": {
+            "samples": 39,
+            "meanAlive": 17.385,
+            "meanRemainingHp": 5368,
+            "spawned": 106,
+            "meanSpawnRatio": 1.197,
+            "meanOrdinaryHp": 173.742,
+            "killed": 103,
+            "meanKillProgress": 0.296,
+            "entryKillRatio": 0.282
+          },
+          "2": {
+            "samples": 39,
+            "meanAlive": 22.385,
+            "meanRemainingHp": 7866,
+            "spawned": 105,
+            "meanSpawnRatio": 1.42,
+            "meanOrdinaryHp": 202.837,
+            "killed": 101,
+            "meanKillProgress": 0.351,
+            "entryKillRatio": 0.198
+          }
+        },
+        "8": {
+          "0": {
+            "samples": 39,
+            "meanAlive": 21.795,
+            "meanRemainingHp": 7674,
+            "spawned": 96,
+            "meanSpawnRatio": 1.042,
+            "meanOrdinaryHp": 207.548,
+            "killed": 99,
+            "meanKillProgress": 0.317,
+            "entryKillRatio": 0.232
+          },
+          "1": {
+            "samples": 39,
+            "meanAlive": 21.436,
+            "meanRemainingHp": 9845,
+            "spawned": 100,
+            "meanSpawnRatio": 1.197,
+            "meanOrdinaryHp": 231.841,
+            "killed": 97,
+            "meanKillProgress": 0.302,
+            "entryKillRatio": 0.309
+          },
+          "2": {
+            "samples": 39,
+            "meanAlive": 24.128,
+            "meanRemainingHp": 12508,
+            "spawned": 91,
+            "meanSpawnRatio": 1.421,
+            "meanOrdinaryHp": 280.637,
+            "killed": 89,
+            "meanKillProgress": 0.34,
+            "entryKillRatio": 0.213
+          }
+        },
+        "9": {
+          "0": {
+            "samples": 39,
+            "meanAlive": 26.103,
+            "meanRemainingHp": 12074,
+            "spawned": 102,
+            "meanSpawnRatio": 1.044,
+            "meanOrdinaryHp": 244.689,
+            "killed": 102,
+            "meanKillProgress": 0.369,
+            "entryKillRatio": 0.176
+          },
+          "1": {
+            "samples": 38,
+            "meanAlive": 25.658,
+            "meanRemainingHp": 13305,
+            "spawned": 101,
+            "meanSpawnRatio": 1.197,
+            "meanOrdinaryHp": 279.477,
+            "killed": 101,
+            "meanKillProgress": 0.386,
+            "entryKillRatio": 0.158
+          },
+          "2": {
+            "samples": 37,
+            "meanAlive": 28,
+            "meanRemainingHp": 17257,
+            "spawned": 98,
+            "meanSpawnRatio": 1.416,
+            "meanOrdinaryHp": 329.86,
+            "killed": 91,
+            "meanKillProgress": 0.41,
+            "entryKillRatio": 0.11
+          }
+        },
+        "10": {
+          "0": {
+            "samples": 36,
+            "meanAlive": 24.083,
+            "meanRemainingHp": 17384,
+            "spawned": 93,
+            "meanSpawnRatio": 1.042,
+            "meanOrdinaryHp": 275.519,
+            "killed": 96,
+            "meanKillProgress": 0.375,
+            "entryKillRatio": 0.208
+          },
+          "1": {
+            "samples": 36,
+            "meanAlive": 27.722,
+            "meanRemainingHp": 17133,
+            "spawned": 100,
+            "meanSpawnRatio": 1.197,
+            "meanOrdinaryHp": 303.103,
+            "killed": 96,
+            "meanKillProgress": 0.427,
+            "entryKillRatio": 0.052
+          },
+          "2": {
+            "samples": 37,
+            "meanAlive": 28.162,
+            "meanRemainingHp": 21316,
+            "spawned": 102,
+            "meanSpawnRatio": 1.42,
+            "meanOrdinaryHp": 366.956,
+            "killed": 104,
+            "meanKillProgress": 0.411,
+            "entryKillRatio": 0.087
+          }
+        },
+        "11": {
+          "0": {
+            "samples": 36,
+            "meanAlive": 22.667,
+            "meanRemainingHp": 19280,
+            "spawned": 102,
+            "meanSpawnRatio": 1.042,
+            "meanOrdinaryHp": 438.389,
+            "killed": 108,
+            "meanKillProgress": 0.328,
+            "entryKillRatio": 0.287
+          },
+          "1": {
+            "samples": 37,
+            "meanAlive": 22.459,
+            "meanRemainingHp": 23188,
+            "spawned": 100,
+            "meanSpawnRatio": 1.196,
+            "meanOrdinaryHp": 506.207,
+            "killed": 99,
+            "meanKillProgress": 0.326,
+            "entryKillRatio": 0.182
+          },
+          "2": {
+            "samples": 36,
+            "meanAlive": 25.722,
+            "meanRemainingHp": 31530,
+            "spawned": 92,
+            "meanSpawnRatio": 1.418,
+            "meanOrdinaryHp": 590.765,
+            "killed": 90,
+            "meanKillProgress": 0.376,
+            "entryKillRatio": 0.078
+          }
+        },
+        "12": {
+          "0": {
+            "samples": 37,
+            "meanAlive": 22.811,
+            "meanRemainingHp": 19128,
+            "spawned": 112,
+            "meanSpawnRatio": 1.046,
+            "meanOrdinaryHp": 337.398,
+            "killed": 120,
+            "meanKillProgress": 0.321,
+            "entryKillRatio": 0.283
+          },
+          "1": {
+            "samples": 36,
+            "meanAlive": 12.833,
+            "meanRemainingHp": 13348,
+            "spawned": 124,
+            "meanSpawnRatio": 1.197,
+            "meanOrdinaryHp": 376.248,
+            "killed": 130,
+            "meanKillProgress": 0.218,
+            "entryKillRatio": 0.669
+          },
+          "2": {
+            "samples": 37,
+            "meanAlive": 18.081,
+            "meanRemainingHp": 18172,
+            "spawned": 124,
+            "meanSpawnRatio": 1.42,
+            "meanOrdinaryHp": 468.546,
+            "killed": 113,
+            "meanKillProgress": 0.283,
+            "entryKillRatio": 0.407
+          }
+        },
+        "13": {
+          "0": {
+            "samples": 36,
+            "meanAlive": 24.194,
+            "meanRemainingHp": 38061,
+            "spawned": 94,
+            "meanSpawnRatio": 1.039,
+            "meanOrdinaryHp": 688.108,
+            "killed": 88,
+            "meanKillProgress": 0.348,
+            "entryKillRatio": 0.193
+          },
+          "1": {
+            "samples": 37,
+            "meanAlive": 28.108,
+            "meanRemainingHp": 48792,
+            "spawned": 80,
+            "meanSpawnRatio": 1.193,
+            "meanOrdinaryHp": 807.829,
+            "killed": 84,
+            "meanKillProgress": 0.425,
+            "entryKillRatio": 0.036
+          },
+          "2": {
+            "samples": 36,
+            "meanAlive": 29.806,
+            "meanRemainingHp": 61896,
+            "spawned": 79,
+            "meanSpawnRatio": 1.416,
+            "meanOrdinaryHp": 932.638,
+            "killed": 73,
+            "meanKillProgress": 0.461,
+            "entryKillRatio": 0
+          }
+        },
+        "14": {
+          "0": {
+            "samples": 37,
+            "meanAlive": 29.703,
+            "meanRemainingHp": 47708,
+            "spawned": 88,
+            "meanSpawnRatio": 1.046,
+            "meanOrdinaryHp": 593.364,
+            "killed": 92,
+            "meanKillProgress": 0.435,
+            "entryKillRatio": 0.065
+          },
+          "1": {
+            "samples": 36,
+            "meanAlive": 27.889,
+            "meanRemainingHp": 46190,
+            "spawned": 93,
+            "meanSpawnRatio": 1.197,
+            "meanOrdinaryHp": 671.695,
+            "killed": 95,
+            "meanKillProgress": 0.401,
+            "entryKillRatio": 0.095
+          },
+          "2": {
+            "samples": 37,
+            "meanAlive": 30.649,
+            "meanRemainingHp": 57105,
+            "spawned": 90,
+            "meanSpawnRatio": 1.418,
+            "meanOrdinaryHp": 822.544,
+            "killed": 83,
+            "meanKillProgress": 0.457,
+            "entryKillRatio": 0.048
+          }
+        },
+        "15": {
+          "0": {
+            "samples": 36,
+            "meanAlive": 27.5,
+            "meanRemainingHp": 57069,
+            "spawned": 82,
+            "meanSpawnRatio": 1.038,
+            "meanOrdinaryHp": 607.197,
+            "killed": 89,
+            "meanKillProgress": 0.445,
+            "entryKillRatio": 0.067
+          },
+          "1": {
+            "samples": 37,
+            "meanAlive": 28.622,
+            "meanRemainingHp": 46837,
+            "spawned": 92,
+            "meanSpawnRatio": 1.201,
+            "meanOrdinaryHp": 736.21,
+            "killed": 88,
+            "meanKillProgress": 0.432,
+            "entryKillRatio": 0.068
+          },
+          "2": {
+            "samples": 52,
+            "meanAlive": 25.442,
+            "meanRemainingHp": 48405,
+            "spawned": 94,
+            "meanSpawnRatio": 1.418,
+            "meanOrdinaryHp": 852.171,
+            "killed": 122,
+            "meanKillProgress": 0.495,
+            "entryKillRatio": 0.008
+          }
+        }
+      }
+    }
+  ]
+}

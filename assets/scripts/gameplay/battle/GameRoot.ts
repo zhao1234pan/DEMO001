@@ -1215,7 +1215,8 @@ export class GameRoot extends Component {
     const wave=this.level.waves[Math.max(0,this.wave-1)];
     const scale=this.challenge?(base.boss?wave.bossHealthScale:wave.healthScale):this.level.enemyHealthScale*(wave?.healthScale??1)*(1+(this.wave-1)*globalNumber("waveHealthGrowth"));
     const rule=this.challenge?.rule,elite=Boolean(this.crowdFlow&&rule&&!base.boss&&this.wave>=numeric(rule,'eliteStartWave')&&(this.challenge!.spawned+1)%numeric(rule,'eliteEvery')===0);
-    const eliteScale=elite?numeric(rule!,'eliteScale'):1,hp=Math.round(base.hp*scale*(elite?numeric(rule!,'eliteHealthScale')*(1+Math.max(0,this.wave-numeric(rule!,'eliteStartWave'))*numeric(rule!,'eliteHealthGrowth')):1));
+    const phaseScale=this.challenge&&!base.boss?this.challenge.spawnHealthRatio():1;
+    const eliteScale=elite?numeric(rule!,'eliteScale'):1,hp=Math.round(base.hp*scale*phaseScale*(elite?numeric(rule!,'eliteHealthScale')*(1+Math.max(0,this.wave-numeric(rule!,'eliteStartWave'))*numeric(rule!,'eliteHealthGrowth')):1));
     const start = this.level.pathPoints[0];
     const speed=(this.challenge&&base.boss?base.speed*numeric(this.challenge.rule,'bossSpeedRatio'):base.speed)*(elite?numeric(rule!,'eliteSpeedRatio'):1)*(this.crowdFlow&&!base.boss?1+Math.max(0,this.wave-1)*numeric(rule!,'crowdSpeedGrowth'):1);
     const enemy:Enemy={kind,hp,maxHp:hp,speed,reward:base.reward*(elite?numeric(rule!,'eliteRewardRatio'):1),radius:base.radius,color:base.color,damage:base.damage,distance:0,x:start[0],y:start[1],age:0,slow:0,hitFlash:0,burnTime:0,burnDamage:0,markedTime:0,sinceHit:0};

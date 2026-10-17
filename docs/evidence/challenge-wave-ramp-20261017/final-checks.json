@@ -1,0 +1,201 @@
+{
+  "results": [
+    {
+      "name": "配置一致",
+      "status": 0,
+      "stdout": "UI布局表：2610个节点。\nUI资源校验：36个预制体，2610个节点。\n39张表校验通过，XLSX 与 CSV 一致。\n日志：G:\\gptwork\\config-export\\run-I7xiJW\n",
+      "stderr": ""
+    },
+    {
+      "name": "预制体门禁",
+      "status": 0,
+      "stdout": "{\n  \"prefabs\": 36,\n  \"nodes\": 2610,\n  \"labels\": 409,\n  \"images\": 80\n}\n",
+      "stderr": ""
+    },
+    {
+      "name": "严格TypeScript",
+      "status": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ],
+  "builds": [
+    {
+      "kind": "web",
+      "path": "G:/gptwork/challenge-wave-ramp-web-build/web-mobile",
+      "finished": "2026-10-17 19:35:21 - debug: ================================ build Task (web-mobile) Finished in (11 s)ms ================================",
+      "exitCode": 36,
+      "all39CsvMatch": true
+    },
+    {
+      "kind": "release",
+      "path": "G:/gptwork/challenge-wave-ramp-release-build/web-mobile",
+      "finished": "2026-10-17 19:35:44 - debug: ================================ build Task (web-mobile) Finished in (13 s)ms ================================",
+      "exitCode": 36,
+      "all39CsvMatch": true
+    }
+  ],
+  "configChanges": {
+    "input": {
+      "rule": {
+        "phaseHealthGrowth": 0.55,
+        "phaseGrowthPower": 1.5
+      },
+      "rules": {
+        "23": {
+          "phaseHealthGrowth": 0.2
+        }
+      }
+    },
+    "reports": [
+      {
+        "table": "ChallengeRule",
+        "changes": [
+          {
+            "row": 1,
+            "column": "phaseHealthGrowth",
+            "before": null,
+            "after": "波内末段新生血量增幅"
+          },
+          {
+            "row": 1,
+            "column": "phaseGrowthPower",
+            "before": null,
+            "after": "波内血量成长曲线指数"
+          },
+          {
+            "row": 2,
+            "column": "phaseHealthGrowth",
+            "before": null,
+            "after": "client"
+          },
+          {
+            "row": 2,
+            "column": "phaseGrowthPower",
+            "before": null,
+            "after": "client"
+          },
+          {
+            "row": 3,
+            "column": "phaseHealthGrowth",
+            "before": null,
+            "after": "float"
+          },
+          {
+            "row": 3,
+            "column": "phaseGrowthPower",
+            "before": null,
+            "after": "float"
+          },
+          {
+            "row": 4,
+            "column": "phaseHealthGrowth",
+            "before": null,
+            "after": "phaseHealthGrowth"
+          },
+          {
+            "row": 4,
+            "column": "phaseGrowthPower",
+            "before": null,
+            "after": "phaseGrowthPower"
+          },
+          {
+            "row": 5,
+            "column": "phaseHealthGrowth",
+            "before": null,
+            "after": "phaseHealthGrowth"
+          },
+          {
+            "row": 5,
+            "column": "phaseGrowthPower",
+            "before": null,
+            "after": "phaseGrowthPower"
+          },
+          {
+            "row": 6,
+            "column": "phaseHealthGrowth",
+            "before": null,
+            "after": 0.55
+          },
+          {
+            "row": 6,
+            "column": "phaseGrowthPower",
+            "before": null,
+            "after": 1.5
+          },
+          {
+            "row": 7,
+            "column": "phaseHealthGrowth",
+            "before": null,
+            "after": 0.55
+          },
+          {
+            "row": 7,
+            "column": "phaseGrowthPower",
+            "before": null,
+            "after": 1.5
+          },
+          {
+            "row": 8,
+            "column": "phaseHealthGrowth",
+            "before": null,
+            "after": 0.2
+          },
+          {
+            "row": 8,
+            "column": "phaseGrowthPower",
+            "before": null,
+            "after": 1.5
+          },
+          {
+            "row": 9,
+            "column": "phaseHealthGrowth",
+            "before": null,
+            "after": 0.55
+          },
+          {
+            "row": 9,
+            "column": "phaseGrowthPower",
+            "before": null,
+            "after": 1.5
+          },
+          {
+            "row": 10,
+            "column": "phaseHealthGrowth",
+            "before": null,
+            "after": 0.55
+          },
+          {
+            "row": 10,
+            "column": "phaseGrowthPower",
+            "before": null,
+            "after": 1.5
+          },
+          {
+            "row": 11,
+            "column": "phaseHealthGrowth",
+            "before": null,
+            "after": 0.55
+          },
+          {
+            "row": 11,
+            "column": "phaseGrowthPower",
+            "before": null,
+            "after": 1.5
+          }
+        ]
+      },
+      {
+        "table": "Global",
+        "changes": [
+          {
+            "row": 9,
+            "column": "value",
+            "before": "1.15.0",
+            "after": "1.16.0"
+          }
+        ]
+      }
+    ]
+  }
+}

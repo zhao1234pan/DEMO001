@@ -316,7 +316,9 @@
       "growthDamage": "float",
       "growthRange": "float",
       "crowdSpeedGrowth": "float",
-      "bossLeakDamage": "int"
+      "bossLeakDamage": "int",
+      "phaseHealthGrowth": "float",
+      "phaseGrowthPower": "float"
     }
   },
   "ChallengePerk": {

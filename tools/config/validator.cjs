@@ -573,9 +573,11 @@ function installConfigs(sources) {
         for (const key of ['laneOffset', 'crowdGap', 'waveDuration', 'eliteEvery', 'eliteStartWave', 'eliteHealthScale', 'eliteScale', 'eliteSpeedRatio', 'eliteRewardRatio', 'growthEvery'])
             if (numeric(row, key) <= 0)
                 throw Error('Invalid crowd flow rule');
-        for (const key of ['eliteHealthGrowth', 'growthDamage', 'growthRange', 'crowdSpeedGrowth'])
+        for (const key of ['eliteHealthGrowth', 'growthDamage', 'growthRange', 'crowdSpeedGrowth', 'phaseHealthGrowth'])
             if (numeric(row, key) < 0)
                 throw Error('Invalid crowd growth');
+        if (numeric(row, 'phaseGrowthPower') <= 0)
+            throw Error('Invalid phase growth curve');
         for (const key of ['eliteEvery', 'eliteStartWave', 'growthEvery', 'bossLeakDamage'])
             if (!Number.isInteger(numeric(row, key)) || numeric(row, key) <= 0)
                 throw Error('Fractional crowd schedule');

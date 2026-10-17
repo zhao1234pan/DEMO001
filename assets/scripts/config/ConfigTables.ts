@@ -226,7 +226,8 @@ export function installConfigs(sources: Record<string, string>): void {
   if(new Set(next.ChallengeRule.map(r=>r.levelId)).size!==next.ChallengeRule.length)throw Error('Duplicate challenge rule');
   for(const row of next.ChallengeRule){
     for(const key of ['laneOffset','crowdGap','waveDuration','eliteEvery','eliteStartWave','eliteHealthScale','eliteScale','eliteSpeedRatio','eliteRewardRatio','growthEvery'])if(numeric(row,key)<=0)throw Error('Invalid crowd flow rule');
-    for(const key of ['eliteHealthGrowth','growthDamage','growthRange','crowdSpeedGrowth'])if(numeric(row,key)<0)throw Error('Invalid crowd growth');
+    for(const key of ['eliteHealthGrowth','growthDamage','growthRange','crowdSpeedGrowth','phaseHealthGrowth'])if(numeric(row,key)<0)throw Error('Invalid crowd growth');
+    if(numeric(row,'phaseGrowthPower')<=0)throw Error('Invalid phase growth curve');
     for(const key of ['eliteEvery','eliteStartWave','growthEvery','bossLeakDamage'])if(!Number.isInteger(numeric(row,key))||numeric(row,key)<=0)throw Error('Fractional crowd schedule');
     const crowdLevel=next.Level.find(l=>l.id===row.levelId),crowdMap=next.Map.find(m=>m.id===crowdLevel?.mapId);if(!crowdMap)throw Error('Missing crowd map');
     if(numeric(row,'laneOffset')>=numeric(crowdMap,'gridSize')/2||numeric(row,'crowdGap')>numeric(row,'laneOffset')||numeric(row,'eliteStartWave')>next.Wave.filter(w=>w.levelId===row.levelId).length||numeric(row,'eliteHealthScale')<1||numeric(row,'eliteScale')<1||next.Enemy.some(e=>!e.boss&&numeric(e,'crowdRadius')*numeric(row,'eliteScale')>numeric(crowdMap,'gridSize')/2))throw Error('Crowd geometry out of bounds');

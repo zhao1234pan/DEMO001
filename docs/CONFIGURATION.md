@@ -243,6 +243,12 @@ ShopRule增加offlineIncomeRatio、offlineBudgetPurchases、offlineCompleteBudge
 - ChallengeTopic.thumbnailKey显式引用VisualSkin，沿用原levelId／unlockAfter链。UiLayout、VisualSkin管理新卡片、九宫、字色及命中框；货架弹窗列数、行距和收缩量从布局表推导。
 - 本轮保留的代码常量例外属于界面技术协议：节点绑定路径、状态皮肤逻辑键、前三领奖槽的显示顺序、两位数关卡编号，以及居中／九宫使用的几何二分。它们不承载可调业务数值；实际资源路径、尺寸、颜色、边距、文字、评分权重和解锁条件仍由原始表管理。
 
+## 1.16.0 波内出生血量
+
+- ChallengeRule新增phaseHealthGrowth（非负浮点，0显式禁用）与phaseGrowthPower（正浮点），schema、客户端和生成导表校验器同一协议；原始XLSX与Global版本→CSV／manifest。出生倍率为1+growth×clamp(waveElapsed/waveDuration,0,1)^power，0／1边界为归一化数学常量，不是硬编码业务参数。
+- 只对后来成功入场的挑战普通／精英生效，首领和冒险排除；不重写存活者HP，波开始重置时钟，沿用3倍速／暂停／补给阻塞逻辑。现有资源、I18、身体与路线不变。各地图幅度由原表逐行配置，不在代码按关卡分支。
+- 测试三段索引0／1／2、入口20%统计、每半秒采样以及历史表测试禁用补值属于隔离验证协议，不能成为客户端业务配置或真实画面证明。默认测试计划已入库，具体算法和局限见[波内记录](CHALLENGE_WAVE_RAMP.md)。
+
 ## 1.15.0 数值难度
 
 仅Wave.healthScale、ChallengeRule.eliteHealthScale／eliteHealthGrowth、Global.version变化，三张原始XLSX→CSV／manifest；没有新增业务字段、代码参数或资源。六专题分别管理初值／末值／指数，结果数值保存在逐Wave原表，客户端不计算硬编码曲线。地图流量、身体安全框、首领、Staff和科技、经营相关表保持。测试用阵容／种子／上限／优先级属于隔离验证输入，由tools/gameplay/challenge-validation-plan.json及外部方案管理，不进入客户端CSV。数值与局限见[本轮记录](CHALLENGE_DIFFICULTY.md)。

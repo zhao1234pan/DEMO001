@@ -1,0 +1,163 @@
+{
+  "input": {
+    "rule": {
+      "phaseHealthGrowth": 0.55,
+      "phaseGrowthPower": 1.5
+    },
+    "rules": {
+      "23": {
+        "phaseHealthGrowth": 0.2
+      }
+    }
+  },
+  "reports": [
+    {
+      "table": "ChallengeRule",
+      "changes": [
+        {
+          "row": 1,
+          "column": "phaseHealthGrowth",
+          "before": null,
+          "after": "波内末段新生血量增幅"
+        },
+        {
+          "row": 1,
+          "column": "phaseGrowthPower",
+          "before": null,
+          "after": "波内血量成长曲线指数"
+        },
+        {
+          "row": 2,
+          "column": "phaseHealthGrowth",
+          "before": null,
+          "after": "client"
+        },
+        {
+          "row": 2,
+          "column": "phaseGrowthPower",
+          "before": null,
+          "after": "client"
+        },
+        {
+          "row": 3,
+          "column": "phaseHealthGrowth",
+          "before": null,
+          "after": "float"
+        },
+        {
+          "row": 3,
+          "column": "phaseGrowthPower",
+          "before": null,
+          "after": "float"
+        },
+        {
+          "row": 4,
+          "column": "phaseHealthGrowth",
+          "before": null,
+          "after": "phaseHealthGrowth"
+        },
+        {
+          "row": 4,
+          "column": "phaseGrowthPower",
+          "before": null,
+          "after": "phaseGrowthPower"
+        },
+        {
+          "row": 5,
+          "column": "phaseHealthGrowth",
+          "before": null,
+          "after": "phaseHealthGrowth"
+        },
+        {
+          "row": 5,
+          "column": "phaseGrowthPower",
+          "before": null,
+          "after": "phaseGrowthPower"
+        },
+        {
+          "row": 6,
+          "column": "phaseHealthGrowth",
+          "before": null,
+          "after": 0.55
+        },
+        {
+          "row": 6,
+          "column": "phaseGrowthPower",
+          "before": null,
+          "after": 1.5
+        },
+        {
+          "row": 7,
+          "column": "phaseHealthGrowth",
+          "before": null,
+          "after": 0.55
+        },
+        {
+          "row": 7,
+          "column": "phaseGrowthPower",
+          "before": null,
+          "after": 1.5
+        },
+        {
+          "row": 8,
+          "column": "phaseHealthGrowth",
+          "before": null,
+          "after": 0.2
+        },
+        {
+          "row": 8,
+          "column": "phaseGrowthPower",
+          "before": null,
+          "after": 1.5
+        },
+        {
+          "row": 9,
+          "column": "phaseHealthGrowth",
+          "before": null,
+          "after": 0.55
+        },
+        {
+          "row": 9,
+          "column": "phaseGrowthPower",
+          "before": null,
+          "after": 1.5
+        },
+        {
+          "row": 10,
+          "column": "phaseHealthGrowth",
+          "before": null,
+          "after": 0.55
+        },
+        {
+          "row": 10,
+          "column": "phaseGrowthPower",
+          "before": null,
+          "after": 1.5
+        },
+        {
+          "row": 11,
+          "column": "phaseHealthGrowth",
+          "before": null,
+          "after": 0.55
+        },
+        {
+          "row": 11,
+          "column": "phaseGrowthPower",
+          "before": null,
+          "after": 1.5
+        }
+      ]
+    },
+    {
+      "table": "Global",
+      "changes": [
+        {
+          "row": 9,
+          "column": "value",
+          "before": "1.15.0",
+          "after": "1.16.0"
+        }
+      ]
+    }
+  ]
+}
