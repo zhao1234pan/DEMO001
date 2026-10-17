@@ -1,0 +1,56 @@
+{
+  "results": [
+    {
+      "name": "配置一致",
+      "status": 0,
+      "stdout": "UI布局表：2610个节点。\nUI资源校验：36个预制体，2610个节点。\n39张表校验通过，XLSX 与 CSV 一致。\n日志：G:\\gptwork\\config-export\\run-pwwu6S\n",
+      "stderr": ""
+    },
+    {
+      "name": "预制体门禁",
+      "status": 0,
+      "stdout": "{\n  \"prefabs\": 36,\n  \"nodes\": 2610,\n  \"labels\": 409,\n  \"images\": 80\n}\n",
+      "stderr": ""
+    },
+    {
+      "name": "严格TypeScript",
+      "status": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ],
+  "builds": [
+    {
+      "kind": "web",
+      "path": "G:/gptwork/challenge-copy-cleanup-web-build/web-mobile",
+      "finished": "2026-10-17 17:35:47 - debug: ================================ build Task (web-mobile) Finished in (12 s)ms ================================",
+      "exitCode": 36,
+      "all39CsvMatch": true
+    },
+    {
+      "kind": "release",
+      "path": "G:/gptwork/challenge-copy-cleanup-release-build/web-mobile",
+      "finished": "2026-10-17 17:36:11 - debug: ================================ build Task (web-mobile) Finished in (13 s)ms ================================",
+      "exitCode": 36,
+      "all39CsvMatch": true
+    }
+  ],
+  "configChanges": {
+    "table": "I18",
+    "changes": [
+      {
+        "key": "ui.GameMenuView.006",
+        "cell": "C169",
+        "before": "15波长夜 · 3倍速约15分钟",
+        "after": "共15波"
+      },
+      {
+        "key": "topics.summary",
+        "cell": "C634",
+        "before": "3倍速约15分钟 · 10次补给",
+        "after": "15波挑战 · 10次补给"
+      }
+    ],
+    "scope": "回读整表，只有两处文案变化"
+  }
+}

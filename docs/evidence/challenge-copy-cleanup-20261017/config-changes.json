@@ -1,0 +1,18 @@
+{
+  "table": "I18",
+  "changes": [
+    {
+      "key": "ui.GameMenuView.006",
+      "cell": "C169",
+      "before": "15波长夜 · 3倍速约15分钟",
+      "after": "共15波"
+    },
+    {
+      "key": "topics.summary",
+      "cell": "C634",
+      "before": "3倍速约15分钟 · 10次补给",
+      "after": "15波挑战 · 10次补给"
+    }
+  ],
+  "scope": "回读整表，只有两处文案变化"
+}
