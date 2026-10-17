@@ -190,7 +190,7 @@ export class GameRoot extends Component {
   private startupLoading:LoadingView|null=null;
 
   onLoad(): void {
-    if(DEBUG)profiler.hideStats();
+    this.configureProfiler();
     // 配置就绪后统一加载预制体；重试期间禁止重复启动同一批资源。
     let busy=false,loading:LoadingView|null=null;
     const start=async():Promise<void>=>{
@@ -262,9 +262,14 @@ export class GameRoot extends Component {
     this.node.on(Node.EventType.TOUCH_END, this.onTouchEnd, this);
     PlatformService.onHide(this.hideHandler);
     PlatformService.onShow(this.showHandler);
-    // 体验版默认不让性能统计遮住左下GM与道具；Creator的Show FPS仍可按需手动打开。
-    if (DEBUG) profiler.hideStats();
+    this.configureProfiler();
     this.booted=true;
+  }
+
+  /** 调试包通过本地预览的perf=1技术参数显示引擎统计，正式包与普通试玩保持默认界面。 */
+  private configureProfiler():void {
+    if(!DEBUG)return;
+    if(sys.isBrowser&&typeof window!=="undefined"&&/[?&]perf=1(?:&|$)/.test(window.location.search))profiler.showStats();else profiler.hideStats();
   }
 
   onDestroy(): void {
@@ -1190,7 +1195,8 @@ export class GameRoot extends Component {
     const scale=this.challenge?(base.boss?wave.bossHealthScale:wave.healthScale):this.level.enemyHealthScale*(wave?.healthScale??1)*(1+(this.wave-1)*globalNumber("waveHealthGrowth"));
     const hp=Math.round(base.hp*scale);
     const start = this.level.pathPoints[0];
-    this.enemies.push({ kind, hp, maxHp: hp, speed: base.speed, reward: base.reward, radius: base.radius, color: base.color, damage: base.damage, distance: 0, x: start[0], y: start[1], age: 0, slow: 0, hitFlash: 0, burnTime: 0, burnDamage: 0, markedTime: 0, sinceHit: 0 });
+    const speed=this.challenge&&base.boss?base.speed*numeric(this.challenge.rule,'bossSpeedRatio'):base.speed;
+    this.enemies.push({ kind, hp, maxHp: hp, speed, reward: base.reward, radius: base.radius, color: base.color, damage: base.damage, distance: 0, x: start[0], y: start[1], age: 0, slow: 0, hitFlash: 0, burnTime: 0, burnDamage: 0, markedTime: 0, sinceHit: 0 });
     this.challenge?.spawnedEnemy(this.enemies[this.enemies.length-1]);
   }
 

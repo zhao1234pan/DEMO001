@@ -23,6 +23,7 @@ export class ChallengeRun {
   private readonly delayed:Array<{time:number;x:number;y:number;radius:number;damage:number;kind:TowerKind;group?:number}>=[];
   private readonly balls:Array<{distance:number;remaining:number;hit:Enemy[]}>=[];
   private rainGroup=0;
+  private rewardRemainder=0;
   constructor(readonly rule:TableRow,readonly roster:readonly TowerKind[],seed=Math.floor(Math.random()*0x100000000)){
     this.seed=seed>>>0||1;this.choiceWaves=rule.choiceWaves.split('|').map(Number);
   }
@@ -106,12 +107,16 @@ export class ChallengeRun {
     if(this.has('X01')&&!ENEMY_CONFIG[enemy.kind].boss&&!this.returned){this.returned=true;enemy.distance=port.pathLength*this.p('X01').progress;const pos=port.position(enemy.distance);enemy.x=pos.x;enemy.y=pos.y;return {returned:true,damage:0};}
     this.leaks++;const absorbed=Math.min(enemy.damage,this.shield);this.shield-=absorbed;return {returned:false,damage:enemy.damage-absorbed};
   }
-  reward(enemy:Enemy):number{return enemy.reward+(this.has('E06')&&!ENEMY_CONFIG[enemy.kind].boss?Math.floor(ENEMY_CONFIG[enemy.kind].reward*this.p('E06').ratio):0);}
+  reward(enemy:Enemy):number{
+    const base=enemy.reward+(this.has('E06')&&!ENEMY_CONFIG[enemy.kind].boss?Math.floor(ENEMY_CONFIG[enemy.kind].reward*this.p('E06').ratio):0),credit=base*numeric(this.rule,'killRewardRatio')+this.rewardRemainder;
+    // 大怪群不按旧单怪奖励成倍放钱；小数在本局累计，浮点误差不吞掉整金币。
+    const whole=Math.floor(credit+1e-9);this.rewardRemainder=Math.max(0,credit-whole);return whole;
+  }
   death(enemy:Enemy,port:ChallengePort):void{
     const alive=port.enemies.filter(e=>e!==enemy&&e.hp>0),near=(radius:number,count:number)=>alive.filter(e=>Math.hypot(e.x-enemy.x,e.y-enemy.y)<=radius).sort((a,b)=>Math.hypot(a.x-enemy.x,a.y-enemy.y)-Math.hypot(b.x-enemy.x,b.y-enemy.y)).slice(0,count);
     if(enemy.chSecondary)return;
     if(this.has('S02')&&!enemy.chColdSpread){const ratios=Object.values(enemy.slows??{}).filter(s=>s.remaining>0).map(s=>s.ratio);if(enemy.slow>0)ratios.push(attackProfile('frost',1).slowRatio);if(ratios.length){const p=this.p('S02');for(const e of near(p.radius,p.count)){e.slows??={};const ratio=Math.min(...ratios),key="challengeCold:"+ratio,old=e.slows[key];e.slows[key]={ratio,remaining:Math.max(old?.remaining??0,p.seconds)};e.chColdSpread=true;}}}
-    if(this.has('S06')&&((enemy.burnDamage>0&&enemy.burnTime>0)||(enemy.chLethalBurn??0)>0)){const p=this.p('S06');for(const e of near(p.radius,alive.length))this.rawDamage(e,(enemy.chLethalBurn??enemy.burnDamage)*p.ratio,port,'ember');}
+    if(this.has('S06')&&((enemy.burnDamage>0&&enemy.burnTime>0)||(enemy.chLethalBurn??0)>0)){const p=this.p('S06');for(const e of near(p.radius,p.count))this.rawDamage(e,(enemy.chLethalBurn??enemy.burnDamage)*p.ratio,port,'ember');}
     if(this.has('S07')&&enemy.markedTime>0){
       const marks=Object.entries(enemy.marks??{}).filter(([,m])=>m.remaining>0),strength=Math.max(1,...marks.map(([,m])=>m.value));
       const generation=Math.min(...marks.filter(([,m])=>m.value===strength).map(([key])=>key.startsWith('challengeMark:')?Number(key.split(':')[1]):0));

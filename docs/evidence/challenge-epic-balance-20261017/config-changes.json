@@ -1,0 +1,4241 @@
+{
+  "candidate": {
+    "ids": [
+      21,
+      22,
+      23,
+      24,
+      25,
+      26
+    ],
+    "scenarios": [
+      {
+        "cap": 0.82,
+        "seed": 42,
+        "name": "八成铺图",
+        "tech": "strong"
+      }
+    ],
+    "maxSeconds": 1500,
+    "candidate": {
+      "firstCount": 450,
+      "minIntervalRatio": 0.6,
+      "healthEnd": 6,
+      "bossHealth": 1.1,
+      "rewardRatio": 0.055,
+      "initialCoins": 650,
+      "interval": 0.25,
+      "lastCount": 700,
+      "perks": {
+        "X06": {
+          "damage": 0.4
+        },
+        "G04": {
+          "damage": 0.02,
+          "cap": 0.2
+        },
+        "S04": {
+          "ratio": 0.35
+        },
+        "S06": {
+          "ratio": 1.2,
+          "count": 6,
+          "radius": 56
+        }
+      },
+      "bossAt": 0.6,
+      "healthPower": 2,
+      "firstDelay": 10,
+      "nextDelay": 3,
+      "healthStart": 0.6,
+      "bossSpeedRatio": 0.65
+    },
+    "overrides": {
+      "22": {
+        "healthStart": 0.5,
+        "healthEnd": 3.2
+      },
+      "24": {
+        "healthStart": 0.3,
+        "healthEnd": 2.8
+      },
+      "25": {
+        "healthEnd": 10
+      },
+      "26": {
+        "bossSpeedRatio": 0.55
+      }
+    }
+  },
+  "reports": [
+    {
+      "table": "Wave",
+      "changes": [
+        {
+          "key": 2101,
+          "column": "spawnInterval",
+          "before": 0.95,
+          "after": 0.25
+        },
+        {
+          "key": 2101,
+          "column": "healthScale",
+          "before": 1.8,
+          "after": 0.6
+        },
+        {
+          "key": 2101,
+          "column": "bossHealthScale",
+          "before": 1.8,
+          "after": 1.98
+        },
+        {
+          "key": 2102,
+          "column": "spawnInterval",
+          "before": 0.9,
+          "after": 0.25
+        },
+        {
+          "key": 2102,
+          "column": "healthScale",
+          "before": 2,
+          "after": 0.6276
+        },
+        {
+          "key": 2102,
+          "column": "bossHealthScale",
+          "before": 2,
+          "after": 2.2
+        },
+        {
+          "key": 2103,
+          "column": "spawnInterval",
+          "before": 0.85,
+          "after": 0.25
+        },
+        {
+          "key": 2103,
+          "column": "healthScale",
+          "before": 2.3,
+          "after": 0.7102
+        },
+        {
+          "key": 2103,
+          "column": "bossHealthScale",
+          "before": 2.3,
+          "after": 2.53
+        },
+        {
+          "key": 2104,
+          "column": "spawnInterval",
+          "before": 0.8,
+          "after": 0.25
+        },
+        {
+          "key": 2104,
+          "column": "healthScale",
+          "before": 2.6,
+          "after": 0.848
+        },
+        {
+          "key": 2104,
+          "column": "bossHealthScale",
+          "before": 2.6,
+          "after": 2.86
+        },
+        {
+          "key": 2105,
+          "column": "spawnInterval",
+          "before": 0.85,
+          "after": 0.25
+        },
+        {
+          "key": 2105,
+          "column": "healthScale",
+          "before": 2.9,
+          "after": 1.0408
+        },
+        {
+          "key": 2105,
+          "column": "bossHealthScale",
+          "before": 2.5,
+          "after": 2.75
+        },
+        {
+          "key": 2106,
+          "column": "spawnInterval",
+          "before": 0.75,
+          "after": 0.25
+        },
+        {
+          "key": 2106,
+          "column": "healthScale",
+          "before": 3.3,
+          "after": 1.2888
+        },
+        {
+          "key": 2106,
+          "column": "bossHealthScale",
+          "before": 3.3,
+          "after": 3.63
+        },
+        {
+          "key": 2107,
+          "column": "spawnInterval",
+          "before": 0.7,
+          "after": 0.25
+        },
+        {
+          "key": 2107,
+          "column": "healthScale",
+          "before": 3.7,
+          "after": 1.5918
+        },
+        {
+          "key": 2107,
+          "column": "bossHealthScale",
+          "before": 3.7,
+          "after": 4.07
+        },
+        {
+          "key": 2108,
+          "column": "spawnInterval",
+          "before": 0.65,
+          "after": 0.25
+        },
+        {
+          "key": 2108,
+          "column": "healthScale",
+          "before": 4.1,
+          "after": 1.95
+        },
+        {
+          "key": 2108,
+          "column": "bossHealthScale",
+          "before": 4.1,
+          "after": 4.51
+        },
+        {
+          "key": 2109,
+          "column": "spawnInterval",
+          "before": 0.7,
+          "after": 0.25
+        },
+        {
+          "key": 2109,
+          "column": "healthScale",
+          "before": 4.5,
+          "after": 2.3633
+        },
+        {
+          "key": 2109,
+          "column": "bossHealthScale",
+          "before": 4.5,
+          "after": 4.95
+        },
+        {
+          "key": 2110,
+          "column": "spawnInterval",
+          "before": 0.8,
+          "after": 0.25
+        },
+        {
+          "key": 2110,
+          "column": "healthScale",
+          "before": 5,
+          "after": 2.8316
+        },
+        {
+          "key": 2110,
+          "column": "bossHealthScale",
+          "before": 6,
+          "after": 6.6
+        },
+        {
+          "key": 2111,
+          "column": "spawnInterval",
+          "before": 0.65,
+          "after": 0.25
+        },
+        {
+          "key": 2111,
+          "column": "healthScale",
+          "before": 5.6,
+          "after": 3.3551
+        },
+        {
+          "key": 2111,
+          "column": "bossHealthScale",
+          "before": 5.6,
+          "after": 6.16
+        },
+        {
+          "key": 2112,
+          "column": "spawnInterval",
+          "before": 0.6,
+          "after": 0.25
+        },
+        {
+          "key": 2112,
+          "column": "healthScale",
+          "before": 6.2,
+          "after": 3.9337
+        },
+        {
+          "key": 2112,
+          "column": "bossHealthScale",
+          "before": 6.2,
+          "after": 6.82
+        },
+        {
+          "key": 2113,
+          "column": "spawnInterval",
+          "before": 0.65,
+          "after": 0.25
+        },
+        {
+          "key": 2113,
+          "column": "healthScale",
+          "before": 6.9,
+          "after": 4.5673
+        },
+        {
+          "key": 2113,
+          "column": "bossHealthScale",
+          "before": 6.9,
+          "after": 7.59
+        },
+        {
+          "key": 2114,
+          "column": "spawnInterval",
+          "before": 0.55,
+          "after": 0.25
+        },
+        {
+          "key": 2114,
+          "column": "healthScale",
+          "before": 7.6,
+          "after": 5.2561
+        },
+        {
+          "key": 2114,
+          "column": "bossHealthScale",
+          "before": 7.6,
+          "after": 8.36
+        },
+        {
+          "key": 2115,
+          "column": "spawnInterval",
+          "before": 0.65,
+          "after": 0.25
+        },
+        {
+          "key": 2115,
+          "column": "healthScale",
+          "before": 8.5,
+          "after": 6
+        },
+        {
+          "key": 2115,
+          "column": "bossHealthScale",
+          "before": 10,
+          "after": 11
+        },
+        {
+          "key": 2201,
+          "column": "spawnInterval",
+          "before": 0.912,
+          "after": 0.25
+        },
+        {
+          "key": 2201,
+          "column": "healthScale",
+          "before": 1.71,
+          "after": 0.5
+        },
+        {
+          "key": 2201,
+          "column": "bossHealthScale",
+          "before": 1.71,
+          "after": 1.881
+        },
+        {
+          "key": 2202,
+          "column": "spawnInterval",
+          "before": 0.864,
+          "after": 0.25
+        },
+        {
+          "key": 2202,
+          "column": "healthScale",
+          "before": 1.9,
+          "after": 0.5138
+        },
+        {
+          "key": 2202,
+          "column": "bossHealthScale",
+          "before": 1.9,
+          "after": 2.09
+        },
+        {
+          "key": 2203,
+          "column": "spawnInterval",
+          "before": 0.816,
+          "after": 0.25
+        },
+        {
+          "key": 2203,
+          "column": "healthScale",
+          "before": 2.185,
+          "after": 0.5551
+        },
+        {
+          "key": 2203,
+          "column": "bossHealthScale",
+          "before": 2.185,
+          "after": 2.4035
+        },
+        {
+          "key": 2204,
+          "column": "spawnInterval",
+          "before": 0.768,
+          "after": 0.25
+        },
+        {
+          "key": 2204,
+          "column": "healthScale",
+          "before": 2.47,
+          "after": 0.624
+        },
+        {
+          "key": 2204,
+          "column": "bossHealthScale",
+          "before": 2.47,
+          "after": 2.717
+        },
+        {
+          "key": 2205,
+          "column": "spawnInterval",
+          "before": 0.816,
+          "after": 0.25
+        },
+        {
+          "key": 2205,
+          "column": "healthScale",
+          "before": 2.755,
+          "after": 0.7204
+        },
+        {
+          "key": 2205,
+          "column": "bossHealthScale",
+          "before": 2.375,
+          "after": 2.6125
+        },
+        {
+          "key": 2206,
+          "column": "spawnInterval",
+          "before": 0.72,
+          "after": 0.25
+        },
+        {
+          "key": 2206,
+          "column": "healthScale",
+          "before": 3.135,
+          "after": 0.8444
+        },
+        {
+          "key": 2206,
+          "column": "bossHealthScale",
+          "before": 3.135,
+          "after": 3.4485
+        },
+        {
+          "key": 2207,
+          "column": "spawnInterval",
+          "before": 0.672,
+          "after": 0.25
+        },
+        {
+          "key": 2207,
+          "column": "healthScale",
+          "before": 3.515,
+          "after": 0.9959
+        },
+        {
+          "key": 2207,
+          "column": "bossHealthScale",
+          "before": 3.515,
+          "after": 3.8665
+        },
+        {
+          "key": 2208,
+          "column": "spawnInterval",
+          "before": 0.624,
+          "after": 0.25
+        },
+        {
+          "key": 2208,
+          "column": "healthScale",
+          "before": 3.895,
+          "after": 1.175
+        },
+        {
+          "key": 2208,
+          "column": "bossHealthScale",
+          "before": 3.895,
+          "after": 4.2845
+        },
+        {
+          "key": 2209,
+          "column": "spawnInterval",
+          "before": 0.672,
+          "after": 0.25
+        },
+        {
+          "key": 2209,
+          "column": "healthScale",
+          "before": 4.275,
+          "after": 1.3816
+        },
+        {
+          "key": 2209,
+          "column": "bossHealthScale",
+          "before": 4.275,
+          "after": 4.7025
+        },
+        {
+          "key": 2210,
+          "column": "spawnInterval",
+          "before": 0.768,
+          "after": 0.25
+        },
+        {
+          "key": 2210,
+          "column": "healthScale",
+          "before": 4.75,
+          "after": 1.6158
+        },
+        {
+          "key": 2210,
+          "column": "bossHealthScale",
+          "before": 5.7,
+          "after": 6.27
+        },
+        {
+          "key": 2211,
+          "column": "spawnInterval",
+          "before": 0.624,
+          "after": 0.25
+        },
+        {
+          "key": 2211,
+          "column": "healthScale",
+          "before": 5.32,
+          "after": 1.8776
+        },
+        {
+          "key": 2211,
+          "column": "bossHealthScale",
+          "before": 5.32,
+          "after": 5.852
+        },
+        {
+          "key": 2212,
+          "column": "spawnInterval",
+          "before": 0.576,
+          "after": 0.25
+        },
+        {
+          "key": 2212,
+          "column": "healthScale",
+          "before": 5.89,
+          "after": 2.1668
+        },
+        {
+          "key": 2212,
+          "column": "bossHealthScale",
+          "before": 5.89,
+          "after": 6.479
+        },
+        {
+          "key": 2213,
+          "column": "spawnInterval",
+          "before": 0.624,
+          "after": 0.25
+        },
+        {
+          "key": 2213,
+          "column": "healthScale",
+          "before": 6.555,
+          "after": 2.4837
+        },
+        {
+          "key": 2213,
+          "column": "bossHealthScale",
+          "before": 6.555,
+          "after": 7.2105
+        },
+        {
+          "key": 2214,
+          "column": "spawnInterval",
+          "before": 0.528,
+          "after": 0.25
+        },
+        {
+          "key": 2214,
+          "column": "healthScale",
+          "before": 7.22,
+          "after": 2.8281
+        },
+        {
+          "key": 2214,
+          "column": "bossHealthScale",
+          "before": 7.22,
+          "after": 7.942
+        },
+        {
+          "key": 2215,
+          "column": "spawnInterval",
+          "before": 0.624,
+          "after": 0.25
+        },
+        {
+          "key": 2215,
+          "column": "healthScale",
+          "before": 8.075,
+          "after": 3.2
+        },
+        {
+          "key": 2215,
+          "column": "bossHealthScale",
+          "before": 9.5,
+          "after": 10.45
+        },
+        {
+          "key": 2301,
+          "column": "spawnInterval",
+          "before": 0.95,
+          "after": 0.25
+        },
+        {
+          "key": 2301,
+          "column": "healthScale",
+          "before": 1.8,
+          "after": 0.6
+        },
+        {
+          "key": 2301,
+          "column": "bossHealthScale",
+          "before": 1.8,
+          "after": 1.98
+        },
+        {
+          "key": 2302,
+          "column": "spawnInterval",
+          "before": 0.9,
+          "after": 0.25
+        },
+        {
+          "key": 2302,
+          "column": "healthScale",
+          "before": 2,
+          "after": 0.6276
+        },
+        {
+          "key": 2302,
+          "column": "bossHealthScale",
+          "before": 2,
+          "after": 2.2
+        },
+        {
+          "key": 2303,
+          "column": "spawnInterval",
+          "before": 0.85,
+          "after": 0.25
+        },
+        {
+          "key": 2303,
+          "column": "healthScale",
+          "before": 2.3,
+          "after": 0.7102
+        },
+        {
+          "key": 2303,
+          "column": "bossHealthScale",
+          "before": 2.3,
+          "after": 2.53
+        },
+        {
+          "key": 2304,
+          "column": "spawnInterval",
+          "before": 0.8,
+          "after": 0.25
+        },
+        {
+          "key": 2304,
+          "column": "healthScale",
+          "before": 2.6,
+          "after": 0.848
+        },
+        {
+          "key": 2304,
+          "column": "bossHealthScale",
+          "before": 2.6,
+          "after": 2.86
+        },
+        {
+          "key": 2305,
+          "column": "spawnInterval",
+          "before": 0.85,
+          "after": 0.25
+        },
+        {
+          "key": 2305,
+          "column": "healthScale",
+          "before": 2.9,
+          "after": 1.0408
+        },
+        {
+          "key": 2305,
+          "column": "bossHealthScale",
+          "before": 2.5,
+          "after": 2.75
+        },
+        {
+          "key": 2306,
+          "column": "spawnInterval",
+          "before": 0.75,
+          "after": 0.25
+        },
+        {
+          "key": 2306,
+          "column": "healthScale",
+          "before": 3.3,
+          "after": 1.2888
+        },
+        {
+          "key": 2306,
+          "column": "bossHealthScale",
+          "before": 3.3,
+          "after": 3.63
+        },
+        {
+          "key": 2307,
+          "column": "spawnInterval",
+          "before": 0.7,
+          "after": 0.25
+        },
+        {
+          "key": 2307,
+          "column": "healthScale",
+          "before": 3.7,
+          "after": 1.5918
+        },
+        {
+          "key": 2307,
+          "column": "bossHealthScale",
+          "before": 3.7,
+          "after": 4.07
+        },
+        {
+          "key": 2308,
+          "column": "spawnInterval",
+          "before": 0.65,
+          "after": 0.25
+        },
+        {
+          "key": 2308,
+          "column": "healthScale",
+          "before": 4.1,
+          "after": 1.95
+        },
+        {
+          "key": 2308,
+          "column": "bossHealthScale",
+          "before": 4.1,
+          "after": 4.51
+        },
+        {
+          "key": 2309,
+          "column": "spawnInterval",
+          "before": 0.7,
+          "after": 0.25
+        },
+        {
+          "key": 2309,
+          "column": "healthScale",
+          "before": 4.5,
+          "after": 2.3633
+        },
+        {
+          "key": 2309,
+          "column": "bossHealthScale",
+          "before": 4.5,
+          "after": 4.95
+        },
+        {
+          "key": 2310,
+          "column": "spawnInterval",
+          "before": 0.8,
+          "after": 0.25
+        },
+        {
+          "key": 2310,
+          "column": "healthScale",
+          "before": 5,
+          "after": 2.8316
+        },
+        {
+          "key": 2310,
+          "column": "bossHealthScale",
+          "before": 6,
+          "after": 6.6
+        },
+        {
+          "key": 2311,
+          "column": "spawnInterval",
+          "before": 0.65,
+          "after": 0.25
+        },
+        {
+          "key": 2311,
+          "column": "healthScale",
+          "before": 5.6,
+          "after": 3.3551
+        },
+        {
+          "key": 2311,
+          "column": "bossHealthScale",
+          "before": 5.6,
+          "after": 6.16
+        },
+        {
+          "key": 2312,
+          "column": "spawnInterval",
+          "before": 0.6,
+          "after": 0.25
+        },
+        {
+          "key": 2312,
+          "column": "healthScale",
+          "before": 6.2,
+          "after": 3.9337
+        },
+        {
+          "key": 2312,
+          "column": "bossHealthScale",
+          "before": 6.2,
+          "after": 6.82
+        },
+        {
+          "key": 2313,
+          "column": "spawnInterval",
+          "before": 0.65,
+          "after": 0.25
+        },
+        {
+          "key": 2313,
+          "column": "healthScale",
+          "before": 6.9,
+          "after": 4.5673
+        },
+        {
+          "key": 2313,
+          "column": "bossHealthScale",
+          "before": 6.9,
+          "after": 7.59
+        },
+        {
+          "key": 2314,
+          "column": "spawnInterval",
+          "before": 0.55,
+          "after": 0.25
+        },
+        {
+          "key": 2314,
+          "column": "healthScale",
+          "before": 7.6,
+          "after": 5.2561
+        },
+        {
+          "key": 2314,
+          "column": "bossHealthScale",
+          "before": 7.6,
+          "after": 8.36
+        },
+        {
+          "key": 2315,
+          "column": "spawnInterval",
+          "before": 0.65,
+          "after": 0.25
+        },
+        {
+          "key": 2315,
+          "column": "healthScale",
+          "before": 8.5,
+          "after": 6
+        },
+        {
+          "key": 2315,
+          "column": "bossHealthScale",
+          "before": 10,
+          "after": 11
+        },
+        {
+          "key": 2401,
+          "column": "spawnInterval",
+          "before": 0.893,
+          "after": 0.25
+        },
+        {
+          "key": 2401,
+          "column": "healthScale",
+          "before": 1.836,
+          "after": 0.3
+        },
+        {
+          "key": 2401,
+          "column": "bossHealthScale",
+          "before": 1.836,
+          "after": 2.0196
+        },
+        {
+          "key": 2402,
+          "column": "spawnInterval",
+          "before": 0.846,
+          "after": 0.25
+        },
+        {
+          "key": 2402,
+          "column": "healthScale",
+          "before": 2.04,
+          "after": 0.3128
+        },
+        {
+          "key": 2402,
+          "column": "bossHealthScale",
+          "before": 2.04,
+          "after": 2.244
+        },
+        {
+          "key": 2403,
+          "column": "spawnInterval",
+          "before": 0.799,
+          "after": 0.25
+        },
+        {
+          "key": 2403,
+          "column": "healthScale",
+          "before": 2.346,
+          "after": 0.351
+        },
+        {
+          "key": 2403,
+          "column": "bossHealthScale",
+          "before": 2.346,
+          "after": 2.5806
+        },
+        {
+          "key": 2404,
+          "column": "spawnInterval",
+          "before": 0.752,
+          "after": 0.25
+        },
+        {
+          "key": 2404,
+          "column": "healthScale",
+          "before": 2.652,
+          "after": 0.4148
+        },
+        {
+          "key": 2404,
+          "column": "bossHealthScale",
+          "before": 2.652,
+          "after": 2.9172
+        },
+        {
+          "key": 2405,
+          "column": "spawnInterval",
+          "before": 0.799,
+          "after": 0.25
+        },
+        {
+          "key": 2405,
+          "column": "healthScale",
+          "before": 2.958,
+          "after": 0.5041
+        },
+        {
+          "key": 2405,
+          "column": "bossHealthScale",
+          "before": 2.55,
+          "after": 2.805
+        },
+        {
+          "key": 2406,
+          "column": "spawnInterval",
+          "before": 0.705,
+          "after": 0.25
+        },
+        {
+          "key": 2406,
+          "column": "healthScale",
+          "before": 3.366,
+          "after": 0.6189
+        },
+        {
+          "key": 2406,
+          "column": "bossHealthScale",
+          "before": 3.366,
+          "after": 3.7026
+        },
+        {
+          "key": 2407,
+          "column": "spawnInterval",
+          "before": 0.658,
+          "after": 0.25
+        },
+        {
+          "key": 2407,
+          "column": "healthScale",
+          "before": 3.774,
+          "after": 0.7592
+        },
+        {
+          "key": 2407,
+          "column": "bossHealthScale",
+          "before": 3.774,
+          "after": 4.1514
+        },
+        {
+          "key": 2408,
+          "column": "spawnInterval",
+          "before": 0.611,
+          "after": 0.25
+        },
+        {
+          "key": 2408,
+          "column": "healthScale",
+          "before": 4.182,
+          "after": 0.925
+        },
+        {
+          "key": 2408,
+          "column": "bossHealthScale",
+          "before": 4.182,
+          "after": 4.6002
+        },
+        {
+          "key": 2409,
+          "column": "spawnInterval",
+          "before": 0.658,
+          "after": 0.25
+        },
+        {
+          "key": 2409,
+          "column": "healthScale",
+          "before": 4.59,
+          "after": 1.1163
+        },
+        {
+          "key": 2409,
+          "column": "bossHealthScale",
+          "before": 4.59,
+          "after": 5.049
+        },
+        {
+          "key": 2410,
+          "column": "spawnInterval",
+          "before": 0.752,
+          "after": 0.25
+        },
+        {
+          "key": 2410,
+          "column": "healthScale",
+          "before": 5.1,
+          "after": 1.3332
+        },
+        {
+          "key": 2410,
+          "column": "bossHealthScale",
+          "before": 6.12,
+          "after": 6.732
+        },
+        {
+          "key": 2411,
+          "column": "spawnInterval",
+          "before": 0.611,
+          "after": 0.25
+        },
+        {
+          "key": 2411,
+          "column": "healthScale",
+          "before": 5.712,
+          "after": 1.5755
+        },
+        {
+          "key": 2411,
+          "column": "bossHealthScale",
+          "before": 5.712,
+          "after": 6.2832
+        },
+        {
+          "key": 2412,
+          "column": "spawnInterval",
+          "before": 0.564,
+          "after": 0.25
+        },
+        {
+          "key": 2412,
+          "column": "healthScale",
+          "before": 6.324,
+          "after": 1.8434
+        },
+        {
+          "key": 2412,
+          "column": "bossHealthScale",
+          "before": 6.324,
+          "after": 6.9564
+        },
+        {
+          "key": 2413,
+          "column": "spawnInterval",
+          "before": 0.611,
+          "after": 0.25
+        },
+        {
+          "key": 2413,
+          "column": "healthScale",
+          "before": 7.038,
+          "after": 2.1367
+        },
+        {
+          "key": 2413,
+          "column": "bossHealthScale",
+          "before": 7.038,
+          "after": 7.7418
+        },
+        {
+          "key": 2414,
+          "column": "spawnInterval",
+          "before": 0.517,
+          "after": 0.25
+        },
+        {
+          "key": 2414,
+          "column": "healthScale",
+          "before": 7.752,
+          "after": 2.4556
+        },
+        {
+          "key": 2414,
+          "column": "bossHealthScale",
+          "before": 7.752,
+          "after": 8.5272
+        },
+        {
+          "key": 2415,
+          "column": "spawnInterval",
+          "before": 0.611,
+          "after": 0.25
+        },
+        {
+          "key": 2415,
+          "column": "healthScale",
+          "before": 8.67,
+          "after": 2.8
+        },
+        {
+          "key": 2415,
+          "column": "bossHealthScale",
+          "before": 10.2,
+          "after": 11.22
+        },
+        {
+          "key": 2501,
+          "column": "spawnInterval",
+          "before": 0.912,
+          "after": 0.25
+        },
+        {
+          "key": 2501,
+          "column": "healthScale",
+          "before": 1.854,
+          "after": 0.6
+        },
+        {
+          "key": 2501,
+          "column": "bossHealthScale",
+          "before": 1.854,
+          "after": 2.0394
+        },
+        {
+          "key": 2502,
+          "column": "spawnInterval",
+          "before": 0.864,
+          "after": 0.25
+        },
+        {
+          "key": 2502,
+          "column": "healthScale",
+          "before": 2.06,
+          "after": 0.648
+        },
+        {
+          "key": 2502,
+          "column": "bossHealthScale",
+          "before": 2.06,
+          "after": 2.266
+        },
+        {
+          "key": 2503,
+          "column": "spawnInterval",
+          "before": 0.816,
+          "after": 0.25
+        },
+        {
+          "key": 2503,
+          "column": "healthScale",
+          "before": 2.369,
+          "after": 0.7918
+        },
+        {
+          "key": 2503,
+          "column": "bossHealthScale",
+          "before": 2.369,
+          "after": 2.6059
+        },
+        {
+          "key": 2504,
+          "column": "spawnInterval",
+          "before": 0.768,
+          "after": 0.25
+        },
+        {
+          "key": 2504,
+          "column": "healthScale",
+          "before": 2.678,
+          "after": 1.0316
+        },
+        {
+          "key": 2504,
+          "column": "bossHealthScale",
+          "before": 2.678,
+          "after": 2.9458
+        },
+        {
+          "key": 2505,
+          "column": "spawnInterval",
+          "before": 0.816,
+          "after": 0.25
+        },
+        {
+          "key": 2505,
+          "column": "healthScale",
+          "before": 2.987,
+          "after": 1.3673
+        },
+        {
+          "key": 2505,
+          "column": "bossHealthScale",
+          "before": 2.575,
+          "after": 2.8325
+        },
+        {
+          "key": 2506,
+          "column": "spawnInterval",
+          "before": 0.72,
+          "after": 0.25
+        },
+        {
+          "key": 2506,
+          "column": "healthScale",
+          "before": 3.399,
+          "after": 1.799
+        },
+        {
+          "key": 2506,
+          "column": "bossHealthScale",
+          "before": 3.399,
+          "after": 3.7389
+        },
+        {
+          "key": 2507,
+          "column": "spawnInterval",
+          "before": 0.672,
+          "after": 0.25
+        },
+        {
+          "key": 2507,
+          "column": "healthScale",
+          "before": 3.811,
+          "after": 2.3265
+        },
+        {
+          "key": 2507,
+          "column": "bossHealthScale",
+          "before": 3.811,
+          "after": 4.1921
+        },
+        {
+          "key": 2508,
+          "column": "spawnInterval",
+          "before": 0.624,
+          "after": 0.25
+        },
+        {
+          "key": 2508,
+          "column": "healthScale",
+          "before": 4.223,
+          "after": 2.95
+        },
+        {
+          "key": 2508,
+          "column": "bossHealthScale",
+          "before": 4.223,
+          "after": 4.6453
+        },
+        {
+          "key": 2509,
+          "column": "spawnInterval",
+          "before": 0.672,
+          "after": 0.25
+        },
+        {
+          "key": 2509,
+          "column": "healthScale",
+          "before": 4.635,
+          "after": 3.6694
+        },
+        {
+          "key": 2509,
+          "column": "bossHealthScale",
+          "before": 4.635,
+          "after": 5.0985
+        },
+        {
+          "key": 2510,
+          "column": "spawnInterval",
+          "before": 0.768,
+          "after": 0.25
+        },
+        {
+          "key": 2510,
+          "column": "healthScale",
+          "before": 5.15,
+          "after": 4.4847
+        },
+        {
+          "key": 2510,
+          "column": "bossHealthScale",
+          "before": 6.18,
+          "after": 6.798
+        },
+        {
+          "key": 2511,
+          "column": "spawnInterval",
+          "before": 0.624,
+          "after": 0.25
+        },
+        {
+          "key": 2511,
+          "column": "healthScale",
+          "before": 5.768,
+          "after": 5.3959
+        },
+        {
+          "key": 2511,
+          "column": "bossHealthScale",
+          "before": 5.768,
+          "after": 6.3448
+        },
+        {
+          "key": 2512,
+          "column": "spawnInterval",
+          "before": 0.576,
+          "after": 0.25
+        },
+        {
+          "key": 2512,
+          "column": "healthScale",
+          "before": 6.386,
+          "after": 6.4031
+        },
+        {
+          "key": 2512,
+          "column": "bossHealthScale",
+          "before": 6.386,
+          "after": 7.0246
+        },
+        {
+          "key": 2513,
+          "column": "spawnInterval",
+          "before": 0.624,
+          "after": 0.25
+        },
+        {
+          "key": 2513,
+          "column": "healthScale",
+          "before": 7.107,
+          "after": 7.5061
+        },
+        {
+          "key": 2513,
+          "column": "bossHealthScale",
+          "before": 7.107,
+          "after": 7.8177
+        },
+        {
+          "key": 2514,
+          "column": "spawnInterval",
+          "before": 0.528,
+          "after": 0.25
+        },
+        {
+          "key": 2514,
+          "column": "healthScale",
+          "before": 7.828,
+          "after": 8.7051
+        },
+        {
+          "key": 2514,
+          "column": "bossHealthScale",
+          "before": 7.828,
+          "after": 8.6108
+        },
+        {
+          "key": 2515,
+          "column": "spawnInterval",
+          "before": 0.624,
+          "after": 0.25
+        },
+        {
+          "key": 2515,
+          "column": "healthScale",
+          "before": 8.755,
+          "after": 10
+        },
+        {
+          "key": 2515,
+          "column": "bossHealthScale",
+          "before": 10.3,
+          "after": 11.33
+        },
+        {
+          "key": 2601,
+          "column": "spawnInterval",
+          "before": 0.95,
+          "after": 0.25
+        },
+        {
+          "key": 2601,
+          "column": "healthScale",
+          "before": 1.908,
+          "after": 0.6
+        },
+        {
+          "key": 2601,
+          "column": "bossHealthScale",
+          "before": 1.908,
+          "after": 2.0988
+        },
+        {
+          "key": 2602,
+          "column": "spawnInterval",
+          "before": 0.9,
+          "after": 0.25
+        },
+        {
+          "key": 2602,
+          "column": "healthScale",
+          "before": 2.12,
+          "after": 0.6276
+        },
+        {
+          "key": 2602,
+          "column": "bossHealthScale",
+          "before": 2.12,
+          "after": 2.332
+        },
+        {
+          "key": 2603,
+          "column": "spawnInterval",
+          "before": 0.85,
+          "after": 0.25
+        },
+        {
+          "key": 2603,
+          "column": "healthScale",
+          "before": 2.438,
+          "after": 0.7102
+        },
+        {
+          "key": 2603,
+          "column": "bossHealthScale",
+          "before": 2.438,
+          "after": 2.6818
+        },
+        {
+          "key": 2604,
+          "column": "spawnInterval",
+          "before": 0.8,
+          "after": 0.25
+        },
+        {
+          "key": 2604,
+          "column": "healthScale",
+          "before": 2.756,
+          "after": 0.848
+        },
+        {
+          "key": 2604,
+          "column": "bossHealthScale",
+          "before": 2.756,
+          "after": 3.0316
+        },
+        {
+          "key": 2605,
+          "column": "spawnInterval",
+          "before": 0.85,
+          "after": 0.25
+        },
+        {
+          "key": 2605,
+          "column": "healthScale",
+          "before": 3.074,
+          "after": 1.0408
+        },
+        {
+          "key": 2605,
+          "column": "bossHealthScale",
+          "before": 2.65,
+          "after": 2.915
+        },
+        {
+          "key": 2606,
+          "column": "spawnInterval",
+          "before": 0.75,
+          "after": 0.25
+        },
+        {
+          "key": 2606,
+          "column": "healthScale",
+          "before": 3.498,
+          "after": 1.2888
+        },
+        {
+          "key": 2606,
+          "column": "bossHealthScale",
+          "before": 3.498,
+          "after": 3.8478
+        },
+        {
+          "key": 2607,
+          "column": "spawnInterval",
+          "before": 0.7,
+          "after": 0.25
+        },
+        {
+          "key": 2607,
+          "column": "healthScale",
+          "before": 3.922,
+          "after": 1.5918
+        },
+        {
+          "key": 2607,
+          "column": "bossHealthScale",
+          "before": 3.922,
+          "after": 4.3142
+        },
+        {
+          "key": 2608,
+          "column": "spawnInterval",
+          "before": 0.65,
+          "after": 0.25
+        },
+        {
+          "key": 2608,
+          "column": "healthScale",
+          "before": 4.346,
+          "after": 1.95
+        },
+        {
+          "key": 2608,
+          "column": "bossHealthScale",
+          "before": 4.346,
+          "after": 4.7806
+        },
+        {
+          "key": 2609,
+          "column": "spawnInterval",
+          "before": 0.7,
+          "after": 0.25
+        },
+        {
+          "key": 2609,
+          "column": "healthScale",
+          "before": 4.77,
+          "after": 2.3633
+        },
+        {
+          "key": 2609,
+          "column": "bossHealthScale",
+          "before": 4.77,
+          "after": 5.247
+        },
+        {
+          "key": 2610,
+          "column": "spawnInterval",
+          "before": 0.8,
+          "after": 0.25
+        },
+        {
+          "key": 2610,
+          "column": "healthScale",
+          "before": 5.3,
+          "after": 2.8316
+        },
+        {
+          "key": 2610,
+          "column": "bossHealthScale",
+          "before": 6.36,
+          "after": 6.996
+        },
+        {
+          "key": 2611,
+          "column": "spawnInterval",
+          "before": 0.65,
+          "after": 0.25
+        },
+        {
+          "key": 2611,
+          "column": "healthScale",
+          "before": 5.936,
+          "after": 3.3551
+        },
+        {
+          "key": 2611,
+          "column": "bossHealthScale",
+          "before": 5.936,
+          "after": 6.5296
+        },
+        {
+          "key": 2612,
+          "column": "spawnInterval",
+          "before": 0.6,
+          "after": 0.25
+        },
+        {
+          "key": 2612,
+          "column": "healthScale",
+          "before": 6.572,
+          "after": 3.9337
+        },
+        {
+          "key": 2612,
+          "column": "bossHealthScale",
+          "before": 6.572,
+          "after": 7.2292
+        },
+        {
+          "key": 2613,
+          "column": "spawnInterval",
+          "before": 0.65,
+          "after": 0.25
+        },
+        {
+          "key": 2613,
+          "column": "healthScale",
+          "before": 7.314,
+          "after": 4.5673
+        },
+        {
+          "key": 2613,
+          "column": "bossHealthScale",
+          "before": 7.314,
+          "after": 8.0454
+        },
+        {
+          "key": 2614,
+          "column": "spawnInterval",
+          "before": 0.55,
+          "after": 0.25
+        },
+        {
+          "key": 2614,
+          "column": "healthScale",
+          "before": 8.056,
+          "after": 5.2561
+        },
+        {
+          "key": 2614,
+          "column": "bossHealthScale",
+          "before": 8.056,
+          "after": 8.8616
+        },
+        {
+          "key": 2615,
+          "column": "spawnInterval",
+          "before": 0.65,
+          "after": 0.25
+        },
+        {
+          "key": 2615,
+          "column": "healthScale",
+          "before": 9.01,
+          "after": 6
+        },
+        {
+          "key": 2615,
+          "column": "bossHealthScale",
+          "before": 10.6,
+          "after": 11.66
+        }
+      ]
+    },
+    {
+      "table": "WaveGroup",
+      "changes": [
+        {
+          "key": 355,
+          "column": "count",
+          "before": 10,
+          "after": 375
+        },
+        {
+          "key": 356,
+          "column": "count",
+          "before": 2,
+          "after": 75
+        },
+        {
+          "key": 357,
+          "column": "count",
+          "before": 8,
+          "after": 340
+        },
+        {
+          "key": 358,
+          "column": "count",
+          "before": 3,
+          "after": 128
+        },
+        {
+          "key": 359,
+          "column": "count",
+          "before": 8,
+          "after": 278
+        },
+        {
+          "key": 360,
+          "column": "count",
+          "before": 4,
+          "after": 139
+        },
+        {
+          "key": 361,
+          "column": "count",
+          "before": 2,
+          "after": 69
+        },
+        {
+          "key": 362,
+          "column": "count",
+          "before": 10,
+          "after": 280
+        },
+        {
+          "key": 363,
+          "column": "count",
+          "before": 5,
+          "after": 140
+        },
+        {
+          "key": 364,
+          "column": "count",
+          "before": 3,
+          "after": 84
+        },
+        {
+          "key": 365,
+          "column": "count",
+          "before": 8,
+          "after": 312
+        },
+        {
+          "key": 366,
+          "column": "enemy",
+          "before": "shield",
+          "after": "postmaster"
+        },
+        {
+          "key": 366,
+          "column": "count",
+          "before": 4,
+          "after": 1
+        },
+        {
+          "key": 367,
+          "column": "enemy",
+          "before": "postmaster",
+          "after": "normal"
+        },
+        {
+          "key": 367,
+          "column": "count",
+          "before": 1,
+          "after": 35
+        },
+        {
+          "key": 368,
+          "column": "count",
+          "before": 8,
+          "after": 270
+        },
+        {
+          "key": 369,
+          "column": "count",
+          "before": 4,
+          "after": 135
+        },
+        {
+          "key": 370,
+          "column": "count",
+          "before": 4,
+          "after": 135
+        },
+        {
+          "key": 371,
+          "column": "count",
+          "before": 8,
+          "after": 318
+        },
+        {
+          "key": 372,
+          "column": "count",
+          "before": 6,
+          "after": 239
+        },
+        {
+          "key": 373,
+          "column": "count",
+          "before": 10,
+          "after": 319
+        },
+        {
+          "key": 374,
+          "column": "count",
+          "before": 6,
+          "after": 192
+        },
+        {
+          "key": 375,
+          "column": "count",
+          "before": 2,
+          "after": 64
+        },
+        {
+          "key": 376,
+          "column": "count",
+          "before": 6,
+          "after": 198
+        },
+        {
+          "key": 377,
+          "column": "count",
+          "before": 6,
+          "after": 198
+        },
+        {
+          "key": 378,
+          "column": "count",
+          "before": 6,
+          "after": 198
+        },
+        {
+          "key": 379,
+          "column": "count",
+          "before": 8,
+          "after": 349
+        },
+        {
+          "key": 380,
+          "column": "count",
+          "before": 6,
+          "after": 17
+        },
+        {
+          "key": 382,
+          "column": "count",
+          "before": 8,
+          "after": 296
+        },
+        {
+          "key": 383,
+          "column": "count",
+          "before": 6,
+          "after": 222
+        },
+        {
+          "key": 384,
+          "column": "count",
+          "before": 3,
+          "after": 111
+        },
+        {
+          "key": 385,
+          "column": "count",
+          "before": 12,
+          "after": 298
+        },
+        {
+          "key": 386,
+          "column": "count",
+          "before": 8,
+          "after": 199
+        },
+        {
+          "key": 387,
+          "column": "count",
+          "before": 6,
+          "after": 149
+        },
+        {
+          "key": 388,
+          "column": "count",
+          "before": 6,
+          "after": 221
+        },
+        {
+          "key": 389,
+          "column": "count",
+          "before": 8,
+          "after": 295
+        },
+        {
+          "key": 390,
+          "column": "count",
+          "before": 4,
+          "after": 148
+        },
+        {
+          "key": 391,
+          "column": "count",
+          "before": 10,
+          "after": 284
+        },
+        {
+          "key": 392,
+          "column": "count",
+          "before": 10,
+          "after": 284
+        },
+        {
+          "key": 393,
+          "column": "count",
+          "before": 4,
+          "after": 114
+        },
+        {
+          "key": 394,
+          "column": "count",
+          "before": 10,
+          "after": 292
+        },
+        {
+          "key": 395,
+          "column": "count",
+          "before": 8,
+          "after": 128
+        },
+        {
+          "key": 396,
+          "column": "enemy",
+          "before": "runner",
+          "after": "clock"
+        },
+        {
+          "key": 396,
+          "column": "count",
+          "before": 6,
+          "after": 1
+        },
+        {
+          "key": 397,
+          "column": "enemy",
+          "before": "clock",
+          "after": "shield"
+        },
+        {
+          "key": 397,
+          "column": "count",
+          "before": 1,
+          "after": 105
+        },
+        {
+          "key": 398,
+          "column": "count",
+          "before": 5,
+          "after": 188
+        },
+        {
+          "key": 399,
+          "column": "count",
+          "before": 7,
+          "after": 263
+        },
+        {
+          "key": 400,
+          "column": "count",
+          "before": 4,
+          "after": 170
+        },
+        {
+          "key": 401,
+          "column": "count",
+          "before": 4,
+          "after": 170
+        },
+        {
+          "key": 402,
+          "column": "count",
+          "before": 3,
+          "after": 128
+        },
+        {
+          "key": 403,
+          "column": "count",
+          "before": 4,
+          "after": 139
+        },
+        {
+          "key": 404,
+          "column": "count",
+          "before": 8,
+          "after": 278
+        },
+        {
+          "key": 405,
+          "column": "count",
+          "before": 2,
+          "after": 69
+        },
+        {
+          "key": 406,
+          "column": "count",
+          "before": 5,
+          "after": 140
+        },
+        {
+          "key": 407,
+          "column": "count",
+          "before": 10,
+          "after": 280
+        },
+        {
+          "key": 408,
+          "column": "count",
+          "before": 3,
+          "after": 84
+        },
+        {
+          "key": 409,
+          "column": "count",
+          "before": 4,
+          "after": 174
+        },
+        {
+          "key": 410,
+          "column": "count",
+          "before": 4,
+          "after": 139
+        },
+        {
+          "key": 411,
+          "column": "enemy",
+          "before": "shield",
+          "after": "postmaster"
+        },
+        {
+          "key": 411,
+          "column": "count",
+          "before": 4,
+          "after": 1
+        },
+        {
+          "key": 412,
+          "column": "enemy",
+          "before": "postmaster",
+          "after": "swift"
+        },
+        {
+          "key": 412,
+          "column": "count",
+          "before": 1,
+          "after": 35
+        },
+        {
+          "key": 413,
+          "column": "count",
+          "before": 4,
+          "after": 135
+        },
+        {
+          "key": 414,
+          "column": "count",
+          "before": 8,
+          "after": 270
+        },
+        {
+          "key": 415,
+          "column": "count",
+          "before": 4,
+          "after": 135
+        },
+        {
+          "key": 416,
+          "column": "count",
+          "before": 8,
+          "after": 318
+        },
+        {
+          "key": 417,
+          "column": "count",
+          "before": 6,
+          "after": 239
+        },
+        {
+          "key": 418,
+          "column": "count",
+          "before": 5,
+          "after": 160
+        },
+        {
+          "key": 419,
+          "column": "count",
+          "before": 5,
+          "after": 160
+        },
+        {
+          "key": 420,
+          "column": "count",
+          "before": 6,
+          "after": 192
+        },
+        {
+          "key": 421,
+          "column": "count",
+          "before": 2,
+          "after": 64
+        },
+        {
+          "key": 422,
+          "column": "count",
+          "before": 9,
+          "after": 297
+        },
+        {
+          "key": 423,
+          "column": "count",
+          "before": 6,
+          "after": 198
+        },
+        {
+          "key": 424,
+          "column": "count",
+          "before": 3,
+          "after": 99
+        },
+        {
+          "key": 425,
+          "column": "count",
+          "before": 8,
+          "after": 349
+        },
+        {
+          "key": 426,
+          "column": "count",
+          "before": 6,
+          "after": 17
+        },
+        {
+          "key": 428,
+          "column": "count",
+          "before": 8,
+          "after": 296
+        },
+        {
+          "key": 429,
+          "column": "count",
+          "before": 6,
+          "after": 222
+        },
+        {
+          "key": 430,
+          "column": "count",
+          "before": 3,
+          "after": 111
+        },
+        {
+          "key": 431,
+          "column": "count",
+          "before": 6,
+          "after": 149
+        },
+        {
+          "key": 432,
+          "column": "count",
+          "before": 6,
+          "after": 149
+        },
+        {
+          "key": 433,
+          "column": "count",
+          "before": 8,
+          "after": 199
+        },
+        {
+          "key": 434,
+          "column": "count",
+          "before": 6,
+          "after": 149
+        },
+        {
+          "key": 435,
+          "column": "count",
+          "before": 6,
+          "after": 221
+        },
+        {
+          "key": 436,
+          "column": "count",
+          "before": 8,
+          "after": 295
+        },
+        {
+          "key": 437,
+          "column": "count",
+          "before": 4,
+          "after": 148
+        },
+        {
+          "key": 438,
+          "column": "count",
+          "before": 10,
+          "after": 284
+        },
+        {
+          "key": 439,
+          "column": "count",
+          "before": 10,
+          "after": 284
+        },
+        {
+          "key": 440,
+          "column": "count",
+          "before": 4,
+          "after": 114
+        },
+        {
+          "key": 441,
+          "column": "count",
+          "before": 5,
+          "after": 146
+        },
+        {
+          "key": 442,
+          "column": "count",
+          "before": 11,
+          "after": 274
+        },
+        {
+          "key": 443,
+          "column": "enemy",
+          "before": "shield",
+          "after": "clock"
+        },
+        {
+          "key": 443,
+          "column": "count",
+          "before": 8,
+          "after": 1
+        },
+        {
+          "key": 444,
+          "column": "enemy",
+          "before": "clock",
+          "after": "runner"
+        },
+        {
+          "key": 444,
+          "column": "count",
+          "before": 1,
+          "after": 47
+        },
+        {
+          "key": 445,
+          "column": "count",
+          "before": 10,
+          "after": 375
+        },
+        {
+          "key": 446,
+          "column": "count",
+          "before": 2,
+          "after": 75
+        },
+        {
+          "key": 447,
+          "column": "count",
+          "before": 8,
+          "after": 340
+        },
+        {
+          "key": 448,
+          "column": "count",
+          "before": 3,
+          "after": 128
+        },
+        {
+          "key": 449,
+          "column": "count",
+          "before": 8,
+          "after": 278
+        },
+        {
+          "key": 450,
+          "column": "count",
+          "before": 4,
+          "after": 139
+        },
+        {
+          "key": 451,
+          "column": "count",
+          "before": 2,
+          "after": 69
+        },
+        {
+          "key": 452,
+          "column": "count",
+          "before": 10,
+          "after": 280
+        },
+        {
+          "key": 453,
+          "column": "count",
+          "before": 5,
+          "after": 140
+        },
+        {
+          "key": 454,
+          "column": "count",
+          "before": 3,
+          "after": 84
+        },
+        {
+          "key": 455,
+          "column": "count",
+          "before": 8,
+          "after": 312
+        },
+        {
+          "key": 456,
+          "column": "enemy",
+          "before": "shield",
+          "after": "chef"
+        },
+        {
+          "key": 456,
+          "column": "count",
+          "before": 4,
+          "after": 1
+        },
+        {
+          "key": 457,
+          "column": "enemy",
+          "before": "chef",
+          "after": "normal"
+        },
+        {
+          "key": 457,
+          "column": "count",
+          "before": 1,
+          "after": 35
+        },
+        {
+          "key": 458,
+          "column": "count",
+          "before": 12,
+          "after": 404
+        },
+        {
+          "key": 459,
+          "column": "count",
+          "before": 4,
+          "after": 135
+        },
+        {
+          "key": 460,
+          "column": "count",
+          "before": 8,
+          "after": 318
+        },
+        {
+          "key": 461,
+          "column": "count",
+          "before": 6,
+          "after": 239
+        },
+        {
+          "key": 462,
+          "column": "count",
+          "before": 16,
+          "after": 511
+        },
+        {
+          "key": 463,
+          "column": "count",
+          "before": 2,
+          "after": 64
+        },
+        {
+          "key": 464,
+          "column": "count",
+          "before": 6,
+          "after": 198
+        },
+        {
+          "key": 465,
+          "column": "count",
+          "before": 6,
+          "after": 198
+        },
+        {
+          "key": 466,
+          "column": "count",
+          "before": 6,
+          "after": 198
+        },
+        {
+          "key": 467,
+          "column": "count",
+          "before": 8,
+          "after": 349
+        },
+        {
+          "key": 468,
+          "column": "count",
+          "before": 6,
+          "after": 17
+        },
+        {
+          "key": 470,
+          "column": "count",
+          "before": 8,
+          "after": 296
+        },
+        {
+          "key": 471,
+          "column": "count",
+          "before": 6,
+          "after": 222
+        },
+        {
+          "key": 472,
+          "column": "count",
+          "before": 3,
+          "after": 111
+        },
+        {
+          "key": 473,
+          "column": "count",
+          "before": 12,
+          "after": 298
+        },
+        {
+          "key": 474,
+          "column": "count",
+          "before": 8,
+          "after": 199
+        },
+        {
+          "key": 475,
+          "column": "count",
+          "before": 6,
+          "after": 149
+        },
+        {
+          "key": 476,
+          "column": "count",
+          "before": 6,
+          "after": 221
+        },
+        {
+          "key": 477,
+          "column": "count",
+          "before": 8,
+          "after": 295
+        },
+        {
+          "key": 478,
+          "column": "count",
+          "before": 4,
+          "after": 148
+        },
+        {
+          "key": 479,
+          "column": "count",
+          "before": 10,
+          "after": 284
+        },
+        {
+          "key": 480,
+          "column": "count",
+          "before": 10,
+          "after": 284
+        },
+        {
+          "key": 481,
+          "column": "count",
+          "before": 4,
+          "after": 114
+        },
+        {
+          "key": 482,
+          "column": "count",
+          "before": 10,
+          "after": 292
+        },
+        {
+          "key": 483,
+          "column": "count",
+          "before": 8,
+          "after": 128
+        },
+        {
+          "key": 484,
+          "column": "enemy",
+          "before": "runner",
+          "after": "clock"
+        },
+        {
+          "key": 484,
+          "column": "count",
+          "before": 6,
+          "after": 1
+        },
+        {
+          "key": 485,
+          "column": "enemy",
+          "before": "clock",
+          "after": "shield"
+        },
+        {
+          "key": 485,
+          "column": "count",
+          "before": 1,
+          "after": 105
+        },
+        {
+          "key": 486,
+          "column": "count",
+          "before": 12,
+          "after": 360
+        },
+        {
+          "key": 487,
+          "column": "count",
+          "before": 3,
+          "after": 90
+        },
+        {
+          "key": 488,
+          "column": "count",
+          "before": 10,
+          "after": 360
+        },
+        {
+          "key": 489,
+          "column": "count",
+          "before": 3,
+          "after": 108
+        },
+        {
+          "key": 490,
+          "column": "count",
+          "before": 10,
+          "after": 270
+        },
+        {
+          "key": 491,
+          "column": "count",
+          "before": 5,
+          "after": 135
+        },
+        {
+          "key": 492,
+          "column": "count",
+          "before": 3,
+          "after": 81
+        },
+        {
+          "key": 493,
+          "column": "count",
+          "before": 12,
+          "after": 288
+        },
+        {
+          "key": 494,
+          "column": "count",
+          "before": 6,
+          "after": 144
+        },
+        {
+          "key": 495,
+          "column": "count",
+          "before": 3,
+          "after": 72
+        },
+        {
+          "key": 496,
+          "column": "count",
+          "before": 10,
+          "after": 312
+        },
+        {
+          "key": 497,
+          "column": "enemy",
+          "before": "shield",
+          "after": "chef"
+        },
+        {
+          "key": 497,
+          "column": "count",
+          "before": 4,
+          "after": 1
+        },
+        {
+          "key": 498,
+          "column": "enemy",
+          "before": "chef",
+          "after": "normal"
+        },
+        {
+          "key": 498,
+          "column": "count",
+          "before": 1,
+          "after": 60
+        },
+        {
+          "key": 499,
+          "column": "count",
+          "before": 10,
+          "after": 284
+        },
+        {
+          "key": 500,
+          "column": "count",
+          "before": 4,
+          "after": 113
+        },
+        {
+          "key": 501,
+          "column": "count",
+          "before": 5,
+          "after": 142
+        },
+        {
+          "key": 502,
+          "column": "count",
+          "before": 10,
+          "after": 348
+        },
+        {
+          "key": 503,
+          "column": "count",
+          "before": 6,
+          "after": 209
+        },
+        {
+          "key": 504,
+          "column": "count",
+          "before": 12,
+          "after": 329
+        },
+        {
+          "key": 505,
+          "column": "count",
+          "before": 9,
+          "after": 246
+        },
+        {
+          "key": 506,
+          "column": "count",
+          "before": 6,
+          "after": 187
+        },
+        {
+          "key": 507,
+          "column": "count",
+          "before": 6,
+          "after": 187
+        },
+        {
+          "key": 508,
+          "column": "count",
+          "before": 7,
+          "after": 218
+        },
+        {
+          "key": 509,
+          "column": "count",
+          "before": 10,
+          "after": 366
+        },
+        {
+          "key": 510,
+          "column": "enemy",
+          "before": "shield",
+          "after": "lantern"
+        },
+        {
+          "key": 510,
+          "column": "count",
+          "before": 6,
+          "after": 1
+        },
+        {
+          "key": 511,
+          "column": "enemy",
+          "before": "lantern",
+          "after": "swift"
+        },
+        {
+          "key": 511,
+          "column": "count",
+          "before": 1,
+          "after": 16
+        },
+        {
+          "key": 512,
+          "column": "count",
+          "before": 13,
+          "after": 430
+        },
+        {
+          "key": 513,
+          "column": "count",
+          "before": 6,
+          "after": 199
+        },
+        {
+          "key": 514,
+          "column": "count",
+          "before": 14,
+          "after": 301
+        },
+        {
+          "key": 515,
+          "column": "count",
+          "before": 10,
+          "after": 215
+        },
+        {
+          "key": 516,
+          "column": "count",
+          "before": 6,
+          "after": 129
+        },
+        {
+          "key": 517,
+          "column": "count",
+          "before": 6,
+          "after": 221
+        },
+        {
+          "key": 518,
+          "column": "count",
+          "before": 8,
+          "after": 295
+        },
+        {
+          "key": 519,
+          "column": "count",
+          "before": 4,
+          "after": 148
+        },
+        {
+          "key": 520,
+          "column": "count",
+          "before": 16,
+          "after": 390
+        },
+        {
+          "key": 521,
+          "column": "count",
+          "before": 12,
+          "after": 292
+        },
+        {
+          "key": 522,
+          "column": "count",
+          "before": 12,
+          "after": 323
+        },
+        {
+          "key": 523,
+          "column": "count",
+          "before": 8,
+          "after": 97
+        },
+        {
+          "key": 524,
+          "column": "enemy",
+          "before": "runner",
+          "after": "clock"
+        },
+        {
+          "key": 524,
+          "column": "count",
+          "before": 6,
+          "after": 1
+        },
+        {
+          "key": 525,
+          "column": "enemy",
+          "before": "clock",
+          "after": "shield"
+        },
+        {
+          "key": 525,
+          "column": "count",
+          "before": 1,
+          "after": 118
+        },
+        {
+          "key": 526,
+          "column": "count",
+          "before": 11,
+          "after": 354
+        },
+        {
+          "key": 527,
+          "column": "count",
+          "before": 3,
+          "after": 96
+        },
+        {
+          "key": 528,
+          "column": "count",
+          "before": 9,
+          "after": 351
+        },
+        {
+          "key": 529,
+          "column": "count",
+          "before": 3,
+          "after": 117
+        },
+        {
+          "key": 530,
+          "column": "count",
+          "before": 9,
+          "after": 273
+        },
+        {
+          "key": 531,
+          "column": "count",
+          "before": 5,
+          "after": 152
+        },
+        {
+          "key": 532,
+          "column": "count",
+          "before": 2,
+          "after": 61
+        },
+        {
+          "key": 533,
+          "column": "count",
+          "before": 11,
+          "after": 277
+        },
+        {
+          "key": 534,
+          "column": "count",
+          "before": 6,
+          "after": 151
+        },
+        {
+          "key": 535,
+          "column": "count",
+          "before": 3,
+          "after": 76
+        },
+        {
+          "key": 536,
+          "column": "count",
+          "before": 9,
+          "after": 312
+        },
+        {
+          "key": 537,
+          "column": "enemy",
+          "before": "shield",
+          "after": "postmaster"
+        },
+        {
+          "key": 537,
+          "column": "count",
+          "before": 4,
+          "after": 1
+        },
+        {
+          "key": 538,
+          "column": "enemy",
+          "before": "postmaster",
+          "after": "normal"
+        },
+        {
+          "key": 538,
+          "column": "count",
+          "before": 1,
+          "after": 49
+        },
+        {
+          "key": 539,
+          "column": "count",
+          "before": 9,
+          "after": 270
+        },
+        {
+          "key": 540,
+          "column": "count",
+          "before": 5,
+          "after": 150
+        },
+        {
+          "key": 541,
+          "column": "count",
+          "before": 4,
+          "after": 120
+        },
+        {
+          "key": 542,
+          "column": "count",
+          "before": 9,
+          "after": 334
+        },
+        {
+          "key": 543,
+          "column": "count",
+          "before": 6,
+          "after": 223
+        },
+        {
+          "key": 544,
+          "column": "count",
+          "before": 11,
+          "after": 333
+        },
+        {
+          "key": 545,
+          "column": "count",
+          "before": 6,
+          "after": 182
+        },
+        {
+          "key": 546,
+          "column": "count",
+          "before": 2,
+          "after": 61
+        },
+        {
+          "key": 547,
+          "column": "count",
+          "before": 7,
+          "after": 208
+        },
+        {
+          "key": 548,
+          "column": "count",
+          "before": 6,
+          "after": 178
+        },
+        {
+          "key": 549,
+          "column": "count",
+          "before": 7,
+          "after": 208
+        },
+        {
+          "key": 550,
+          "column": "count",
+          "before": 9,
+          "after": 366
+        },
+        {
+          "key": 551,
+          "column": "enemy",
+          "before": "shield",
+          "after": "lantern"
+        },
+        {
+          "key": 551,
+          "column": "count",
+          "before": 6,
+          "after": 1
+        },
+        {
+          "key": 552,
+          "column": "enemy",
+          "before": "lantern",
+          "after": "swift"
+        },
+        {
+          "key": 553,
+          "column": "count",
+          "before": 8,
+          "after": 280
+        },
+        {
+          "key": 554,
+          "column": "count",
+          "before": 7,
+          "after": 245
+        },
+        {
+          "key": 555,
+          "column": "count",
+          "before": 3,
+          "after": 105
+        },
+        {
+          "key": 556,
+          "column": "count",
+          "before": 13,
+          "after": 300
+        },
+        {
+          "key": 557,
+          "column": "count",
+          "before": 9,
+          "after": 208
+        },
+        {
+          "key": 558,
+          "column": "count",
+          "before": 6,
+          "after": 138
+        },
+        {
+          "key": 559,
+          "column": "count",
+          "before": 6,
+          "after": 210
+        },
+        {
+          "key": 560,
+          "column": "count",
+          "before": 9,
+          "after": 315
+        },
+        {
+          "key": 561,
+          "column": "count",
+          "before": 4,
+          "after": 140
+        },
+        {
+          "key": 562,
+          "column": "count",
+          "before": 10,
+          "after": 273
+        },
+        {
+          "key": 563,
+          "column": "count",
+          "before": 11,
+          "after": 300
+        },
+        {
+          "key": 564,
+          "column": "count",
+          "before": 4,
+          "after": 109
+        },
+        {
+          "key": 565,
+          "column": "count",
+          "before": 11,
+          "after": 296
+        },
+        {
+          "key": 566,
+          "column": "count",
+          "before": 8,
+          "after": 123
+        },
+        {
+          "key": 567,
+          "column": "enemy",
+          "before": "runner",
+          "after": "clock"
+        },
+        {
+          "key": 567,
+          "column": "count",
+          "before": 7,
+          "after": 1
+        },
+        {
+          "key": 568,
+          "column": "enemy",
+          "before": "clock",
+          "after": "shield"
+        },
+        {
+          "key": 568,
+          "column": "count",
+          "before": 1,
+          "after": 92
+        },
+        {
+          "key": 569,
+          "column": "count",
+          "before": 10,
+          "after": 375
+        },
+        {
+          "key": 570,
+          "column": "count",
+          "before": 2,
+          "after": 75
+        },
+        {
+          "key": 571,
+          "column": "count",
+          "before": 8,
+          "after": 340
+        },
+        {
+          "key": 572,
+          "column": "count",
+          "before": 3,
+          "after": 128
+        },
+        {
+          "key": 573,
+          "column": "count",
+          "before": 8,
+          "after": 278
+        },
+        {
+          "key": 574,
+          "column": "count",
+          "before": 4,
+          "after": 139
+        },
+        {
+          "key": 575,
+          "column": "count",
+          "before": 2,
+          "after": 69
+        },
+        {
+          "key": 576,
+          "column": "count",
+          "before": 10,
+          "after": 280
+        },
+        {
+          "key": 577,
+          "column": "count",
+          "before": 5,
+          "after": 140
+        },
+        {
+          "key": 578,
+          "column": "count",
+          "before": 3,
+          "after": 84
+        },
+        {
+          "key": 579,
+          "column": "count",
+          "before": 8,
+          "after": 312
+        },
+        {
+          "key": 580,
+          "column": "enemy",
+          "before": "shield",
+          "after": "chef"
+        },
+        {
+          "key": 580,
+          "column": "count",
+          "before": 4,
+          "after": 1
+        },
+        {
+          "key": 581,
+          "column": "enemy",
+          "before": "chef",
+          "after": "normal"
+        },
+        {
+          "key": 581,
+          "column": "count",
+          "before": 1,
+          "after": 35
+        },
+        {
+          "key": 582,
+          "column": "count",
+          "before": 6,
+          "after": 231
+        },
+        {
+          "key": 583,
+          "column": "count",
+          "before": 4,
+          "after": 154
+        },
+        {
+          "key": 584,
+          "column": "count",
+          "before": 4,
+          "after": 154
+        },
+        {
+          "key": 585,
+          "column": "count",
+          "before": 8,
+          "after": 318
+        },
+        {
+          "key": 586,
+          "column": "count",
+          "before": 6,
+          "after": 239
+        },
+        {
+          "key": 587,
+          "column": "count",
+          "before": 7,
+          "after": 268
+        },
+        {
+          "key": 588,
+          "column": "count",
+          "before": 6,
+          "after": 230
+        },
+        {
+          "key": 589,
+          "column": "count",
+          "before": 2,
+          "after": 77
+        },
+        {
+          "key": 590,
+          "column": "count",
+          "before": 6,
+          "after": 209
+        },
+        {
+          "key": 591,
+          "column": "count",
+          "before": 11,
+          "after": 384
+        },
+        {
+          "key": 592,
+          "column": "count",
+          "before": 8,
+          "after": 349
+        },
+        {
+          "key": 593,
+          "column": "count",
+          "before": 6,
+          "after": 17
+        },
+        {
+          "key": 595,
+          "column": "count",
+          "before": 8,
+          "after": 296
+        },
+        {
+          "key": 596,
+          "column": "count",
+          "before": 6,
+          "after": 222
+        },
+        {
+          "key": 597,
+          "column": "count",
+          "before": 3,
+          "after": 111
+        },
+        {
+          "key": 598,
+          "column": "count",
+          "before": 15,
+          "after": 421
+        },
+        {
+          "key": 599,
+          "column": "count",
+          "before": 8,
+          "after": 225
+        },
+        {
+          "key": 600,
+          "column": "count",
+          "before": 6,
+          "after": 221
+        },
+        {
+          "key": 601,
+          "column": "count",
+          "before": 8,
+          "after": 295
+        },
+        {
+          "key": 602,
+          "column": "count",
+          "before": 4,
+          "after": 148
+        },
+        {
+          "key": 603,
+          "column": "count",
+          "before": 10,
+          "after": 284
+        },
+        {
+          "key": 604,
+          "column": "count",
+          "before": 10,
+          "after": 284
+        },
+        {
+          "key": 605,
+          "column": "count",
+          "before": 4,
+          "after": 114
+        },
+        {
+          "key": 606,
+          "column": "count",
+          "before": 15,
+          "after": 420
+        },
+        {
+          "key": 607,
+          "column": "enemy",
+          "before": "runner",
+          "after": "clock"
+        },
+        {
+          "key": 607,
+          "column": "count",
+          "before": 6,
+          "after": 1
+        },
+        {
+          "key": 608,
+          "column": "enemy",
+          "before": "clock",
+          "after": "shield"
+        },
+        {
+          "key": 608,
+          "column": "count",
+          "before": 1,
+          "after": 80
+        },
+        {
+          "key": 609,
+          "column": "id",
+          "before": null,
+          "after": 609
+        },
+        {
+          "key": 609,
+          "column": "waveId",
+          "before": null,
+          "after": 2105
+        },
+        {
+          "key": 609,
+          "column": "order",
+          "before": null,
+          "after": 4
+        },
+        {
+          "key": 609,
+          "column": "enemy",
+          "before": null,
+          "after": "shield"
+        },
+        {
+          "key": 609,
+          "column": "count",
+          "before": null,
+          "after": 174
+        },
+        {
+          "key": 610,
+          "column": "id",
+          "before": null,
+          "after": 610
+        },
+        {
+          "key": 610,
+          "column": "waveId",
+          "before": null,
+          "after": 2110
+        },
+        {
+          "key": 610,
+          "column": "order",
+          "before": null,
+          "after": 4
+        },
+        {
+          "key": 610,
+          "column": "enemy",
+          "before": null,
+          "after": "shield"
+        },
+        {
+          "key": 610,
+          "column": "count",
+          "before": null,
+          "after": 245
+        },
+        {
+          "key": 611,
+          "column": "id",
+          "before": null,
+          "after": 611
+        },
+        {
+          "key": 611,
+          "column": "waveId",
+          "before": null,
+          "after": 2115
+        },
+        {
+          "key": 611,
+          "column": "order",
+          "before": null,
+          "after": 5
+        },
+        {
+          "key": 611,
+          "column": "enemy",
+          "before": null,
+          "after": "runner"
+        },
+        {
+          "key": 611,
+          "column": "count",
+          "before": null,
+          "after": 175
+        },
+        {
+          "key": 612,
+          "column": "id",
+          "before": null,
+          "after": 612
+        },
+        {
+          "key": 612,
+          "column": "waveId",
+          "before": null,
+          "after": 2205
+        },
+        {
+          "key": 612,
+          "column": "order",
+          "before": null,
+          "after": 5
+        },
+        {
+          "key": 612,
+          "column": "enemy",
+          "before": null,
+          "after": "shield"
+        },
+        {
+          "key": 612,
+          "column": "count",
+          "before": null,
+          "after": 174
+        },
+        {
+          "key": 613,
+          "column": "id",
+          "before": null,
+          "after": 613
+        },
+        {
+          "key": 613,
+          "column": "waveId",
+          "before": null,
+          "after": 2210
+        },
+        {
+          "key": 613,
+          "column": "order",
+          "before": null,
+          "after": 4
+        },
+        {
+          "key": 613,
+          "column": "enemy",
+          "before": null,
+          "after": "shield"
+        },
+        {
+          "key": 613,
+          "column": "count",
+          "before": null,
+          "after": 245
+        },
+        {
+          "key": 614,
+          "column": "id",
+          "before": null,
+          "after": 614
+        },
+        {
+          "key": 614,
+          "column": "waveId",
+          "before": null,
+          "after": 2215
+        },
+        {
+          "key": 614,
+          "column": "order",
+          "before": null,
+          "after": 5
+        },
+        {
+          "key": 614,
+          "column": "enemy",
+          "before": null,
+          "after": "shield"
+        },
+        {
+          "key": 614,
+          "column": "count",
+          "before": null,
+          "after": 233
+        },
+        {
+          "key": 615,
+          "column": "id",
+          "before": null,
+          "after": 615
+        },
+        {
+          "key": 615,
+          "column": "waveId",
+          "before": null,
+          "after": 2305
+        },
+        {
+          "key": 615,
+          "column": "order",
+          "before": null,
+          "after": 4
+        },
+        {
+          "key": 615,
+          "column": "enemy",
+          "before": null,
+          "after": "shield"
+        },
+        {
+          "key": 615,
+          "column": "count",
+          "before": null,
+          "after": 174
+        },
+        {
+          "key": 616,
+          "column": "id",
+          "before": null,
+          "after": 616
+        },
+        {
+          "key": 616,
+          "column": "waveId",
+          "before": null,
+          "after": 2310
+        },
+        {
+          "key": 616,
+          "column": "order",
+          "before": null,
+          "after": 4
+        },
+        {
+          "key": 616,
+          "column": "enemy",
+          "before": null,
+          "after": "shield"
+        },
+        {
+          "key": 616,
+          "column": "count",
+          "before": null,
+          "after": 245
+        },
+        {
+          "key": 617,
+          "column": "id",
+          "before": null,
+          "after": 617
+        },
+        {
+          "key": 617,
+          "column": "waveId",
+          "before": null,
+          "after": 2315
+        },
+        {
+          "key": 617,
+          "column": "order",
+          "before": null,
+          "after": 5
+        },
+        {
+          "key": 617,
+          "column": "enemy",
+          "before": null,
+          "after": "runner"
+        },
+        {
+          "key": 617,
+          "column": "count",
+          "before": null,
+          "after": 175
+        },
+        {
+          "key": 618,
+          "column": "id",
+          "before": null,
+          "after": 618
+        },
+        {
+          "key": 618,
+          "column": "waveId",
+          "before": null,
+          "after": 2405
+        },
+        {
+          "key": 618,
+          "column": "order",
+          "before": null,
+          "after": 4
+        },
+        {
+          "key": 618,
+          "column": "enemy",
+          "before": null,
+          "after": "shield"
+        },
+        {
+          "key": 618,
+          "column": "count",
+          "before": null,
+          "after": 149
+        },
+        {
+          "key": 619,
+          "column": "id",
+          "before": null,
+          "after": 619
+        },
+        {
+          "key": 619,
+          "column": "waveId",
+          "before": null,
+          "after": 2410
+        },
+        {
+          "key": 619,
+          "column": "order",
+          "before": null,
+          "after": 4
+        },
+        {
+          "key": 619,
+          "column": "enemy",
+          "before": null,
+          "after": "shield"
+        },
+        {
+          "key": 619,
+          "column": "count",
+          "before": null,
+          "after": 229
+        },
+        {
+          "key": 620,
+          "column": "id",
+          "before": null,
+          "after": 620
+        },
+        {
+          "key": 620,
+          "column": "waveId",
+          "before": null,
+          "after": 2415
+        },
+        {
+          "key": 620,
+          "column": "order",
+          "before": null,
+          "after": 5
+        },
+        {
+          "key": 620,
+          "column": "enemy",
+          "before": null,
+          "after": "runner"
+        },
+        {
+          "key": 620,
+          "column": "count",
+          "before": null,
+          "after": 162
+        },
+        {
+          "key": 621,
+          "column": "id",
+          "before": null,
+          "after": 621
+        },
+        {
+          "key": 621,
+          "column": "waveId",
+          "before": null,
+          "after": 2505
+        },
+        {
+          "key": 621,
+          "column": "order",
+          "before": null,
+          "after": 4
+        },
+        {
+          "key": 621,
+          "column": "enemy",
+          "before": null,
+          "after": "shield"
+        },
+        {
+          "key": 621,
+          "column": "count",
+          "before": null,
+          "after": 160
+        },
+        {
+          "key": 622,
+          "column": "id",
+          "before": null,
+          "after": 622
+        },
+        {
+          "key": 622,
+          "column": "waveId",
+          "before": null,
+          "after": 2510
+        },
+        {
+          "key": 622,
+          "column": "order",
+          "before": null,
+          "after": 4
+        },
+        {
+          "key": 622,
+          "column": "enemy",
+          "before": null,
+          "after": "shield"
+        },
+        {
+          "key": 622,
+          "column": "count",
+          "before": null,
+          "after": 244
+        },
+        {
+          "key": 623,
+          "column": "id",
+          "before": null,
+          "after": 623
+        },
+        {
+          "key": 623,
+          "column": "waveId",
+          "before": null,
+          "after": 2515
+        },
+        {
+          "key": 623,
+          "column": "order",
+          "before": null,
+          "after": 5
+        },
+        {
+          "key": 623,
+          "column": "enemy",
+          "before": null,
+          "after": "runner"
+        },
+        {
+          "key": 623,
+          "column": "count",
+          "before": null,
+          "after": 188
+        },
+        {
+          "key": 624,
+          "column": "id",
+          "before": null,
+          "after": 624
+        },
+        {
+          "key": 624,
+          "column": "waveId",
+          "before": null,
+          "after": 2605
+        },
+        {
+          "key": 624,
+          "column": "order",
+          "before": null,
+          "after": 4
+        },
+        {
+          "key": 624,
+          "column": "enemy",
+          "before": null,
+          "after": "shield"
+        },
+        {
+          "key": 624,
+          "column": "count",
+          "before": null,
+          "after": 174
+        },
+        {
+          "key": 625,
+          "column": "id",
+          "before": null,
+          "after": 625
+        },
+        {
+          "key": 625,
+          "column": "waveId",
+          "before": null,
+          "after": 2610
+        },
+        {
+          "key": 625,
+          "column": "order",
+          "before": null,
+          "after": 4
+        },
+        {
+          "key": 625,
+          "column": "enemy",
+          "before": null,
+          "after": "shield"
+        },
+        {
+          "key": 625,
+          "column": "count",
+          "before": null,
+          "after": 245
+        },
+        {
+          "key": 626,
+          "column": "id",
+          "before": null,
+          "after": 626
+        },
+        {
+          "key": 626,
+          "column": "waveId",
+          "before": null,
+          "after": 2615
+        },
+        {
+          "key": 626,
+          "column": "order",
+          "before": null,
+          "after": 4
+        },
+        {
+          "key": 626,
+          "column": "enemy",
+          "before": null,
+          "after": "runner"
+        },
+        {
+          "key": 626,
+          "column": "count",
+          "before": null,
+          "after": 200
+        }
+      ]
+    },
+    {
+      "table": "ChallengeRule",
+      "changes": [
+        {
+          "key": "编号",
+          "column": "killRewardRatio",
+          "before": null,
+          "after": "怪群击败收益折算"
+        },
+        {
+          "key": "编号",
+          "column": "bossSpeedRatio",
+          "before": null,
+          "after": "挑战首领移速比例"
+        },
+        {
+          "key": "client",
+          "column": "killRewardRatio",
+          "before": null,
+          "after": "client"
+        },
+        {
+          "key": "client",
+          "column": "bossSpeedRatio",
+          "before": null,
+          "after": "client"
+        },
+        {
+          "key": "int",
+          "column": "killRewardRatio",
+          "before": null,
+          "after": "float"
+        },
+        {
+          "key": "int",
+          "column": "bossSpeedRatio",
+          "before": null,
+          "after": "float"
+        },
+        {
+          "key": "编号",
+          "column": "killRewardRatio",
+          "before": null,
+          "after": "killRewardRatio"
+        },
+        {
+          "key": "编号",
+          "column": "bossSpeedRatio",
+          "before": null,
+          "after": "bossSpeedRatio"
+        },
+        {
+          "key": "id",
+          "column": "killRewardRatio",
+          "before": null,
+          "after": "killRewardRatio"
+        },
+        {
+          "key": "id",
+          "column": "bossSpeedRatio",
+          "before": null,
+          "after": "bossSpeedRatio"
+        },
+        {
+          "key": 1,
+          "column": "nextDelay",
+          "before": 4,
+          "after": 3
+        },
+        {
+          "key": 1,
+          "column": "minIntervalRatio",
+          "before": 0.4,
+          "after": 0.6
+        },
+        {
+          "key": 1,
+          "column": "killRewardRatio",
+          "before": null,
+          "after": 0.055
+        },
+        {
+          "key": 1,
+          "column": "bossSpeedRatio",
+          "before": null,
+          "after": 0.65
+        },
+        {
+          "key": 2,
+          "column": "nextDelay",
+          "before": 4,
+          "after": 3
+        },
+        {
+          "key": 2,
+          "column": "minIntervalRatio",
+          "before": 0.4,
+          "after": 0.6
+        },
+        {
+          "key": 2,
+          "column": "killRewardRatio",
+          "before": null,
+          "after": 0.055
+        },
+        {
+          "key": 2,
+          "column": "bossSpeedRatio",
+          "before": null,
+          "after": 0.65
+        },
+        {
+          "key": 3,
+          "column": "nextDelay",
+          "before": 4,
+          "after": 3
+        },
+        {
+          "key": 3,
+          "column": "minIntervalRatio",
+          "before": 0.4,
+          "after": 0.6
+        },
+        {
+          "key": 3,
+          "column": "killRewardRatio",
+          "before": null,
+          "after": 0.055
+        },
+        {
+          "key": 3,
+          "column": "bossSpeedRatio",
+          "before": null,
+          "after": 0.65
+        },
+        {
+          "key": 4,
+          "column": "nextDelay",
+          "before": 4,
+          "after": 3
+        },
+        {
+          "key": 4,
+          "column": "minIntervalRatio",
+          "before": 0.4,
+          "after": 0.6
+        },
+        {
+          "key": 4,
+          "column": "killRewardRatio",
+          "before": null,
+          "after": 0.055
+        },
+        {
+          "key": 4,
+          "column": "bossSpeedRatio",
+          "before": null,
+          "after": 0.65
+        },
+        {
+          "key": 5,
+          "column": "nextDelay",
+          "before": 4,
+          "after": 3
+        },
+        {
+          "key": 5,
+          "column": "minIntervalRatio",
+          "before": 0.4,
+          "after": 0.6
+        },
+        {
+          "key": 5,
+          "column": "killRewardRatio",
+          "before": null,
+          "after": 0.055
+        },
+        {
+          "key": 5,
+          "column": "bossSpeedRatio",
+          "before": null,
+          "after": 0.65
+        },
+        {
+          "key": 6,
+          "column": "nextDelay",
+          "before": 4,
+          "after": 3
+        },
+        {
+          "key": 6,
+          "column": "minIntervalRatio",
+          "before": 0.4,
+          "after": 0.6
+        },
+        {
+          "key": 6,
+          "column": "killRewardRatio",
+          "before": null,
+          "after": 0.055
+        },
+        {
+          "key": 6,
+          "column": "bossSpeedRatio",
+          "before": null,
+          "after": 0.55
+        }
+      ]
+    },
+    {
+      "table": "ChallengePerk",
+      "changes": [
+        {
+          "key": "S04",
+          "column": "params",
+          "before": "{\"ratio\":0.6}",
+          "after": "{\"ratio\":0.35}"
+        },
+        {
+          "key": "S06",
+          "column": "params",
+          "before": "{\"radius\":65,\"ratio\":2}",
+          "after": "{\"radius\":56,\"ratio\":1.2,\"count\":6}"
+        },
+        {
+          "key": "G04",
+          "column": "params",
+          "before": "{\"step\":100,\"damage\":0.1,\"cap\":0.4}",
+          "after": "{\"step\":100,\"damage\":0.02,\"cap\":0.2}"
+        },
+        {
+          "key": "X06",
+          "column": "params",
+          "before": "{\"damage\":0.8}",
+          "after": "{\"damage\":0.4}"
+        }
+      ]
+    },
+    {
+      "table": "Level",
+      "changes": [
+        {
+          "key": 21,
+          "column": "initialCoins",
+          "before": 350,
+          "after": 650
+        },
+        {
+          "key": 22,
+          "column": "initialCoins",
+          "before": 350,
+          "after": 650
+        },
+        {
+          "key": 23,
+          "column": "initialCoins",
+          "before": 350,
+          "after": 650
+        },
+        {
+          "key": 24,
+          "column": "initialCoins",
+          "before": 350,
+          "after": 650
+        },
+        {
+          "key": 25,
+          "column": "initialCoins",
+          "before": 350,
+          "after": 650
+        },
+        {
+          "key": 26,
+          "column": "initialCoins",
+          "before": 400,
+          "after": 650
+        }
+      ]
+    },
+    {
+      "table": "I18",
+      "changes": [
+        {
+          "key": "ui.GameMenuView.006",
+          "column": "zhCN",
+          "before": "15波夜班 · 自选4名店员",
+          "after": "15波长夜 · 3倍速约15分钟"
+        },
+        {
+          "key": "challenge.goal",
+          "column": "zhCN",
+          "before": "守住15波来客",
+          "after": "守住15波怪潮"
+        },
+        {
+          "key": "perk.S04.desc",
+          "column": "zhCN",
+          "before": "咕咕离目标越远伤害越高，在原射程边缘达到额外60%。",
+          "after": "咕咕离目标越远伤害越高，在原射程边缘达到额外35%。"
+        },
+        {
+          "key": "perk.S06.desc",
+          "column": "zhCN",
+          "before": "燃烧中的来客被击败时，对65范围内其他来客造成其每秒灼烧伤害200%的伤害。",
+          "after": "燃烧中的来客被击败时，对56范围内最多6名其他来客造成其每秒灼烧伤害120%的伤害。"
+        },
+        {
+          "key": "perk.G04.desc",
+          "column": "zhCN",
+          "before": "每持有100金币，全体伤害提高10%，最多提高40%。",
+          "after": "每持有100金币，全体伤害提高2%，最多提高20%。"
+        },
+        {
+          "key": "perk.X06.desc",
+          "column": "zhCN",
+          "before": "本波来客全部出现且只剩一名时，店员直击伤害提高80%。",
+          "after": "本波来客全部出现且只剩一名时，店员直击伤害提高40%。"
+        },
+        {
+          "key": "topics.summary",
+          "column": "zhCN",
+          "before": "15波夜班 · 10次补给 · 自选4名店员",
+          "after": "3倍速约15分钟 · 10次补给"
+        }
+      ]
+    },
+    {
+      "table": "Global",
+      "changes": [
+        {
+          "key": "version",
+          "column": "value",
+          "before": "1.12.0",
+          "after": "1.13.0"
+        }
+      ]
+    }
+  ]
+}

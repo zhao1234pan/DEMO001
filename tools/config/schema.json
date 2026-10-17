@@ -296,7 +296,9 @@
       "allowAllStaff": "int",
       "cashReward": "int",
       "freeProps": "int",
-      "reviveProgress": "float"
+      "reviveProgress": "float",
+      "killRewardRatio": "float",
+      "bossSpeedRatio": "float"
     }
   },
   "ChallengePerk": {

@@ -163,7 +163,7 @@ id,key,zhCN
 161,ui.GameMenuView.003,冒险模式
 162,ui.GameMenuView.004,已解锁 {p0} / {p1} 关
 163,ui.GameMenuView.005,挑战模式
-164,ui.GameMenuView.006,15波夜班 · 自选4名店员
+164,ui.GameMenuView.006,15波长夜 · 3倍速约15分钟
 165,ui.GameMenuView.007,挑战模式
 166,ui.GameMenuView.008,挑战模式暂未开放。
 167,ui.GameMenuView.009,游戏图鉴
@@ -273,7 +273,7 @@ id,key,zhCN
 270,ui.opt.staffLevel3,3级
 271,ui.opt.gold,{p0}金币
 272,challenge.title,夜班加时赛
-273,challenge.goal,守住15波来客
+273,challenge.goal,守住15波怪潮
 274,challenge.bossWave,首领来访
 275,challenge.hud,夜班加时赛
 276,challenge.win,夜班挑战完成！
@@ -466,11 +466,11 @@ id,key,zhCN
 461,perk.S03.name,双响礼花
 462,perk.S03.desc,布丁每第三轮攻击的爆点会在0.35秒后再爆一次，造成80%伤害。
 463,perk.S04.name,远处加急
-464,perk.S04.desc,咕咕离目标越远伤害越高，在原射程边缘达到额外60%。
+464,perk.S04.desc,咕咕离目标越远伤害越高，在原射程边缘达到额外35%。
 465,perk.S05.name,电流返工
 466,perk.S05.desc,栗栗每第三轮攻击多放出一条电链，造成60%伤害。
 467,perk.S06.name,余温四散
-468,perk.S06.desc,燃烧中的来客被击败时，对65范围内其他来客造成其每秒灼烧伤害200%的伤害。
+468,perk.S06.desc,燃烧中的来客被击败时，对56范围内最多6名其他来客造成其每秒灼烧伤害120%的伤害。
 469,perk.S07.name,接班标记
 470,perk.S07.desc,被标记的来客被击败后，将标记传给100范围内至多2名来客，持续2秒，最多传递3代。
 471,perk.S08.name,回旋小风
@@ -482,7 +482,7 @@ id,key,zhCN
 477,perk.G03.name,独当一面
 478,perk.G03.desc,90范围内没有其他店员时，伤害提高50%，射程缩短10%。
 479,perk.G04.name,满满收银台
-480,perk.G04.desc,每持有100金币，全体伤害提高10%，最多提高40%。
+480,perk.G04.desc,每持有100金币，全体伤害提高2%，最多提高20%。
 481,perk.G05.name,整齐交班
 482,perk.G05.desc,上一波没有漏客时，本波伤害提高25%，射程提高15%。
 483,perk.G06.name,全员到岗
@@ -510,7 +510,7 @@ id,key,zhCN
 505,perk.X05.name,货架连拆
 506,perk.X05.desc,直接清除货物时，对100范围内其他货物造成其最大生命35%的伤害。
 507,perk.X06.name,最后一位
-508,perk.X06.desc,本波来客全部出现且只剩一名时，店员直击伤害提高80%。
+508,perk.X06.desc,本波来客全部出现且只剩一名时，店员直击伤害提高40%。
 509,perk.F01.name,大个子值班
 510,perk.F01.desc,每波随机一名最高等级店员变大，伤害提高80%，射程提高15%，攻击间隔增加20%。
 511,perk.F02.name,迷你夜班
@@ -632,7 +632,7 @@ id,key,zhCN
 627,shop.shelfNumber,货架 {p0}
 628,shop.coins,金币 {p0}
 629,topics.title,挑战模式
-630,topics.summary,15波夜班 · 10次补给 · 自选4名店员
+630,topics.summary,3倍速约15分钟 · 10次补给
 631,topics.play,开始夜班
 632,topics.replay,再次挑战
 633,topics.locked,"通关「{p0}」

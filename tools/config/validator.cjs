@@ -540,7 +540,7 @@ function installConfigs(sources) {
         requireRef('ArtFrame', 'ui', row.iconKey, 'ChallengePerk');
         if (row.exclusive)
             requireRef('ChallengePerk', 'key', row.exclusive, 'ChallengePerk');
-        const contracts = { S01: 'every|shots|ratio', S02: 'radius|count|seconds', S03: 'every|delay|ratio', S04: 'ratio', S05: 'every|ratio', S06: 'radius|ratio', S07: 'radius|count|seconds|generations', S08: 'radius|ratio', G01: 'seconds|rate', G02: 'radius|damage', G03: 'radius|damage|range', G04: 'step|damage|cap', G05: 'damage|range', G06: 'damage', E01: 'coins', E02: 'waves|ratio|cap', E03: 'charges', E04: 'charges', E05: 'coins|reward', E06: 'ratio', X01: 'progress', X02: 'shield', X03: 'count|progress|ratio|seconds', X04: 'coins|rate|seconds', X05: 'radius|ratio', X06: 'damage', F01: 'damage|range|rate|scale', F02: 'rate|damage|scale', F03: 'every|limit|coins|damage|radius|ratio|seconds', F04: 'every|damage|count|cooldown|speed|seconds|radius', F05: 'interval|count|delay|radius|damage', F06: 'hp|reward' };
+        const contracts = { S01: 'every|shots|ratio', S02: 'radius|count|seconds', S03: 'every|delay|ratio', S04: 'ratio', S05: 'every|ratio', S06: 'radius|count|ratio', S07: 'radius|count|seconds|generations', S08: 'radius|ratio', G01: 'seconds|rate', G02: 'radius|damage', G03: 'radius|damage|range', G04: 'step|damage|cap', G05: 'damage|range', G06: 'damage', E01: 'coins', E02: 'waves|ratio|cap', E03: 'charges', E04: 'charges', E05: 'coins|reward', E06: 'ratio', X01: 'progress', X02: 'shield', X03: 'count|progress|ratio|seconds', X04: 'coins|rate|seconds', X05: 'radius|ratio', X06: 'damage', F01: 'damage|range|rate|scale', F02: 'rate|damage|scale', F03: 'every|limit|coins|damage|radius|ratio|seconds', F04: 'every|damage|count|cooldown|speed|seconds|radius', F05: 'interval|count|delay|radius|damage', F06: 'hp|reward' };
         const params = JSON.parse(row.params);
         if (Object.keys(params).sort().join('|') !== contracts[row.key].split('|').sort().join('|'))
             throw Error('Challenge parameter contract mismatch');
@@ -566,6 +566,9 @@ function installConfigs(sources) {
     if (new Set(next.ChallengeRule.map(r => r.levelId)).size !== next.ChallengeRule.length)
         throw Error('Duplicate challenge rule');
     for (const row of next.ChallengeRule) {
+        for (const key of ['killRewardRatio', 'bossSpeedRatio'])
+            if (numeric(row, key) <= 0 || numeric(row, key) > 1)
+                throw Error('Invalid challenge crowd rule');
         if (!Number.isInteger(numeric(row, 'cashReward')) || numeric(row, 'cashReward') < 0 || !Number.isInteger(numeric(row, 'freeProps')) || numeric(row, 'freeProps') < 0 || numeric(row, 'reviveProgress') <= 0 || numeric(row, 'reviveProgress') >= 1)
             throw Error('Invalid challenge supply rule');
         requireRef('Level', 'id', row.levelId, 'ChallengeRule');

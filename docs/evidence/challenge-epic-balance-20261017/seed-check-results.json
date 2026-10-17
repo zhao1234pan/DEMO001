@@ -1,0 +1,859 @@
+{
+  "kind": "真实GameRoot、3倍速、隔离存档、无广告与道具、无渲染自动策略",
+  "input": {
+    "verify": false,
+    "scenarios": [
+      {
+        "name": "全图复验",
+        "cap": 1,
+        "tech": "strong",
+        "seed": 7,
+        "expected": "win"
+      }
+    ]
+  },
+  "scenarios": [
+    {
+      "name": "全图复验",
+      "cap": 1,
+      "tech": "strong",
+      "seed": 7,
+      "expected": "win"
+    }
+  ],
+  "results": [
+    {
+      "id": 21,
+      "scenario": "全图复验",
+      "seed": 7,
+      "result": "win",
+      "wave": 15,
+      "realSeconds": 930,
+      "lives": 8,
+      "spawned": 8630,
+      "killed": 8628,
+      "peakEnemies": 125,
+      "towers": 22,
+      "spots": 22,
+      "occupancy": 1,
+      "upgraded": 22,
+      "maxLevel": 22,
+      "coins": 1115,
+      "picks": 10,
+      "tech": [
+        "S01",
+        "G05",
+        "G06",
+        "S04",
+        "G03",
+        "E04",
+        "S03",
+        "E03",
+        "F01",
+        "G04"
+      ],
+      "waves": [
+        {
+          "wave": 1,
+          "seconds": 10,
+          "towers": 6,
+          "lives": 10,
+          "coins": 108
+        },
+        {
+          "wave": 2,
+          "seconds": 58,
+          "towers": 6,
+          "lives": 8,
+          "coins": 111
+        },
+        {
+          "wave": 3,
+          "seconds": 109,
+          "towers": 8,
+          "lives": 8,
+          "coins": 27
+        },
+        {
+          "wave": 4,
+          "seconds": 162,
+          "towers": 8,
+          "lives": 8,
+          "coins": 34
+        },
+        {
+          "wave": 5,
+          "seconds": 216,
+          "towers": 8,
+          "lives": 8,
+          "coins": 82
+        },
+        {
+          "wave": 6,
+          "seconds": 272,
+          "towers": 8,
+          "lives": 8,
+          "coins": 4
+        },
+        {
+          "wave": 7,
+          "seconds": 330,
+          "towers": 10,
+          "lives": 8,
+          "coins": 44
+        },
+        {
+          "wave": 8,
+          "seconds": 390,
+          "towers": 11,
+          "lives": 8,
+          "coins": 97
+        },
+        {
+          "wave": 9,
+          "seconds": 454,
+          "towers": 14,
+          "lives": 8,
+          "coins": 31
+        },
+        {
+          "wave": 10,
+          "seconds": 516,
+          "towers": 15,
+          "lives": 8,
+          "coins": 16
+        },
+        {
+          "wave": 11,
+          "seconds": 581,
+          "towers": 16,
+          "lives": 8,
+          "coins": 55
+        },
+        {
+          "wave": 12,
+          "seconds": 650,
+          "towers": 18,
+          "lives": 8,
+          "coins": 146
+        },
+        {
+          "wave": 13,
+          "seconds": 718,
+          "towers": 21,
+          "lives": 8,
+          "coins": 131
+        },
+        {
+          "wave": 14,
+          "seconds": 788,
+          "towers": 22,
+          "lives": 8,
+          "coins": 128
+        },
+        {
+          "wave": 15,
+          "seconds": 863,
+          "towers": 22,
+          "lives": 8,
+          "coins": 573
+        }
+      ]
+    },
+    {
+      "id": 22,
+      "scenario": "全图复验",
+      "seed": 7,
+      "result": "win",
+      "wave": 15,
+      "realSeconds": 915,
+      "lives": 10,
+      "spawned": 8633,
+      "killed": 8633,
+      "peakEnemies": 123,
+      "towers": 22,
+      "spots": 22,
+      "occupancy": 1,
+      "upgraded": 22,
+      "maxLevel": 22,
+      "coins": 2439,
+      "picks": 10,
+      "tech": [
+        "G01",
+        "G04",
+        "G05",
+        "E01",
+        "G03",
+        "G02",
+        "E06",
+        "E03",
+        "G06",
+        "F01",
+        "X06"
+      ],
+      "waves": [
+        {
+          "wave": 1,
+          "seconds": 10,
+          "towers": 5,
+          "lives": 10,
+          "coins": 50
+        },
+        {
+          "wave": 2,
+          "seconds": 59,
+          "towers": 6,
+          "lives": 10,
+          "coins": 98
+        },
+        {
+          "wave": 3,
+          "seconds": 113,
+          "towers": 6,
+          "lives": 10,
+          "coins": 24
+        },
+        {
+          "wave": 4,
+          "seconds": 166,
+          "towers": 7,
+          "lives": 10,
+          "coins": 83
+        },
+        {
+          "wave": 5,
+          "seconds": 220,
+          "towers": 8,
+          "lives": 10,
+          "coins": 128
+        },
+        {
+          "wave": 6,
+          "seconds": 275,
+          "towers": 9,
+          "lives": 10,
+          "coins": 126
+        },
+        {
+          "wave": 7,
+          "seconds": 330,
+          "towers": 11,
+          "lives": 10,
+          "coins": 55
+        },
+        {
+          "wave": 8,
+          "seconds": 388,
+          "towers": 12,
+          "lives": 10,
+          "coins": 24
+        },
+        {
+          "wave": 9,
+          "seconds": 449,
+          "towers": 14,
+          "lives": 10,
+          "coins": 101
+        },
+        {
+          "wave": 10,
+          "seconds": 506,
+          "towers": 16,
+          "lives": 10,
+          "coins": 7
+        },
+        {
+          "wave": 11,
+          "seconds": 569,
+          "towers": 18,
+          "lives": 10,
+          "coins": 4
+        },
+        {
+          "wave": 12,
+          "seconds": 636,
+          "towers": 21,
+          "lives": 10,
+          "coins": 51
+        },
+        {
+          "wave": 13,
+          "seconds": 702,
+          "towers": 22,
+          "lives": 10,
+          "coins": 123
+        },
+        {
+          "wave": 14,
+          "seconds": 769,
+          "towers": 22,
+          "lives": 10,
+          "coins": 975
+        },
+        {
+          "wave": 15,
+          "seconds": 844,
+          "towers": 22,
+          "lives": 10,
+          "coins": 1695
+        }
+      ]
+    },
+    {
+      "id": 23,
+      "scenario": "全图复验",
+      "seed": 7,
+      "result": "win",
+      "wave": 15,
+      "realSeconds": 904,
+      "lives": 10,
+      "spawned": 8629,
+      "killed": 8629,
+      "peakEnemies": 126,
+      "towers": 21,
+      "spots": 21,
+      "occupancy": 1,
+      "upgraded": 21,
+      "maxLevel": 21,
+      "coins": 2191,
+      "picks": 10,
+      "tech": [
+        "X05",
+        "S01",
+        "G05",
+        "G04",
+        "S04",
+        "E04",
+        "E03",
+        "G06",
+        "E01",
+        "S06",
+        "G02"
+      ],
+      "waves": [
+        {
+          "wave": 1,
+          "seconds": 10,
+          "towers": 5,
+          "lives": 10,
+          "coins": 121
+        },
+        {
+          "wave": 2,
+          "seconds": 57,
+          "towers": 6,
+          "lives": 10,
+          "coins": 27
+        },
+        {
+          "wave": 3,
+          "seconds": 104,
+          "towers": 8,
+          "lives": 10,
+          "coins": 57
+        },
+        {
+          "wave": 4,
+          "seconds": 152,
+          "towers": 8,
+          "lives": 10,
+          "coins": 64
+        },
+        {
+          "wave": 5,
+          "seconds": 203,
+          "towers": 8,
+          "lives": 10,
+          "coins": 129
+        },
+        {
+          "wave": 6,
+          "seconds": 256,
+          "towers": 9,
+          "lives": 10,
+          "coins": 88
+        },
+        {
+          "wave": 7,
+          "seconds": 310,
+          "towers": 12,
+          "lives": 10,
+          "coins": 5
+        },
+        {
+          "wave": 8,
+          "seconds": 370,
+          "towers": 13,
+          "lives": 10,
+          "coins": 76
+        },
+        {
+          "wave": 9,
+          "seconds": 433,
+          "towers": 15,
+          "lives": 10,
+          "coins": 3
+        },
+        {
+          "wave": 10,
+          "seconds": 494,
+          "towers": 18,
+          "lives": 10,
+          "coins": 1
+        },
+        {
+          "wave": 11,
+          "seconds": 558,
+          "towers": 19,
+          "lives": 10,
+          "coins": 81
+        },
+        {
+          "wave": 12,
+          "seconds": 627,
+          "towers": 21,
+          "lives": 10,
+          "coins": 79
+        },
+        {
+          "wave": 13,
+          "seconds": 695,
+          "towers": 21,
+          "lives": 10,
+          "coins": 360
+        },
+        {
+          "wave": 14,
+          "seconds": 764,
+          "towers": 21,
+          "lives": 10,
+          "coins": 1054
+        },
+        {
+          "wave": 15,
+          "seconds": 838,
+          "towers": 21,
+          "lives": 10,
+          "coins": 1649
+        }
+      ]
+    },
+    {
+      "id": 24,
+      "scenario": "全图复验",
+      "seed": 7,
+      "result": "win",
+      "wave": 15,
+      "realSeconds": 859,
+      "lives": 10,
+      "spawned": 8626,
+      "killed": 8626,
+      "peakEnemies": 56,
+      "towers": 22,
+      "spots": 22,
+      "occupancy": 1,
+      "upgraded": 22,
+      "maxLevel": 22,
+      "coins": 2087,
+      "picks": 10,
+      "tech": [
+        "E06",
+        "S01",
+        "G05",
+        "G06",
+        "S05",
+        "E04",
+        "E03",
+        "G04",
+        "G03",
+        "F01",
+        "G02"
+      ],
+      "waves": [
+        {
+          "wave": 1,
+          "seconds": 10,
+          "towers": 5,
+          "lives": 10,
+          "coins": 37
+        },
+        {
+          "wave": 2,
+          "seconds": 55,
+          "towers": 5,
+          "lives": 10,
+          "coins": 11
+        },
+        {
+          "wave": 3,
+          "seconds": 104,
+          "towers": 6,
+          "lives": 10,
+          "coins": 23
+        },
+        {
+          "wave": 4,
+          "seconds": 153,
+          "towers": 6,
+          "lives": 10,
+          "coins": 117
+        },
+        {
+          "wave": 5,
+          "seconds": 204,
+          "towers": 8,
+          "lives": 10,
+          "coins": 27
+        },
+        {
+          "wave": 6,
+          "seconds": 256,
+          "towers": 10,
+          "lives": 10,
+          "coins": 41
+        },
+        {
+          "wave": 7,
+          "seconds": 309,
+          "towers": 11,
+          "lives": 10,
+          "coins": 106
+        },
+        {
+          "wave": 8,
+          "seconds": 365,
+          "towers": 13,
+          "lives": 10,
+          "coins": 35
+        },
+        {
+          "wave": 9,
+          "seconds": 422,
+          "towers": 15,
+          "lives": 10,
+          "coins": 102
+        },
+        {
+          "wave": 10,
+          "seconds": 480,
+          "towers": 17,
+          "lives": 10,
+          "coins": 24
+        },
+        {
+          "wave": 11,
+          "seconds": 541,
+          "towers": 19,
+          "lives": 10,
+          "coins": 113
+        },
+        {
+          "wave": 12,
+          "seconds": 601,
+          "towers": 20,
+          "lives": 10,
+          "coins": 149
+        },
+        {
+          "wave": 13,
+          "seconds": 665,
+          "towers": 22,
+          "lives": 10,
+          "coins": 140
+        },
+        {
+          "wave": 14,
+          "seconds": 730,
+          "towers": 22,
+          "lives": 10,
+          "coins": 763
+        },
+        {
+          "wave": 15,
+          "seconds": 795,
+          "towers": 22,
+          "lives": 10,
+          "coins": 1443
+        }
+      ]
+    },
+    {
+      "id": 25,
+      "scenario": "全图复验",
+      "seed": 7,
+      "result": "win",
+      "wave": 15,
+      "realSeconds": 889,
+      "lives": 10,
+      "spawned": 8632,
+      "killed": 8632,
+      "peakEnemies": 77,
+      "towers": 22,
+      "spots": 22,
+      "occupancy": 1,
+      "upgraded": 22,
+      "maxLevel": 22,
+      "coins": 1769,
+      "picks": 10,
+      "tech": [
+        "F02",
+        "S01",
+        "G04",
+        "G05",
+        "S03",
+        "G02",
+        "E04",
+        "E06",
+        "E01",
+        "G06",
+        "X04"
+      ],
+      "waves": [
+        {
+          "wave": 1,
+          "seconds": 10,
+          "towers": 5,
+          "lives": 10,
+          "coins": 11
+        },
+        {
+          "wave": 2,
+          "seconds": 55,
+          "towers": 5,
+          "lives": 10,
+          "coins": 17
+        },
+        {
+          "wave": 3,
+          "seconds": 105,
+          "towers": 7,
+          "lives": 10,
+          "coins": 18
+        },
+        {
+          "wave": 4,
+          "seconds": 156,
+          "towers": 7,
+          "lives": 10,
+          "coins": 93
+        },
+        {
+          "wave": 5,
+          "seconds": 208,
+          "towers": 7,
+          "lives": 10,
+          "coins": 28
+        },
+        {
+          "wave": 6,
+          "seconds": 262,
+          "towers": 9,
+          "lives": 10,
+          "coins": 4
+        },
+        {
+          "wave": 7,
+          "seconds": 317,
+          "towers": 10,
+          "lives": 10,
+          "coins": 2
+        },
+        {
+          "wave": 8,
+          "seconds": 374,
+          "towers": 12,
+          "lives": 10,
+          "coins": 101
+        },
+        {
+          "wave": 9,
+          "seconds": 434,
+          "towers": 13,
+          "lives": 10,
+          "coins": 53
+        },
+        {
+          "wave": 10,
+          "seconds": 493,
+          "towers": 15,
+          "lives": 10,
+          "coins": 89
+        },
+        {
+          "wave": 11,
+          "seconds": 555,
+          "towers": 17,
+          "lives": 10,
+          "coins": 111
+        },
+        {
+          "wave": 12,
+          "seconds": 621,
+          "towers": 20,
+          "lives": 10,
+          "coins": 40
+        },
+        {
+          "wave": 13,
+          "seconds": 687,
+          "towers": 21,
+          "lives": 10,
+          "coins": 17
+        },
+        {
+          "wave": 14,
+          "seconds": 754,
+          "towers": 22,
+          "lives": 10,
+          "coins": 399
+        },
+        {
+          "wave": 15,
+          "seconds": 824,
+          "towers": 22,
+          "lives": 10,
+          "coins": 1111
+        }
+      ]
+    },
+    {
+      "id": 26,
+      "scenario": "全图复验",
+      "seed": 7,
+      "result": "win",
+      "wave": 15,
+      "realSeconds": 896,
+      "lives": 10,
+      "spawned": 8628,
+      "killed": 8628,
+      "peakEnemies": 93,
+      "towers": 22,
+      "spots": 22,
+      "occupancy": 1,
+      "upgraded": 22,
+      "maxLevel": 22,
+      "coins": 1307,
+      "picks": 10,
+      "tech": [
+        "F01",
+        "G03",
+        "E01",
+        "G06",
+        "G04",
+        "E02",
+        "F05",
+        "E04",
+        "E03",
+        "F04",
+        "G05"
+      ],
+      "waves": [
+        {
+          "wave": 1,
+          "seconds": 10,
+          "towers": 4,
+          "lives": 10,
+          "coins": 1
+        },
+        {
+          "wave": 2,
+          "seconds": 55,
+          "towers": 6,
+          "lives": 10,
+          "coins": 66
+        },
+        {
+          "wave": 3,
+          "seconds": 104,
+          "towers": 6,
+          "lives": 10,
+          "coins": 31
+        },
+        {
+          "wave": 4,
+          "seconds": 153,
+          "towers": 7,
+          "lives": 10,
+          "coins": 79
+        },
+        {
+          "wave": 5,
+          "seconds": 205,
+          "towers": 7,
+          "lives": 10,
+          "coins": 103
+        },
+        {
+          "wave": 6,
+          "seconds": 260,
+          "towers": 8,
+          "lives": 10,
+          "coins": 42
+        },
+        {
+          "wave": 7,
+          "seconds": 317,
+          "towers": 9,
+          "lives": 10,
+          "coins": 53
+        },
+        {
+          "wave": 8,
+          "seconds": 374,
+          "towers": 11,
+          "lives": 10,
+          "coins": 15
+        },
+        {
+          "wave": 9,
+          "seconds": 436,
+          "towers": 12,
+          "lives": 10,
+          "coins": 21
+        },
+        {
+          "wave": 10,
+          "seconds": 498,
+          "towers": 15,
+          "lives": 10,
+          "coins": 1
+        },
+        {
+          "wave": 11,
+          "seconds": 560,
+          "towers": 16,
+          "lives": 10,
+          "coins": 36
+        },
+        {
+          "wave": 12,
+          "seconds": 627,
+          "towers": 19,
+          "lives": 10,
+          "coins": 63
+        },
+        {
+          "wave": 13,
+          "seconds": 690,
+          "towers": 20,
+          "lives": 10,
+          "coins": 48
+        },
+        {
+          "wave": 14,
+          "seconds": 758,
+          "towers": 22,
+          "lives": 10,
+          "coins": 12
+        },
+        {
+          "wave": 15,
+          "seconds": 830,
+          "towers": 22,
+          "lives": 10,
+          "coins": 607
+        }
+      ]
+    }
+  ]
+}

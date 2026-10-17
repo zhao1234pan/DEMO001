@@ -207,7 +207,7 @@ export function installConfigs(sources: Record<string, string>): void {
     for(const field of ['nameKey','descriptionKey'])requireRef('I18','key',row[field],'ChallengePerk');
     requireRef('ArtFrame','ui',row.iconKey,'ChallengePerk');
     if(row.exclusive)requireRef('ChallengePerk','key',row.exclusive,'ChallengePerk');
-    const contracts:Record<string,string>={S01:'every|shots|ratio',S02:'radius|count|seconds',S03:'every|delay|ratio',S04:'ratio',S05:'every|ratio',S06:'radius|ratio',S07:'radius|count|seconds|generations',S08:'radius|ratio',G01:'seconds|rate',G02:'radius|damage',G03:'radius|damage|range',G04:'step|damage|cap',G05:'damage|range',G06:'damage',E01:'coins',E02:'waves|ratio|cap',E03:'charges',E04:'charges',E05:'coins|reward',E06:'ratio',X01:'progress',X02:'shield',X03:'count|progress|ratio|seconds',X04:'coins|rate|seconds',X05:'radius|ratio',X06:'damage',F01:'damage|range|rate|scale',F02:'rate|damage|scale',F03:'every|limit|coins|damage|radius|ratio|seconds',F04:'every|damage|count|cooldown|speed|seconds|radius',F05:'interval|count|delay|radius|damage',F06:'hp|reward'};
+    const contracts:Record<string,string>={S01:'every|shots|ratio',S02:'radius|count|seconds',S03:'every|delay|ratio',S04:'ratio',S05:'every|ratio',S06:'radius|count|ratio',S07:'radius|count|seconds|generations',S08:'radius|ratio',G01:'seconds|rate',G02:'radius|damage',G03:'radius|damage|range',G04:'step|damage|cap',G05:'damage|range',G06:'damage',E01:'coins',E02:'waves|ratio|cap',E03:'charges',E04:'charges',E05:'coins|reward',E06:'ratio',X01:'progress',X02:'shield',X03:'count|progress|ratio|seconds',X04:'coins|rate|seconds',X05:'radius|ratio',X06:'damage',F01:'damage|range|rate|scale',F02:'rate|damage|scale',F03:'every|limit|coins|damage|radius|ratio|seconds',F04:'every|damage|count|cooldown|speed|seconds|radius',F05:'interval|count|delay|radius|damage',F06:'hp|reward'};
     const params=JSON.parse(row.params);
     if(Object.keys(params).sort().join('|')!==contracts[row.key].split('|').sort().join('|'))throw Error('Challenge parameter contract mismatch');
     for(const [key,value] of Object.entries(params) as Array<[string,number]>){
@@ -223,6 +223,7 @@ export function installConfigs(sources: Record<string, string>): void {
   if(next.ChallengePerk.length!==perkKeys.length||perkKeys.some(k=>!next.ChallengePerk.some(r=>r.key===k)))throw Error('Missing challenge effect');
   if(new Set(next.ChallengeRule.map(r=>r.levelId)).size!==next.ChallengeRule.length)throw Error('Duplicate challenge rule');
   for(const row of next.ChallengeRule){
+    for(const key of ['killRewardRatio','bossSpeedRatio'])if(numeric(row,key)<=0||numeric(row,key)>1)throw Error('Invalid challenge crowd rule');
     if(!Number.isInteger(numeric(row,'cashReward'))||numeric(row,'cashReward')<0||!Number.isInteger(numeric(row,'freeProps'))||numeric(row,'freeProps')<0||numeric(row,'reviveProgress')<=0||numeric(row,'reviveProgress')>=1)throw Error('Invalid challenge supply rule');
     requireRef('Level','id',row.levelId,'ChallengeRule');const waves=next.Wave.filter(w=>w.levelId===row.levelId),choice=row.choiceWaves.split('|').map(Number);
     if(next.Level.find(l=>l.id===row.levelId)!.mode!=='challenge'||!choice.length||choice[0]!==0||choice.some((v,i)=>!Number.isInteger(v)||v<0||v>=waves.length||(i>0&&v<=choice[i-1])))throw Error('Invalid challenge choice schedule');

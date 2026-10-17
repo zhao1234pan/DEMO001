@@ -242,3 +242,10 @@ ShopRule增加offlineIncomeRatio、offlineBudgetPurchases、offlineCompleteBudge
 - RankingEntry.xlsx管理演示名字I18键、画像皮肤、分数和演示好友标记；Global管理演示开关及本机展示评分权重。正式环境强制不显示示例，示例不会成为平台排名或存档。
 - ChallengeTopic.thumbnailKey显式引用VisualSkin，沿用原levelId／unlockAfter链。UiLayout、VisualSkin管理新卡片、九宫、字色及命中框；货架弹窗列数、行距和收缩量从布局表推导。
 - 本轮保留的代码常量例外属于界面技术协议：节点绑定路径、状态皮肤逻辑键、前三领奖槽的显示顺序、两位数关卡编号，以及居中／九宫使用的几何二分。它们不承载可调业务数值；实际资源路径、尺寸、颜色、边距、文字、评分权重和解锁条件仍由原始表管理。
+
+## 1.13.0 挑战怪潮
+
+- ChallengeRule新增killRewardRatio与bossSpeedRatio，必须为(0,1]有效数值；前者只折算挑战击败奖励，后者只乘挑战首领的Enemy.speed。普通怪、冒险速度和便利店经济保持。
+- ChallengePerk.S06.params新增count必填整数，和radius／ratio共同控制最近目标上限；原始文本同步范围、倍率和人数。Wave／WaveGroup／Level管理数量、间隔、血量与初始金币，七张原始表→CSV／manifest。
+- 击败奖励小数在本局累积，floor前1e-9仅为浮点容差；非业务调参。最近目标排序、累积算法与DEBUG本地URL的perf=1统计开关是技术协议，不写成XLSX业务字段；正式包不启用统计，普通试玩默认隐藏。
+- 原始范围与验收见[挑战长局](CHALLENGE_EPIC_BALANCE.md)。原表导出临时inspect日志留在G:/gptwork，不进入资源目录。
