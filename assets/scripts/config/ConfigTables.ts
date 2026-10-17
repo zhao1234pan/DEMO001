@@ -102,7 +102,8 @@ export function installConfigs(sources: Record<string, string>): void {
   for(const e of next.Enemy)if(numeric(e,"crowdScale")>1||numeric(e,"crowdRadius")>Math.min(...next.Map.map(m=>numeric(m,"gridSize")).filter(n=>n>0))/2)throw Error("Invalid crowd body");
   positive("Staff", ["cost", "range", "rate", "damage", "shotSpeed", "targets"]); positive("Enemy", ["hp", "speed", "radius", "damage"]); positive("Enemy", ["reward"], true);
   positive("Level", ["initialLives", "enemyHealthScale", "enemySpeedScale"]); positive("Level", ["initialCoins"], true); positive("Obstacle", ["hp"]); positive("Obstacle", ["reward"], true); positive("Wave", ["spawnInterval", "healthScale"]); positive("WaveGroup", ["count"]);
-  positive('Wave',['spawnHealthGrowth'],true);positive('Wave',['spawnGrowthPower','eliteBaseHealthScale']);
+  positive('Wave',['spawnHealthGrowth','nextDelay','completionReward'],true);positive('Wave',['spawnGrowthPower','eliteBaseHealthScale']);
+  for(const w of next.Wave)if(!Number.isInteger(numeric(w,'completionReward')))throw Error('Wave completionReward must be an integer');
   for(const w of next.Wave)if(next.Level.find(l=>l.id===w.levelId)?.mode==='challenge'&&numeric(w,'spawnHealthGrowth')!==0)throw Error('Challenge must use its clock growth');
   for (const row of next.Global) if (row.type === "float") numeric(row, "value");
   for (const name of ["Staff", "Enemy", "Theme"]) for (const row of next[name]) requireRef("I18", "key", row.name, name);

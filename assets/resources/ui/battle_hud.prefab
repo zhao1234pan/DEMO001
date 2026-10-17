@@ -6107,7 +6107,7 @@
     },
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": 24,
+      "x": 32,
       "y": 0,
       "z": 0
     },
@@ -6158,7 +6158,7 @@
     "__type__": "cc.UITransform",
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 92,
+      "width": 76,
       "height": 28
     },
     "_anchorPoint": {
@@ -6186,9 +6186,9 @@
     "_string": "",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_fontSize": 19,
-    "_actualFontSize": 19,
-    "_lineHeight": 24,
+    "_fontSize": 17,
+    "_actualFontSize": 17,
+    "_lineHeight": 22,
     "_fontFamily": "NightShiftRounded",
     "_overflow": 2,
     "_enableWrapText": true,

@@ -4,7 +4,7 @@ const plan=JSON.parse(fs.readFileSync(process.argv[4]||__dirname+'/challenge-val
 for(let id=1;id<=26;id++){
  const scenario=id>20?plan.levelScenarios[id][0]:{},g=setupGame(id,scenario.seed??42,id>20?3:1,scenario.roster),samples=policy.samples(g);let time=0,next=0,picks=0;
  if(scenario.cap){const build=g.buildTower.bind(g),limit=Math.floor(g.spots.length*scenario.cap);g.buildTower=(...args)=>g.towers.length<limit?build(...args):undefined;}
- while(g.screen==='playing'&&time<(id>20?1500:900)){
+ while(g.screen==='playing'&&time<(id>20?1800:1800)){
   if(g.challenge?.pending){assert.ok(g.challenge.choose(scenario.tech==='build'?createPolicy.chooseHordePerk(g.challenge):createPolicy.choosePerk(g.challenge),g.challengePort()));picks++;}
   if(time>=next){policy.act(g,scenario.mode??'mixed',samples);next=time+.25;}
   g.update(1/30);time+=1/30;

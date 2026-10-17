@@ -1175,7 +1175,7 @@ export class GameRoot extends Component {
     const phaseReady=this.challenge&&this.wave<this.level.waves.length&&this.challenge.waveElapsed>=numeric(this.challenge.rule,'waveDuration');
     const finalClear=this.enemies.length===0&&(!this.challenge||this.wave===this.level.waves.length||this.challenge.waveElapsed>=numeric(this.challenge.rule,'waveDuration'));
     if (this.inWave && this.queue.length === 0 && (phaseReady||finalClear)) {
-      this.inWave = false; const bonus = this.challenge?.waveEnd(this.challengePort()) ?? (globalNumber("waveBonusBase") + this.wave * globalNumber("waveBonusStep")); this.addCoins(bonus);
+      this.inWave = false; const bonus = this.challenge?.waveEnd(this.challengePort()) ?? this.level.waves[this.wave-1].completionReward; this.addCoins(bonus);
       if (this.wave >= this.level.waves.length) {
         this.screen = "win"; this.cancelPendingAttacks();
         this.audio.play("win", 0.8);
@@ -1193,7 +1193,7 @@ export class GameRoot extends Component {
         }
       } else {
         // 下一波保留配置的真实秒数，玩家可点击气泡提前开波。
-        this.nextWaveTimer = this.challenge ? numeric(this.challenge.rule,"nextDelay") : globalNumber("nextWaveDelay");this.previewOpen=!this.challenge;
+        this.nextWaveTimer = this.challenge ? numeric(this.challenge.rule,"nextDelay") : this.level.waves[this.wave-1].nextDelay;this.previewOpen=!this.challenge;
         if(this.challenge)this.challengeSupplyTimer=numeric(this.challenge.rule,'supplyDelay');
         this.showToast(text("ui.GameRoot.039", bonus));
         if(this.challenge)this.toastTime=this.challengeSupplyTimer*this.gameSpeed;

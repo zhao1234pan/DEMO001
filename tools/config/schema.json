@@ -141,7 +141,9 @@
       "bossHealthScale": "float",
       "spawnHealthGrowth": "float",
       "spawnGrowthPower": "float",
-      "eliteBaseHealthScale": "float"
+      "eliteBaseHealthScale": "float",
+      "completionReward": "int",
+      "nextDelay": "float"
     }
   },
   "WaveGroup": {

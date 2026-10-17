@@ -33,5 +33,5 @@ export function wavePreview(wave:WaveConfig):EnemyPreview[]{
   const counts=new Map<EnemyKind,number>();for(const kind of wave.enemies)counts.set(kind,(counts.get(kind)??0)+1);
   return Array.from(counts,([kind,count])=>({kind,count,name:ENEMY_CONFIG[kind].name!,imageKey:rows("Collection").find(r=>r.kind===kind&&r.tab!=="staff")!.imageKey,boss:ENEMY_CONFIG[kind].boss??""}));
 }
-export function levelPreview(level:LevelConfig):EnemyPreview[]{return wavePreview({enemies:level.waves.reduce<EnemyKind[]>((all,w)=>all.concat(w.enemies),[]),healthScale:1,bossHealthScale:1,spawnInterval:1,spawnHealthGrowth:0,spawnGrowthPower:1,eliteBaseHealthScale:1});}
+export function levelPreview(level:LevelConfig):EnemyPreview[]{return wavePreview({completionReward:0,nextDelay:0,enemies:level.waves.reduce<EnemyKind[]>((all,w)=>all.concat(w.enemies),[]),healthScale:1,bossHealthScale:1,spawnInterval:1,spawnHealthGrowth:0,spawnGrowthPower:1,eliteBaseHealthScale:1});}
 export function bossWaveText(level:LevelConfig):string{return level.waves.map((w,i)=>wavePreview(w).filter(e=>e.boss).map(e=>text("ui.loadout.boss",i+1,e.name)).join("、")).filter(Boolean).join("\n");}

@@ -91,7 +91,7 @@ id,key,prefab,node,x,y,width,height,scaleX,scaleY,fontSize,lineHeight,fontFamily
 90,battle_hud:Header/Pause/Text,battle_hud,Header/Pause/Text,0,0,42,44,1,1,21,25,NightShiftRounded,#5c3020,,0,1,1,2,0,,参考图逐页复核；保留节点绑定,fonts/night_shift_rounded
 91,battle_hud:Header/title,battle_hud,Header/title,-110,13.5,106,28,1,1,15,19,NightShiftRounded,#5c3020,,0,1,1,2,0,,参考图逐页复核；保留节点绑定,fonts/night_shift_rounded
 92,battle_hud:Header/level,battle_hud,Header/level,-152,-13.5,64,24,1,1,13,17,NightShiftRounded,#5c3020,,0,1,1,2,0,,参考图逐页复核；保留节点绑定,fonts/night_shift_rounded
-93,battle_hud:Header/wave,battle_hud,Header/wave,24,0,92,28,1,1,19,24,NightShiftRounded,#4c1c12,,0,1,1,2,1,,参考图逐页复核；保留节点绑定,fonts/night_shift_rounded
+93,battle_hud:Header/wave,battle_hud,Header/wave,32,0,76,28,1,1,17,22,NightShiftRounded,#4c1c12,,0,1,1,2,1,,参考图逐页复核；保留节点绑定,fonts/night_shift_rounded
 94,battle_hud:Header/CoinIcon,battle_hud,Header/CoinIcon,-177,0,30,30,1,1,0,0,,,,0,1,1,0,1,,参考图逐页复核；保留节点绑定,
 95,battle_hud:Header/CoinIcon/Coin,battle_hud,Header/CoinIcon/Coin,0,0,38,38,1,1,0,0,,,,0,1,1,0,1,icon_coin,参考图逐页复核；保留节点绑定,
 96,battle_hud:Header/CoinIcon/Coin/Artwork,battle_hud,Header/CoinIcon/Coin/Artwork,0,0,30,25.463917525773194,1,1,0,0,,,,0,1,1,0,1,,参考图逐页复核；保留节点绑定,

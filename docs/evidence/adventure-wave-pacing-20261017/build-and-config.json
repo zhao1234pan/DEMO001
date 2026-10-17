@@ -1,0 +1,206 @@
+{
+  "results": [
+    {
+      "name": "配置一致",
+      "status": 0,
+      "stdout": "UI布局表：2610个节点。\nUI资源校验：36个预制体，2610个节点。\n39张表校验通过，XLSX 与 CSV 一致。\n日志：G:\\gptwork\\config-export\\run-UpSV2f\n",
+      "stderr": ""
+    },
+    {
+      "name": "预制体门禁",
+      "status": 0,
+      "stdout": "{\n  \"prefabs\": 36,\n  \"nodes\": 2610,\n  \"labels\": 409,\n  \"images\": 80\n}\n",
+      "stderr": ""
+    },
+    {
+      "name": "严格TypeScript",
+      "status": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ],
+  "builds": [
+    {
+      "kind": "web",
+      "path": "G:/gptwork/adventure-wave-pacing-web-build/web-mobile",
+      "finished": "2026-10-17 20:40:23 - debug: ================================ build Task (web-mobile) Finished in (11 s)ms ================================",
+      "exitCode": 36,
+      "all39CsvMatch": true
+    },
+    {
+      "kind": "release",
+      "path": "G:/gptwork/adventure-wave-pacing-release-build/web-mobile",
+      "finished": "2026-10-17 20:40:46 - debug: ================================ build Task (web-mobile) Finished in (13 s)ms ================================",
+      "exitCode": 36,
+      "all39CsvMatch": true
+    }
+  ],
+  "configChanges": {
+    "input": {
+      "normalWaves": 15,
+      "bossWaves": 20,
+      "tutorialWaves": [
+        8,
+        10,
+        12
+      ],
+      "countGrowth": 0.4,
+      "healthGrowth": 1.2,
+      "bossHealthGrowth": 1.5,
+      "reward": 16,
+      "nextDelay": 6,
+      "levels": {
+        "1": {
+          "healthGrowth": 0.5,
+          "countGrowth": 0.3
+        },
+        "2": {
+          "healthGrowth": 0.6,
+          "countGrowth": 0.3
+        },
+        "3": {
+          "healthGrowth": 0.7,
+          "countGrowth": 0.35
+        },
+        "17": {
+          "healthTransitionRatio": 0.9
+        }
+      },
+      "onlyTables": [
+        "UiLayout"
+      ]
+    },
+    "report": [
+      {
+        "level": 1,
+        "old": 4,
+        "waves": 8
+      },
+      {
+        "level": 2,
+        "old": 4,
+        "waves": 10
+      },
+      {
+        "level": 3,
+        "old": 4,
+        "waves": 12
+      },
+      {
+        "level": 4,
+        "old": 4,
+        "waves": 15
+      },
+      {
+        "level": 5,
+        "old": 4,
+        "waves": 20
+      },
+      {
+        "level": 6,
+        "old": 4,
+        "waves": 15
+      },
+      {
+        "level": 7,
+        "old": 4,
+        "waves": 15
+      },
+      {
+        "level": 8,
+        "old": 4,
+        "waves": 15
+      },
+      {
+        "level": 9,
+        "old": 4,
+        "waves": 15
+      },
+      {
+        "level": 10,
+        "old": 5,
+        "waves": 20
+      },
+      {
+        "level": 11,
+        "old": 4,
+        "waves": 15
+      },
+      {
+        "level": 12,
+        "old": 4,
+        "waves": 15
+      },
+      {
+        "level": 13,
+        "old": 4,
+        "waves": 15
+      },
+      {
+        "level": 14,
+        "old": 4,
+        "waves": 15
+      },
+      {
+        "level": 15,
+        "old": 5,
+        "waves": 20
+      },
+      {
+        "level": 16,
+        "old": 4,
+        "waves": 15
+      },
+      {
+        "level": 17,
+        "old": 4,
+        "waves": 15
+      },
+      {
+        "level": 18,
+        "old": 4,
+        "waves": 15
+      },
+      {
+        "level": 19,
+        "old": 4,
+        "waves": 15
+      },
+      {
+        "level": 20,
+        "old": 5,
+        "waves": 20
+      },
+      {
+        "level": 21,
+        "old": 15,
+        "waves": 30
+      },
+      {
+        "level": 22,
+        "old": 15,
+        "waves": 30
+      },
+      {
+        "level": 23,
+        "old": 15,
+        "waves": 30
+      },
+      {
+        "level": 24,
+        "old": 15,
+        "waves": 30
+      },
+      {
+        "level": 25,
+        "old": 15,
+        "waves": 30
+      },
+      {
+        "level": 26,
+        "old": 15,
+        "waves": 30
+      }
+    ]
+  }
+}

@@ -328,8 +328,11 @@ function installConfigs(sources) {
     positive("Obstacle", ["reward"], true);
     positive("Wave", ["spawnInterval", "healthScale"]);
     positive("WaveGroup", ["count"]);
-    positive('Wave', ['spawnHealthGrowth'], true);
+    positive('Wave', ['spawnHealthGrowth', 'nextDelay', 'completionReward'], true);
     positive('Wave', ['spawnGrowthPower', 'eliteBaseHealthScale']);
+    for (const w of next.Wave)
+        if (!Number.isInteger(numeric(w, 'completionReward')))
+            throw Error('Wave completionReward must be an integer');
     for (const w of next.Wave)
         if (((_b = next.Level.find(l => l.id === w.levelId)) === null || _b === void 0 ? void 0 : _b.mode) === 'challenge' && numeric(w, 'spawnHealthGrowth') !== 0)
             throw Error('Challenge must use its clock growth');

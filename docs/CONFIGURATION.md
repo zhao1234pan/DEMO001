@@ -274,3 +274,10 @@ ShopRule增加offlineIncomeRatio、offlineBudgetPurchases、offlineCompleteBudge
 - ChallengePerk.S06.params新增count必填整数，和radius／ratio共同控制最近目标上限；原始文本同步范围、倍率和人数。Wave／WaveGroup／Level管理数量、间隔、血量与初始金币，七张原始表→CSV／manifest。
 - 击败奖励小数在本局累积，floor前1e-9仅为浮点容差；非业务调参。最近目标排序、累积算法与DEBUG本地URL的perf=1统计开关是技术协议，不写成XLSX业务字段；正式包不启用统计，普通试玩默认隐藏。
 - 原始范围与验收见[挑战长局](CHALLENGE_EPIC_BALANCE.md)。原表导出临时inspect日志留在G:/gptwork，不进入资源目录。
+
+## 1.18.0 扩波与经济节奏
+
+- Wave新增completionReward（非负整数战斗金币）及nextDelay（非负真实秒数）；普通逐波结算读取该行，挑战显式0并继续使用ChallengeRule。预览合并波的0／0是不会结算的中性值；旧Global奖金／间隔字段保留协议兼容，普通结算不再消费。
+- 普通305波、挑战180波；普通终局提示与首领移至实际最后波；六挑战首领10／20／30、阶段140游戏秒，科技出现期限和专属／精英／速度成长按新波序管理，3倍速约25分钟。WaveGroup共46355行，id为引用键而非连续行序。
+- 七张原始表Wave／WaveGroup／ChallengeRule／ChallengePerk／I18／Global／UiLayout与CSV／manifest、三张Prefab同步；UiLayout修复两位数计数被头像覆盖。未新增运行绘图、资源或服务端配置。
+- 样本依据、配平和数据口径见[扩波设计](WAVE_PACING.md)。原始配置author的生成与诊断辅助放G:/gptwork，客户端数值只读正式原表导出的CSV。
