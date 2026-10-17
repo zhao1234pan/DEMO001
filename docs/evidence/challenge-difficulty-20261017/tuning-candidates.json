@@ -1,0 +1,157 @@
+[
+  {
+    "name": "candidate-a",
+    "config": {
+      "wave": {
+        "start": 1,
+        "power": 1.35,
+        "end": 8.4,
+        "boss": 1.1
+      },
+      "waves": {
+        "22": {
+          "end": 11.7,
+          "power": 1.5,
+          "boss": 1
+        },
+        "24": {
+          "end": 4.2
+        },
+        "25": {
+          "end": 13
+        }
+      },
+      "rule": {
+        "eliteHealthScale": 5,
+        "eliteHealthGrowth": 0.16
+      }
+    }
+  },
+  {
+    "name": "candidate-b",
+    "config": {
+      "wave": {
+        "start": 0.9,
+        "power": 2,
+        "end": 7.2,
+        "boss": 1
+      },
+      "waves": {
+        "22": {
+          "end": 10.8,
+          "power": 2.5
+        },
+        "24": {
+          "start": 0.65,
+          "end": 3.4
+        },
+        "25": {
+          "end": 12.5
+        }
+      },
+      "rule": {
+        "eliteHealthScale": 4.5,
+        "eliteHealthGrowth": 0.14
+      }
+    }
+  },
+  {
+    "name": "candidate-c",
+    "config": {
+      "wave": {
+        "start": 0.65,
+        "power": 2,
+        "end": 7.2,
+        "boss": 1
+      },
+      "waves": {
+        "22": {
+          "end": 10.8,
+          "power": 2.5
+        },
+        "24": {
+          "start": 0.5,
+          "end": 3.4
+        },
+        "25": {
+          "end": 12.5
+        },
+        "26": {
+          "start": 0.9
+        }
+      },
+      "rule": {
+        "eliteHealthScale": 4.5,
+        "eliteHealthGrowth": 0.14
+      }
+    }
+  },
+  {
+    "name": "candidate-d",
+    "config": {
+      "wave": {
+        "start": 0.65,
+        "power": 2,
+        "end": 7.2,
+        "boss": 1
+      },
+      "waves": {
+        "22": {
+          "start": 0.55,
+          "end": 9.9,
+          "power": 2.8
+        },
+        "24": {
+          "start": 0.5,
+          "end": 3.4
+        },
+        "25": {
+          "start": 0.55,
+          "end": 11,
+          "power": 2.2
+        },
+        "26": {
+          "start": 0.9
+        }
+      },
+      "rule": {
+        "eliteHealthScale": 4.5,
+        "eliteHealthGrowth": 0.14
+      }
+    }
+  },
+  {
+    "name": "final-candidate",
+    "config": {
+      "wave": {
+        "start": 0.65,
+        "power": 2,
+        "end": 7.2,
+        "boss": 1
+      },
+      "waves": {
+        "22": {
+          "start": 0.55,
+          "end": 9.9,
+          "power": 2.8
+        },
+        "24": {
+          "start": 0.55,
+          "end": 5.2
+        },
+        "25": {
+          "start": 0.55,
+          "end": 11,
+          "power": 2.2
+        },
+        "26": {
+          "start": 0.9
+        }
+      },
+      "rule": {
+        "eliteHealthScale": 4.5,
+        "eliteHealthGrowth": 0.14
+      }
+    }
+  }
+]

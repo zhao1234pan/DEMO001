@@ -243,6 +243,10 @@ ShopRule增加offlineIncomeRatio、offlineBudgetPurchases、offlineCompleteBudge
 - ChallengeTopic.thumbnailKey显式引用VisualSkin，沿用原levelId／unlockAfter链。UiLayout、VisualSkin管理新卡片、九宫、字色及命中框；货架弹窗列数、行距和收缩量从布局表推导。
 - 本轮保留的代码常量例外属于界面技术协议：节点绑定路径、状态皮肤逻辑键、前三领奖槽的显示顺序、两位数关卡编号，以及居中／九宫使用的几何二分。它们不承载可调业务数值；实际资源路径、尺寸、颜色、边距、文字、评分权重和解锁条件仍由原始表管理。
 
+## 1.15.0 数值难度
+
+仅Wave.healthScale、ChallengeRule.eliteHealthScale／eliteHealthGrowth、Global.version变化，三张原始XLSX→CSV／manifest；没有新增业务字段、代码参数或资源。六专题分别管理初值／末值／指数，结果数值保存在逐Wave原表，客户端不计算硬编码曲线。地图流量、身体安全框、首领、Staff和科技、经营相关表保持。测试用阵容／种子／上限／优先级属于隔离验证输入，由tools/gameplay/challenge-validation-plan.json及外部方案管理，不进入客户端CSV。数值与局限见[本轮记录](CHALLENGE_DIFFICULTY.md)。
+
 ## 1.14.0 怪群与阶段配置
 
 - Enemy新增crowdScale、crowdRadius、crowdLift：挑战精灵等比系数、身体安全框半尺寸、脚底至身体中心抬升量。crowdRadius沿用radius命名但按AABB半尺寸使用，非圆形碰撞；原Enemy字段保持，冒险不读crowd字段。安全框与PNG透明内容及最大动画尺度另做计算验证。

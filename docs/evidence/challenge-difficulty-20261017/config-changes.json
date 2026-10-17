@@ -1,0 +1,668 @@
+{
+  "input": {
+    "wave": {
+      "start": 0.65,
+      "power": 2,
+      "end": 7.2,
+      "boss": 1
+    },
+    "waves": {
+      "22": {
+        "start": 0.55,
+        "end": 9.9,
+        "power": 2.8
+      },
+      "24": {
+        "start": 0.55,
+        "end": 5.2
+      },
+      "25": {
+        "start": 0.55,
+        "end": 11,
+        "power": 2.2
+      },
+      "26": {
+        "start": 0.9
+      }
+    },
+    "rule": {
+      "eliteHealthScale": 4.5,
+      "eliteHealthGrowth": 0.14
+    }
+  },
+  "reports": [
+    {
+      "table": "Wave",
+      "changes": [
+        {
+          "row": 89,
+          "column": "healthScale",
+          "before": 0.4,
+          "after": 0.65
+        },
+        {
+          "row": 90,
+          "column": "healthScale",
+          "before": 0.4286,
+          "after": 0.6834
+        },
+        {
+          "row": 91,
+          "column": "healthScale",
+          "before": 0.5143,
+          "after": 0.7837
+        },
+        {
+          "row": 92,
+          "column": "healthScale",
+          "before": 0.6571,
+          "after": 0.9508
+        },
+        {
+          "row": 93,
+          "column": "healthScale",
+          "before": 0.8571,
+          "after": 1.1847
+        },
+        {
+          "row": 94,
+          "column": "healthScale",
+          "before": 1.1143,
+          "after": 1.4855
+        },
+        {
+          "row": 95,
+          "column": "healthScale",
+          "before": 1.4286,
+          "after": 1.8531
+        },
+        {
+          "row": 96,
+          "column": "healthScale",
+          "before": 1.8,
+          "after": 2.2875
+        },
+        {
+          "row": 97,
+          "column": "healthScale",
+          "before": 2.2286,
+          "after": 2.7888
+        },
+        {
+          "row": 98,
+          "column": "healthScale",
+          "before": 2.7143,
+          "after": 3.3569
+        },
+        {
+          "row": 99,
+          "column": "healthScale",
+          "before": 3.2571,
+          "after": 3.9918
+        },
+        {
+          "row": 100,
+          "column": "healthScale",
+          "before": 3.8571,
+          "after": 4.6936
+        },
+        {
+          "row": 101,
+          "column": "healthScale",
+          "before": 4.5143,
+          "after": 5.4622
+        },
+        {
+          "row": 102,
+          "column": "healthScale",
+          "before": 5.2286,
+          "after": 6.2977
+        },
+        {
+          "row": 103,
+          "column": "healthScale",
+          "before": 6,
+          "after": 7.2
+        },
+        {
+          "row": 104,
+          "column": "healthScale",
+          "before": 0.4,
+          "after": 0.55
+        },
+        {
+          "row": 105,
+          "column": "healthScale",
+          "before": 0.4031,
+          "after": 0.5558
+        },
+        {
+          "row": 106,
+          "column": "healthScale",
+          "before": 0.4251,
+          "after": 0.5902
+        },
+        {
+          "row": 107,
+          "column": "healthScale",
+          "before": 0.4846,
+          "after": 0.6752
+        },
+        {
+          "row": 108,
+          "column": "healthScale",
+          "before": 0.6006,
+          "after": 0.8302
+        },
+        {
+          "row": 109,
+          "column": "healthScale",
+          "before": 0.7918,
+          "after": 1.0733
+        },
+        {
+          "row": 110,
+          "column": "healthScale",
+          "before": 1.077,
+          "after": 1.4219
+        },
+        {
+          "row": 111,
+          "column": "healthScale",
+          "before": 1.475,
+          "after": 1.8925
+        },
+        {
+          "row": 112,
+          "column": "healthScale",
+          "before": 2.0047,
+          "after": 2.5012
+        },
+        {
+          "row": 113,
+          "column": "healthScale",
+          "before": 2.6848,
+          "after": 3.2635
+        },
+        {
+          "row": 114,
+          "column": "healthScale",
+          "before": 3.5341,
+          "after": 4.1946
+        },
+        {
+          "row": 115,
+          "column": "healthScale",
+          "before": 4.5715,
+          "after": 5.3094
+        },
+        {
+          "row": 116,
+          "column": "healthScale",
+          "before": 5.8157,
+          "after": 6.6224
+        },
+        {
+          "row": 117,
+          "column": "healthScale",
+          "before": 7.2856,
+          "after": 8.1479
+        },
+        {
+          "row": 118,
+          "column": "healthScale",
+          "before": 9,
+          "after": 9.9
+        },
+        {
+          "row": 119,
+          "column": "healthScale",
+          "before": 0.4,
+          "after": 0.65
+        },
+        {
+          "row": 120,
+          "column": "healthScale",
+          "before": 0.4286,
+          "after": 0.6834
+        },
+        {
+          "row": 121,
+          "column": "healthScale",
+          "before": 0.5143,
+          "after": 0.7837
+        },
+        {
+          "row": 122,
+          "column": "healthScale",
+          "before": 0.6571,
+          "after": 0.9508
+        },
+        {
+          "row": 123,
+          "column": "healthScale",
+          "before": 0.8571,
+          "after": 1.1847
+        },
+        {
+          "row": 124,
+          "column": "healthScale",
+          "before": 1.1143,
+          "after": 1.4855
+        },
+        {
+          "row": 125,
+          "column": "healthScale",
+          "before": 1.4286,
+          "after": 1.8531
+        },
+        {
+          "row": 126,
+          "column": "healthScale",
+          "before": 1.8,
+          "after": 2.2875
+        },
+        {
+          "row": 127,
+          "column": "healthScale",
+          "before": 2.2286,
+          "after": 2.7888
+        },
+        {
+          "row": 128,
+          "column": "healthScale",
+          "before": 2.7143,
+          "after": 3.3569
+        },
+        {
+          "row": 129,
+          "column": "healthScale",
+          "before": 3.2571,
+          "after": 3.9918
+        },
+        {
+          "row": 130,
+          "column": "healthScale",
+          "before": 3.8571,
+          "after": 4.6936
+        },
+        {
+          "row": 131,
+          "column": "healthScale",
+          "before": 4.5143,
+          "after": 5.4622
+        },
+        {
+          "row": 132,
+          "column": "healthScale",
+          "before": 5.2286,
+          "after": 6.2977
+        },
+        {
+          "row": 133,
+          "column": "healthScale",
+          "before": 6,
+          "after": 7.2
+        },
+        {
+          "row": 134,
+          "column": "healthScale",
+          "before": 0.4,
+          "after": 0.55
+        },
+        {
+          "row": 135,
+          "column": "healthScale",
+          "before": 0.4122,
+          "after": 0.5737
+        },
+        {
+          "row": 136,
+          "column": "healthScale",
+          "before": 0.449,
+          "after": 0.6449
+        },
+        {
+          "row": 137,
+          "column": "healthScale",
+          "before": 0.5102,
+          "after": 0.7635
+        },
+        {
+          "row": 138,
+          "column": "healthScale",
+          "before": 0.5959,
+          "after": 0.9296
+        },
+        {
+          "row": 139,
+          "column": "healthScale",
+          "before": 0.7061,
+          "after": 1.1431
+        },
+        {
+          "row": 140,
+          "column": "healthScale",
+          "before": 0.8408,
+          "after": 1.4041
+        },
+        {
+          "row": 141,
+          "column": "healthScale",
+          "before": 1,
+          "after": 1.7125
+        },
+        {
+          "row": 142,
+          "column": "healthScale",
+          "before": 1.1837,
+          "after": 2.0684
+        },
+        {
+          "row": 143,
+          "column": "healthScale",
+          "before": 1.3918,
+          "after": 2.4717
+        },
+        {
+          "row": 144,
+          "column": "healthScale",
+          "before": 1.6245,
+          "after": 2.9224
+        },
+        {
+          "row": 145,
+          "column": "healthScale",
+          "before": 1.8816,
+          "after": 3.4207
+        },
+        {
+          "row": 146,
+          "column": "healthScale",
+          "before": 2.1633,
+          "after": 3.9663
+        },
+        {
+          "row": 147,
+          "column": "healthScale",
+          "before": 2.4694,
+          "after": 4.5594
+        },
+        {
+          "row": 148,
+          "column": "healthScale",
+          "before": 2.8,
+          "after": 5.2
+        },
+        {
+          "row": 149,
+          "column": "healthScale",
+          "before": 0.4,
+          "after": 0.55
+        },
+        {
+          "row": 150,
+          "column": "healthScale",
+          "before": 0.449,
+          "after": 0.5815
+        },
+        {
+          "row": 151,
+          "column": "healthScale",
+          "before": 0.5959,
+          "after": 0.6945
+        },
+        {
+          "row": 152,
+          "column": "healthScale",
+          "before": 0.8408,
+          "after": 0.9026
+        },
+        {
+          "row": 153,
+          "column": "healthScale",
+          "before": 1.1837,
+          "after": 1.214
+        },
+        {
+          "row": 154,
+          "column": "healthScale",
+          "before": 1.6245,
+          "after": 1.6348
+        },
+        {
+          "row": 155,
+          "column": "healthScale",
+          "before": 2.1633,
+          "after": 2.1702
+        },
+        {
+          "row": 156,
+          "column": "healthScale",
+          "before": 2.8,
+          "after": 2.8243
+        },
+        {
+          "row": 157,
+          "column": "healthScale",
+          "before": 3.5347,
+          "after": 3.6009
+        },
+        {
+          "row": 158,
+          "column": "healthScale",
+          "before": 4.3673,
+          "after": 4.5034
+        },
+        {
+          "row": 159,
+          "column": "healthScale",
+          "before": 5.298,
+          "after": 5.5346
+        },
+        {
+          "row": 160,
+          "column": "healthScale",
+          "before": 6.3265,
+          "after": 6.6975
+        },
+        {
+          "row": 161,
+          "column": "healthScale",
+          "before": 7.4531,
+          "after": 7.9945
+        },
+        {
+          "row": 162,
+          "column": "healthScale",
+          "before": 8.6776,
+          "after": 9.4279
+        },
+        {
+          "row": 163,
+          "column": "healthScale",
+          "before": 10,
+          "after": 11
+        },
+        {
+          "row": 164,
+          "column": "healthScale",
+          "before": 0.4,
+          "after": 0.9
+        },
+        {
+          "row": 165,
+          "column": "healthScale",
+          "before": 0.4286,
+          "after": 0.9321
+        },
+        {
+          "row": 166,
+          "column": "healthScale",
+          "before": 0.5143,
+          "after": 1.0286
+        },
+        {
+          "row": 167,
+          "column": "healthScale",
+          "before": 0.6571,
+          "after": 1.1893
+        },
+        {
+          "row": 168,
+          "column": "healthScale",
+          "before": 0.8571,
+          "after": 1.4143
+        },
+        {
+          "row": 169,
+          "column": "healthScale",
+          "before": 1.1143,
+          "after": 1.7036
+        },
+        {
+          "row": 170,
+          "column": "healthScale",
+          "before": 1.4286,
+          "after": 2.0571
+        },
+        {
+          "row": 171,
+          "column": "healthScale",
+          "before": 1.8,
+          "after": 2.475
+        },
+        {
+          "row": 172,
+          "column": "healthScale",
+          "before": 2.2286,
+          "after": 2.9571
+        },
+        {
+          "row": 173,
+          "column": "healthScale",
+          "before": 2.7143,
+          "after": 3.5036
+        },
+        {
+          "row": 174,
+          "column": "healthScale",
+          "before": 3.2571,
+          "after": 4.1143
+        },
+        {
+          "row": 175,
+          "column": "healthScale",
+          "before": 3.8571,
+          "after": 4.7893
+        },
+        {
+          "row": 176,
+          "column": "healthScale",
+          "before": 4.5143,
+          "after": 5.5286
+        },
+        {
+          "row": 177,
+          "column": "healthScale",
+          "before": 5.2286,
+          "after": 6.3321
+        },
+        {
+          "row": 178,
+          "column": "healthScale",
+          "before": 6,
+          "after": 7.2
+        }
+      ]
+    },
+    {
+      "table": "ChallengeRule",
+      "changes": [
+        {
+          "row": 6,
+          "column": "eliteHealthScale",
+          "before": 4,
+          "after": 4.5
+        },
+        {
+          "row": 6,
+          "column": "eliteHealthGrowth",
+          "before": 0.12,
+          "after": 0.14
+        },
+        {
+          "row": 7,
+          "column": "eliteHealthScale",
+          "before": 4,
+          "after": 4.5
+        },
+        {
+          "row": 7,
+          "column": "eliteHealthGrowth",
+          "before": 0.12,
+          "after": 0.14
+        },
+        {
+          "row": 8,
+          "column": "eliteHealthScale",
+          "before": 4,
+          "after": 4.5
+        },
+        {
+          "row": 8,
+          "column": "eliteHealthGrowth",
+          "before": 0.12,
+          "after": 0.14
+        },
+        {
+          "row": 9,
+          "column": "eliteHealthScale",
+          "before": 4,
+          "after": 4.5
+        },
+        {
+          "row": 9,
+          "column": "eliteHealthGrowth",
+          "before": 0.12,
+          "after": 0.14
+        },
+        {
+          "row": 10,
+          "column": "eliteHealthScale",
+          "before": 4,
+          "after": 4.5
+        },
+        {
+          "row": 10,
+          "column": "eliteHealthGrowth",
+          "before": 0.12,
+          "after": 0.14
+        },
+        {
+          "row": 11,
+          "column": "eliteHealthScale",
+          "before": 4,
+          "after": 4.5
+        },
+        {
+          "row": 11,
+          "column": "eliteHealthGrowth",
+          "before": 0.12,
+          "after": 0.14
+        }
+      ]
+    },
+    {
+      "table": "Global",
+      "changes": [
+        {
+          "row": 9,
+          "column": "value",
+          "before": "1.14.0",
+          "after": "1.15.0"
+        }
+      ]
+    }
+  ]
+}

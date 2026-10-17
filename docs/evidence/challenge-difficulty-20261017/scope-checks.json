@@ -1,0 +1,50 @@
+{
+  "baseline": "11609a0",
+  "scope": [
+    {
+      "path": "assets/scripts/gameplay/battle/GameRoot.ts",
+      "unchanged": true
+    },
+    {
+      "path": "assets/scripts/gameplay/battle/CrowdFlow.ts",
+      "unchanged": true
+    },
+    {
+      "path": "assets/scripts/gameplay/battle/ChallengeRun.ts",
+      "unchanged": true
+    },
+    {
+      "path": "assets/resources/config/Enemy.csv",
+      "unchanged": true
+    },
+    {
+      "path": "assets/resources/config/WaveGroup.csv",
+      "unchanged": true
+    },
+    {
+      "path": "assets/resources/config/Staff.csv",
+      "unchanged": true
+    },
+    {
+      "path": "assets/resources/config/StaffBranch.csv",
+      "unchanged": true
+    },
+    {
+      "path": "assets/resources/config/ChallengePerk.csv",
+      "unchanged": true
+    },
+    {
+      "path": "assets/resources/config/Level.csv",
+      "unchanged": true
+    },
+    {
+      "path": "assets/resources/config/I18.csv",
+      "unchanged": true
+    },
+    {
+      "table": "Wave",
+      "adventureRows": 83,
+      "onlyChallengeHealthChanged": true
+    }
+  ]
+}

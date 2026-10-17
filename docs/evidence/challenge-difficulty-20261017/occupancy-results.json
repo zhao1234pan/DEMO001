@@ -1,0 +1,2610 @@
+{
+  "kind": "真实GameRoot、3倍速、隔离存档、无广告与道具、无渲染自动策略",
+  "input": {
+    "verify": false,
+    "maxSeconds": 1200,
+    "scenarios": [
+      {
+        "name": "八成专属核心",
+        "cap": 0.82,
+        "tech": "build",
+        "seed": 42
+      },
+      {
+        "name": "半图专属核心",
+        "cap": 0.55,
+        "tech": "build",
+        "seed": 42
+      }
+    ]
+  },
+  "scenarios": [
+    {
+      "name": "八成专属核心",
+      "cap": 0.82,
+      "tech": "build",
+      "seed": 42
+    },
+    {
+      "name": "半图专属核心",
+      "cap": 0.55,
+      "tech": "build",
+      "seed": 42
+    }
+  ],
+  "results": [
+    {
+      "id": 21,
+      "scenario": "八成专属核心",
+      "seed": 42,
+      "roster": [
+        "sprout",
+        "frost",
+        "bloom",
+        "scope"
+      ],
+      "result": "win",
+      "wave": 15,
+      "realSeconds": 891,
+      "lives": 10,
+      "spawned": 4569,
+      "killed": 4569,
+      "peakEnemies": 33,
+      "peakElites": 6,
+      "carryovers": 14,
+      "peakKillsPerSecond": 12,
+      "minBodyClearance": 3,
+      "towers": 18,
+      "spots": 22,
+      "occupancy": 0.818,
+      "upgraded": 18,
+      "maxLevel": 18,
+      "coins": 2133,
+      "picks": 10,
+      "tech": [
+        "S01",
+        "F02",
+        "E03",
+        "G03",
+        "G02",
+        "S04",
+        "E06",
+        "G06",
+        "S02",
+        "G04"
+      ],
+      "killsByPhase": {
+        "1": {
+          "count": 258,
+          "meanProgress": 0.242,
+          "entryKillRatio": 0.438
+        },
+        "2": {
+          "count": 284,
+          "meanProgress": 0.132,
+          "entryKillRatio": 0.944
+        },
+        "3": {
+          "count": 283,
+          "meanProgress": 0.118,
+          "entryKillRatio": 1
+        },
+        "4": {
+          "count": 291,
+          "meanProgress": 0.153,
+          "entryKillRatio": 0.935
+        },
+        "5": {
+          "count": 289,
+          "meanProgress": 0.192,
+          "entryKillRatio": 0.581
+        },
+        "6": {
+          "count": 312,
+          "meanProgress": 0.133,
+          "entryKillRatio": 0.99
+        },
+        "7": {
+          "count": 311,
+          "meanProgress": 0.253,
+          "entryKillRatio": 0.383
+        },
+        "8": {
+          "count": 299,
+          "meanProgress": 0.25,
+          "entryKillRatio": 0.388
+        },
+        "9": {
+          "count": 330,
+          "meanProgress": 0.291,
+          "entryKillRatio": 0.345
+        },
+        "10": {
+          "count": 319,
+          "meanProgress": 0.337,
+          "entryKillRatio": 0.204
+        },
+        "11": {
+          "count": 336,
+          "meanProgress": 0.274,
+          "entryKillRatio": 0.429
+        },
+        "12": {
+          "count": 380,
+          "meanProgress": 0.175,
+          "entryKillRatio": 0.816
+        },
+        "13": {
+          "count": 253,
+          "meanProgress": 0.352,
+          "entryKillRatio": 0.186
+        },
+        "14": {
+          "count": 309,
+          "meanProgress": 0.357,
+          "entryKillRatio": 0.165
+        },
+        "15": {
+          "count": 315,
+          "meanProgress": 0.393,
+          "entryKillRatio": 0.07
+        }
+      },
+      "waves": [
+        {
+          "wave": 1,
+          "seconds": 10,
+          "towers": 6,
+          "lives": 10,
+          "coins": 108
+        },
+        {
+          "wave": 2,
+          "seconds": 68,
+          "towers": 6,
+          "lives": 10,
+          "coins": 29
+        },
+        {
+          "wave": 3,
+          "seconds": 127,
+          "towers": 8,
+          "lives": 10,
+          "coins": 86
+        },
+        {
+          "wave": 4,
+          "seconds": 185,
+          "towers": 8,
+          "lives": 10,
+          "coins": 79
+        },
+        {
+          "wave": 5,
+          "seconds": 243,
+          "towers": 8,
+          "lives": 10,
+          "coins": 42
+        },
+        {
+          "wave": 6,
+          "seconds": 302,
+          "towers": 8,
+          "lives": 10,
+          "coins": 64
+        },
+        {
+          "wave": 7,
+          "seconds": 360,
+          "towers": 11,
+          "lives": 10,
+          "coins": 112
+        },
+        {
+          "wave": 8,
+          "seconds": 419,
+          "towers": 12,
+          "lives": 10,
+          "coins": 90
+        },
+        {
+          "wave": 9,
+          "seconds": 477,
+          "towers": 14,
+          "lives": 10,
+          "coins": 36
+        },
+        {
+          "wave": 10,
+          "seconds": 535,
+          "towers": 15,
+          "lives": 10,
+          "coins": 35
+        },
+        {
+          "wave": 11,
+          "seconds": 594,
+          "towers": 16,
+          "lives": 10,
+          "coins": 29
+        },
+        {
+          "wave": 12,
+          "seconds": 652,
+          "towers": 18,
+          "lives": 10,
+          "coins": 49
+        },
+        {
+          "wave": 13,
+          "seconds": 710,
+          "towers": 18,
+          "lives": 10,
+          "coins": 481
+        },
+        {
+          "wave": 14,
+          "seconds": 769,
+          "towers": 18,
+          "lives": 10,
+          "coins": 1034
+        },
+        {
+          "wave": 15,
+          "seconds": 827,
+          "towers": 18,
+          "lives": 10,
+          "coins": 1602
+        }
+      ]
+    },
+    {
+      "id": 21,
+      "scenario": "半图专属核心",
+      "seed": 42,
+      "roster": [
+        "sprout",
+        "frost",
+        "bloom",
+        "scope"
+      ],
+      "result": "lose",
+      "wave": 13,
+      "realSeconds": 746,
+      "lives": 0,
+      "spawned": 3705,
+      "killed": 3664,
+      "peakEnemies": 35,
+      "peakElites": 7,
+      "carryovers": 12,
+      "peakKillsPerSecond": 11,
+      "minBodyClearance": 3,
+      "towers": 12,
+      "spots": 22,
+      "occupancy": 0.545,
+      "upgraded": 12,
+      "maxLevel": 12,
+      "coins": 2421,
+      "picks": 9,
+      "tech": [
+        "S01",
+        "F02",
+        "E03",
+        "G03",
+        "G02",
+        "S04",
+        "E06",
+        "G06",
+        "S02"
+      ],
+      "killsByPhase": {
+        "1": {
+          "count": 258,
+          "meanProgress": 0.242,
+          "entryKillRatio": 0.438
+        },
+        "2": {
+          "count": 284,
+          "meanProgress": 0.132,
+          "entryKillRatio": 0.944
+        },
+        "3": {
+          "count": 283,
+          "meanProgress": 0.118,
+          "entryKillRatio": 1
+        },
+        "4": {
+          "count": 291,
+          "meanProgress": 0.153,
+          "entryKillRatio": 0.935
+        },
+        "5": {
+          "count": 289,
+          "meanProgress": 0.192,
+          "entryKillRatio": 0.581
+        },
+        "6": {
+          "count": 312,
+          "meanProgress": 0.133,
+          "entryKillRatio": 0.99
+        },
+        "7": {
+          "count": 311,
+          "meanProgress": 0.253,
+          "entryKillRatio": 0.383
+        },
+        "8": {
+          "count": 290,
+          "meanProgress": 0.274,
+          "entryKillRatio": 0.331
+        },
+        "9": {
+          "count": 306,
+          "meanProgress": 0.367,
+          "entryKillRatio": 0.196
+        },
+        "10": {
+          "count": 291,
+          "meanProgress": 0.407,
+          "entryKillRatio": 0.144
+        },
+        "11": {
+          "count": 288,
+          "meanProgress": 0.381,
+          "entryKillRatio": 0.174
+        },
+        "12": {
+          "count": 318,
+          "meanProgress": 0.396,
+          "entryKillRatio": 0.154
+        },
+        "13": {
+          "count": 143,
+          "meanProgress": 0.431,
+          "entryKillRatio": 0.091
+        }
+      },
+      "waves": [
+        {
+          "wave": 1,
+          "seconds": 10,
+          "towers": 6,
+          "lives": 10,
+          "coins": 108
+        },
+        {
+          "wave": 2,
+          "seconds": 68,
+          "towers": 6,
+          "lives": 10,
+          "coins": 29
+        },
+        {
+          "wave": 3,
+          "seconds": 127,
+          "towers": 8,
+          "lives": 10,
+          "coins": 86
+        },
+        {
+          "wave": 4,
+          "seconds": 185,
+          "towers": 8,
+          "lives": 10,
+          "coins": 79
+        },
+        {
+          "wave": 5,
+          "seconds": 243,
+          "towers": 8,
+          "lives": 10,
+          "coins": 42
+        },
+        {
+          "wave": 6,
+          "seconds": 302,
+          "towers": 8,
+          "lives": 10,
+          "coins": 64
+        },
+        {
+          "wave": 7,
+          "seconds": 360,
+          "towers": 11,
+          "lives": 10,
+          "coins": 112
+        },
+        {
+          "wave": 8,
+          "seconds": 419,
+          "towers": 12,
+          "lives": 10,
+          "coins": 90
+        },
+        {
+          "wave": 9,
+          "seconds": 477,
+          "towers": 12,
+          "lives": 10,
+          "coins": 195
+        },
+        {
+          "wave": 10,
+          "seconds": 535,
+          "towers": 12,
+          "lives": 10,
+          "coins": 624
+        },
+        {
+          "wave": 11,
+          "seconds": 594,
+          "towers": 12,
+          "lives": 10,
+          "coins": 1112
+        },
+        {
+          "wave": 12,
+          "seconds": 652,
+          "towers": 12,
+          "lives": 10,
+          "coins": 1704
+        },
+        {
+          "wave": 13,
+          "seconds": 710,
+          "towers": 12,
+          "lives": 10,
+          "coins": 2153
+        }
+      ]
+    },
+    {
+      "id": 22,
+      "scenario": "八成专属核心",
+      "seed": 42,
+      "roster": [
+        "sprout",
+        "frost",
+        "scope",
+        "fan"
+      ],
+      "result": "win",
+      "wave": 15,
+      "realSeconds": 892,
+      "lives": 6,
+      "spawned": 3804,
+      "killed": 3800,
+      "peakEnemies": 27,
+      "peakElites": 7,
+      "carryovers": 14,
+      "peakKillsPerSecond": 12,
+      "minBodyClearance": 3,
+      "towers": 18,
+      "spots": 22,
+      "occupancy": 0.818,
+      "upgraded": 18,
+      "maxLevel": 18,
+      "coins": 1225,
+      "picks": 10,
+      "tech": [
+        "G01",
+        "S01",
+        "G03",
+        "E04",
+        "G05",
+        "G04",
+        "S08",
+        "E03",
+        "G06",
+        "S02",
+        "S04"
+      ],
+      "killsByPhase": {
+        "1": {
+          "count": 210,
+          "meanProgress": 0.209,
+          "entryKillRatio": 0.338
+        },
+        "2": {
+          "count": 248,
+          "meanProgress": 0.093,
+          "entryKillRatio": 0.98
+        },
+        "3": {
+          "count": 234,
+          "meanProgress": 0.187,
+          "entryKillRatio": 0.551
+        },
+        "4": {
+          "count": 226,
+          "meanProgress": 0.207,
+          "entryKillRatio": 0.447
+        },
+        "5": {
+          "count": 201,
+          "meanProgress": 0.187,
+          "entryKillRatio": 0.682
+        },
+        "6": {
+          "count": 282,
+          "meanProgress": 0.173,
+          "entryKillRatio": 0.709
+        },
+        "7": {
+          "count": 267,
+          "meanProgress": 0.176,
+          "entryKillRatio": 0.637
+        },
+        "8": {
+          "count": 269,
+          "meanProgress": 0.109,
+          "entryKillRatio": 0.881
+        },
+        "9": {
+          "count": 297,
+          "meanProgress": 0.167,
+          "entryKillRatio": 0.68
+        },
+        "10": {
+          "count": 275,
+          "meanProgress": 0.166,
+          "entryKillRatio": 0.713
+        },
+        "11": {
+          "count": 275,
+          "meanProgress": 0.113,
+          "entryKillRatio": 0.858
+        },
+        "12": {
+          "count": 321,
+          "meanProgress": 0.136,
+          "entryKillRatio": 0.838
+        },
+        "13": {
+          "count": 208,
+          "meanProgress": 0.228,
+          "entryKillRatio": 0.471
+        },
+        "14": {
+          "count": 255,
+          "meanProgress": 0.215,
+          "entryKillRatio": 0.553
+        },
+        "15": {
+          "count": 232,
+          "meanProgress": 0.324,
+          "entryKillRatio": 0.203
+        }
+      },
+      "waves": [
+        {
+          "wave": 1,
+          "seconds": 10,
+          "towers": 5,
+          "lives": 10,
+          "coins": 43
+        },
+        {
+          "wave": 2,
+          "seconds": 68,
+          "towers": 5,
+          "lives": 10,
+          "coins": 127
+        },
+        {
+          "wave": 3,
+          "seconds": 127,
+          "towers": 6,
+          "lives": 10,
+          "coins": 24
+        },
+        {
+          "wave": 4,
+          "seconds": 185,
+          "towers": 6,
+          "lives": 10,
+          "coins": 96
+        },
+        {
+          "wave": 5,
+          "seconds": 243,
+          "towers": 8,
+          "lives": 10,
+          "coins": 68
+        },
+        {
+          "wave": 6,
+          "seconds": 302,
+          "towers": 9,
+          "lives": 10,
+          "coins": 91
+        },
+        {
+          "wave": 7,
+          "seconds": 360,
+          "towers": 9,
+          "lives": 10,
+          "coins": 120
+        },
+        {
+          "wave": 8,
+          "seconds": 419,
+          "towers": 11,
+          "lives": 10,
+          "coins": 117
+        },
+        {
+          "wave": 9,
+          "seconds": 477,
+          "towers": 12,
+          "lives": 10,
+          "coins": 32
+        },
+        {
+          "wave": 10,
+          "seconds": 535,
+          "towers": 14,
+          "lives": 10,
+          "coins": 46
+        },
+        {
+          "wave": 11,
+          "seconds": 594,
+          "towers": 16,
+          "lives": 10,
+          "coins": 151
+        },
+        {
+          "wave": 12,
+          "seconds": 652,
+          "towers": 16,
+          "lives": 10,
+          "coins": 154
+        },
+        {
+          "wave": 13,
+          "seconds": 710,
+          "towers": 18,
+          "lives": 10,
+          "coins": 88
+        },
+        {
+          "wave": 14,
+          "seconds": 769,
+          "towers": 18,
+          "lives": 10,
+          "coins": 467
+        },
+        {
+          "wave": 15,
+          "seconds": 827,
+          "towers": 18,
+          "lives": 10,
+          "coins": 864
+        }
+      ]
+    },
+    {
+      "id": 22,
+      "scenario": "半图专属核心",
+      "seed": 42,
+      "roster": [
+        "sprout",
+        "frost",
+        "scope",
+        "fan"
+      ],
+      "result": "lose",
+      "wave": 14,
+      "realSeconds": 808,
+      "lives": 0,
+      "spawned": 3465,
+      "killed": 3443,
+      "peakEnemies": 22,
+      "peakElites": 6,
+      "carryovers": 13,
+      "peakKillsPerSecond": 11,
+      "minBodyClearance": 3,
+      "towers": 12,
+      "spots": 22,
+      "occupancy": 0.545,
+      "upgraded": 12,
+      "maxLevel": 12,
+      "coins": 2201,
+      "picks": 10,
+      "tech": [
+        "G01",
+        "S01",
+        "G03",
+        "E04",
+        "G05",
+        "G04",
+        "S08",
+        "E03",
+        "G06",
+        "S02",
+        "S04"
+      ],
+      "killsByPhase": {
+        "1": {
+          "count": 210,
+          "meanProgress": 0.209,
+          "entryKillRatio": 0.338
+        },
+        "2": {
+          "count": 248,
+          "meanProgress": 0.093,
+          "entryKillRatio": 0.98
+        },
+        "3": {
+          "count": 234,
+          "meanProgress": 0.187,
+          "entryKillRatio": 0.551
+        },
+        "4": {
+          "count": 226,
+          "meanProgress": 0.207,
+          "entryKillRatio": 0.447
+        },
+        "5": {
+          "count": 201,
+          "meanProgress": 0.187,
+          "entryKillRatio": 0.682
+        },
+        "6": {
+          "count": 282,
+          "meanProgress": 0.173,
+          "entryKillRatio": 0.709
+        },
+        "7": {
+          "count": 267,
+          "meanProgress": 0.176,
+          "entryKillRatio": 0.637
+        },
+        "8": {
+          "count": 269,
+          "meanProgress": 0.109,
+          "entryKillRatio": 0.881
+        },
+        "9": {
+          "count": 296,
+          "meanProgress": 0.168,
+          "entryKillRatio": 0.679
+        },
+        "10": {
+          "count": 272,
+          "meanProgress": 0.192,
+          "entryKillRatio": 0.658
+        },
+        "11": {
+          "count": 269,
+          "meanProgress": 0.136,
+          "entryKillRatio": 0.844
+        },
+        "12": {
+          "count": 321,
+          "meanProgress": 0.173,
+          "entryKillRatio": 0.726
+        },
+        "13": {
+          "count": 207,
+          "meanProgress": 0.279,
+          "entryKillRatio": 0.222
+        },
+        "14": {
+          "count": 141,
+          "meanProgress": 0.332,
+          "entryKillRatio": 0.057
+        }
+      },
+      "waves": [
+        {
+          "wave": 1,
+          "seconds": 10,
+          "towers": 5,
+          "lives": 10,
+          "coins": 43
+        },
+        {
+          "wave": 2,
+          "seconds": 68,
+          "towers": 5,
+          "lives": 10,
+          "coins": 127
+        },
+        {
+          "wave": 3,
+          "seconds": 127,
+          "towers": 6,
+          "lives": 10,
+          "coins": 24
+        },
+        {
+          "wave": 4,
+          "seconds": 185,
+          "towers": 6,
+          "lives": 10,
+          "coins": 96
+        },
+        {
+          "wave": 5,
+          "seconds": 243,
+          "towers": 8,
+          "lives": 10,
+          "coins": 68
+        },
+        {
+          "wave": 6,
+          "seconds": 302,
+          "towers": 9,
+          "lives": 10,
+          "coins": 91
+        },
+        {
+          "wave": 7,
+          "seconds": 360,
+          "towers": 9,
+          "lives": 10,
+          "coins": 120
+        },
+        {
+          "wave": 8,
+          "seconds": 419,
+          "towers": 11,
+          "lives": 10,
+          "coins": 117
+        },
+        {
+          "wave": 9,
+          "seconds": 477,
+          "towers": 12,
+          "lives": 10,
+          "coins": 32
+        },
+        {
+          "wave": 10,
+          "seconds": 535,
+          "towers": 12,
+          "lives": 10,
+          "coins": 338
+        },
+        {
+          "wave": 11,
+          "seconds": 594,
+          "towers": 12,
+          "lives": 10,
+          "coins": 733
+        },
+        {
+          "wave": 12,
+          "seconds": 652,
+          "towers": 12,
+          "lives": 10,
+          "coins": 1200
+        },
+        {
+          "wave": 13,
+          "seconds": 710,
+          "towers": 12,
+          "lives": 10,
+          "coins": 1625
+        },
+        {
+          "wave": 14,
+          "seconds": 769,
+          "towers": 12,
+          "lives": 9,
+          "coins": 2000
+        }
+      ]
+    },
+    {
+      "id": 23,
+      "scenario": "八成专属核心",
+      "seed": 42,
+      "roster": [
+        "sprout",
+        "bloom",
+        "ember",
+        "scope"
+      ],
+      "result": "win",
+      "wave": 15,
+      "realSeconds": 890,
+      "lives": 9,
+      "spawned": 4169,
+      "killed": 4168,
+      "peakEnemies": 32,
+      "peakElites": 6,
+      "carryovers": 14,
+      "peakKillsPerSecond": 12,
+      "minBodyClearance": 3,
+      "towers": 17,
+      "spots": 21,
+      "occupancy": 0.81,
+      "upgraded": 17,
+      "maxLevel": 17,
+      "coins": 2094,
+      "picks": 10,
+      "tech": [
+        "X05",
+        "S01",
+        "G03",
+        "E03",
+        "G04",
+        "G02",
+        "S06",
+        "E04",
+        "G05",
+        "S03",
+        "F02"
+      ],
+      "killsByPhase": {
+        "1": {
+          "count": 264,
+          "meanProgress": 0.119,
+          "entryKillRatio": 1
+        },
+        "2": {
+          "count": 271,
+          "meanProgress": 0.179,
+          "entryKillRatio": 0.771
+        },
+        "3": {
+          "count": 288,
+          "meanProgress": 0.174,
+          "entryKillRatio": 0.799
+        },
+        "4": {
+          "count": 261,
+          "meanProgress": 0.312,
+          "entryKillRatio": 0.287
+        },
+        "5": {
+          "count": 264,
+          "meanProgress": 0.343,
+          "entryKillRatio": 0.246
+        },
+        "6": {
+          "count": 313,
+          "meanProgress": 0.27,
+          "entryKillRatio": 0.361
+        },
+        "7": {
+          "count": 314,
+          "meanProgress": 0.267,
+          "entryKillRatio": 0.341
+        },
+        "8": {
+          "count": 234,
+          "meanProgress": 0.353,
+          "entryKillRatio": 0.081
+        },
+        "9": {
+          "count": 270,
+          "meanProgress": 0.384,
+          "entryKillRatio": 0.048
+        },
+        "10": {
+          "count": 263,
+          "meanProgress": 0.43,
+          "entryKillRatio": 0.034
+        },
+        "11": {
+          "count": 269,
+          "meanProgress": 0.366,
+          "entryKillRatio": 0.1
+        },
+        "12": {
+          "count": 262,
+          "meanProgress": 0.437,
+          "entryKillRatio": 0.023
+        },
+        "13": {
+          "count": 250,
+          "meanProgress": 0.41,
+          "entryKillRatio": 0.04
+        },
+        "14": {
+          "count": 323,
+          "meanProgress": 0.288,
+          "entryKillRatio": 0.167
+        },
+        "15": {
+          "count": 322,
+          "meanProgress": 0.346,
+          "entryKillRatio": 0.087
+        }
+      },
+      "waves": [
+        {
+          "wave": 1,
+          "seconds": 10,
+          "towers": 5,
+          "lives": 10,
+          "coins": 121
+        },
+        {
+          "wave": 2,
+          "seconds": 68,
+          "towers": 6,
+          "lives": 10,
+          "coins": 121
+        },
+        {
+          "wave": 3,
+          "seconds": 127,
+          "towers": 8,
+          "lives": 10,
+          "coins": 113
+        },
+        {
+          "wave": 4,
+          "seconds": 185,
+          "towers": 8,
+          "lives": 10,
+          "coins": 34
+        },
+        {
+          "wave": 5,
+          "seconds": 243,
+          "towers": 8,
+          "lives": 10,
+          "coins": 25
+        },
+        {
+          "wave": 6,
+          "seconds": 302,
+          "towers": 9,
+          "lives": 10,
+          "coins": 105
+        },
+        {
+          "wave": 7,
+          "seconds": 360,
+          "towers": 12,
+          "lives": 10,
+          "coins": 53
+        },
+        {
+          "wave": 8,
+          "seconds": 419,
+          "towers": 13,
+          "lives": 10,
+          "coins": 63
+        },
+        {
+          "wave": 9,
+          "seconds": 477,
+          "towers": 15,
+          "lives": 10,
+          "coins": 37
+        },
+        {
+          "wave": 10,
+          "seconds": 535,
+          "towers": 15,
+          "lives": 10,
+          "coins": 77
+        },
+        {
+          "wave": 11,
+          "seconds": 594,
+          "towers": 17,
+          "lives": 10,
+          "coins": 60
+        },
+        {
+          "wave": 12,
+          "seconds": 652,
+          "towers": 17,
+          "lives": 10,
+          "coins": 286
+        },
+        {
+          "wave": 13,
+          "seconds": 710,
+          "towers": 17,
+          "lives": 10,
+          "coins": 697
+        },
+        {
+          "wave": 14,
+          "seconds": 769,
+          "towers": 17,
+          "lives": 10,
+          "coins": 1147
+        },
+        {
+          "wave": 15,
+          "seconds": 827,
+          "towers": 17,
+          "lives": 10,
+          "coins": 1644
+        }
+      ]
+    },
+    {
+      "id": 23,
+      "scenario": "半图专属核心",
+      "seed": 42,
+      "roster": [
+        "sprout",
+        "bloom",
+        "ember",
+        "scope"
+      ],
+      "result": "lose",
+      "wave": 11,
+      "realSeconds": 641,
+      "lives": 0,
+      "spawned": 2895,
+      "killed": 2857,
+      "peakEnemies": 36,
+      "peakElites": 7,
+      "carryovers": 10,
+      "peakKillsPerSecond": 11,
+      "minBodyClearance": 3,
+      "towers": 11,
+      "spots": 21,
+      "occupancy": 0.524,
+      "upgraded": 11,
+      "maxLevel": 11,
+      "coins": 1808,
+      "picks": 8,
+      "tech": [
+        "X05",
+        "S01",
+        "G03",
+        "E03",
+        "G04",
+        "G02",
+        "S06",
+        "E04",
+        "G05"
+      ],
+      "killsByPhase": {
+        "1": {
+          "count": 264,
+          "meanProgress": 0.119,
+          "entryKillRatio": 1
+        },
+        "2": {
+          "count": 271,
+          "meanProgress": 0.179,
+          "entryKillRatio": 0.771
+        },
+        "3": {
+          "count": 288,
+          "meanProgress": 0.174,
+          "entryKillRatio": 0.799
+        },
+        "4": {
+          "count": 261,
+          "meanProgress": 0.312,
+          "entryKillRatio": 0.287
+        },
+        "5": {
+          "count": 264,
+          "meanProgress": 0.343,
+          "entryKillRatio": 0.246
+        },
+        "6": {
+          "count": 296,
+          "meanProgress": 0.32,
+          "entryKillRatio": 0.193
+        },
+        "7": {
+          "count": 317,
+          "meanProgress": 0.295,
+          "entryKillRatio": 0.265
+        },
+        "8": {
+          "count": 215,
+          "meanProgress": 0.397,
+          "entryKillRatio": 0.051
+        },
+        "9": {
+          "count": 249,
+          "meanProgress": 0.443,
+          "entryKillRatio": 0
+        },
+        "10": {
+          "count": 251,
+          "meanProgress": 0.474,
+          "entryKillRatio": 0.008
+        },
+        "11": {
+          "count": 181,
+          "meanProgress": 0.493,
+          "entryKillRatio": 0
+        }
+      },
+      "waves": [
+        {
+          "wave": 1,
+          "seconds": 10,
+          "towers": 5,
+          "lives": 10,
+          "coins": 121
+        },
+        {
+          "wave": 2,
+          "seconds": 68,
+          "towers": 6,
+          "lives": 10,
+          "coins": 121
+        },
+        {
+          "wave": 3,
+          "seconds": 127,
+          "towers": 8,
+          "lives": 10,
+          "coins": 113
+        },
+        {
+          "wave": 4,
+          "seconds": 185,
+          "towers": 8,
+          "lives": 10,
+          "coins": 34
+        },
+        {
+          "wave": 5,
+          "seconds": 243,
+          "towers": 8,
+          "lives": 10,
+          "coins": 25
+        },
+        {
+          "wave": 6,
+          "seconds": 302,
+          "towers": 9,
+          "lives": 10,
+          "coins": 105
+        },
+        {
+          "wave": 7,
+          "seconds": 360,
+          "towers": 11,
+          "lives": 10,
+          "coins": 127
+        },
+        {
+          "wave": 8,
+          "seconds": 419,
+          "towers": 11,
+          "lives": 10,
+          "coins": 424
+        },
+        {
+          "wave": 9,
+          "seconds": 477,
+          "towers": 11,
+          "lives": 10,
+          "coins": 800
+        },
+        {
+          "wave": 10,
+          "seconds": 535,
+          "towers": 11,
+          "lives": 10,
+          "coins": 1161
+        },
+        {
+          "wave": 11,
+          "seconds": 594,
+          "towers": 11,
+          "lives": 8,
+          "coins": 1522
+        }
+      ]
+    },
+    {
+      "id": 24,
+      "scenario": "八成专属核心",
+      "seed": 42,
+      "roster": [
+        "sprout",
+        "frost",
+        "spark",
+        "fan"
+      ],
+      "result": "win",
+      "wave": 15,
+      "realSeconds": 887,
+      "lives": 10,
+      "spawned": 3664,
+      "killed": 3664,
+      "peakEnemies": 15,
+      "peakElites": 3,
+      "carryovers": 14,
+      "peakKillsPerSecond": 9,
+      "minBodyClearance": 3,
+      "towers": 18,
+      "spots": 22,
+      "occupancy": 0.818,
+      "upgraded": 18,
+      "maxLevel": 18,
+      "coins": 1496,
+      "picks": 10,
+      "tech": [
+        "E06",
+        "S01",
+        "G02",
+        "E03",
+        "G04",
+        "E04",
+        "S08",
+        "G06",
+        "F01",
+        "E01",
+        "X02"
+      ],
+      "killsByPhase": {
+        "1": {
+          "count": 208,
+          "meanProgress": 0.171,
+          "entryKillRatio": 0.966
+        },
+        "2": {
+          "count": 197,
+          "meanProgress": 0.17,
+          "entryKillRatio": 0.975
+        },
+        "3": {
+          "count": 235,
+          "meanProgress": 0.18,
+          "entryKillRatio": 0.77
+        },
+        "4": {
+          "count": 233,
+          "meanProgress": 0.18,
+          "entryKillRatio": 0.798
+        },
+        "5": {
+          "count": 202,
+          "meanProgress": 0.179,
+          "entryKillRatio": 0.757
+        },
+        "6": {
+          "count": 247,
+          "meanProgress": 0.17,
+          "entryKillRatio": 0.87
+        },
+        "7": {
+          "count": 260,
+          "meanProgress": 0.186,
+          "entryKillRatio": 0.762
+        },
+        "8": {
+          "count": 231,
+          "meanProgress": 0.188,
+          "entryKillRatio": 0.727
+        },
+        "9": {
+          "count": 247,
+          "meanProgress": 0.211,
+          "entryKillRatio": 0.425
+        },
+        "10": {
+          "count": 252,
+          "meanProgress": 0.212,
+          "entryKillRatio": 0.444
+        },
+        "11": {
+          "count": 266,
+          "meanProgress": 0.193,
+          "entryKillRatio": 0.628
+        },
+        "12": {
+          "count": 278,
+          "meanProgress": 0.177,
+          "entryKillRatio": 0.763
+        },
+        "13": {
+          "count": 272,
+          "meanProgress": 0.228,
+          "entryKillRatio": 0.254
+        },
+        "14": {
+          "count": 284,
+          "meanProgress": 0.218,
+          "entryKillRatio": 0.366
+        },
+        "15": {
+          "count": 252,
+          "meanProgress": 0.234,
+          "entryKillRatio": 0.317
+        }
+      },
+      "waves": [
+        {
+          "wave": 1,
+          "seconds": 10,
+          "towers": 5,
+          "lives": 10,
+          "coins": 37
+        },
+        {
+          "wave": 2,
+          "seconds": 68,
+          "towers": 5,
+          "lives": 10,
+          "coins": 119
+        },
+        {
+          "wave": 3,
+          "seconds": 127,
+          "towers": 5,
+          "lives": 10,
+          "coins": 86
+        },
+        {
+          "wave": 4,
+          "seconds": 185,
+          "towers": 6,
+          "lives": 10,
+          "coins": 120
+        },
+        {
+          "wave": 5,
+          "seconds": 243,
+          "towers": 6,
+          "lives": 10,
+          "coins": 150
+        },
+        {
+          "wave": 6,
+          "seconds": 302,
+          "towers": 9,
+          "lives": 10,
+          "coins": 23
+        },
+        {
+          "wave": 7,
+          "seconds": 360,
+          "towers": 10,
+          "lives": 10,
+          "coins": 142
+        },
+        {
+          "wave": 8,
+          "seconds": 419,
+          "towers": 12,
+          "lives": 10,
+          "coins": 48
+        },
+        {
+          "wave": 9,
+          "seconds": 477,
+          "towers": 14,
+          "lives": 10,
+          "coins": 42
+        },
+        {
+          "wave": 10,
+          "seconds": 535,
+          "towers": 14,
+          "lives": 10,
+          "coins": 141
+        },
+        {
+          "wave": 11,
+          "seconds": 594,
+          "towers": 15,
+          "lives": 10,
+          "coins": 161
+        },
+        {
+          "wave": 12,
+          "seconds": 652,
+          "towers": 17,
+          "lives": 10,
+          "coins": 31
+        },
+        {
+          "wave": 13,
+          "seconds": 710,
+          "towers": 18,
+          "lives": 10,
+          "coins": 207
+        },
+        {
+          "wave": 14,
+          "seconds": 769,
+          "towers": 18,
+          "lives": 10,
+          "coins": 593
+        },
+        {
+          "wave": 15,
+          "seconds": 827,
+          "towers": 18,
+          "lives": 10,
+          "coins": 1084
+        }
+      ]
+    },
+    {
+      "id": 24,
+      "scenario": "半图专属核心",
+      "seed": 42,
+      "roster": [
+        "sprout",
+        "frost",
+        "spark",
+        "fan"
+      ],
+      "result": "win",
+      "wave": 15,
+      "realSeconds": 888,
+      "lives": 10,
+      "spawned": 3693,
+      "killed": 3693,
+      "peakEnemies": 18,
+      "peakElites": 4,
+      "carryovers": 14,
+      "peakKillsPerSecond": 9,
+      "minBodyClearance": 3,
+      "towers": 12,
+      "spots": 22,
+      "occupancy": 0.545,
+      "upgraded": 12,
+      "maxLevel": 12,
+      "coins": 3537,
+      "picks": 10,
+      "tech": [
+        "E06",
+        "S01",
+        "G02",
+        "E03",
+        "G04",
+        "E04",
+        "S08",
+        "G06",
+        "F01",
+        "E01",
+        "X02"
+      ],
+      "killsByPhase": {
+        "1": {
+          "count": 208,
+          "meanProgress": 0.171,
+          "entryKillRatio": 0.966
+        },
+        "2": {
+          "count": 197,
+          "meanProgress": 0.17,
+          "entryKillRatio": 0.975
+        },
+        "3": {
+          "count": 235,
+          "meanProgress": 0.18,
+          "entryKillRatio": 0.77
+        },
+        "4": {
+          "count": 233,
+          "meanProgress": 0.18,
+          "entryKillRatio": 0.798
+        },
+        "5": {
+          "count": 202,
+          "meanProgress": 0.179,
+          "entryKillRatio": 0.757
+        },
+        "6": {
+          "count": 247,
+          "meanProgress": 0.17,
+          "entryKillRatio": 0.87
+        },
+        "7": {
+          "count": 260,
+          "meanProgress": 0.186,
+          "entryKillRatio": 0.762
+        },
+        "8": {
+          "count": 233,
+          "meanProgress": 0.188,
+          "entryKillRatio": 0.747
+        },
+        "9": {
+          "count": 248,
+          "meanProgress": 0.229,
+          "entryKillRatio": 0.323
+        },
+        "10": {
+          "count": 256,
+          "meanProgress": 0.218,
+          "entryKillRatio": 0.395
+        },
+        "11": {
+          "count": 272,
+          "meanProgress": 0.197,
+          "entryKillRatio": 0.647
+        },
+        "12": {
+          "count": 280,
+          "meanProgress": 0.192,
+          "entryKillRatio": 0.689
+        },
+        "13": {
+          "count": 271,
+          "meanProgress": 0.245,
+          "entryKillRatio": 0.255
+        },
+        "14": {
+          "count": 287,
+          "meanProgress": 0.255,
+          "entryKillRatio": 0.15
+        },
+        "15": {
+          "count": 264,
+          "meanProgress": 0.284,
+          "entryKillRatio": 0.125
+        }
+      },
+      "waves": [
+        {
+          "wave": 1,
+          "seconds": 10,
+          "towers": 5,
+          "lives": 10,
+          "coins": 37
+        },
+        {
+          "wave": 2,
+          "seconds": 68,
+          "towers": 5,
+          "lives": 10,
+          "coins": 119
+        },
+        {
+          "wave": 3,
+          "seconds": 127,
+          "towers": 5,
+          "lives": 10,
+          "coins": 86
+        },
+        {
+          "wave": 4,
+          "seconds": 185,
+          "towers": 6,
+          "lives": 10,
+          "coins": 120
+        },
+        {
+          "wave": 5,
+          "seconds": 243,
+          "towers": 6,
+          "lives": 10,
+          "coins": 150
+        },
+        {
+          "wave": 6,
+          "seconds": 302,
+          "towers": 9,
+          "lives": 10,
+          "coins": 23
+        },
+        {
+          "wave": 7,
+          "seconds": 360,
+          "towers": 10,
+          "lives": 10,
+          "coins": 142
+        },
+        {
+          "wave": 8,
+          "seconds": 419,
+          "towers": 12,
+          "lives": 10,
+          "coins": 48
+        },
+        {
+          "wave": 9,
+          "seconds": 477,
+          "towers": 12,
+          "lives": 10,
+          "coins": 117
+        },
+        {
+          "wave": 10,
+          "seconds": 535,
+          "towers": 12,
+          "lives": 10,
+          "coins": 531
+        },
+        {
+          "wave": 11,
+          "seconds": 594,
+          "towers": 12,
+          "lives": 10,
+          "coins": 954
+        },
+        {
+          "wave": 12,
+          "seconds": 652,
+          "towers": 12,
+          "lives": 10,
+          "coins": 1495
+        },
+        {
+          "wave": 13,
+          "seconds": 710,
+          "towers": 12,
+          "lives": 10,
+          "coins": 2071
+        },
+        {
+          "wave": 14,
+          "seconds": 769,
+          "towers": 12,
+          "lives": 10,
+          "coins": 2612
+        },
+        {
+          "wave": 15,
+          "seconds": 827,
+          "towers": 12,
+          "lives": 10,
+          "coins": 3106
+        }
+      ]
+    },
+    {
+      "id": 25,
+      "scenario": "八成专属核心",
+      "seed": 42,
+      "roster": [
+        "sprout",
+        "frost",
+        "bloom",
+        "mint"
+      ],
+      "result": "lose",
+      "wave": 13,
+      "realSeconds": 755,
+      "lives": 0,
+      "spawned": 2913,
+      "killed": 2884,
+      "peakEnemies": 27,
+      "peakElites": 6,
+      "carryovers": 12,
+      "peakKillsPerSecond": 8,
+      "minBodyClearance": 3,
+      "towers": 17,
+      "spots": 22,
+      "occupancy": 0.773,
+      "upgraded": 16,
+      "maxLevel": 16,
+      "coins": 105,
+      "picks": 9,
+      "tech": [
+        "F02",
+        "S01",
+        "G03",
+        "E04",
+        "G04",
+        "G02",
+        "S07",
+        "E03",
+        "X03",
+        "S02"
+      ],
+      "killsByPhase": {
+        "1": {
+          "count": 238,
+          "meanProgress": 0.064,
+          "entryKillRatio": 1
+        },
+        "2": {
+          "count": 213,
+          "meanProgress": 0.069,
+          "entryKillRatio": 1
+        },
+        "3": {
+          "count": 239,
+          "meanProgress": 0.117,
+          "entryKillRatio": 0.975
+        },
+        "4": {
+          "count": 243,
+          "meanProgress": 0.146,
+          "entryKillRatio": 0.918
+        },
+        "5": {
+          "count": 208,
+          "meanProgress": 0.174,
+          "entryKillRatio": 0.784
+        },
+        "6": {
+          "count": 256,
+          "meanProgress": 0.188,
+          "entryKillRatio": 0.66
+        },
+        "7": {
+          "count": 253,
+          "meanProgress": 0.211,
+          "entryKillRatio": 0.383
+        },
+        "8": {
+          "count": 221,
+          "meanProgress": 0.194,
+          "entryKillRatio": 0.683
+        },
+        "9": {
+          "count": 234,
+          "meanProgress": 0.224,
+          "entryKillRatio": 0.406
+        },
+        "10": {
+          "count": 212,
+          "meanProgress": 0.268,
+          "entryKillRatio": 0.137
+        },
+        "11": {
+          "count": 205,
+          "meanProgress": 0.38,
+          "entryKillRatio": 0.015
+        },
+        "12": {
+          "count": 230,
+          "meanProgress": 0.29,
+          "entryKillRatio": 0.035
+        },
+        "13": {
+          "count": 132,
+          "meanProgress": 0.36,
+          "entryKillRatio": 0.045
+        }
+      },
+      "waves": [
+        {
+          "wave": 1,
+          "seconds": 10,
+          "towers": 5,
+          "lives": 10,
+          "coins": 11
+        },
+        {
+          "wave": 2,
+          "seconds": 68,
+          "towers": 5,
+          "lives": 10,
+          "coins": 61
+        },
+        {
+          "wave": 3,
+          "seconds": 127,
+          "towers": 6,
+          "lives": 10,
+          "coins": 72
+        },
+        {
+          "wave": 4,
+          "seconds": 185,
+          "towers": 7,
+          "lives": 10,
+          "coins": 48
+        },
+        {
+          "wave": 5,
+          "seconds": 243,
+          "towers": 7,
+          "lives": 10,
+          "coins": 80
+        },
+        {
+          "wave": 6,
+          "seconds": 302,
+          "towers": 8,
+          "lives": 10,
+          "coins": 75
+        },
+        {
+          "wave": 7,
+          "seconds": 360,
+          "towers": 9,
+          "lives": 10,
+          "coins": 46
+        },
+        {
+          "wave": 8,
+          "seconds": 419,
+          "towers": 10,
+          "lives": 10,
+          "coins": 96
+        },
+        {
+          "wave": 9,
+          "seconds": 477,
+          "towers": 12,
+          "lives": 10,
+          "coins": 33
+        },
+        {
+          "wave": 10,
+          "seconds": 535,
+          "towers": 12,
+          "lives": 10,
+          "coins": 94
+        },
+        {
+          "wave": 11,
+          "seconds": 594,
+          "towers": 13,
+          "lives": 10,
+          "coins": 95
+        },
+        {
+          "wave": 12,
+          "seconds": 652,
+          "towers": 15,
+          "lives": 10,
+          "coins": 155
+        },
+        {
+          "wave": 13,
+          "seconds": 710,
+          "towers": 17,
+          "lives": 10,
+          "coins": 42
+        }
+      ]
+    },
+    {
+      "id": 25,
+      "scenario": "半图专属核心",
+      "seed": 42,
+      "roster": [
+        "sprout",
+        "frost",
+        "bloom",
+        "mint"
+      ],
+      "result": "lose",
+      "wave": 13,
+      "realSeconds": 742,
+      "lives": 0,
+      "spawned": 2868,
+      "killed": 2832,
+      "peakEnemies": 30,
+      "peakElites": 7,
+      "carryovers": 12,
+      "peakKillsPerSecond": 9,
+      "minBodyClearance": 3,
+      "towers": 12,
+      "spots": 22,
+      "occupancy": 0.545,
+      "upgraded": 12,
+      "maxLevel": 12,
+      "coins": 1009,
+      "picks": 9,
+      "tech": [
+        "F02",
+        "S01",
+        "G03",
+        "E04",
+        "G04",
+        "G02",
+        "S07",
+        "E03",
+        "X03",
+        "S02"
+      ],
+      "killsByPhase": {
+        "1": {
+          "count": 238,
+          "meanProgress": 0.064,
+          "entryKillRatio": 1
+        },
+        "2": {
+          "count": 213,
+          "meanProgress": 0.069,
+          "entryKillRatio": 1
+        },
+        "3": {
+          "count": 239,
+          "meanProgress": 0.117,
+          "entryKillRatio": 0.975
+        },
+        "4": {
+          "count": 243,
+          "meanProgress": 0.146,
+          "entryKillRatio": 0.918
+        },
+        "5": {
+          "count": 208,
+          "meanProgress": 0.174,
+          "entryKillRatio": 0.784
+        },
+        "6": {
+          "count": 256,
+          "meanProgress": 0.188,
+          "entryKillRatio": 0.66
+        },
+        "7": {
+          "count": 253,
+          "meanProgress": 0.211,
+          "entryKillRatio": 0.383
+        },
+        "8": {
+          "count": 221,
+          "meanProgress": 0.194,
+          "entryKillRatio": 0.683
+        },
+        "9": {
+          "count": 234,
+          "meanProgress": 0.224,
+          "entryKillRatio": 0.406
+        },
+        "10": {
+          "count": 212,
+          "meanProgress": 0.266,
+          "entryKillRatio": 0.146
+        },
+        "11": {
+          "count": 204,
+          "meanProgress": 0.361,
+          "entryKillRatio": 0.02
+        },
+        "12": {
+          "count": 227,
+          "meanProgress": 0.27,
+          "entryKillRatio": 0.128
+        },
+        "13": {
+          "count": 84,
+          "meanProgress": 0.362,
+          "entryKillRatio": 0.048
+        }
+      },
+      "waves": [
+        {
+          "wave": 1,
+          "seconds": 10,
+          "towers": 5,
+          "lives": 10,
+          "coins": 11
+        },
+        {
+          "wave": 2,
+          "seconds": 68,
+          "towers": 5,
+          "lives": 10,
+          "coins": 61
+        },
+        {
+          "wave": 3,
+          "seconds": 127,
+          "towers": 6,
+          "lives": 10,
+          "coins": 72
+        },
+        {
+          "wave": 4,
+          "seconds": 185,
+          "towers": 7,
+          "lives": 10,
+          "coins": 48
+        },
+        {
+          "wave": 5,
+          "seconds": 243,
+          "towers": 7,
+          "lives": 10,
+          "coins": 80
+        },
+        {
+          "wave": 6,
+          "seconds": 302,
+          "towers": 8,
+          "lives": 10,
+          "coins": 75
+        },
+        {
+          "wave": 7,
+          "seconds": 360,
+          "towers": 9,
+          "lives": 10,
+          "coins": 46
+        },
+        {
+          "wave": 8,
+          "seconds": 419,
+          "towers": 10,
+          "lives": 10,
+          "coins": 96
+        },
+        {
+          "wave": 9,
+          "seconds": 477,
+          "towers": 12,
+          "lives": 10,
+          "coins": 33
+        },
+        {
+          "wave": 10,
+          "seconds": 535,
+          "towers": 12,
+          "lives": 10,
+          "coins": 94
+        },
+        {
+          "wave": 11,
+          "seconds": 594,
+          "towers": 12,
+          "lives": 10,
+          "coins": 210
+        },
+        {
+          "wave": 12,
+          "seconds": 652,
+          "towers": 12,
+          "lives": 7,
+          "coins": 612
+        },
+        {
+          "wave": 13,
+          "seconds": 710,
+          "towers": 12,
+          "lives": 6,
+          "coins": 878
+        }
+      ]
+    },
+    {
+      "id": 26,
+      "scenario": "八成专属核心",
+      "seed": 42,
+      "roster": [
+        "scope",
+        "frost",
+        "bloom",
+        "mint"
+      ],
+      "result": "win",
+      "wave": 15,
+      "realSeconds": 893,
+      "lives": 10,
+      "spawned": 3606,
+      "killed": 3606,
+      "peakEnemies": 32,
+      "peakElites": 6,
+      "carryovers": 14,
+      "peakKillsPerSecond": 11,
+      "minBodyClearance": 3,
+      "towers": 18,
+      "spots": 22,
+      "occupancy": 0.818,
+      "upgraded": 18,
+      "maxLevel": 18,
+      "coins": 434,
+      "picks": 10,
+      "tech": [
+        "F01",
+        "S02",
+        "G05",
+        "G02",
+        "G04",
+        "S03",
+        "G06",
+        "E04",
+        "E03",
+        "S07",
+        "X01"
+      ],
+      "killsByPhase": {
+        "1": {
+          "count": 223,
+          "meanProgress": 0.231,
+          "entryKillRatio": 0.233
+        },
+        "2": {
+          "count": 195,
+          "meanProgress": 0.274,
+          "entryKillRatio": 0.015
+        },
+        "3": {
+          "count": 216,
+          "meanProgress": 0.294,
+          "entryKillRatio": 0
+        },
+        "4": {
+          "count": 228,
+          "meanProgress": 0.308,
+          "entryKillRatio": 0
+        },
+        "5": {
+          "count": 193,
+          "meanProgress": 0.31,
+          "entryKillRatio": 0
+        },
+        "6": {
+          "count": 229,
+          "meanProgress": 0.275,
+          "entryKillRatio": 0.022
+        },
+        "7": {
+          "count": 278,
+          "meanProgress": 0.256,
+          "entryKillRatio": 0.173
+        },
+        "8": {
+          "count": 215,
+          "meanProgress": 0.251,
+          "entryKillRatio": 0.126
+        },
+        "9": {
+          "count": 244,
+          "meanProgress": 0.282,
+          "entryKillRatio": 0.02
+        },
+        "10": {
+          "count": 283,
+          "meanProgress": 0.274,
+          "entryKillRatio": 0.124
+        },
+        "11": {
+          "count": 261,
+          "meanProgress": 0.269,
+          "entryKillRatio": 0.088
+        },
+        "12": {
+          "count": 269,
+          "meanProgress": 0.292,
+          "entryKillRatio": 0.082
+        },
+        "13": {
+          "count": 235,
+          "meanProgress": 0.325,
+          "entryKillRatio": 0.038
+        },
+        "14": {
+          "count": 270,
+          "meanProgress": 0.328,
+          "entryKillRatio": 0.026
+        },
+        "15": {
+          "count": 267,
+          "meanProgress": 0.39,
+          "entryKillRatio": 0.019
+        }
+      },
+      "waves": [
+        {
+          "wave": 1,
+          "seconds": 10,
+          "towers": 4,
+          "lives": 10,
+          "coins": 14
+        },
+        {
+          "wave": 2,
+          "seconds": 68,
+          "towers": 4,
+          "lives": 10,
+          "coins": 82
+        },
+        {
+          "wave": 3,
+          "seconds": 127,
+          "towers": 5,
+          "lives": 10,
+          "coins": 44
+        },
+        {
+          "wave": 4,
+          "seconds": 185,
+          "towers": 6,
+          "lives": 10,
+          "coins": 100
+        },
+        {
+          "wave": 5,
+          "seconds": 243,
+          "towers": 7,
+          "lives": 10,
+          "coins": 25
+        },
+        {
+          "wave": 6,
+          "seconds": 302,
+          "towers": 7,
+          "lives": 10,
+          "coins": 129
+        },
+        {
+          "wave": 7,
+          "seconds": 360,
+          "towers": 7,
+          "lives": 10,
+          "coins": 99
+        },
+        {
+          "wave": 8,
+          "seconds": 419,
+          "towers": 9,
+          "lives": 10,
+          "coins": 96
+        },
+        {
+          "wave": 9,
+          "seconds": 477,
+          "towers": 9,
+          "lives": 10,
+          "coins": 101
+        },
+        {
+          "wave": 10,
+          "seconds": 535,
+          "towers": 11,
+          "lives": 10,
+          "coins": 24
+        },
+        {
+          "wave": 11,
+          "seconds": 594,
+          "towers": 12,
+          "lives": 10,
+          "coins": 134
+        },
+        {
+          "wave": 12,
+          "seconds": 652,
+          "towers": 15,
+          "lives": 10,
+          "coins": 88
+        },
+        {
+          "wave": 13,
+          "seconds": 710,
+          "towers": 16,
+          "lives": 10,
+          "coins": 44
+        },
+        {
+          "wave": 14,
+          "seconds": 769,
+          "towers": 17,
+          "lives": 10,
+          "coins": 103
+        },
+        {
+          "wave": 15,
+          "seconds": 827,
+          "towers": 18,
+          "lives": 10,
+          "coins": 111
+        }
+      ]
+    },
+    {
+      "id": 26,
+      "scenario": "半图专属核心",
+      "seed": 42,
+      "roster": [
+        "scope",
+        "frost",
+        "bloom",
+        "mint"
+      ],
+      "result": "lose",
+      "wave": 15,
+      "realSeconds": 894,
+      "lives": 0,
+      "spawned": 3499,
+      "killed": 3484,
+      "peakEnemies": 45,
+      "peakElites": 8,
+      "carryovers": 14,
+      "peakKillsPerSecond": 12,
+      "minBodyClearance": 3,
+      "towers": 12,
+      "spots": 22,
+      "occupancy": 0.545,
+      "upgraded": 12,
+      "maxLevel": 12,
+      "coins": 2101,
+      "picks": 10,
+      "tech": [
+        "F01",
+        "S02",
+        "G05",
+        "G02",
+        "G04",
+        "S03",
+        "G06",
+        "E04",
+        "E03",
+        "S07",
+        "X01"
+      ],
+      "killsByPhase": {
+        "1": {
+          "count": 223,
+          "meanProgress": 0.231,
+          "entryKillRatio": 0.233
+        },
+        "2": {
+          "count": 195,
+          "meanProgress": 0.274,
+          "entryKillRatio": 0.015
+        },
+        "3": {
+          "count": 216,
+          "meanProgress": 0.294,
+          "entryKillRatio": 0
+        },
+        "4": {
+          "count": 228,
+          "meanProgress": 0.308,
+          "entryKillRatio": 0
+        },
+        "5": {
+          "count": 193,
+          "meanProgress": 0.31,
+          "entryKillRatio": 0
+        },
+        "6": {
+          "count": 229,
+          "meanProgress": 0.275,
+          "entryKillRatio": 0.022
+        },
+        "7": {
+          "count": 278,
+          "meanProgress": 0.256,
+          "entryKillRatio": 0.173
+        },
+        "8": {
+          "count": 215,
+          "meanProgress": 0.251,
+          "entryKillRatio": 0.126
+        },
+        "9": {
+          "count": 244,
+          "meanProgress": 0.282,
+          "entryKillRatio": 0.02
+        },
+        "10": {
+          "count": 283,
+          "meanProgress": 0.274,
+          "entryKillRatio": 0.124
+        },
+        "11": {
+          "count": 253,
+          "meanProgress": 0.288,
+          "entryKillRatio": 0.087
+        },
+        "12": {
+          "count": 252,
+          "meanProgress": 0.356,
+          "entryKillRatio": 0.036
+        },
+        "13": {
+          "count": 212,
+          "meanProgress": 0.442,
+          "entryKillRatio": 0
+        },
+        "14": {
+          "count": 244,
+          "meanProgress": 0.435,
+          "entryKillRatio": 0
+        },
+        "15": {
+          "count": 219,
+          "meanProgress": 0.537,
+          "entryKillRatio": 0
+        }
+      },
+      "waves": [
+        {
+          "wave": 1,
+          "seconds": 10,
+          "towers": 4,
+          "lives": 10,
+          "coins": 14
+        },
+        {
+          "wave": 2,
+          "seconds": 68,
+          "towers": 4,
+          "lives": 10,
+          "coins": 82
+        },
+        {
+          "wave": 3,
+          "seconds": 127,
+          "towers": 5,
+          "lives": 10,
+          "coins": 44
+        },
+        {
+          "wave": 4,
+          "seconds": 185,
+          "towers": 6,
+          "lives": 10,
+          "coins": 100
+        },
+        {
+          "wave": 5,
+          "seconds": 243,
+          "towers": 7,
+          "lives": 10,
+          "coins": 25
+        },
+        {
+          "wave": 6,
+          "seconds": 302,
+          "towers": 7,
+          "lives": 10,
+          "coins": 129
+        },
+        {
+          "wave": 7,
+          "seconds": 360,
+          "towers": 7,
+          "lives": 10,
+          "coins": 99
+        },
+        {
+          "wave": 8,
+          "seconds": 419,
+          "towers": 9,
+          "lives": 10,
+          "coins": 96
+        },
+        {
+          "wave": 9,
+          "seconds": 477,
+          "towers": 9,
+          "lives": 10,
+          "coins": 101
+        },
+        {
+          "wave": 10,
+          "seconds": 535,
+          "towers": 11,
+          "lives": 10,
+          "coins": 24
+        },
+        {
+          "wave": 11,
+          "seconds": 594,
+          "towers": 12,
+          "lives": 10,
+          "coins": 134
+        },
+        {
+          "wave": 12,
+          "seconds": 652,
+          "towers": 12,
+          "lives": 10,
+          "coins": 570
+        },
+        {
+          "wave": 13,
+          "seconds": 710,
+          "towers": 12,
+          "lives": 10,
+          "coins": 969
+        },
+        {
+          "wave": 14,
+          "seconds": 769,
+          "towers": 12,
+          "lives": 10,
+          "coins": 1358
+        },
+        {
+          "wave": 15,
+          "seconds": 827,
+          "towers": 12,
+          "lives": 10,
+          "coins": 1741
+        }
+      ]
+    }
+  ]
+}

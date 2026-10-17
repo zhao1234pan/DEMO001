@@ -1,0 +1,108 @@
+{
+  "status": "通过",
+  "regressions": 209,
+  "finalChallengeSamples": [
+    {
+      "id": 21,
+      "result": "win",
+      "seed": 42,
+      "seconds": 891,
+      "towers": 22,
+      "spots": 22,
+      "lives": 10,
+      "peakEnemies": 32,
+      "maxLevel": 22,
+      "bodyClearance": 3
+    },
+    {
+      "id": 22,
+      "result": "win",
+      "seed": 42,
+      "seconds": 892,
+      "towers": 18,
+      "spots": 22,
+      "lives": 6,
+      "peakEnemies": 27,
+      "maxLevel": 18,
+      "bodyClearance": 3
+    },
+    {
+      "id": 23,
+      "result": "win",
+      "seed": 42,
+      "seconds": 889,
+      "towers": 21,
+      "spots": 21,
+      "lives": 10,
+      "peakEnemies": 33,
+      "maxLevel": 21,
+      "bodyClearance": 3
+    },
+    {
+      "id": 24,
+      "result": "win",
+      "seed": 42,
+      "seconds": 888,
+      "towers": 22,
+      "spots": 22,
+      "lives": 10,
+      "peakEnemies": 17,
+      "maxLevel": 22,
+      "bodyClearance": 3
+    },
+    {
+      "id": 25,
+      "result": "win",
+      "seed": 7,
+      "seconds": 887,
+      "towers": 20,
+      "spots": 22,
+      "lives": 10,
+      "peakEnemies": 19,
+      "maxLevel": 19,
+      "bodyClearance": 3
+    },
+    {
+      "id": 26,
+      "result": "win",
+      "seed": 42,
+      "seconds": 893,
+      "towers": 20,
+      "spots": 22,
+      "lives": 10,
+      "peakEnemies": 30,
+      "maxLevel": 18,
+      "bodyClearance": 3
+    }
+  ],
+  "source": "final-balance.json五个未变专题＋money-results.json最终24；playthrough-results的24为最后加压前样本，不能替代最终24",
+  "halfCoreLosses": 6,
+  "otherNegativeLosses": 6,
+  "fps": [
+    {
+      "id": 21,
+      "result": "win",
+      "seconds": 891
+    },
+    {
+      "id": 22,
+      "result": "lose",
+      "seconds": 875
+    },
+    {
+      "id": 25,
+      "result": "win",
+      "seconds": 888
+    },
+    {
+      "id": 26,
+      "result": "win",
+      "seconds": 892
+    }
+  ],
+  "notes": [
+    "通过样本是调参时找到的可行策略，不是盲测胜率",
+    "60帧急件八成方案失败，保留结果",
+    "209回归在C候选通过，最终值再做类型、导表与构建一致检查；只改后续22／24／25HP曲线"
+  ]
+}
