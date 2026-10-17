@@ -60,7 +60,10 @@
       "clearRatio": "float",
       "legacyUnlock": "int",
       "spriteHeight": "int",
-      "spriteScale": "float"
+      "spriteScale": "float",
+      "crowdScale": "float",
+      "crowdRadius": "float",
+      "crowdLift": "float"
     }
   },
   "Theme": {
@@ -298,7 +301,22 @@
       "freeProps": "int",
       "reviveProgress": "float",
       "killRewardRatio": "float",
-      "bossSpeedRatio": "float"
+      "bossSpeedRatio": "float",
+      "laneOffset": "float",
+      "crowdGap": "float",
+      "waveDuration": "float",
+      "eliteEvery": "int",
+      "eliteStartWave": "int",
+      "eliteHealthScale": "float",
+      "eliteHealthGrowth": "float",
+      "eliteScale": "float",
+      "eliteSpeedRatio": "float",
+      "eliteRewardRatio": "float",
+      "growthEvery": "int",
+      "growthDamage": "float",
+      "growthRange": "float",
+      "crowdSpeedGrowth": "float",
+      "bossLeakDamage": "int"
     }
   },
   "ChallengePerk": {

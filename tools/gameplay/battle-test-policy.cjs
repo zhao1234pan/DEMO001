@@ -15,3 +15,6 @@ return{samples,act};
 };
 const priority={"G06":100,"G02":90,"G04":85,"G05":80,"S04":75,"S03":74,"S06":73,"F02":70,"S01":69,"E03":68,"E04":67,"F01":65,"S05":64,"E01":60,"X06":58,"G03":56,"E02":50,"E06":45,"X04":40,"F04":35,"F05":34,"S02":33,"S07":32,"X02":30,"X01":28};
 module.exports.choosePerk=run=>[...run.offers].sort((a,b)=>(priority[b]??0)-(priority[a]??0))[0];
+/* 新构筑对照优先拿专属核心，旧策略保留用于同基线复验；客户端没有自动替玩家选卡。 */
+const buildPriority={...priority,S01:110,S03:109,S05:108,S06:107,S08:106,S04:105,S07:104,S02:103};
+module.exports.chooseHordePerk=run=>[...run.offers].sort((a,b)=>(buildPriority[b]??0)-(buildPriority[a]??0))[0];

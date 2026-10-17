@@ -1,0 +1,16 @@
+{
+  "status": "通过",
+  "regressions": 209,
+  "playthrough": 26,
+  "fullWins": 6,
+  "negativeLosses": 12,
+  "fpsAndSeedCases": 6,
+  "fpsWins": 5,
+  "corePriorityRecovery": 1,
+  "observedSeconds": [
+    888,
+    894
+  ],
+  "bodyClearance": 3,
+  "note": "另一种子通用优先在急件第14阶段失败，同种子／同60帧改专属核心优先获胜；不保证所有阵容或选法通关"
+}

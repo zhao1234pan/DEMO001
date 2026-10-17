@@ -67,9 +67,11 @@ export class ChallengeRun {
     this.previousPerfect=this.leaks===0;
     const interest=this.interestLeft>0?Math.min(this.p('E02').cap,Math.floor(port.coins*this.p('E02').ratio)):0;
     if(this.interestLeft>0)this.interestLeft--;
-    this.delayed.length=0;this.balls.length=0;
+    // 连续怪潮允许上一阶段存活者继续前进，不能凭阶段切换吞掉已发出的连爆或电球。
+    if(!port.enemies.some(e=>e.hp>0)){this.delayed.length=0;this.balls.length=0;}
     return numeric(this.rule,'waveReward')+interest;
   }
+  rank(port:ChallengePort):number{return Math.floor(Math.max(0,port.wave-1)/numeric(this.rule,'growthEvery'));}
   profile(tower:Tower,port:ChallengePort):AttackProfile{
     const base=attackProfile(tower.kind,tower.level,tower.evolutionKey),result={...base};let damage=0,range=0,rate=0;
     if(this.has('G01')&&port.inWave&&this.waveElapsed<this.p('G01').seconds)rate+=this.p('G01').rate;
@@ -81,7 +83,8 @@ export class ChallengeRun {
     if(this.has('X04')&&this.cashTime>0)rate+=this.p('X04').rate;
     if(this.has('F01')&&this.giant===tower){damage+=this.p('F01').damage;range+=this.p('F01').range;rate+=this.p('F01').rate;}
     if(this.has('F02')){damage+=this.p('F02').damage;rate+=this.p('F02').rate;}
-    result.damage*=1+damage;result.burn=(result.burn??0)*(1+damage);result.range*=1+range;const factor=Math.max(numeric(this.rule,'minIntervalRatio'),1+rate);result.rate*=factor;result.burstGap*=factor;return result;
+    const rank=this.cards.some(c=>c.staff===tower.kind&&this.has(c.key))?this.rank(port):0,growth=1+rank*numeric(this.rule,'growthDamage'),reach=1+rank*numeric(this.rule,'growthRange');
+    result.damage*=(1+damage)*growth;result.burn=(result.burn??0)*(1+damage)*growth;result.range*=(1+range)*reach;result.splash=(result.splash??0)*reach;const factor=Math.max(numeric(this.rule,'minIntervalRatio'),1+rate);result.rate*=factor;result.burstGap*=factor;return result;
   }
   visualScale(tower:Tower):number{return this.has('F02')?this.p('F02').scale:this.giant===tower?this.p('F01').scale:1;}
   attackRound(tower:Tower):void{
@@ -94,8 +97,8 @@ export class ChallengeRun {
   rawDamage(enemy:Enemy,damage:number,port:ChallengePort,kind:TowerKind):void{if(enemy.hp<=0)return;enemy.hp-=damage;enemy.hitFlash=globalNumber("hitFeedbackSeconds");enemy.sinceHit=0;if(enemy.hp<=0)enemy.chSecondary=true;port.impact(enemy,kind);}
   afterHit(shot:Shot,target:Enemy,port:ChallengePort):void{
     const s=shot.challenge;if(!s)return;const cfg=s.profile;
-    if(this.has('S03')&&shot.kind==='bloom'&&s.round%this.p('S03').every===0)this.delayed.push({time:this.p('S03').delay,x:target.x,y:target.y,radius:cfg.splash??0,damage:cfg.damage*this.p('S03').ratio,kind:'bloom'});
-    if(this.has('S05')&&shot.kind==='spark'&&s.round%this.p('S05').every===0){const visited=new Set<Enemy>([target]);let last=target;this.rawDamage(target,cfg.damage*this.p('S05').ratio,port,'spark');for(let i=1;i<(cfg.chain??0);i++){const next=port.enemies.filter(e=>e.hp>0&&!visited.has(e)&&Math.hypot(e.x-last.x,e.y-last.y)<=cfg.chainRadius).sort((a,b)=>Math.hypot(a.x-last.x,a.y-last.y)-Math.hypot(b.x-last.x,b.y-last.y))[0];if(!next)break;visited.add(next);this.rawDamage(next,cfg.damage*this.p('S05').ratio*Math.pow(cfg.chainRatio,i),port,'spark');port.impact(next,'spark',last);last=next;}}
+    if(this.has('S03')&&shot.kind==='bloom'&&s.round%this.p('S03').every===0)this.delayed.push({time:this.p('S03').delay,x:target.x,y:target.y,radius:(cfg.splash??0)*this.p('S03').radiusRatio,damage:cfg.damage*this.p('S03').ratio,kind:'bloom'});
+    if(this.has('S05')&&shot.kind==='spark'&&s.round%this.p('S05').every===0){const visited=new Set<Enemy>([target]);let last=target;this.rawDamage(target,cfg.damage*this.p('S05').ratio,port,'spark');for(let i=1;i<Math.max(cfg.chain??0,this.p('S05').count+this.rank(port));i++){const next=port.enemies.filter(e=>e.hp>0&&!visited.has(e)&&Math.hypot(e.x-last.x,e.y-last.y)<=cfg.chainRadius).sort((a,b)=>Math.hypot(a.x-last.x,a.y-last.y)-Math.hypot(b.x-last.x,b.y-last.y))[0];if(!next)break;visited.add(next);this.rawDamage(next,cfg.damage*this.p('S05').ratio*Math.pow(cfg.chainRatio,i),port,'spark');port.impact(next,'spark',last);last=next;}}
     if(this.has('S08')&&shot.kind==='fan'){const p=this.p('S08'),next=port.enemies.filter(e=>e!==target&&e.hp>0&&Math.hypot(e.x-target.x,e.y-target.y)<=p.radius).sort((a,b)=>Math.hypot(a.x-target.x,a.y-target.y)-Math.hypot(b.x-target.x,b.y-target.y))[0];if(next){this.rawDamage(next,cfg.damage*p.ratio,port,'fan');port.impact(next,'fan',target);}}
   }
   damageBonus(shot:Shot|undefined,enemy:Enemy,port:ChallengePort):number{

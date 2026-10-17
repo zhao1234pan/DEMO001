@@ -3,6 +3,7 @@ import { ShopService } from "../../services/ShopService";
 import { LoadingView } from "../../ui/LoadingView";
 import { PngSurface } from "../../ui/PngSurface";
 import { ChallengeRun, ChallengePort, ChallengeShot, challengeRule } from "./ChallengeRun";
+import { CrowdFlow } from "./CrowdFlow";
 import { ChallengeView } from "../../ui/ChallengeView";
 import { loadoutRule, validLoadout, saveLoadout, resetLoadouts, wavePreview } from "./LevelLoadout";
 import { attackProfile, evolutionChoices, evolutionByKey, StaffEvolution } from "./StaffEvolution";
@@ -72,6 +73,7 @@ function advanceStrengths(effects:Record<string,TimedStrength>,dt:number):number
   return integral;
 }
 export interface Enemy {
+  crowdLane?:number;crowdRadius?:number;crowdLift?:number;artScale?:number;elite?:boolean;
   chLethalBurn?:number;chSecondary?:boolean;chColdSpread?:boolean;chDoorSlow?:boolean;chTreasure?:boolean;
   kind: EnemyKind; hp: number; maxHp: number; speed: number; reward: number;
   radius: number; color: string; damage: number; distance: number; x: number; y: number;
@@ -99,6 +101,7 @@ interface Particle { x: number; y: number; vx: number; vy: number; size: number;
 
 @ccclass("GameRoot")
 export class GameRoot extends Component {
+  private crowdFlow:CrowdFlow|null=null;
   private contentRoot!: Node;
   private uiPrefabs!: UiPrefabs;
   private battleUi!: BattlePrefabView;
@@ -364,7 +367,7 @@ export class GameRoot extends Component {
       this.updateFeedback(realDelta);
     }
     if (!this.paused && !this.gmPanelOpen && !this.adRequesting && !this.challengeBlocked() && this.screen === "playing"
-      && !this.inWave && this.enemies.length === 0 && this.wave < this.level.waves.length) {
+      && !this.inWave && (this.challenge || this.enemies.length === 0) && this.wave < this.level.waves.length) {
       this.nextWaveTimer = Math.max(0, this.nextWaveTimer - realDelta);
       if (this.nextWaveTimer <= 0) this.startWave();
     }
@@ -572,10 +575,16 @@ export class GameRoot extends Component {
   }
 
   private drawEnemy(g: PngSurface, enemy: Enemy): void {
+    if(this.crowdFlow&&enemy.distance<0)return;
     if (this.art.ready) this.art.drawEnemy(enemy, enemy);
+    if(enemy.elite)this.ring(g,enemy.x,enemy.y,enemy.radius+2,TOWER_CONFIG.bloom.shotColor,.85,2);
     if (enemy.burnTime > 0) this.ring(g, enemy.x, enemy.y, enemy.radius + 5, "#ee8e50", 0.8, 2);
     if (enemy.markedTime > 0) this.ring(g, enemy.x, enemy.y, enemy.radius + 3, "#81dfb7", 0.8, 2);
     const ratio = Math.max(0, enemy.hp / enemy.maxHp);
+    if(this.crowdFlow){
+      if(ratio<1||enemy.elite||ENEMY_CONFIG[enemy.kind].boss){const w=enemy.radius*2,y=enemy.y-(enemy.crowdLift??0)-enemy.radius-3;this.box(g,enemy.x-w/2,y,w,2,1,"#4b422e",.9);this.box(g,enemy.x-w/2+1,y+.5,(w-2)*ratio,1,.5,"#f59270");}
+      if(enemy.slow>0||Object.keys(enemy.slows??{}).length>0)this.ring(g,enemy.x,enemy.y,enemy.radius+2,"#b4f6ff",.7,2);return;
+    }
     this.box(g, enemy.x - 15, enemy.y - enemy.radius - 12, 30, 5, 2.5, "#4b422e", 0.9);
     this.box(g, enemy.x - 14, enemy.y - enemy.radius - 11, 28 * ratio, 3, 1.5, ratio > 0.35 ? "#f59270" : "#ea635a");
     if (enemy.slow > 0 || Object.keys(enemy.slows ?? {}).length > 0) this.ring(g, enemy.x, enemy.y, enemy.radius + 3, "#b4f6ff", 0.7, 2);
@@ -1058,12 +1067,19 @@ export class GameRoot extends Component {
     this.impacts = []; this.bossCue = null; this.newEncounterKinds = []; this.newStaffKinds = []; this.resultNextLevel = 0;
     this.damageFlash = 0; this.battleFeedbackTime = 0; this.battleFeedbackText = "";
     const rule=challengeRule(this.level.id);this.challenge=rule?new ChallengeRun(rule,this.level.availableTowers):null;
+    this.crowdFlow=rule&&!this.mapReview?new CrowdFlow(this.level.pathPoints,numeric(rule,'laneOffset'),numeric(rule,'crowdGap')):null;
     if(this.challenge){this.challenge.grantInitial(this.challengePort());this.propCounts={freeze:numeric(rule!,"freeProps"),clear:numeric(rule!,"freeProps"),cash:numeric(rule!,"freeProps")};this.nextWaveTimer=numeric(rule!,"firstDelay");this.challenge.offer(this.challengePort());this.previewOpen=false;}
   }
 
   private updateGame(dt: number): void {
     if(this.challengeBlocked())return;
     this.challenge?.update(dt,this.challengePort());
+    if(this.challenge&&this.inWave){
+      const deadline=this.challenge.waveElapsed>=numeric(this.challenge.rule,'waveDuration');
+      // 配置队列是本阶段的混合出怪模板；到点只停掉尚未出生的小怪，已入场者和首领都保留。
+      if(deadline&&!this.queue.some(k=>ENEMY_CONFIG[k].boss))this.queue=[];
+      else if(!deadline&&!this.queue.length)this.queue=this.level.waves[this.wave-1].enemies.filter(k=>!ENEMY_CONFIG[k].boss);
+    }
     this.toastTime = Math.max(0, this.toastTime - dt);
     this.frozenTime = Math.max(0, this.frozenTime - dt);
     this.damageFlash = Math.max(0, this.damageFlash - dt);
@@ -1073,11 +1089,12 @@ export class GameRoot extends Component {
     if (this.inWave && this.queue.length > 0) {
       this.spawnTimer -= dt;
       if (this.spawnTimer <= 0) {
-        this.spawnEnemy(this.queue.shift()!);
-        this.spawnTimer = this.spawnInterval;
+        if(this.challenge){if(this.spawnEnemy(this.queue[0])){this.queue.shift();this.spawnTimer+=this.spawnInterval;}else this.spawnTimer=0;}
+        else{this.spawnEnemy(this.queue.shift()!);this.spawnTimer = this.spawnInterval;}
       }
     }
 
+    const crowdSteps=new Map<Enemy,number>();
     // 敌人只保存“沿路线行进的距离”，不同关卡换路线时无需改移动状态结构。
     for (let i = this.enemies.length - 1; i >= 0; i -= 1) {
       const enemy = this.enemies[i];
@@ -1100,11 +1117,14 @@ export class GameRoot extends Component {
 
       }
       if (enemy.hp <= 0) { this.defeatEnemyAt(i); continue; }
-      enemy.distance += enemy.speed * (this.frozenTime > 0 ? 0 : slowRatio) * dt;
-      const pos = this.pathPosition(enemy.distance); enemy.x = pos.x; enemy.y = pos.y;
+      const step=enemy.speed*(this.frozenTime>0?0:slowRatio)*dt;
+      if(this.crowdFlow)crowdSteps.set(enemy,step);else{enemy.distance+=step;const pos=this.pathPosition(enemy.distance);enemy.x=pos.x;enemy.y=pos.y;}
+    }
+    this.crowdFlow?.advance(this.enemies,crowdSteps);
+    for(let i=this.enemies.length-1;i>=0;i--){const enemy=this.enemies[i],pos=this.pathPosition(enemy.distance);
       if (pos.done || enemy.distance >= this.pathLength) {
         const leak=this.challenge?.leak(enemy,this.challengePort())??{returned:false,damage:enemy.damage};
-        if(leak.returned)continue;
+        if(leak.returned){this.crowdFlow?.relocate(enemy,enemy.distance,this.enemies);continue;}
         this.lives -= leak.damage; this.damageFlash = 0.28; this.audio.play("leak", 0.62);
         this.showBattleFeedback(text("ui.GameRoot.038", leak.damage), W - 78, 92);
         this.burst(enemy.x, enemy.y, "#eb685d", 14); this.enemies.splice(i, 1);
@@ -1145,7 +1165,9 @@ export class GameRoot extends Component {
       if (p.life <= 0) this.particles.splice(i, 1);
     }
 
-    if (this.inWave && this.queue.length === 0 && this.enemies.length === 0) {
+    const phaseReady=this.challenge&&this.wave<this.level.waves.length&&this.challenge.waveElapsed>=numeric(this.challenge.rule,'waveDuration');
+    const finalClear=this.enemies.length===0&&(!this.challenge||this.wave===this.level.waves.length||this.challenge.waveElapsed>=numeric(this.challenge.rule,'waveDuration'));
+    if (this.inWave && this.queue.length === 0 && (phaseReady||finalClear)) {
       this.inWave = false; const bonus = this.challenge?.waveEnd(this.challengePort()) ?? (globalNumber("waveBonusBase") + this.wave * globalNumber("waveBonusStep")); this.addCoins(bonus);
       if (this.wave >= this.level.waves.length) {
         this.screen = "win"; this.cancelPendingAttacks();
@@ -1186,18 +1208,21 @@ export class GameRoot extends Component {
     this.audio.play("wave", 0.58);
   }
 
-  private spawnEnemy(kind: EnemyKind): void {
+  private spawnEnemy(kind: EnemyKind): boolean {
     // 只记录正式遭遇；GM和地图评审不写图鉴存档。
     if (this.level.mode === "adventure" && !this.gmSessionActive && !this.mapReview && this.collection?.encounter(kind)) this.newEncounterKinds.push(kind);
     const base = ENEMY_CONFIG[kind];
-    if (base.boss && !this.enemies.some(e => e.kind === kind)) this.bossCue = {kind, defeated:false, time:globalNumber("bossEntranceSeconds")};
     const wave=this.level.waves[Math.max(0,this.wave-1)];
     const scale=this.challenge?(base.boss?wave.bossHealthScale:wave.healthScale):this.level.enemyHealthScale*(wave?.healthScale??1)*(1+(this.wave-1)*globalNumber("waveHealthGrowth"));
-    const hp=Math.round(base.hp*scale);
+    const rule=this.challenge?.rule,elite=Boolean(this.crowdFlow&&rule&&!base.boss&&this.wave>=numeric(rule,'eliteStartWave')&&(this.challenge!.spawned+1)%numeric(rule,'eliteEvery')===0);
+    const eliteScale=elite?numeric(rule!,'eliteScale'):1,hp=Math.round(base.hp*scale*(elite?numeric(rule!,'eliteHealthScale')*(1+Math.max(0,this.wave-numeric(rule!,'eliteStartWave'))*numeric(rule!,'eliteHealthGrowth')):1));
     const start = this.level.pathPoints[0];
-    const speed=this.challenge&&base.boss?base.speed*numeric(this.challenge.rule,'bossSpeedRatio'):base.speed;
-    this.enemies.push({ kind, hp, maxHp: hp, speed, reward: base.reward, radius: base.radius, color: base.color, damage: base.damage, distance: 0, x: start[0], y: start[1], age: 0, slow: 0, hitFlash: 0, burnTime: 0, burnDamage: 0, markedTime: 0, sinceHit: 0 });
-    this.challenge?.spawnedEnemy(this.enemies[this.enemies.length-1]);
+    const speed=(this.challenge&&base.boss?base.speed*numeric(this.challenge.rule,'bossSpeedRatio'):base.speed)*(elite?numeric(rule!,'eliteSpeedRatio'):1)*(this.crowdFlow&&!base.boss?1+Math.max(0,this.wave-1)*numeric(rule!,'crowdSpeedGrowth'):1);
+    const enemy:Enemy={kind,hp,maxHp:hp,speed,reward:base.reward*(elite?numeric(rule!,'eliteRewardRatio'):1),radius:base.radius,color:base.color,damage:base.damage,distance:0,x:start[0],y:start[1],age:0,slow:0,hitFlash:0,burnTime:0,burnDamage:0,markedTime:0,sinceHit:0};
+    if(rule&&base.boss)enemy.damage=numeric(rule,'bossLeakDamage');
+    if(this.crowdFlow){enemy.elite=elite;enemy.artScale=base.crowdScale*eliteScale;enemy.crowdRadius=base.crowdRadius*eliteScale;enemy.crowdLift=base.crowdLift*eliteScale;enemy.radius=enemy.crowdRadius;if(!this.crowdFlow.admit(enemy,this.enemies,Boolean(base.boss)))return false;}
+    if(base.boss&&!this.enemies.some(e=>e.kind===kind))this.bossCue={kind,defeated:false,time:globalNumber("bossEntranceSeconds")};
+    this.enemies.push(enemy);this.challenge?.spawnedEnemy(enemy);return true;
   }
 
   /** 每次子弹发射重新索敌，连发不会向已死亡目标补伤害。 */
@@ -1210,7 +1235,7 @@ export class GameRoot extends Component {
     tower.angle=Math.atan2(target.y-tower.y,target.x-tower.x);
     const targets:AttackTarget[]=this.isEnemy(target)?candidates.slice(0,cfg.targets??1):[target];
     const triple=this.challenge?.has("S01")&&tower.kind==="sprout"&&(tower.chRound??0)%this.challenge.p("S01").every===0;
-    const copies=triple?this.challenge!.p("S01").shots:1;
+    const copies=triple?this.challenge!.p("S01").shots+this.challenge!.rank(this.challengePort()):1;
     const shotProfile={...cfg,damage:cfg.damage*(triple?this.challenge!.p("S01").ratio:1)};
     for(let copy=0;copy<copies;copy++)for(const [lane,chosen]of targets.entries())this.shots.push({challenge:this.challenge?{profile:shotProfile,round:tower.chRound??0,source:tower,damageRatio:cfg.damage/attackProfile(tower.kind,tower.level,tower.evolutionKey).damage,originalRange:attackProfile(tower.kind,tower.level,tower.evolutionKey).range}:undefined,x:tower.x+(Math.cos(tower.angle)<0?-12:12),y:tower.y-5,target:chosen,kind:tower.kind,level:tower.level,evolutionKey:tower.evolutionKey,speed:cfg.shotSpeed,originX:tower.x,originY:tower.y-5,age:0,lane:lane*copies+copy,laneCount:targets.length*copies});
     tower.recoil=0.11;this.audio.play(tower.kind==="frost"?"frost":tower.kind==="bloom"||tower.kind==="ember"?"bloom":"sprout",tower.kind==="bloom"?0.24:0.18);return true;
@@ -1671,6 +1696,7 @@ export class GameRoot extends Component {
         // 挑战复活保留剩余队列、怪物与计数，仅后退存活来客，不重打已结算对象。
         this.screen="playing";this.shots=[];this.cancelPendingAttacks();
         for(const enemy of this.enemies){enemy.distance=Math.min(enemy.distance,this.pathLength*numeric(this.challenge.rule,"reviveProgress"));const pos=this.pathPosition(enemy.distance);enemy.x=pos.x;enemy.y=pos.y;}
+        this.crowdFlow?.restore(this.enemies);
         this.damageFlash=0;this.bossCue=null;return;
       }
       this.screen = "playing"; this.enemies = []; this.shots = []; this.queue = [];

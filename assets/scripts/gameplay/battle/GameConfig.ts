@@ -23,6 +23,7 @@ export interface TowerConfig {
 }
 
 export interface EnemyConfig {
+  crowdScale:number;crowdRadius:number;crowdLift:number;
   name?: string;
   boss?: "mini" | "major";
   spriteHeight:number; spriteScale:number; clearRatio: number; legacyUnlock: number;

@@ -243,7 +243,16 @@ ShopRule增加offlineIncomeRatio、offlineBudgetPurchases、offlineCompleteBudge
 - ChallengeTopic.thumbnailKey显式引用VisualSkin，沿用原levelId／unlockAfter链。UiLayout、VisualSkin管理新卡片、九宫、字色及命中框；货架弹窗列数、行距和收缩量从布局表推导。
 - 本轮保留的代码常量例外属于界面技术协议：节点绑定路径、状态皮肤逻辑键、前三领奖槽的显示顺序、两位数关卡编号，以及居中／九宫使用的几何二分。它们不承载可调业务数值；实际资源路径、尺寸、颜色、边距、文字、评分权重和解锁条件仍由原始表管理。
 
-## 1.13.0 挑战怪潮
+## 1.14.0 怪群与阶段配置
+
+- Enemy新增crowdScale、crowdRadius、crowdLift：挑战精灵等比系数、身体安全框半尺寸、脚底至身体中心抬升量。crowdRadius沿用radius命名但按AABB半尺寸使用，非圆形碰撞；原Enemy字段保持，冒险不读crowd字段。安全框与PNG透明内容及最大动画尺度另做计算验证。
+- ChallengeRule新增laneOffset／crowdGap、waveDuration、eliteEvery／eliteStartWave／eliteHealthScale／eliteHealthGrowth／eliteScale／eliteSpeedRatio／eliteRewardRatio、growthEvery／growthDamage／growthRange、crowdSpeedGrowth、bossLeakDamage。控制双列偏移和框间隙、每阶段游戏秒、精英间隔／成长／体型／速度／奖励、专属成长阶段／伤害／范围、普通移速成长和首领漏过伤害。nextDelay允许0，其余时钟／次数／几何由共享校验器校验正数或整数、地图边界与初始耐久／护盾关系。所有数值由原始XLSX读取。
+- WaveGroup改为阶段混合模板，模板空时仅补普通怪，首领在首轮模板内只出现一次；阶段到点后未出生小怪可停止，实际存活对象延续到下阶段。到点不结算未出生击败，最后阶段清除存活者才胜利。Wave按专题管理普通与首领HP曲线；保留原15阶段／10选择和解锁链。
+- ChallengePerk.S03.params新增radiusRatio，S05新增count，必须显式配置。S01发数、S05目标数随growthEvery的等级成长；拥有该店员专属卡才有通用伤害／射程／爆炸范围成长。卡牌描述、提示、版本仍由I18／Global导表，字体随文本重建。七原表、CSV、manifest、共享校验器及Prefab提示同步。
+- 新增代码例外仅为移动算法和几何容差：双列＋中心首领三轨索引、正交折线法线交点、AABB比较1e-6容差、二分8次、步长半身体框、转弯预留2倍净间距加2倍列偏移及近邻3倍间距筛选。它们实现防穿透／避免卡死，不承载业务调参；实际体型、间距、偏移、成长、时钟和奖励来自表。PNG血条2／1厚度、1内缩、3偏移及精英环2偏移等沿用PngSurface的像素修饰几何，非战斗参数；复用现有PNG皮肤／Staff颜色，不新增Graphics或Canvas。
+- 规则与验证见[怪群设计](CHALLENGE_HORDE_FLOW.md)。经营金币新交易本轮未实现；不增加服务端配置或局外战力。
+
+## 1.13.0 挑战怪潮（历史）
 
 - ChallengeRule新增killRewardRatio与bossSpeedRatio，必须为(0,1]有效数值；前者只折算挑战击败奖励，后者只乘挑战首领的Enemy.speed。普通怪、冒险速度和便利店经济保持。
 - ChallengePerk.S06.params新增count必填整数，和radius／ratio共同控制最近目标上限；原始文本同步范围、倍率和人数。Wave／WaveGroup／Level管理数量、间隔、血量与初始金币，七张原始表→CSV／manifest。

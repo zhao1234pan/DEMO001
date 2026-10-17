@@ -1,0 +1,172 @@
+{
+  "kind": "真实GameRoot、3倍速、隔离存档、无广告与道具、无渲染自动策略",
+  "input": {
+    "verify": false,
+    "ids": [
+      22
+    ],
+    "delta": 0.016666666666666666,
+    "maxSeconds": 1200,
+    "scenarios": [
+      {
+        "name": "同种子专属核心优先",
+        "cap": 1,
+        "tech": "build",
+        "seed": 7
+      }
+    ]
+  },
+  "scenarios": [
+    {
+      "name": "同种子专属核心优先",
+      "cap": 1,
+      "tech": "build",
+      "seed": 7
+    }
+  ],
+  "results": [
+    {
+      "id": 22,
+      "scenario": "同种子专属核心优先",
+      "seed": 7,
+      "result": "win",
+      "wave": 15,
+      "realSeconds": 888,
+      "lives": 10,
+      "spawned": 3986,
+      "killed": 3986,
+      "peakEnemies": 23,
+      "peakElites": 6,
+      "carryovers": 14,
+      "peakKillsPerSecond": 11,
+      "minBodyClearance": 3,
+      "towers": 22,
+      "spots": 22,
+      "occupancy": 1,
+      "upgraded": 22,
+      "maxLevel": 22,
+      "coins": 648,
+      "picks": 10,
+      "tech": [
+        "G01",
+        "S01",
+        "G05",
+        "S04",
+        "S08",
+        "G06",
+        "E06",
+        "G02",
+        "E03",
+        "F01",
+        "E01"
+      ],
+      "waves": [
+        {
+          "wave": 1,
+          "seconds": 10,
+          "towers": 5,
+          "lives": 10,
+          "coins": 9
+        },
+        {
+          "wave": 2,
+          "seconds": 68,
+          "towers": 5,
+          "lives": 10,
+          "coins": 124
+        },
+        {
+          "wave": 3,
+          "seconds": 127,
+          "towers": 6,
+          "lives": 10,
+          "coins": 46
+        },
+        {
+          "wave": 4,
+          "seconds": 185,
+          "towers": 6,
+          "lives": 10,
+          "coins": 116
+        },
+        {
+          "wave": 5,
+          "seconds": 243,
+          "towers": 6,
+          "lives": 10,
+          "coins": 157
+        },
+        {
+          "wave": 6,
+          "seconds": 302,
+          "towers": 8,
+          "lives": 10,
+          "coins": 49
+        },
+        {
+          "wave": 7,
+          "seconds": 360,
+          "towers": 9,
+          "lives": 10,
+          "coins": 94
+        },
+        {
+          "wave": 8,
+          "seconds": 418,
+          "towers": 11,
+          "lives": 10,
+          "coins": 54
+        },
+        {
+          "wave": 9,
+          "seconds": 477,
+          "towers": 12,
+          "lives": 10,
+          "coins": 85
+        },
+        {
+          "wave": 10,
+          "seconds": 535,
+          "towers": 14,
+          "lives": 10,
+          "coins": 44
+        },
+        {
+          "wave": 11,
+          "seconds": 593,
+          "towers": 16,
+          "lives": 10,
+          "coins": 83
+        },
+        {
+          "wave": 12,
+          "seconds": 652,
+          "towers": 16,
+          "lives": 10,
+          "coins": 58
+        },
+        {
+          "wave": 13,
+          "seconds": 710,
+          "towers": 19,
+          "lives": 10,
+          "coins": 64
+        },
+        {
+          "wave": 14,
+          "seconds": 769,
+          "towers": 21,
+          "lives": 10,
+          "coins": 271
+        },
+        {
+          "wave": 15,
+          "seconds": 827,
+          "towers": 22,
+          "lives": 10,
+          "coins": 158
+        }
+      ]
+    }
+  ]
+}

@@ -12,6 +12,7 @@ export interface ObstacleArtState {
   x: number; y: number; kind: string; hitFlash: number;
 }
 export interface EnemyArtState {
+  artScale?:number;crowdLift?:number;
   x: number; y: number; kind: string; age: number; hitFlash: number; distance?: number;
 }
 interface SpriteEntry {
@@ -102,8 +103,8 @@ export class BattleArtView {
     const stride = Math.sin(phase);
     const sway = stride * (kind === "tank" ? 0.28 : 0.65);
     const bounce = Math.abs(stride) * (kind === "tank" ? 0.35 : 0.85);
-    const footOffset = ENEMY_CONFIG[kind as EnemyKind].spriteHeight * 0.42 * this.logicalPerDesignPixel - bounce;
-    this.placeUnit(entry, state.x + sway, state.y, footOffset, ENEMY_CONFIG[kind as EnemyKind].spriteScale);
+    const footOffset = (state.crowdLift??ENEMY_CONFIG[kind as EnemyKind].spriteHeight * 0.42 * this.logicalPerDesignPixel) - bounce;
+    this.placeUnit(entry, state.x + sway, state.y, footOffset, ENEMY_CONFIG[kind as EnemyKind].spriteScale*(state.artScale??1));
     // 怪物本体始终直立，只做轻微步态；血条、减速圈由调用方的上层图形绘制。
     const hit = Math.max(0, Math.min(1, state.hitFlash / globalNumber("hitFeedbackSeconds")));
     const squash = Math.sin(hit * Math.PI) * globalNumber("hitFeedbackScale");

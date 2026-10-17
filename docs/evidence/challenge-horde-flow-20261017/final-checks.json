@@ -1,0 +1,471 @@
+{
+  "results": [
+    {
+      "name": "配置一致",
+      "status": 0,
+      "stdout": "UI布局表：2610个节点。\nUI资源校验：36个预制体，2610个节点。\n39张表校验通过，XLSX 与 CSV 一致。\n日志：G:\\gptwork\\config-export\\run-6bo74x\n",
+      "stderr": ""
+    },
+    {
+      "name": "预制体门禁",
+      "status": 0,
+      "stdout": "{\n  \"prefabs\": 36,\n  \"nodes\": 2610,\n  \"labels\": 409,\n  \"images\": 80\n}\n",
+      "stderr": ""
+    },
+    {
+      "name": "严格TypeScript",
+      "status": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ],
+  "builds": [
+    {
+      "kind": "web",
+      "path": "G:/gptwork/challenge-horde-flow-web-build/web-mobile",
+      "finished": "2026-10-17 18:25:22 - debug: ================================ build Task (web-mobile) Finished in (10 s)ms ================================",
+      "exitCode": 36,
+      "all39CsvMatch": true
+    },
+    {
+      "kind": "release",
+      "path": "G:/gptwork/challenge-horde-flow-release-build/web-mobile",
+      "finished": "2026-10-17 18:25:45 - debug: ================================ build Task (web-mobile) Finished in (13 s)ms ================================",
+      "exitCode": 36,
+      "all39CsvMatch": true
+    }
+  ],
+  "configChanges": {
+    "input": {
+      "waves": {
+        "22": {
+          "healthEnd": 9,
+          "healthPower": 3,
+          "bossHealthEnd": 4
+        }
+      }
+    },
+    "reports": [
+      {
+        "table": "Enemy",
+        "changedCells": 45,
+        "columns": [
+          "crowdScale",
+          "crowdRadius",
+          "crowdLift"
+        ],
+        "samples": [
+          {
+            "row": 1,
+            "column": "crowdScale",
+            "before": null,
+            "after": "挑战怪群精灵比例"
+          },
+          {
+            "row": 1,
+            "column": "crowdRadius",
+            "before": null,
+            "after": "挑战身体占位半径"
+          },
+          {
+            "row": 1,
+            "column": "crowdLift",
+            "before": null,
+            "after": "身体中心距脚底"
+          },
+          {
+            "row": 2,
+            "column": "crowdScale",
+            "before": null,
+            "after": "client"
+          },
+          {
+            "row": 2,
+            "column": "crowdRadius",
+            "before": null,
+            "after": "client"
+          },
+          {
+            "row": 2,
+            "column": "crowdLift",
+            "before": null,
+            "after": "client"
+          },
+          {
+            "row": 3,
+            "column": "crowdScale",
+            "before": null,
+            "after": "float"
+          },
+          {
+            "row": 3,
+            "column": "crowdRadius",
+            "before": null,
+            "after": "float"
+          },
+          {
+            "row": 3,
+            "column": "crowdLift",
+            "before": null,
+            "after": "float"
+          },
+          {
+            "row": 4,
+            "column": "crowdScale",
+            "before": null,
+            "after": "crowdScale"
+          }
+        ],
+        "sourceSha256": "6d8db9f86ef0ca0f0d4bc4e341f83d1ddff042e34794e8c6df447251010c2725"
+      },
+      {
+        "table": "ChallengeRule",
+        "changedCells": 183,
+        "columns": [
+          "laneOffset",
+          "crowdGap",
+          "waveDuration",
+          "eliteEvery",
+          "eliteStartWave",
+          "eliteHealthScale",
+          "eliteHealthGrowth",
+          "eliteScale",
+          "eliteSpeedRatio",
+          "eliteRewardRatio",
+          "growthEvery",
+          "growthDamage",
+          "growthRange",
+          "crowdSpeedGrowth",
+          "bossLeakDamage",
+          "nextDelay",
+          "killRewardRatio",
+          "bossSpeedRatio"
+        ],
+        "samples": [
+          {
+            "row": 1,
+            "column": "laneOffset",
+            "before": null,
+            "after": "道路两列偏移"
+          },
+          {
+            "row": 1,
+            "column": "crowdGap",
+            "before": null,
+            "after": "身体安全间距"
+          },
+          {
+            "row": 1,
+            "column": "waveDuration",
+            "before": null,
+            "after": "怪潮阶段游戏秒"
+          },
+          {
+            "row": 1,
+            "column": "eliteEvery",
+            "before": null,
+            "after": "每几名出现精英"
+          },
+          {
+            "row": 1,
+            "column": "eliteStartWave",
+            "before": null,
+            "after": "精英出现阶段"
+          },
+          {
+            "row": 1,
+            "column": "eliteHealthScale",
+            "before": null,
+            "after": "精英耐久倍率"
+          },
+          {
+            "row": 1,
+            "column": "eliteHealthGrowth",
+            "before": null,
+            "after": "精英每阶段成长"
+          },
+          {
+            "row": 1,
+            "column": "eliteScale",
+            "before": null,
+            "after": "精英身体倍率"
+          },
+          {
+            "row": 1,
+            "column": "eliteSpeedRatio",
+            "before": null,
+            "after": "精英速度倍率"
+          },
+          {
+            "row": 1,
+            "column": "eliteRewardRatio",
+            "before": null,
+            "after": "精英收益倍率"
+          }
+        ],
+        "sourceSha256": "62e7db227c2c17f7776b59498c392aa23eac975a38741dfa19d3d25f7d35af0e"
+      },
+      {
+        "table": "ChallengePerk",
+        "changedCells": 5,
+        "columns": [
+          "params"
+        ],
+        "samples": [
+          {
+            "row": 6,
+            "column": "params",
+            "before": "{\"every\":3,\"shots\":3,\"ratio\":0.7}",
+            "after": "{\"every\":2,\"shots\":3,\"ratio\":0.7}"
+          },
+          {
+            "row": 8,
+            "column": "params",
+            "before": "{\"every\":3,\"delay\":0.35,\"ratio\":0.8}",
+            "after": "{\"every\":2,\"delay\":0.22,\"ratio\":0.9,\"radiusRatio\":1.45}"
+          },
+          {
+            "row": 10,
+            "column": "params",
+            "before": "{\"every\":3,\"ratio\":0.6}",
+            "after": "{\"every\":2,\"ratio\":0.8,\"count\":5}"
+          },
+          {
+            "row": 11,
+            "column": "params",
+            "before": "{\"radius\":56,\"ratio\":1.2,\"count\":6}",
+            "after": "{\"radius\":72,\"ratio\":2.1,\"count\":8}"
+          },
+          {
+            "row": 13,
+            "column": "params",
+            "before": "{\"radius\":65,\"ratio\":0.6}",
+            "after": "{\"radius\":80,\"ratio\":0.8}"
+          }
+        ],
+        "sourceSha256": "a46ab6451699b3a5faf396de6db8c18d2a3e01fde3fa27ad8d9dbb0f464042b4"
+      },
+      {
+        "table": "Wave",
+        "changedCells": 265,
+        "columns": [
+          "spawnInterval",
+          "healthScale",
+          "bossHealthScale"
+        ],
+        "samples": [
+          {
+            "row": 89,
+            "column": "spawnInterval",
+            "before": 0.25,
+            "after": 0.65
+          },
+          {
+            "row": 89,
+            "column": "healthScale",
+            "before": 0.6,
+            "after": 0.4
+          },
+          {
+            "row": 89,
+            "column": "bossHealthScale",
+            "before": 1.98,
+            "after": 3.168
+          },
+          {
+            "row": 90,
+            "column": "spawnInterval",
+            "before": 0.25,
+            "after": 0.6336
+          },
+          {
+            "row": 90,
+            "column": "healthScale",
+            "before": 0.6276,
+            "after": 0.4286
+          },
+          {
+            "row": 90,
+            "column": "bossHealthScale",
+            "before": 2.2,
+            "after": 3.52
+          },
+          {
+            "row": 91,
+            "column": "spawnInterval",
+            "before": 0.25,
+            "after": 0.6171
+          },
+          {
+            "row": 91,
+            "column": "healthScale",
+            "before": 0.7102,
+            "after": 0.5143
+          },
+          {
+            "row": 91,
+            "column": "bossHealthScale",
+            "before": 2.53,
+            "after": 4.048
+          },
+          {
+            "row": 92,
+            "column": "spawnInterval",
+            "before": 0.25,
+            "after": 0.6007
+          }
+        ],
+        "sourceSha256": "b98da765df1d4ee53fc6dff64ec3d986a491d1cc04db96bf4258f6f2ef7ce7fb"
+      },
+      {
+        "table": "WaveGroup",
+        "changedCells": 108001,
+        "columns": [
+          "id",
+          "count",
+          "waveId",
+          "order",
+          "enemy"
+        ],
+        "samples": [
+          {
+            "row": 359,
+            "column": "id",
+            "before": 355,
+            "after": 627
+          },
+          {
+            "row": 359,
+            "column": "count",
+            "before": 375,
+            "after": 3
+          },
+          {
+            "row": 360,
+            "column": "id",
+            "before": 356,
+            "after": 628
+          },
+          {
+            "row": 360,
+            "column": "count",
+            "before": 75,
+            "after": 1
+          },
+          {
+            "row": 361,
+            "column": "id",
+            "before": 357,
+            "after": 629
+          },
+          {
+            "row": 361,
+            "column": "waveId",
+            "before": 2102,
+            "after": 2101
+          },
+          {
+            "row": 361,
+            "column": "order",
+            "before": 1,
+            "after": 3
+          },
+          {
+            "row": 361,
+            "column": "count",
+            "before": 340,
+            "after": 5
+          },
+          {
+            "row": 362,
+            "column": "id",
+            "before": 358,
+            "after": 630
+          },
+          {
+            "row": 362,
+            "column": "waveId",
+            "before": 2102,
+            "after": 2101
+          }
+        ],
+        "sourceSha256": "d7a7edc36f33b95ccbf44308e628e407605e389a532a9099d9e289fbbf6c7bb1"
+      },
+      {
+        "table": "I18",
+        "changedCells": 8,
+        "columns": [
+          "zhCN"
+        ],
+        "samples": [
+          {
+            "row": 278,
+            "column": "zhCN",
+            "before": "守住15波怪潮",
+            "after": "守住便利店，击败首领"
+          },
+          {
+            "row": 279,
+            "column": "zhCN",
+            "before": "首领来访",
+            "after": "首领来袭，不能漏过"
+          },
+          {
+            "row": 462,
+            "column": "zhCN",
+            "before": "豆包每第三轮攻击改为三连发，每发造成70%伤害。",
+            "after": "每2轮发射3连弹，造成70%伤害；第6、11波各增加1发。"
+          },
+          {
+            "row": 466,
+            "column": "zhCN",
+            "before": "布丁每第三轮攻击的爆点会在0.35秒后再爆一次，造成80%伤害。",
+            "after": "每2轮追加一次更大范围的爆炸，造成90%攻击伤害。"
+          },
+          {
+            "row": 470,
+            "column": "zhCN",
+            "before": "栗栗每第三轮攻击多放出一条电链，造成60%伤害。",
+            "after": "每2轮追加电链，连接5名来客，伤害80%起并逐跳衰减；第6、11波各加1名。"
+          },
+          {
+            "row": 472,
+            "column": "zhCN",
+            "before": "燃烧中的来客被击败时，对56范围内最多6名其他来客造成其每秒灼烧伤害120%的伤害。",
+            "after": "击败燃烧来客，对72范围内最多8名造成灼烧伤害210%的余温。"
+          },
+          {
+            "row": 476,
+            "column": "zhCN",
+            "before": "啾啾的每枚风弹命中后，弹向65范围内另一名来客，造成60%伤害。",
+            "after": "额外攻击80范围内另一名来客，造成80%攻击伤害。"
+          },
+          {
+            "row": 575,
+            "column": "zhCN",
+            "before": "请选择一份补给，助你轻松度过夜班！",
+            "after": "专属强化会随夜班进度成长"
+          }
+        ],
+        "sourceSha256": "5bf3643217784b453f804443866a17c9c831ab21d23899d8557783db55e14898"
+      },
+      {
+        "table": "Global",
+        "changedCells": 1,
+        "columns": [
+          "value"
+        ],
+        "samples": [
+          {
+            "row": 9,
+            "column": "value",
+            "before": "1.13.0",
+            "after": "1.14.0"
+          }
+        ],
+        "sourceSha256": "0f971b82aa3e53df1f8758bcb2c6d26ab4b4595d5b6b93d63ebf29be3b1c4a2e"
+      }
+    ],
+    "note": "完整作者差异与前后渲染保留于G:/gptwork/challenge-horde-flow；原始XLSX与完整CSV一并提交"
+  }
+}

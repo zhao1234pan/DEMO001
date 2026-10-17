@@ -1,0 +1,135 @@
+{
+  "kind": "原始PNG Alpha及既有步态／受击幅度的包围框分析，不是真实运行截图",
+  "fit": [
+    {
+      "key": "normal",
+      "visibleAlphaBounds": [
+        9,
+        13,
+        246,
+        241
+      ],
+      "alphaThreshold": 32,
+      "maxAnimatedHalfExtent": 14.672058250000001,
+      "bodyHalfExtent": 15,
+      "margin": 0.32794174999999903
+    },
+    {
+      "key": "swift",
+      "visibleAlphaBounds": [
+        9,
+        9,
+        246,
+        244
+      ],
+      "alphaThreshold": 32,
+      "maxAnimatedHalfExtent": 14.672058250000001,
+      "bodyHalfExtent": 15,
+      "margin": 0.32794174999999903
+    },
+    {
+      "key": "tank",
+      "visibleAlphaBounds": [
+        9,
+        31,
+        246,
+        222
+      ],
+      "alphaThreshold": 32,
+      "maxAnimatedHalfExtent": 14.672058250000001,
+      "bodyHalfExtent": 15,
+      "margin": 0.32794174999999903
+    },
+    {
+      "key": "shield",
+      "visibleAlphaBounds": [
+        9,
+        10,
+        247,
+        246
+      ],
+      "alphaThreshold": 32,
+      "maxAnimatedHalfExtent": 14.672058250000001,
+      "bodyHalfExtent": 15,
+      "margin": 0.32794174999999903
+    },
+    {
+      "key": "jelly",
+      "visibleAlphaBounds": [
+        8,
+        16,
+        246,
+        238
+      ],
+      "alphaThreshold": 32,
+      "maxAnimatedHalfExtent": 14.788210000000003,
+      "bodyHalfExtent": 15,
+      "margin": 0.21178999999999704
+    },
+    {
+      "key": "runner",
+      "visibleAlphaBounds": [
+        9,
+        19,
+        247,
+        235
+      ],
+      "alphaThreshold": 32,
+      "maxAnimatedHalfExtent": 14.672058250000001,
+      "bodyHalfExtent": 15,
+      "margin": 0.32794174999999903
+    },
+    {
+      "key": "postmaster",
+      "visibleAlphaBounds": [
+        13,
+        8,
+        242,
+        247
+      ],
+      "alphaThreshold": 32,
+      "maxAnimatedHalfExtent": 23.65798,
+      "bodyHalfExtent": 24,
+      "margin": 0.34202000000000155
+    },
+    {
+      "key": "lantern",
+      "visibleAlphaBounds": [
+        24,
+        8,
+        231,
+        247
+      ],
+      "alphaThreshold": 32,
+      "maxAnimatedHalfExtent": 23.65798,
+      "bodyHalfExtent": 24,
+      "margin": 0.34202000000000155
+    },
+    {
+      "key": "chef",
+      "visibleAlphaBounds": [
+        9,
+        11,
+        247,
+        242
+      ],
+      "alphaThreshold": 32,
+      "maxAnimatedHalfExtent": 23.467913500000005,
+      "bodyHalfExtent": 24,
+      "margin": 0.5320864999999948
+    },
+    {
+      "key": "clock",
+      "visibleAlphaBounds": [
+        12,
+        8,
+        242,
+        246
+      ],
+      "alphaThreshold": 32,
+      "maxAnimatedHalfExtent": 23.65798,
+      "bodyHalfExtent": 24,
+      "margin": 0.34202000000000155
+    }
+  ]
+}

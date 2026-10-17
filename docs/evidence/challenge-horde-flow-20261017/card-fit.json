@@ -1,0 +1,50 @@
+{
+  "kind": "字体度量自动换行估算，不替代Cocos真实渲染",
+  "cards": [
+    {
+      "key": "perk.S01.desc",
+      "fontSize": 13,
+      "width": 100,
+      "height": 98,
+      "lineHeight": 16,
+      "measuredLines": 4,
+      "fits": true
+    },
+    {
+      "key": "perk.S03.desc",
+      "fontSize": 13,
+      "width": 100,
+      "height": 98,
+      "lineHeight": 16,
+      "measuredLines": 4,
+      "fits": true
+    },
+    {
+      "key": "perk.S05.desc",
+      "fontSize": 13,
+      "width": 100,
+      "height": 98,
+      "lineHeight": 16,
+      "measuredLines": 5,
+      "fits": true
+    },
+    {
+      "key": "perk.S06.desc",
+      "fontSize": 13,
+      "width": 100,
+      "height": 98,
+      "lineHeight": 16,
+      "measuredLines": 4,
+      "fits": true
+    },
+    {
+      "key": "perk.S08.desc",
+      "fontSize": 13,
+      "width": 100,
+      "height": 98,
+      "lineHeight": 16,
+      "measuredLines": 4,
+      "fits": true
+    }
+  ]
+}

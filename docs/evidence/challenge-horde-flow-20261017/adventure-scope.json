@@ -1,0 +1,25 @@
+{
+  "baseline": "e9e4018",
+  "audit": [
+    {
+      "table": "Level",
+      "rows": 20,
+      "unchanged": true
+    },
+    {
+      "table": "Wave",
+      "rows": 83,
+      "unchanged": true
+    },
+    {
+      "table": "WaveGroup",
+      "rows": 353,
+      "unchanged": true
+    },
+    {
+      "table": "Enemy",
+      "note": "全部原有字段保持；新增crowd字段只用于挑战",
+      "unchanged": true
+    }
+  ]
+}
