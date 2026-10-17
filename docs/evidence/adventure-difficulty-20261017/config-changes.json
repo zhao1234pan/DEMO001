@@ -1,0 +1,5241 @@
+{
+  "input": {
+    "levels": {
+      "6": {
+        "growth": 0.1,
+        "waveStep": 0.025,
+        "count": 1.12
+      },
+      "13": {
+        "growth": 0.15,
+        "waveStep": 0.04,
+        "count": 1.12
+      },
+      "19": {
+        "growth": 0.12,
+        "waveStep": 0.035,
+        "count": 1.1
+      }
+    },
+    "challenge": {
+      "21": [
+        1.1,
+        1.6,
+        2.4,
+        3.4,
+        4,
+        5.5,
+        6,
+        6.5,
+        7,
+        8,
+        9.2,
+        10,
+        10.7,
+        11.4,
+        12.2
+      ],
+      "22": [
+        1.21,
+        1.76,
+        2.64,
+        3.74,
+        4.4,
+        6.05,
+        6.6,
+        7.15,
+        7.7,
+        8.8,
+        10.12,
+        11,
+        11.77,
+        12.54,
+        13.42
+      ],
+      "23": [
+        0.715,
+        1.04,
+        1.56,
+        2.21,
+        2.6,
+        3.575,
+        3.9,
+        4.225,
+        4.55,
+        5.2,
+        5.98,
+        6.5,
+        6.955,
+        7.41,
+        7.93
+      ],
+      "24": [
+        0.715,
+        1.04,
+        1.56,
+        2.21,
+        2.6,
+        3.575,
+        3.9,
+        4.225,
+        4.55,
+        5.2,
+        5.98,
+        6.5,
+        6.955,
+        7.41,
+        7.93
+      ],
+      "25": [
+        0.9,
+        1.3,
+        1.9,
+        2.6,
+        3.2,
+        4.3,
+        5,
+        5.8,
+        6.8,
+        7.8,
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "26": [
+        0.9,
+        1.1,
+        1.5,
+        1.9,
+        2.4,
+        3.2,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ]
+    }
+  },
+  "reports": [
+    {
+      "table": "Wave",
+      "changes": [
+        {
+          "row": 1,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": "普通波末新生血量增幅"
+        },
+        {
+          "row": 1,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": "普通波内出生成长指数"
+        },
+        {
+          "row": 1,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": "挑战精英独立基础血量倍率"
+        },
+        {
+          "row": 2,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": "client"
+        },
+        {
+          "row": 2,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": "client"
+        },
+        {
+          "row": 2,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": "client"
+        },
+        {
+          "row": 3,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": "float"
+        },
+        {
+          "row": 3,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": "float"
+        },
+        {
+          "row": 3,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": "float"
+        },
+        {
+          "row": 4,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": "spawnHealthGrowth"
+        },
+        {
+          "row": 4,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": "spawnGrowthPower"
+        },
+        {
+          "row": 4,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": "eliteBaseHealthScale"
+        },
+        {
+          "row": 5,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": "spawnHealthGrowth"
+        },
+        {
+          "row": 5,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": "spawnGrowthPower"
+        },
+        {
+          "row": 5,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": "eliteBaseHealthScale"
+        },
+        {
+          "row": 6,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0
+        },
+        {
+          "row": 6,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1.3
+        },
+        {
+          "row": 6,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 7,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0
+        },
+        {
+          "row": 7,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1.3
+        },
+        {
+          "row": 7,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 8,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0
+        },
+        {
+          "row": 8,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1.3
+        },
+        {
+          "row": 8,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 9,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0
+        },
+        {
+          "row": 9,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1.3
+        },
+        {
+          "row": 9,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 10,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0
+        },
+        {
+          "row": 10,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1.3
+        },
+        {
+          "row": 10,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 11,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0
+        },
+        {
+          "row": 11,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1.3
+        },
+        {
+          "row": 11,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 12,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0
+        },
+        {
+          "row": 12,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1.3
+        },
+        {
+          "row": 12,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 13,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0
+        },
+        {
+          "row": 13,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1.3
+        },
+        {
+          "row": 13,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 14,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0
+        },
+        {
+          "row": 14,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1.3
+        },
+        {
+          "row": 14,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 15,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0
+        },
+        {
+          "row": 15,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1.3
+        },
+        {
+          "row": 15,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 16,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0
+        },
+        {
+          "row": 16,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1.3
+        },
+        {
+          "row": 16,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 17,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0
+        },
+        {
+          "row": 17,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1.3
+        },
+        {
+          "row": 17,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 18,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0
+        },
+        {
+          "row": 18,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1.3
+        },
+        {
+          "row": 18,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 19,
+          "column": "healthScale",
+          "before": 1,
+          "after": 1.05
+        },
+        {
+          "row": 19,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0.06666666666666667
+        },
+        {
+          "row": 19,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1.3
+        },
+        {
+          "row": 19,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 20,
+          "column": "healthScale",
+          "before": 1,
+          "after": 1.1
+        },
+        {
+          "row": 20,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0.13333333333333333
+        },
+        {
+          "row": 20,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1.3
+        },
+        {
+          "row": 20,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 21,
+          "column": "healthScale",
+          "before": 1,
+          "after": 1.15
+        },
+        {
+          "row": 21,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0.20000000000000004
+        },
+        {
+          "row": 21,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1.3
+        },
+        {
+          "row": 21,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 22,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0
+        },
+        {
+          "row": 22,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1.3
+        },
+        {
+          "row": 22,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 23,
+          "column": "healthScale",
+          "before": 1,
+          "after": 1.05
+        },
+        {
+          "row": 23,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0.06666666666666667
+        },
+        {
+          "row": 23,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1.3
+        },
+        {
+          "row": 23,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 24,
+          "column": "healthScale",
+          "before": 1,
+          "after": 1.1
+        },
+        {
+          "row": 24,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0.13333333333333333
+        },
+        {
+          "row": 24,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1.3
+        },
+        {
+          "row": 24,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 25,
+          "column": "healthScale",
+          "before": 1,
+          "after": 1.15
+        },
+        {
+          "row": 25,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0.20000000000000004
+        },
+        {
+          "row": 25,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1.3
+        },
+        {
+          "row": 25,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 26,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0
+        },
+        {
+          "row": 26,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1.3
+        },
+        {
+          "row": 26,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 27,
+          "column": "healthScale",
+          "before": 1,
+          "after": 1.025
+        },
+        {
+          "row": 27,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0.03333333333333333
+        },
+        {
+          "row": 27,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1.3
+        },
+        {
+          "row": 27,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 28,
+          "column": "healthScale",
+          "before": 1,
+          "after": 1.05
+        },
+        {
+          "row": 28,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0.06666666666666667
+        },
+        {
+          "row": 28,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1.3
+        },
+        {
+          "row": 28,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 29,
+          "column": "healthScale",
+          "before": 1,
+          "after": 1.075
+        },
+        {
+          "row": 29,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0.10000000000000002
+        },
+        {
+          "row": 29,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1.3
+        },
+        {
+          "row": 29,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 30,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0
+        },
+        {
+          "row": 30,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1.3
+        },
+        {
+          "row": 30,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 31,
+          "column": "healthScale",
+          "before": 1,
+          "after": 1.05
+        },
+        {
+          "row": 31,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0.06666666666666667
+        },
+        {
+          "row": 31,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1.3
+        },
+        {
+          "row": 31,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 32,
+          "column": "healthScale",
+          "before": 1,
+          "after": 1.1
+        },
+        {
+          "row": 32,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0.13333333333333333
+        },
+        {
+          "row": 32,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1.3
+        },
+        {
+          "row": 32,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 33,
+          "column": "healthScale",
+          "before": 1,
+          "after": 1.15
+        },
+        {
+          "row": 33,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0.20000000000000004
+        },
+        {
+          "row": 33,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1.3
+        },
+        {
+          "row": 33,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 34,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0
+        },
+        {
+          "row": 34,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1.3
+        },
+        {
+          "row": 34,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 35,
+          "column": "healthScale",
+          "before": 1,
+          "after": 1.08
+        },
+        {
+          "row": 35,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0.09999999999999999
+        },
+        {
+          "row": 35,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1.3
+        },
+        {
+          "row": 35,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 36,
+          "column": "healthScale",
+          "before": 1,
+          "after": 1.16
+        },
+        {
+          "row": 36,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0.19999999999999998
+        },
+        {
+          "row": 36,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1.3
+        },
+        {
+          "row": 36,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 37,
+          "column": "healthScale",
+          "before": 1,
+          "after": 1.24
+        },
+        {
+          "row": 37,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0.3
+        },
+        {
+          "row": 37,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1.3
+        },
+        {
+          "row": 37,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 38,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0
+        },
+        {
+          "row": 38,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1.3
+        },
+        {
+          "row": 38,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 39,
+          "column": "healthScale",
+          "before": 1,
+          "after": 1.08
+        },
+        {
+          "row": 39,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0.09999999999999999
+        },
+        {
+          "row": 39,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1.3
+        },
+        {
+          "row": 39,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 40,
+          "column": "healthScale",
+          "before": 1,
+          "after": 1.16
+        },
+        {
+          "row": 40,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0.19999999999999998
+        },
+        {
+          "row": 40,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1.3
+        },
+        {
+          "row": 40,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 41,
+          "column": "healthScale",
+          "before": 1,
+          "after": 1.24
+        },
+        {
+          "row": 41,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0.3
+        },
+        {
+          "row": 41,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1.3
+        },
+        {
+          "row": 41,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 42,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0
+        },
+        {
+          "row": 42,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1.3
+        },
+        {
+          "row": 42,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 43,
+          "column": "healthScale",
+          "before": 1,
+          "after": 1.08
+        },
+        {
+          "row": 43,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0.075
+        },
+        {
+          "row": 43,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1.3
+        },
+        {
+          "row": 43,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 44,
+          "column": "healthScale",
+          "before": 1,
+          "after": 1.16
+        },
+        {
+          "row": 44,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0.15
+        },
+        {
+          "row": 44,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1.3
+        },
+        {
+          "row": 44,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 45,
+          "column": "healthScale",
+          "before": 1,
+          "after": 1.24
+        },
+        {
+          "row": 45,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0.22499999999999998
+        },
+        {
+          "row": 45,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1.3
+        },
+        {
+          "row": 45,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 46,
+          "column": "healthScale",
+          "before": 1,
+          "after": 1.32
+        },
+        {
+          "row": 46,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0.3
+        },
+        {
+          "row": 46,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1.3
+        },
+        {
+          "row": 46,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 47,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0
+        },
+        {
+          "row": 47,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1.3
+        },
+        {
+          "row": 47,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 48,
+          "column": "healthScale",
+          "before": 1,
+          "after": 1.08
+        },
+        {
+          "row": 48,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0.09999999999999999
+        },
+        {
+          "row": 48,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1.3
+        },
+        {
+          "row": 48,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 49,
+          "column": "healthScale",
+          "before": 1,
+          "after": 1.16
+        },
+        {
+          "row": 49,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0.19999999999999998
+        },
+        {
+          "row": 49,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1.3
+        },
+        {
+          "row": 49,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 50,
+          "column": "healthScale",
+          "before": 1,
+          "after": 1.24
+        },
+        {
+          "row": 50,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0.3
+        },
+        {
+          "row": 50,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1.3
+        },
+        {
+          "row": 50,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 51,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0
+        },
+        {
+          "row": 51,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1.3
+        },
+        {
+          "row": 51,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 52,
+          "column": "healthScale",
+          "before": 1,
+          "after": 1.08
+        },
+        {
+          "row": 52,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0.09999999999999999
+        },
+        {
+          "row": 52,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1.3
+        },
+        {
+          "row": 52,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 53,
+          "column": "healthScale",
+          "before": 1,
+          "after": 1.16
+        },
+        {
+          "row": 53,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0.19999999999999998
+        },
+        {
+          "row": 53,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1.3
+        },
+        {
+          "row": 53,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 54,
+          "column": "healthScale",
+          "before": 1,
+          "after": 1.24
+        },
+        {
+          "row": 54,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0.3
+        },
+        {
+          "row": 54,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1.3
+        },
+        {
+          "row": 54,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 55,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0
+        },
+        {
+          "row": 55,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1.3
+        },
+        {
+          "row": 55,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 56,
+          "column": "healthScale",
+          "before": 1,
+          "after": 1.04
+        },
+        {
+          "row": 56,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0.049999999999999996
+        },
+        {
+          "row": 56,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1.3
+        },
+        {
+          "row": 56,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 57,
+          "column": "healthScale",
+          "before": 1,
+          "after": 1.08
+        },
+        {
+          "row": 57,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0.09999999999999999
+        },
+        {
+          "row": 57,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1.3
+        },
+        {
+          "row": 57,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 58,
+          "column": "healthScale",
+          "before": 1,
+          "after": 1.12
+        },
+        {
+          "row": 58,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0.15
+        },
+        {
+          "row": 58,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1.3
+        },
+        {
+          "row": 58,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 59,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0
+        },
+        {
+          "row": 59,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1.3
+        },
+        {
+          "row": 59,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 60,
+          "column": "healthScale",
+          "before": 1,
+          "after": 1.08
+        },
+        {
+          "row": 60,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0.09999999999999999
+        },
+        {
+          "row": 60,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1.3
+        },
+        {
+          "row": 60,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 61,
+          "column": "healthScale",
+          "before": 1,
+          "after": 1.16
+        },
+        {
+          "row": 61,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0.19999999999999998
+        },
+        {
+          "row": 61,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1.3
+        },
+        {
+          "row": 61,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 62,
+          "column": "healthScale",
+          "before": 1,
+          "after": 1.24
+        },
+        {
+          "row": 62,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0.3
+        },
+        {
+          "row": 62,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1.3
+        },
+        {
+          "row": 62,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 63,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0
+        },
+        {
+          "row": 63,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1.3
+        },
+        {
+          "row": 63,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 64,
+          "column": "healthScale",
+          "before": 1,
+          "after": 1.13
+        },
+        {
+          "row": 64,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0.105
+        },
+        {
+          "row": 64,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1.3
+        },
+        {
+          "row": 64,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 65,
+          "column": "healthScale",
+          "before": 1,
+          "after": 1.26
+        },
+        {
+          "row": 65,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0.21
+        },
+        {
+          "row": 65,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1.3
+        },
+        {
+          "row": 65,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 66,
+          "column": "healthScale",
+          "before": 1,
+          "after": 1.39
+        },
+        {
+          "row": 66,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0.315
+        },
+        {
+          "row": 66,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1.3
+        },
+        {
+          "row": 66,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 67,
+          "column": "healthScale",
+          "before": 1,
+          "after": 1.52
+        },
+        {
+          "row": 67,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0.42
+        },
+        {
+          "row": 67,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1.3
+        },
+        {
+          "row": 67,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 68,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0
+        },
+        {
+          "row": 68,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1.3
+        },
+        {
+          "row": 68,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 69,
+          "column": "healthScale",
+          "before": 1,
+          "after": 1.13
+        },
+        {
+          "row": 69,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0.13999999999999999
+        },
+        {
+          "row": 69,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1.3
+        },
+        {
+          "row": 69,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 70,
+          "column": "healthScale",
+          "before": 1,
+          "after": 1.26
+        },
+        {
+          "row": 70,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0.27999999999999997
+        },
+        {
+          "row": 70,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1.3
+        },
+        {
+          "row": 70,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 71,
+          "column": "healthScale",
+          "before": 1,
+          "after": 1.39
+        },
+        {
+          "row": 71,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0.42
+        },
+        {
+          "row": 71,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1.3
+        },
+        {
+          "row": 71,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 72,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0
+        },
+        {
+          "row": 72,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1.3
+        },
+        {
+          "row": 72,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 73,
+          "column": "healthScale",
+          "before": 1,
+          "after": 1.13
+        },
+        {
+          "row": 73,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0.13999999999999999
+        },
+        {
+          "row": 73,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1.3
+        },
+        {
+          "row": 73,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 74,
+          "column": "healthScale",
+          "before": 1,
+          "after": 1.26
+        },
+        {
+          "row": 74,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0.27999999999999997
+        },
+        {
+          "row": 74,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1.3
+        },
+        {
+          "row": 74,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 75,
+          "column": "healthScale",
+          "before": 1,
+          "after": 1.39
+        },
+        {
+          "row": 75,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0.42
+        },
+        {
+          "row": 75,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1.3
+        },
+        {
+          "row": 75,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 76,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0
+        },
+        {
+          "row": 76,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1.3
+        },
+        {
+          "row": 76,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 77,
+          "column": "healthScale",
+          "before": 1,
+          "after": 1.13
+        },
+        {
+          "row": 77,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0.13999999999999999
+        },
+        {
+          "row": 77,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1.3
+        },
+        {
+          "row": 77,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 78,
+          "column": "healthScale",
+          "before": 1,
+          "after": 1.26
+        },
+        {
+          "row": 78,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0.27999999999999997
+        },
+        {
+          "row": 78,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1.3
+        },
+        {
+          "row": 78,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 79,
+          "column": "healthScale",
+          "before": 1,
+          "after": 1.39
+        },
+        {
+          "row": 79,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0.42
+        },
+        {
+          "row": 79,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1.3
+        },
+        {
+          "row": 79,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 80,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0
+        },
+        {
+          "row": 80,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1.3
+        },
+        {
+          "row": 80,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 81,
+          "column": "healthScale",
+          "before": 1,
+          "after": 1.035
+        },
+        {
+          "row": 81,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0.04
+        },
+        {
+          "row": 81,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1.3
+        },
+        {
+          "row": 81,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 82,
+          "column": "healthScale",
+          "before": 1,
+          "after": 1.07
+        },
+        {
+          "row": 82,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0.08
+        },
+        {
+          "row": 82,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1.3
+        },
+        {
+          "row": 82,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 83,
+          "column": "healthScale",
+          "before": 1,
+          "after": 1.105
+        },
+        {
+          "row": 83,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0.12
+        },
+        {
+          "row": 83,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1.3
+        },
+        {
+          "row": 83,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 84,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0
+        },
+        {
+          "row": 84,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1.3
+        },
+        {
+          "row": 84,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 85,
+          "column": "healthScale",
+          "before": 1,
+          "after": 1.13
+        },
+        {
+          "row": 85,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0.105
+        },
+        {
+          "row": 85,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1.3
+        },
+        {
+          "row": 85,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 86,
+          "column": "healthScale",
+          "before": 1,
+          "after": 1.26
+        },
+        {
+          "row": 86,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0.21
+        },
+        {
+          "row": 86,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1.3
+        },
+        {
+          "row": 86,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 87,
+          "column": "healthScale",
+          "before": 1,
+          "after": 1.39
+        },
+        {
+          "row": 87,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0.315
+        },
+        {
+          "row": 87,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1.3
+        },
+        {
+          "row": 87,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 88,
+          "column": "healthScale",
+          "before": 1,
+          "after": 1.52
+        },
+        {
+          "row": 88,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0.42
+        },
+        {
+          "row": 88,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1.3
+        },
+        {
+          "row": 88,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 89,
+          "column": "healthScale",
+          "before": 0.65,
+          "after": 1.1
+        },
+        {
+          "row": 89,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0
+        },
+        {
+          "row": 89,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 89,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 0.65
+        },
+        {
+          "row": 90,
+          "column": "healthScale",
+          "before": 0.6834,
+          "after": 1.6
+        },
+        {
+          "row": 90,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0
+        },
+        {
+          "row": 90,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 90,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 0.6834
+        },
+        {
+          "row": 91,
+          "column": "healthScale",
+          "before": 0.7837,
+          "after": 2.4
+        },
+        {
+          "row": 91,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0
+        },
+        {
+          "row": 91,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 91,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 0.7837
+        },
+        {
+          "row": 92,
+          "column": "healthScale",
+          "before": 0.9508,
+          "after": 3.4
+        },
+        {
+          "row": 92,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0
+        },
+        {
+          "row": 92,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 92,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 0.9508
+        },
+        {
+          "row": 93,
+          "column": "healthScale",
+          "before": 1.1847,
+          "after": 4
+        },
+        {
+          "row": 93,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0
+        },
+        {
+          "row": 93,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 93,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 1.1847
+        },
+        {
+          "row": 94,
+          "column": "healthScale",
+          "before": 1.4855,
+          "after": 5.5
+        },
+        {
+          "row": 94,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0
+        },
+        {
+          "row": 94,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 94,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 1.4855
+        },
+        {
+          "row": 95,
+          "column": "healthScale",
+          "before": 1.8531,
+          "after": 6
+        },
+        {
+          "row": 95,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0
+        },
+        {
+          "row": 95,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 95,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 1.8531
+        },
+        {
+          "row": 96,
+          "column": "healthScale",
+          "before": 2.2875,
+          "after": 6.5
+        },
+        {
+          "row": 96,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0
+        },
+        {
+          "row": 96,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 96,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 2.2875
+        },
+        {
+          "row": 97,
+          "column": "healthScale",
+          "before": 2.7888,
+          "after": 7
+        },
+        {
+          "row": 97,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0
+        },
+        {
+          "row": 97,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 97,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 2.7888
+        },
+        {
+          "row": 98,
+          "column": "healthScale",
+          "before": 3.3569,
+          "after": 8
+        },
+        {
+          "row": 98,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0
+        },
+        {
+          "row": 98,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 98,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 3.3569
+        },
+        {
+          "row": 99,
+          "column": "healthScale",
+          "before": 3.9918,
+          "after": 9.2
+        },
+        {
+          "row": 99,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0
+        },
+        {
+          "row": 99,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 99,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 3.9918
+        },
+        {
+          "row": 100,
+          "column": "healthScale",
+          "before": 4.6936,
+          "after": 10
+        },
+        {
+          "row": 100,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0
+        },
+        {
+          "row": 100,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 100,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 4.6936
+        },
+        {
+          "row": 101,
+          "column": "healthScale",
+          "before": 5.4622,
+          "after": 10.7
+        },
+        {
+          "row": 101,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0
+        },
+        {
+          "row": 101,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 101,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 5.4622
+        },
+        {
+          "row": 102,
+          "column": "healthScale",
+          "before": 6.2977,
+          "after": 11.4
+        },
+        {
+          "row": 102,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0
+        },
+        {
+          "row": 102,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 102,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 6.2977
+        },
+        {
+          "row": 103,
+          "column": "healthScale",
+          "before": 7.2,
+          "after": 12.2
+        },
+        {
+          "row": 103,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0
+        },
+        {
+          "row": 103,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 103,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 7.2
+        },
+        {
+          "row": 104,
+          "column": "healthScale",
+          "before": 0.55,
+          "after": 1.21
+        },
+        {
+          "row": 104,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0
+        },
+        {
+          "row": 104,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 104,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 0.55
+        },
+        {
+          "row": 105,
+          "column": "healthScale",
+          "before": 0.5558,
+          "after": 1.76
+        },
+        {
+          "row": 105,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0
+        },
+        {
+          "row": 105,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 105,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 0.5558
+        },
+        {
+          "row": 106,
+          "column": "healthScale",
+          "before": 0.5902,
+          "after": 2.64
+        },
+        {
+          "row": 106,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0
+        },
+        {
+          "row": 106,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 106,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 0.5902
+        },
+        {
+          "row": 107,
+          "column": "healthScale",
+          "before": 0.6752,
+          "after": 3.74
+        },
+        {
+          "row": 107,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0
+        },
+        {
+          "row": 107,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 107,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 0.6752
+        },
+        {
+          "row": 108,
+          "column": "healthScale",
+          "before": 0.8302,
+          "after": 4.4
+        },
+        {
+          "row": 108,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0
+        },
+        {
+          "row": 108,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 108,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 0.8302
+        },
+        {
+          "row": 109,
+          "column": "healthScale",
+          "before": 1.0733,
+          "after": 6.05
+        },
+        {
+          "row": 109,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0
+        },
+        {
+          "row": 109,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 109,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 1.0733
+        },
+        {
+          "row": 110,
+          "column": "healthScale",
+          "before": 1.4219,
+          "after": 6.6
+        },
+        {
+          "row": 110,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0
+        },
+        {
+          "row": 110,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 110,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 1.4219
+        },
+        {
+          "row": 111,
+          "column": "healthScale",
+          "before": 1.8925,
+          "after": 7.15
+        },
+        {
+          "row": 111,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0
+        },
+        {
+          "row": 111,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 111,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 1.8925
+        },
+        {
+          "row": 112,
+          "column": "healthScale",
+          "before": 2.5012,
+          "after": 7.7
+        },
+        {
+          "row": 112,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0
+        },
+        {
+          "row": 112,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 112,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 2.5012
+        },
+        {
+          "row": 113,
+          "column": "healthScale",
+          "before": 3.2635,
+          "after": 8.8
+        },
+        {
+          "row": 113,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0
+        },
+        {
+          "row": 113,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 113,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 3.2635
+        },
+        {
+          "row": 114,
+          "column": "healthScale",
+          "before": 4.1946,
+          "after": 10.12
+        },
+        {
+          "row": 114,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0
+        },
+        {
+          "row": 114,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 114,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 4.1946
+        },
+        {
+          "row": 115,
+          "column": "healthScale",
+          "before": 5.3094,
+          "after": 11
+        },
+        {
+          "row": 115,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0
+        },
+        {
+          "row": 115,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 115,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 5.3094
+        },
+        {
+          "row": 116,
+          "column": "healthScale",
+          "before": 6.6224,
+          "after": 11.77
+        },
+        {
+          "row": 116,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0
+        },
+        {
+          "row": 116,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 116,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 6.6224
+        },
+        {
+          "row": 117,
+          "column": "healthScale",
+          "before": 8.1479,
+          "after": 12.54
+        },
+        {
+          "row": 117,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0
+        },
+        {
+          "row": 117,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 117,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 8.1479
+        },
+        {
+          "row": 118,
+          "column": "healthScale",
+          "before": 9.9,
+          "after": 13.42
+        },
+        {
+          "row": 118,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0
+        },
+        {
+          "row": 118,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 118,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 9.9
+        },
+        {
+          "row": 119,
+          "column": "healthScale",
+          "before": 0.65,
+          "after": 0.715
+        },
+        {
+          "row": 119,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0
+        },
+        {
+          "row": 119,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 119,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 0.65
+        },
+        {
+          "row": 120,
+          "column": "healthScale",
+          "before": 0.6834,
+          "after": 1.04
+        },
+        {
+          "row": 120,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0
+        },
+        {
+          "row": 120,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 120,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 0.6834
+        },
+        {
+          "row": 121,
+          "column": "healthScale",
+          "before": 0.7837,
+          "after": 1.56
+        },
+        {
+          "row": 121,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0
+        },
+        {
+          "row": 121,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 121,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 0.7837
+        },
+        {
+          "row": 122,
+          "column": "healthScale",
+          "before": 0.9508,
+          "after": 2.21
+        },
+        {
+          "row": 122,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0
+        },
+        {
+          "row": 122,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 122,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 0.9508
+        },
+        {
+          "row": 123,
+          "column": "healthScale",
+          "before": 1.1847,
+          "after": 2.6
+        },
+        {
+          "row": 123,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0
+        },
+        {
+          "row": 123,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 123,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 1.1847
+        },
+        {
+          "row": 124,
+          "column": "healthScale",
+          "before": 1.4855,
+          "after": 3.575
+        },
+        {
+          "row": 124,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0
+        },
+        {
+          "row": 124,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 124,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 1.4855
+        },
+        {
+          "row": 125,
+          "column": "healthScale",
+          "before": 1.8531,
+          "after": 3.9
+        },
+        {
+          "row": 125,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0
+        },
+        {
+          "row": 125,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 125,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 1.8531
+        },
+        {
+          "row": 126,
+          "column": "healthScale",
+          "before": 2.2875,
+          "after": 4.225
+        },
+        {
+          "row": 126,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0
+        },
+        {
+          "row": 126,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 126,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 2.2875
+        },
+        {
+          "row": 127,
+          "column": "healthScale",
+          "before": 2.7888,
+          "after": 4.55
+        },
+        {
+          "row": 127,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0
+        },
+        {
+          "row": 127,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 127,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 2.7888
+        },
+        {
+          "row": 128,
+          "column": "healthScale",
+          "before": 3.3569,
+          "after": 5.2
+        },
+        {
+          "row": 128,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0
+        },
+        {
+          "row": 128,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 128,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 3.3569
+        },
+        {
+          "row": 129,
+          "column": "healthScale",
+          "before": 3.9918,
+          "after": 5.98
+        },
+        {
+          "row": 129,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0
+        },
+        {
+          "row": 129,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 129,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 3.9918
+        },
+        {
+          "row": 130,
+          "column": "healthScale",
+          "before": 4.6936,
+          "after": 6.5
+        },
+        {
+          "row": 130,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0
+        },
+        {
+          "row": 130,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 130,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 4.6936
+        },
+        {
+          "row": 131,
+          "column": "healthScale",
+          "before": 5.4622,
+          "after": 6.955
+        },
+        {
+          "row": 131,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0
+        },
+        {
+          "row": 131,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 131,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 5.4622
+        },
+        {
+          "row": 132,
+          "column": "healthScale",
+          "before": 6.2977,
+          "after": 7.41
+        },
+        {
+          "row": 132,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0
+        },
+        {
+          "row": 132,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 132,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 6.2977
+        },
+        {
+          "row": 133,
+          "column": "healthScale",
+          "before": 7.2,
+          "after": 7.93
+        },
+        {
+          "row": 133,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0
+        },
+        {
+          "row": 133,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 133,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 7.2
+        },
+        {
+          "row": 134,
+          "column": "healthScale",
+          "before": 0.55,
+          "after": 0.715
+        },
+        {
+          "row": 134,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0
+        },
+        {
+          "row": 134,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 134,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 0.55
+        },
+        {
+          "row": 135,
+          "column": "healthScale",
+          "before": 0.5737,
+          "after": 1.04
+        },
+        {
+          "row": 135,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0
+        },
+        {
+          "row": 135,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 135,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 0.5737
+        },
+        {
+          "row": 136,
+          "column": "healthScale",
+          "before": 0.6449,
+          "after": 1.56
+        },
+        {
+          "row": 136,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0
+        },
+        {
+          "row": 136,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 136,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 0.6449
+        },
+        {
+          "row": 137,
+          "column": "healthScale",
+          "before": 0.7635,
+          "after": 2.21
+        },
+        {
+          "row": 137,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0
+        },
+        {
+          "row": 137,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 137,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 0.7635
+        },
+        {
+          "row": 138,
+          "column": "healthScale",
+          "before": 0.9296,
+          "after": 2.6
+        },
+        {
+          "row": 138,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0
+        },
+        {
+          "row": 138,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 138,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 0.9296
+        },
+        {
+          "row": 139,
+          "column": "healthScale",
+          "before": 1.1431,
+          "after": 3.575
+        },
+        {
+          "row": 139,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0
+        },
+        {
+          "row": 139,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 139,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 1.1431
+        },
+        {
+          "row": 140,
+          "column": "healthScale",
+          "before": 1.4041,
+          "after": 3.9
+        },
+        {
+          "row": 140,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0
+        },
+        {
+          "row": 140,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 140,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 1.4041
+        },
+        {
+          "row": 141,
+          "column": "healthScale",
+          "before": 1.7125,
+          "after": 4.225
+        },
+        {
+          "row": 141,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0
+        },
+        {
+          "row": 141,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 141,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 1.7125
+        },
+        {
+          "row": 142,
+          "column": "healthScale",
+          "before": 2.0684,
+          "after": 4.55
+        },
+        {
+          "row": 142,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0
+        },
+        {
+          "row": 142,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 142,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 2.0684
+        },
+        {
+          "row": 143,
+          "column": "healthScale",
+          "before": 2.4717,
+          "after": 5.2
+        },
+        {
+          "row": 143,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0
+        },
+        {
+          "row": 143,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 143,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 2.4717
+        },
+        {
+          "row": 144,
+          "column": "healthScale",
+          "before": 2.9224,
+          "after": 5.98
+        },
+        {
+          "row": 144,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0
+        },
+        {
+          "row": 144,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 144,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 2.9224
+        },
+        {
+          "row": 145,
+          "column": "healthScale",
+          "before": 3.4207,
+          "after": 6.5
+        },
+        {
+          "row": 145,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0
+        },
+        {
+          "row": 145,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 145,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 3.4207
+        },
+        {
+          "row": 146,
+          "column": "healthScale",
+          "before": 3.9663,
+          "after": 6.955
+        },
+        {
+          "row": 146,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0
+        },
+        {
+          "row": 146,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 146,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 3.9663
+        },
+        {
+          "row": 147,
+          "column": "healthScale",
+          "before": 4.5594,
+          "after": 7.41
+        },
+        {
+          "row": 147,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0
+        },
+        {
+          "row": 147,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 147,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 4.5594
+        },
+        {
+          "row": 148,
+          "column": "healthScale",
+          "before": 5.2,
+          "after": 7.93
+        },
+        {
+          "row": 148,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0
+        },
+        {
+          "row": 148,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 148,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 5.2
+        },
+        {
+          "row": 149,
+          "column": "healthScale",
+          "before": 0.55,
+          "after": 0.9
+        },
+        {
+          "row": 149,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0
+        },
+        {
+          "row": 149,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 149,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 0.55
+        },
+        {
+          "row": 150,
+          "column": "healthScale",
+          "before": 0.5815,
+          "after": 1.3
+        },
+        {
+          "row": 150,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0
+        },
+        {
+          "row": 150,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 150,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 0.5815
+        },
+        {
+          "row": 151,
+          "column": "healthScale",
+          "before": 0.6945,
+          "after": 1.9
+        },
+        {
+          "row": 151,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0
+        },
+        {
+          "row": 151,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 151,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 0.6945
+        },
+        {
+          "row": 152,
+          "column": "healthScale",
+          "before": 0.9026,
+          "after": 2.6
+        },
+        {
+          "row": 152,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0
+        },
+        {
+          "row": 152,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 152,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 0.9026
+        },
+        {
+          "row": 153,
+          "column": "healthScale",
+          "before": 1.214,
+          "after": 3.2
+        },
+        {
+          "row": 153,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0
+        },
+        {
+          "row": 153,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 153,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 1.214
+        },
+        {
+          "row": 154,
+          "column": "healthScale",
+          "before": 1.6348,
+          "after": 4.3
+        },
+        {
+          "row": 154,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0
+        },
+        {
+          "row": 154,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 154,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 1.6348
+        },
+        {
+          "row": 155,
+          "column": "healthScale",
+          "before": 2.1702,
+          "after": 5
+        },
+        {
+          "row": 155,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0
+        },
+        {
+          "row": 155,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 155,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 2.1702
+        },
+        {
+          "row": 156,
+          "column": "healthScale",
+          "before": 2.8243,
+          "after": 5.8
+        },
+        {
+          "row": 156,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0
+        },
+        {
+          "row": 156,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 156,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 2.8243
+        },
+        {
+          "row": 157,
+          "column": "healthScale",
+          "before": 3.6009,
+          "after": 6.8
+        },
+        {
+          "row": 157,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0
+        },
+        {
+          "row": 157,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 157,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 3.6009
+        },
+        {
+          "row": 158,
+          "column": "healthScale",
+          "before": 4.5034,
+          "after": 7.8
+        },
+        {
+          "row": 158,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0
+        },
+        {
+          "row": 158,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 158,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 4.5034
+        },
+        {
+          "row": 159,
+          "column": "healthScale",
+          "before": 5.5346,
+          "after": 9
+        },
+        {
+          "row": 159,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0
+        },
+        {
+          "row": 159,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 159,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 5.5346
+        },
+        {
+          "row": 160,
+          "column": "healthScale",
+          "before": 6.6975,
+          "after": 10
+        },
+        {
+          "row": 160,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0
+        },
+        {
+          "row": 160,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 160,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 6.6975
+        },
+        {
+          "row": 161,
+          "column": "healthScale",
+          "before": 7.9945,
+          "after": 11
+        },
+        {
+          "row": 161,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0
+        },
+        {
+          "row": 161,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 161,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 7.9945
+        },
+        {
+          "row": 162,
+          "column": "healthScale",
+          "before": 9.4279,
+          "after": 12
+        },
+        {
+          "row": 162,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0
+        },
+        {
+          "row": 162,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 162,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 9.4279
+        },
+        {
+          "row": 163,
+          "column": "healthScale",
+          "before": 11,
+          "after": 13
+        },
+        {
+          "row": 163,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0
+        },
+        {
+          "row": 163,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 163,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 11
+        },
+        {
+          "row": 164,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0
+        },
+        {
+          "row": 164,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 164,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 0.9
+        },
+        {
+          "row": 165,
+          "column": "healthScale",
+          "before": 0.9321,
+          "after": 1.1
+        },
+        {
+          "row": 165,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0
+        },
+        {
+          "row": 165,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 165,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 0.9321
+        },
+        {
+          "row": 166,
+          "column": "healthScale",
+          "before": 1.0286,
+          "after": 1.5
+        },
+        {
+          "row": 166,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0
+        },
+        {
+          "row": 166,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 166,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 1.0286
+        },
+        {
+          "row": 167,
+          "column": "healthScale",
+          "before": 1.1893,
+          "after": 1.9
+        },
+        {
+          "row": 167,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0
+        },
+        {
+          "row": 167,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 167,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 1.1893
+        },
+        {
+          "row": 168,
+          "column": "healthScale",
+          "before": 1.4143,
+          "after": 2.4
+        },
+        {
+          "row": 168,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0
+        },
+        {
+          "row": 168,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 168,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 1.4143
+        },
+        {
+          "row": 169,
+          "column": "healthScale",
+          "before": 1.7036,
+          "after": 3.2
+        },
+        {
+          "row": 169,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0
+        },
+        {
+          "row": 169,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 169,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 1.7036
+        },
+        {
+          "row": 170,
+          "column": "healthScale",
+          "before": 2.0571,
+          "after": 4
+        },
+        {
+          "row": 170,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0
+        },
+        {
+          "row": 170,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 170,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 2.0571
+        },
+        {
+          "row": 171,
+          "column": "healthScale",
+          "before": 2.475,
+          "after": 5
+        },
+        {
+          "row": 171,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0
+        },
+        {
+          "row": 171,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 171,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 2.475
+        },
+        {
+          "row": 172,
+          "column": "healthScale",
+          "before": 2.9571,
+          "after": 6
+        },
+        {
+          "row": 172,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0
+        },
+        {
+          "row": 172,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 172,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 2.9571
+        },
+        {
+          "row": 173,
+          "column": "healthScale",
+          "before": 3.5036,
+          "after": 7
+        },
+        {
+          "row": 173,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0
+        },
+        {
+          "row": 173,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 173,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 3.5036
+        },
+        {
+          "row": 174,
+          "column": "healthScale",
+          "before": 4.1143,
+          "after": 8
+        },
+        {
+          "row": 174,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0
+        },
+        {
+          "row": 174,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 174,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 4.1143
+        },
+        {
+          "row": 175,
+          "column": "healthScale",
+          "before": 4.7893,
+          "after": 9
+        },
+        {
+          "row": 175,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0
+        },
+        {
+          "row": 175,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 175,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 4.7893
+        },
+        {
+          "row": 176,
+          "column": "healthScale",
+          "before": 5.5286,
+          "after": 10
+        },
+        {
+          "row": 176,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0
+        },
+        {
+          "row": 176,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 176,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 5.5286
+        },
+        {
+          "row": 177,
+          "column": "healthScale",
+          "before": 6.3321,
+          "after": 11
+        },
+        {
+          "row": 177,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0
+        },
+        {
+          "row": 177,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 177,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 6.3321
+        },
+        {
+          "row": 178,
+          "column": "healthScale",
+          "before": 7.2,
+          "after": 12
+        },
+        {
+          "row": 178,
+          "column": "spawnHealthGrowth",
+          "before": null,
+          "after": 0
+        },
+        {
+          "row": 178,
+          "column": "spawnGrowthPower",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 178,
+          "column": "eliteBaseHealthScale",
+          "before": null,
+          "after": 7.2
+        }
+      ]
+    },
+    {
+      "table": "WaveGroup",
+      "changes": [
+        {
+          "row": 30,
+          "column": "count",
+          "before": 10,
+          "after": 11
+        },
+        {
+          "row": 33,
+          "column": "count",
+          "before": 12,
+          "after": 14
+        },
+        {
+          "row": 34,
+          "column": "count",
+          "before": 4,
+          "after": 5
+        },
+        {
+          "row": 41,
+          "column": "count",
+          "before": 10,
+          "after": 11
+        },
+        {
+          "row": 44,
+          "column": "count",
+          "before": 10,
+          "after": 12
+        },
+        {
+          "row": 45,
+          "column": "count",
+          "before": 4,
+          "after": 5
+        },
+        {
+          "row": 57,
+          "column": "count",
+          "before": 8,
+          "after": 9
+        },
+        {
+          "row": 61,
+          "column": "count",
+          "before": 8,
+          "after": 9
+        },
+        {
+          "row": 62,
+          "column": "count",
+          "before": 6,
+          "after": 7
+        },
+        {
+          "row": 73,
+          "column": "count",
+          "before": 7,
+          "after": 8
+        },
+        {
+          "row": 76,
+          "column": "count",
+          "before": 4,
+          "after": 5
+        },
+        {
+          "row": 77,
+          "column": "count",
+          "before": 8,
+          "after": 9
+        },
+        {
+          "row": 78,
+          "column": "count",
+          "before": 7,
+          "after": 8
+        },
+        {
+          "row": 84,
+          "column": "count",
+          "before": 9,
+          "after": 10
+        },
+        {
+          "row": 86,
+          "column": "count",
+          "before": 11,
+          "after": 12
+        },
+        {
+          "row": 88,
+          "column": "count",
+          "before": 6,
+          "after": 7
+        },
+        {
+          "row": 90,
+          "column": "count",
+          "before": 12,
+          "after": 14
+        },
+        {
+          "row": 91,
+          "column": "count",
+          "before": 4,
+          "after": 5
+        },
+        {
+          "row": 92,
+          "column": "count",
+          "before": 8,
+          "after": 10
+        },
+        {
+          "row": 100,
+          "column": "count",
+          "before": 10,
+          "after": 11
+        },
+        {
+          "row": 104,
+          "column": "count",
+          "before": 9,
+          "after": 10
+        },
+        {
+          "row": 105,
+          "column": "count",
+          "before": 7,
+          "after": 8
+        },
+        {
+          "row": 106,
+          "column": "count",
+          "before": 4,
+          "after": 5
+        },
+        {
+          "row": 107,
+          "column": "count",
+          "before": 4,
+          "after": 5
+        },
+        {
+          "row": 108,
+          "column": "count",
+          "before": 10,
+          "after": 12
+        },
+        {
+          "row": 109,
+          "column": "count",
+          "before": 8,
+          "after": 10
+        },
+        {
+          "row": 120,
+          "column": "count",
+          "before": 9,
+          "after": 10
+        },
+        {
+          "row": 121,
+          "column": "count",
+          "before": 5,
+          "after": 6
+        },
+        {
+          "row": 122,
+          "column": "count",
+          "before": 4,
+          "after": 5
+        },
+        {
+          "row": 123,
+          "column": "count",
+          "before": 9,
+          "after": 10
+        },
+        {
+          "row": 125,
+          "column": "count",
+          "before": 7,
+          "after": 8
+        },
+        {
+          "row": 127,
+          "column": "count",
+          "before": 4,
+          "after": 5
+        },
+        {
+          "row": 128,
+          "column": "count",
+          "before": 5,
+          "after": 6
+        },
+        {
+          "row": 129,
+          "column": "count",
+          "before": 4,
+          "after": 5
+        },
+        {
+          "row": 135,
+          "column": "count",
+          "before": 9,
+          "after": 10
+        },
+        {
+          "row": 140,
+          "column": "count",
+          "before": 10,
+          "after": 11
+        },
+        {
+          "row": 141,
+          "column": "count",
+          "before": 5,
+          "after": 6
+        },
+        {
+          "row": 145,
+          "column": "count",
+          "before": 11,
+          "after": 13
+        },
+        {
+          "row": 146,
+          "column": "count",
+          "before": 6,
+          "after": 7
+        },
+        {
+          "row": 149,
+          "column": "count",
+          "before": 3,
+          "after": 4
+        },
+        {
+          "row": 155,
+          "column": "count",
+          "before": 9,
+          "after": 10
+        },
+        {
+          "row": 160,
+          "column": "count",
+          "before": 10,
+          "after": 11
+        },
+        {
+          "row": 161,
+          "column": "count",
+          "before": 5,
+          "after": 6
+        },
+        {
+          "row": 165,
+          "column": "count",
+          "before": 11,
+          "after": 13
+        },
+        {
+          "row": 166,
+          "column": "count",
+          "before": 6,
+          "after": 7
+        },
+        {
+          "row": 169,
+          "column": "count",
+          "before": 3,
+          "after": 4
+        },
+        {
+          "row": 180,
+          "column": "count",
+          "before": 10,
+          "after": 11
+        },
+        {
+          "row": 185,
+          "column": "count",
+          "before": 11,
+          "after": 12
+        },
+        {
+          "row": 186,
+          "column": "count",
+          "before": 6,
+          "after": 7
+        },
+        {
+          "row": 195,
+          "column": "count",
+          "before": 10,
+          "after": 11
+        },
+        {
+          "row": 200,
+          "column": "count",
+          "before": 11,
+          "after": 12
+        },
+        {
+          "row": 201,
+          "column": "count",
+          "before": 5,
+          "after": 6
+        },
+        {
+          "row": 205,
+          "column": "count",
+          "before": 12,
+          "after": 14
+        },
+        {
+          "row": 206,
+          "column": "count",
+          "before": 6,
+          "after": 7
+        },
+        {
+          "row": 209,
+          "column": "count",
+          "before": 3,
+          "after": 4
+        },
+        {
+          "row": 216,
+          "column": "count",
+          "before": 10,
+          "after": 11
+        },
+        {
+          "row": 220,
+          "column": "count",
+          "before": 11,
+          "after": 13
+        },
+        {
+          "row": 221,
+          "column": "count",
+          "before": 5,
+          "after": 6
+        },
+        {
+          "row": 225,
+          "column": "count",
+          "before": 12,
+          "after": 15
+        },
+        {
+          "row": 226,
+          "column": "count",
+          "before": 6,
+          "after": 7
+        },
+        {
+          "row": 229,
+          "column": "count",
+          "before": 3,
+          "after": 4
+        },
+        {
+          "row": 231,
+          "column": "count",
+          "before": 10,
+          "after": 13
+        },
+        {
+          "row": 232,
+          "column": "count",
+          "before": 5,
+          "after": 7
+        },
+        {
+          "row": 233,
+          "column": "count",
+          "before": 3,
+          "after": 4
+        },
+        {
+          "row": 240,
+          "column": "count",
+          "before": 10,
+          "after": 11
+        },
+        {
+          "row": 246,
+          "column": "count",
+          "before": 11,
+          "after": 13
+        },
+        {
+          "row": 247,
+          "column": "count",
+          "before": 5,
+          "after": 6
+        },
+        {
+          "row": 250,
+          "column": "count",
+          "before": 3,
+          "after": 4
+        },
+        {
+          "row": 251,
+          "column": "count",
+          "before": 4,
+          "after": 5
+        },
+        {
+          "row": 252,
+          "column": "count",
+          "before": 12,
+          "after": 16
+        },
+        {
+          "row": 253,
+          "column": "count",
+          "before": 6,
+          "after": 8
+        },
+        {
+          "row": 254,
+          "column": "count",
+          "before": 2,
+          "after": 3
+        },
+        {
+          "row": 255,
+          "column": "count",
+          "before": 2,
+          "after": 3
+        },
+        {
+          "row": 256,
+          "column": "count",
+          "before": 3,
+          "after": 4
+        },
+        {
+          "row": 257,
+          "column": "count",
+          "before": 5,
+          "after": 7
+        },
+        {
+          "row": 264,
+          "column": "count",
+          "before": 11,
+          "after": 12
+        },
+        {
+          "row": 270,
+          "column": "count",
+          "before": 12,
+          "after": 14
+        },
+        {
+          "row": 271,
+          "column": "count",
+          "before": 5,
+          "after": 6
+        },
+        {
+          "row": 274,
+          "column": "count",
+          "before": 3,
+          "after": 4
+        },
+        {
+          "row": 275,
+          "column": "count",
+          "before": 4,
+          "after": 5
+        },
+        {
+          "row": 276,
+          "column": "count",
+          "before": 13,
+          "after": 17
+        },
+        {
+          "row": 277,
+          "column": "count",
+          "before": 6,
+          "after": 8
+        },
+        {
+          "row": 278,
+          "column": "count",
+          "before": 2,
+          "after": 3
+        },
+        {
+          "row": 279,
+          "column": "count",
+          "before": 2,
+          "after": 3
+        },
+        {
+          "row": 280,
+          "column": "count",
+          "before": 3,
+          "after": 4
+        },
+        {
+          "row": 281,
+          "column": "count",
+          "before": 5,
+          "after": 7
+        },
+        {
+          "row": 288,
+          "column": "count",
+          "before": 11,
+          "after": 12
+        },
+        {
+          "row": 294,
+          "column": "count",
+          "before": 12,
+          "after": 14
+        },
+        {
+          "row": 295,
+          "column": "count",
+          "before": 5,
+          "after": 6
+        },
+        {
+          "row": 298,
+          "column": "count",
+          "before": 3,
+          "after": 4
+        },
+        {
+          "row": 299,
+          "column": "count",
+          "before": 4,
+          "after": 5
+        },
+        {
+          "row": 300,
+          "column": "count",
+          "before": 13,
+          "after": 17
+        },
+        {
+          "row": 301,
+          "column": "count",
+          "before": 6,
+          "after": 8
+        },
+        {
+          "row": 302,
+          "column": "count",
+          "before": 2,
+          "after": 3
+        },
+        {
+          "row": 303,
+          "column": "count",
+          "before": 2,
+          "after": 3
+        },
+        {
+          "row": 304,
+          "column": "count",
+          "before": 3,
+          "after": 4
+        },
+        {
+          "row": 305,
+          "column": "count",
+          "before": 5,
+          "after": 7
+        },
+        {
+          "row": 318,
+          "column": "count",
+          "before": 12,
+          "after": 13
+        },
+        {
+          "row": 324,
+          "column": "count",
+          "before": 13,
+          "after": 14
+        },
+        {
+          "row": 325,
+          "column": "count",
+          "before": 6,
+          "after": 7
+        },
+        {
+          "row": 329,
+          "column": "count",
+          "before": 5,
+          "after": 6
+        },
+        {
+          "row": 338,
+          "column": "count",
+          "before": 12,
+          "after": 13
+        },
+        {
+          "row": 342,
+          "column": "count",
+          "before": 13,
+          "after": 15
+        },
+        {
+          "row": 344,
+          "column": "count",
+          "before": 5,
+          "after": 6
+        },
+        {
+          "row": 345,
+          "column": "count",
+          "before": 4,
+          "after": 5
+        },
+        {
+          "row": 348,
+          "column": "count",
+          "before": 3,
+          "after": 4
+        },
+        {
+          "row": 350,
+          "column": "count",
+          "before": 14,
+          "after": 17
+        },
+        {
+          "row": 351,
+          "column": "count",
+          "before": 5,
+          "after": 6
+        },
+        {
+          "row": 352,
+          "column": "count",
+          "before": 6,
+          "after": 7
+        },
+        {
+          "row": 353,
+          "column": "count",
+          "before": 3,
+          "after": 4
+        },
+        {
+          "row": 355,
+          "column": "count",
+          "before": 3,
+          "after": 4
+        },
+        {
+          "row": 356,
+          "column": "count",
+          "before": 10,
+          "after": 13
+        },
+        {
+          "row": 357,
+          "column": "count",
+          "before": 5,
+          "after": 7
+        },
+        {
+          "row": 358,
+          "column": "count",
+          "before": 4,
+          "after": 5
+        }
+      ]
+    },
+    {
+      "table": "ChallengeRule",
+      "changes": [
+        {
+          "row": 1,
+          "column": "supplyDelay",
+          "before": null,
+          "after": "波末收尾真实秒数"
+        },
+        {
+          "row": 1,
+          "column": "supplyFadeDuration",
+          "before": null,
+          "after": "补给淡入真实秒数"
+        },
+        {
+          "row": 1,
+          "column": "phaseFollowNextWave",
+          "before": null,
+          "after": "波末衔接下一波基础血量"
+        },
+        {
+          "row": 2,
+          "column": "supplyDelay",
+          "before": null,
+          "after": "client"
+        },
+        {
+          "row": 2,
+          "column": "supplyFadeDuration",
+          "before": null,
+          "after": "client"
+        },
+        {
+          "row": 2,
+          "column": "phaseFollowNextWave",
+          "before": null,
+          "after": "client"
+        },
+        {
+          "row": 3,
+          "column": "supplyDelay",
+          "before": null,
+          "after": "float"
+        },
+        {
+          "row": 3,
+          "column": "supplyFadeDuration",
+          "before": null,
+          "after": "float"
+        },
+        {
+          "row": 3,
+          "column": "phaseFollowNextWave",
+          "before": null,
+          "after": "int"
+        },
+        {
+          "row": 4,
+          "column": "supplyDelay",
+          "before": null,
+          "after": "supplyDelay"
+        },
+        {
+          "row": 4,
+          "column": "supplyFadeDuration",
+          "before": null,
+          "after": "supplyFadeDuration"
+        },
+        {
+          "row": 4,
+          "column": "phaseFollowNextWave",
+          "before": null,
+          "after": "phaseFollowNextWave"
+        },
+        {
+          "row": 5,
+          "column": "supplyDelay",
+          "before": null,
+          "after": "supplyDelay"
+        },
+        {
+          "row": 5,
+          "column": "supplyFadeDuration",
+          "before": null,
+          "after": "supplyFadeDuration"
+        },
+        {
+          "row": 5,
+          "column": "phaseFollowNextWave",
+          "before": null,
+          "after": "phaseFollowNextWave"
+        },
+        {
+          "row": 6,
+          "column": "waveReward",
+          "before": 20,
+          "after": 35
+        },
+        {
+          "row": 6,
+          "column": "nextDelay",
+          "before": 0,
+          "after": 0.8
+        },
+        {
+          "row": 6,
+          "column": "phaseHealthGrowth",
+          "before": 0.55,
+          "after": 0.15
+        },
+        {
+          "row": 6,
+          "column": "phaseGrowthPower",
+          "before": 1.5,
+          "after": 1
+        },
+        {
+          "row": 6,
+          "column": "supplyDelay",
+          "before": null,
+          "after": 1.8
+        },
+        {
+          "row": 6,
+          "column": "supplyFadeDuration",
+          "before": null,
+          "after": 0.25
+        },
+        {
+          "row": 6,
+          "column": "phaseFollowNextWave",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 7,
+          "column": "waveReward",
+          "before": 20,
+          "after": 35
+        },
+        {
+          "row": 7,
+          "column": "nextDelay",
+          "before": 0,
+          "after": 0.8
+        },
+        {
+          "row": 7,
+          "column": "phaseHealthGrowth",
+          "before": 0.55,
+          "after": 0.15
+        },
+        {
+          "row": 7,
+          "column": "phaseGrowthPower",
+          "before": 1.5,
+          "after": 1
+        },
+        {
+          "row": 7,
+          "column": "supplyDelay",
+          "before": null,
+          "after": 1.8
+        },
+        {
+          "row": 7,
+          "column": "supplyFadeDuration",
+          "before": null,
+          "after": 0.25
+        },
+        {
+          "row": 7,
+          "column": "phaseFollowNextWave",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 8,
+          "column": "waveReward",
+          "before": 20,
+          "after": 35
+        },
+        {
+          "row": 8,
+          "column": "nextDelay",
+          "before": 0,
+          "after": 0.8
+        },
+        {
+          "row": 8,
+          "column": "phaseHealthGrowth",
+          "before": 0.2,
+          "after": 0.15
+        },
+        {
+          "row": 8,
+          "column": "phaseGrowthPower",
+          "before": 1.5,
+          "after": 1
+        },
+        {
+          "row": 8,
+          "column": "supplyDelay",
+          "before": null,
+          "after": 1.8
+        },
+        {
+          "row": 8,
+          "column": "supplyFadeDuration",
+          "before": null,
+          "after": 0.25
+        },
+        {
+          "row": 8,
+          "column": "phaseFollowNextWave",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 9,
+          "column": "waveReward",
+          "before": 20,
+          "after": 35
+        },
+        {
+          "row": 9,
+          "column": "nextDelay",
+          "before": 0,
+          "after": 0.8
+        },
+        {
+          "row": 9,
+          "column": "phaseHealthGrowth",
+          "before": 0.55,
+          "after": 0.15
+        },
+        {
+          "row": 9,
+          "column": "phaseGrowthPower",
+          "before": 1.5,
+          "after": 1
+        },
+        {
+          "row": 9,
+          "column": "supplyDelay",
+          "before": null,
+          "after": 1.8
+        },
+        {
+          "row": 9,
+          "column": "supplyFadeDuration",
+          "before": null,
+          "after": 0.25
+        },
+        {
+          "row": 9,
+          "column": "phaseFollowNextWave",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 10,
+          "column": "waveReward",
+          "before": 20,
+          "after": 55
+        },
+        {
+          "row": 10,
+          "column": "nextDelay",
+          "before": 0,
+          "after": 0.8
+        },
+        {
+          "row": 10,
+          "column": "phaseHealthGrowth",
+          "before": 0.55,
+          "after": 0.15
+        },
+        {
+          "row": 10,
+          "column": "phaseGrowthPower",
+          "before": 1.5,
+          "after": 1
+        },
+        {
+          "row": 10,
+          "column": "supplyDelay",
+          "before": null,
+          "after": 1.8
+        },
+        {
+          "row": 10,
+          "column": "supplyFadeDuration",
+          "before": null,
+          "after": 0.25
+        },
+        {
+          "row": 10,
+          "column": "phaseFollowNextWave",
+          "before": null,
+          "after": 1
+        },
+        {
+          "row": 11,
+          "column": "waveReward",
+          "before": 20,
+          "after": 55
+        },
+        {
+          "row": 11,
+          "column": "nextDelay",
+          "before": 0,
+          "after": 0.8
+        },
+        {
+          "row": 11,
+          "column": "phaseHealthGrowth",
+          "before": 0.55,
+          "after": 0.15
+        },
+        {
+          "row": 11,
+          "column": "phaseGrowthPower",
+          "before": 1.5,
+          "after": 1
+        },
+        {
+          "row": 11,
+          "column": "supplyDelay",
+          "before": null,
+          "after": 1.8
+        },
+        {
+          "row": 11,
+          "column": "supplyFadeDuration",
+          "before": null,
+          "after": 0.25
+        },
+        {
+          "row": 11,
+          "column": "phaseFollowNextWave",
+          "before": null,
+          "after": 1
+        }
+      ]
+    },
+    {
+      "table": "Global",
+      "changes": [
+        {
+          "row": 9,
+          "column": "value",
+          "before": "1.16.0",
+          "after": "1.17.0"
+        }
+      ]
+    }
+  ]
+}

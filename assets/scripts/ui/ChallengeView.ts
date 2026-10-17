@@ -1,4 +1,4 @@
-import { Node, Vec3, UITransform } from 'cc';
+import { Node, Vec3, UITransform, UIOpacity, tween, Tween } from 'cc';
 import { text, numeric } from '../config/ConfigTables';
 import { UiPrefabs, uiNode, uiRect, uiText } from './UiPrefabs';
 import { ChallengeRun, ChallengePort } from '../gameplay/battle/ChallengeRun';
@@ -6,13 +6,17 @@ import { GAME_CONFIG, TOWER_CONFIG, TowerKind } from '../gameplay/battle/GameCon
 import { containsPoint } from '../gameplay/battle/BattleLayout';
 /** 候选卡与已选卡共用原生预制体，只呈现各卡自身效果。 */
 export class ChallengeView {
+  private readonly opacity:UIOpacity;
   private readonly panel:Node;private readonly cards:Node[];private readonly entry:Node;private page=0;private readonly entryPosition:Vec3;private signature='';
   constructor(private readonly parent:Node,private readonly assets:UiPrefabs){
     this.panel=assets.create('challenge_pick',parent);this.cards=uiNode(this.panel,'Cards').children.map(slot=>assets.create('challenge_card',slot));
+    this.opacity=this.panel.getComponent(UIOpacity)??this.panel.addComponent(UIOpacity);
     this.entry=uiNode(this.panel,'Entry');this.entryPosition=this.entry.position.clone();this.entry.setParent(parent);this.entry.setPosition(this.entryPosition);this.panel.active=false;this.entry.active=false;
   }
   render(run:ChallengeRun|null):void{
+    const visible=this.panel.active;
     this.entry.active=Boolean(run&&!run.pending&&!run.browsing);this.panel.active=Boolean(run&&(run.pending||run.browsing));
+    if(this.panel.active&&!visible&&run){Tween.stopAllByTarget(this.opacity);this.opacity.opacity=0;tween(this.opacity).to(numeric(run.rule,'supplyFadeDuration'),{opacity:255}).start();}
     if(!run){this.signature='';return;}uiText(this.entry,'Text',text('challenge.inventory',run.selected.length));
     if(!this.panel.active){this.signature='';return;}
     const key=JSON.stringify([run.pending,run.offers,run.selected,run.refreshLeft,run.refreshBusy,run.refreshFeedback,this.page]);if(this.signature===key)return;this.signature=key;
@@ -42,11 +46,13 @@ export class ChallengeView {
     uiNode(this.panel,'Dim').getComponent(UITransform)!.setContentSize(GAME_CONFIG.prototypeLayoutWidth/scale,(bottom-top)/scale);
     this.entry.setPosition(this.entryPosition.x,this.entryPosition.y-top);
   }
-  destroy():void{this.panel.destroy();this.entry.destroy();}
+  destroy():void{Tween.stopAllByTarget(this.opacity);this.panel.destroy();this.entry.destroy();}
   front():void{this.entry.setSiblingIndex(this.parent.children.length-1);this.panel.setSiblingIndex(this.parent.children.length-1);}
   private hit(node:Node,x:number,y:number):boolean{return node.activeInHierarchy&&containsPoint(uiRect(node,this.parent,GAME_CONFIG.prototypeLayoutWidth,GAME_CONFIG.prototypeLayoutHeight),x,y);}
   press(x:number,y:number,run:ChallengeRun,port:ChallengePort,refresh:()=>void):boolean{
     if(!run.pending&&!run.browsing){if(this.hit(this.entry,x,y)){run.browsing=true;this.page=0;return true;}return false;}
+    // 弹窗淡入时拦住战斗中尚未收回的点击，避免建造手势误选补给。
+    if(run.pending&&(!this.panel.active||this.opacity.opacity<255))return true;
     if(run.refreshBusy)return true;
     if(run.pending){for(let i=0;i<this.cards.length;i++)if(this.hit(this.cards[i],x,y)){run.choose(run.offers[i],port);return true;}
       if(run.refreshLeft>0&&this.hit(uiNode(this.panel,'Refresh'),x,y))refresh();

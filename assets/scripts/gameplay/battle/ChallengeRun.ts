@@ -73,7 +73,13 @@ export class ChallengeRun {
   }
   rank(port:ChallengePort):number{return Math.floor(Math.max(0,port.wave-1)/numeric(this.rule,'growthEvery'));}
   /** 波内只增强后来入场者，存活来客不回满血；暂停和补给沿用已停止的游戏时钟。 */
-  spawnHealthRatio():number{const progress=Math.max(0,Math.min(1,this.waveElapsed/numeric(this.rule,'waveDuration')));return 1+numeric(this.rule,'phaseHealthGrowth')*Math.pow(progress,numeric(this.rule,'phaseGrowthPower'));}
+  spawnHealthRatio(wave=1):number{
+    const progress=Math.max(0,Math.min(1,this.waveElapsed/numeric(this.rule,'waveDuration')));
+    const current=rows('Wave').find(r=>r.levelId===this.rule.levelId&&Number(r.order)===wave),next=rows('Wave').find(r=>r.levelId===this.rule.levelId&&Number(r.order)===wave+1);
+    // 按下一波原表插值，波末与下一波开头衔接；最终波使用独立末段增幅。
+    const growth=this.rule.phaseFollowNextWave==='1'&&current&&next?numeric(next,'healthScale')/numeric(current,'healthScale')-1:numeric(this.rule,'phaseHealthGrowth');
+    return 1+growth*Math.pow(progress,numeric(this.rule,'phaseGrowthPower'));
+  }
   profile(tower:Tower,port:ChallengePort):AttackProfile{
     const base=attackProfile(tower.kind,tower.level,tower.evolutionKey),result={...base};let damage=0,range=0,rate=0;
     if(this.has('G01')&&port.inWave&&this.waveElapsed<this.p('G01').seconds)rate+=this.p('G01').rate;

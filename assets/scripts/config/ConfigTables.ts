@@ -102,6 +102,8 @@ export function installConfigs(sources: Record<string, string>): void {
   for(const e of next.Enemy)if(numeric(e,"crowdScale")>1||numeric(e,"crowdRadius")>Math.min(...next.Map.map(m=>numeric(m,"gridSize")).filter(n=>n>0))/2)throw Error("Invalid crowd body");
   positive("Staff", ["cost", "range", "rate", "damage", "shotSpeed", "targets"]); positive("Enemy", ["hp", "speed", "radius", "damage"]); positive("Enemy", ["reward"], true);
   positive("Level", ["initialLives", "enemyHealthScale", "enemySpeedScale"]); positive("Level", ["initialCoins"], true); positive("Obstacle", ["hp"]); positive("Obstacle", ["reward"], true); positive("Wave", ["spawnInterval", "healthScale"]); positive("WaveGroup", ["count"]);
+  positive('Wave',['spawnHealthGrowth'],true);positive('Wave',['spawnGrowthPower','eliteBaseHealthScale']);
+  for(const w of next.Wave)if(next.Level.find(l=>l.id===w.levelId)?.mode==='challenge'&&numeric(w,'spawnHealthGrowth')!==0)throw Error('Challenge must use its clock growth');
   for (const row of next.Global) if (row.type === "float") numeric(row, "value");
   for (const name of ["Staff", "Enemy", "Theme"]) for (const row of next[name]) requireRef("I18", "key", row.name, name);
   for (const row of next.Map) requireRef("Theme", "key", row.theme, "Map");
@@ -228,6 +230,8 @@ export function installConfigs(sources: Record<string, string>): void {
     for(const key of ['laneOffset','crowdGap','waveDuration','eliteEvery','eliteStartWave','eliteHealthScale','eliteScale','eliteSpeedRatio','eliteRewardRatio','growthEvery'])if(numeric(row,key)<=0)throw Error('Invalid crowd flow rule');
     for(const key of ['eliteHealthGrowth','growthDamage','growthRange','crowdSpeedGrowth','phaseHealthGrowth'])if(numeric(row,key)<0)throw Error('Invalid crowd growth');
     if(numeric(row,'phaseGrowthPower')<=0)throw Error('Invalid phase growth curve');
+    for(const key of ['supplyDelay','supplyFadeDuration'])if(numeric(row,key)<=0)throw Error('Invalid supply transition');
+    if(!['0','1'].includes(row.phaseFollowNextWave))throw Error('Invalid phase interpolation');
     for(const key of ['eliteEvery','eliteStartWave','growthEvery','bossLeakDamage'])if(!Number.isInteger(numeric(row,key))||numeric(row,key)<=0)throw Error('Fractional crowd schedule');
     const crowdLevel=next.Level.find(l=>l.id===row.levelId),crowdMap=next.Map.find(m=>m.id===crowdLevel?.mapId);if(!crowdMap)throw Error('Missing crowd map');
     if(numeric(row,'laneOffset')>=numeric(crowdMap,'gridSize')/2||numeric(row,'crowdGap')>numeric(row,'laneOffset')||numeric(row,'eliteStartWave')>next.Wave.filter(w=>w.levelId===row.levelId).length||numeric(row,'eliteHealthScale')<1||numeric(row,'eliteScale')<1||next.Enemy.some(e=>!e.boss&&numeric(e,'crowdRadius')*numeric(row,'eliteScale')>numeric(crowdMap,'gridSize')/2))throw Error('Crowd geometry out of bounds');
@@ -236,6 +240,7 @@ export function installConfigs(sources: Record<string, string>): void {
     for(const key of ['killRewardRatio','bossSpeedRatio'])if(numeric(row,key)<=0||numeric(row,key)>1)throw Error('Invalid challenge crowd rule');
     if(!Number.isInteger(numeric(row,'cashReward'))||numeric(row,'cashReward')<0||!Number.isInteger(numeric(row,'freeProps'))||numeric(row,'freeProps')<0||numeric(row,'reviveProgress')<=0||numeric(row,'reviveProgress')>=1)throw Error('Invalid challenge supply rule');
     requireRef('Level','id',row.levelId,'ChallengeRule');const waves=next.Wave.filter(w=>w.levelId===row.levelId),choice=row.choiceWaves.split('|').map(Number);
+    if(row.phaseFollowNextWave==='1'){const ordered=waves.slice().sort((a,b)=>numeric(a,'order')-numeric(b,'order'));if(ordered.some((w,i)=>i>0&&numeric(w,'healthScale')<numeric(ordered[i-1],'healthScale')))throw Error('Challenge baseline health decreases');}
     if(next.Level.find(l=>l.id===row.levelId)!.mode!=='challenge'||!choice.length||choice[0]!==0||choice.some((v,i)=>!Number.isInteger(v)||v<0||v>=waves.length||(i>0&&v<=choice[i-1])))throw Error('Invalid challenge choice schedule');
     if(!['0','1'].includes(row.allowAllStaff)||numeric(row,'minIntervalRatio')<=0||numeric(row,'minIntervalRatio')>1||numeric(row,'waveReward')<0||numeric(row,'firstDelay')<=0||numeric(row,'nextDelay')<0||!Number.isInteger(numeric(row,'adRefreshPerChoice'))||numeric(row,'adRefreshPerChoice')<0)throw Error('Invalid challenge rule');
   }

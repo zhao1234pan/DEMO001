@@ -1,0 +1,170 @@
+{
+  "version": "1.17.0",
+  "regressions": 220,
+  "all26Playthrough": true,
+  "challenge": [
+    {
+      "id": 21,
+      "seed": 42,
+      "scenario": "专属核心全图上限",
+      "screen": "win",
+      "wave": 15,
+      "seconds": 931,
+      "speed": 3,
+      "lives": 3,
+      "picks": 10,
+      "coins": 40,
+      "towers": 22,
+      "spots": 22
+    },
+    {
+      "id": 22,
+      "seed": 7,
+      "scenario": "专属核心另一种子全图",
+      "screen": "win",
+      "wave": 15,
+      "seconds": 926,
+      "speed": 3,
+      "lives": 4,
+      "picks": 10,
+      "coins": 129,
+      "towers": 22,
+      "spots": 22
+    },
+    {
+      "id": 23,
+      "seed": 42,
+      "scenario": "仓库减速构筑全图",
+      "screen": "win",
+      "wave": 15,
+      "seconds": 929,
+      "speed": 3,
+      "lives": 10,
+      "picks": 10,
+      "coins": 521,
+      "towers": 21,
+      "spots": 21
+    },
+    {
+      "id": 24,
+      "seed": 42,
+      "scenario": "专属核心全图上限",
+      "screen": "win",
+      "wave": 15,
+      "seconds": 925,
+      "speed": 3,
+      "lives": 10,
+      "picks": 10,
+      "coins": 244,
+      "towers": 22,
+      "spots": 22
+    },
+    {
+      "id": 25,
+      "seed": 7,
+      "scenario": "专属核心另一种子",
+      "screen": "win",
+      "wave": 15,
+      "seconds": 924,
+      "speed": 3,
+      "lives": 10,
+      "picks": 10,
+      "coins": 106,
+      "towers": 20,
+      "spots": 22
+    },
+    {
+      "id": 26,
+      "seed": 42,
+      "scenario": "专属核心全图上限",
+      "screen": "win",
+      "wave": 15,
+      "seconds": 934,
+      "speed": 3,
+      "lives": 10,
+      "picks": 10,
+      "coins": 166,
+      "towers": 20,
+      "spots": 22
+    }
+  ],
+  "ordinaryScenarios": {
+    "混合升级": {
+      "wins": 20,
+      "losses": 0
+    },
+    "仅四塔升级": {
+      "wins": 17,
+      "losses": 3
+    },
+    "不升级": {
+      "wins": 20,
+      "losses": 0
+    },
+    "单种店员": {
+      "wins": 19,
+      "losses": 1
+    }
+  },
+  "negative": [
+    {
+      "id": 21,
+      "scenario": "入口半图核心",
+      "result": "lose",
+      "wave": 5
+    },
+    {
+      "id": 21,
+      "scenario": "全图不升级",
+      "result": "lose",
+      "wave": 9
+    },
+    {
+      "id": 21,
+      "scenario": "全图无后续科技",
+      "result": "lose",
+      "wave": 3
+    },
+    {
+      "id": 26,
+      "scenario": "入口半图核心",
+      "result": "lose",
+      "wave": 13
+    },
+    {
+      "id": 26,
+      "scenario": "全图不升级",
+      "result": "lose",
+      "wave": 12
+    },
+    {
+      "id": 26,
+      "scenario": "全图无后续科技",
+      "result": "lose",
+      "wave": 6
+    }
+  ],
+  "oldEntryKillRatios": {
+    "1": 1,
+    "2": 1,
+    "3": 0.996,
+    "4": 1,
+    "5": 0.986,
+    "6": 1,
+    "7": 0.916,
+    "8": 0.778,
+    "9": 0.388,
+    "10": 0.22,
+    "11": 0.311,
+    "12": 0.317,
+    "13": 0.109,
+    "14": 0.049,
+    "15": 0.031
+  },
+  "limits": [
+    "不是截图三张未知科技的精确复刻；旧诊断中名为截图阵容一级半图的一项实际是另一基础阵容，不能据此识别截图店员",
+    "仓库原阵容两种子失败，已知可行样本换成含减速阵容",
+    "真实浏览器手动局只到第2波失败，后期结论来自无渲染逻辑；未取得手机／后期FPS",
+    "新强度虽跨波衔接，玩家升级和专属成长仍可能使局部战线回退"
+  ]
+}

@@ -1,0 +1,293 @@
+{
+  "kind": "真实GameRoot、3倍速、隔离存档、无广告与道具、无渲染自动策略",
+  "input": {
+    "ids": [
+      21
+    ],
+    "verify": false,
+    "scenarios": [
+      {
+        "name": "入口核心全图",
+        "mode": "entry",
+        "tech": "build",
+        "cap": 1,
+        "seed": 42
+      },
+      {
+        "name": "入口半图",
+        "mode": "entry",
+        "tech": "build",
+        "cap": 0.5,
+        "seed": 42
+      },
+      {
+        "name": "截图阵容一级半图",
+        "mode": "entry",
+        "tech": "strong",
+        "cap": 0.5,
+        "seed": 42,
+        "upgrades": false,
+        "roster": [
+          "sprout",
+          "scope",
+          "frost",
+          "bloom"
+        ]
+      }
+    ]
+  },
+  "scenarios": [
+    {
+      "name": "入口核心全图",
+      "mode": "entry",
+      "tech": "build",
+      "cap": 1,
+      "seed": 42
+    },
+    {
+      "name": "入口半图",
+      "mode": "entry",
+      "tech": "build",
+      "cap": 0.5,
+      "seed": 42
+    },
+    {
+      "name": "截图阵容一级半图",
+      "mode": "entry",
+      "tech": "strong",
+      "cap": 0.5,
+      "seed": 42,
+      "upgrades": false,
+      "roster": [
+        "sprout",
+        "scope",
+        "frost",
+        "bloom"
+      ]
+    }
+  ],
+  "results": [
+    {
+      "id": 21,
+      "scenario": "入口核心全图",
+      "seed": 42,
+      "roster": [
+        "sprout",
+        "frost",
+        "bloom",
+        "scope"
+      ],
+      "result": "lose",
+      "wave": 1,
+      "realSeconds": 32,
+      "lives": 0,
+      "spawned": 91,
+      "killed": 37,
+      "peakEnemies": 46,
+      "peakElites": 0,
+      "carryovers": 0,
+      "peakKillsPerSecond": 5,
+      "minBodyClearance": 3,
+      "towers": 5,
+      "spots": 22,
+      "occupancy": 0.227,
+      "upgraded": 2,
+      "maxLevel": 1,
+      "coins": 35,
+      "picks": 1,
+      "tech": [
+        "S01"
+      ],
+      "killsByPhase": {
+        "1": {
+          "count": 37,
+          "meanProgress": 0.478,
+          "entryKillRatio": 0.081
+        }
+      },
+      "waves": [
+        {
+          "wave": 1,
+          "seconds": 10,
+          "towers": 5,
+          "lives": 10,
+          "coins": 9
+        }
+      ],
+      "phaseSections": {
+        "1": {
+          "0": {
+            "samples": 38,
+            "meanAlive": 27.711,
+            "meanRemainingHp": 4495,
+            "spawned": 80,
+            "meanSpawnRatio": 1.013,
+            "meanOrdinaryHp": 197.625,
+            "killed": 33,
+            "meanKillProgress": 0.464,
+            "entryKillRatio": 0.091
+          },
+          "1": {
+            "samples": 5,
+            "meanAlive": 44.4,
+            "meanRemainingHp": 6711,
+            "spawned": 11,
+            "meanSpawnRatio": 1.031,
+            "meanOrdinaryHp": 199.909,
+            "killed": 4,
+            "meanKillProgress": 0.597,
+            "entryKillRatio": 0
+          }
+        }
+      }
+    },
+    {
+      "id": 21,
+      "scenario": "入口半图",
+      "seed": 42,
+      "roster": [
+        "sprout",
+        "frost",
+        "bloom",
+        "scope"
+      ],
+      "result": "lose",
+      "wave": 1,
+      "realSeconds": 32,
+      "lives": 0,
+      "spawned": 91,
+      "killed": 37,
+      "peakEnemies": 46,
+      "peakElites": 0,
+      "carryovers": 0,
+      "peakKillsPerSecond": 5,
+      "minBodyClearance": 3,
+      "towers": 5,
+      "spots": 22,
+      "occupancy": 0.227,
+      "upgraded": 2,
+      "maxLevel": 1,
+      "coins": 35,
+      "picks": 1,
+      "tech": [
+        "S01"
+      ],
+      "killsByPhase": {
+        "1": {
+          "count": 37,
+          "meanProgress": 0.478,
+          "entryKillRatio": 0.081
+        }
+      },
+      "waves": [
+        {
+          "wave": 1,
+          "seconds": 10,
+          "towers": 5,
+          "lives": 10,
+          "coins": 9
+        }
+      ],
+      "phaseSections": {
+        "1": {
+          "0": {
+            "samples": 38,
+            "meanAlive": 27.711,
+            "meanRemainingHp": 4495,
+            "spawned": 80,
+            "meanSpawnRatio": 1.013,
+            "meanOrdinaryHp": 197.625,
+            "killed": 33,
+            "meanKillProgress": 0.464,
+            "entryKillRatio": 0.091
+          },
+          "1": {
+            "samples": 5,
+            "meanAlive": 44.4,
+            "meanRemainingHp": 6711,
+            "spawned": 11,
+            "meanSpawnRatio": 1.031,
+            "meanOrdinaryHp": 199.909,
+            "killed": 4,
+            "meanKillProgress": 0.597,
+            "entryKillRatio": 0
+          }
+        }
+      }
+    },
+    {
+      "id": 21,
+      "scenario": "截图阵容一级半图",
+      "seed": 42,
+      "roster": [
+        "sprout",
+        "scope",
+        "frost",
+        "bloom"
+      ],
+      "result": "lose",
+      "wave": 1,
+      "realSeconds": 40,
+      "lives": 0,
+      "spawned": 121,
+      "killed": 66,
+      "peakEnemies": 46,
+      "peakElites": 0,
+      "carryovers": 0,
+      "peakKillsPerSecond": 5,
+      "minBodyClearance": 3,
+      "towers": 8,
+      "spots": 22,
+      "occupancy": 0.364,
+      "upgraded": 0,
+      "maxLevel": 0,
+      "coins": 38,
+      "picks": 1,
+      "tech": [
+        "G02"
+      ],
+      "killsByPhase": {
+        "1": {
+          "count": 66,
+          "meanProgress": 0.402,
+          "entryKillRatio": 0.121
+        }
+      },
+      "waves": [
+        {
+          "wave": 1,
+          "seconds": 10,
+          "towers": 7,
+          "lives": 10,
+          "coins": 76
+        }
+      ],
+      "phaseSections": {
+        "1": {
+          "0": {
+            "samples": 38,
+            "meanAlive": 21.289,
+            "meanRemainingHp": 3451,
+            "spawned": 81,
+            "meanSpawnRatio": 1.013,
+            "meanOrdinaryHp": 197.741,
+            "killed": 47,
+            "meanKillProgress": 0.346,
+            "entryKillRatio": 0.17
+          },
+          "1": {
+            "samples": 21,
+            "meanAlive": 39.19,
+            "meanRemainingHp": 6065,
+            "spawned": 40,
+            "meanSpawnRatio": 1.037,
+            "meanOrdinaryHp": 201.55,
+            "killed": 19,
+            "meanKillProgress": 0.542,
+            "entryKillRatio": 0
+          }
+        }
+      }
+    }
+  ]
+}

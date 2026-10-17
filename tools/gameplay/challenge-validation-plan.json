@@ -2,7 +2,7 @@
   "levelScenarios": {
     "21": [{"name":"专属核心全图上限","cap":1,"tech":"build","seed":42,"expected":"win"}],
     "22": [{"name":"专属核心另一种子全图","cap":1,"tech":"build","seed":7,"expected":"win"}],
-    "23": [{"name":"专属核心全图上限","cap":1,"tech":"build","seed":42,"expected":"win"}],
+    "23": [{"name":"仓库减速构筑全图","cap":1,"tech":"build","seed":42,"roster":["sprout","frost","bloom","scope"],"expected":"win"}],
     "24": [{"name":"专属核心全图上限","cap":1,"tech":"build","seed":42,"expected":"win"}],
     "25": [{"name":"专属核心另一种子","cap":1,"tech":"build","seed":7,"expected":"win"}],
     "26": [{"name":"专属核心全图上限","cap":1,"tech":"build","seed":42,"expected":"win"}]

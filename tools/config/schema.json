@@ -138,7 +138,10 @@
       "spawnInterval": "float",
       "announcement": "string",
       "healthScale": "float",
-      "bossHealthScale": "float"
+      "bossHealthScale": "float",
+      "spawnHealthGrowth": "float",
+      "spawnGrowthPower": "float",
+      "eliteBaseHealthScale": "float"
     }
   },
   "WaveGroup": {
@@ -318,7 +321,10 @@
       "crowdSpeedGrowth": "float",
       "bossLeakDamage": "int",
       "phaseHealthGrowth": "float",
-      "phaseGrowthPower": "float"
+      "phaseGrowthPower": "float",
+      "supplyDelay": "float",
+      "supplyFadeDuration": "float",
+      "phaseFollowNextWave": "int"
     }
   },
   "ChallengePerk": {

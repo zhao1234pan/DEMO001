@@ -1,7 +1,7 @@
-id,levelId,choiceWaves,waveReward,firstDelay,nextDelay,minIntervalRatio,adRefreshPerChoice,allowAllStaff,cashReward,freeProps,reviveProgress,killRewardRatio,bossSpeedRatio,laneOffset,crowdGap,waveDuration,eliteEvery,eliteStartWave,eliteHealthScale,eliteHealthGrowth,eliteScale,eliteSpeedRatio,eliteRewardRatio,growthEvery,growthDamage,growthRange,crowdSpeedGrowth,bossLeakDamage,phaseHealthGrowth,phaseGrowthPower
-1,21,0|1|2|4|5|7|9|10|12|13,20,10,0,0.6,1,1,150,1,0.3,0.085,0.9,16.5,3,175,8,3,4.5,0.14,1,1.35,2,5,0.25,0.1,0.025,20,0.55,1.5
-2,22,0|1|2|4|5|7|9|10|12|13,20,10,0,0.6,1,1,150,1,0.3,0.085,0.9,16.5,3,175,8,3,4.5,0.14,1,1.35,2,5,0.25,0.1,0.025,20,0.55,1.5
-3,23,0|1|2|4|5|7|9|10|12|13,20,10,0,0.6,1,1,150,1,0.3,0.085,0.9,16.5,3,175,8,3,4.5,0.14,1,1.35,2,5,0.25,0.1,0.025,20,0.2,1.5
-4,24,0|1|2|4|5|7|9|10|12|13,20,10,0,0.6,1,1,150,1,0.3,0.085,0.9,16.5,3,175,8,3,4.5,0.14,1,1.35,2,5,0.25,0.1,0.025,20,0.55,1.5
-5,25,0|1|2|4|5|7|9|10|12|13,20,10,0,0.6,1,1,150,1,0.3,0.085,0.9,16.5,3,175,8,3,4.5,0.14,1,1.35,2,5,0.25,0.1,0.025,20,0.55,1.5
-6,26,0|1|2|4|5|7|9|10|12|13,20,10,0,0.6,1,1,150,1,0.3,0.085,0.9,16.5,3,175,8,3,4.5,0.14,1,1.35,2,5,0.25,0.1,0.025,20,0.55,1.5
+id,levelId,choiceWaves,waveReward,firstDelay,nextDelay,minIntervalRatio,adRefreshPerChoice,allowAllStaff,cashReward,freeProps,reviveProgress,killRewardRatio,bossSpeedRatio,laneOffset,crowdGap,waveDuration,eliteEvery,eliteStartWave,eliteHealthScale,eliteHealthGrowth,eliteScale,eliteSpeedRatio,eliteRewardRatio,growthEvery,growthDamage,growthRange,crowdSpeedGrowth,bossLeakDamage,phaseHealthGrowth,phaseGrowthPower,supplyDelay,supplyFadeDuration,phaseFollowNextWave
+1,21,0|1|2|4|5|7|9|10|12|13,35,10,0.8,0.6,1,1,150,1,0.3,0.085,0.9,16.5,3,175,8,3,4.5,0.14,1,1.35,2,5,0.25,0.1,0.025,20,0.15,1,1.8,0.25,1
+2,22,0|1|2|4|5|7|9|10|12|13,35,10,0.8,0.6,1,1,150,1,0.3,0.085,0.9,16.5,3,175,8,3,4.5,0.14,1,1.35,2,5,0.25,0.1,0.025,20,0.15,1,1.8,0.25,1
+3,23,0|1|2|4|5|7|9|10|12|13,35,10,0.8,0.6,1,1,150,1,0.3,0.085,0.9,16.5,3,175,8,3,4.5,0.14,1,1.35,2,5,0.25,0.1,0.025,20,0.15,1,1.8,0.25,1
+4,24,0|1|2|4|5|7|9|10|12|13,35,10,0.8,0.6,1,1,150,1,0.3,0.085,0.9,16.5,3,175,8,3,4.5,0.14,1,1.35,2,5,0.25,0.1,0.025,20,0.15,1,1.8,0.25,1
+5,25,0|1|2|4|5|7|9|10|12|13,55,10,0.8,0.6,1,1,150,1,0.3,0.085,0.9,16.5,3,175,8,3,4.5,0.14,1,1.35,2,5,0.25,0.1,0.025,20,0.15,1,1.8,0.25,1
+6,26,0|1|2|4|5|7|9|10|12|13,55,10,0.8,0.6,1,1,150,1,0.3,0.085,0.9,16.5,3,175,8,3,4.5,0.14,1,1.35,2,5,0.25,0.1,0.025,20,0.15,1,1.8,0.25,1

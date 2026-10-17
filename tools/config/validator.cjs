@@ -92,7 +92,7 @@ function parseCsv(source) {
         throw new Error("Invalid CSV row/id: " + (i + 2)); ids.add(cells[0]); const row = Object.create(null); fields.forEach((field, j) => row[field] = cells[j]); return row; });
 }
 function installConfigs(sources) {
-    var _a, _b, _c, _d;
+    var _a, _b, _c, _d, _e;
     const next = Object.create(null);
     for (const name of exports.TABLE_NAMES) {
         if (typeof sources[name] !== "string")
@@ -328,6 +328,11 @@ function installConfigs(sources) {
     positive("Obstacle", ["reward"], true);
     positive("Wave", ["spawnInterval", "healthScale"]);
     positive("WaveGroup", ["count"]);
+    positive('Wave', ['spawnHealthGrowth'], true);
+    positive('Wave', ['spawnGrowthPower', 'eliteBaseHealthScale']);
+    for (const w of next.Wave)
+        if (((_b = next.Level.find(l => l.id === w.levelId)) === null || _b === void 0 ? void 0 : _b.mode) === 'challenge' && numeric(w, 'spawnHealthGrowth') !== 0)
+            throw Error('Challenge must use its clock growth');
     for (const row of next.Global)
         if (row.type === "float")
             numeric(row, "value");
@@ -529,7 +534,7 @@ function installConfigs(sources) {
         if (numeric(next.Global.find(r => r.key === key), "value") <= 0)
             throw new Error("Invalid staff star geometry");
     }
-    requireRef("VisualSkin", "key", (_c = (_b = next.Global.find(r => r.key === "staffLevelStarIcon")) === null || _b === void 0 ? void 0 : _b.value) !== null && _c !== void 0 ? _c : "", "StaffVisual");
+    requireRef("VisualSkin", "key", (_d = (_c = next.Global.find(r => r.key === "staffLevelStarIcon")) === null || _c === void 0 ? void 0 : _c.value) !== null && _d !== void 0 ? _d : "", "StaffVisual");
     positive("Wave", ["bossHealthScale"]);
     const perkKeys = ["S01", "S02", "S03", "S04", "S05", "S06", "S07", "S08", "G01", "G02", "G03", "G04", "G05", "G06", "E01", "E02", "E03", "E04", "E05", "E06", "X01", "X02", "X03", "X04", "X05", "X06", "F01", "F02", "F03", "F04", "F05", "F06"];
     if (new Set(next.ChallengePerk.map(row => row.iconKey)).size !== next.ChallengePerk.length)
@@ -578,6 +583,11 @@ function installConfigs(sources) {
                 throw Error('Invalid crowd growth');
         if (numeric(row, 'phaseGrowthPower') <= 0)
             throw Error('Invalid phase growth curve');
+        for (const key of ['supplyDelay', 'supplyFadeDuration'])
+            if (numeric(row, key) <= 0)
+                throw Error('Invalid supply transition');
+        if (!['0', '1'].includes(row.phaseFollowNextWave))
+            throw Error('Invalid phase interpolation');
         for (const key of ['eliteEvery', 'eliteStartWave', 'growthEvery', 'bossLeakDamage'])
             if (!Number.isInteger(numeric(row, key)) || numeric(row, key) <= 0)
                 throw Error('Fractional crowd schedule');
@@ -596,6 +606,11 @@ function installConfigs(sources) {
             throw Error('Invalid challenge supply rule');
         requireRef('Level', 'id', row.levelId, 'ChallengeRule');
         const waves = next.Wave.filter(w => w.levelId === row.levelId), choice = row.choiceWaves.split('|').map(Number);
+        if (row.phaseFollowNextWave === '1') {
+            const ordered = waves.slice().sort((a, b) => numeric(a, 'order') - numeric(b, 'order'));
+            if (ordered.some((w, i) => i > 0 && numeric(w, 'healthScale') < numeric(ordered[i - 1], 'healthScale')))
+                throw Error('Challenge baseline health decreases');
+        }
         if (next.Level.find(l => l.id === row.levelId).mode !== 'challenge' || !choice.length || choice[0] !== 0 || choice.some((v, i) => !Number.isInteger(v) || v < 0 || v >= waves.length || (i > 0 && v <= choice[i - 1])))
             throw Error('Invalid challenge choice schedule');
         if (!['0', '1'].includes(row.allowAllStaff) || numeric(row, 'minIntervalRatio') <= 0 || numeric(row, 'minIntervalRatio') > 1 || numeric(row, 'waveReward') < 0 || numeric(row, 'firstDelay') <= 0 || numeric(row, 'nextDelay') < 0 || !Number.isInteger(numeric(row, 'adRefreshPerChoice')) || numeric(row, 'adRefreshPerChoice') < 0)
@@ -690,7 +705,7 @@ function installConfigs(sources) {
         if (value < min || value > max || (integer && !Number.isInteger(value)))
             throw new Error("Invalid feedback parameter: " + key);
     }
-    const max = Number((_d = next.Global.find(r => r.key === "maxLevels")) === null || _d === void 0 ? void 0 : _d.value);
+    const max = Number((_e = next.Global.find(r => r.key === "maxLevels")) === null || _e === void 0 ? void 0 : _e.value);
     if (!Number.isInteger(max) || max !== next.Level.filter(r => r.mode === "adventure").length)
         throw new Error("maxLevels mismatch");
     for (let id = 1; id <= max; id++) {

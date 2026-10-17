@@ -1,0 +1,104 @@
+[
+  {
+    "path": "index.html",
+    "status": 200,
+    "sha256MatchesFinalBuild": true,
+    "bytes": 2163
+  },
+  {
+    "path": "src/settings.json",
+    "status": 200,
+    "sha256MatchesFinalBuild": true,
+    "bytes": 22619
+  },
+  {
+    "path": "src/polyfills.bundle.js",
+    "status": 200,
+    "sha256MatchesFinalBuild": true,
+    "bytes": 14750
+  },
+  {
+    "path": "src/system.bundle.js",
+    "status": 200,
+    "sha256MatchesFinalBuild": true,
+    "bytes": 37168
+  },
+  {
+    "path": "src/import-map.json",
+    "status": 200,
+    "sha256MatchesFinalBuild": true,
+    "bytes": 54
+  },
+  {
+    "path": "index.js",
+    "status": 200,
+    "sha256MatchesFinalBuild": true,
+    "bytes": 818
+  },
+  {
+    "path": "application.js",
+    "status": 200,
+    "sha256MatchesFinalBuild": true,
+    "bytes": 3300
+  },
+  {
+    "path": "style.css",
+    "status": 200,
+    "sha256MatchesFinalBuild": true,
+    "bytes": 1283
+  },
+  {
+    "path": "assets/main/index.js",
+    "status": 200,
+    "sha256MatchesFinalBuild": true,
+    "bytes": 644903
+  },
+  {
+    "path": "assets/resources/index.js",
+    "status": 200,
+    "sha256MatchesFinalBuild": true,
+    "bytes": 624
+  },
+  {
+    "path": "assets/battle_art/index.js",
+    "status": 200,
+    "sha256MatchesFinalBuild": true,
+    "bytes": 627
+  },
+  {
+    "path": "assets/resources/import/14/1490d7c7-f2ce-4ae9-9587-c7bd7b01477a.json",
+    "status": 200,
+    "sha256MatchesFinalBuild": true,
+    "bytes": 7922
+  },
+  {
+    "path": "assets/resources/import/38/383a1f8b-64c9-425d-b2bf-96f8a3918062.json",
+    "status": 200,
+    "sha256MatchesFinalBuild": true,
+    "bytes": 981
+  },
+  {
+    "path": "assets/resources/import/5d/5d15c6d2-2e85-4c49-a69f-f285f961ceae.json",
+    "status": 200,
+    "sha256MatchesFinalBuild": true,
+    "bytes": 38383
+  },
+  {
+    "path": "assets/resources/import/73/738d8ccf-63a3-4d3f-a7e7-3fdabd52cc8d.json",
+    "status": 200,
+    "sha256MatchesFinalBuild": true,
+    "bytes": 1390
+  },
+  {
+    "path": "assets/resources/import/96/965d8635-b7fb-4b6c-afe5-0f8fa240abc6.json",
+    "status": 200,
+    "sha256MatchesFinalBuild": true,
+    "bytes": 24061
+  },
+  {
+    "path": "assets/resources/import/d5/d5fc7858-7bbf-447e-a3e8-e4441d235129.json",
+    "status": 200,
+    "sha256MatchesFinalBuild": true,
+    "bytes": 3676
+  }
+]

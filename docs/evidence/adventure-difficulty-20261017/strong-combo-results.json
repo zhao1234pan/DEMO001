@@ -1,0 +1,1882 @@
+{
+  "kind": "真实GameRoot、3倍速、隔离存档、无广告与道具、无渲染自动策略",
+  "input": {
+    "ids": [
+      21
+    ],
+    "verify": false,
+    "scenarios": [
+      {
+        "name": "S05开局群攻全图",
+        "cap": 1,
+        "mode": "swarm",
+        "tech": "build",
+        "seed": 3816266640,
+        "roster": [
+          "fan",
+          "spark",
+          "mint",
+          "frost"
+        ]
+      },
+      {
+        "name": "S05开局群攻入口半图",
+        "cap": 0.5,
+        "mode": "entry",
+        "tech": "build",
+        "seed": 3816266640,
+        "roster": [
+          "fan",
+          "spark",
+          "mint",
+          "frost"
+        ]
+      },
+      {
+        "name": "E03开局群攻全图",
+        "cap": 1,
+        "mode": "swarm",
+        "tech": "build",
+        "seed": 1549107828,
+        "roster": [
+          "fan",
+          "spark",
+          "mint",
+          "frost"
+        ]
+      },
+      {
+        "name": "E03开局群攻入口半图",
+        "cap": 0.5,
+        "mode": "entry",
+        "tech": "build",
+        "seed": 1549107828,
+        "roster": [
+          "fan",
+          "spark",
+          "mint",
+          "frost"
+        ]
+      },
+      {
+        "name": "S08开局群攻全图",
+        "cap": 1,
+        "mode": "swarm",
+        "tech": "build",
+        "seed": 922480543,
+        "roster": [
+          "fan",
+          "spark",
+          "mint",
+          "frost"
+        ]
+      },
+      {
+        "name": "S08开局群攻入口半图",
+        "cap": 0.5,
+        "mode": "entry",
+        "tech": "build",
+        "seed": 922480543,
+        "roster": [
+          "fan",
+          "spark",
+          "mint",
+          "frost"
+        ]
+      }
+    ]
+  },
+  "scenarios": [
+    {
+      "name": "S05开局群攻全图",
+      "cap": 1,
+      "mode": "swarm",
+      "tech": "build",
+      "seed": 3816266640,
+      "roster": [
+        "fan",
+        "spark",
+        "mint",
+        "frost"
+      ]
+    },
+    {
+      "name": "S05开局群攻入口半图",
+      "cap": 0.5,
+      "mode": "entry",
+      "tech": "build",
+      "seed": 3816266640,
+      "roster": [
+        "fan",
+        "spark",
+        "mint",
+        "frost"
+      ]
+    },
+    {
+      "name": "E03开局群攻全图",
+      "cap": 1,
+      "mode": "swarm",
+      "tech": "build",
+      "seed": 1549107828,
+      "roster": [
+        "fan",
+        "spark",
+        "mint",
+        "frost"
+      ]
+    },
+    {
+      "name": "E03开局群攻入口半图",
+      "cap": 0.5,
+      "mode": "entry",
+      "tech": "build",
+      "seed": 1549107828,
+      "roster": [
+        "fan",
+        "spark",
+        "mint",
+        "frost"
+      ]
+    },
+    {
+      "name": "S08开局群攻全图",
+      "cap": 1,
+      "mode": "swarm",
+      "tech": "build",
+      "seed": 922480543,
+      "roster": [
+        "fan",
+        "spark",
+        "mint",
+        "frost"
+      ]
+    },
+    {
+      "name": "S08开局群攻入口半图",
+      "cap": 0.5,
+      "mode": "entry",
+      "tech": "build",
+      "seed": 922480543,
+      "roster": [
+        "fan",
+        "spark",
+        "mint",
+        "frost"
+      ]
+    }
+  ],
+  "results": [
+    {
+      "id": 21,
+      "scenario": "S05开局群攻全图",
+      "seed": 3816266640,
+      "roster": [
+        "fan",
+        "spark",
+        "mint",
+        "frost"
+      ],
+      "result": "lose",
+      "wave": 5,
+      "realSeconds": 272,
+      "lives": 0,
+      "spawned": 977,
+      "killed": 934,
+      "peakEnemies": 42,
+      "peakElites": 7,
+      "carryovers": 4,
+      "peakKillsPerSecond": 8,
+      "minBodyClearance": 3,
+      "towers": 6,
+      "spots": 22,
+      "occupancy": 0.273,
+      "upgraded": 5,
+      "maxLevel": 4,
+      "coins": 120,
+      "picks": 4,
+      "tech": [
+        "S05",
+        "S08",
+        "S07",
+        "E01"
+      ],
+      "killsByPhase": {
+        "1": {
+          "count": 203,
+          "meanProgress": 0.484,
+          "entryKillRatio": 0.01
+        },
+        "2": {
+          "count": 201,
+          "meanProgress": 0.498,
+          "entryKillRatio": 0
+        },
+        "3": {
+          "count": 243,
+          "meanProgress": 0.525,
+          "entryKillRatio": 0
+        },
+        "4": {
+          "count": 228,
+          "meanProgress": 0.548,
+          "entryKillRatio": 0
+        },
+        "5": {
+          "count": 59,
+          "meanProgress": 0.587,
+          "entryKillRatio": 0
+        }
+      },
+      "waves": [
+        {
+          "wave": 1,
+          "seconds": 10,
+          "towers": 5,
+          "lives": 10,
+          "coins": 15
+        },
+        {
+          "wave": 2,
+          "seconds": 71,
+          "towers": 5,
+          "lives": 10,
+          "coins": 51
+        },
+        {
+          "wave": 3,
+          "seconds": 132,
+          "towers": 5,
+          "lives": 10,
+          "coins": 63
+        },
+        {
+          "wave": 4,
+          "seconds": 193,
+          "towers": 5,
+          "lives": 10,
+          "coins": 106
+        },
+        {
+          "wave": 5,
+          "seconds": 254,
+          "towers": 6,
+          "lives": 2,
+          "coins": 63
+        }
+      ],
+      "phaseSections": {
+        "1": {
+          "0": {
+            "samples": 38,
+            "meanAlive": 23.868,
+            "meanRemainingHp": 1199,
+            "spawned": 81,
+            "meanSpawnRatio": 1.072,
+            "meanOrdinaryHp": 65.716,
+            "killed": 52,
+            "meanKillProgress": 0.46,
+            "entryKillRatio": 0.038
+          },
+          "1": {
+            "samples": 36,
+            "meanAlive": 30.194,
+            "meanRemainingHp": 1764,
+            "spawned": 72,
+            "meanSpawnRatio": 1.228,
+            "meanOrdinaryHp": 75.236,
+            "killed": 70,
+            "meanKillProgress": 0.488,
+            "entryKillRatio": 0
+          },
+          "2": {
+            "samples": 42,
+            "meanAlive": 30.167,
+            "meanRemainingHp": 2058,
+            "spawned": 70,
+            "meanSpawnRatio": 1.379,
+            "meanOrdinaryHp": 84.371,
+            "killed": 81,
+            "meanKillProgress": 0.495,
+            "entryKillRatio": 0
+          }
+        },
+        "2": {
+          "0": {
+            "samples": 36,
+            "meanAlive": 28.25,
+            "meanRemainingHp": 2771,
+            "spawned": 74,
+            "meanSpawnRatio": 1.076,
+            "meanOrdinaryHp": 129.608,
+            "killed": 64,
+            "meanKillProgress": 0.489,
+            "entryKillRatio": 0
+          },
+          "1": {
+            "samples": 37,
+            "meanAlive": 31.27,
+            "meanRemainingHp": 3722,
+            "spawned": 66,
+            "meanSpawnRatio": 1.25,
+            "meanOrdinaryHp": 150.848,
+            "killed": 63,
+            "meanKillProgress": 0.495,
+            "entryKillRatio": 0
+          },
+          "2": {
+            "samples": 41,
+            "meanAlive": 31.488,
+            "meanRemainingHp": 4450,
+            "spawned": 64,
+            "meanSpawnRatio": 1.417,
+            "meanOrdinaryHp": 172.328,
+            "killed": 74,
+            "meanKillProgress": 0.507,
+            "entryKillRatio": 0
+          }
+        },
+        "3": {
+          "0": {
+            "samples": 37,
+            "meanAlive": 31.757,
+            "meanRemainingHp": 4281,
+            "spawned": 83,
+            "meanSpawnRatio": 1.066,
+            "meanOrdinaryHp": 153.425,
+            "killed": 75,
+            "meanKillProgress": 0.523,
+            "entryKillRatio": 0
+          },
+          "1": {
+            "samples": 36,
+            "meanAlive": 32.472,
+            "meanRemainingHp": 5029,
+            "spawned": 80,
+            "meanSpawnRatio": 1.207,
+            "meanOrdinaryHp": 171.371,
+            "killed": 78,
+            "meanKillProgress": 0.522,
+            "entryKillRatio": 0
+          },
+          "2": {
+            "samples": 41,
+            "meanAlive": 32.634,
+            "meanRemainingHp": 5508,
+            "spawned": 79,
+            "meanSpawnRatio": 1.346,
+            "meanOrdinaryHp": 193.609,
+            "killed": 90,
+            "meanKillProgress": 0.528,
+            "entryKillRatio": 0
+          }
+        },
+        "4": {
+          "0": {
+            "samples": 37,
+            "meanAlive": 31.135,
+            "meanRemainingHp": 5932,
+            "spawned": 86,
+            "meanSpawnRatio": 1.028,
+            "meanOrdinaryHp": 223.789,
+            "killed": 71,
+            "meanKillProgress": 0.538,
+            "entryKillRatio": 0
+          },
+          "1": {
+            "samples": 36,
+            "meanAlive": 35.194,
+            "meanRemainingHp": 6938,
+            "spawned": 79,
+            "meanSpawnRatio": 1.088,
+            "meanOrdinaryHp": 237.261,
+            "killed": 78,
+            "meanKillProgress": 0.545,
+            "entryKillRatio": 0
+          },
+          "2": {
+            "samples": 42,
+            "meanAlive": 36.667,
+            "meanRemainingHp": 7589,
+            "spawned": 77,
+            "meanSpawnRatio": 1.147,
+            "meanOrdinaryHp": 252.433,
+            "killed": 79,
+            "meanKillProgress": 0.561,
+            "entryKillRatio": 0
+          }
+        },
+        "5": {
+          "0": {
+            "samples": 35,
+            "meanAlive": 31.971,
+            "meanRemainingHp": 10185,
+            "spawned": 66,
+            "meanSpawnRatio": 1.049,
+            "meanOrdinaryHp": 333.105,
+            "killed": 59,
+            "meanKillProgress": 0.587,
+            "entryKillRatio": 0
+          }
+        }
+      }
+    },
+    {
+      "id": 21,
+      "scenario": "S05开局群攻入口半图",
+      "seed": 3816266640,
+      "roster": [
+        "fan",
+        "spark",
+        "mint",
+        "frost"
+      ],
+      "result": "lose",
+      "wave": 5,
+      "realSeconds": 285,
+      "lives": 0,
+      "spawned": 1271,
+      "killed": 1242,
+      "peakEnemies": 27,
+      "peakElites": 5,
+      "carryovers": 0,
+      "peakKillsPerSecond": 11,
+      "minBodyClearance": 3,
+      "towers": 8,
+      "spots": 22,
+      "occupancy": 0.364,
+      "upgraded": 5,
+      "maxLevel": 4,
+      "coins": 134,
+      "picks": 4,
+      "tech": [
+        "S05",
+        "S08",
+        "S07",
+        "E01"
+      ],
+      "killsByPhase": {
+        "1": {
+          "count": 270,
+          "meanProgress": 0.125,
+          "entryKillRatio": 1
+        },
+        "2": {
+          "count": 277,
+          "meanProgress": 0.123,
+          "entryKillRatio": 0.989
+        },
+        "3": {
+          "count": 284,
+          "meanProgress": 0.128,
+          "entryKillRatio": 0.965
+        },
+        "4": {
+          "count": 288,
+          "meanProgress": 0.19,
+          "entryKillRatio": 0.688
+        },
+        "5": {
+          "count": 123,
+          "meanProgress": 0.249,
+          "entryKillRatio": 0.39
+        }
+      },
+      "waves": [
+        {
+          "wave": 1,
+          "seconds": 10,
+          "towers": 5,
+          "lives": 10,
+          "coins": 95
+        },
+        {
+          "wave": 2,
+          "seconds": 71,
+          "towers": 5,
+          "lives": 10,
+          "coins": 64
+        },
+        {
+          "wave": 3,
+          "seconds": 132,
+          "towers": 6,
+          "lives": 10,
+          "coins": 81
+        },
+        {
+          "wave": 4,
+          "seconds": 193,
+          "towers": 8,
+          "lives": 10,
+          "coins": 99
+        },
+        {
+          "wave": 5,
+          "seconds": 254,
+          "towers": 8,
+          "lives": 7,
+          "coins": 99
+        }
+      ],
+      "phaseSections": {
+        "1": {
+          "0": {
+            "samples": 38,
+            "meanAlive": 6.684,
+            "meanRemainingHp": 325,
+            "spawned": 90,
+            "meanSpawnRatio": 1.075,
+            "meanOrdinaryHp": 65.856,
+            "killed": 83,
+            "meanKillProgress": 0.126,
+            "entryKillRatio": 1
+          },
+          "1": {
+            "samples": 36,
+            "meanAlive": 6.306,
+            "meanRemainingHp": 328,
+            "spawned": 90,
+            "meanSpawnRatio": 1.227,
+            "meanOrdinaryHp": 75.111,
+            "killed": 90,
+            "meanKillProgress": 0.12,
+            "entryKillRatio": 1
+          },
+          "2": {
+            "samples": 42,
+            "meanAlive": 6.19,
+            "meanRemainingHp": 359,
+            "spawned": 90,
+            "meanSpawnRatio": 1.379,
+            "meanOrdinaryHp": 84.422,
+            "killed": 97,
+            "meanKillProgress": 0.129,
+            "entryKillRatio": 1
+          }
+        },
+        "2": {
+          "0": {
+            "samples": 36,
+            "meanAlive": 5.889,
+            "meanRemainingHp": 535,
+            "spawned": 93,
+            "meanSpawnRatio": 1.083,
+            "meanOrdinaryHp": 130.312,
+            "killed": 85,
+            "meanKillProgress": 0.104,
+            "entryKillRatio": 1
+          },
+          "1": {
+            "samples": 37,
+            "meanAlive": 7.432,
+            "meanRemainingHp": 816,
+            "spawned": 92,
+            "meanSpawnRatio": 1.251,
+            "meanOrdinaryHp": 152.272,
+            "killed": 92,
+            "meanKillProgress": 0.123,
+            "entryKillRatio": 1
+          },
+          "2": {
+            "samples": 41,
+            "meanAlive": 7.902,
+            "meanRemainingHp": 1021,
+            "spawned": 92,
+            "meanSpawnRatio": 1.417,
+            "meanOrdinaryHp": 171.011,
+            "killed": 100,
+            "meanKillProgress": 0.139,
+            "entryKillRatio": 0.97
+          }
+        },
+        "3": {
+          "0": {
+            "samples": 37,
+            "meanAlive": 6.054,
+            "meanRemainingHp": 708,
+            "spawned": 95,
+            "meanSpawnRatio": 1.069,
+            "meanOrdinaryHp": 153.202,
+            "killed": 88,
+            "meanKillProgress": 0.117,
+            "entryKillRatio": 1
+          },
+          "1": {
+            "samples": 36,
+            "meanAlive": 6.167,
+            "meanRemainingHp": 830,
+            "spawned": 95,
+            "meanSpawnRatio": 1.209,
+            "meanOrdinaryHp": 173.892,
+            "killed": 95,
+            "meanKillProgress": 0.12,
+            "entryKillRatio": 0.989
+          },
+          "2": {
+            "samples": 41,
+            "meanAlive": 7,
+            "meanRemainingHp": 1057,
+            "spawned": 94,
+            "meanSpawnRatio": 1.348,
+            "meanOrdinaryHp": 193.366,
+            "killed": 101,
+            "meanKillProgress": 0.146,
+            "entryKillRatio": 0.911
+          }
+        },
+        "4": {
+          "0": {
+            "samples": 37,
+            "meanAlive": 9.541,
+            "meanRemainingHp": 1751,
+            "spawned": 98,
+            "meanSpawnRatio": 1.029,
+            "meanOrdinaryHp": 225.733,
+            "killed": 85,
+            "meanKillProgress": 0.169,
+            "entryKillRatio": 0.788
+          },
+          "1": {
+            "samples": 36,
+            "meanAlive": 13.444,
+            "meanRemainingHp": 2594,
+            "spawned": 96,
+            "meanSpawnRatio": 1.088,
+            "meanOrdinaryHp": 235.738,
+            "killed": 92,
+            "meanKillProgress": 0.204,
+            "entryKillRatio": 0.63
+          },
+          "2": {
+            "samples": 42,
+            "meanAlive": 11.048,
+            "meanRemainingHp": 2149,
+            "spawned": 97,
+            "meanSpawnRatio": 1.147,
+            "meanOrdinaryHp": 251.788,
+            "killed": 111,
+            "meanKillProgress": 0.194,
+            "entryKillRatio": 0.658
+          }
+        },
+        "5": {
+          "0": {
+            "samples": 38,
+            "meanAlive": 13.658,
+            "meanRemainingHp": 4927,
+            "spawned": 93,
+            "meanSpawnRatio": 1.061,
+            "meanOrdinaryHp": 333.605,
+            "killed": 73,
+            "meanKillProgress": 0.214,
+            "entryKillRatio": 0.562
+          },
+          "1": {
+            "samples": 24,
+            "meanAlive": 23.583,
+            "meanRemainingHp": 7591,
+            "spawned": 56,
+            "meanSpawnRatio": 1.162,
+            "meanOrdinaryHp": 366.633,
+            "killed": 50,
+            "meanKillProgress": 0.3,
+            "entryKillRatio": 0.14
+          }
+        }
+      }
+    },
+    {
+      "id": 21,
+      "scenario": "E03开局群攻全图",
+      "seed": 1549107828,
+      "roster": [
+        "fan",
+        "spark",
+        "mint",
+        "frost"
+      ],
+      "result": "lose",
+      "wave": 6,
+      "realSeconds": 328,
+      "lives": 0,
+      "spawned": 1184,
+      "killed": 1121,
+      "peakEnemies": 55,
+      "peakElites": 7,
+      "carryovers": 5,
+      "peakKillsPerSecond": 8,
+      "minBodyClearance": 3,
+      "towers": 8,
+      "spots": 22,
+      "occupancy": 0.364,
+      "upgraded": 7,
+      "maxLevel": 6,
+      "coins": 72,
+      "picks": 5,
+      "tech": [
+        "E03",
+        "G05",
+        "E01",
+        "F01",
+        "G04"
+      ],
+      "killsByPhase": {
+        "1": {
+          "count": 208,
+          "meanProgress": 0.407,
+          "entryKillRatio": 0.014
+        },
+        "2": {
+          "count": 202,
+          "meanProgress": 0.477,
+          "entryKillRatio": 0
+        },
+        "3": {
+          "count": 241,
+          "meanProgress": 0.484,
+          "entryKillRatio": 0
+        },
+        "4": {
+          "count": 244,
+          "meanProgress": 0.506,
+          "entryKillRatio": 0
+        },
+        "5": {
+          "count": 200,
+          "meanProgress": 0.52,
+          "entryKillRatio": 0.005
+        },
+        "6": {
+          "count": 26,
+          "meanProgress": 0.729,
+          "entryKillRatio": 0
+        }
+      },
+      "waves": [
+        {
+          "wave": 1,
+          "seconds": 10,
+          "towers": 6,
+          "lives": 10,
+          "coins": 74
+        },
+        {
+          "wave": 2,
+          "seconds": 71,
+          "towers": 6,
+          "lives": 10,
+          "coins": 83
+        },
+        {
+          "wave": 3,
+          "seconds": 132,
+          "towers": 6,
+          "lives": 10,
+          "coins": 50
+        },
+        {
+          "wave": 4,
+          "seconds": 193,
+          "towers": 7,
+          "lives": 10,
+          "coins": 64
+        },
+        {
+          "wave": 5,
+          "seconds": 254,
+          "towers": 8,
+          "lives": 10,
+          "coins": 54
+        },
+        {
+          "wave": 6,
+          "seconds": 315,
+          "towers": 8,
+          "lives": 8,
+          "coins": 51
+        }
+      ],
+      "phaseSections": {
+        "1": {
+          "0": {
+            "samples": 38,
+            "meanAlive": 21.263,
+            "meanRemainingHp": 1047,
+            "spawned": 82,
+            "meanSpawnRatio": 1.071,
+            "meanOrdinaryHp": 65.549,
+            "killed": 57,
+            "meanKillProgress": 0.376,
+            "entryKillRatio": 0.053
+          },
+          "1": {
+            "samples": 36,
+            "meanAlive": 26.889,
+            "meanRemainingHp": 1527,
+            "spawned": 73,
+            "meanSpawnRatio": 1.226,
+            "meanOrdinaryHp": 75.11,
+            "killed": 72,
+            "meanKillProgress": 0.408,
+            "entryKillRatio": 0
+          },
+          "2": {
+            "samples": 42,
+            "meanAlive": 27.214,
+            "meanRemainingHp": 1789,
+            "spawned": 72,
+            "meanSpawnRatio": 1.379,
+            "meanOrdinaryHp": 84.417,
+            "killed": 79,
+            "meanKillProgress": 0.428,
+            "entryKillRatio": 0
+          }
+        },
+        "2": {
+          "0": {
+            "samples": 36,
+            "meanAlive": 27.333,
+            "meanRemainingHp": 2897,
+            "spawned": 74,
+            "meanSpawnRatio": 1.076,
+            "meanOrdinaryHp": 129.649,
+            "killed": 64,
+            "meanKillProgress": 0.469,
+            "entryKillRatio": 0
+          },
+          "1": {
+            "samples": 37,
+            "meanAlive": 30,
+            "meanRemainingHp": 3925,
+            "spawned": 65,
+            "meanSpawnRatio": 1.249,
+            "meanOrdinaryHp": 151.308,
+            "killed": 63,
+            "meanKillProgress": 0.476,
+            "entryKillRatio": 0
+          },
+          "2": {
+            "samples": 41,
+            "meanAlive": 30.415,
+            "meanRemainingHp": 4626,
+            "spawned": 65,
+            "meanSpawnRatio": 1.417,
+            "meanOrdinaryHp": 171.615,
+            "killed": 75,
+            "meanKillProgress": 0.484,
+            "entryKillRatio": 0
+          }
+        },
+        "3": {
+          "0": {
+            "samples": 37,
+            "meanAlive": 29.27,
+            "meanRemainingHp": 4033,
+            "spawned": 83,
+            "meanSpawnRatio": 1.066,
+            "meanOrdinaryHp": 153.438,
+            "killed": 74,
+            "meanKillProgress": 0.479,
+            "entryKillRatio": 0
+          },
+          "1": {
+            "samples": 36,
+            "meanAlive": 30.694,
+            "meanRemainingHp": 4703,
+            "spawned": 80,
+            "meanSpawnRatio": 1.208,
+            "meanOrdinaryHp": 171.486,
+            "killed": 80,
+            "meanKillProgress": 0.483,
+            "entryKillRatio": 0
+          },
+          "2": {
+            "samples": 41,
+            "meanAlive": 30.512,
+            "meanRemainingHp": 5366,
+            "spawned": 79,
+            "meanSpawnRatio": 1.347,
+            "meanOrdinaryHp": 193.681,
+            "killed": 87,
+            "meanKillProgress": 0.49,
+            "entryKillRatio": 0
+          }
+        },
+        "4": {
+          "0": {
+            "samples": 37,
+            "meanAlive": 28.622,
+            "meanRemainingHp": 5880,
+            "spawned": 86,
+            "meanSpawnRatio": 1.028,
+            "meanOrdinaryHp": 223.789,
+            "killed": 76,
+            "meanKillProgress": 0.491,
+            "entryKillRatio": 0
+          },
+          "1": {
+            "samples": 36,
+            "meanAlive": 32.083,
+            "meanRemainingHp": 7350,
+            "spawned": 79,
+            "meanSpawnRatio": 1.088,
+            "meanOrdinaryHp": 237.275,
+            "killed": 79,
+            "meanKillProgress": 0.507,
+            "entryKillRatio": 0
+          },
+          "2": {
+            "samples": 42,
+            "meanAlive": 31.833,
+            "meanRemainingHp": 7654,
+            "spawned": 78,
+            "meanSpawnRatio": 1.147,
+            "meanOrdinaryHp": 251.309,
+            "killed": 89,
+            "meanKillProgress": 0.517,
+            "entryKillRatio": 0
+          }
+        },
+        "5": {
+          "0": {
+            "samples": 38,
+            "meanAlive": 25.842,
+            "meanRemainingHp": 9348,
+            "spawned": 71,
+            "meanSpawnRatio": 1.054,
+            "meanOrdinaryHp": 331.726,
+            "killed": 62,
+            "meanKillProgress": 0.493,
+            "entryKillRatio": 0
+          },
+          "1": {
+            "samples": 39,
+            "meanAlive": 32.821,
+            "meanRemainingHp": 12153,
+            "spawned": 72,
+            "meanSpawnRatio": 1.187,
+            "meanOrdinaryHp": 377.079,
+            "killed": 68,
+            "meanKillProgress": 0.506,
+            "entryKillRatio": 0.015
+          },
+          "2": {
+            "samples": 44,
+            "meanAlive": 34.159,
+            "meanRemainingHp": 13914,
+            "spawned": 70,
+            "meanSpawnRatio": 1.313,
+            "meanOrdinaryHp": 415.066,
+            "killed": 70,
+            "meanKillProgress": 0.558,
+            "entryKillRatio": 0
+          }
+        },
+        "6": {
+          "0": {
+            "samples": 27,
+            "meanAlive": 45,
+            "meanRemainingHp": 15677,
+            "spawned": 55,
+            "meanSpawnRatio": 1.009,
+            "meanOrdinaryHp": 407.612,
+            "killed": 26,
+            "meanKillProgress": 0.729,
+            "entryKillRatio": 0
+          }
+        }
+      }
+    },
+    {
+      "id": 21,
+      "scenario": "E03开局群攻入口半图",
+      "seed": 1549107828,
+      "roster": [
+        "fan",
+        "spark",
+        "mint",
+        "frost"
+      ],
+      "result": "lose",
+      "wave": 7,
+      "realSeconds": 406,
+      "lives": 0,
+      "spawned": 1740,
+      "killed": 1688,
+      "peakEnemies": 46,
+      "peakElites": 7,
+      "carryovers": 3,
+      "peakKillsPerSecond": 9,
+      "minBodyClearance": 3,
+      "towers": 10,
+      "spots": 22,
+      "occupancy": 0.455,
+      "upgraded": 9,
+      "maxLevel": 8,
+      "coins": 1,
+      "picks": 5,
+      "tech": [
+        "E03",
+        "G05",
+        "E01",
+        "F01",
+        "G04"
+      ],
+      "killsByPhase": {
+        "1": {
+          "count": 270,
+          "meanProgress": 0.086,
+          "entryKillRatio": 1
+        },
+        "2": {
+          "count": 277,
+          "meanProgress": 0.097,
+          "entryKillRatio": 1
+        },
+        "3": {
+          "count": 284,
+          "meanProgress": 0.195,
+          "entryKillRatio": 0.613
+        },
+        "4": {
+          "count": 260,
+          "meanProgress": 0.305,
+          "entryKillRatio": 0.154
+        },
+        "5": {
+          "count": 230,
+          "meanProgress": 0.366,
+          "entryKillRatio": 0.1
+        },
+        "6": {
+          "count": 258,
+          "meanProgress": 0.505,
+          "entryKillRatio": 0
+        },
+        "7": {
+          "count": 109,
+          "meanProgress": 0.538,
+          "entryKillRatio": 0
+        }
+      },
+      "waves": [
+        {
+          "wave": 1,
+          "seconds": 10,
+          "towers": 6,
+          "lives": 10,
+          "coins": 112
+        },
+        {
+          "wave": 2,
+          "seconds": 71,
+          "towers": 6,
+          "lives": 10,
+          "coins": 140
+        },
+        {
+          "wave": 3,
+          "seconds": 132,
+          "towers": 6,
+          "lives": 10,
+          "coins": 25
+        },
+        {
+          "wave": 4,
+          "seconds": 193,
+          "towers": 7,
+          "lives": 10,
+          "coins": 79
+        },
+        {
+          "wave": 5,
+          "seconds": 254,
+          "towers": 8,
+          "lives": 10,
+          "coins": 86
+        },
+        {
+          "wave": 6,
+          "seconds": 315,
+          "towers": 8,
+          "lives": 10,
+          "coins": 121
+        },
+        {
+          "wave": 7,
+          "seconds": 376,
+          "towers": 9,
+          "lives": 10,
+          "coins": 21
+        }
+      ],
+      "phaseSections": {
+        "1": {
+          "0": {
+            "samples": 38,
+            "meanAlive": 4.368,
+            "meanRemainingHp": 169,
+            "spawned": 90,
+            "meanSpawnRatio": 1.075,
+            "meanOrdinaryHp": 65.856,
+            "killed": 86,
+            "meanKillProgress": 0.085,
+            "entryKillRatio": 1
+          },
+          "1": {
+            "samples": 36,
+            "meanAlive": 4.444,
+            "meanRemainingHp": 211,
+            "spawned": 90,
+            "meanSpawnRatio": 1.227,
+            "meanOrdinaryHp": 75.111,
+            "killed": 90,
+            "meanKillProgress": 0.087,
+            "entryKillRatio": 1
+          },
+          "2": {
+            "samples": 42,
+            "meanAlive": 4,
+            "meanRemainingHp": 203,
+            "spawned": 90,
+            "meanSpawnRatio": 1.379,
+            "meanOrdinaryHp": 84.422,
+            "killed": 94,
+            "meanKillProgress": 0.086,
+            "entryKillRatio": 1
+          }
+        },
+        "2": {
+          "0": {
+            "samples": 36,
+            "meanAlive": 4.611,
+            "meanRemainingHp": 397,
+            "spawned": 93,
+            "meanSpawnRatio": 1.083,
+            "meanOrdinaryHp": 130.312,
+            "killed": 88,
+            "meanKillProgress": 0.081,
+            "entryKillRatio": 1
+          },
+          "1": {
+            "samples": 37,
+            "meanAlive": 5.459,
+            "meanRemainingHp": 549,
+            "spawned": 92,
+            "meanSpawnRatio": 1.251,
+            "meanOrdinaryHp": 152.272,
+            "killed": 89,
+            "meanKillProgress": 0.093,
+            "entryKillRatio": 1
+          },
+          "2": {
+            "samples": 41,
+            "meanAlive": 6.146,
+            "meanRemainingHp": 756,
+            "spawned": 92,
+            "meanSpawnRatio": 1.417,
+            "meanOrdinaryHp": 171.011,
+            "killed": 100,
+            "meanKillProgress": 0.115,
+            "entryKillRatio": 1
+          }
+        },
+        "3": {
+          "0": {
+            "samples": 37,
+            "meanAlive": 6.946,
+            "meanRemainingHp": 795,
+            "spawned": 95,
+            "meanSpawnRatio": 1.069,
+            "meanOrdinaryHp": 153.202,
+            "killed": 87,
+            "meanKillProgress": 0.143,
+            "entryKillRatio": 0.908
+          },
+          "1": {
+            "samples": 36,
+            "meanAlive": 11.361,
+            "meanRemainingHp": 1409,
+            "spawned": 95,
+            "meanSpawnRatio": 1.209,
+            "meanOrdinaryHp": 173.892,
+            "killed": 91,
+            "meanKillProgress": 0.214,
+            "entryKillRatio": 0.582
+          },
+          "2": {
+            "samples": 41,
+            "meanAlive": 11.024,
+            "meanRemainingHp": 1529,
+            "spawned": 94,
+            "meanSpawnRatio": 1.348,
+            "meanOrdinaryHp": 193.366,
+            "killed": 106,
+            "meanKillProgress": 0.221,
+            "entryKillRatio": 0.396
+          }
+        },
+        "4": {
+          "0": {
+            "samples": 37,
+            "meanAlive": 14.081,
+            "meanRemainingHp": 2452,
+            "spawned": 97,
+            "meanSpawnRatio": 1.029,
+            "meanOrdinaryHp": 225.929,
+            "killed": 78,
+            "meanKillProgress": 0.248,
+            "entryKillRatio": 0.359
+          },
+          "1": {
+            "samples": 36,
+            "meanAlive": 21.722,
+            "meanRemainingHp": 3971,
+            "spawned": 88,
+            "meanSpawnRatio": 1.088,
+            "meanOrdinaryHp": 236.61,
+            "killed": 82,
+            "meanKillProgress": 0.315,
+            "entryKillRatio": 0.073
+          },
+          "2": {
+            "samples": 42,
+            "meanAlive": 22.19,
+            "meanRemainingHp": 4264,
+            "spawned": 86,
+            "meanSpawnRatio": 1.147,
+            "meanOrdinaryHp": 249.816,
+            "killed": 100,
+            "meanKillProgress": 0.34,
+            "entryKillRatio": 0.06
+          }
+        },
+        "5": {
+          "0": {
+            "samples": 38,
+            "meanAlive": 17.184,
+            "meanRemainingHp": 5836,
+            "spawned": 88,
+            "meanSpawnRatio": 1.059,
+            "meanOrdinaryHp": 331.224,
+            "killed": 72,
+            "meanKillProgress": 0.285,
+            "entryKillRatio": 0.292
+          },
+          "1": {
+            "samples": 39,
+            "meanAlive": 25.41,
+            "meanRemainingHp": 7950,
+            "spawned": 76,
+            "meanSpawnRatio": 1.187,
+            "meanOrdinaryHp": 374.851,
+            "killed": 77,
+            "meanKillProgress": 0.39,
+            "entryKillRatio": 0.013
+          },
+          "2": {
+            "samples": 44,
+            "meanAlive": 27.159,
+            "meanRemainingHp": 9170,
+            "spawned": 74,
+            "meanSpawnRatio": 1.311,
+            "meanOrdinaryHp": 422.923,
+            "killed": 81,
+            "meanKillProgress": 0.416,
+            "entryKillRatio": 0.012
+          }
+        },
+        "6": {
+          "0": {
+            "samples": 39,
+            "meanAlive": 27.538,
+            "meanRemainingHp": 9228,
+            "spawned": 91,
+            "meanSpawnRatio": 1.014,
+            "meanOrdinaryHp": 410.262,
+            "killed": 80,
+            "meanKillProgress": 0.456,
+            "entryKillRatio": 0
+          },
+          "1": {
+            "samples": 39,
+            "meanAlive": 31.667,
+            "meanRemainingHp": 12227,
+            "spawned": 84,
+            "meanSpawnRatio": 1.045,
+            "meanOrdinaryHp": 421.662,
+            "killed": 81,
+            "meanKillProgress": 0.514,
+            "entryKillRatio": 0
+          },
+          "2": {
+            "samples": 44,
+            "meanAlive": 32.136,
+            "meanRemainingHp": 12803,
+            "spawned": 85,
+            "meanSpawnRatio": 1.076,
+            "meanOrdinaryHp": 433.838,
+            "killed": 97,
+            "meanKillProgress": 0.537,
+            "entryKillRatio": 0
+          }
+        },
+        "7": {
+          "0": {
+            "samples": 39,
+            "meanAlive": 30.256,
+            "meanRemainingHp": 14181,
+            "spawned": 92,
+            "meanSpawnRatio": 1.013,
+            "meanOrdinaryHp": 466.469,
+            "killed": 70,
+            "meanKillProgress": 0.521,
+            "entryKillRatio": 0
+          },
+          "1": {
+            "samples": 22,
+            "meanAlive": 40.773,
+            "meanRemainingHp": 19124,
+            "spawned": 48,
+            "meanSpawnRatio": 1.035,
+            "meanOrdinaryHp": 492.476,
+            "killed": 39,
+            "meanKillProgress": 0.568,
+            "entryKillRatio": 0
+          }
+        }
+      }
+    },
+    {
+      "id": 21,
+      "scenario": "S08开局群攻全图",
+      "seed": 922480543,
+      "roster": [
+        "fan",
+        "spark",
+        "mint",
+        "frost"
+      ],
+      "result": "lose",
+      "wave": 5,
+      "realSeconds": 274,
+      "lives": 0,
+      "spawned": 1000,
+      "killed": 953,
+      "peakEnemies": 42,
+      "peakElites": 7,
+      "carryovers": 4,
+      "peakKillsPerSecond": 8,
+      "minBodyClearance": 3,
+      "towers": 5,
+      "spots": 22,
+      "occupancy": 0.227,
+      "upgraded": 5,
+      "maxLevel": 4,
+      "coins": 91,
+      "picks": 4,
+      "tech": [
+        "S08",
+        "S02",
+        "S05",
+        "G04"
+      ],
+      "killsByPhase": {
+        "1": {
+          "count": 220,
+          "meanProgress": 0.426,
+          "entryKillRatio": 0.1
+        },
+        "2": {
+          "count": 202,
+          "meanProgress": 0.495,
+          "entryKillRatio": 0
+        },
+        "3": {
+          "count": 241,
+          "meanProgress": 0.519,
+          "entryKillRatio": 0
+        },
+        "4": {
+          "count": 232,
+          "meanProgress": 0.544,
+          "entryKillRatio": 0
+        },
+        "5": {
+          "count": 58,
+          "meanProgress": 0.593,
+          "entryKillRatio": 0
+        }
+      },
+      "waves": [
+        {
+          "wave": 1,
+          "seconds": 10,
+          "towers": 5,
+          "lives": 10,
+          "coins": 15
+        },
+        {
+          "wave": 2,
+          "seconds": 71,
+          "towers": 5,
+          "lives": 10,
+          "coins": 64
+        },
+        {
+          "wave": 3,
+          "seconds": 132,
+          "towers": 5,
+          "lives": 10,
+          "coins": 76
+        },
+        {
+          "wave": 4,
+          "seconds": 193,
+          "towers": 5,
+          "lives": 10,
+          "coins": 120
+        },
+        {
+          "wave": 5,
+          "seconds": 254,
+          "towers": 5,
+          "lives": 3,
+          "coins": 35
+        }
+      ],
+      "phaseSections": {
+        "1": {
+          "0": {
+            "samples": 38,
+            "meanAlive": 20.605,
+            "meanRemainingHp": 906,
+            "spawned": 89,
+            "meanSpawnRatio": 1.075,
+            "meanOrdinaryHp": 65.787,
+            "killed": 64,
+            "meanKillProgress": 0.374,
+            "entryKillRatio": 0.234
+          },
+          "1": {
+            "samples": 36,
+            "meanAlive": 27.639,
+            "meanRemainingHp": 1397,
+            "spawned": 78,
+            "meanSpawnRatio": 1.225,
+            "meanOrdinaryHp": 75.013,
+            "killed": 74,
+            "meanKillProgress": 0.427,
+            "entryKillRatio": 0.081
+          },
+          "2": {
+            "samples": 42,
+            "meanAlive": 29.048,
+            "meanRemainingHp": 1629,
+            "spawned": 74,
+            "meanSpawnRatio": 1.376,
+            "meanOrdinaryHp": 84.378,
+            "killed": 82,
+            "meanKillProgress": 0.465,
+            "entryKillRatio": 0.012
+          }
+        },
+        "2": {
+          "0": {
+            "samples": 36,
+            "meanAlive": 28.194,
+            "meanRemainingHp": 2705,
+            "spawned": 74,
+            "meanSpawnRatio": 1.076,
+            "meanOrdinaryHp": 129.608,
+            "killed": 65,
+            "meanKillProgress": 0.479,
+            "entryKillRatio": 0
+          },
+          "1": {
+            "samples": 37,
+            "meanAlive": 31.568,
+            "meanRemainingHp": 3778,
+            "spawned": 66,
+            "meanSpawnRatio": 1.25,
+            "meanOrdinaryHp": 150.848,
+            "killed": 63,
+            "meanKillProgress": 0.495,
+            "entryKillRatio": 0
+          },
+          "2": {
+            "samples": 41,
+            "meanAlive": 31.951,
+            "meanRemainingHp": 4487,
+            "spawned": 64,
+            "meanSpawnRatio": 1.417,
+            "meanOrdinaryHp": 172.328,
+            "killed": 74,
+            "meanKillProgress": 0.51,
+            "entryKillRatio": 0
+          }
+        },
+        "3": {
+          "0": {
+            "samples": 37,
+            "meanAlive": 31.622,
+            "meanRemainingHp": 4292,
+            "spawned": 84,
+            "meanSpawnRatio": 1.067,
+            "meanOrdinaryHp": 153.5,
+            "killed": 75,
+            "meanKillProgress": 0.508,
+            "entryKillRatio": 0
+          },
+          "1": {
+            "samples": 36,
+            "meanAlive": 33.167,
+            "meanRemainingHp": 5124,
+            "spawned": 79,
+            "meanSpawnRatio": 1.209,
+            "meanOrdinaryHp": 171.623,
+            "killed": 78,
+            "meanKillProgress": 0.524,
+            "entryKillRatio": 0
+          },
+          "2": {
+            "samples": 41,
+            "meanAlive": 32.415,
+            "meanRemainingHp": 5449,
+            "spawned": 79,
+            "meanSpawnRatio": 1.347,
+            "meanOrdinaryHp": 193.739,
+            "killed": 88,
+            "meanKillProgress": 0.525,
+            "entryKillRatio": 0
+          }
+        },
+        "4": {
+          "0": {
+            "samples": 37,
+            "meanAlive": 30.973,
+            "meanRemainingHp": 5745,
+            "spawned": 86,
+            "meanSpawnRatio": 1.028,
+            "meanOrdinaryHp": 223.789,
+            "killed": 75,
+            "meanKillProgress": 0.524,
+            "entryKillRatio": 0
+          },
+          "1": {
+            "samples": 36,
+            "meanAlive": 35.417,
+            "meanRemainingHp": 6937,
+            "spawned": 79,
+            "meanSpawnRatio": 1.088,
+            "meanOrdinaryHp": 237.261,
+            "killed": 77,
+            "meanKillProgress": 0.545,
+            "entryKillRatio": 0
+          },
+          "2": {
+            "samples": 42,
+            "meanAlive": 36.81,
+            "meanRemainingHp": 7556,
+            "spawned": 75,
+            "meanSpawnRatio": 1.146,
+            "meanOrdinaryHp": 253.138,
+            "killed": 80,
+            "meanKillProgress": 0.561,
+            "entryKillRatio": 0
+          }
+        },
+        "5": {
+          "0": {
+            "samples": 38,
+            "meanAlive": 32.711,
+            "meanRemainingHp": 10436,
+            "spawned": 71,
+            "meanSpawnRatio": 1.054,
+            "meanOrdinaryHp": 331.71,
+            "killed": 58,
+            "meanKillProgress": 0.593,
+            "entryKillRatio": 0
+          },
+          "1": {
+            "samples": 2,
+            "meanAlive": 37,
+            "meanRemainingHp": 12547,
+            "spawned": 2,
+            "meanSpawnRatio": 1.127,
+            "meanOrdinaryHp": 262,
+            "killed": 0,
+            "meanKillProgress": null,
+            "entryKillRatio": null
+          }
+        }
+      }
+    },
+    {
+      "id": 21,
+      "scenario": "S08开局群攻入口半图",
+      "seed": 922480543,
+      "roster": [
+        "fan",
+        "spark",
+        "mint",
+        "frost"
+      ],
+      "result": "lose",
+      "wave": 5,
+      "realSeconds": 285,
+      "lives": 0,
+      "spawned": 1258,
+      "killed": 1227,
+      "peakEnemies": 30,
+      "peakElites": 6,
+      "carryovers": 2,
+      "peakKillsPerSecond": 11,
+      "minBodyClearance": 3,
+      "towers": 8,
+      "spots": 22,
+      "occupancy": 0.364,
+      "upgraded": 5,
+      "maxLevel": 3,
+      "coins": 7,
+      "picks": 4,
+      "tech": [
+        "S08",
+        "S02",
+        "S05",
+        "G04"
+      ],
+      "killsByPhase": {
+        "1": {
+          "count": 270,
+          "meanProgress": 0.079,
+          "entryKillRatio": 1
+        },
+        "2": {
+          "count": 269,
+          "meanProgress": 0.185,
+          "entryKillRatio": 0.714
+        },
+        "3": {
+          "count": 292,
+          "meanProgress": 0.135,
+          "entryKillRatio": 0.955
+        },
+        "4": {
+          "count": 282,
+          "meanProgress": 0.201,
+          "entryKillRatio": 0.61
+        },
+        "5": {
+          "count": 114,
+          "meanProgress": 0.276,
+          "entryKillRatio": 0.272
+        }
+      },
+      "waves": [
+        {
+          "wave": 1,
+          "seconds": 10,
+          "towers": 5,
+          "lives": 10,
+          "coins": 95
+        },
+        {
+          "wave": 2,
+          "seconds": 71,
+          "towers": 5,
+          "lives": 10,
+          "coins": 64
+        },
+        {
+          "wave": 3,
+          "seconds": 132,
+          "towers": 6,
+          "lives": 10,
+          "coins": 71
+        },
+        {
+          "wave": 4,
+          "seconds": 193,
+          "towers": 8,
+          "lives": 10,
+          "coins": 99
+        },
+        {
+          "wave": 5,
+          "seconds": 254,
+          "towers": 8,
+          "lives": 6,
+          "coins": 37
+        }
+      ],
+      "phaseSections": {
+        "1": {
+          "0": {
+            "samples": 38,
+            "meanAlive": 3.868,
+            "meanRemainingHp": 161,
+            "spawned": 90,
+            "meanSpawnRatio": 1.075,
+            "meanOrdinaryHp": 65.856,
+            "killed": 87,
+            "meanKillProgress": 0.075,
+            "entryKillRatio": 1
+          },
+          "1": {
+            "samples": 36,
+            "meanAlive": 4.028,
+            "meanRemainingHp": 180,
+            "spawned": 90,
+            "meanSpawnRatio": 1.227,
+            "meanOrdinaryHp": 75.111,
+            "killed": 89,
+            "meanKillProgress": 0.078,
+            "entryKillRatio": 1
+          },
+          "2": {
+            "samples": 42,
+            "meanAlive": 3.81,
+            "meanRemainingHp": 198,
+            "spawned": 90,
+            "meanSpawnRatio": 1.379,
+            "meanOrdinaryHp": 84.422,
+            "killed": 94,
+            "meanKillProgress": 0.082,
+            "entryKillRatio": 1
+          }
+        },
+        "2": {
+          "0": {
+            "samples": 36,
+            "meanAlive": 7.167,
+            "meanRemainingHp": 680,
+            "spawned": 93,
+            "meanSpawnRatio": 1.083,
+            "meanOrdinaryHp": 130.312,
+            "killed": 83,
+            "meanKillProgress": 0.117,
+            "entryKillRatio": 0.988
+          },
+          "1": {
+            "samples": 37,
+            "meanAlive": 10.757,
+            "meanRemainingHp": 1136,
+            "spawned": 92,
+            "meanSpawnRatio": 1.251,
+            "meanOrdinaryHp": 152.283,
+            "killed": 87,
+            "meanKillProgress": 0.165,
+            "entryKillRatio": 0.828
+          },
+          "2": {
+            "samples": 41,
+            "meanAlive": 16.366,
+            "meanRemainingHp": 1748,
+            "spawned": 92,
+            "meanSpawnRatio": 1.417,
+            "meanOrdinaryHp": 171.022,
+            "killed": 99,
+            "meanKillProgress": 0.26,
+            "entryKillRatio": 0.384
+          }
+        },
+        "3": {
+          "0": {
+            "samples": 37,
+            "meanAlive": 7.514,
+            "meanRemainingHp": 859,
+            "spawned": 95,
+            "meanSpawnRatio": 1.069,
+            "meanOrdinaryHp": 153.202,
+            "killed": 96,
+            "meanKillProgress": 0.145,
+            "entryKillRatio": 0.906
+          },
+          "1": {
+            "samples": 36,
+            "meanAlive": 6.833,
+            "meanRemainingHp": 904,
+            "spawned": 95,
+            "meanSpawnRatio": 1.209,
+            "meanOrdinaryHp": 173.892,
+            "killed": 94,
+            "meanKillProgress": 0.123,
+            "entryKillRatio": 0.989
+          },
+          "2": {
+            "samples": 41,
+            "meanAlive": 7.22,
+            "meanRemainingHp": 1088,
+            "spawned": 94,
+            "meanSpawnRatio": 1.348,
+            "meanOrdinaryHp": 193.366,
+            "killed": 102,
+            "meanKillProgress": 0.137,
+            "entryKillRatio": 0.971
+          }
+        },
+        "4": {
+          "0": {
+            "samples": 37,
+            "meanAlive": 10.73,
+            "meanRemainingHp": 1924,
+            "spawned": 97,
+            "meanSpawnRatio": 1.029,
+            "meanOrdinaryHp": 225.965,
+            "killed": 83,
+            "meanKillProgress": 0.179,
+            "entryKillRatio": 0.675
+          },
+          "1": {
+            "samples": 36,
+            "meanAlive": 13.75,
+            "meanRemainingHp": 2608,
+            "spawned": 95,
+            "meanSpawnRatio": 1.088,
+            "meanOrdinaryHp": 236.723,
+            "killed": 93,
+            "meanKillProgress": 0.205,
+            "entryKillRatio": 0.591
+          },
+          "2": {
+            "samples": 42,
+            "meanAlive": 13.643,
+            "meanRemainingHp": 2565,
+            "spawned": 96,
+            "meanSpawnRatio": 1.147,
+            "meanOrdinaryHp": 252.202,
+            "killed": 106,
+            "meanKillProgress": 0.214,
+            "entryKillRatio": 0.575
+          }
+        },
+        "5": {
+          "0": {
+            "samples": 38,
+            "meanAlive": 15.026,
+            "meanRemainingHp": 5382,
+            "spawned": 90,
+            "meanSpawnRatio": 1.061,
+            "meanOrdinaryHp": 333.205,
+            "killed": 70,
+            "meanKillProgress": 0.23,
+            "entryKillRatio": 0.4
+          },
+          "1": {
+            "samples": 24,
+            "meanAlive": 26.708,
+            "meanRemainingHp": 8489,
+            "spawned": 49,
+            "meanSpawnRatio": 1.161,
+            "meanOrdinaryHp": 373,
+            "killed": 44,
+            "meanKillProgress": 0.35,
+            "entryKillRatio": 0.068
+          }
+        }
+      }
+    }
+  ]
+}

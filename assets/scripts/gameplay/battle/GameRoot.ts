@@ -138,6 +138,8 @@ export class GameRoot extends Component {
   private coins = 0;
   private lives = 0;
   private wave: number = 0;
+  private ordinarySpawned = 0;
+  private challengeSupplyTimer = 0;
   private inWave = false;
   private paused = false;
   private gameSpeed: GameSpeed = 1;
@@ -362,12 +364,17 @@ export class GameRoot extends Component {
     // 准备时钟独立于倍速，后台/暂停/广告期间不推进；战斗仍用稳定子步长。
     ShopService.shared.update();
     const realDelta = Math.max(0, dt);
+    // 波末先让战场收尾，再呈现补给；真实秒不受倍速影响，暂停和广告不消耗等待。
+    if(this.challengeSupplyTimer>0&&this.screen==='playing'&&!this.paused&&!this.gmPanelOpen&&!this.adRequesting&&!this.challengeBlocked()){
+      this.challengeSupplyTimer=Math.max(0,this.challengeSupplyTimer-Math.min(realDelta,.1));
+      if(this.challengeSupplyTimer===0)this.challenge?.offer(this.challengePort());
+    }
     if (this.screen === "playing" && !this.paused && !this.gmPanelOpen && !this.adRequesting && !this.challengeBlocked()) {
       this.guidePulse += realDelta;
       this.updateFeedback(realDelta);
     }
     if (!this.paused && !this.gmPanelOpen && !this.adRequesting && !this.challengeBlocked() && this.screen === "playing"
-      && !this.inWave && (this.challenge || this.enemies.length === 0) && this.wave < this.level.waves.length) {
+      && !this.inWave && this.challengeSupplyTimer===0 && (this.challenge || this.enemies.length === 0) && this.wave < this.level.waves.length) {
       this.nextWaveTimer = Math.max(0, this.nextWaveTimer - realDelta);
       if (this.nextWaveTimer <= 0) this.startWave();
     }
@@ -1041,7 +1048,7 @@ export class GameRoot extends Component {
     this.battleRevision++; this.adFeedback = "";
     this.menu?.hide();
     const base=getLevelConfig(levelId);this.level={...base,availableTowers:[...(selection??base.availableTowers)]}; this.currentLevelId = this.level.id;
-    this.coins = this.level.initialCoins; this.lives = this.level.initialLives; this.wave = 0;
+    this.coins = this.level.initialCoins; this.lives = this.level.initialLives; this.wave = 0;this.ordinarySpawned=0;this.challengeSupplyTimer=0;
     this.inWave = false; this.paused = false; this.screen = "playing"; this.revived = false;
     this.evolutionTower = null; this.newEvolutionKeys = []; this.selectedTower = null; this.selectedSpot = null; this.selectedObstacle = null; this.queue = []; this.spawnTimer = 0;
     this.spawnInterval = 0.78; this.nextWaveTimer = globalNumber("firstWaveDelay"); this.frozenTime = 0; this.adRequesting = false;
@@ -1187,8 +1194,9 @@ export class GameRoot extends Component {
       } else {
         // 下一波保留配置的真实秒数，玩家可点击气泡提前开波。
         this.nextWaveTimer = this.challenge ? numeric(this.challenge.rule,"nextDelay") : globalNumber("nextWaveDelay");this.previewOpen=!this.challenge;
-        this.challenge?.offer(this.challengePort());
+        if(this.challenge)this.challengeSupplyTimer=numeric(this.challenge.rule,'supplyDelay');
         this.showToast(text("ui.GameRoot.039", bonus));
+        if(this.challenge)this.toastTime=this.challengeSupplyTimer*this.gameSpeed;
       }
     }
   }
@@ -1200,22 +1208,26 @@ export class GameRoot extends Component {
 
   private startWave(): void {
     this.previewOpen=false;
-    if (this.challengeBlocked() || this.inWave || this.wave >= this.level.waves.length) return;
-    const config = this.level.waves[this.wave]; this.wave += 1;
+    if (this.challengeBlocked() || this.challengeSupplyTimer>0 || this.inWave || this.wave >= this.level.waves.length) return;
+    const config = this.level.waves[this.wave]; this.wave += 1;this.ordinarySpawned=0;
     this.queue = [...config.enemies]; this.spawnInterval = config.spawnInterval;
     this.challenge?.waveStart(this.challengePort(),this.queue);
     this.spawnTimer = 0; this.inWave = true; this.showToast(config.announcement ?? text("ui.GameRoot.040", this.wave));
     this.audio.play("wave", 0.58);
   }
 
+  /** 普通波是有限队列，按普通怪成功入场序号递增，首领不占序号。 */
+  private ordinarySpawnHealthRatio():number{const wave=this.level.waves[Math.max(0,this.wave-1)],count=wave.enemies.filter(k=>!ENEMY_CONFIG[k].boss).length,progress=Math.min(1,this.ordinarySpawned/Math.max(1,count-1));return 1+wave.spawnHealthGrowth*Math.pow(progress,wave.spawnGrowthPower);}
+
   private spawnEnemy(kind: EnemyKind): boolean {
     // 只记录正式遭遇；GM和地图评审不写图鉴存档。
     if (this.level.mode === "adventure" && !this.gmSessionActive && !this.mapReview && this.collection?.encounter(kind)) this.newEncounterKinds.push(kind);
     const base = ENEMY_CONFIG[kind];
     const wave=this.level.waves[Math.max(0,this.wave-1)];
-    const scale=this.challenge?(base.boss?wave.bossHealthScale:wave.healthScale):this.level.enemyHealthScale*(wave?.healthScale??1)*(1+(this.wave-1)*globalNumber("waveHealthGrowth"));
     const rule=this.challenge?.rule,elite=Boolean(this.crowdFlow&&rule&&!base.boss&&this.wave>=numeric(rule,'eliteStartWave')&&(this.challenge!.spawned+1)%numeric(rule,'eliteEvery')===0);
-    const phaseScale=this.challenge&&!base.boss?this.challenge.spawnHealthRatio():1;
+    // 普通怪承担持续压力，精英和首领独立配平，避免提高小怪后把精英一起堆成血墙。
+    const scale=this.challenge?(base.boss?wave.bossHealthScale:elite?wave.eliteBaseHealthScale:wave.healthScale):this.level.enemyHealthScale*(wave?.healthScale??1)*(1+(this.wave-1)*globalNumber("waveHealthGrowth"));
+    const phaseScale=base.boss?1:this.challenge?this.challenge.spawnHealthRatio(Math.max(1,this.wave)):this.mapReview?1:this.ordinarySpawnHealthRatio();
     const eliteScale=elite?numeric(rule!,'eliteScale'):1,hp=Math.round(base.hp*scale*phaseScale*(elite?numeric(rule!,'eliteHealthScale')*(1+Math.max(0,this.wave-numeric(rule!,'eliteStartWave'))*numeric(rule!,'eliteHealthGrowth')):1));
     const start = this.level.pathPoints[0];
     const speed=(this.challenge&&base.boss?base.speed*numeric(this.challenge.rule,'bossSpeedRatio'):base.speed)*(elite?numeric(rule!,'eliteSpeedRatio'):1)*(this.crowdFlow&&!base.boss?1+Math.max(0,this.wave-1)*numeric(rule!,'crowdSpeedGrowth'):1);
@@ -1223,7 +1235,7 @@ export class GameRoot extends Component {
     if(rule&&base.boss)enemy.damage=numeric(rule,'bossLeakDamage');
     if(this.crowdFlow){enemy.elite=elite;enemy.artScale=base.crowdScale*eliteScale;enemy.crowdRadius=base.crowdRadius*eliteScale;enemy.crowdLift=base.crowdLift*eliteScale;enemy.radius=enemy.crowdRadius;if(!this.crowdFlow.admit(enemy,this.enemies,Boolean(base.boss)))return false;}
     if(base.boss&&!this.enemies.some(e=>e.kind===kind))this.bossCue={kind,defeated:false,time:globalNumber("bossEntranceSeconds")};
-    this.enemies.push(enemy);this.challenge?.spawnedEnemy(enemy);return true;
+    this.enemies.push(enemy);if(!this.challenge&&!base.boss&&!this.mapReview)this.ordinarySpawned++;this.challenge?.spawnedEnemy(enemy);return true;
   }
 
   /** 每次子弹发射重新索敌，连发不会向已死亡目标补伤害。 */

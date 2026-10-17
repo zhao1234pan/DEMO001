@@ -1,0 +1,24 @@
+{
+  "date": "2026-10-17",
+  "url": "http://localhost:4344/?v=1.17.0",
+  "browser": "ChatGPT in-app browser",
+  "manual": {
+    "roster": [
+      "frost",
+      "spark",
+      "mint",
+      "fan"
+    ],
+    "initialPerk": "F05",
+    "result": "wave2 loss, 4 towers, defeated263",
+    "seen": "普通怪连续绕过首个转角、两列保持间距，初始补给淡入可见；曾在波末误接建造点击，随后增加淡入输入保护"
+  },
+  "screenshots": [
+    "browser-wave1-turn.png",
+    "browser-manual-wave2-loss.png",
+    "browser-final-supply-guard.png"
+  ],
+  "finalGuard": "最终包实测出战后立即点选择区域仍保留补给，淡入完成后再点可正常选卡；真实ChallengeView.press回归通过；尚无最终保护后全局人工通关",
+  "lateGameplay": "真实GameRoot逻辑",
+  "nativeLateOrPhoneFps": false
+}

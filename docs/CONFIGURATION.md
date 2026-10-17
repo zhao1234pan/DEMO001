@@ -243,6 +243,12 @@ ShopRule增加offlineIncomeRatio、offlineBudgetPurchases、offlineCompleteBudge
 - ChallengeTopic.thumbnailKey显式引用VisualSkin，沿用原levelId／unlockAfter链。UiLayout、VisualSkin管理新卡片、九宫、字色及命中框；货架弹窗列数、行距和收缩量从布局表推导。
 - 本轮保留的代码常量例外属于界面技术协议：节点绑定路径、状态皮肤逻辑键、前三领奖槽的显示顺序、两位数关卡编号，以及居中／九宫使用的几何二分。它们不承载可调业务数值；实际资源路径、尺寸、颜色、边距、文字、评分权重和解锁条件仍由原始表管理。
 
+## 1.17.0 普通递进与挑战连续压力
+
+- Wave新增spawnHealthGrowth（非负）、spawnGrowthPower（正数）、eliteBaseHealthScale（正数）。前两项仅普通模式按非首领出生序号使用，挑战显式0／1；最后一项为挑战精英独立基础。原始XLSX、schema、客户端与生成校验器、CSV／manifest同次更新。
+- ChallengeRule新增phaseFollowNextWave（0／1协议开关）、supplyDelay和supplyFadeDuration（正数真实秒）。开关1时按相邻Wave基础插值，校验基础HP不能逐波下降；phaseHealthGrowth作为最终波末段增幅，开关0沿用旧独立增幅。nextDelay管理选卡之后的准备；waveReward按专题配平，不关联经营金币。
+- 波序号、归一化0／1、单怪分母保护、关卡预览中不参与战斗的中性倍率属于算法／技术常量。补给复用PNG预制体，用UIOpacity和引擎Tween改变透明度，无新Canvas／Graphics或资源格式例外。测试分组、入口20%统计及历史表补齐为隔离验证协议。详见[设计与分析](BATTLE_PRESSURE_AND_SUPPLY.md)。
+
 ## 1.16.0 波内出生血量
 
 - ChallengeRule新增phaseHealthGrowth（非负浮点，0显式禁用）与phaseGrowthPower（正浮点），schema、客户端和生成导表校验器同一协议；原始XLSX与Global版本→CSV／manifest。出生倍率为1+growth×clamp(waveElapsed/waveDuration,0,1)^power，0／1边界为归一化数学常量，不是硬编码业务参数。
