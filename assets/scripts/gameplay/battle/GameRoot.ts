@@ -54,13 +54,10 @@ const PROP_BUTTONS = [
 const GM_BUTTON = { x: 12, y: H - 60, width: 50, height: 48 };
 const GM_PROGRESS_BUTTON = { x: 115, y: 534, width: 160, height: 48 };
 const GM_LEVEL_BUTTONS: Array<{levelId:number;x:number;y:number;width:number;height:number}> = [];
-function configureGmButtons():void { GM_LEVEL_BUTTONS.splice(0,GM_LEVEL_BUTTONS.length,...Array.from({ length: GAME_CONFIG.maxLevels }, (_, index) => ({
-  levelId: index + 1,
-  x: 43 + (index % 4) * 79,
-  y: 204 + Math.floor(index / 4) * 60,
-  width: 68,
-  height: 46,
-}))); }
+function configureGmButtons():void { GM_LEVEL_BUTTONS.splice(0,GM_LEVEL_BUTTONS.length,...Array.from({ length: GAME_CONFIG.maxLevels }, (_, index) => {
+  const row=rows("UiLayout").find(r=>r.prefab==="gm"&&r.node==="Level"+(index+1))!;
+  return {levelId:index+1,x:W/2+numeric(row,"x")-numeric(row,"width")/2,y:H/2-numeric(row,"y")-numeric(row,"height")/2,width:numeric(row,"width"),height:numeric(row,"height")};
+})); }
 
 interface TimedStrength { value:number; remaining:number; }
 /** 同类效果不叠加；按各自到期时刻分段结算，弱效果不能续上强效果。 */
@@ -801,7 +798,11 @@ export class GameRoot extends Component {
   }
 
   private readUnlockedLevel(): number {
-    return getLevelConfig(Math.max(1, Math.min(GAME_CONFIG.maxLevels, PlatformService.getNumber("night_store_unlocked_level", 1)))).id;
+    const saved=PlatformService.getNumber("night_store_unlocked_level",1),cleared=PlatformService.getNumber("night_store_best_level",0);
+    // 旧版终关的解锁值被旧上限截断；扩关后按真实通关记录接续下一关。
+    const unlocked=Math.floor(Math.max(1,Math.min(GAME_CONFIG.maxLevels,Math.max(saved,cleared+1))));
+    if(unlocked>saved)PlatformService.setMaximumInteger("night_store_unlocked_level",unlocked,GAME_CONFIG.maxLevels);
+    return getLevelConfig(unlocked).id;
   }
 
   private previewOpen = false;
@@ -1222,8 +1223,6 @@ export class GameRoot extends Component {
   private ordinarySpawnHealthRatio():number{const wave=this.level.waves[Math.max(0,this.wave-1)],count=wave.enemies.filter(k=>!ENEMY_CONFIG[k].boss).length,progress=Math.min(1,this.ordinarySpawned/Math.max(1,count-1));return 1+wave.spawnHealthGrowth*Math.pow(progress,wave.spawnGrowthPower);}
 
   private spawnEnemy(kind: EnemyKind): boolean {
-    // 只记录正式遭遇；GM和地图评审不写图鉴存档。
-    if (this.level.mode === "adventure" && !this.gmSessionActive && !this.mapReview && this.collection?.encounter(kind)) this.newEncounterKinds.push(kind);
     const base = ENEMY_CONFIG[kind];
     const wave=this.level.waves[Math.max(0,this.wave-1)];
     const rule=this.challenge?.rule,elite=Boolean(this.crowdFlow&&rule&&!base.boss&&this.wave>=numeric(rule,'eliteStartWave')&&(this.challenge!.spawned+1)%numeric(rule,'eliteEvery')===0);
@@ -1238,7 +1237,10 @@ export class GameRoot extends Component {
     if(rule&&base.boss)enemy.damage=numeric(rule,'bossLeakDamage');
     if(this.crowdFlow){enemy.elite=elite;enemy.artScale=base.crowdScale*eliteScale;enemy.crowdRadius=base.crowdRadius*eliteScale;enemy.crowdLift=base.crowdLift*eliteScale;enemy.radius=enemy.crowdRadius;if(!this.crowdFlow.admit(enemy,this.enemies,Boolean(base.boss)))return false;}
     if(base.boss&&!this.enemies.some(e=>e.kind===kind))this.bossCue={kind,defeated:false,time:globalNumber("bossEntranceSeconds")};
-    this.enemies.push(enemy);if(!this.challenge&&!base.boss&&!this.mapReview)this.ordinarySpawned++;this.challenge?.spawnedEnemy(enemy);return true;
+    this.enemies.push(enemy);
+    // 冒险与挑战成功入场都计入正式遭遇；未入场、GM和地图评审不写图鉴。
+    if(!this.gmSessionActive&&!this.mapReview&&this.collection?.encounter(kind))this.newEncounterKinds.push(kind);
+    if(!this.challenge&&!base.boss&&!this.mapReview)this.ordinarySpawned++;this.challenge?.spawnedEnemy(enemy);return true;
   }
 
   /** 每次子弹发射重新索敌，连发不会向已死亡目标补伤害。 */

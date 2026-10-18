@@ -1,0 +1,181 @@
+{
+  "version": "1.21.0",
+  "baseline": "971deb60103e840f7d627b6ad6d7ae0b5982780b",
+  "checks": [
+    "Level：原记录除挑战内部编号引用平移外完全保留",
+    "Wave：原记录除挑战内部编号引用平移外完全保留",
+    "WaveGroup：原记录除挑战内部编号引用平移外完全保留",
+    "Enemy：原记录除挑战内部编号引用平移外完全保留",
+    "ChallengeRule：原记录除挑战内部编号引用平移外完全保留",
+    "ChallengeTopic：原记录除挑战内部编号引用平移外完全保留"
+  ],
+  "levels": [
+    {
+      "id": 21,
+      "waves": 20,
+      "initialCoins": 402,
+      "baseHealthScale": 2.91233,
+      "ordinaryAverageStartHp": 220.54,
+      "ordinaryAverageFinalHp": 1690.54,
+      "wave4Through20Monotonic": true
+    },
+    {
+      "id": 22,
+      "waves": 20,
+      "initialCoins": 410,
+      "baseHealthScale": 2.99715,
+      "ordinaryAverageStartHp": 226.97,
+      "ordinaryAverageFinalHp": 1739.78,
+      "wave4Through20Monotonic": true
+    },
+    {
+      "id": 23,
+      "waves": 20,
+      "initialCoins": 418,
+      "baseHealthScale": 3.08198,
+      "ordinaryAverageStartHp": 233.39,
+      "ordinaryAverageFinalHp": 1789.02,
+      "wave4Through20Monotonic": true
+    },
+    {
+      "id": 24,
+      "waves": 20,
+      "initialCoins": 426,
+      "baseHealthScale": 3.1668,
+      "ordinaryAverageStartHp": 239.81,
+      "ordinaryAverageFinalHp": 1838.26,
+      "wave4Through20Monotonic": true
+    },
+    {
+      "id": 25,
+      "waves": 20,
+      "initialCoins": 434,
+      "baseHealthScale": 3.25162,
+      "ordinaryAverageStartHp": 246.24,
+      "ordinaryAverageFinalHp": 1887.49,
+      "wave4Through20Monotonic": true
+    },
+    {
+      "id": 26,
+      "waves": 20,
+      "initialCoins": 442,
+      "baseHealthScale": 3.33645,
+      "ordinaryAverageStartHp": 252.66,
+      "ordinaryAverageFinalHp": 1936.74,
+      "wave4Through20Monotonic": true
+    },
+    {
+      "id": 27,
+      "waves": 20,
+      "initialCoins": 450,
+      "baseHealthScale": 3.42128,
+      "ordinaryAverageStartHp": 259.08,
+      "ordinaryAverageFinalHp": 1985.98,
+      "wave4Through20Monotonic": true
+    },
+    {
+      "id": 28,
+      "waves": 20,
+      "initialCoins": 458,
+      "baseHealthScale": 3.5061,
+      "ordinaryAverageStartHp": 265.51,
+      "ordinaryAverageFinalHp": 2035.22,
+      "wave4Through20Monotonic": true
+    },
+    {
+      "id": 29,
+      "waves": 20,
+      "initialCoins": 466,
+      "baseHealthScale": 3.59093,
+      "ordinaryAverageStartHp": 271.93,
+      "ordinaryAverageFinalHp": 2084.46,
+      "wave4Through20Monotonic": true
+    },
+    {
+      "id": 30,
+      "waves": 20,
+      "initialCoins": 474,
+      "baseHealthScale": 3.67575,
+      "ordinaryAverageStartHp": 278.35,
+      "ordinaryAverageFinalHp": 2133.7,
+      "wave4Through20Monotonic": true
+    }
+  ],
+  "topics": [
+    {
+      "key": "opening",
+      "levelId": 31,
+      "waves": 30,
+      "supplyLimit": 20,
+      "durationGameSeconds": 4200
+    },
+    {
+      "key": "express",
+      "levelId": 32,
+      "waves": 30,
+      "supplyLimit": 20,
+      "durationGameSeconds": 4200
+    },
+    {
+      "key": "warehouse",
+      "levelId": 33,
+      "waves": 30,
+      "supplyLimit": 20,
+      "durationGameSeconds": 4200
+    },
+    {
+      "key": "coins",
+      "levelId": 34,
+      "waves": 30,
+      "supplyLimit": 20,
+      "durationGameSeconds": 4200
+    },
+    {
+      "key": "mini",
+      "levelId": 35,
+      "waves": 30,
+      "supplyLimit": 20,
+      "durationGameSeconds": 4200
+    },
+    {
+      "key": "midnight",
+      "levelId": 36,
+      "waves": 30,
+      "supplyLimit": 20,
+      "durationGameSeconds": 4200
+    },
+    {
+      "key": "freezer",
+      "levelId": 37,
+      "waves": 30,
+      "supplyLimit": 20,
+      "durationGameSeconds": 4200
+    },
+    {
+      "key": "gifts",
+      "levelId": 38,
+      "waves": 30,
+      "supplyLimit": 20,
+      "durationGameSeconds": 4200
+    },
+    {
+      "key": "storm",
+      "levelId": 39,
+      "waves": 30,
+      "supplyLimit": 20,
+      "durationGameSeconds": 4200
+    },
+    {
+      "key": "dawn",
+      "levelId": 40,
+      "waves": 30,
+      "supplyLimit": 20,
+      "durationGameSeconds": 4200
+    }
+  ],
+  "enemyCounts": {
+    "ordinary": 24,
+    "bosses": 6
+  },
+  "fullPlaythroughRun": false
+}

@@ -23,3 +23,9 @@ id,key,hp,speed,reward,radius,color,damage,name,boss,clearRatio,legacyUnlock,spr
 22,blue,98,35,17,15,#87b873,1,enemy.blue.name,,1,0,63,1,0.55,15,12
 23,ricebox,215,23,25,19,#8a705c,2,enemy.ricebox.name,,0.45,0,68,1,0.55,15,12
 24,deliverybag,190,25,22,19,#8a705c,2,enemy.deliverybag.name,,0.45,0,68,1,0.55,15,12
+25,mochi,106,36,18,15,#87b873,1,enemy.mochi.name,,1,0,63,1,0.55,15,12
+26,popcorn,60,65,14,13,#e5aa54,1,enemy.popcorn.name,,1,0,48,1,0.55,15,12
+27,noodlecup,235,24,27,19,#8a705c,2,enemy.noodlecup.name,,0.45,0,68,1,0.55,15,12
+28,frostdonut,164,30,22,16,#8fa9a4,1,enemy.frostdonut.name,,1,0,67,1,0.55,15,12
+29,freezer,2100,22,175,24,#ca845b,9,enemy.freezer.name,mini,0.18,0,88,1.5,0.6,24,20.5
+30,vending,2800,21,200,27,#877494,9,enemy.vending.name,major,0.18,0,88,1.5,0.6,24,21

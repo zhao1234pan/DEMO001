@@ -46,7 +46,7 @@ export interface LevelConfig {
 export const LEVEL_CONFIGS: LevelConfig[] = [];
 onConfigsReady(() => {
   const order = (field:string) => (a:Record<string,string>,b:Record<string,string>) => numeric(a,field)-numeric(b,field);
-  LEVEL_CONFIGS.splice(0,LEVEL_CONFIGS.length,...rows("Level").sort(order("id")).map(row => {
+  LEVEL_CONFIGS.splice(0,LEVEL_CONFIGS.length,...rows("Level").slice().sort(order("id")).map(row => {
     const map = rows("Map").find(r=>r.id===row.mapId)!;
     return { gridSize:numeric(map,"gridSize"),mode:row.mode as LevelConfig["mode"],id:numeric(row,"id"),title:text(row.title),goal:row.goal?text(row.goal):undefined,theme:map.theme as LevelConfig["theme"],
       initialCoins:numeric(row,"initialCoins"),initialLives:numeric(row,"initialLives"),enemyHealthScale:numeric(row,"enemyHealthScale"),enemySpeedScale:numeric(row,"enemySpeedScale"),availableTowers:rows("LevelLoadout").find(r=>r.levelId===row.id)!.defaultStaff.split("|") as TowerKind[],

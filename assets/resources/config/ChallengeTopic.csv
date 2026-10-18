@@ -1,7 +1,11 @@
 id,key,levelId,order,titleKey,ruleKey,iconKey,startPerks,unlockAfter,thumbnailKey
-1,opening,21,1,topics.opening.title,topics.opening.rule,perk_G05,,,topic_opening
-2,express,22,2,topics.express.title,topics.express.rule,perk_G01,G01,opening,topic_express
-3,warehouse,23,3,topics.warehouse.title,topics.warehouse.rule,perk_X05,X05,express,topic_warehouse
-4,coins,24,4,topics.coins.title,topics.coins.rule,perk_E06,E06,warehouse,topic_coins
-5,mini,25,5,topics.mini.title,topics.mini.rule,perk_F02,F02,coins,topic_mini
-6,midnight,26,6,topics.midnight.title,topics.midnight.rule,perk_F01,F01,mini,topic_midnight
+1,opening,31,1,topics.opening.title,topics.opening.rule,perk_G05,,,topic_opening
+2,express,32,2,topics.express.title,topics.express.rule,perk_G01,G01,opening,topic_express
+3,warehouse,33,3,topics.warehouse.title,topics.warehouse.rule,perk_X05,X05,express,topic_warehouse
+4,coins,34,4,topics.coins.title,topics.coins.rule,perk_E06,E06,warehouse,topic_coins
+5,mini,35,5,topics.mini.title,topics.mini.rule,perk_F02,F02,coins,topic_mini
+6,midnight,36,6,topics.midnight.title,topics.midnight.rule,perk_F01,F01,mini,topic_midnight
+7,freezer,37,7,topics.freezer.title,topics.freezer.rule,perk_G06,G06,midnight,topic_freezer
+8,gifts,38,8,topics.gifts.title,topics.gifts.rule,perk_F03,F03,freezer,topic_gifts
+9,storm,39,9,topics.storm.title,topics.storm.rule,perk_F05,F05,gifts,topic_storm
+10,dawn,40,10,topics.dawn.title,topics.dawn.rule,perk_G02,G02,storm,topic_dawn

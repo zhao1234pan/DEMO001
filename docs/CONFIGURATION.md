@@ -1,5 +1,13 @@
 # XLSX → 客户端 CSV 配置规范
 
+## 1.21.0 扩关与稳定存档键（2026-10-18）
+
+- 先设计[扩关方案](LEVEL_EXPANSION_30_10.md)，修改17张原始表，导出39客户端CSV与manifest。Adventure连续1–30，Challenge31–40；专题解锁顺序仍由ChallengeTopic.key／unlockAfter管理。
+- LevelLoadout新增string字段storageKey，全表唯一且符合night_store_命名协议。原冒险1–20与原挑战六套阵容沿用旧键，新冒险和新专题独立键；运行时只按表读写，不在代码硬编码本次编号迁移映射。
+- 新地图克隆既有路径模板、塔位及障碍表数据，使用现有market／midnight主题；离线烘焙40独立PNG，复用既有meta UUID并给新增文件分配新UUID。LevelConfig对行数组副本排序，避免污染原始表顺序及资源签名。
+- 6张新角色PNG由内置image_gen逐张生成，独立透明画布归一到256×256、脚底留白8像素，源图／提示词／alpha边界／UUID及SHA见source_assets/art/production/level_expansion_20261018/origins.json。ArtFrame、Collection、Enemy、I18与WaveGroup同步，不使用新图集。
+- 新关数值、文案与皮肤引用全部通过原表；代码新增内容仅为存档接续、按稳定键读取、正式入场记录遭遇及取表布局算法。截图夹具中的解锁和胜负数据只用于独立工具，不进入客户端配置。
+
 ## 1.20.0 怪物扩充与经验补给（2026-10-18）
 
 - Enemy新增14记录，ArtFrame／Collection／I18／WaveGroup同步；20冒险Level.enemyHealthScale×1.5，initialCoins保持。十张原表先修改，再导出CSV／manifest，版本1.20.0。角色PNG统一256透明画布与独立SpriteFrame，源图和提示词签名见monster_variety_20261018/origins.json。

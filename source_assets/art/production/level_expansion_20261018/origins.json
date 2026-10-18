@@ -1,0 +1,150 @@
+{
+  "date": "2026-10-18",
+  "method": "内置image_gen逐张生成；按单个角色真实alpha包围框等比归一，256透明画布，脚底统一留白8像素；没有图集猜切",
+  "records": [
+    {
+      "key": "mochi",
+      "prompt": "Use case: stylized-concept. Asset type: one independent transparent PNG enemy sprite for a cute Chinese convenience store tower defense game. Subject: a single plump white Japanese mochi rice cake creature in a tiny mint paper cup, pink cheeks, a green leaf cap, little dark brown feet and short arms. Style: polished 2D chibi cartoon, thick smooth dark chocolate brown outlines, warm glossy cel shading, rounded forms, cute simple eyes and mouth, slight three-quarter front view. Full body centered in a square canvas with ample transparent margin on every side. Strong readable silhouette at 64 pixels. Transparent background with real alpha. No ground, no shadow detached from character, no environment, no text, no watermark, no grid, no sprite sheet, no multiple characters. Every limb fully visible, feet aligned near bottom. Match a friendly snack monster cast.",
+      "source": "source_assets/art/production/level_expansion_20261018/mochi-source.png",
+      "target": "assets/art/gameplay/enemies/characters/enemy_mochi.png",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "alphaBounds": {
+        "left": 114,
+        "top": 103,
+        "width": 1010,
+        "height": 1055
+      },
+      "canvas": [
+        256,
+        256
+      ],
+      "bottomPadding": 8,
+      "uuid": "56dcf421-0f61-438e-8724-12a260c45209",
+      "sourceSha256": "fbe994cf67e24e50cb491c9fa0d4130e25d397ac824ac88b41e8623764beb642",
+      "sha256": "7e6ec29edc2dc06e13112344bc9e46e4d92847afd970c022b4a6a98468fc7fc4"
+    },
+    {
+      "key": "popcorn",
+      "prompt": "Use case: stylized-concept. Asset type: one independent transparent PNG enemy sprite for a cute Chinese convenience store tower defense game. Subject: a single adorable red-and-cream striped popcorn carton creature with rounded golden popcorn as fluffy hair, pink cheeks, short arms, little dark brown feet. Style: polished 2D chibi cartoon, thick smooth dark chocolate brown outlines, warm glossy cel shading, rounded forms, cute simple eyes and mouth, slight three-quarter front view. Full body centered in a square canvas with ample transparent margin on every side. Strong readable silhouette at 64 pixels. Transparent background with real alpha. No ground, no shadow detached from character, no environment, no text, no watermark, no grid, no sprite sheet, no multiple characters. Every limb fully visible, feet aligned near bottom. Match a friendly snack monster cast.",
+      "source": "source_assets/art/production/level_expansion_20261018/popcorn-source.png",
+      "target": "assets/art/gameplay/enemies/characters/enemy_popcorn.png",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "alphaBounds": {
+        "left": 163,
+        "top": 74,
+        "width": 950,
+        "height": 1088
+      },
+      "canvas": [
+        256,
+        256
+      ],
+      "bottomPadding": 8,
+      "uuid": "722e065a-56a6-43de-8ba4-c8d2565f6975",
+      "sourceSha256": "edfa2bc178072cef100dd22432bdcd1f4e160c6d8ab83ffdfeadf95c3b76f8da",
+      "sha256": "4ad709991a02dfc7b7c66bc6c2089aaa807964bc0b7801be8db7e40a592f8849"
+    },
+    {
+      "key": "noodlecup",
+      "prompt": "Use case: stylized-concept. Asset type: one independent transparent PNG enemy sprite for a cute Chinese convenience store tower defense game. Subject: a single stout orange instant noodle cup creature, lid slightly raised as a jaunty hat, curled noodle hair, little arms and dark brown feet, clearly readable bold silhouette. Style: polished 2D chibi cartoon, thick smooth dark chocolate brown outlines, warm glossy cel shading, rounded forms, cute simple eyes and mouth, slight three-quarter front view. Full body centered in a square canvas with ample transparent margin on every side. Strong readable silhouette at 64 pixels. Transparent background with real alpha. No ground, no shadow detached from character, no environment, no text, no watermark, no grid, no sprite sheet, no multiple characters. Every limb fully visible, feet aligned near bottom. Match a friendly snack monster cast.",
+      "source": "source_assets/art/production/level_expansion_20261018/noodlecup-source.png",
+      "target": "assets/art/gameplay/enemies/characters/enemy_noodlecup.png",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "alphaBounds": {
+        "left": 124,
+        "top": 57,
+        "width": 1062,
+        "height": 1124
+      },
+      "canvas": [
+        256,
+        256
+      ],
+      "bottomPadding": 8,
+      "uuid": "234fd7c3-7763-4d1c-8377-d702f398f9a8",
+      "sourceSha256": "5f0e22ddc48dcbf042de8541f7fb47ab3365c1065d7303b55ff2e0ce816a81a4",
+      "sha256": "e883dcc5201a0f9e3f8345ca4b39a0170e48d30c55ecbd13ac97ddac44217caa"
+    },
+    {
+      "key": "frostdonut",
+      "prompt": "Use case: stylized-concept. Asset type: one independent transparent PNG enemy sprite for a cute Chinese convenience store tower defense game. Subject: a single round purple doughnut creature with thick pale blue frosting and colorful sprinkles, expressive face below the central hole, tiny arms and dark brown feet. Style: polished 2D chibi cartoon, thick smooth dark chocolate brown outlines, warm glossy cel shading, rounded forms, cute simple eyes and mouth, slight three-quarter front view. Full body centered in a square canvas with ample transparent margin on every side. Strong readable silhouette at 64 pixels. Transparent background with real alpha. No ground, no shadow detached from character, no environment, no text, no watermark, no grid, no sprite sheet, no multiple characters. Every limb fully visible, feet aligned near bottom. Match a friendly snack monster cast.",
+      "source": "source_assets/art/production/level_expansion_20261018/frostdonut-source.png",
+      "target": "assets/art/gameplay/enemies/characters/enemy_frostdonut.png",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "alphaBounds": {
+        "left": 127,
+        "top": 146,
+        "width": 1000,
+        "height": 963
+      },
+      "canvas": [
+        256,
+        256
+      ],
+      "bottomPadding": 8,
+      "uuid": "f3cb0a31-f1bf-4f79-81ce-a8050e36b3fe",
+      "sourceSha256": "b5781e5272e3e3899fc2f5260f288fe33a3b24039919796912e9987c3ee83c1d",
+      "sha256": "0b18bd6c861121898f707a5a9b99d4403bb6e1b849307478a25e35746e7ceeef"
+    },
+    {
+      "key": "freezer",
+      "prompt": "Use case: stylized-concept. Asset type: one independent transparent PNG enemy sprite for a cute Chinese convenience store tower defense game. Subject: a single boss creature, a squat light-blue supermarket freezer baron with a rounded frosty cabinet body, dark blue royal cape, three-point ice crown, confident cute face, chunky gloved hands and boots. Fully connected one character, no extra props. Style: polished 2D chibi cartoon, thick smooth dark chocolate brown outlines, warm glossy cel shading, rounded forms, cute simple eyes and mouth, slight three-quarter front view. Full body centered in a square canvas with ample transparent margin on every side. Strong readable silhouette at 64 pixels. Transparent background with real alpha. No ground, no shadow detached from character, no environment, no text, no watermark, no grid, no sprite sheet, no multiple characters. Every limb fully visible, feet aligned near bottom. Match a friendly snack monster cast.",
+      "source": "source_assets/art/production/level_expansion_20261018/freezer-source.png",
+      "target": "assets/art/gameplay/enemies/characters/enemy_freezer.png",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "alphaBounds": {
+        "left": 42,
+        "top": 43,
+        "width": 1191,
+        "height": 1167
+      },
+      "canvas": [
+        256,
+        256
+      ],
+      "bottomPadding": 8,
+      "uuid": "03452ac3-531b-4650-a075-c7777b8b52fb",
+      "sourceSha256": "5b03f98a57b68b0e9f7396549e584373e69dbb75c5ccaa9dc7375f824278743a",
+      "sha256": "9919ea27c9af7e79999c4b5c5883eb50f1ce21611a91fa080ca5a15b4d7f6316"
+    },
+    {
+      "key": "vending",
+      "prompt": "Use case: stylized-concept. Asset type: one independent transparent PNG enemy sprite for a cute Chinese convenience store tower defense game. Subject: a single boss creature, a squat red vending machine king with a rounded cabinet body, golden crown, tiny display window showing three simple colorful drink bottles, cute confident face, chunky gloved hands and boots. Fully connected one character, no text or buttons with letters. Style: polished 2D chibi cartoon, thick smooth dark chocolate brown outlines, warm glossy cel shading, rounded forms, cute simple eyes and mouth, slight three-quarter front view. Full body centered in a square canvas with ample transparent margin on every side. Strong readable silhouette at 64 pixels. Transparent background with real alpha. No ground, no shadow detached from character, no environment, no text, no watermark, no grid, no sprite sheet, no multiple characters. Every limb fully visible, feet aligned near bottom. Match a friendly snack monster cast.",
+      "source": "source_assets/art/production/level_expansion_20261018/vending-source.png",
+      "target": "assets/art/gameplay/enemies/characters/enemy_vending.png",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "alphaBounds": {
+        "left": 18,
+        "top": 9,
+        "width": 1221,
+        "height": 1235
+      },
+      "canvas": [
+        256,
+        256
+      ],
+      "bottomPadding": 8,
+      "uuid": "575d2daf-568d-4969-a46a-54db6a32c1ea",
+      "sourceSha256": "4b9c3dbad25e1ef4143133ca70cfa0a165af870fec1926239bf8354bad6ef827",
+      "sha256": "a224f321c90e53dbd266ceea3bc5ee4740e759751b79bf353ffd36c2be0d40ba"
+    }
+  ]
+}

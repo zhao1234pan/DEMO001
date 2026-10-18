@@ -14,7 +14,8 @@ export function requiredLoadoutSize(id:number,unlocked:number):number{return Mat
 export function validLoadout(id:number,unlocked:number,kinds:readonly TowerKind[]):boolean{
   const pool=loadoutCandidates(id,unlocked);return kinds.length===requiredLoadoutSize(id,unlocked)&&new Set(kinds).size===kinds.length&&kinds.every(k=>pool.includes(k));
 }
-const storageKey=(id:number)=>"night_store_loadout_v1_"+id;
+// 关卡内部编号可扩展，持久化键由表固定；旧挑战沿用原键，新增冒险不会读到挑战阵容。
+const storageKey=(id:number)=>loadoutRule(id).storageKey;
 export function defaultLoadout(id:number):TowerKind[]{return loadoutRule(id).defaultStaff.split("|") as TowerKind[];}
 export function readLoadout(id:number,unlocked:number):TowerKind[]{
   let saved:unknown;try{saved=JSON.parse(PlatformService.getString(storageKey(id),"[]"));}catch{saved=[];}

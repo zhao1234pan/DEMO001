@@ -116,6 +116,7 @@ export function installConfigs(sources: Record<string, string>): void {
   }
   if(new Set(next.Staff.map(r=>r.displayOrder)).size!==next.Staff.length)throw new Error("Duplicate staff order");
   if(next.LevelLoadout.length!==next.Level.length||new Set(next.LevelLoadout.map(r=>r.levelId)).size!==next.Level.length)throw new Error("Missing/duplicate loadout level");
+  if(new Set(next.LevelLoadout.map(r=>r.storageKey)).size!==next.LevelLoadout.length||next.LevelLoadout.some(r=>!/^night_store_[a-zA-Z0-9_]+$/.test(r.storageKey)))throw new Error("Invalid/duplicate loadout storage key");
   for(const row of next.LevelLoadout){
     requireRef("Level","id",row.levelId,"LevelLoadout");const level=next.Level.find(r=>r.id===row.levelId)!;
     const candidates=row.candidateStaff.split("|"),defaults=row.defaultStaff.split("|"),slots=numeric(row,"slots");
