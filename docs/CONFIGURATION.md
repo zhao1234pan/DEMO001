@@ -1,5 +1,12 @@
 # XLSX → 客户端 CSV 配置规范
 
+## 1.24.0 统一控件与科技期HP配置
+
+- 先写[设计](TECHNOLOGY_LEVEL_BALANCE.md)，再改Global／I18／UiLayout／Wave四原表；42CSV及版本清单同步，无新字段／资源／图集。
+- 同族科技卡／节点330×58由UiLayout管理。普通与选中引用同一tech_card，选中色从原表读；禁用按钮沿用同一PNG并灰度。进度条记住原表颜色，未购转为灰色顶点颜色，避免对白色PNG采样灰度后仍被绿色顶点色染回。
+- 冒险HP为关卡×波次healthScale×旧逐波系数×首领追加，故普通增幅写healthScale、首领增幅除普通后写bossHealthScale；挑战三类倍率独立写入。原有波内衔接继续有效，数值全在原表，不读取玩家科技数量动态加血。
+- 所有原始数量、间隔、速度、奖励、科技及补给配置保持。本次是固定曲线调整，不宣称通过完整实战平衡。
+
 ## 1.23.0 科技扩充配置（2026-10-18）
 
 - [科技重设计](TECHNOLOGY_REDESIGN.md)先定义14分支／70节点及永久花费，再编辑Global、I18、UiLayout、VisualSkin、ArtFrame、TechnologyBranch、TechnologyEffect、TechnologyNode八原始XLSX；保持42CSV。

@@ -1,0 +1,121 @@
+{
+  "version": "1.24.0",
+  "levels": 40,
+  "waves": 805,
+  "tablesUnchanged": 38,
+  "nonTechnologyLayoutUnchanged": true,
+  "spawnGroupsAndRewardsUnchanged": true,
+  "cards": 7,
+  "nodes": 5,
+  "controlSize": [
+    330,
+    58
+  ],
+  "sameNormalSelectedSkin": true,
+  "samples": [
+    {
+      "level": "1",
+      "wave": "1",
+      "normalRatio": 1,
+      "bossRatio": 1
+    },
+    {
+      "level": "4",
+      "wave": "1",
+      "normalRatio": 1.06,
+      "bossRatio": 1.1000000010000002
+    },
+    {
+      "level": "4",
+      "wave": "10",
+      "normalRatio": 1.1757142886221612,
+      "bossRatio": 1.2285714284814633
+    },
+    {
+      "level": "15",
+      "wave": "1",
+      "normalRatio": 1.1,
+      "bossRatio": 1.150000005
+    },
+    {
+      "level": "15",
+      "wave": "10",
+      "normalRatio": 1.2042105263157894,
+      "bossRatio": 1.2684210546526316
+    },
+    {
+      "level": "15",
+      "wave": "20",
+      "normalRatio": 1.32,
+      "bossRatio": 1.3999999982222222
+    },
+    {
+      "level": "31",
+      "wave": "1",
+      "normalRatio": 1.0999999999999999,
+      "bossRatio": 1.15
+    },
+    {
+      "level": "31",
+      "wave": "10",
+      "normalRatio": 1.1931034481231901,
+      "bossRatio": 1.2431034485581882
+    },
+    {
+      "level": "31",
+      "wave": "20",
+      "normalRatio": 1.2965517246309077,
+      "bossRatio": 1.3465517239081304
+    },
+    {
+      "level": "31",
+      "wave": "30",
+      "normalRatio": 1.4,
+      "bossRatio": 1.4500000000000002
+    },
+    {
+      "level": "30",
+      "wave": "1",
+      "normalRatio": 1.1199999999999999,
+      "bossRatio": 1.1800000016
+    },
+    {
+      "level": "30",
+      "wave": "10",
+      "normalRatio": 1.2431578970271466,
+      "bossRatio": 1.3078947353674657
+    },
+    {
+      "level": "30",
+      "wave": "20",
+      "normalRatio": 1.38,
+      "bossRatio": 1.449999999111111
+    },
+    {
+      "level": "40",
+      "wave": "1",
+      "normalRatio": 1.0999999999999999,
+      "bossRatio": 1.15
+    },
+    {
+      "level": "40",
+      "wave": "10",
+      "normalRatio": 1.1931034496740318,
+      "bossRatio": 1.24310344814089
+    },
+    {
+      "level": "40",
+      "wave": "20",
+      "normalRatio": 1.296551724137931,
+      "bossRatio": 1.3465517240330633
+    },
+    {
+      "level": "40",
+      "wave": "30",
+      "normalRatio": 1.4,
+      "bossRatio": 1.45
+    }
+  ],
+  "fullPlaythrough": false,
+  "performanceMeasured": false
+}
