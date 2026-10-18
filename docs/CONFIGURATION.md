@@ -1,5 +1,11 @@
 # XLSX → 客户端 CSV 配置规范
 
+## 1.19.0 全关卡节奏补充（2026-10-18）
+
+- 用户追加全部冒险关卡，Wave.xlsx统一调整20关第4波起的healthScale，按真实怪组平均开波HP配平。前三波和挑战值保持，CSV／manifest通过导出同步。
+- Wave.bossHealthScale冒险语义补齐：关卡／逐波基础之后的首领追加倍率，默认1；挑战语义继续为独立首领倍率。普通首领关原表值1.35，代码仅读取并相乘，不新增可调硬编码。
+- 原有ChallengeRule、WaveGroup、Global及其他表沿用此前1.19.0；本次统一构建预览，见[说明](ALL_LEVEL_BALANCE_PREVIEW.md)。
+
 ## 1.19.0 挑战单次数值调整（2026-10-18）
 
 - 只修改Wave／WaveGroup／ChallengeRule／Global四原表的已有字段，不新增算法参数、字段或硬编码。WaveGroup怪种占比在原始行中离线配置，客户端继续读取已导出的普通怪组，不在运行时动态校准配方。

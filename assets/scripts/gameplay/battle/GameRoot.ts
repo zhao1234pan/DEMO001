@@ -1226,7 +1226,8 @@ export class GameRoot extends Component {
     const wave=this.level.waves[Math.max(0,this.wave-1)];
     const rule=this.challenge?.rule,elite=Boolean(this.crowdFlow&&rule&&!base.boss&&this.wave>=numeric(rule,'eliteStartWave')&&(this.challenge!.spawned+1)%numeric(rule,'eliteEvery')===0);
     // 普通怪承担持续压力，精英和首领独立配平，避免提高小怪后把精英一起堆成血墙。
-    const scale=this.challenge?(base.boss?wave.bossHealthScale:elite?wave.eliteBaseHealthScale:wave.healthScale):this.level.enemyHealthScale*(wave?.healthScale??1)*(1+(this.wave-1)*globalNumber("waveHealthGrowth"));
+    // 挑战首领使用独立倍率；冒险首领在关卡和逐波基础上追加读表倍率，默认1保持旧行为。
+    const scale=this.challenge?(base.boss?wave.bossHealthScale:elite?wave.eliteBaseHealthScale:wave.healthScale):this.level.enemyHealthScale*(wave?.healthScale??1)*(1+(this.wave-1)*globalNumber("waveHealthGrowth"))*(base.boss?wave.bossHealthScale:1);
     const phaseScale=base.boss?1:this.challenge?this.challenge.spawnHealthRatio(Math.max(1,this.wave)):this.mapReview?1:this.ordinarySpawnHealthRatio();
     const eliteScale=elite?numeric(rule!,'eliteScale'):1,hp=Math.round(base.hp*scale*phaseScale*(elite?numeric(rule!,'eliteHealthScale')*(1+Math.max(0,this.wave-numeric(rule!,'eliteStartWave'))*numeric(rule!,'eliteHealthGrowth')):1));
     const start = this.level.pathPoints[0];

@@ -1,0 +1,2457 @@
+{
+  "baseline": "9ae50e32b67997a44256bf3a09b1c9fa3dcda88e",
+  "version": "1.19.0",
+  "kind": "静态冒险配方平均开波HP对照，不是模拟或试玩",
+  "report": [
+    {
+      "level": 1,
+      "wave": 4,
+      "waves": 8,
+      "oldHpProxy": 39.556,
+      "newHpProxy": 40.95035,
+      "healthScale": 1.03525,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 1,
+      "wave": 5,
+      "waves": 8,
+      "oldHpProxy": 43.30303,
+      "newHpProxy": 45.64255,
+      "healthScale": 1.08394,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 1,
+      "wave": 6,
+      "waves": 8,
+      "oldHpProxy": 48.16492,
+      "newHpProxy": 51.01869,
+      "healthScale": 1.14238,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 1,
+      "wave": 7,
+      "waves": 8,
+      "oldHpProxy": 53.56013,
+      "newHpProxy": 57.13691,
+      "healthScale": 1.21022,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 1,
+      "wave": 8,
+      "waves": 8,
+      "oldHpProxy": 59.33411,
+      "newHpProxy": 64.08061,
+      "healthScale": 1.28769,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 2,
+      "wave": 4,
+      "waves": 10,
+      "oldHpProxy": 44.94311,
+      "newHpProxy": 45.71299,
+      "healthScale": 1.01713,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 2,
+      "wave": 5,
+      "waves": 10,
+      "oldHpProxy": 49.07219,
+      "newHpProxy": 49.76796,
+      "healthScale": 1.01929,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 2,
+      "wave": 6,
+      "waves": 10,
+      "oldHpProxy": 50.6698,
+      "newHpProxy": 54.30523,
+      "healthScale": 1.10166,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 2,
+      "wave": 7,
+      "waves": 10,
+      "oldHpProxy": 58.38343,
+      "newHpProxy": 59.34429,
+      "healthScale": 1.07404,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 2,
+      "wave": 8,
+      "waves": 10,
+      "oldHpProxy": 59.83958,
+      "newHpProxy": 64.92407,
+      "healthScale": 1.1805,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 2,
+      "wave": 9,
+      "waves": 10,
+      "oldHpProxy": 68.35019,
+      "newHpProxy": 71.09308,
+      "healthScale": 1.16558,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 2,
+      "wave": 10,
+      "waves": 10,
+      "oldHpProxy": 69.56086,
+      "newHpProxy": 77.90824,
+      "healthScale": 1.29191,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 3,
+      "wave": 4,
+      "waves": 12,
+      "oldHpProxy": 55.73913,
+      "newHpProxy": 56.07356,
+      "healthScale": 1.006,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 3,
+      "wave": 5,
+      "waves": 12,
+      "oldHpProxy": 59.76007,
+      "newHpProxy": 60.52631,
+      "healthScale": 1.00636,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 3,
+      "wave": 6,
+      "waves": 12,
+      "oldHpProxy": 62.09316,
+      "newHpProxy": 65.46528,
+      "healthScale": 1.05766,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 3,
+      "wave": 7,
+      "waves": 12,
+      "oldHpProxy": 68.929,
+      "newHpProxy": 70.90227,
+      "healthScale": 1.04776,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 3,
+      "wave": 8,
+      "waves": 12,
+      "oldHpProxy": 71.2286,
+      "newHpProxy": 76.86886,
+      "healthScale": 1.11918,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 3,
+      "wave": 9,
+      "waves": 12,
+      "oldHpProxy": 79.5119,
+      "newHpProxy": 83.40548,
+      "healthScale": 1.10898,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 3,
+      "wave": 10,
+      "waves": 12,
+      "oldHpProxy": 81.36162,
+      "newHpProxy": 90.56051,
+      "healthScale": 1.20017,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 3,
+      "wave": 11,
+      "waves": 12,
+      "oldHpProxy": 90.22597,
+      "newHpProxy": 98.38701,
+      "healthScale": 1.19918,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 3,
+      "wave": 12,
+      "waves": 12,
+      "oldHpProxy": 92.99681,
+      "newHpProxy": 106.94617,
+      "healthScale": 1.28947,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 4,
+      "wave": 4,
+      "waves": 15,
+      "oldHpProxy": 107.38731,
+      "newHpProxy": 99.99066,
+      "healthScale": 1.07079,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 4,
+      "wave": 5,
+      "waves": 15,
+      "oldHpProxy": 114.30776,
+      "newHpProxy": 110.00212,
+      "healthScale": 1.10982,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 4,
+      "wave": 6,
+      "waves": 15,
+      "oldHpProxy": 133.15429,
+      "newHpProxy": 121.3225,
+      "healthScale": 1.07205,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 4,
+      "wave": 7,
+      "waves": 15,
+      "oldHpProxy": 130.44844,
+      "newHpProxy": 134.03101,
+      "healthScale": 1.23983,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 4,
+      "wave": 8,
+      "waves": 15,
+      "oldHpProxy": 144.42588,
+      "newHpProxy": 148.2604,
+      "healthScale": 1.27284,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 4,
+      "wave": 9,
+      "waves": 15,
+      "oldHpProxy": 165.00674,
+      "newHpProxy": 164.16656,
+      "healthScale": 1.26811,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 4,
+      "wave": 10,
+      "waves": 15,
+      "oldHpProxy": 161.68411,
+      "newHpProxy": 181.93505,
+      "healthScale": 1.47383,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 4,
+      "wave": 11,
+      "waves": 15,
+      "oldHpProxy": 176.73779,
+      "newHpProxy": 201.77597,
+      "healthScale": 1.53543,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 4,
+      "wave": 12,
+      "waves": 15,
+      "oldHpProxy": 216.25888,
+      "newHpProxy": 223.9271,
+      "healthScale": 1.42856,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 4,
+      "wave": 13,
+      "waves": 15,
+      "oldHpProxy": 195.29932,
+      "newHpProxy": 248.65344,
+      "healthScale": 1.8,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 4,
+      "wave": 14,
+      "waves": 15,
+      "oldHpProxy": 213.89891,
+      "newHpProxy": 276.25549,
+      "healthScale": 1.86908,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 4,
+      "wave": 15,
+      "waves": 15,
+      "oldHpProxy": 255.89144,
+      "newHpProxy": 307.06938,
+      "healthScale": 1.77577,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 5,
+      "wave": 4,
+      "waves": 20,
+      "oldHpProxy": 112.83112,
+      "newHpProxy": 110.72364,
+      "healthScale": 1.12852,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 5,
+      "wave": 5,
+      "waves": 20,
+      "oldHpProxy": 118.01855,
+      "newHpProxy": 118.4532,
+      "healthScale": 1.13099,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 5,
+      "wave": 6,
+      "waves": 20,
+      "oldHpProxy": 120.52391,
+      "newHpProxy": 126.94865,
+      "healthScale": 1.17904,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 5,
+      "wave": 7,
+      "waves": 20,
+      "oldHpProxy": 142.6892,
+      "newHpProxy": 136.21562,
+      "healthScale": 1.06787,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 5,
+      "wave": 8,
+      "waves": 20,
+      "oldHpProxy": 137.86327,
+      "newHpProxy": 146.28918,
+      "healthScale": 1.1905,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 5,
+      "wave": 9,
+      "waves": 20,
+      "oldHpProxy": 141.41297,
+      "newHpProxy": 157.22178,
+      "healthScale": 1.25399,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 5,
+      "wave": 10,
+      "waves": 20,
+      "oldHpProxy": 163.56029,
+      "newHpProxy": 169.07327,
+      "healthScale": 1.17398,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 5,
+      "wave": 11,
+      "waves": 20,
+      "oldHpProxy": 161.23383,
+      "newHpProxy": 181.91411,
+      "healthScale": 1.29159,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 5,
+      "wave": 12,
+      "waves": 20,
+      "oldHpProxy": 162.69566,
+      "newHpProxy": 195.81953,
+      "healthScale": 1.38979,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 5,
+      "wave": 13,
+      "waves": 20,
+      "oldHpProxy": 189.60187,
+      "newHpProxy": 210.87467,
+      "healthScale": 1.29601,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 5,
+      "wave": 14,
+      "waves": 20,
+      "oldHpProxy": 183.9415,
+      "newHpProxy": 227.17264,
+      "healthScale": 1.4527,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 5,
+      "wave": 15,
+      "waves": 20,
+      "oldHpProxy": 188.67836,
+      "newHpProxy": 244.81268,
+      "healthScale": 1.54081,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 5,
+      "wave": 16,
+      "waves": 20,
+      "oldHpProxy": 231.80055,
+      "newHpProxy": 263.90458,
+      "healthScale": 1.36498,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 5,
+      "wave": 17,
+      "waves": 20,
+      "oldHpProxy": 210.5222,
+      "newHpProxy": 284.56778,
+      "healthScale": 1.63618,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 5,
+      "wave": 18,
+      "waves": 20,
+      "oldHpProxy": 211.78101,
+      "newHpProxy": 306.93229,
+      "healthScale": 1.77099,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 5,
+      "wave": 19,
+      "waves": 20,
+      "oldHpProxy": 258.09119,
+      "newHpProxy": 331.13685,
+      "healthScale": 1.58257,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 5,
+      "wave": 20,
+      "waves": 20,
+      "oldHpProxy": 297.78046,
+      "newHpProxy": 357.33655,
+      "healthScale": 1.86738,
+      "bossHealthScale": 1.35,
+      "boss": true
+    },
+    {
+      "level": 6,
+      "wave": 4,
+      "waves": 15,
+      "oldHpProxy": 135.68317,
+      "newHpProxy": 127.87161,
+      "healthScale": 1.01311,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 6,
+      "wave": 5,
+      "waves": 15,
+      "oldHpProxy": 150.48102,
+      "newHpProxy": 139.00283,
+      "healthScale": 0.99582,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 6,
+      "wave": 6,
+      "waves": 15,
+      "oldHpProxy": 154.1247,
+      "newHpProxy": 151.4356,
+      "healthScale": 1.08068,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 6,
+      "wave": 7,
+      "waves": 15,
+      "oldHpProxy": 160.82986,
+      "newHpProxy": 165.22277,
+      "healthScale": 1.1588,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 6,
+      "wave": 8,
+      "waves": 15,
+      "oldHpProxy": 200.58043,
+      "newHpProxy": 180.46459,
+      "healthScale": 1.04282,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 6,
+      "wave": 9,
+      "waves": 15,
+      "oldHpProxy": 200.47861,
+      "newHpProxy": 197.29006,
+      "healthScale": 1.17252,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 6,
+      "wave": 10,
+      "waves": 15,
+      "oldHpProxy": 203.123,
+      "newHpProxy": 215.84432,
+      "healthScale": 1.30104,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 6,
+      "wave": 11,
+      "waves": 15,
+      "oldHpProxy": 212.65836,
+      "newHpProxy": 236.29759,
+      "healthScale": 1.39694,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 6,
+      "wave": 12,
+      "waves": 15,
+      "oldHpProxy": 269.99909,
+      "newHpProxy": 258.83409,
+      "healthScale": 1.23633,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 6,
+      "wave": 13,
+      "waves": 15,
+      "oldHpProxy": 274.36216,
+      "newHpProxy": 283.66694,
+      "healthScale": 1.36639,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 6,
+      "wave": 14,
+      "waves": 15,
+      "oldHpProxy": 265.15509,
+      "newHpProxy": 311.02376,
+      "healthScale": 1.58683,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 6,
+      "wave": 15,
+      "waves": 15,
+      "oldHpProxy": 284.30185,
+      "newHpProxy": 341.16222,
+      "healthScale": 1.65996,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 7,
+      "wave": 4,
+      "waves": 15,
+      "oldHpProxy": 152.30821,
+      "newHpProxy": 142.57373,
+      "healthScale": 1.0765,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 7,
+      "wave": 5,
+      "waves": 15,
+      "oldHpProxy": 168.43439,
+      "newHpProxy": 155.10727,
+      "healthScale": 1.06201,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 7,
+      "wave": 6,
+      "waves": 15,
+      "oldHpProxy": 173.21644,
+      "newHpProxy": 169.11937,
+      "healthScale": 1.14877,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 7,
+      "wave": 7,
+      "waves": 15,
+      "oldHpProxy": 178.52854,
+      "newHpProxy": 184.6699,
+      "healthScale": 1.2482,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 7,
+      "wave": 8,
+      "waves": 15,
+      "oldHpProxy": 219.89374,
+      "newHpProxy": 201.87725,
+      "healthScale": 1.13833,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 7,
+      "wave": 9,
+      "waves": 15,
+      "oldHpProxy": 228.44673,
+      "newHpProxy": 220.88501,
+      "healthScale": 1.23241,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 7,
+      "wave": 10,
+      "waves": 15,
+      "oldHpProxy": 228.8266,
+      "newHpProxy": 241.86841,
+      "healthScale": 1.38443,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 7,
+      "wave": 11,
+      "waves": 15,
+      "oldHpProxy": 236.74058,
+      "newHpProxy": 265.01602,
+      "healthScale": 1.50553,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 7,
+      "wave": 12,
+      "waves": 15,
+      "oldHpProxy": 290.82121,
+      "newHpProxy": 290.54507,
+      "healthScale": 1.37833,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 7,
+      "wave": 13,
+      "waves": 15,
+      "oldHpProxy": 311.06799,
+      "newHpProxy": 318.69853,
+      "healthScale": 1.44845,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 7,
+      "wave": 14,
+      "waves": 15,
+      "oldHpProxy": 296.42503,
+      "newHpProxy": 349.74176,
+      "healthScale": 1.70749,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 7,
+      "wave": 15,
+      "waves": 15,
+      "oldHpProxy": 319.97619,
+      "newHpProxy": 383.97099,
+      "healthScale": 1.77577,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 8,
+      "wave": 4,
+      "waves": 15,
+      "oldHpProxy": 153.46042,
+      "newHpProxy": 146.70692,
+      "healthScale": 1.18543,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 8,
+      "wave": 5,
+      "waves": 15,
+      "oldHpProxy": 160.26133,
+      "newHpProxy": 159.85923,
+      "healthScale": 1.24039,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 8,
+      "wave": 6,
+      "waves": 15,
+      "oldHpProxy": 184.64876,
+      "newHpProxy": 174.58731,
+      "healthScale": 1.19955,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 8,
+      "wave": 7,
+      "waves": 15,
+      "oldHpProxy": 184.45534,
+      "newHpProxy": 190.95959,
+      "healthScale": 1.347,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 8,
+      "wave": 8,
+      "waves": 15,
+      "oldHpProxy": 216.98486,
+      "newHpProxy": 209.10534,
+      "healthScale": 1.28841,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 8,
+      "wave": 9,
+      "waves": 15,
+      "oldHpProxy": 217.73002,
+      "newHpProxy": 229.18566,
+      "healthScale": 1.44666,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 8,
+      "wave": 10,
+      "waves": 15,
+      "oldHpProxy": 254.9427,
+      "newHpProxy": 251.38829,
+      "healthScale": 1.39259,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 8,
+      "wave": 11,
+      "waves": 15,
+      "oldHpProxy": 243.05353,
+      "newHpProxy": 275.92583,
+      "healthScale": 1.64629,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 8,
+      "wave": 12,
+      "waves": 15,
+      "oldHpProxy": 292.56554,
+      "newHpProxy": 303.03419,
+      "healthScale": 1.54084,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 8,
+      "wave": 13,
+      "waves": 15,
+      "oldHpProxy": 282.39242,
+      "newHpProxy": 332.9812,
+      "healthScale": 1.79751,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 8,
+      "wave": 14,
+      "waves": 15,
+      "oldHpProxy": 335.50099,
+      "newHpProxy": 366.06147,
+      "healthScale": 1.70259,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 8,
+      "wave": 15,
+      "waves": 15,
+      "oldHpProxy": 313.74283,
+      "newHpProxy": 402.60078,
+      "healthScale": 2.04753,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 9,
+      "wave": 4,
+      "waves": 15,
+      "oldHpProxy": 189.13249,
+      "newHpProxy": 165.96376,
+      "healthScale": 1.0881,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 9,
+      "wave": 5,
+      "waves": 15,
+      "oldHpProxy": 209.29368,
+      "newHpProxy": 181.17601,
+      "healthScale": 1.07645,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 9,
+      "wave": 6,
+      "waves": 15,
+      "oldHpProxy": 202.11103,
+      "newHpProxy": 198.24143,
+      "healthScale": 1.24439,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 9,
+      "wave": 7,
+      "waves": 15,
+      "oldHpProxy": 226.04139,
+      "newHpProxy": 217.25074,
+      "healthScale": 1.25052,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 9,
+      "wave": 8,
+      "waves": 15,
+      "oldHpProxy": 277.18277,
+      "newHpProxy": 238.35943,
+      "healthScale": 1.1497,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 9,
+      "wave": 9,
+      "waves": 15,
+      "oldHpProxy": 290.45143,
+      "newHpProxy": 261.7645,
+      "healthScale": 1.23861,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 9,
+      "wave": 10,
+      "waves": 15,
+      "oldHpProxy": 284.09472,
+      "newHpProxy": 287.69348,
+      "healthScale": 1.43017,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 9,
+      "wave": 11,
+      "waves": 15,
+      "oldHpProxy": 294.91435,
+      "newHpProxy": 316.40615,
+      "healthScale": 1.55584,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 9,
+      "wave": 12,
+      "waves": 15,
+      "oldHpProxy": 376.64956,
+      "newHpProxy": 348.19341,
+      "healthScale": 1.37522,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 9,
+      "wave": 13,
+      "waves": 15,
+      "oldHpProxy": 377.64883,
+      "newHpProxy": 383.37889,
+      "healthScale": 1.54755,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 9,
+      "wave": 14,
+      "waves": 15,
+      "oldHpProxy": 373.6706,
+      "newHpProxy": 422.32237,
+      "healthScale": 1.76362,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 9,
+      "wave": 15,
+      "waves": 15,
+      "oldHpProxy": 387.85752,
+      "newHpProxy": 465.42806,
+      "healthScale": 1.91474,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 10,
+      "wave": 4,
+      "waves": 20,
+      "oldHpProxy": 192.34666,
+      "newHpProxy": 169.85296,
+      "healthScale": 1.09499,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 10,
+      "wave": 5,
+      "waves": 20,
+      "oldHpProxy": 197.55767,
+      "newHpProxy": 184.91098,
+      "healthScale": 1.2355,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 10,
+      "wave": 6,
+      "waves": 20,
+      "oldHpProxy": 260.66611,
+      "newHpProxy": 201.75857,
+      "healthScale": 1.00815,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 10,
+      "wave": 7,
+      "waves": 20,
+      "oldHpProxy": 253.3432,
+      "newHpProxy": 220.46782,
+      "healthScale": 1.13408,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 10,
+      "wave": 8,
+      "waves": 20,
+      "oldHpProxy": 263.49249,
+      "newHpProxy": 241.18462,
+      "healthScale": 1.2002,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 10,
+      "wave": 9,
+      "waves": 20,
+      "oldHpProxy": 307.50817,
+      "newHpProxy": 264.08795,
+      "healthScale": 1.13657,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 10,
+      "wave": 10,
+      "waves": 20,
+      "oldHpProxy": 334.79508,
+      "newHpProxy": 289.38773,
+      "healthScale": 1.15679,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 10,
+      "wave": 11,
+      "waves": 20,
+      "oldHpProxy": 314.3451,
+      "newHpProxy": 317.31955,
+      "healthScale": 1.36766,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 10,
+      "wave": 12,
+      "waves": 20,
+      "oldHpProxy": 327.01809,
+      "newHpProxy": 348.14831,
+      "healthScale": 1.46112,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 10,
+      "wave": 13,
+      "waves": 20,
+      "oldHpProxy": 386.19015,
+      "newHpProxy": 382.16916,
+      "healthScale": 1.37623,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 10,
+      "wave": 14,
+      "waves": 20,
+      "oldHpProxy": 398.93085,
+      "newHpProxy": 419.71298,
+      "healthScale": 1.48278,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 10,
+      "wave": 15,
+      "waves": 20,
+      "oldHpProxy": 384.56355,
+      "newHpProxy": 461.14076,
+      "healthScale": 1.71257,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 10,
+      "wave": 16,
+      "waves": 20,
+      "oldHpProxy": 394.54028,
+      "newHpProxy": 506.85709,
+      "healthScale": 1.85898,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 10,
+      "wave": 17,
+      "waves": 20,
+      "oldHpProxy": 461.34243,
+      "newHpProxy": 557.30713,
+      "healthScale": 1.77074,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 10,
+      "wave": 18,
+      "waves": 20,
+      "oldHpProxy": 494.30255,
+      "newHpProxy": 612.99003,
+      "healthScale": 1.84092,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 10,
+      "wave": 19,
+      "waves": 20,
+      "oldHpProxy": 465.77684,
+      "newHpProxy": 674.45025,
+      "healthScale": 2.17626,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 10,
+      "wave": 20,
+      "waves": 20,
+      "oldHpProxy": 593.83628,
+      "newHpProxy": 742.29379,
+      "healthScale": 2.37677,
+      "bossHealthScale": 1.35,
+      "boss": true
+    },
+    {
+      "level": 11,
+      "wave": 4,
+      "waves": 15,
+      "oldHpProxy": 164.85806,
+      "newHpProxy": 159.45497,
+      "healthScale": 1.19936,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 11,
+      "wave": 5,
+      "waves": 15,
+      "oldHpProxy": 172.4818,
+      "newHpProxy": 173.9285,
+      "healthScale": 1.25394,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 11,
+      "wave": 6,
+      "waves": 15,
+      "oldHpProxy": 184.00935,
+      "newHpProxy": 190.15324,
+      "healthScale": 1.31104,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 11,
+      "wave": 7,
+      "waves": 15,
+      "oldHpProxy": 213.558,
+      "newHpProxy": 208.21051,
+      "healthScale": 1.26854,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 11,
+      "wave": 8,
+      "waves": 15,
+      "oldHpProxy": 225.33445,
+      "newHpProxy": 228.24517,
+      "healthScale": 1.35423,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 11,
+      "wave": 9,
+      "waves": 15,
+      "oldHpProxy": 245.18294,
+      "newHpProxy": 250.43858,
+      "healthScale": 1.40381,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 11,
+      "wave": 10,
+      "waves": 15,
+      "oldHpProxy": 251.00334,
+      "newHpProxy": 275.00567,
+      "healthScale": 1.54733,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 11,
+      "wave": 11,
+      "waves": 15,
+      "oldHpProxy": 261.52871,
+      "newHpProxy": 302.18563,
+      "healthScale": 1.6756,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 11,
+      "wave": 12,
+      "waves": 15,
+      "oldHpProxy": 318.83097,
+      "newHpProxy": 332.24981,
+      "healthScale": 1.55022,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 11,
+      "wave": 13,
+      "waves": 15,
+      "oldHpProxy": 329.93313,
+      "newHpProxy": 365.49723,
+      "healthScale": 1.68874,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 11,
+      "wave": 14,
+      "waves": 15,
+      "oldHpProxy": 354.34015,
+      "newHpProxy": 402.26446,
+      "healthScale": 1.7715,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 11,
+      "wave": 15,
+      "waves": 15,
+      "oldHpProxy": 345.1793,
+      "newHpProxy": 442.92551,
+      "healthScale": 2.04746,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 12,
+      "wave": 4,
+      "waves": 15,
+      "oldHpProxy": 169.87063,
+      "newHpProxy": 164.30326,
+      "healthScale": 1.19936,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 12,
+      "wave": 5,
+      "waves": 15,
+      "oldHpProxy": 177.72618,
+      "newHpProxy": 179.21687,
+      "healthScale": 1.25394,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 12,
+      "wave": 6,
+      "waves": 15,
+      "oldHpProxy": 189.60423,
+      "newHpProxy": 195.93493,
+      "healthScale": 1.31104,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 12,
+      "wave": 7,
+      "waves": 15,
+      "oldHpProxy": 220.05131,
+      "newHpProxy": 214.54124,
+      "healthScale": 1.26854,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 12,
+      "wave": 8,
+      "waves": 15,
+      "oldHpProxy": 232.18583,
+      "newHpProxy": 235.18506,
+      "healthScale": 1.35423,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 12,
+      "wave": 9,
+      "waves": 15,
+      "oldHpProxy": 252.63783,
+      "newHpProxy": 258.05327,
+      "healthScale": 1.40381,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 12,
+      "wave": 10,
+      "waves": 15,
+      "oldHpProxy": 258.6352,
+      "newHpProxy": 283.36733,
+      "healthScale": 1.54733,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 12,
+      "wave": 11,
+      "waves": 15,
+      "oldHpProxy": 269.4806,
+      "newHpProxy": 311.3737,
+      "healthScale": 1.6756,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 12,
+      "wave": 12,
+      "waves": 15,
+      "oldHpProxy": 328.52515,
+      "newHpProxy": 342.352,
+      "healthScale": 1.55022,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 12,
+      "wave": 13,
+      "waves": 15,
+      "oldHpProxy": 339.96488,
+      "newHpProxy": 376.61032,
+      "healthScale": 1.68874,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 12,
+      "wave": 14,
+      "waves": 15,
+      "oldHpProxy": 365.11401,
+      "newHpProxy": 414.49548,
+      "healthScale": 1.7715,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 12,
+      "wave": 15,
+      "waves": 15,
+      "oldHpProxy": 355.67462,
+      "newHpProxy": 456.39284,
+      "healthScale": 2.04746,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 13,
+      "wave": 4,
+      "waves": 15,
+      "oldHpProxy": 156.98995,
+      "newHpProxy": 159.7541,
+      "healthScale": 1.13972,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 13,
+      "wave": 5,
+      "waves": 15,
+      "oldHpProxy": 166.38441,
+      "newHpProxy": 173.53059,
+      "healthScale": 1.17141,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 13,
+      "wave": 6,
+      "waves": 15,
+      "oldHpProxy": 174.81714,
+      "newHpProxy": 188.90888,
+      "healthScale": 1.23828,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 13,
+      "wave": 7,
+      "waves": 15,
+      "oldHpProxy": 204.02364,
+      "newHpProxy": 205.94893,
+      "healthScale": 1.1863,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 13,
+      "wave": 8,
+      "waves": 15,
+      "oldHpProxy": 212.33564,
+      "newHpProxy": 224.77425,
+      "healthScale": 1.27832,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 13,
+      "wave": 9,
+      "waves": 15,
+      "oldHpProxy": 229.70225,
+      "newHpProxy": 245.53447,
+      "healthScale": 1.32691,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 13,
+      "wave": 10,
+      "waves": 15,
+      "oldHpProxy": 239.97779,
+      "newHpProxy": 268.41332,
+      "healthScale": 1.42676,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 13,
+      "wave": 11,
+      "waves": 15,
+      "oldHpProxy": 250.96518,
+      "newHpProxy": 293.61213,
+      "healthScale": 1.5324,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 13,
+      "wave": 12,
+      "waves": 15,
+      "oldHpProxy": 305.25546,
+      "newHpProxy": 321.35824,
+      "healthScale": 1.41453,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 13,
+      "wave": 13,
+      "waves": 15,
+      "oldHpProxy": 315.28011,
+      "newHpProxy": 351.90315,
+      "healthScale": 1.53683,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 13,
+      "wave": 14,
+      "waves": 15,
+      "oldHpProxy": 338.03051,
+      "newHpProxy": 385.52707,
+      "healthScale": 1.60748,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 13,
+      "wave": 15,
+      "waves": 15,
+      "oldHpProxy": 325.62644,
+      "newHpProxy": 422.53873,
+      "healthScale": 1.87014,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 14,
+      "wave": 4,
+      "waves": 15,
+      "oldHpProxy": 178.61475,
+      "newHpProxy": 172.48424,
+      "healthScale": 1.19744,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 14,
+      "wave": 5,
+      "waves": 15,
+      "oldHpProxy": 187.0266,
+      "newHpProxy": 188.1877,
+      "healthScale": 1.25123,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 14,
+      "wave": 6,
+      "waves": 15,
+      "oldHpProxy": 199.64659,
+      "newHpProxy": 205.79329,
+      "healthScale": 1.30774,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 14,
+      "wave": 7,
+      "waves": 15,
+      "oldHpProxy": 234.48925,
+      "newHpProxy": 225.39169,
+      "healthScale": 1.25064,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 14,
+      "wave": 8,
+      "waves": 15,
+      "oldHpProxy": 241.67818,
+      "newHpProxy": 247.14277,
+      "healthScale": 1.36719,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 14,
+      "wave": 9,
+      "waves": 15,
+      "oldHpProxy": 265.83786,
+      "newHpProxy": 271.2461,
+      "healthScale": 1.40231,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 14,
+      "wave": 10,
+      "waves": 15,
+      "oldHpProxy": 272.5353,
+      "newHpProxy": 297.93279,
+      "healthScale": 1.54389,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 14,
+      "wave": 11,
+      "waves": 15,
+      "oldHpProxy": 283.04844,
+      "newHpProxy": 327.46458,
+      "healthScale": 1.67772,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 14,
+      "wave": 12,
+      "waves": 15,
+      "oldHpProxy": 345.52613,
+      "newHpProxy": 360.1382,
+      "healthScale": 1.55052,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 14,
+      "wave": 13,
+      "waves": 15,
+      "oldHpProxy": 357.86203,
+      "newHpProxy": 396.28404,
+      "healthScale": 1.68809,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 14,
+      "wave": 14,
+      "waves": 15,
+      "oldHpProxy": 384.39299,
+      "newHpProxy": 436.26616,
+      "healthScale": 1.77103,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 14,
+      "wave": 15,
+      "waves": 15,
+      "oldHpProxy": 370.91463,
+      "newHpProxy": 480.49069,
+      "healthScale": 2.067,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 15,
+      "wave": 4,
+      "waves": 20,
+      "oldHpProxy": 209.24734,
+      "newHpProxy": 196.65185,
+      "healthScale": 1.30633,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 15,
+      "wave": 5,
+      "waves": 20,
+      "oldHpProxy": 201.7803,
+      "newHpProxy": 215.34074,
+      "healthScale": 1.62215,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 15,
+      "wave": 6,
+      "waves": 20,
+      "oldHpProxy": 237.89571,
+      "newHpProxy": 236.37144,
+      "healthScale": 1.49024,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 15,
+      "wave": 7,
+      "waves": 20,
+      "oldHpProxy": 285.86666,
+      "newHpProxy": 259.8715,
+      "healthScale": 1.36418,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 15,
+      "wave": 8,
+      "waves": 20,
+      "oldHpProxy": 303.82034,
+      "newHpProxy": 286.05248,
+      "healthScale": 1.42158,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 15,
+      "wave": 9,
+      "waves": 20,
+      "oldHpProxy": 299.94692,
+      "newHpProxy": 315.17877,
+      "healthScale": 1.60136,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 15,
+      "wave": 10,
+      "waves": 20,
+      "oldHpProxy": 347.29069,
+      "newHpProxy": 347.55211,
+      "healthScale": 1.54223,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 15,
+      "wave": 11,
+      "waves": 20,
+      "oldHpProxy": 339.17439,
+      "newHpProxy": 383.51803,
+      "healthScale": 1.76409,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 15,
+      "wave": 12,
+      "waves": 20,
+      "oldHpProxy": 376.87903,
+      "newHpProxy": 423.47172,
+      "healthScale": 1.77577,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 15,
+      "wave": 13,
+      "waves": 20,
+      "oldHpProxy": 395.27268,
+      "newHpProxy": 467.84412,
+      "healthScale": 1.89545,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 15,
+      "wave": 14,
+      "waves": 20,
+      "oldHpProxy": 394.23123,
+      "newHpProxy": 517.12576,
+      "healthScale": 2.12881,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 15,
+      "wave": 15,
+      "waves": 20,
+      "oldHpProxy": 452.62795,
+      "newHpProxy": 571.85848,
+      "healthScale": 2.07778,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 15,
+      "wave": 16,
+      "waves": 20,
+      "oldHpProxy": 441.94426,
+      "newHpProxy": 632.65273,
+      "healthScale": 2.38533,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 15,
+      "wave": 17,
+      "waves": 20,
+      "oldHpProxy": 480.57837,
+      "newHpProxy": 700.17877,
+      "healthScale": 2.45923,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 15,
+      "wave": 18,
+      "waves": 20,
+      "oldHpProxy": 497.28735,
+      "newHpProxy": 775.19692,
+      "healthScale": 2.6647,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 15,
+      "wave": 19,
+      "waves": 20,
+      "oldHpProxy": 491.10973,
+      "newHpProxy": 858.54531,
+      "healthScale": 3.02546,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 15,
+      "wave": 20,
+      "waves": 20,
+      "oldHpProxy": 731.65845,
+      "newHpProxy": 951.15732,
+      "healthScale": 2.84638,
+      "bossHealthScale": 1.35,
+      "boss": true
+    },
+    {
+      "level": 16,
+      "wave": 4,
+      "waves": 15,
+      "oldHpProxy": 223.05738,
+      "newHpProxy": 204.29328,
+      "healthScale": 1.27307,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 16,
+      "wave": 5,
+      "waves": 15,
+      "oldHpProxy": 232.59065,
+      "newHpProxy": 225.31228,
+      "healthScale": 1.35032,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 16,
+      "wave": 6,
+      "waves": 15,
+      "oldHpProxy": 248.03737,
+      "newHpProxy": 249.1379,
+      "healthScale": 1.42846,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 16,
+      "wave": 7,
+      "waves": 15,
+      "oldHpProxy": 296.94373,
+      "newHpProxy": 275.95742,
+      "healthScale": 1.35544,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 16,
+      "wave": 8,
+      "waves": 15,
+      "oldHpProxy": 304.3094,
+      "newHpProxy": 306.06172,
+      "healthScale": 1.50732,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 16,
+      "wave": 9,
+      "waves": 15,
+      "oldHpProxy": 326.49729,
+      "newHpProxy": 339.80641,
+      "healthScale": 1.6034,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 16,
+      "wave": 10,
+      "waves": 15,
+      "oldHpProxy": 344.12516,
+      "newHpProxy": 377.60254,
+      "healthScale": 1.73713,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 16,
+      "wave": 11,
+      "waves": 15,
+      "oldHpProxy": 362.59362,
+      "newHpProxy": 419.92319,
+      "healthScale": 1.8826,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 16,
+      "wave": 12,
+      "waves": 15,
+      "oldHpProxy": 399.10803,
+      "newHpProxy": 467.2974,
+      "healthScale": 1.95247,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 16,
+      "wave": 13,
+      "waves": 15,
+      "oldHpProxy": 461.7073,
+      "newHpProxy": 520.32518,
+      "healthScale": 1.92577,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 16,
+      "wave": 14,
+      "waves": 15,
+      "oldHpProxy": 470.64876,
+      "newHpProxy": 579.68679,
+      "healthScale": 2.15446,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 16,
+      "wave": 15,
+      "waves": 15,
+      "oldHpProxy": 497.02782,
+      "newHpProxy": 646.13561,
+      "healthScale": 2.32523,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 17,
+      "wave": 4,
+      "waves": 15,
+      "oldHpProxy": 227.65883,
+      "newHpProxy": 208.23413,
+      "healthScale": 1.2714,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 17,
+      "wave": 5,
+      "waves": 15,
+      "oldHpProxy": 213.79243,
+      "newHpProxy": 229.6308,
+      "healthScale": 1.34748,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 17,
+      "wave": 6,
+      "waves": 15,
+      "oldHpProxy": 236.54642,
+      "newHpProxy": 253.88099,
+      "healthScale": 1.42461,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 17,
+      "wave": 7,
+      "waves": 15,
+      "oldHpProxy": 289.33428,
+      "newHpProxy": 281.17694,
+      "healthScale": 1.37015,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 17,
+      "wave": 8,
+      "waves": 15,
+      "oldHpProxy": 310.77773,
+      "newHpProxy": 311.81041,
+      "healthScale": 1.50367,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 17,
+      "wave": 9,
+      "waves": 15,
+      "oldHpProxy": 333.50909,
+      "newHpProxy": 346.14503,
+      "healthScale": 1.59897,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 17,
+      "wave": 10,
+      "waves": 15,
+      "oldHpProxy": 351.67111,
+      "newHpProxy": 384.5964,
+      "healthScale": 1.73134,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 17,
+      "wave": 11,
+      "waves": 15,
+      "oldHpProxy": 369.27238,
+      "newHpProxy": 427.6443,
+      "healthScale": 1.88254,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 17,
+      "wave": 12,
+      "waves": 15,
+      "oldHpProxy": 407.97917,
+      "newHpProxy": 475.82727,
+      "healthScale": 1.94488,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 17,
+      "wave": 13,
+      "waves": 15,
+      "oldHpProxy": 469.10954,
+      "newHpProxy": 529.7543,
+      "healthScale": 1.92973,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 17,
+      "wave": 14,
+      "waves": 15,
+      "oldHpProxy": 484.63175,
+      "newHpProxy": 590.11308,
+      "healthScale": 2.12993,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 17,
+      "wave": 15,
+      "waves": 15,
+      "oldHpProxy": 505.89954,
+      "newHpProxy": 657.66884,
+      "healthScale": 2.32523,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 18,
+      "wave": 4,
+      "waves": 15,
+      "oldHpProxy": 233.51292,
+      "newHpProxy": 213.58872,
+      "healthScale": 1.2714,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 18,
+      "wave": 5,
+      "waves": 15,
+      "oldHpProxy": 243.65667,
+      "newHpProxy": 235.5356,
+      "healthScale": 1.34748,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 18,
+      "wave": 6,
+      "waves": 15,
+      "oldHpProxy": 259.95968,
+      "newHpProxy": 260.40936,
+      "healthScale": 1.42461,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 18,
+      "wave": 7,
+      "waves": 15,
+      "oldHpProxy": 307.00848,
+      "newHpProxy": 288.4072,
+      "healthScale": 1.37015,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 18,
+      "wave": 8,
+      "waves": 15,
+      "oldHpProxy": 318.76915,
+      "newHpProxy": 319.82839,
+      "healthScale": 1.50367,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 18,
+      "wave": 9,
+      "waves": 15,
+      "oldHpProxy": 342.08504,
+      "newHpProxy": 355.0459,
+      "healthScale": 1.59897,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 18,
+      "wave": 10,
+      "waves": 15,
+      "oldHpProxy": 360.71408,
+      "newHpProxy": 394.48603,
+      "healthScale": 1.73134,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 18,
+      "wave": 11,
+      "waves": 15,
+      "oldHpProxy": 378.76796,
+      "newHpProxy": 438.64087,
+      "healthScale": 1.88254,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 18,
+      "wave": 12,
+      "waves": 15,
+      "oldHpProxy": 418.47006,
+      "newHpProxy": 488.06283,
+      "healthScale": 1.94488,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 18,
+      "wave": 13,
+      "waves": 15,
+      "oldHpProxy": 481.17236,
+      "newHpProxy": 543.37656,
+      "healthScale": 1.92973,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 18,
+      "wave": 14,
+      "waves": 15,
+      "oldHpProxy": 497.09371,
+      "newHpProxy": 605.28742,
+      "healthScale": 2.12993,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 18,
+      "wave": 15,
+      "waves": 15,
+      "oldHpProxy": 518.90839,
+      "newHpProxy": 674.58033,
+      "healthScale": 2.32523,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 19,
+      "wave": 4,
+      "waves": 15,
+      "oldHpProxy": 186.7105,
+      "newHpProxy": 190.56806,
+      "healthScale": 1.12783,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 19,
+      "wave": 5,
+      "waves": 15,
+      "oldHpProxy": 196.9833,
+      "newHpProxy": 208.46138,
+      "healthScale": 1.1727,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 19,
+      "wave": 6,
+      "waves": 15,
+      "oldHpProxy": 208.76754,
+      "newHpProxy": 228.57586,
+      "healthScale": 1.23783,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 19,
+      "wave": 7,
+      "waves": 15,
+      "oldHpProxy": 239.31994,
+      "newHpProxy": 251.0272,
+      "healthScale": 1.21619,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 19,
+      "wave": 8,
+      "waves": 15,
+      "oldHpProxy": 257.33954,
+      "newHpProxy": 276.01253,
+      "healthScale": 1.27785,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 19,
+      "wave": 9,
+      "waves": 15,
+      "oldHpProxy": 272.22096,
+      "newHpProxy": 303.77692,
+      "healthScale": 1.36669,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 19,
+      "wave": 10,
+      "waves": 15,
+      "oldHpProxy": 288.29303,
+      "newHpProxy": 334.60207,
+      "healthScale": 1.46069,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 19,
+      "wave": 11,
+      "waves": 15,
+      "oldHpProxy": 304.18083,
+      "newHpProxy": 368.81232,
+      "healthScale": 1.56686,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 19,
+      "wave": 12,
+      "waves": 15,
+      "oldHpProxy": 328.13149,
+      "newHpProxy": 406.77017,
+      "healthScale": 1.64335,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 19,
+      "wave": 13,
+      "waves": 15,
+      "oldHpProxy": 381.08853,
+      "newHpProxy": 448.87906,
+      "healthScale": 1.6001,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 19,
+      "wave": 14,
+      "waves": 15,
+      "oldHpProxy": 403.43205,
+      "newHpProxy": 495.5922,
+      "healthScale": 1.70822,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 19,
+      "wave": 15,
+      "waves": 15,
+      "oldHpProxy": 421.08779,
+      "newHpProxy": 547.41324,
+      "healthScale": 1.84848,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 20,
+      "wave": 4,
+      "waves": 20,
+      "oldHpProxy": 242.5368,
+      "newHpProxy": 222.7622,
+      "healthScale": 1.27667,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 20,
+      "wave": 5,
+      "waves": 20,
+      "oldHpProxy": 236.57462,
+      "newHpProxy": 243.05864,
+      "healthScale": 1.56166,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 20,
+      "wave": 6,
+      "waves": 20,
+      "oldHpProxy": 293.15507,
+      "newHpProxy": 265.81856,
+      "healthScale": 1.35999,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 20,
+      "wave": 7,
+      "waves": 20,
+      "oldHpProxy": 318.98318,
+      "newHpProxy": 291.1542,
+      "healthScale": 1.36972,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 20,
+      "wave": 8,
+      "waves": 20,
+      "oldHpProxy": 341.0439,
+      "newHpProxy": 319.27408,
+      "healthScale": 1.4135,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 20,
+      "wave": 9,
+      "waves": 20,
+      "oldHpProxy": 344.21211,
+      "newHpProxy": 350.43696,
+      "healthScale": 1.55153,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 20,
+      "wave": 10,
+      "waves": 20,
+      "oldHpProxy": 386.19675,
+      "newHpProxy": 384.94123,
+      "healthScale": 1.53606,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 20,
+      "wave": 11,
+      "waves": 20,
+      "oldHpProxy": 392.96358,
+      "newHpProxy": 423.12877,
+      "healthScale": 1.67988,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 20,
+      "wave": 12,
+      "waves": 20,
+      "oldHpProxy": 404.55998,
+      "newHpProxy": 465.3826,
+      "healthScale": 1.81799,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 20,
+      "wave": 13,
+      "waves": 20,
+      "oldHpProxy": 445.26967,
+      "newHpProxy": 512.12838,
+      "healthScale": 1.84189,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 20,
+      "wave": 14,
+      "waves": 20,
+      "oldHpProxy": 466.80433,
+      "newHpProxy": 563.84119,
+      "healthScale": 1.96026,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 20,
+      "wave": 15,
+      "waves": 20,
+      "oldHpProxy": 464.30508,
+      "newHpProxy": 621.04408,
+      "healthScale": 2.19974,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 20,
+      "wave": 16,
+      "waves": 20,
+      "oldHpProxy": 520.0763,
+      "newHpProxy": 684.33063,
+      "healthScale": 2.19255,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 20,
+      "wave": 17,
+      "waves": 20,
+      "oldHpProxy": 531.72685,
+      "newHpProxy": 754.34631,
+      "healthScale": 2.39462,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 20,
+      "wave": 18,
+      "waves": 20,
+      "oldHpProxy": 543.22977,
+      "newHpProxy": 831.8178,
+      "healthScale": 2.61751,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 20,
+      "wave": 19,
+      "waves": 20,
+      "oldHpProxy": 589.82901,
+      "newHpProxy": 917.5436,
+      "healthScale": 2.6922,
+      "bossHealthScale": 1,
+      "boss": false
+    },
+    {
+      "level": 20,
+      "wave": 20,
+      "waves": 20,
+      "oldHpProxy": 778.78097,
+      "newHpProxy": 1012.41668,
+      "healthScale": 2.84638,
+      "bossHealthScale": 1.35,
+      "boss": true
+    }
+  ]
+}
