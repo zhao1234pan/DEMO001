@@ -3,7 +3,7 @@ import { ENEMY_CONFIG, TowerKind } from './GameConfig';
 import { attackProfile, AttackProfile } from './StaffEvolution';
 import type { Enemy, Tower, Obstacle, Shot } from './GameRoot';
 
-export interface ChallengeCard { key:string;category:string;staff:string;name:string;description:string;icon:string;params:Record<string,number>;condition:string;maxWave:number;exclusive:string }
+export interface ChallengeCard { key:string;category:string;staff:string;name:string;description:string;icon:string;params:Record<string,number>;condition:string;maxWave:number;exclusive:string;repeatable:boolean }
 export interface ChallengePort {
   enemies:Enemy[];towers:Tower[];obstacles:Obstacle[];queueLength:number;coins:number;pathLength:number;wave:number;inWave:boolean;
   addCoins:(amount:number)=>void;clear:(obstacle:Obstacle,secondary?:boolean)=>void;
@@ -12,7 +12,7 @@ export interface ChallengePort {
 }
 export interface ChallengeShot { profile:AttackProfile;round:number;source:Tower;damageRatio:number;originalRange:number }
 export function challengeRule(levelId:number):TableRow|undefined{return rows('ChallengeRule').find(r=>Number(r.levelId)===levelId);}
-export function challengeCards():ChallengeCard[]{return rows('ChallengePerk').map(r=>({key:r.key,category:r.category,staff:r.staffKey,name:text(r.nameKey),description:text(r.descriptionKey),icon:r.iconKey,params:JSON.parse(r.params),condition:r.condition,maxWave:numeric(r,'maxWave'),exclusive:r.exclusive}));}
+export function challengeCards():ChallengeCard[]{return rows('ChallengePerk').map(r=>({key:r.key,category:r.category,staff:r.staffKey,name:text(r.nameKey),description:text(r.descriptionKey),icon:r.iconKey,params:JSON.parse(r.params),condition:r.condition,maxWave:numeric(r,'maxWave'),exclusive:r.exclusive,repeatable:r.repeatable==='1'}));}
 /** 一局的选卡、计数与衍生攻击都在这里持有；不写入冒险成长。 */
 export class ChallengeRun {
   readonly cards=challengeCards(); readonly selected:string[]=[]; readonly choiceWaves:number[];
@@ -24,22 +24,35 @@ export class ChallengeRun {
   private readonly balls:Array<{distance:number;remaining:number;hit:Enemy[]}>=[];
   private rainGroup=0;
   private rewardRemainder=0;
+  private supplyXp=0;
+  private reserveShield=0;
+  private supplyCold=0;
+  private readonly xpCosts:number[];
   constructor(readonly rule:TableRow,readonly roster:readonly TowerKind[],seed=Math.floor(Math.random()*0x100000000)){
     this.seed=seed>>>0||1;this.choiceWaves=rule.choiceWaves.split('|').map(Number);
+    this.xpCosts=rule.supplyXpSteps?rule.supplyXpSteps.split('|').map(Number):[];
   }
   /** 初始专题强化不是三选一次数；发放复用相同激活规则并保证幂等。 */
   grantInitial(port:ChallengePort):void{const topic=rows('ChallengeTopic').find(r=>r.levelId===this.rule.levelId);for(const key of topic?.startPerks.split('|').filter(Boolean)??[])if(!this.has(key)){this.selected.push(key);this.activate(key,port);}}
-  private activate(key:string,port:ChallengePort):void{const p=this.p(key);if(key==='E01'||key==='E05')port.addCoins(p.coins);if(key==='E02')this.interestLeft=p.waves;if(key==='E03')this.freeBuild=p.charges;if(key==='E04')this.freeEvolution=p.charges;}
+  private activate(key:string,port:ChallengePort):void{const p=this.p(key);if(key==='E01'||key==='E05'||key==='R01')port.addCoins(p.coins);if(key==='E02')this.interestLeft=p.waves;if(key==='E03')this.freeBuild=p.charges;if(key==='E04')this.freeEvolution=p.charges;
+    if(key==='R02'){this.supplyCold=Math.max(this.supplyCold,p.seconds);for(const enemy of port.enemies){enemy.slows??={};enemy.slows.supply={ratio:p.ratio,remaining:p.seconds};}}
+    if(key==='R03'){if(port.inWave)this.shield=Math.min(p.cap,this.shield+p.shield);else this.reserveShield=Math.min(p.cap-(this.has('X02')?this.p('X02').shield:0),this.reserveShield+p.shield);}
+  }
+  get supplyLimit():number{return this.xpCosts.length?this.xpCosts.length+1:this.choiceWaves.length;}
+  /** 经验满后由场景安排真实时间提示，再打开补给；溢出的经验保留到下一次。 */
+  supplyReady(port:ChallengePort):boolean{return !this.pending&&this.completedChoices.length<this.supplyLimit&&(this.xpCosts.length?this.completedChoices.length===0?port.wave===0:this.supplyXp>=this.xpCosts[this.completedChoices.length-1]:this.choiceWaves.includes(port.wave)&&!this.completedChoices.includes(port.wave));}
+  supplyProgress():{ratio:number;remaining:number;completed:number;limit:number;ready:boolean}{const completed=this.completedChoices.length,limit=this.supplyLimit,cost=this.xpCosts[Math.max(0,completed-1)]??0,remaining=completed>=limit?0:Math.max(0,cost-this.supplyXp);return{ratio:completed>=limit||cost===0?1:Math.min(1,this.supplyXp/cost),remaining,completed,limit,ready:completed<limit&&remaining===0};}
+  earnExperience(enemy:Enemy):void{if(!this.xpCosts.length||this.completedChoices.length>=this.supplyLimit)return;this.supplyXp+=numeric(this.rule,ENEMY_CONFIG[enemy.kind].boss?'bossXp':enemy.elite?'eliteXp':'normalXp');}
   random():number{let x=this.seed;x^=x<<13;x^=x>>>17;x^=x<<5;this.seed=x>>>0;return this.seed/0x100000000;}
   has(key:string):boolean{return this.selected.includes(key);}
   p(key:string):Record<string,number>{const c=this.cards.find(c=>c.key===key);if(!c)throw Error('Unknown challenge card: '+key);return c.params;}
   card(key:string):ChallengeCard{return this.cards.find(c=>c.key===key)!;}
-  eligible(port:ChallengePort):ChallengeCard[]{return this.cards.filter(c=>!this.has(c.key)&&(!c.staff||this.roster.includes(c.staff as TowerKind))&&port.wave<=c.maxWave&&(!c.exclusive||!this.has(c.exclusive))
+  eligible(port:ChallengePort):ChallengeCard[]{return this.cards.filter(c=>(c.repeatable||!this.has(c.key))&&(!c.staff||this.roster.includes(c.staff as TowerKind))&&port.wave<=c.maxWave&&(!c.exclusive||!this.has(c.exclusive))
     &&(c.condition!=='obstacles'||port.obstacles.length>0)
     &&(c.condition!=='space'||port.towers.length<port.obstacles.length+Number(rows('Spot').filter(s=>s.mapId===rows('Level').find(l=>l.id===this.rule.levelId)!.mapId).length))
     &&(c.condition!=='evolve'||port.towers.some(t=>t.level<globalNumber("maxStaffLevel"))||port.towers.length<rows('Spot').filter(s=>s.mapId===rows('Level').find(l=>l.id===this.rule.levelId)!.mapId).length));}
   offer(port:ChallengePort):void{
-    if(this.pending||!this.choiceWaves.includes(port.wave)||this.completedChoices.includes(port.wave))return;
+    if(!this.supplyReady(port))return;
     this.pending=true;this.refreshLeft=numeric(this.rule,'adRefreshPerChoice');this.refreshFeedback='';this.roll(port);
   }
   private roll(port:ChallengePort,exclude:readonly string[]=[]):void{
@@ -50,14 +63,15 @@ export class ChallengeRun {
   }
   refresh(port:ChallengePort):boolean{if(!this.pending||this.refreshLeft<=0)return false;this.roll(port,this.offers);this.refreshLeft--;return true;}
   choose(key:string,port:ChallengePort):boolean{
-    if(this.refreshBusy||!this.pending||!this.offers.includes(key)||this.has(key))return false;
-    this.selected.push(key);this.completedChoices.push(port.wave);this.pending=false;this.offers=[];
+    if(this.refreshBusy||!this.pending||!this.offers.includes(key)||(!this.card(key).repeatable&&this.has(key)))return false;
+    if(this.xpCosts.length&&this.completedChoices.length>0)this.supplyXp-=this.xpCosts[this.completedChoices.length-1];
+    this.selected.push(key);this.completedChoices.push(this.xpCosts.length?this.completedChoices.length:port.wave);this.pending=false;this.offers=[];
     this.activate(key,port);
     return true;
   }
   income(amount:number):void{if(!this.has('X04')||amount<=0)return;const p=this.p('X04');this.cashMeter+=amount;if(this.cashMeter>=p.coins){this.cashMeter%=p.coins;this.cashTime=p.seconds;}}
   waveStart(port:ChallengePort,kinds:readonly string[]):void{
-    this.waveElapsed=0;this.shield=this.has('X02')?this.p('X02').shield:0;this.returned=false;this.slowCount=0;this.leaks=0;this.gifts=0;this.spawned=0;
+    this.waveElapsed=0;this.shield=(this.has('X02')?this.p('X02').shield:0)+this.reserveShield;this.reserveShield=0;this.returned=false;this.slowCount=0;this.leaks=0;this.gifts=0;this.spawned=0;
     this.giant=null;this.treasureIndex=-1;
     if(this.has('F01')&&port.towers.length){const top=Math.max(...port.towers.map(t=>t.level)),pool=port.towers.filter(t=>t.level===top);this.giant=pool[Math.floor(this.random()*pool.length)];}
     if(this.has('F06')){const pool=kinds.map((k,i)=>ENEMY_CONFIG[k as keyof typeof ENEMY_CONFIG].boss?-1:i).filter(i=>i>=0);if(pool.length)this.treasureIndex=pool[Math.floor(this.random()*pool.length)];}
@@ -119,7 +133,7 @@ export class ChallengeRun {
     this.leaks++;const absorbed=Math.min(enemy.damage,this.shield);this.shield-=absorbed;return {returned:false,damage:enemy.damage-absorbed};
   }
   reward(enemy:Enemy):number{
-    const base=enemy.reward+(this.has('E06')&&!ENEMY_CONFIG[enemy.kind].boss?Math.floor(ENEMY_CONFIG[enemy.kind].reward*this.p('E06').ratio):0),credit=base*numeric(this.rule,'killRewardRatio')+this.rewardRemainder;
+    const base=enemy.reward+(this.has('E06')&&!ENEMY_CONFIG[enemy.kind].boss?ENEMY_CONFIG[enemy.kind].reward*this.p('E06').ratio:0),credit=base*numeric(this.rule,'killRewardRatio')+this.rewardRemainder;
     // 大怪群不按旧单怪奖励成倍放钱；小数在本局累计，浮点误差不吞掉整金币。
     const whole=Math.floor(credit+1e-9);this.rewardRemainder=Math.max(0,credit-whole);return whole;
   }
@@ -146,6 +160,7 @@ export class ChallengeRun {
   update(dt:number,port:ChallengePort):void{
     this.elapsed+=dt;this.ballCooldown=Math.max(0,this.ballCooldown-dt);
     if(!port.inWave)return;this.cashTime=Math.max(0,this.cashTime-dt);this.waveElapsed+=dt;
+    if(this.supplyCold>0){const p=this.p('R02');for(const enemy of port.enemies){enemy.slows??={};enemy.slows.supply={ratio:p.ratio,remaining:this.supplyCold};}this.supplyCold=Math.max(0,this.supplyCold-dt);}
     if(this.has('X03')){const p=this.p('X03');for(const e of port.enemies)if(!e.chDoorSlow&&e.hp>0&&!ENEMY_CONFIG[e.kind].boss&&e.distance>=port.pathLength*p.progress&&this.slowCount<p.count){e.chDoorSlow=true;this.slowCount++;e.slows??={};e.slows.challengeDoor={ratio:p.ratio,remaining:p.seconds};}}
     if(this.has('F05')){const p=this.p('F05');this.rainTimer+=dt;if(this.rainTimer>=p.interval){this.rainTimer%=p.interval;const group=++this.rainGroup;for(const e of port.enemies.filter(e=>e.hp>0).sort((a,b)=>b.distance-a.distance).slice(0,p.count))this.delayed.push({time:p.delay,x:e.x,y:e.y,radius:p.radius,damage:p.damage,kind:'bloom',group});}}
     const hitGroups=new Map<number,Set<Enemy>>();

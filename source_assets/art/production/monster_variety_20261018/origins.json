@@ -1,0 +1,384 @@
+{
+  "date": "2026-10-18",
+  "method": "内置image_gen逐张生成；按单个角色真实alpha包围框等比归一，256透明画布，脚底统一留白8像素；没有图集猜切",
+  "records": [
+    {
+      "key": "puff",
+      "name": "泡芙团子",
+      "subject": "a tiny golden cream puff pastry creature with scalloped pastry cap, vanilla cream belt, tiny chocolate feet",
+      "prompt": "Use case: stylized-concept. Asset type: one standalone enemy character PNG for an existing cute Chinese convenience-store tower defense game. Subject: a tiny golden cream puff pastry creature with scalloped pastry cap, vanilla cream belt, tiny chocolate feet. Style: polished flat kawaii mobile-game 2D sprite, thick continuous dark chocolate outline, warm subtle cel shading, simple black oval eyes, happy open mouth, pink cheek blush, glossy small highlights. Front-facing full body, very compact readable silhouette, tiny mitten hands on sides. Composition: exactly ONE character isolated and centered on a square genuinely transparent canvas, full body including feet, generous transparent margins of at least 10% on every edge. No background, no ground plane, no cast shadow, no text, no lettering, no watermark, no scene, no sprite sheet, no second character. Keep silhouette readable at 50 pixels. Match friendly snack package creatures, not realistic food photography.",
+      "method": "内置image_gen逐张生成独立透明PNG",
+      "source": "source_assets/art/production/monster_variety_20261018/puff-source.png",
+      "target": "assets/art/gameplay/enemies/characters/enemy_puff.png",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "alphaBounds": {
+        "left": 210,
+        "top": 172,
+        "width": 827,
+        "height": 896
+      },
+      "canvas": [
+        256,
+        256
+      ],
+      "bottomPadding": 8,
+      "uuid": "7bdbdbbb-e68d-4b1e-ad79-e11a774bf17c",
+      "sourceSha256": "adf3b2a551f0b73d0804c8c1d595d17ac054f91216e40a61916160b0a54af4f6",
+      "sha256": "f12c180cb424eaa3b63e8da3902fc58bf53675d2178d315ab4f0245b3dced530"
+    },
+    {
+      "key": "pudding",
+      "name": "焦糖布丁",
+      "subject": "a plump caramel pudding cup creature, orange caramel top and cream body, tiny brown feet",
+      "prompt": "Use case: stylized-concept. Asset type: one standalone enemy character PNG for an existing cute Chinese convenience-store tower defense game. Subject: a plump caramel pudding cup creature, orange caramel top and cream body, tiny brown feet. Style: polished flat kawaii mobile-game 2D sprite, thick continuous dark chocolate outline, warm subtle cel shading, simple black oval eyes, happy open mouth, pink cheek blush, glossy small highlights. Front-facing full body, very compact readable silhouette, tiny mitten hands on sides. Composition: exactly ONE character isolated and centered on a square genuinely transparent canvas, full body including feet, generous transparent margins of at least 10% on every edge. No background, no ground plane, no cast shadow, no text, no lettering, no watermark, no scene, no sprite sheet, no second character. Keep silhouette readable at 50 pixels. Match friendly snack package creatures, not realistic food photography.",
+      "method": "内置image_gen逐张生成独立透明PNG",
+      "source": "source_assets/art/production/monster_variety_20261018/pudding-source.png",
+      "target": "assets/art/gameplay/enemies/characters/enemy_pudding.png",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "alphaBounds": {
+        "left": 175,
+        "top": 211,
+        "width": 903,
+        "height": 840
+      },
+      "canvas": [
+        256,
+        256
+      ],
+      "bottomPadding": 8,
+      "uuid": "c8ac2f12-74d0-4028-b048-39bb02b66560",
+      "sourceSha256": "534e09b3563393efd92cdfef3b3f9caf4dc6ffb1dca35b186947a76911303e74",
+      "sha256": "462748f0f18b441eb96489c70f6fab60aeea3ab53c2adb6702249b456949d6fc"
+    },
+    {
+      "key": "biscuit",
+      "name": "饼干小怪",
+      "subject": "a round chocolate chip cookie creature in a tiny mint wrapper waist skirt, cute stubby arms and feet",
+      "prompt": "Use case: stylized-concept. Asset type: one standalone enemy character PNG for an existing cute Chinese convenience-store tower defense game. Subject: a round chocolate chip cookie creature in a tiny mint wrapper waist skirt, cute stubby arms and feet. Style: polished flat kawaii mobile-game 2D sprite, thick continuous dark chocolate outline, warm subtle cel shading, simple black oval eyes, happy open mouth, pink cheek blush, glossy small highlights. Front-facing full body, very compact readable silhouette, tiny mitten hands on sides. Composition: exactly ONE character isolated and centered on a square genuinely transparent canvas, full body including feet, generous transparent margins of at least 10% on every edge. No background, no ground plane, no cast shadow, no text, no lettering, no watermark, no scene, no sprite sheet, no second character. Keep silhouette readable at 50 pixels. Match friendly snack package creatures, not realistic food photography.",
+      "method": "内置image_gen逐张生成独立透明PNG",
+      "source": "source_assets/art/production/monster_variety_20261018/biscuit-source.png",
+      "target": "assets/art/gameplay/enemies/characters/enemy_biscuit.png",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "alphaBounds": {
+        "left": 160,
+        "top": 180,
+        "width": 933,
+        "height": 893
+      },
+      "canvas": [
+        256,
+        256
+      ],
+      "bottomPadding": 8,
+      "uuid": "3923b68b-a794-4a46-85fd-6fee15101364",
+      "sourceSha256": "c34e09642288f439c1845c299141be073872d2438370daf7b6a35899003863fb",
+      "sha256": "f57a4f8447cefacde59eeedb8796edaeb2b97504b631ae1c244010a10b614fcd"
+    },
+    {
+      "key": "soda",
+      "name": "汽水蹦蹦",
+      "subject": "a bright orange fizzy soda bottle creature with yellow bottlecap and a white label, stubby arms and feet",
+      "prompt": "Use case: stylized-concept. Asset type: one standalone enemy character PNG for an existing cute Chinese convenience-store tower defense game. Subject: a bright orange fizzy soda bottle creature with yellow bottlecap and a white label, stubby arms and feet. Style: polished flat kawaii mobile-game 2D sprite, thick continuous dark chocolate outline, warm subtle cel shading, simple black oval eyes, happy open mouth, pink cheek blush, glossy small highlights. Front-facing full body, very compact readable silhouette, tiny mitten hands on sides. Composition: exactly ONE character isolated and centered on a square genuinely transparent canvas, full body including feet, generous transparent margins of at least 10% on every edge. No background, no ground plane, no cast shadow, no text, no lettering, no watermark, no scene, no sprite sheet, no second character. Keep silhouette readable at 50 pixels. Match friendly snack package creatures, not realistic food photography.",
+      "method": "内置image_gen逐张生成独立透明PNG",
+      "source": "source_assets/art/production/monster_variety_20261018/soda-source.png",
+      "target": "assets/art/gameplay/enemies/characters/enemy_soda.png",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "alphaBounds": {
+        "left": 268,
+        "top": 107,
+        "width": 710,
+        "height": 1034
+      },
+      "canvas": [
+        256,
+        256
+      ],
+      "bottomPadding": 8,
+      "uuid": "cdfc5c32-a415-49d0-a6df-03ebe091ae48",
+      "sourceSha256": "d5a2c63ac43841be485e754ac5d40fabe8c74d47b351544cb58dee279fd60afe",
+      "sha256": "3796e9cc31ba079946c68d24500cd49aef8c124a556632c228391b344583c833"
+    },
+    {
+      "key": "coffee",
+      "name": "咖啡急客",
+      "subject": "a tan takeaway coffee cup creature with brown lid and sleeve, energetic expression and tiny sneakers",
+      "prompt": "Use case: stylized-concept. Asset type: one standalone enemy character PNG for an existing cute Chinese convenience-store tower defense game. Subject: a tan takeaway coffee cup creature with brown lid and sleeve, energetic expression and tiny sneakers. Style: polished flat kawaii mobile-game 2D sprite, thick continuous dark chocolate outline, warm subtle cel shading, simple black oval eyes, happy open mouth, pink cheek blush, glossy small highlights. Front-facing full body, very compact readable silhouette, tiny mitten hands on sides. Composition: exactly ONE character isolated and centered on a square genuinely transparent canvas, full body including feet, generous transparent margins of at least 10% on every edge. No background, no ground plane, no cast shadow, no text, no lettering, no watermark, no scene, no sprite sheet, no second character. Keep silhouette readable at 50 pixels. Match friendly snack package creatures, not realistic food photography.",
+      "method": "内置image_gen逐张生成独立透明PNG",
+      "source": "source_assets/art/production/monster_variety_20261018/coffee-source.png",
+      "target": "assets/art/gameplay/enemies/characters/enemy_coffee.png",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "alphaBounds": {
+        "left": 264,
+        "top": 143,
+        "width": 726,
+        "height": 959
+      },
+      "canvas": [
+        256,
+        256
+      ],
+      "bottomPadding": 8,
+      "uuid": "47148a77-d368-40d0-b314-1271ff357b91",
+      "sourceSha256": "fd670994f9c289005c527232b9867e7d69a9bad5591c7bd37d6a1aad9da6cb9e",
+      "sha256": "205c4dcd9d459af9def14593c9eba59cf9c7a271f1acddab302023a4a1a97e03"
+    },
+    {
+      "key": "tea",
+      "name": "珍珠茶客",
+      "subject": "a pale green bubble milk tea cup creature with wide purple straw and visible black tapioca pearls, tiny blue feet",
+      "prompt": "Use case: stylized-concept. Asset type: one standalone enemy character PNG for an existing cute Chinese convenience-store tower defense game. Subject: a pale green bubble milk tea cup creature with wide purple straw and visible black tapioca pearls, tiny blue feet. Style: polished flat kawaii mobile-game 2D sprite, thick continuous dark chocolate outline, warm subtle cel shading, simple black oval eyes, happy open mouth, pink cheek blush, glossy small highlights. Front-facing full body, very compact readable silhouette, tiny mitten hands on sides. Composition: exactly ONE character isolated and centered on a square genuinely transparent canvas, full body including feet, generous transparent margins of at least 10% on every edge. No background, no ground plane, no cast shadow, no text, no lettering, no watermark, no scene, no sprite sheet, no second character. Keep silhouette readable at 50 pixels. Match friendly snack package creatures, not realistic food photography.",
+      "method": "内置image_gen逐张生成独立透明PNG",
+      "source": "source_assets/art/production/monster_variety_20261018/tea-source.png",
+      "target": "assets/art/gameplay/enemies/characters/enemy_tea.png",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "alphaBounds": {
+        "left": 284,
+        "top": 75,
+        "width": 684,
+        "height": 1085
+      },
+      "canvas": [
+        256,
+        256
+      ],
+      "bottomPadding": 8,
+      "uuid": "6ca85ce7-bcdf-4eed-98f6-8b9e6d802554",
+      "sourceSha256": "1a89a9a2261d7d7743eed5888e3ed0ecc50fd284d53ca7ca0089f4ecb8f88b7c",
+      "sha256": "4b9c93b8569d9a0f7111d94a2e30eee1cf5085ffea6d40678054bd2e86925843"
+    },
+    {
+      "key": "berrymilk",
+      "name": "草莓奶客",
+      "subject": "a strawberry pink milk carton creature with a strawberry emblem without letters, tiny magenta arms and feet",
+      "prompt": "Use case: stylized-concept. Asset type: one standalone enemy character PNG for an existing cute Chinese convenience-store tower defense game. Subject: a strawberry pink milk carton creature with a strawberry emblem without letters, tiny magenta arms and feet. Style: polished flat kawaii mobile-game 2D sprite, thick continuous dark chocolate outline, warm subtle cel shading, simple black oval eyes, happy open mouth, pink cheek blush, glossy small highlights. Front-facing full body, very compact readable silhouette, tiny mitten hands on sides. Composition: exactly ONE character isolated and centered on a square genuinely transparent canvas, full body including feet, generous transparent margins of at least 10% on every edge. No background, no ground plane, no cast shadow, no text, no lettering, no watermark, no scene, no sprite sheet, no second character. Keep silhouette readable at 50 pixels. Match friendly snack package creatures, not realistic food photography.",
+      "method": "内置image_gen逐张生成独立透明PNG",
+      "source": "source_assets/art/production/monster_variety_20261018/berrymilk-source.png",
+      "target": "assets/art/gameplay/enemies/characters/enemy_berrymilk.png",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "alphaBounds": {
+        "left": 248,
+        "top": 217,
+        "width": 751,
+        "height": 849
+      },
+      "canvas": [
+        256,
+        256
+      ],
+      "bottomPadding": 8,
+      "uuid": "c0c06134-f932-4dcb-883c-73b96eb6b566",
+      "sourceSha256": "f98433dc10c2f60c95281a49f355894614cf46b1b34885001777f08ba5a4b96f",
+      "sha256": "d2e6fc0696085e1eb7fc2bcb9a587194fe8d39b10e042242117ef078a740ad3e"
+    },
+    {
+      "key": "tin",
+      "name": "铁罐卫士",
+      "subject": "a squat silver blue canned-food tin creature with thick metal rim and pull-tab shield, sturdy stubby feet",
+      "prompt": "Use case: stylized-concept. Asset type: one standalone enemy character PNG for an existing cute Chinese convenience-store tower defense game. Subject: a squat silver blue canned-food tin creature with thick metal rim and pull-tab shield, sturdy stubby feet. Style: polished flat kawaii mobile-game 2D sprite, thick continuous dark chocolate outline, warm subtle cel shading, simple black oval eyes, happy open mouth, pink cheek blush, glossy small highlights. Front-facing full body, very compact readable silhouette, tiny mitten hands on sides. Composition: exactly ONE character isolated and centered on a square genuinely transparent canvas, full body including feet, generous transparent margins of at least 10% on every edge. No background, no ground plane, no cast shadow, no text, no lettering, no watermark, no scene, no sprite sheet, no second character. Keep silhouette readable at 50 pixels. Match friendly snack package creatures, not realistic food photography.",
+      "method": "内置image_gen逐张生成独立透明PNG",
+      "source": "source_assets/art/production/monster_variety_20261018/tin-source.png",
+      "target": "assets/art/gameplay/enemies/characters/enemy_tin.png",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "alphaBounds": {
+        "left": 157,
+        "top": 262,
+        "width": 965,
+        "height": 769
+      },
+      "canvas": [
+        256,
+        256
+      ],
+      "bottomPadding": 8,
+      "uuid": "a7b277f4-31d3-4342-9e0a-af5fc1f987da",
+      "sourceSha256": "3910b0be221ba16a0a8c93f934b1dc50ba1c38ee07c72fa49c6d2c4849d0e87b",
+      "sha256": "6eafc8445b05c82d42e5e3a1e315157ee89f81a3d1a4a30df198c011855920de"
+    },
+    {
+      "key": "juice",
+      "name": "果汁方方",
+      "subject": "a squat sunny yellow juice box creature with an orange wedge emblem and bendy green straw, sturdy little boots",
+      "prompt": "Use case: stylized-concept. Asset type: one standalone enemy character PNG for an existing cute Chinese convenience-store tower defense game. Subject: a squat sunny yellow juice box creature with an orange wedge emblem and bendy green straw, sturdy little boots. Style: polished flat kawaii mobile-game 2D sprite, thick continuous dark chocolate outline, warm subtle cel shading, simple black oval eyes, happy open mouth, pink cheek blush, glossy small highlights. Front-facing full body, very compact readable silhouette, tiny mitten hands on sides. Composition: exactly ONE character isolated and centered on a square genuinely transparent canvas, full body including feet, generous transparent margins of at least 10% on every edge. No background, no ground plane, no cast shadow, no text, no lettering, no watermark, no scene, no sprite sheet, no second character. Keep silhouette readable at 50 pixels. Match friendly snack package creatures, not realistic food photography.",
+      "method": "内置image_gen逐张生成独立透明PNG",
+      "source": "source_assets/art/production/monster_variety_20261018/juice-source.png",
+      "target": "assets/art/gameplay/enemies/characters/enemy_juice.png",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "alphaBounds": {
+        "left": 236,
+        "top": 80,
+        "width": 805,
+        "height": 1058
+      },
+      "canvas": [
+        256,
+        256
+      ],
+      "bottomPadding": 8,
+      "uuid": "1521b54b-fc7b-4dc2-92fd-a3317bd66243",
+      "sourceSha256": "e4c49755ffffe94331f09fce8a11a2177d33bca2ca5284cca890527619ba5218",
+      "sha256": "6a454a8d2a88b0178be0616344ddd96441d77d19ec743c62fd85f6fa0b71f1e8"
+    },
+    {
+      "key": "peach",
+      "name": "蜜桃冻冻",
+      "subject": "a translucent peach pink jelly cup creature with white lid, glossy rounded arms and feet and a peach emblem",
+      "prompt": "Use case: stylized-concept. Asset type: one standalone enemy character PNG for an existing cute Chinese convenience-store tower defense game. Subject: a translucent peach pink jelly cup creature with white lid, glossy rounded arms and feet and a peach emblem. Style: polished flat kawaii mobile-game 2D sprite, thick continuous dark chocolate outline, warm subtle cel shading, simple black oval eyes, happy open mouth, pink cheek blush, glossy small highlights. Front-facing full body, very compact readable silhouette, tiny mitten hands on sides. Composition: exactly ONE character isolated and centered on a square genuinely transparent canvas, full body including feet, generous transparent margins of at least 10% on every edge. No background, no ground plane, no cast shadow, no text, no lettering, no watermark, no scene, no sprite sheet, no second character. Keep silhouette readable at 50 pixels. Match friendly snack package creatures, not realistic food photography.",
+      "method": "内置image_gen逐张生成独立透明PNG",
+      "source": "source_assets/art/production/monster_variety_20261018/peach-source.png",
+      "target": "assets/art/gameplay/enemies/characters/enemy_peach.png",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "alphaBounds": {
+        "left": 210,
+        "top": 228,
+        "width": 834,
+        "height": 801
+      },
+      "canvas": [
+        256,
+        256
+      ],
+      "bottomPadding": 8,
+      "uuid": "50b2deee-ab95-493f-907d-a40c3858675d",
+      "sourceSha256": "9ecfdca62183e33672353c2bc8d3fa74b9ae554696618791574eafb849d59ea1",
+      "sha256": "46ae25bef848bc9ce096473a2c548096a88c55523ebe62ac03abade1c09130e7"
+    },
+    {
+      "key": "grape",
+      "name": "葡萄冻冻",
+      "subject": "a translucent purple grape jelly cup creature with white lid, glossy rounded arms and feet and a tiny grape emblem",
+      "prompt": "Use case: stylized-concept. Asset type: one standalone enemy character PNG for an existing cute Chinese convenience-store tower defense game. Subject: a translucent purple grape jelly cup creature with white lid, glossy rounded arms and feet and a tiny grape emblem. Style: polished flat kawaii mobile-game 2D sprite, thick continuous dark chocolate outline, warm subtle cel shading, simple black oval eyes, happy open mouth, pink cheek blush, glossy small highlights. Front-facing full body, very compact readable silhouette, tiny mitten hands on sides. Composition: exactly ONE character isolated and centered on a square genuinely transparent canvas, full body including feet, generous transparent margins of at least 10% on every edge. No background, no ground plane, no cast shadow, no text, no lettering, no watermark, no scene, no sprite sheet, no second character. Keep silhouette readable at 50 pixels. Match friendly snack package creatures, not realistic food photography.",
+      "method": "内置image_gen逐张生成独立透明PNG",
+      "source": "source_assets/art/production/monster_variety_20261018/grape-source.png",
+      "target": "assets/art/gameplay/enemies/characters/enemy_grape.png",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "alphaBounds": {
+        "left": 140,
+        "top": 171,
+        "width": 974,
+        "height": 918
+      },
+      "canvas": [
+        256,
+        256
+      ],
+      "bottomPadding": 8,
+      "uuid": "53fc4e30-24fe-427f-ac5b-8daf4d615693",
+      "sourceSha256": "a3621a87aebf406fff2a41c4bb26398541e44e930b2a3b566c1a3d456fdef4ef",
+      "sha256": "e43a85254bd09a24cc7847d0d44345eb12724929fead41bbf94191380cbc7ca8"
+    },
+    {
+      "key": "blue",
+      "name": "蓝莓冻冻",
+      "subject": "a translucent cyan blue soda jelly cup creature with a white lid and a tiny lemon wedge emblem, rounded arms and feet",
+      "prompt": "Use case: stylized-concept. Asset type: one standalone enemy character PNG for an existing cute Chinese convenience-store tower defense game. Subject: a translucent cyan blue soda jelly cup creature with a white lid and a tiny lemon wedge emblem, rounded arms and feet. Style: polished flat kawaii mobile-game 2D sprite, thick continuous dark chocolate outline, warm subtle cel shading, simple black oval eyes, happy open mouth, pink cheek blush, glossy small highlights. Front-facing full body, very compact readable silhouette, tiny mitten hands on sides. Composition: exactly ONE character isolated and centered on a square genuinely transparent canvas, full body including feet, generous transparent margins of at least 10% on every edge. No background, no ground plane, no cast shadow, no text, no lettering, no watermark, no scene, no sprite sheet, no second character. Keep silhouette readable at 50 pixels. Match friendly snack package creatures, not realistic food photography.",
+      "method": "内置image_gen逐张生成独立透明PNG",
+      "source": "source_assets/art/production/monster_variety_20261018/blue-source.png",
+      "target": "assets/art/gameplay/enemies/characters/enemy_blue.png",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "alphaBounds": {
+        "left": 185,
+        "top": 185,
+        "width": 885,
+        "height": 894
+      },
+      "canvas": [
+        256,
+        256
+      ],
+      "bottomPadding": 8,
+      "uuid": "5b5a894b-117a-43a1-a340-1c8d1dc8c813",
+      "sourceSha256": "9e36679ba13cdfea0c7bfdf2d0d8472a8157986df307ab199794ee676fc8d71d",
+      "sha256": "281957aad53427399801a12e897fbd60866f605776ed76c1c0937b68d41aa1d1"
+    },
+    {
+      "key": "ricebox",
+      "name": "饭盒壮壮",
+      "subject": "a chunky cream and orange takeout rice meal box creature, lid strapped closed with a red band and a small onigiri emblem, sturdy brown feet",
+      "prompt": "Use case: stylized-concept. Asset type: one standalone enemy character PNG for an existing cute Chinese convenience-store tower defense game. Subject: a chunky cream and orange takeout rice meal box creature, lid strapped closed with a red band and a small onigiri emblem, sturdy brown feet. Style: polished flat kawaii mobile-game 2D sprite, thick continuous dark chocolate outline, warm subtle cel shading, simple black oval eyes, happy open mouth, pink cheek blush, glossy small highlights. Front-facing full body, very compact readable silhouette, tiny mitten hands on sides. Composition: exactly ONE character isolated and centered on a square genuinely transparent canvas, full body including feet, generous transparent margins of at least 10% on every edge. No background, no ground plane, no cast shadow, no text, no lettering, no watermark, no scene, no sprite sheet, no second character. Keep silhouette readable at 50 pixels. Match friendly snack package creatures, not realistic food photography.",
+      "method": "内置image_gen逐张生成独立透明PNG",
+      "source": "source_assets/art/production/monster_variety_20261018/ricebox-source.png",
+      "target": "assets/art/gameplay/enemies/characters/enemy_ricebox.png",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "alphaBounds": {
+        "left": 105,
+        "top": 190,
+        "width": 1045,
+        "height": 875
+      },
+      "canvas": [
+        256,
+        256
+      ],
+      "bottomPadding": 8,
+      "uuid": "d7cced2a-e767-4bab-a81e-5983204a7097",
+      "sourceSha256": "1f489504d1365ae178417c3d8bae893a0157bfefce8777c360ae251719fa4961",
+      "sha256": "73eaa3656cf751299d2657f2286a44c2a8e39093ca235aaf0f992041dba04d01"
+    },
+    {
+      "key": "deliverybag",
+      "name": "纸袋搬搬",
+      "subject": "a stout kraft brown paper delivery bag creature with folded top and a green leaf seal, big rounded hands and stubby feet",
+      "prompt": "Use case: stylized-concept. Asset type: one standalone enemy character PNG for an existing cute Chinese convenience-store tower defense game. Subject: a stout kraft brown paper delivery bag creature with folded top and a green leaf seal, big rounded hands and stubby feet. Style: polished flat kawaii mobile-game 2D sprite, thick continuous dark chocolate outline, warm subtle cel shading, simple black oval eyes, happy open mouth, pink cheek blush, glossy small highlights. Front-facing full body, very compact readable silhouette, tiny mitten hands on sides. Composition: exactly ONE character isolated and centered on a square genuinely transparent canvas, full body including feet, generous transparent margins of at least 10% on every edge. No background, no ground plane, no cast shadow, no text, no lettering, no watermark, no scene, no sprite sheet, no second character. Keep silhouette readable at 50 pixels. Match friendly snack package creatures, not realistic food photography.",
+      "method": "内置image_gen逐张生成独立透明PNG",
+      "source": "source_assets/art/production/monster_variety_20261018/deliverybag-source.png",
+      "target": "assets/art/gameplay/enemies/characters/enemy_deliverybag.png",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "alphaBounds": {
+        "left": 185,
+        "top": 189,
+        "width": 891,
+        "height": 902
+      },
+      "canvas": [
+        256,
+        256
+      ],
+      "bottomPadding": 8,
+      "uuid": "5075703b-c463-4a63-b36f-0ebc10a42c9a",
+      "sourceSha256": "3bbdaeeef66b7ddeed177b602e257e6d4d86d0cd645aa164b0e3b614f10fdc22",
+      "sha256": "8be91582f03770c8fd662c960e18405ded898a597d531870c44dcbff824761d8"
+    }
+  ]
+}

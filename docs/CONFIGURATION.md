@@ -1,5 +1,13 @@
 # XLSX → 客户端 CSV 配置规范
 
+## 1.20.0 怪物扩充与经验补给（2026-10-18）
+
+- Enemy新增14记录，ArtFrame／Collection／I18／WaveGroup同步；20冒险Level.enemyHealthScale×1.5，initialCoins保持。十张原表先修改，再导出CSV／manifest，版本1.20.0。角色PNG统一256透明画布与独立SpriteFrame，源图和提示词签名见monster_variety_20261018/origins.json。
+- ChallengeRule新增supplyXpSteps（逐次门槛管道分隔字符串）及normalXp／eliteXp／bossXp正整数，当前19门槛、开局另1次，共最多20次。经验按击退实际怪物等级发放，溢出保留；choiceWaves保留0为开局／历史协议，后续不以波结束发卡。
+- ChallengePerk新增repeatable整型0／1，永久卡0；R01／R02／R03消耗卡1。R01参数coins，R02 ratio／seconds，R03 shield／cap；至少三种无场外／无场景条件的可重复卡保障后期三选一。R03上限必须保持首领漏怪致命，重选不永久叠加属性。
+- UiLayout新增Header/SupplyProgress七节点，复用既有九宫PNG，蓝色填充用缩放，文字仍Label／I18；不新增Graphics／Canvas。新增I18后重导原OFL圆体子集，保留TTF UUID。
+- schema、运行时校验器、导表生成校验器及签名同步；规则代码只保留经验累积、状态过渡与读取算法。数值、文案和资源引用均由原表管理。美术展示夹具中的状态数值只用于独立截图工具，不进入客户端运行配置。
+
 ## 1.19.0 全关卡节奏补充（2026-10-18）
 
 - 用户追加全部冒险关卡，Wave.xlsx统一调整20关第4波起的healthScale，按真实怪组平均开波HP配平。前三波和挑战值保持，CSV／manifest通过导出同步。

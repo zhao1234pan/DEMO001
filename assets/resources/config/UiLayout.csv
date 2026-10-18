@@ -2609,3 +2609,10 @@ id,key,prefab,node,x,y,width,height,scaleX,scaleY,fontSize,lineHeight,fontFamily
 2980,shop:ShopOverlay/GoodsPicker/Clear,shop,ShopOverlay/GoodsPicker/Clear,0,-234,180,28,1,1,0,0,,#ffffff,,0,1,1,0,1,button_green,三商品位独立选择，复用PNG九宫按钮,
 2981,shop:ShopOverlay/GoodsPicker/Clear/Artwork,shop,ShopOverlay/GoodsPicker/Clear/Artwork,0,0,180,28,1,1,0,0,,#ffffff,,0,1,1,0,1,,商品位按钮PNG,
 2982,shop:ShopOverlay/GoodsPicker/Clear/Text,shop,ShopOverlay/GoodsPicker/Clear/Text,0,0,172,26,1,1,11,16,NightShiftRounded,#ffffff,#000000,1,1,1,2,1,,商品位名称与清空文案来自I18,fonts/night_shift_rounded
+2983,battle_hud:Header/SupplyProgress,battle_hud,Header/SupplyProgress,-64,-38,248,25,1,1,0,0,,,,0,1,1,0,1,,夜班经验进度，布局来自原始表,
+2984,battle_hud:Header/SupplyProgress/Track,battle_hud,Header/SupplyProgress/Track,0,-7,248,8,1,1,0,0,,#283c60,,0,1,1,0,1,round_2,夜班经验进度，布局来自原始表,
+2985,battle_hud:Header/SupplyProgress/Track/Artwork,battle_hud,Header/SupplyProgress/Track/Artwork,0,0,248,8,1,1,0,0,,,,0,1,1,0,1,,夜班经验进度，布局来自原始表,
+2986,battle_hud:Header/SupplyProgress/Fill,battle_hud,Header/SupplyProgress/Fill,-124,-7,248,8,1,1,0,0,,,,0,1,1,0,1,,夜班经验进度，布局来自原始表,
+2987,battle_hud:Header/SupplyProgress/Fill/Surface,battle_hud,Header/SupplyProgress/Fill/Surface,124,0,248,8,1,1,0,0,,#58baff,,0,1,1,0,1,round_2,夜班经验进度，布局来自原始表,
+2988,battle_hud:Header/SupplyProgress/Fill/Surface/Artwork,battle_hud,Header/SupplyProgress/Fill/Surface/Artwork,0,0,248,8,1,1,0,0,,,,0,1,1,0,1,,夜班经验进度，布局来自原始表,
+2989,battle_hud:Header/SupplyProgress/Text,battle_hud,Header/SupplyProgress/Text,0,7,248,17,1,1,12,17,NightShiftRounded,#fff4dc,#283c60,1,0,1,2,1,,夜班经验进度，布局来自原始表,fonts/night_shift_rounded

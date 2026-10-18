@@ -30,3 +30,6 @@ node_modules/
 
 # Creator本地构建日志
 /logs/
+
+# 美术交接副本由tools/art/export-review.cjs生成；原始资源与配置仍在正式目录跟踪。
+/美术导出/

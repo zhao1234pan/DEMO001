@@ -2,7 +2,8 @@ import { rows, numeric, text, globalNumber, globalString, onConfigsReady } from 
 // 引擎启动与画布比例为技术常量，玩法数据在 CSV 加载后填充。
 export const GAME_CONFIG = { designWidth:750, designHeight:1334, prototypeLayoutWidth:390, prototypeLayoutHeight:1334*390/750, maxLevels:0, gameName:"", rewardAdUnitId:"" };
 export type TowerKind = "sprout" | "frost" | "bloom" | "scope" | "spark" | "ember" | "mint" | "fan";
-export type EnemyKind = "normal" | "swift" | "tank" | "shield" | "jelly" | "runner" | "postmaster" | "lantern" | "chef" | "clock";
+// 怪物标识来自Enemy原表，新增配置无需维护第二份运行时名单。
+export type EnemyKind = string;
 
 export interface TowerConfig {
   name: string;

@@ -22,7 +22,7 @@ export class ChallengeView {
     const key=JSON.stringify([run.pending,run.offers,run.selected,run.refreshLeft,run.refreshBusy,run.refreshFeedback,this.page]);if(this.signature===key)return;this.signature=key;
     if(run.pending)this.page=0;const list=run.pending?run.offers:run.selected.slice(this.page*this.cards.length,(this.page+1)*this.cards.length);
     uiText(this.panel,'Title',text(run.pending?'challenge.pick':'challenge.inventory',run.selected.length));
-    uiText(this.panel,'Count',run.pending?text('challenge.pickCount',run.completedChoices.length+1,run.choiceWaves.length):run.selected.length?'':text('challenge.empty'));
+    uiText(this.panel,'Count',run.pending?text('challenge.pickCount',run.completedChoices.length+1,run.supplyLimit):run.selected.length?'':text('challenge.empty'));
     this.cards.forEach((node,i)=>{
       const card=run.card(list[i]);node.active=Boolean(card);if(!card)return;
       uiText(node,'Title',card.name);uiText(node,'Description',card.description);this.assets.bindImage(uiNode(node,'Icon'),'ui:'+card.icon);

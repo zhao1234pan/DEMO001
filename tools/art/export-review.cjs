@@ -1,0 +1,34 @@
+/* 美术交接目录：复制正式资源，保留来源与签名，不移动Cocos资源或重建UUID。 */
+const fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypto');
+const root=path.resolve(__dirname,'../..'),core=require('../config/validator.cjs');
+const read=n=>core.parseCsv(fs.readFileSync(path.join(root,'assets/resources/config',n+'.csv'),'utf8'));
+const version=read('Global').find(r=>r.key==='version').value;
+const output=path.join(root,'美术导出','叮咚夜班-'+version);fs.mkdirSync(output,{recursive:true});
+const sha=b=>crypto.createHash('sha256').update(b).digest('hex');
+const walk=d=>fs.readdirSync(d,{withFileTypes:true}).flatMap(e=>e.isDirectory()?walk(path.join(d,e.name)):[path.join(d,e.name)]);
+const records=[];function copy(source,dest,category,kind='asset'){
+ const target=path.join(output,dest);fs.mkdirSync(path.dirname(target),{recursive:true});fs.copyFileSync(source,target);
+ const bytes=fs.readFileSync(source),png=source.endsWith('.png');records.push({category,kind,source:path.relative(root,source).replaceAll('\\','/'),path:dest.replaceAll('\\','/'),bytes:bytes.length,sha256:sha(bytes),...(png?{width:bytes.readUInt32BE(16),height:bytes.readUInt32BE(20)}:{})});
+}
+for(const file of walk(path.join(root,'assets/art'))){const rel=path.relative(path.join(root,'assets/art'),file).replaceAll('\\','/');if(!/\.(png|meta)$/.test(file))continue;let category='场景与特效',local=rel;
+ if(rel.startsWith('ui/'))category='拆分PNG';else if(rel.startsWith('gameplay/towers/')){category='防御塔';local=rel.slice('gameplay/towers/'.length);}else if(rel.startsWith('gameplay/enemies/')){category='怪物';local=rel.slice('gameplay/enemies/'.length);}else if(rel.startsWith('gameplay/maps/')){category='完整地图';local=rel.slice('gameplay/maps/'.length);}
+ copy(file,category+'/'+local,category);
+}
+for(const r of read('UiPrefab'))for(const suffix of ['.prefab','.prefab.meta'])copy(path.join(root,'assets/resources',r.path+suffix),'界面预制体/'+r.key+suffix,'界面预制体','prefab');
+for(const file of walk(path.join(root,'assets/resources/fonts')))copy(file,'字体/运行/'+path.basename(file),'字体');
+for(const file of walk(path.join(root,'source_assets/fonts')))copy(file,'字体/来源与许可/'+path.relative(path.join(root,'source_assets/fonts'),file),'字体');
+for(const file of fs.readdirSync(path.join(root,'design/tables')).filter(n=>n.endsWith('.xlsx')))copy(path.join(root,'design/tables',file),'配置索引/XLSX/'+file,'配置索引','configuration');
+for(const file of fs.readdirSync(path.join(root,'assets/resources/config')).filter(n=>/\.(csv|json)$/.test(n)))copy(path.join(root,'assets/resources/config',file),'配置索引/CSV/'+file,'配置索引','configuration');
+const newSource=path.join(root,'source_assets/art/production/monster_variety_20261018');if(fs.existsSync(newSource))for(const file of walk(newSource))copy(file,'资源原图/新怪物/'+path.basename(file),'资源原图','source');
+const screenshots=path.join(output,'UI效果图');fs.mkdirSync(screenshots,{recursive:true});for(const file of walk(screenshots).filter(p=>p.endsWith('.png')))records.push({category:'UI效果图',kind:'prefab-render',source:'原生Cocos预制体美术状态截图，不是通关记录',path:path.relative(output,file).replaceAll('\\','/'),bytes:fs.statSync(file).size,sha256:sha(fs.readFileSync(file))});
+const prefabs=read('UiPrefab'),art=read('ArtFrame'),skins=read('VisualSkin');
+fs.writeFileSync(path.join(output,'配置索引/资源绑定.json'),JSON.stringify({version,prefabs,artFrames:art,skins},null,2));
+const escape=s=>String(s).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('"','&quot;');
+const images=records.filter(r=>r.path.endsWith('.png')&&r.kind!=='source');
+images.sort((a,b)=>(a.category==='UI效果图'?-1:1)-(b.category==='UI效果图'?-1:1)||Number(a.path.includes('/组件/'))-Number(b.path.includes('/组件/'))||a.path.localeCompare(b.path,'zh-CN'));
+const items=images.map(r=>`<article data-category="${escape(r.category)}" data-name="${escape(r.path)}"><a href="${encodeURI(r.path)}" target="_blank"><img loading="lazy" src="${encodeURI(r.path)}" alt="${escape(r.path)}"></a><b>${escape(path.basename(r.path))}</b><small>${escape(r.category)}${r.width?' · '+r.width+'×'+r.height:''}</small></article>`).join('');
+const categories=[...new Set(images.map(r=>r.category))];
+fs.writeFileSync(path.join(output,'索引.html'),`<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>叮咚夜班 ${version} 美术索引</title><style>body{margin:0;background:#f4f0e6;color:#413b35;font:15px system-ui}header{position:sticky;top:0;background:#fff9ed;padding:20px 28px;box-shadow:0 2px 10px #0001;z-index:1}h1{font-size:24px;margin:0 0 8px}p{margin:8px 0}input,select{font:inherit;padding:9px;margin-right:10px;border:1px solid #b7ab96;border-radius:6px}main{padding:24px;display:grid;grid-template-columns:repeat(auto-fill,minmax(175px,1fr));gap:18px}article{min-width:0;background:white;padding:12px;border-radius:10px;display:flex;flex-direction:column}img{width:100%;height:175px;object-fit:contain;background:repeating-conic-gradient(#f0f0f0 0% 25%,#fff 0% 50%) 50%/18px 18px}b{font-size:12px;word-break:break-all;margin-top:10px}small{margin-top:6px;color:#776a58}[hidden]{display:none!important}</style><header><h1>叮咚夜班 ${version} 美术索引</h1><p>${prefabs.length}套预制体，${read('Enemy').length}种怪物。UI效果图为原生预制体美术状态截图，动态数据使用展示夹具，不代表真实通关。</p><input id="q" placeholder="按文件名查找"><select id="c"><option value="">全部分类</option>${categories.map(c=>`<option>${escape(c)}</option>`).join('')}</select><a href="使用说明.txt">使用说明</a> · <a href="配置索引/资源绑定.json">资源绑定</a> · <a href="导出清单.json">完整清单</a></header><main>${items}</main><script>const q=document.querySelector('#q'),c=document.querySelector('#c');function filter(){for(const a of document.querySelectorAll('article'))a.hidden=!!(c.value&&a.dataset.category!==c.value)||!a.dataset.name.toLowerCase().includes(q.value.toLowerCase())}q.oninput=c.onchange=filter;</script></html>`);
+fs.writeFileSync(path.join(output,'使用说明.txt'),`叮咚夜班 ${version} 美术导出\n\nUI效果图：原生Cocos预制体和美术状态夹具截图，用于界面交接，不代表真实游玩或通关。\n界面预制体：36套正式Prefab及meta，原始绑定和UUID保留。\n拆分PNG、防御塔、怪物、完整地图、场景与特效：正式运行的独立PNG及meta，透明画布和九宫参数保留。\n字体：运行子集、原字体及许可。\n资源原图：本轮新增怪物的独立生成源图、提示词、alpha边界及来源签名。其他历史源图在项目source_assets/art/production，资源清单记录正式路径。\n配置索引：全部39原始XLSX、客户端CSV、版本清单以及资源绑定。\n\n这是交接副本，修改副本不会自动回写工程；正式替换仍遵循XLSX→导表校验→CSV。源文件、独立PNG、meta和来源记录已在工程版本控制，导出副本由tools/art/export-review.cjs重建。\n`);
+const result={date:new Intl.DateTimeFormat('sv-SE',{timeZone:'Asia/Shanghai'}).format(new Date()),version,output,counts:Object.fromEntries([...new Set(records.map(r=>r.category))].map(c=>[c,records.filter(r=>r.category===c).length])),pngCount:images.length,prefabCount:prefabs.length,records};fs.writeFileSync(path.join(output,'导出清单.json'),JSON.stringify(result,null,2));console.log(JSON.stringify({output,pngCount:images.length,prefabCount:prefabs.length,counts:result.counts},null,2));
+fs.copyFileSync(path.join(output,'索引.html'),path.join(output,'index.html'));

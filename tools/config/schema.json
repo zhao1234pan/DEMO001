@@ -326,7 +326,11 @@
       "phaseGrowthPower": "float",
       "supplyDelay": "float",
       "supplyFadeDuration": "float",
-      "phaseFollowNextWave": "int"
+      "phaseFollowNextWave": "int",
+      "supplyXpSteps": "string",
+      "normalXp": "int",
+      "eliteXp": "int",
+      "bossXp": "int"
     }
   },
   "ChallengePerk": {
@@ -341,7 +345,8 @@
       "params": "string",
       "condition": "string",
       "maxWave": "int",
-      "exclusive": "string"
+      "exclusive": "string",
+      "repeatable": "int"
     }
   },
   "VisualSkin": {

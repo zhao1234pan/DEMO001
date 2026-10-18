@@ -204,16 +204,19 @@ export function installConfigs(sources: Record<string, string>): void {
   requireRef("VisualSkin","key",next.Global.find(r=>r.key==="staffLevelStarIcon")?.value ?? "", "StaffVisual");
 
   positive("Wave",["bossHealthScale"]);
-  const perkKeys=["S01","S02","S03","S04","S05","S06","S07","S08","G01","G02","G03","G04","G05","G06","E01","E02","E03","E04","E05","E06","X01","X02","X03","X04","X05","X06","F01","F02","F03","F04","F05","F06"];
+  const perkKeys=["S01","S02","S03","S04","S05","S06","S07","S08","G01","G02","G03","G04","G05","G06","E01","E02","E03","E04","E05","E06","X01","X02","X03","X04","X05","X06","F01","F02","F03","F04","F05","F06","R01","R02","R03"];
   if(new Set(next.ChallengePerk.map(row=>row.iconKey)).size!==next.ChallengePerk.length)throw Error('Duplicate challenge icon');
   for(const row of next.ChallengePerk){
-    if(!perkKeys.includes(row.key)||!['S','G','E','X','F'].includes(row.category)||!['','space','evolve','obstacles'].includes(row.condition))throw Error('Unknown challenge effect/category/condition');
+    if(!perkKeys.includes(row.key)||!['S','G','E','X','F','R'].includes(row.category)||!['','space','evolve','obstacles'].includes(row.condition))throw Error('Unknown challenge effect/category/condition');
+    if(!['0','1'].includes(row.repeatable)||(row.repeatable==='1')!==(row.category==='R')||(row.category==='R'&&(row.condition||row.exclusive||Number(row.maxWave)<Math.max(...next.Wave.filter(w=>Number(w.levelId)>Number(next.Global.find(g=>g.key==='maxLevels')!.value)).map(w=>Number(w.order))))))throw Error('Invalid repeatable supply');
     if(row.staffKey)requireRef('Staff','key',row.staffKey,'ChallengePerk');
     for(const field of ['nameKey','descriptionKey'])requireRef('I18','key',row[field],'ChallengePerk');
     requireRef('ArtFrame','ui',row.iconKey,'ChallengePerk');
     if(row.exclusive)requireRef('ChallengePerk','key',row.exclusive,'ChallengePerk');
     const contracts:Record<string,string>={S01:'every|shots|ratio',S02:'radius|count|seconds',S03:'every|delay|ratio|radiusRatio',S04:'ratio',S05:'every|ratio|count',S06:'radius|count|ratio',S07:'radius|count|seconds|generations',S08:'radius|ratio',G01:'seconds|rate',G02:'radius|damage',G03:'radius|damage|range',G04:'step|damage|cap',G05:'damage|range',G06:'damage',E01:'coins',E02:'waves|ratio|cap',E03:'charges',E04:'charges',E05:'coins|reward',E06:'ratio',X01:'progress',X02:'shield',X03:'count|progress|ratio|seconds',X04:'coins|rate|seconds',X05:'radius|ratio',X06:'damage',F01:'damage|range|rate|scale',F02:'rate|damage|scale',F03:'every|limit|coins|damage|radius|ratio|seconds',F04:'every|damage|count|cooldown|speed|seconds|radius',F05:'interval|count|delay|radius|damage',F06:'hp|reward'};
+    Object.assign(contracts,{R01:'coins',R02:'ratio|seconds',R03:'shield|cap'});
     const params=JSON.parse(row.params);
+    if(row.key==='R03'&&(!Number.isInteger(params.cap)||params.cap<params.shield||next.ChallengeRule.some(rule=>params.cap>numeric(rule,'bossLeakDamage')-numeric(next.Level.find(l=>l.id===rule.levelId)!,'initialLives'))))throw Error('Supply shield must preserve lethal boss leaks');
     if(Object.keys(params).sort().join('|')!==contracts[row.key].split('|').sort().join('|'))throw Error('Challenge parameter contract mismatch');
     for(const [key,value] of Object.entries(params) as Array<[string,number]>){
       if(!Number.isFinite(value)||value<=(['rate','damage','range'].includes(key)?-1:0)||Math.abs(value)>100000)throw Error('Invalid challenge parameter range');
@@ -228,6 +231,9 @@ export function installConfigs(sources: Record<string, string>): void {
   if(next.ChallengePerk.length!==perkKeys.length||perkKeys.some(k=>!next.ChallengePerk.some(r=>r.key===k)))throw Error('Missing challenge effect');
   if(new Set(next.ChallengeRule.map(r=>r.levelId)).size!==next.ChallengeRule.length)throw Error('Duplicate challenge rule');
   for(const row of next.ChallengeRule){
+    const xp=row.supplyXpSteps.split('|').map(Number),waveCount=next.Wave.filter(w=>w.levelId===row.levelId).length;
+    if(!xp.length||xp.length>=waveCount||xp.some((v,i)=>!Number.isInteger(v)||v<=0||i>0&&v<xp[i-1]))throw Error('Invalid supply experience progression');
+    for(const field of ['normalXp','eliteXp','bossXp'])if(!Number.isInteger(numeric(row,field))||numeric(row,field)<=0)throw Error('Invalid supply experience reward');
     for(const key of ['laneOffset','crowdGap','waveDuration','eliteEvery','eliteStartWave','eliteHealthScale','eliteScale','eliteSpeedRatio','eliteRewardRatio','growthEvery'])if(numeric(row,key)<=0)throw Error('Invalid crowd flow rule');
     for(const key of ['eliteHealthGrowth','growthDamage','growthRange','crowdSpeedGrowth','phaseHealthGrowth'])if(numeric(row,key)<0)throw Error('Invalid crowd growth');
     if(numeric(row,'phaseGrowthPower')<=0)throw Error('Invalid phase growth curve');

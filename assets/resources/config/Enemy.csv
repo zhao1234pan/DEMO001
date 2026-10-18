@@ -9,3 +9,17 @@ id,key,hp,speed,reward,radius,color,damage,name,boss,clearRatio,legacyUnlock,spr
 8,lantern,1100,22,120,26,#657690,9,enemy.lantern.name,major,0.18,0,88,1.5,0.6,24,21
 9,chef,1300,23,130,24,#ca845b,9,enemy.chef.name,mini,0.18,0,88,1.5,0.6,24,20.5
 10,clock,1800,21,160,27,#877494,9,enemy.clock.name,major,0.18,0,88,1.5,0.6,24,21
+11,puff,58,38,8,15,#9a77bd,1,enemy.puff.name,,1,0,52,1,0.55,15,12
+12,pudding,76,34,10,15,#9a77bd,1,enemy.pudding.name,,1,0,52,1,0.55,15,12
+13,biscuit,58,38,8,15,#9a77bd,1,enemy.biscuit.name,,1,0,52,1,0.55,15,12
+14,soda,44,62,11,13,#e5aa54,1,enemy.soda.name,,1,0,48,1,0.55,15,12
+15,coffee,52,68,13,13,#e5aa54,1,enemy.coffee.name,,1,0,48,1,0.55,15,12
+16,tea,72,72,16,14,#82a9d7,1,enemy.tea.name,,1,0,64,1,0.55,15,12
+17,berrymilk,84,64,18,14,#82a9d7,1,enemy.berrymilk.name,,1,0,64,1,0.55,15,12
+18,tin,150,29,20,16,#8fa9a4,1,enemy.tin.name,,1,0,67,1,0.55,15,12
+19,juice,122,32,18,16,#8fa9a4,1,enemy.juice.name,,1,0,67,1,0.55,15,12
+20,peach,98,35,17,15,#87b873,1,enemy.peach.name,,1,0,63,1,0.55,15,12
+21,grape,116,31,19,15,#87b873,1,enemy.grape.name,,1,0,63,1,0.55,15,12
+22,blue,98,35,17,15,#87b873,1,enemy.blue.name,,1,0,63,1,0.55,15,12
+23,ricebox,215,23,25,19,#8a705c,2,enemy.ricebox.name,,0.45,0,68,1,0.55,15,12
+24,deliverybag,190,25,22,19,#8a705c,2,enemy.deliverybag.name,,0.45,0,68,1,0.55,15,12

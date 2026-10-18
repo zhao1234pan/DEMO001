@@ -139,6 +139,11 @@ export class BattlePrefabView {
     this.gmEntry.active = DEBUG && !mapReview;
     uiNode(this.hud, "Footer/Shop").active = false;
   }
+  supplyProgress(state:{ratio:number;remaining:number;completed:number;limit:number;ready:boolean}|null):void{
+    const node=uiNode(this.hud,'Header/SupplyProgress');node.active=Boolean(state);if(!state)return;
+    uiNode(node,'Fill').setScale(Math.max(0,Math.min(1,state.ratio)),1,1);
+    uiNode(node,'Text').getComponent(Label)!.string=state.completed>=state.limit?text('challenge.xpComplete',state.completed,state.limit):state.ready?text('challenge.xpReady'):text('challenge.xpProgress',state.completed,state.limit,state.remaining);
+  }
   buildSize(): { width: number; height: number } {
     const node = this.builds.get(TOWER_KINDS[0])!, size = node.getComponent(UITransform)!.contentSize;
     return { width: size.width * node.scale.x, height: size.height * node.scale.y };

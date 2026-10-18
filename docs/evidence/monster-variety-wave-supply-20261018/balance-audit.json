@@ -1,0 +1,1220 @@
+{
+  "date": "2026-10-18",
+  "baseline": "8fc58f76e009d45278779d8100bd0b51ff29214f",
+  "version": "1.20.0",
+  "kind": "静态配置及构筑收益代理，不是通关／完整试玩结论",
+  "levelChanges": [
+    {
+      "id": "1",
+      "initialCoins": "255",
+      "oldHealthScale": "0.55",
+      "newHealthScale": "0.825"
+    },
+    {
+      "id": "2",
+      "initialCoins": "280",
+      "oldHealthScale": "0.7",
+      "newHealthScale": "1.05"
+    },
+    {
+      "id": "3",
+      "initialCoins": "320",
+      "oldHealthScale": "0.82",
+      "newHealthScale": "1.23"
+    },
+    {
+      "id": "4",
+      "initialCoins": "260",
+      "oldHealthScale": "1.12",
+      "newHealthScale": "1.68"
+    },
+    {
+      "id": "5",
+      "initialCoins": "290",
+      "oldHealthScale": "1.16",
+      "newHealthScale": "1.74"
+    },
+    {
+      "id": "6",
+      "initialCoins": "300",
+      "oldHealthScale": "1.24",
+      "newHealthScale": "1.86"
+    },
+    {
+      "id": "7",
+      "initialCoins": "310",
+      "oldHealthScale": "1.3",
+      "newHealthScale": "1.95"
+    },
+    {
+      "id": "8",
+      "initialCoins": "320",
+      "oldHealthScale": "1.38",
+      "newHealthScale": "2.07"
+    },
+    {
+      "id": "9",
+      "initialCoins": "330",
+      "oldHealthScale": "1.46",
+      "newHealthScale": "2.19"
+    },
+    {
+      "id": "10",
+      "initialCoins": "370",
+      "oldHealthScale": "1.54",
+      "newHealthScale": "2.31"
+    },
+    {
+      "id": "11",
+      "initialCoins": "330",
+      "oldHealthScale": "1.48",
+      "newHealthScale": "2.22"
+    },
+    {
+      "id": "12",
+      "initialCoins": "338",
+      "oldHealthScale": "1.525",
+      "newHealthScale": "2.2875"
+    },
+    {
+      "id": "13",
+      "initialCoins": "346",
+      "oldHealthScale": "1.57",
+      "newHealthScale": "2.355"
+    },
+    {
+      "id": "14",
+      "initialCoins": "354",
+      "oldHealthScale": "1.615",
+      "newHealthScale": "2.4225"
+    },
+    {
+      "id": "15",
+      "initialCoins": "362",
+      "oldHealthScale": "1.66",
+      "newHealthScale": "2.49"
+    },
+    {
+      "id": "16",
+      "initialCoins": "440",
+      "oldHealthScale": "1.705",
+      "newHealthScale": "2.5575"
+    },
+    {
+      "id": "17",
+      "initialCoins": "448",
+      "oldHealthScale": "1.75",
+      "newHealthScale": "2.625"
+    },
+    {
+      "id": "18",
+      "initialCoins": "386",
+      "oldHealthScale": "1.795",
+      "newHealthScale": "2.6925"
+    },
+    {
+      "id": "19",
+      "initialCoins": "394",
+      "oldHealthScale": "1.84",
+      "newHealthScale": "2.76"
+    },
+    {
+      "id": "20",
+      "initialCoins": "402",
+      "oldHealthScale": "1.885",
+      "newHealthScale": "2.8275"
+    }
+  ],
+  "challenge": [
+    {
+      "levelId": "21",
+      "wave": "1",
+      "oldMeanBaseHp": 55.666666666666664,
+      "newMeanBaseHp": 55.666666666666664
+    },
+    {
+      "levelId": "21",
+      "wave": "2",
+      "oldMeanBaseHp": 55.666666666666664,
+      "newMeanBaseHp": 60.766666666666666
+    },
+    {
+      "levelId": "21",
+      "wave": "3",
+      "oldMeanBaseHp": 75.54838709677419,
+      "newMeanBaseHp": 78.95967741935483
+    },
+    {
+      "levelId": "21",
+      "wave": "4",
+      "oldMeanBaseHp": 75.54838709677419,
+      "newMeanBaseHp": 78.81451612903226
+    },
+    {
+      "levelId": "21",
+      "wave": "5",
+      "oldMeanBaseHp": 59.6328125,
+      "newMeanBaseHp": 63.015625
+    },
+    {
+      "levelId": "21",
+      "wave": "6",
+      "oldMeanBaseHp": 59.6328125,
+      "newMeanBaseHp": 62.9140625
+    },
+    {
+      "levelId": "21",
+      "wave": "7",
+      "oldMeanBaseHp": 64.79545454545455,
+      "newMeanBaseHp": 69.70454545454545
+    },
+    {
+      "levelId": "21",
+      "wave": "8",
+      "oldMeanBaseHp": 64.79545454545455,
+      "newMeanBaseHp": 69.49242424242425
+    },
+    {
+      "levelId": "21",
+      "wave": "9",
+      "oldMeanBaseHp": 79.49077490774907,
+      "newMeanBaseHp": 85.5129151291513
+    },
+    {
+      "levelId": "21",
+      "wave": "10",
+      "oldMeanBaseHp": 79.49077490774907,
+      "newMeanBaseHp": 85.61623616236163
+    },
+    {
+      "levelId": "21",
+      "wave": "11",
+      "oldMeanBaseHp": 71.54838709677419,
+      "newMeanBaseHp": 75.87096774193549
+    },
+    {
+      "levelId": "21",
+      "wave": "12",
+      "oldMeanBaseHp": 71.54838709677419,
+      "newMeanBaseHp": 76.02150537634408
+    },
+    {
+      "levelId": "21",
+      "wave": "13",
+      "oldMeanBaseHp": 77.42857142857143,
+      "newMeanBaseHp": 83.15679442508711
+    },
+    {
+      "levelId": "21",
+      "wave": "14",
+      "oldMeanBaseHp": 77.42857142857143,
+      "newMeanBaseHp": 83.12891986062718
+    },
+    {
+      "levelId": "21",
+      "wave": "15",
+      "oldMeanBaseHp": 79.34915254237288,
+      "newMeanBaseHp": 83.80338983050848
+    },
+    {
+      "levelId": "21",
+      "wave": "16",
+      "oldMeanBaseHp": 81.31525423728813,
+      "newMeanBaseHp": 85.96271186440678
+    },
+    {
+      "levelId": "21",
+      "wave": "17",
+      "oldMeanBaseHp": 82.97689768976898,
+      "newMeanBaseHp": 88.70297029702971
+    },
+    {
+      "levelId": "21",
+      "wave": "18",
+      "oldMeanBaseHp": 85.05610561056106,
+      "newMeanBaseHp": 90.87458745874588
+    },
+    {
+      "levelId": "21",
+      "wave": "19",
+      "oldMeanBaseHp": 87.06752411575563,
+      "newMeanBaseHp": 93.0064308681672
+    },
+    {
+      "levelId": "21",
+      "wave": "20",
+      "oldMeanBaseHp": 89.04180064308682,
+      "newMeanBaseHp": 95.27331189710611
+    },
+    {
+      "levelId": "21",
+      "wave": "21",
+      "oldMeanBaseHp": 90.63949843260188,
+      "newMeanBaseHp": 95.21943573667711
+    },
+    {
+      "levelId": "21",
+      "wave": "22",
+      "oldMeanBaseHp": 92.94043887147335,
+      "newMeanBaseHp": 97.6332288401254
+    },
+    {
+      "levelId": "21",
+      "wave": "23",
+      "oldMeanBaseHp": 94.88343558282209,
+      "newMeanBaseHp": 101.49079754601227
+    },
+    {
+      "levelId": "21",
+      "wave": "24",
+      "oldMeanBaseHp": 96.56441717791411,
+      "newMeanBaseHp": 103.2638036809816
+    },
+    {
+      "levelId": "21",
+      "wave": "25",
+      "oldMeanBaseHp": 98.73652694610779,
+      "newMeanBaseHp": 104.42814371257485
+    },
+    {
+      "levelId": "21",
+      "wave": "26",
+      "oldMeanBaseHp": 100.73652694610779,
+      "newMeanBaseHp": 106.44311377245509
+    },
+    {
+      "levelId": "21",
+      "wave": "27",
+      "oldMeanBaseHp": 102.38011695906432,
+      "newMeanBaseHp": 107.28362573099415
+    },
+    {
+      "levelId": "21",
+      "wave": "28",
+      "oldMeanBaseHp": 104.94152046783626,
+      "newMeanBaseHp": 109.85672514619883
+    },
+    {
+      "levelId": "21",
+      "wave": "29",
+      "oldMeanBaseHp": 106.56571428571428,
+      "newMeanBaseHp": 113.77714285714286
+    },
+    {
+      "levelId": "21",
+      "wave": "30",
+      "oldMeanBaseHp": 63.245714285714286,
+      "newMeanBaseHp": 67.64
+    },
+    {
+      "levelId": "22",
+      "wave": "1",
+      "oldMeanBaseHp": 49.833333333333336,
+      "newMeanBaseHp": 49.833333333333336
+    },
+    {
+      "levelId": "22",
+      "wave": "2",
+      "oldMeanBaseHp": 49.833333333333336,
+      "newMeanBaseHp": 52.30833333333333
+    },
+    {
+      "levelId": "22",
+      "wave": "3",
+      "oldMeanBaseHp": 70.46774193548387,
+      "newMeanBaseHp": 72.13709677419355
+    },
+    {
+      "levelId": "22",
+      "wave": "4",
+      "oldMeanBaseHp": 70.46774193548387,
+      "newMeanBaseHp": 73.10483870967742
+    },
+    {
+      "levelId": "22",
+      "wave": "5",
+      "oldMeanBaseHp": 55.5859375,
+      "newMeanBaseHp": 58.1015625
+    },
+    {
+      "levelId": "22",
+      "wave": "6",
+      "oldMeanBaseHp": 55.5859375,
+      "newMeanBaseHp": 58.1015625
+    },
+    {
+      "levelId": "22",
+      "wave": "7",
+      "oldMeanBaseHp": 60.871212121212125,
+      "newMeanBaseHp": 65.06818181818181
+    },
+    {
+      "levelId": "22",
+      "wave": "8",
+      "oldMeanBaseHp": 60.871212121212125,
+      "newMeanBaseHp": 65.24242424242425
+    },
+    {
+      "levelId": "22",
+      "wave": "9",
+      "oldMeanBaseHp": 74.84132841328413,
+      "newMeanBaseHp": 80.39114391143912
+    },
+    {
+      "levelId": "22",
+      "wave": "10",
+      "oldMeanBaseHp": 74.84132841328413,
+      "newMeanBaseHp": 80.28782287822878
+    },
+    {
+      "levelId": "22",
+      "wave": "11",
+      "oldMeanBaseHp": 75.01075268817205,
+      "newMeanBaseHp": 79.31182795698925
+    },
+    {
+      "levelId": "22",
+      "wave": "12",
+      "oldMeanBaseHp": 75.01075268817205,
+      "newMeanBaseHp": 79.31182795698925
+    },
+    {
+      "levelId": "22",
+      "wave": "13",
+      "oldMeanBaseHp": 77.42857142857143,
+      "newMeanBaseHp": 83.12891986062718
+    },
+    {
+      "levelId": "22",
+      "wave": "14",
+      "oldMeanBaseHp": 77.42857142857143,
+      "newMeanBaseHp": 82.57142857142857
+    },
+    {
+      "levelId": "22",
+      "wave": "15",
+      "oldMeanBaseHp": 79.52542372881356,
+      "newMeanBaseHp": 84.00338983050847
+    },
+    {
+      "levelId": "22",
+      "wave": "16",
+      "oldMeanBaseHp": 81.31525423728813,
+      "newMeanBaseHp": 86.01694915254237
+    },
+    {
+      "levelId": "22",
+      "wave": "17",
+      "oldMeanBaseHp": 83.18151815181518,
+      "newMeanBaseHp": 88.6963696369637
+    },
+    {
+      "levelId": "22",
+      "wave": "18",
+      "oldMeanBaseHp": 85.07590759075907,
+      "newMeanBaseHp": 90.83498349834983
+    },
+    {
+      "levelId": "22",
+      "wave": "19",
+      "oldMeanBaseHp": 87.06752411575563,
+      "newMeanBaseHp": 93.18327974276528
+    },
+    {
+      "levelId": "22",
+      "wave": "20",
+      "oldMeanBaseHp": 89.04180064308682,
+      "newMeanBaseHp": 95.34726688102894
+    },
+    {
+      "levelId": "22",
+      "wave": "21",
+      "oldMeanBaseHp": 90.63949843260188,
+      "newMeanBaseHp": 95.0564263322884
+    },
+    {
+      "levelId": "22",
+      "wave": "22",
+      "oldMeanBaseHp": 92.94043887147335,
+      "newMeanBaseHp": 97.45454545454545
+    },
+    {
+      "levelId": "22",
+      "wave": "23",
+      "oldMeanBaseHp": 95.14723926380368,
+      "newMeanBaseHp": 101.50920245398773
+    },
+    {
+      "levelId": "22",
+      "wave": "24",
+      "oldMeanBaseHp": 96.8282208588957,
+      "newMeanBaseHp": 103.42638036809817
+    },
+    {
+      "levelId": "22",
+      "wave": "25",
+      "oldMeanBaseHp": 98.73652694610779,
+      "newMeanBaseHp": 104.32934131736526
+    },
+    {
+      "levelId": "22",
+      "wave": "26",
+      "oldMeanBaseHp": 100.73652694610779,
+      "newMeanBaseHp": 106.437125748503
+    },
+    {
+      "levelId": "22",
+      "wave": "27",
+      "oldMeanBaseHp": 102.38011695906432,
+      "newMeanBaseHp": 107.3859649122807
+    },
+    {
+      "levelId": "22",
+      "wave": "28",
+      "oldMeanBaseHp": 104.94152046783626,
+      "newMeanBaseHp": 109.77777777777777
+    },
+    {
+      "levelId": "22",
+      "wave": "29",
+      "oldMeanBaseHp": 106.39428571428572,
+      "newMeanBaseHp": 113.64285714285714
+    },
+    {
+      "levelId": "22",
+      "wave": "30",
+      "oldMeanBaseHp": 65.36,
+      "newMeanBaseHp": 69.58285714285714
+    },
+    {
+      "levelId": "23",
+      "wave": "1",
+      "oldMeanBaseHp": 55.666666666666664,
+      "newMeanBaseHp": 55.666666666666664
+    },
+    {
+      "levelId": "23",
+      "wave": "2",
+      "oldMeanBaseHp": 55.666666666666664,
+      "newMeanBaseHp": 60.69166666666667
+    },
+    {
+      "levelId": "23",
+      "wave": "3",
+      "oldMeanBaseHp": 104.58064516129032,
+      "newMeanBaseHp": 104.58064516129032
+    },
+    {
+      "levelId": "23",
+      "wave": "4",
+      "oldMeanBaseHp": 104.58064516129032,
+      "newMeanBaseHp": 104.58064516129032
+    },
+    {
+      "levelId": "23",
+      "wave": "5",
+      "oldMeanBaseHp": 59.6328125,
+      "newMeanBaseHp": 62.9140625
+    },
+    {
+      "levelId": "23",
+      "wave": "6",
+      "oldMeanBaseHp": 59.6328125,
+      "newMeanBaseHp": 63.0859375
+    },
+    {
+      "levelId": "23",
+      "wave": "7",
+      "oldMeanBaseHp": 87.06818181818181,
+      "newMeanBaseHp": 91.8409090909091
+    },
+    {
+      "levelId": "23",
+      "wave": "8",
+      "oldMeanBaseHp": 87.06818181818181,
+      "newMeanBaseHp": 91.9090909090909
+    },
+    {
+      "levelId": "23",
+      "wave": "9",
+      "oldMeanBaseHp": 79.49077490774907,
+      "newMeanBaseHp": 85.71217712177122
+    },
+    {
+      "levelId": "23",
+      "wave": "10",
+      "oldMeanBaseHp": 79.49077490774907,
+      "newMeanBaseHp": 85.57933579335793
+    },
+    {
+      "levelId": "23",
+      "wave": "11",
+      "oldMeanBaseHp": 91.47670250896057,
+      "newMeanBaseHp": 95.82078853046595
+    },
+    {
+      "levelId": "23",
+      "wave": "12",
+      "oldMeanBaseHp": 91.47670250896057,
+      "newMeanBaseHp": 95.79928315412187
+    },
+    {
+      "levelId": "23",
+      "wave": "13",
+      "oldMeanBaseHp": 77.42857142857143,
+      "newMeanBaseHp": 82.57142857142857
+    },
+    {
+      "levelId": "23",
+      "wave": "14",
+      "oldMeanBaseHp": 77.42857142857143,
+      "newMeanBaseHp": 83.15679442508711
+    },
+    {
+      "levelId": "23",
+      "wave": "15",
+      "oldMeanBaseHp": 79.38983050847457,
+      "newMeanBaseHp": 82.72542372881355
+    },
+    {
+      "levelId": "23",
+      "wave": "16",
+      "oldMeanBaseHp": 80.79322033898305,
+      "newMeanBaseHp": 85.71525423728814
+    },
+    {
+      "levelId": "23",
+      "wave": "17",
+      "oldMeanBaseHp": 82.97689768976898,
+      "newMeanBaseHp": 88.88778877887789
+    },
+    {
+      "levelId": "23",
+      "wave": "18",
+      "oldMeanBaseHp": 85.05610561056106,
+      "newMeanBaseHp": 90.94059405940594
+    },
+    {
+      "levelId": "23",
+      "wave": "19",
+      "oldMeanBaseHp": 87.06752411575563,
+      "newMeanBaseHp": 93.45980707395498
+    },
+    {
+      "levelId": "23",
+      "wave": "20",
+      "oldMeanBaseHp": 89.04180064308682,
+      "newMeanBaseHp": 95.39228295819936
+    },
+    {
+      "levelId": "23",
+      "wave": "21",
+      "oldMeanBaseHp": 90.63949843260188,
+      "newMeanBaseHp": 95.2257053291536
+    },
+    {
+      "levelId": "23",
+      "wave": "22",
+      "oldMeanBaseHp": 92.94043887147335,
+      "newMeanBaseHp": 97.54545454545455
+    },
+    {
+      "levelId": "23",
+      "wave": "23",
+      "oldMeanBaseHp": 94.76073619631902,
+      "newMeanBaseHp": 100.4079754601227
+    },
+    {
+      "levelId": "23",
+      "wave": "24",
+      "oldMeanBaseHp": 96.97546012269939,
+      "newMeanBaseHp": 102.5
+    },
+    {
+      "levelId": "23",
+      "wave": "25",
+      "oldMeanBaseHp": 98.73652694610779,
+      "newMeanBaseHp": 104.45808383233533
+    },
+    {
+      "levelId": "23",
+      "wave": "26",
+      "oldMeanBaseHp": 100.73652694610779,
+      "newMeanBaseHp": 106.53592814371258
+    },
+    {
+      "levelId": "23",
+      "wave": "27",
+      "oldMeanBaseHp": 102.38011695906432,
+      "newMeanBaseHp": 107.10526315789474
+    },
+    {
+      "levelId": "23",
+      "wave": "28",
+      "oldMeanBaseHp": 104.94152046783626,
+      "newMeanBaseHp": 109.96491228070175
+    },
+    {
+      "levelId": "23",
+      "wave": "29",
+      "oldMeanBaseHp": 106.56571428571428,
+      "newMeanBaseHp": 114.04571428571428
+    },
+    {
+      "levelId": "23",
+      "wave": "30",
+      "oldMeanBaseHp": 63.245714285714286,
+      "newMeanBaseHp": 67.79428571428572
+    },
+    {
+      "levelId": "24",
+      "wave": "1",
+      "oldMeanBaseHp": 55.2,
+      "newMeanBaseHp": 55.2
+    },
+    {
+      "levelId": "24",
+      "wave": "2",
+      "oldMeanBaseHp": 55.2,
+      "newMeanBaseHp": 60
+    },
+    {
+      "levelId": "24",
+      "wave": "3",
+      "oldMeanBaseHp": 72.70967741935483,
+      "newMeanBaseHp": 76.12096774193549
+    },
+    {
+      "levelId": "24",
+      "wave": "4",
+      "oldMeanBaseHp": 72.70967741935483,
+      "newMeanBaseHp": 76.12096774193549
+    },
+    {
+      "levelId": "24",
+      "wave": "5",
+      "oldMeanBaseHp": 60.8359375,
+      "newMeanBaseHp": 63.9765625
+    },
+    {
+      "levelId": "24",
+      "wave": "6",
+      "oldMeanBaseHp": 60.8359375,
+      "newMeanBaseHp": 64.015625
+    },
+    {
+      "levelId": "24",
+      "wave": "7",
+      "oldMeanBaseHp": 63.234848484848484,
+      "newMeanBaseHp": 67.96212121212122
+    },
+    {
+      "levelId": "24",
+      "wave": "8",
+      "oldMeanBaseHp": 63.234848484848484,
+      "newMeanBaseHp": 67.78787878787878
+    },
+    {
+      "levelId": "24",
+      "wave": "9",
+      "oldMeanBaseHp": 76.42066420664207,
+      "newMeanBaseHp": 82.16236162361623
+    },
+    {
+      "levelId": "24",
+      "wave": "10",
+      "oldMeanBaseHp": 76.42066420664207,
+      "newMeanBaseHp": 82.62730627306273
+    },
+    {
+      "levelId": "24",
+      "wave": "11",
+      "oldMeanBaseHp": 71.51971326164875,
+      "newMeanBaseHp": 75.86379928315412
+    },
+    {
+      "levelId": "24",
+      "wave": "12",
+      "oldMeanBaseHp": 71.51971326164875,
+      "newMeanBaseHp": 75.94982078853046
+    },
+    {
+      "levelId": "24",
+      "wave": "13",
+      "oldMeanBaseHp": 73.35191637630662,
+      "newMeanBaseHp": 77.86759581881533
+    },
+    {
+      "levelId": "24",
+      "wave": "14",
+      "oldMeanBaseHp": 73.35191637630662,
+      "newMeanBaseHp": 78.84320557491289
+    },
+    {
+      "levelId": "24",
+      "wave": "15",
+      "oldMeanBaseHp": 75.13898305084746,
+      "newMeanBaseHp": 79.5728813559322
+    },
+    {
+      "levelId": "24",
+      "wave": "16",
+      "oldMeanBaseHp": 76.98305084745763,
+      "newMeanBaseHp": 81.5728813559322
+    },
+    {
+      "levelId": "24",
+      "wave": "17",
+      "oldMeanBaseHp": 78.87788778877888,
+      "newMeanBaseHp": 84.35643564356435
+    },
+    {
+      "levelId": "24",
+      "wave": "18",
+      "oldMeanBaseHp": 80.68646864686468,
+      "newMeanBaseHp": 86.34983498349835
+    },
+    {
+      "levelId": "24",
+      "wave": "19",
+      "oldMeanBaseHp": 82.52733118971061,
+      "newMeanBaseHp": 88.67524115755627
+    },
+    {
+      "levelId": "24",
+      "wave": "20",
+      "oldMeanBaseHp": 84.28295819935691,
+      "newMeanBaseHp": 90.61093247588424
+    },
+    {
+      "levelId": "24",
+      "wave": "21",
+      "oldMeanBaseHp": 86.25705329153605,
+      "newMeanBaseHp": 90.7962382445141
+    },
+    {
+      "levelId": "24",
+      "wave": "22",
+      "oldMeanBaseHp": 88.1065830721003,
+      "newMeanBaseHp": 92.69592476489028
+    },
+    {
+      "levelId": "24",
+      "wave": "23",
+      "oldMeanBaseHp": 89.82208588957056,
+      "newMeanBaseHp": 96.36196319018404
+    },
+    {
+      "levelId": "24",
+      "wave": "24",
+      "oldMeanBaseHp": 91.71779141104294,
+      "newMeanBaseHp": 98.57055214723927
+    },
+    {
+      "levelId": "24",
+      "wave": "25",
+      "oldMeanBaseHp": 93.46107784431138,
+      "newMeanBaseHp": 98.92814371257485
+    },
+    {
+      "levelId": "24",
+      "wave": "26",
+      "oldMeanBaseHp": 95.38922155688623,
+      "newMeanBaseHp": 101.08982035928143
+    },
+    {
+      "levelId": "24",
+      "wave": "27",
+      "oldMeanBaseHp": 97.11695906432749,
+      "newMeanBaseHp": 101.83625730994152
+    },
+    {
+      "levelId": "24",
+      "wave": "28",
+      "oldMeanBaseHp": 99.01169590643275,
+      "newMeanBaseHp": 103.97076023391813
+    },
+    {
+      "levelId": "24",
+      "wave": "29",
+      "oldMeanBaseHp": 100.87428571428572,
+      "newMeanBaseHp": 108.46285714285715
+    },
+    {
+      "levelId": "24",
+      "wave": "30",
+      "oldMeanBaseHp": 61.69714285714286,
+      "newMeanBaseHp": 66.23428571428572
+    },
+    {
+      "levelId": "25",
+      "wave": "1",
+      "oldMeanBaseHp": 55.025,
+      "newMeanBaseHp": 55.025
+    },
+    {
+      "levelId": "25",
+      "wave": "2",
+      "oldMeanBaseHp": 55.025,
+      "newMeanBaseHp": 59.675
+    },
+    {
+      "levelId": "25",
+      "wave": "3",
+      "oldMeanBaseHp": 74,
+      "newMeanBaseHp": 77.33870967741936
+    },
+    {
+      "levelId": "25",
+      "wave": "4",
+      "oldMeanBaseHp": 74,
+      "newMeanBaseHp": 77.48387096774194
+    },
+    {
+      "levelId": "25",
+      "wave": "5",
+      "oldMeanBaseHp": 58.625,
+      "newMeanBaseHp": 62.0390625
+    },
+    {
+      "levelId": "25",
+      "wave": "6",
+      "oldMeanBaseHp": 58.625,
+      "newMeanBaseHp": 61.859375
+    },
+    {
+      "levelId": "25",
+      "wave": "7",
+      "oldMeanBaseHp": 63.50757575757576,
+      "newMeanBaseHp": 67.47727272727273
+    },
+    {
+      "levelId": "25",
+      "wave": "8",
+      "oldMeanBaseHp": 63.50757575757576,
+      "newMeanBaseHp": 67.78787878787878
+    },
+    {
+      "levelId": "25",
+      "wave": "9",
+      "oldMeanBaseHp": 77.60147601476015,
+      "newMeanBaseHp": 83.35055350553506
+    },
+    {
+      "levelId": "25",
+      "wave": "10",
+      "oldMeanBaseHp": 77.60147601476015,
+      "newMeanBaseHp": 83.71217712177122
+    },
+    {
+      "levelId": "25",
+      "wave": "11",
+      "oldMeanBaseHp": 70.80286738351255,
+      "newMeanBaseHp": 75.08243727598567
+    },
+    {
+      "levelId": "25",
+      "wave": "12",
+      "oldMeanBaseHp": 70.80286738351255,
+      "newMeanBaseHp": 75.27598566308244
+    },
+    {
+      "levelId": "25",
+      "wave": "13",
+      "oldMeanBaseHp": 75.25435540069687,
+      "newMeanBaseHp": 80.55052264808363
+    },
+    {
+      "levelId": "25",
+      "wave": "14",
+      "oldMeanBaseHp": 75.25435540069687,
+      "newMeanBaseHp": 80.57839721254355
+    },
+    {
+      "levelId": "25",
+      "wave": "15",
+      "oldMeanBaseHp": 77.05762711864406,
+      "newMeanBaseHp": 81.78305084745763
+    },
+    {
+      "levelId": "25",
+      "wave": "16",
+      "oldMeanBaseHp": 78.80677966101695,
+      "newMeanBaseHp": 83.38983050847457
+    },
+    {
+      "levelId": "25",
+      "wave": "17",
+      "oldMeanBaseHp": 80.88448844884489,
+      "newMeanBaseHp": 86.46534653465346
+    },
+    {
+      "levelId": "25",
+      "wave": "18",
+      "oldMeanBaseHp": 82.96369636963696,
+      "newMeanBaseHp": 88.72607260726073
+    },
+    {
+      "levelId": "25",
+      "wave": "19",
+      "oldMeanBaseHp": 84.55948553054662,
+      "newMeanBaseHp": 90.63665594855306
+    },
+    {
+      "levelId": "25",
+      "wave": "20",
+      "oldMeanBaseHp": 86.53376205787781,
+      "newMeanBaseHp": 92.51125401929261
+    },
+    {
+      "levelId": "25",
+      "wave": "21",
+      "oldMeanBaseHp": 88.34482758620689,
+      "newMeanBaseHp": 92.70219435736676
+    },
+    {
+      "levelId": "25",
+      "wave": "22",
+      "oldMeanBaseHp": 90.27586206896552,
+      "newMeanBaseHp": 94.86206896551724
+    },
+    {
+      "levelId": "25",
+      "wave": "23",
+      "oldMeanBaseHp": 92.04907975460122,
+      "newMeanBaseHp": 98.24539877300613
+    },
+    {
+      "levelId": "25",
+      "wave": "24",
+      "oldMeanBaseHp": 93.98159509202453,
+      "newMeanBaseHp": 100.5920245398773
+    },
+    {
+      "levelId": "25",
+      "wave": "25",
+      "oldMeanBaseHp": 96.07185628742515,
+      "newMeanBaseHp": 101.58982035928143
+    },
+    {
+      "levelId": "25",
+      "wave": "26",
+      "oldMeanBaseHp": 97.86826347305389,
+      "newMeanBaseHp": 103.30538922155688
+    },
+    {
+      "levelId": "25",
+      "wave": "27",
+      "oldMeanBaseHp": 99.85380116959064,
+      "newMeanBaseHp": 104.6374269005848
+    },
+    {
+      "levelId": "25",
+      "wave": "28",
+      "oldMeanBaseHp": 101.47953216374269,
+      "newMeanBaseHp": 106.4327485380117
+    },
+    {
+      "levelId": "25",
+      "wave": "29",
+      "oldMeanBaseHp": 103.49142857142857,
+      "newMeanBaseHp": 110.49428571428571
+    },
+    {
+      "levelId": "25",
+      "wave": "30",
+      "oldMeanBaseHp": 62.097142857142856,
+      "newMeanBaseHp": 66.53714285714285
+    },
+    {
+      "levelId": "26",
+      "wave": "1",
+      "oldMeanBaseHp": 55.666666666666664,
+      "newMeanBaseHp": 55.666666666666664
+    },
+    {
+      "levelId": "26",
+      "wave": "2",
+      "oldMeanBaseHp": 55.666666666666664,
+      "newMeanBaseHp": 60.69166666666667
+    },
+    {
+      "levelId": "26",
+      "wave": "3",
+      "oldMeanBaseHp": 75.54838709677419,
+      "newMeanBaseHp": 78.81451612903226
+    },
+    {
+      "levelId": "26",
+      "wave": "4",
+      "oldMeanBaseHp": 75.54838709677419,
+      "newMeanBaseHp": 78.74193548387096
+    },
+    {
+      "levelId": "26",
+      "wave": "5",
+      "oldMeanBaseHp": 59.6328125,
+      "newMeanBaseHp": 62.9140625
+    },
+    {
+      "levelId": "26",
+      "wave": "6",
+      "oldMeanBaseHp": 59.6328125,
+      "newMeanBaseHp": 62.9453125
+    },
+    {
+      "levelId": "26",
+      "wave": "7",
+      "oldMeanBaseHp": 64.79545454545455,
+      "newMeanBaseHp": 69.56818181818181
+    },
+    {
+      "levelId": "26",
+      "wave": "8",
+      "oldMeanBaseHp": 64.79545454545455,
+      "newMeanBaseHp": 69.56818181818181
+    },
+    {
+      "levelId": "26",
+      "wave": "9",
+      "oldMeanBaseHp": 79.49077490774907,
+      "newMeanBaseHp": 85.5129151291513
+    },
+    {
+      "levelId": "26",
+      "wave": "10",
+      "oldMeanBaseHp": 79.49077490774907,
+      "newMeanBaseHp": 85.71217712177122
+    },
+    {
+      "levelId": "26",
+      "wave": "11",
+      "oldMeanBaseHp": 100.78136200716845,
+      "newMeanBaseHp": 107.24731182795699
+    },
+    {
+      "levelId": "26",
+      "wave": "12",
+      "oldMeanBaseHp": 100.78136200716845,
+      "newMeanBaseHp": 107.14695340501792
+    },
+    {
+      "levelId": "26",
+      "wave": "13",
+      "oldMeanBaseHp": 77.42857142857143,
+      "newMeanBaseHp": 82.57142857142857
+    },
+    {
+      "levelId": "26",
+      "wave": "14",
+      "oldMeanBaseHp": 77.42857142857143,
+      "newMeanBaseHp": 83.15679442508711
+    },
+    {
+      "levelId": "26",
+      "wave": "15",
+      "oldMeanBaseHp": 79.38983050847457,
+      "newMeanBaseHp": 83.74237288135593
+    },
+    {
+      "levelId": "26",
+      "wave": "16",
+      "oldMeanBaseHp": 81.09830508474576,
+      "newMeanBaseHp": 85.64745762711864
+    },
+    {
+      "levelId": "26",
+      "wave": "17",
+      "oldMeanBaseHp": 83.03630363036304,
+      "newMeanBaseHp": 88.4026402640264
+    },
+    {
+      "levelId": "26",
+      "wave": "18",
+      "oldMeanBaseHp": 85.12871287128714,
+      "newMeanBaseHp": 90.3102310231023
+    },
+    {
+      "levelId": "26",
+      "wave": "19",
+      "oldMeanBaseHp": 87.13826366559485,
+      "newMeanBaseHp": 93.19614147909968
+    },
+    {
+      "levelId": "26",
+      "wave": "20",
+      "oldMeanBaseHp": 89.11254019292605,
+      "newMeanBaseHp": 95.52733118971061
+    },
+    {
+      "levelId": "26",
+      "wave": "21",
+      "oldMeanBaseHp": 90.97805642633229,
+      "newMeanBaseHp": 95.33542319749216
+    },
+    {
+      "levelId": "26",
+      "wave": "22",
+      "oldMeanBaseHp": 92.99686520376176,
+      "newMeanBaseHp": 97.65517241379311
+    },
+    {
+      "levelId": "26",
+      "wave": "23",
+      "oldMeanBaseHp": 94.7361963190184,
+      "newMeanBaseHp": 101.41104294478528
+    },
+    {
+      "levelId": "26",
+      "wave": "24",
+      "oldMeanBaseHp": 97.06748466257669,
+      "newMeanBaseHp": 104.09509202453988
+    },
+    {
+      "levelId": "26",
+      "wave": "25",
+      "oldMeanBaseHp": 98.82634730538922,
+      "newMeanBaseHp": 104.58083832335329
+    },
+    {
+      "levelId": "26",
+      "wave": "26",
+      "oldMeanBaseHp": 100.38922155688623,
+      "newMeanBaseHp": 106.16167664670658
+    },
+    {
+      "levelId": "26",
+      "wave": "27",
+      "oldMeanBaseHp": 102.34502923976608,
+      "newMeanBaseHp": 107.07894736842105
+    },
+    {
+      "levelId": "26",
+      "wave": "28",
+      "oldMeanBaseHp": 104.39766081871345,
+      "newMeanBaseHp": 109.11988304093568
+    },
+    {
+      "levelId": "26",
+      "wave": "29",
+      "oldMeanBaseHp": 106.46285714285715,
+      "newMeanBaseHp": 113.44285714285714
+    },
+    {
+      "levelId": "26",
+      "wave": "30",
+      "oldMeanBaseHp": 82.16571428571429,
+      "newMeanBaseHp": 87.58857142857143
+    }
+  ],
+  "perkComparison": {
+    "sameTenChoicesAtRank2": {
+      "oldSupportDamageFactor": 2.7,
+      "newSupportDamageFactor": 2.16,
+      "oldSproutCopiedShotAverage": 2.25,
+      "newSproutCopiedShotAverage": 1.7,
+      "combinedSproutRatioToOld": 0.6044444444444445,
+      "assumptions": "G02/G06/G04生效，持币封顶、专属成长2阶；不计命中、范围、额外十次选择或救场卡"
+    }
+  }
+}

@@ -364,7 +364,8 @@ export class GameRoot extends Component {
     // 准备时钟独立于倍速，后台/暂停/广告期间不推进；战斗仍用稳定子步长。
     ShopService.shared.update();
     const realDelta = Math.max(0, dt);
-    // 波末先让战场收尾，再呈现补给；真实秒不受倍速影响，暂停和广告不消耗等待。
+    if(this.challenge&&this.screen==='playing'&&!this.paused&&!this.gmPanelOpen&&!this.adRequesting&&!this.challengeBlocked()&&this.challengeSupplyTimer===0&&this.challenge.supplyReady(this.challengePort()))this.challengeSupplyTimer=numeric(this.challenge.rule,'supplyDelay');
+    // 经验满后先给玩家送达提示，再呈现补给；真实秒不受倍速影响，暂停和广告不消耗等待。
     if(this.challengeSupplyTimer>0&&this.screen==='playing'&&!this.paused&&!this.gmPanelOpen&&!this.adRequesting&&!this.challengeBlocked()){
       this.challengeSupplyTimer=Math.max(0,this.challengeSupplyTimer-Math.min(realDelta,.1));
       if(this.challengeSupplyTimer===0)this.challenge?.offer(this.challengePort());
@@ -855,6 +856,7 @@ export class GameRoot extends Component {
   }
 
   private syncLabels(): void {
+    this.battleUi.supplyProgress(this.screen==='playing'&&!this.gmPanelOpen?this.challenge?.supplyProgress()??null:null);
     const boss = this.enemies.find(enemy => ENEMY_CONFIG[enemy.kind].boss);
     this.showLabel("boss-status", false);
     this.battleUi.showBoss(this.screen === "playing" && !this.paused && !this.gmPanelOpen && !this.adRequesting && !this.challengeBlocked() ? boss ?? null : null,
@@ -1194,9 +1196,9 @@ export class GameRoot extends Component {
       } else {
         // 下一波保留配置的真实秒数，玩家可点击气泡提前开波。
         this.nextWaveTimer = this.challenge ? numeric(this.challenge.rule,"nextDelay") : this.level.waves[this.wave-1].nextDelay;this.previewOpen=!this.challenge;
-        if(this.challenge)this.challengeSupplyTimer=numeric(this.challenge.rule,'supplyDelay');
+        if(this.challenge?.supplyReady(this.challengePort()))this.challengeSupplyTimer=numeric(this.challenge.rule,'supplyDelay');
         this.showToast(text("ui.GameRoot.039", bonus));
-        if(this.challenge)this.toastTime=this.challengeSupplyTimer*this.gameSpeed;
+        if(this.challengeSupplyTimer>0)this.toastTime=this.challengeSupplyTimer*this.gameSpeed;
       }
     }
   }
@@ -1358,6 +1360,7 @@ export class GameRoot extends Component {
   private defeatEnemyAt(index: number): void {
     const enemy = this.enemies[index]; if (!enemy) return;
     this.addCoins(this.challenge?.reward(enemy)??enemy.reward);this.defeated+=1;
+    this.challenge?.earnExperience(enemy);
     this.audio.play("defeat", 0.26);
     this.burst(enemy.x, enemy.y, "#ffc34d", 14); this.enemies.splice(index, 1);
     this.challenge?.death(enemy,this.challengePort());
