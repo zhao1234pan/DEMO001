@@ -113,3 +113,7 @@ id,battle,menu,ui,scenery,assetPath,canvasWidth,canvasHeight
 112,enemy_frostdonut,enemy_frostdonut,,,gameplay/enemies/characters/enemy_frostdonut/spriteFrame,256,256
 113,enemy_freezer,enemy_freezer,,,gameplay/enemies/characters/enemy_freezer/spriteFrame,256,256
 114,enemy_vending,enemy_vending,,,gameplay/enemies/characters/enemy_vending/spriteFrame,256,256
+115,,,tech_boss,,ui/windows/technology/tech_boss/spriteFrame,256,256
+116,,,tech_clear,,ui/windows/technology/tech_clear/spriteFrame,256,256
+117,,,tech_recycle,,ui/windows/technology/tech_recycle/spriteFrame,256,256
+118,,,tech_supply,,ui/windows/technology/tech_supply/spriteFrame,256,256

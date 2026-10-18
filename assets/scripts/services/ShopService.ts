@@ -53,7 +53,6 @@ export class ShopService {
   assign(index:number,key:string,slot=0):boolean {this.update();const result=this.simulation?.assign(index,key,shopClearedLevel(),slot)??false;if(result)this.save();return result;}
   research(key:string):boolean {this.update();const result=this.simulation?.research(key,shopClearedLevel())??false;if(result)this.save();return result;}
   researchTechnology(key:string):boolean{this.update();const result=this.simulation?.researchTechnology(key,Math.max(shopClearedLevel(),PlatformService.getNumber("night_store_best_level",0)))??false;if(result)this.save();return result;}
-  resetTechnology():number{this.update();const refund=this.simulation?.resetTechnology()??0;if(refund)this.save();return refund;}
   buyUniform(key:string):boolean {this.update();const result=this.simulation?.buyUniform(key)??false;if(result)this.save();return result;}
   equip(key:string):boolean {this.update();const result=this.simulation?.equip(key)??false;if(result)this.save();return result;}
   save(now=Date.now()):void {if(this.state){PlatformService.setString(shopRule("saveKey"),JSON.stringify(this.state));this.savedAt=now;}}

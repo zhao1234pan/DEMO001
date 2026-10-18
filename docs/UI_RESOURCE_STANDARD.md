@@ -1,5 +1,11 @@
 # UI资源与层级规范
 
+## 2026-10-18 科技工坊重设计
+
+- 用户授权重新设计科技页，采用两页7卡总览与独立五级详情；卡片价格、节点状态逐页实截图复核，并修正贴边问题。
+- 7张资源逐张image_gen生成，来源在source_assets/art/production/technology_redesign_20261018；运行PNG在assets/art/ui/windows/technology，旧technology.prefab.meta UUID保留。
+- 新卡片九宫48像素，横幅／徽章与四图标等比适配；PNG透明画布与alpha范围记入origins.json，不做图集迁移或Draw Call优化宣称。
+
 ## 独立便利店Demo（2026-10-11）
 
 - 固定内景使用单张完整shop_interior.png，1024×1536，归入ui/windows/shop；源图、来源和提示词另存source_assets/art/production/auto_shop_20261011。

@@ -1,0 +1,70 @@
+{
+  "version": "1.23.0",
+  "isolatedOrigin": "http://127.0.0.1:4346/",
+  "checks": [
+    {
+      "state": "overview",
+      "balance": "便利店金币 200000",
+      "summary": "已研究 0/70 项 · 永久成长",
+      "notice": "",
+      "resetPresent": false
+    },
+    {
+      "state": "detail",
+      "balance": "便利店金币 200000",
+      "summary": "已研究 0/70 项 · 永久成长",
+      "notice": "",
+      "resetPresent": false
+    },
+    {
+      "state": "bought",
+      "balance": "便利店金币 199400",
+      "summary": "已研究 1/70 项 · 永久成长",
+      "notice": "研究完成，下局开始生效",
+      "resetPresent": false
+    },
+    {
+      "state": "high",
+      "balance": "便利店金币 199400",
+      "summary": "已研究 1/70 项 · 永久成长",
+      "notice": "",
+      "resetPresent": false
+    },
+    {
+      "state": "second",
+      "balance": "便利店金币 199400",
+      "summary": "已研究 1/70 项 · 永久成长",
+      "notice": "",
+      "resetPresent": false
+    },
+    {
+      "state": "boss",
+      "balance": "便利店金币 199400",
+      "summary": "已研究 1/70 项 · 永久成长",
+      "notice": "",
+      "resetPresent": false
+    },
+    {
+      "state": "clearing",
+      "balance": "便利店金币 199400",
+      "summary": "已研究 1/70 项 · 永久成长",
+      "notice": "",
+      "resetPresent": false
+    },
+    {
+      "state": "salvage",
+      "balance": "便利店金币 199400",
+      "summary": "已研究 1/70 项 · 永久成长",
+      "notice": "",
+      "resetPresent": false
+    },
+    {
+      "state": "supply",
+      "balance": "便利店金币 199400",
+      "summary": "已研究 1/70 项 · 永久成长",
+      "notice": "",
+      "resetPresent": false
+    }
+  ],
+  "errors": []
+}

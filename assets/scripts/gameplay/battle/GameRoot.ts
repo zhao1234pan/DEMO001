@@ -160,6 +160,7 @@ export class GameRoot extends Component {
   private nextWaveTimer = 4;
   private frozenTime = 0;
   private technology:TechnologySnapshot={staff:{},global:{}};
+  private obstacleRewardRemainder=0;
   private readonly technologyProfiles=new Map<string,ReturnType<typeof attackProfile>>();
   private adRequesting = false;
   private battleRevision = 0;
@@ -909,7 +910,7 @@ export class GameRoot extends Component {
       const obstacle = this.selectedObstacle;
       const position = this.obstacleInfoPosition();
       this.setLabelPosition("obstacle-info", position.x, position.y);
-      this.setLabel("obstacle-info", text("ui.GameRoot.013", Math.ceil(obstacle.hp), obstacle.reward));
+      this.setLabel("obstacle-info", text("ui.GameRoot.013", Math.ceil(obstacle.hp), Math.floor(obstacle.reward)));
     }
     this.setLabel("prop-freeze", this.propButtonText("freeze"));
     this.setLabel("prop-clear", this.propButtonText("clear"));
@@ -1054,7 +1055,7 @@ export class GameRoot extends Component {
     this.battleRevision++; this.adFeedback = "";
     this.menu?.hide();
     const base=getLevelConfig(levelId);this.level={...base,availableTowers:[...(selection??base.availableTowers)]}; this.currentLevelId = this.level.id;
-    this.technology=technologySnapshot((ShopService.shared.state?.technology??[]).map(r=>r.key));this.technologyProfiles.clear();
+    this.technology=technologySnapshot((ShopService.shared.state?.technology??[]).map(r=>r.key));this.technologyProfiles.clear();this.obstacleRewardRemainder=0;
     this.coins = this.level.initialCoins+(this.technology.global.startCoins??0); this.lives = this.level.initialLives; this.wave = 0;this.ordinarySpawned=0;this.challengeSupplyTimer=0;
     this.inWave = false; this.paused = false; this.screen = "playing"; this.revived = false;
     this.evolutionTower = null; this.newEvolutionKeys = []; this.selectedTower = null; this.selectedSpot = null; this.selectedObstacle = null; this.queue = []; this.spawnTimer = 0;
@@ -1067,7 +1068,7 @@ export class GameRoot extends Component {
       if (!spot) continue;
       const obstacle: Obstacle = {
         x: spot.x, y: spot.y, kind: config.kind, hp: config.hp, maxHp: config.hp,
-        reward: config.reward, radius: 15, hitFlash: 0, spot,
+        reward: config.reward*(1+(this.technology.global.obstacleReward??0)), radius: 15, hitFlash: 0, spot,
       };
       spot.obstacle = obstacle; this.obstacles.push(obstacle);
     }
@@ -1266,7 +1267,7 @@ export class GameRoot extends Component {
   private hit(shot: Shot, target: AttackTarget): void {
     const cfg = shot.challenge?.profile ?? this.baseProfile(shot.kind,shot.level,shot.evolutionKey); const damage = cfg.damage;
     if (!this.isEnemy(target)) {
-      target.hp -= damage; target.hitFlash = globalNumber("hitFeedbackSeconds");
+      target.hp -= damage*(1+(this.technology.global.obstacleDamage??0)); target.hitFlash = globalNumber("hitFeedbackSeconds");
       this.addImpact(target, shot.kind);
       this.burst(target.x, target.y, cfg.shotColor, shot.kind === "bloom" ? 10 : 5);
       if (target.hp <= 0) this.clearObstacle(target);
@@ -1321,7 +1322,7 @@ export class GameRoot extends Component {
       enemy.markedTime=Math.max(...Object.values(enemy.marks).map(effect=>effect.remaining));
     }
     const markRatio=enemy.marks ? Math.max(1,...Object.values(enemy.marks).filter(effect=>effect.remaining>0).map(effect=>effect.value)) : (enemy.markedTime>0?globalNumber("markDamageRatio"):1);
-    enemy.hp -= damage * markRatio * (this.challenge?.damageBonus(shot,enemy,this.challengePort())??1);
+    enemy.hp -= damage * markRatio * (this.challenge?.damageBonus(shot,enemy,this.challengePort())??1) * (ENEMY_CONFIG[enemy.kind].boss?1+(this.technology.global.bossDamage??0):1);
     if(enemy.hp<=0)enemy.chSecondary=false;
     enemy.hitFlash = globalNumber("hitFeedbackSeconds"); enemy.sinceHit = 0;
     this.addImpact(enemy, kind);
@@ -1354,7 +1355,9 @@ export class GameRoot extends Component {
     if (index < 0) return;
     obstacle.spot.obstacle = null; this.obstacles.splice(index, 1);
     this.tutorial.record("clear");
-    const reward=obstacle.reward+(this.challenge?.obstacleCleared(obstacle,this.challengePort(),secondary)??0);
+    // 低级回收的金币零头跨障碍累积，避免每次向下取整吞掉小幅研究收益。
+    const credit=obstacle.reward+this.obstacleRewardRemainder,whole=Math.floor(credit+1e-9);this.obstacleRewardRemainder=Math.max(0,credit-whole);
+    const reward=whole+(this.challenge?.obstacleCleared(obstacle,this.challengePort(),secondary)??0);
     this.addCoins(reward);
     this.audio.play("defeat", 0.2); this.burst(obstacle.x, obstacle.y, "#ffc34d", 16);
     this.showBattleFeedback(text("ui.GameRoot.041", reward), obstacle.x, obstacle.y - 24);
@@ -1366,7 +1369,7 @@ export class GameRoot extends Component {
   private defeatEnemyAt(index: number): void {
     const enemy = this.enemies[index]; if (!enemy) return;
     this.addCoins(this.challenge?.reward(enemy)??enemy.reward);this.defeated+=1;
-    this.challenge?.earnExperience(enemy);
+    this.challenge?.earnExperience(enemy,1+(this.technology.global.challengeXp??0));
     this.audio.play("defeat", 0.26);
     this.burst(enemy.x, enemy.y, "#ffc34d", 14); this.enemies.splice(index, 1);
     this.challenge?.death(enemy,this.challengePort());

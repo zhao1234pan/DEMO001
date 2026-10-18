@@ -1,5 +1,12 @@
 # XLSX → 客户端 CSV 配置规范
 
+## 1.23.0 科技扩充配置（2026-10-18）
+
+- [科技重设计](TECHNOLOGY_REDESIGN.md)先定义14分支／70节点及永久花费，再编辑Global、I18、UiLayout、VisualSkin、ArtFrame、TechnologyBranch、TechnologyEffect、TechnologyNode八原始XLSX；保持42CSV。
+- TechnologyBranch.summaryKey、TechnologyNode.iconKey／briefKey新增引用校验；四个global效果协议bossDamage／obstacleDamage／obstacleReward／challengeXp，数值与上限仍从表读取。
+- 原表管理高阶价格、门槛、节点短描述、图标与工坊布局；清障奖励开局复制时增加基础值，零头跨障碍累计，额外补给奖励照旧一次；经验内部保留小数。首领增益明确限店员直击，不影响灼烧／道具／补给衍生伤害。
+- 金币永久消费，无退款API；旧历史实付只用于存档兼容，改价不补扣。独立PNG源图、提示词、真实alpha范围、签名与meta纳入版本控制。
+
 ## 1.22.0 金币科技（2026-10-18）
 
 - 先设计[科技方案](GOLD_TECHNOLOGY_TREE.md)，再新增TechnologyBranch／TechnologyEffect／TechnologyNode三原始XLSX，修改Global／I18／UiPrefab／UiLayout四原表，导出42客户端CSV和manifest。

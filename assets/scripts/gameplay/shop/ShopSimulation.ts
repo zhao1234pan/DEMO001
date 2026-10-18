@@ -66,7 +66,6 @@ export class ShopSimulation {
  constructor(readonly config:ShopConfig,readonly state:ShopState){}
  /** 金币与已购节点属于同一状态，服务层整份保存，避免跨存档扣钱或重复退款。 */
  researchTechnology(key:string,cleared:number):boolean{const row=this.config.technology?.find(r=>r.key===key),owned=this.state.technology??[];if(!row||owned.some(r=>r.key===key)||row.unlockLevel>cleared||row.prerequisite&&!owned.some(r=>r.key===row.prerequisite)||this.state.coins<row.cost)return false;this.state.coins-=row.cost;this.state.technology=[...owned,{key,paid:row.cost}];return true;}
- resetTechnology():number{const owned=this.state.technology??[],refund=owned.reduce((n,r)=>n+r.paid,0);if(!owned.length||this.state.coins+refund>this.config.rules.coinLimit)return 0;this.state.coins+=refund;this.state.technology=[];return refund;}
  private items():Array<{shelf:ShopShelf;good:ShopShelfGood;index:number}>{const all:Array<{shelf:ShopShelf;good:ShopShelfGood;index:number}>=[];this.state.shelves.forEach((shelf,index)=>shelfGoods(shelf).forEach(good=>all.push({shelf,good,index})));return all;}
  private random():number{this.state.seed=(Math.imul(this.state.seed,1664525)+1013904223)>>>0;return this.state.seed/4294967296;}
  private choose<T>(list:T[],weight:(r:T)=>number):T{let n=this.random()*list.reduce((sum,r)=>sum+weight(r),0);return list.find(r=>(n-=weight(r))<0)??list[list.length-1];}

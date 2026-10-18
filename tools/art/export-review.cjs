@@ -19,7 +19,7 @@ for(const file of walk(path.join(root,'assets/resources/fonts')))copy(file,'字�
 for(const file of walk(path.join(root,'source_assets/fonts')))copy(file,'字体/来源与许可/'+path.relative(path.join(root,'source_assets/fonts'),file),'字体');
 for(const file of fs.readdirSync(path.join(root,'design/tables')).filter(n=>n.endsWith('.xlsx')))copy(path.join(root,'design/tables',file),'配置索引/XLSX/'+file,'配置索引','configuration');
 for(const file of fs.readdirSync(path.join(root,'assets/resources/config')).filter(n=>/\.(csv|json)$/.test(n)))copy(path.join(root,'assets/resources/config',file),'配置索引/CSV/'+file,'配置索引','configuration');
-for(const folder of ['monster_variety_20261018','level_expansion_20261018']){const newSource=path.join(root,'source_assets/art/production',folder);if(fs.existsSync(newSource))for(const file of walk(newSource))copy(file,'资源原图/'+folder+'/'+path.basename(file),'资源原图','source');}
+for(const folder of ['monster_variety_20261018','level_expansion_20261018','technology_redesign_20261018']){const newSource=path.join(root,'source_assets/art/production',folder);if(fs.existsSync(newSource))for(const file of walk(newSource))copy(file,'资源原图/'+folder+'/'+path.basename(file),'资源原图','source');}
 const screenshots=path.join(output,'UI效果图');fs.mkdirSync(screenshots,{recursive:true});for(const file of walk(screenshots).filter(p=>p.endsWith('.png')))records.push({category:'UI效果图',kind:'prefab-render',source:'原生Cocos预制体美术状态截图，不是通关记录',path:path.relative(output,file).replaceAll('\\','/'),bytes:fs.statSync(file).size,sha256:sha(fs.readFileSync(file))});
 const prefabs=read('UiPrefab'),art=read('ArtFrame'),skins=read('VisualSkin');
 fs.writeFileSync(path.join(output,'配置索引/资源绑定.json'),JSON.stringify({version,prefabs,artFrames:art,skins},null,2));

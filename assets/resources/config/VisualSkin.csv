@@ -190,3 +190,6 @@ id,key,path,group,mode,width,height,left,right,top,bottom,padding,note,resizeMod
 189,map_38,gameplay/maps/map_38/spriteFrame,gameplay/maps,simple,780,1388,0,0,0,0,0,第38关，路线来自原始地图表,stretch
 190,map_39,gameplay/maps/map_39/spriteFrame,gameplay/maps,simple,780,1388,0,0,0,0,0,第39关，路线来自原始地图表,stretch
 191,map_40,gameplay/maps/map_40/spriteFrame,gameplay/maps,simple,780,1388,0,0,0,0,0,第40关，路线来自原始地图表,stretch
+192,tech_banner,ui/windows/technology/tech_banner/spriteFrame,ui/windows/technology,simple,640,160,0,0,0,0,0,内置image_gen独立制作；科技重设计,contain
+193,tech_card,ui/windows/technology/tech_card/spriteFrame,ui/windows/technology,sliced,512,448,48,48,48,48,0,内置image_gen独立制作；科技重设计,stretch
+194,tech_badge,ui/windows/technology/tech_badge/spriteFrame,ui/windows/technology,simple,256,256,0,0,0,0,0,内置image_gen独立制作；科技重设计,contain

@@ -571,7 +571,8 @@
       "order": "int",
       "staffKey": "string",
       "titleKey": "string",
-      "iconKey": "string"
+      "iconKey": "string",
+      "summaryKey": "string"
     }
   },
   "TechnologyEffect": {
@@ -596,7 +597,9 @@
       "nameKey": "string",
       "descriptionKey": "string",
       "effect": "string",
-      "value": "float"
+      "value": "float",
+      "iconKey": "string",
+      "briefKey": "string"
     }
   }
 }

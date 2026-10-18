@@ -42,7 +42,7 @@ export class ChallengeRun {
   /** 经验满后由场景安排真实时间提示，再打开补给；溢出的经验保留到下一次。 */
   supplyReady(port:ChallengePort):boolean{return !this.pending&&this.completedChoices.length<this.supplyLimit&&(this.xpCosts.length?this.completedChoices.length===0?port.wave===0:this.supplyXp>=this.xpCosts[this.completedChoices.length-1]:this.choiceWaves.includes(port.wave)&&!this.completedChoices.includes(port.wave));}
   supplyProgress():{ratio:number;remaining:number;completed:number;limit:number;ready:boolean}{const completed=this.completedChoices.length,limit=this.supplyLimit,cost=this.xpCosts[Math.max(0,completed-1)]??0,remaining=completed>=limit?0:Math.max(0,cost-this.supplyXp);return{ratio:completed>=limit||cost===0?1:Math.min(1,this.supplyXp/cost),remaining,completed,limit,ready:completed<limit&&remaining===0};}
-  earnExperience(enemy:Enemy):void{if(!this.xpCosts.length||this.completedChoices.length>=this.supplyLimit)return;this.supplyXp+=numeric(this.rule,ENEMY_CONFIG[enemy.kind].boss?'bossXp':enemy.elite?'eliteXp':'normalXp');}
+  earnExperience(enemy:Enemy,ratio=1):void{if(!this.xpCosts.length||this.completedChoices.length>=this.supplyLimit)return;this.supplyXp+=numeric(this.rule,ENEMY_CONFIG[enemy.kind].boss?'bossXp':enemy.elite?'eliteXp':'normalXp')*ratio;}
   random():number{let x=this.seed;x^=x<<13;x^=x>>>17;x^=x<<5;this.seed=x>>>0;return this.seed/0x100000000;}
   has(key:string):boolean{return this.selected.includes(key);}
   p(key:string):Record<string,number>{const c=this.cards.find(c=>c.key===key);if(!c)throw Error('Unknown challenge card: '+key);return c.params;}

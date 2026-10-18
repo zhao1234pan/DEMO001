@@ -1,15 +1,17 @@
-/* 科技树离线预制体骨架；尺寸与文字由原始UiLayout/I18回写。 */
+/* 科技总览与分支详情骨架；最终尺寸与文字由原始UiLayout/I18回写。 */
 const fs=require('fs'),crypto=require('crypto'),path=require('path'),{Prefab,setSkins}=require('./prefab-author.cjs'),core=require('../config/validator.cjs');
-const root=path.resolve(__dirname,'../..');setSkins(core.parseCsv(fs.readFileSync(root+'/assets/resources/config/VisualSkin.csv','utf8')));
+const root=path.resolve(__dirname,'../..'),skins=core.parseCsv(fs.readFileSync(root+'/assets/resources/config/VisualSkin.csv','utf8'));if(process.argv[2])for(const s of JSON.parse(fs.readFileSync(process.argv[2],'utf8')))if(!skins.some(r=>r.key===s.key))skins.push(s);setSkins(skins);
 const p=new Prefab('technology','home'),source=structuredClone(p.a),node=structuredClone(p.a[1]),tr=structuredClone(p.t(p.a[1]));
 node._name='technology';node._children=[];node._components=[{__id__:2}];node._prefab={__id__:4};node._parent=null;tr.node={__id__:1};tr.__prefab={__id__:3};
 p.a=[{...source[0],_name:'technology'},node,tr,{__type__:'cc.CompPrefabInfo',fileId:crypto.randomUUID().slice(0,22)},{__type__:'cc.PrefabInfo',root:{__id__:1},asset:{__id__:0},fileId:crypto.randomUUID().slice(0,22)}];
 const button=(host,name,x,y,w,h,key='button_green')=>{const n=p.add(host,name,x,y,w,h);p.skinNode(n,'Surface',key,0,0,w,h);p.label(n,'Text','',0,0,w-8,h-2,14);return n;};
-p.skinNode('','Panel','window_cream',0,-12,364,612);button('','Back',-145,306,78,34);p.label('','Title','tech.title',0,276,250,34,24);p.label('','Balance','',0,244,320,24,14);p.label('','Summary','',0,219,320,22,12);
-const branches=p.add('','Branches',0,0,350,340);
-for(let col=0;col<4;col++){const b=p.add(branches,'Branch'+col,-132+col*88,0,82,335),portrait=p.add(b,'Portrait',0,182,45,45);const sp=p.component(portrait,source.find(o=>o.__type__==='cc.Sprite'));sp._spriteFrame=null;sp._color=p.color('#ffffff');p.label(b,'Title','',0,150,82,24,12);
- for(let rank=0;rank<5;rank++){if(rank)p.skinNode(b,'Link'+rank,'round_0',0,123-(rank-.5)*49,3,20);const n=button(b,'Node'+rank,0,123-rank*49,64,32,'button_disabled');p.label(n,'State','',0,-23,80,17,10);}
-}
-const details=p.add('','Details',0,-172,330,106);p.label(details,'Title','',0,32,320,24,17);p.label(details,'Description','',0,3,318,38,13);p.label(details,'Condition','',0,-29,320,22,11);
-button('','Buy',87,-255,156,38,'button_gold');button('','Reset',-89,-255,154,38);button('','Previous',-130,-307,72,30);button('','Next',130,-307,72,30);p.label('','Pagination','',0,-307,100,28,14);button('','Legacy',0,-280,130,20,'round_0');p.font('Legacy/Text',10,'#6f7868');p.label('','Notice','',0,-337,350,24,11);
+const portrait=(host,name,x,y,w,h)=>{const n=p.add(host,name,x,y,w,h),sp=p.component(n,source.find(o=>o.__type__==='cc.Sprite'));sp._spriteFrame=null;sp._color=p.color('#ffffff');return n;};
+p.skinNode('','Panel','window_cream',0,-26,366,626);p.skinNode('','Banner','tech_banner',23,287,295,74);button('','Back',-148,321,76,30);p.label('','Title','tech.title',23,286,236,33,24,'#ffffff');p.label('','Balance','',0,238,344,25,15);p.label('','Summary','',0,214,340,22,12);
+const overview=p.add('','Overview',0,0,360,600),cards=p.add(overview,'Cards',0,0,350,500);
+for(let i=0;i<7;i++){const wide=i===6,b=p.add(cards,'Card'+i,wide?0:(i%2?86:-86),wide?-203:142-Math.floor(i/2)*115,wide?328:156,104);p.skinNode(b,'Surface','tech_card',0,0,wide?328:156,104);portrait(b,'Portrait',wide?-125:-44,wide?4:20,wide?62:49,wide?62:49);p.label(b,'Title','',wide?-6:29,wide?28:30,wide?196:91,23,wide?16:14);p.label(b,'Description','',wide?0:29,wide?4:5,wide?194:85,28,wide?11:10);const marks=p.add(b,'Marks',wide?-13:0,-24,140,10);for(let j=0;j<5;j++)p.skinNode(marks,'Mark'+j,'round_2',-56+j*28,0,20,6);p.label(b,'Cost','',wide?107:0,wide?-24:-44,wide?90:140,19,11);}
+button(overview,'Previous',-95,-296,90,32);button(overview,'Next',95,-296,90,32);p.label(overview,'Pagination','',0,-296,88,28,14);button(overview,'Legacy',0,-328,144,22,'round_0');p.hide('Overview/Legacy/Surface');p.font('Overview/Legacy/Text',11,'#6f7868');
+const detail=p.add('','Detail',0,0,350,600);portrait(detail,'Portrait',-134,181,61,61);p.label(detail,'BranchTitle','',21,192,228,28,22);p.label(detail,'BranchDescription','',21,164,240,24,12);
+const ranks=p.add(detail,'Nodes',0,0,340,400);for(let i=1;i<5;i++)p.skinNode(ranks,'Link'+i,'round_2',-130,150-i*68,4,18);
+for(let i=0;i<5;i++){const n=p.add(ranks,'Node'+i,0,116-i*68,330,62);p.skinNode(n,'Surface','window_flat',0,0,330,62);p.skinNode(n,'Selected','button_gold',0,0,330,62);p.skinNode(n,'IconBackground','tech_badge',-130,0,49,49);portrait(n,'Icon',-130,0,31,31);p.label(n,'Rank','',-151,-20,22,17,10);p.label(n,'Title','',26,16,237,23,15);p.label(n,'Description','',26,-5,237,18,11);p.label(n,'State','',26,-23,237,16,10);}
+const details=p.add(detail,'Details',0,-239,330,78);p.label(details,'Title','',0,27,316,22,15);p.label(details,'Description','',0,1,316,30,12);p.label(details,'Condition','',0,-26,316,19,11);button(detail,'Buy',0,-306,316,40,'button_gold');p.label(detail,'Notice','',0,-335,350,18,10);detail._active=false;
 p.save();console.log('technology骨架已生成，继续导出UiLayout原始表');

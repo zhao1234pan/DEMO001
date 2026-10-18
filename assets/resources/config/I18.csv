@@ -988,7 +988,7 @@ id,key,zhCN
 982,tech.node.props_5.name,长效冷风
 983,tech.node.props_5.desc,冻结道具再延长0.6秒。
 984,tech.title,科技研究
-985,tech.summary,已研究 {p0}/{p1} 项 · 冒险与挑战生效
+985,tech.summary,已研究 {p0}/{p1} 项 · 永久成长
 986,tech.balance,便利店金币 {p0}
 987,tech.back,返回
 988,tech.page,{p0}/{p1}
@@ -1003,13 +1003,156 @@ id,key,zhCN
 997,tech.needPrevious,先研究「{p0}」
 998,tech.needLevel,通关冒险第{p0}关后开放
 999,tech.needCoins,金币不足，还差{p0}
-1000,tech.ready,购买后在下一局生效
-1001,tech.bought,研究完成，之后的战斗持续生效
+1000,tech.ready,永久研究 · 下局生效
+1001,tech.bought,研究完成，下局开始生效
 1002,tech.failed,条件已变化，请重新选择
-1003,tech.reset,重置研究
-1004,tech.confirmReset,确认返还 {p0}
-1005,tech.refundHint,再次点击重置，返还已投入的{p0}金币。
-1006,tech.refunded,研究已重置，返还{p0}金币
-1007,tech.empty,尚未投入研究金币
 1008,tech.rank,{p0}
 1009,shop.technology,科技
+1010,tech.branch.sprout.summary,"稳定直击
+扎实输出"
+1011,tech.branch.frost.summary,"冰霜延续
+减速控场"
+1012,tech.branch.bloom.summary,"礼花绽放
+范围清敌"
+1013,tech.branch.scope.summary,"贯穿长线
+远程狙击"
+1014,tech.branch.spark.summary,"电链传递
+连锁制敌"
+1015,tech.branch.ember.summary,"余火延续
+持续灼烧"
+1016,tech.branch.mint.summary,"标记延续
+协同集火"
+1017,tech.branch.fan.summary,"扇风加速
+密集打击"
+1018,tech.branch.logistics.summary,"节省费用
+开局储备"
+1019,tech.branch.props.summary,"强化道具
+从容应急"
+1020,tech.branch.boss,首领克制
+1021,tech.branch.boss.summary,"直击首领
+提高效率"
+1022,tech.node.boss_1.name,识破弱点
+1023,tech.node.boss_1.desc,店员直击首领伤害提高1%。
+1024,tech.node.boss_2.name,精准压制
+1025,tech.node.boss_2.desc,店员直击首领伤害提高1%。
+1026,tech.node.boss_3.name,重点集火
+1027,tech.node.boss_3.desc,店员直击首领伤害提高1%。
+1028,tech.node.boss_4.name,破绽追击
+1029,tech.node.boss_4.desc,店员直击首领伤害提高1%。
+1030,tech.node.boss_5.name,首领专精
+1031,tech.node.boss_5.desc,店员直击首领伤害提高2%。
+1032,tech.branch.clearing,清障技巧
+1033,tech.branch.clearing.summary,"加快清障
+腾出阵地"
+1034,tech.node.clearing_1.name,清障入门
+1035,tech.node.clearing_1.desc,店员攻击障碍伤害提高2%。
+1036,tech.node.clearing_2.name,工具保养
+1037,tech.node.clearing_2.desc,店员攻击障碍伤害提高2%。
+1038,tech.node.clearing_3.name,拆解训练
+1039,tech.node.clearing_3.desc,店员攻击障碍伤害提高2%。
+1040,tech.node.clearing_4.name,精准拆除
+1041,tech.node.clearing_4.desc,店员攻击障碍伤害提高3%。
+1042,tech.node.clearing_5.name,清障专精
+1043,tech.node.clearing_5.desc,店员攻击障碍伤害提高3%。
+1044,tech.branch.salvage,残骸回收
+1045,tech.branch.salvage.summary,"回收残骸
+积攒金币"
+1046,tech.node.salvage_1.name,随手回收
+1047,tech.node.salvage_1.desc,清除障碍的基础战斗金币提高2%。
+1048,tech.node.salvage_2.name,分类整理
+1049,tech.node.salvage_2.desc,清除障碍的基础战斗金币提高2%。
+1050,tech.node.salvage_3.name,材料识别
+1051,tech.node.salvage_3.desc,清除障碍的基础战斗金币提高2%。
+1052,tech.node.salvage_4.name,精细拆解
+1053,tech.node.salvage_4.desc,清除障碍的基础战斗金币提高2%。
+1054,tech.node.salvage_5.name,回收专精
+1055,tech.node.salvage_5.desc,清除障碍的基础战斗金币提高2%。
+1056,tech.branch.supply,补给调度
+1057,tech.branch.supply.summary,"积累经验
+加快补给"
+1058,tech.node.supply_1.name,夜班登记
+1059,tech.node.supply_1.desc,挑战击退怪物获得经验提高1%。
+1060,tech.node.supply_2.name,物资统筹
+1061,tech.node.supply_2.desc,挑战击退怪物获得经验提高1%。
+1062,tech.node.supply_3.name,及时补包
+1063,tech.node.supply_3.desc,挑战击退怪物获得经验提高1%。
+1064,tech.node.supply_4.name,高效交接
+1065,tech.node.supply_4.desc,挑战击退怪物获得经验提高1%。
+1066,tech.node.supply_5.name,调度专精
+1067,tech.node.supply_5.desc,挑战击退怪物获得经验提高1%。
+1068,tech.node.sprout_1.brief,直击伤害 +3%
+1069,tech.node.sprout_2.brief,射程 +4%
+1070,tech.node.sprout_3.brief,攻击间隔 −4%
+1071,tech.node.sprout_4.brief,直击伤害 +4%
+1072,tech.node.sprout_5.brief,直击伤害 +5%
+1073,tech.node.frost_1.brief,直击伤害 +3%
+1074,tech.node.frost_2.brief,射程 +4%
+1075,tech.node.frost_3.brief,减速时长 +8%
+1076,tech.node.frost_4.brief,攻击间隔 −4%
+1077,tech.node.frost_5.brief,直击伤害 +5%
+1078,tech.node.bloom_1.brief,直击伤害 +3%
+1079,tech.node.bloom_2.brief,射程 +4%
+1080,tech.node.bloom_3.brief,爆炸范围 +6%
+1081,tech.node.bloom_4.brief,攻击间隔 −4%
+1082,tech.node.bloom_5.brief,直击伤害 +5%
+1083,tech.node.scope_1.brief,直击伤害 +3%
+1084,tech.node.scope_2.brief,射程 +4%
+1085,tech.node.scope_3.brief,贯穿长度 +6%
+1086,tech.node.scope_4.brief,攻击间隔 −4%
+1087,tech.node.scope_5.brief,直击伤害 +5%
+1088,tech.node.spark_1.brief,直击伤害 +3%
+1089,tech.node.spark_2.brief,射程 +4%
+1090,tech.node.spark_3.brief,电链系数 +4%
+1091,tech.node.spark_4.brief,攻击间隔 −4%
+1092,tech.node.spark_5.brief,直击伤害 +5%
+1093,tech.node.ember_1.brief,直击伤害 +3%
+1094,tech.node.ember_2.brief,射程 +4%
+1095,tech.node.ember_3.brief,灼烧时长 +8%
+1096,tech.node.ember_4.brief,攻击间隔 −4%
+1097,tech.node.ember_5.brief,直击伤害 +5%
+1098,tech.node.mint_1.brief,直击伤害 +3%
+1099,tech.node.mint_2.brief,射程 +4%
+1100,tech.node.mint_3.brief,标记时长 +8%
+1101,tech.node.mint_4.brief,攻击间隔 −4%
+1102,tech.node.mint_5.brief,直击伤害 +5%
+1103,tech.node.fan_1.brief,直击伤害 +3%
+1104,tech.node.fan_2.brief,射程 +4%
+1105,tech.node.fan_3.brief,攻击间隔 −4%
+1106,tech.node.fan_4.brief,直击伤害 +4%
+1107,tech.node.fan_5.brief,直击伤害 +5%
+1108,tech.node.logistics_1.brief,建造费用 −2%
+1109,tech.node.logistics_2.brief,升级费用 −3%
+1110,tech.node.logistics_3.brief,建造费用 −2%
+1111,tech.node.logistics_4.brief,升级费用 −3%
+1112,tech.node.logistics_5.brief,开局金币 +15
+1113,tech.node.props_1.brief,冻结时长 +0.4秒
+1114,tech.node.props_2.brief,道具金币 +8
+1115,tech.node.props_3.brief,冻结时长 +0.4秒
+1116,tech.node.props_4.brief,道具金币 +8
+1117,tech.node.props_5.brief,冻结时长 +0.6秒
+1118,tech.node.boss_1.brief,首领直击 +1%
+1119,tech.node.boss_2.brief,首领直击 +1%
+1120,tech.node.boss_3.brief,首领直击 +1%
+1121,tech.node.boss_4.brief,首领直击 +1%
+1122,tech.node.boss_5.brief,首领直击 +2%
+1123,tech.node.clearing_1.brief,清障伤害 +2%
+1124,tech.node.clearing_2.brief,清障伤害 +2%
+1125,tech.node.clearing_3.brief,清障伤害 +2%
+1126,tech.node.clearing_4.brief,清障伤害 +3%
+1127,tech.node.clearing_5.brief,清障伤害 +3%
+1128,tech.node.salvage_1.brief,残骸金币 +2%
+1129,tech.node.salvage_2.brief,残骸金币 +2%
+1130,tech.node.salvage_3.brief,残骸金币 +2%
+1131,tech.node.salvage_4.brief,残骸金币 +2%
+1132,tech.node.salvage_5.brief,残骸金币 +2%
+1133,tech.node.supply_1.brief,击退经验 +1%
+1134,tech.node.supply_2.brief,击退经验 +1%
+1135,tech.node.supply_3.brief,击退经验 +1%
+1136,tech.node.supply_4.brief,击退经验 +1%
+1137,tech.node.supply_5.brief,击退经验 +1%
+1138,tech.branchProgress,{p0} · 已研究 {p1}/{p2}
+1139,tech.cardCost,下一项 {p0}
+1140,tech.cardDone,已全部研究
+1141,tech.cardGate,通关第{p0}关开放
+1142,tech.backOverview,总览
+1143,tech.detailProgress,已研究 {p0}/{p1} 项 · 逐级开放

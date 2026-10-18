@@ -1,0 +1,194 @@
+{
+  "method": "内置image_gen独立PNG；按真实alpha范围等比居中归一；未使用图集",
+  "records": [
+    {
+      "key": "tech_banner",
+      "kind": "skin",
+      "w": 640,
+      "h": 160,
+      "subject": "one wide horizontal ornate sign plaque for a cute convenience-store research workshop. Deep teal blue center completely blank for a separate Chinese title label, rounded brass gold rim, two small warm bronze gears at the left and a tiny green leaf at right. Symmetric readable silhouette. Landscape 4:1. No letters, no numbers, no text, no separate objects.",
+      "prompt": "Use case: stylized-concept. Asset type: single independent production PNG UI asset for a polished cute Chinese convenience-store tower-defense game. one wide horizontal ornate sign plaque for a cute convenience-store research workshop. Deep teal blue center completely blank for a separate Chinese title label, rounded brass gold rim, two small warm bronze gears at the left and a tiny green leaf at right. Symmetric readable silhouette. Landscape 4:1. No letters, no numbers, no text, no separate objects. Style: thick clean dark chocolate outlines, polished warm glossy 2D cel shading, rounded friendly forms, teal and brass-gold research-workshop palette. Real transparent alpha background; full asset centered with ample transparent margin on every side, crisp complete edges. No environment, no drop shadow detached from the object, no watermark, no sprite sheet, no collection of different assets.",
+      "source": "source_assets/art/production/technology_redesign_20261018/tech_banner-source.png",
+      "target": "assets/art/ui/windows/technology/tech_banner.png",
+      "alphaBounds": {
+        "left": 58,
+        "top": 80,
+        "width": 2061,
+        "height": 547
+      },
+      "sourceSize": [
+        2172,
+        724
+      ],
+      "canvas": [
+        640,
+        160
+      ],
+      "uuid": "7994b811-2bb9-4eb1-a909-ec79a8530211",
+      "sourceSha256": "18a901a5c2fa19e16d6c773fe1d7e76bac4b8db5e60a3441e58e4f0a8450e07f",
+      "sha256": "76a31c964b6df3a15e12ecd13baa0bac3b4f644e6997b6c166ceee30e80bf4c5"
+    },
+    {
+      "key": "tech_card",
+      "kind": "skin",
+      "w": 512,
+      "h": 448,
+      "subject": "one single rectangular game menu card, slightly landscape 8:7 aspect. Cream parchment opaque center with a very faint pale teal blueprint grid, smooth thick teal outline, modest warm brass-gold corner rivets, rounded corners. Big completely empty center for separate game content. UI nine-slice friendly, borders and decorations confined to edge, NO letters, NO numbers, NO characters, NO icons.",
+      "prompt": "Use case: stylized-concept. Asset type: single independent production PNG UI asset for a polished cute Chinese convenience-store tower-defense game. one single rectangular game menu card, slightly landscape 8:7 aspect. Cream parchment opaque center with a very faint pale teal blueprint grid, smooth thick teal outline, modest warm brass-gold corner rivets, rounded corners. Big completely empty center for separate game content. UI nine-slice friendly, borders and decorations confined to edge, NO letters, NO numbers, NO characters, NO icons. Style: thick clean dark chocolate outlines, polished warm glossy 2D cel shading, rounded friendly forms, teal and brass-gold research-workshop palette. Real transparent alpha background; full asset centered with ample transparent margin on every side, crisp complete edges. No environment, no drop shadow detached from the object, no watermark, no sprite sheet, no collection of different assets.",
+      "source": "source_assets/art/production/technology_redesign_20261018/tech_card-source.png",
+      "target": "assets/art/ui/windows/technology/tech_card.png",
+      "alphaBounds": {
+        "left": 40,
+        "top": 95,
+        "width": 1261,
+        "height": 981
+      },
+      "sourceSize": [
+        1340,
+        1174
+      ],
+      "canvas": [
+        512,
+        448
+      ],
+      "uuid": "b61984b0-a580-45d0-96ee-3a628390aa22",
+      "sourceSha256": "27fc502c95bbb4ef8916e6c011c729749455bd6bc1ec7957d1638dcff7522afe",
+      "sha256": "9ca76870df84489991d00cba3a347c5b42c538b01bc45c2e630eaf3f34024b0b"
+    },
+    {
+      "key": "tech_badge",
+      "kind": "skin",
+      "w": 256,
+      "h": 256,
+      "subject": "one circular skill-tree node frame, warm brass gold rim with small rivets and a deep teal secondary ring. Large opaque cream center completely blank to hold a separate icon. Cute polished chunky cartoon style. Perfectly centered circular silhouette, NO text, NO letters, NO embedded symbol.",
+      "prompt": "Use case: stylized-concept. Asset type: single independent production PNG UI asset for a polished cute Chinese convenience-store tower-defense game. one circular skill-tree node frame, warm brass gold rim with small rivets and a deep teal secondary ring. Large opaque cream center completely blank to hold a separate icon. Cute polished chunky cartoon style. Perfectly centered circular silhouette, NO text, NO letters, NO embedded symbol. Style: thick clean dark chocolate outlines, polished warm glossy 2D cel shading, rounded friendly forms, teal and brass-gold research-workshop palette. Real transparent alpha background; full asset centered with ample transparent margin on every side, crisp complete edges. No environment, no drop shadow detached from the object, no watermark, no sprite sheet, no collection of different assets.",
+      "source": "source_assets/art/production/technology_redesign_20261018/tech_badge-source.png",
+      "target": "assets/art/ui/windows/technology/tech_badge.png",
+      "alphaBounds": {
+        "left": 48,
+        "top": 23,
+        "width": 1177,
+        "height": 1175
+      },
+      "sourceSize": [
+        1272,
+        1236
+      ],
+      "canvas": [
+        256,
+        256
+      ],
+      "uuid": "9df9dbd6-4dc6-4951-9276-06fbe8658308",
+      "sourceSha256": "d050c6d15985a6fa9c92173cc0ed535dba82efbb5c4cf63aeae322c11d10d1e2",
+      "sha256": "77d243a01a010ce1ade34cc5d30ae3b526107c394f85ecab58198b03a4b48aa7"
+    },
+    {
+      "key": "tech_boss",
+      "kind": "icon",
+      "w": 256,
+      "h": 256,
+      "subject": "one compact game upgrade icon: a cute purple monster face-shaped target plaque with a small gold bullseye marker and a tiny bronze arrow. Friendly, no scary blood, readable boss weakness symbol, single connected object.",
+      "prompt": "Use case: stylized-concept. Asset type: single independent production PNG UI asset for a polished cute Chinese convenience-store tower-defense game. one compact game upgrade icon: a cute purple monster face-shaped target plaque with a small gold bullseye marker and a tiny bronze arrow. Friendly, no scary blood, readable boss weakness symbol, single connected object. Style: thick clean dark chocolate outlines, polished warm glossy 2D cel shading, rounded friendly forms, teal and brass-gold research-workshop palette. Real transparent alpha background; full asset centered with ample transparent margin on every side, crisp complete edges. No environment, no drop shadow detached from the object, no watermark, no sprite sheet, no collection of different assets.",
+      "source": "source_assets/art/production/technology_redesign_20261018/tech_boss-source.png",
+      "target": "assets/art/ui/windows/technology/tech_boss.png",
+      "alphaBounds": {
+        "left": 54,
+        "top": 60,
+        "width": 1169,
+        "height": 1112
+      },
+      "sourceSize": [
+        1278,
+        1230
+      ],
+      "canvas": [
+        256,
+        256
+      ],
+      "uuid": "86e8fbe5-c323-4e9d-a0d3-ffd6e893a168",
+      "sourceSha256": "0f27567fbe11198914abf88c16c226d69adc2dab77700a216f316969a3e849fd",
+      "sha256": "2a5484d2a751b0bf24f8f64b96ad46c8f96d6f8a017c8af7f3101a1cf2fb9a6a"
+    },
+    {
+      "key": "tech_clear",
+      "kind": "icon",
+      "w": 256,
+      "h": 256,
+      "subject": "one compact game upgrade icon: a wooden delivery crate with a small teal wrench laid diagonally across it, two little gold sparkles attached to silhouette, cute obstacle clearing workshop symbol, single connected object.",
+      "prompt": "Use case: stylized-concept. Asset type: single independent production PNG UI asset for a polished cute Chinese convenience-store tower-defense game. one compact game upgrade icon: a wooden delivery crate with a small teal wrench laid diagonally across it, two little gold sparkles attached to silhouette, cute obstacle clearing workshop symbol, single connected object. Style: thick clean dark chocolate outlines, polished warm glossy 2D cel shading, rounded friendly forms, teal and brass-gold research-workshop palette. Real transparent alpha background; full asset centered with ample transparent margin on every side, crisp complete edges. No environment, no drop shadow detached from the object, no watermark, no sprite sheet, no collection of different assets.",
+      "source": "source_assets/art/production/technology_redesign_20261018/tech_clear-source.png",
+      "target": "assets/art/ui/windows/technology/tech_clear.png",
+      "alphaBounds": {
+        "left": 217,
+        "top": 163,
+        "width": 923,
+        "height": 887
+      },
+      "sourceSize": [
+        1312,
+        1199
+      ],
+      "canvas": [
+        256,
+        256
+      ],
+      "uuid": "0c75a5b2-05cb-483f-991d-7cf17b138168",
+      "sourceSha256": "db7c7a29b34c035e90c0242632d197ec327c560da69a06729075bcf25872009e",
+      "sha256": "4d6f67ac9779e14d223b67105c1e25cc8f11fb779f80f3f0f4b78448a2268f4f"
+    },
+    {
+      "key": "tech_recycle",
+      "kind": "icon",
+      "w": 256,
+      "h": 256,
+      "subject": "one compact game upgrade icon: a cream and teal recycling tote holding two gold coins and a tiny folded cardboard box. Cute convenience-store salvage rewards symbol, one connected object, no recycling text.",
+      "prompt": "Use case: stylized-concept. Asset type: single independent production PNG UI asset for a polished cute Chinese convenience-store tower-defense game. one compact game upgrade icon: a cream and teal recycling tote holding two gold coins and a tiny folded cardboard box. Cute convenience-store salvage rewards symbol, one connected object, no recycling text. Style: thick clean dark chocolate outlines, polished warm glossy 2D cel shading, rounded friendly forms, teal and brass-gold research-workshop palette. Real transparent alpha background; full asset centered with ample transparent margin on every side, crisp complete edges. No environment, no drop shadow detached from the object, no watermark, no sprite sheet, no collection of different assets.",
+      "source": "source_assets/art/production/technology_redesign_20261018/tech_recycle-source.png",
+      "target": "assets/art/ui/windows/technology/tech_recycle.png",
+      "alphaBounds": {
+        "left": 171,
+        "top": 81,
+        "width": 932,
+        "height": 1107
+      },
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "canvas": [
+        256,
+        256
+      ],
+      "uuid": "76faca26-8006-40b3-91f6-4bd70225dbd6",
+      "sourceSha256": "a7d72e6b9ee4495125fc74903026b06a23b7d2d2f8ff4aad32a0074a3a97fd8d",
+      "sha256": "266dcc065f8825b7c069714f6556daaea6dec52c8825e5a89600206b433392f6"
+    },
+    {
+      "key": "tech_supply",
+      "kind": "icon",
+      "w": 256,
+      "h": 256,
+      "subject": "one compact game upgrade icon: a little teal delivery parcel with a warm golden lightning bolt seal and two pale blue experience crystals nestled beside the parcel. Cute supply experience symbol, one connected object.",
+      "prompt": "Use case: stylized-concept. Asset type: single independent production PNG UI asset for a polished cute Chinese convenience-store tower-defense game. one compact game upgrade icon: a little teal delivery parcel with a warm golden lightning bolt seal and two pale blue experience crystals nestled beside the parcel. Cute supply experience symbol, one connected object. Style: thick clean dark chocolate outlines, polished warm glossy 2D cel shading, rounded friendly forms, teal and brass-gold research-workshop palette. Real transparent alpha background; full asset centered with ample transparent margin on every side, crisp complete edges. No environment, no drop shadow detached from the object, no watermark, no sprite sheet, no collection of different assets.",
+      "source": "source_assets/art/production/technology_redesign_20261018/tech_supply-source.png",
+      "target": "assets/art/ui/windows/technology/tech_supply.png",
+      "alphaBounds": {
+        "left": 142,
+        "top": 163,
+        "width": 1073,
+        "height": 892
+      },
+      "sourceSize": [
+        1312,
+        1199
+      ],
+      "canvas": [
+        256,
+        256
+      ],
+      "uuid": "e79f0082-b7ae-4b39-8683-5ff2694cec66",
+      "sourceSha256": "6d75902f01e07ec00171a2d962b304d33321331fca4d195460e1a3f97777e3b5",
+      "sha256": "590151c632f5b4b54000a239c28d70d0420ffaf8e264f5c8a0b4a0165d23db88"
+    }
+  ]
+}

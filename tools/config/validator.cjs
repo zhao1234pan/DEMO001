@@ -157,11 +157,12 @@ function installConfigs(sources) {
             throw Error('Invalid technology effect');
         if (effect.scope === 'staff' && (!attributes.includes(effect.attribute) || effect.operation === 'add' || numeric(effect, 'cap') >= 1))
             throw Error('Invalid technology profile protocol');
-        if (effect.scope === 'global' && (!['buildDiscount', 'upgradeDiscount', 'startCoins', 'freezeSeconds', 'cashCoins'].includes(effect.attribute) || effect.operation !== 'add' || effect.attribute.endsWith('Discount') && numeric(effect, 'cap') >= 1))
+        if (effect.scope === 'global' && (!['buildDiscount', 'upgradeDiscount', 'startCoins', 'freezeSeconds', 'cashCoins', 'bossDamage', 'obstacleDamage', 'obstacleReward', 'challengeXp'].includes(effect.attribute) || effect.operation !== 'add' || effect.attribute.endsWith('Discount') && numeric(effect, 'cap') >= 1))
             throw Error('Invalid global technology protocol');
     }
     for (const branch of next.TechnologyBranch) {
         requireRef('I18', 'key', branch.titleKey, 'TechnologyBranch');
+        requireRef('I18', 'key', branch.summaryKey, 'TechnologyBranch');
         if (branch.staffKey)
             requireRef('Staff', 'key', branch.staffKey, 'TechnologyBranch');
         const [domain, key] = branch.iconKey.split(':');
@@ -181,8 +182,11 @@ function installConfigs(sources) {
     for (const node of next.TechnologyNode) {
         requireRef('TechnologyBranch', 'key', node.branchKey, 'TechnologyNode');
         requireRef('TechnologyEffect', 'key', node.effect, 'TechnologyNode');
-        for (const field of ['nameKey', 'descriptionKey'])
+        for (const field of ['nameKey', 'descriptionKey', 'briefKey'])
             requireRef('I18', 'key', node[field], 'TechnologyNode');
+        const [domain, icon] = node.iconKey.split(':');
+        if (!['menu', 'ui'].includes(domain) || !next.ArtFrame.some(r => r[domain] === icon))
+            throw Error('Invalid technology node icon');
         const branch = next.TechnologyBranch.find(r => r.key === node.branchKey), effect = next.TechnologyEffect.find(r => r.key === node.effect);
         if (Boolean(branch.staffKey) !== (effect.scope === 'staff') || !Number.isSafeInteger(numeric(node, 'cost')) || numeric(node, 'cost') <= 0 || !Number.isInteger(numeric(node, 'unlockLevel')) || numeric(node, 'unlockLevel') < 0 || numeric(node, 'unlockLevel') > Number(next.Global.find(r => r.key === 'maxLevels').value) || numeric(node, 'value') <= 0)
             throw Error('Invalid technology node');

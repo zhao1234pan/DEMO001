@@ -13,3 +13,7 @@ id,key,scope,attribute,operation,cap
 12,startCoins,global,startCoins,add,15
 13,freezeSeconds,global,freezeSeconds,add,1.4
 14,cashCoins,global,cashCoins,add,16
+15,bossDamage,global,bossDamage,add,0.06
+16,obstacleDamage,global,obstacleDamage,add,0.12
+17,obstacleReward,global,obstacleReward,add,0.1
+18,challengeXp,global,challengeXp,add,0.05
