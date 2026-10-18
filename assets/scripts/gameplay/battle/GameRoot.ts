@@ -3,6 +3,7 @@ import { ShopService } from "../../services/ShopService";
 import { LoadingView } from "../../ui/LoadingView";
 import { PngSurface } from "../../ui/PngSurface";
 import { ChallengeRun, ChallengePort, ChallengeShot, challengeRule } from "./ChallengeRun";
+import {TechnologySnapshot,technologySnapshot,technologyProfile} from "./Technology";
 import { CrowdFlow } from "./CrowdFlow";
 import { ChallengeView } from "../../ui/ChallengeView";
 import { loadoutRule, validLoadout, saveLoadout, resetLoadouts, wavePreview } from "./LevelLoadout";
@@ -158,6 +159,8 @@ export class GameRoot extends Component {
   private spawnInterval = 0.72;
   private nextWaveTimer = 4;
   private frozenTime = 0;
+  private technology:TechnologySnapshot={staff:{},global:{}};
+  private readonly technologyProfiles=new Map<string,ReturnType<typeof attackProfile>>();
   private adRequesting = false;
   private battleRevision = 0;
   private adFeedback = "";
@@ -481,7 +484,7 @@ export class GameRoot extends Component {
 
   /** 弹道仅改变视觉轨迹；命中仍由逻辑坐标和真实目标判定，倍速与暂停保持同步。 */
   private drawShot(g: PngSurface, shot: Shot): void {
-    const cfg=attackProfile(shot.kind,shot.level,shot.evolutionKey);
+    const cfg=this.baseProfile(shot.kind,shot.level,shot.evolutionKey);
     const angle = Math.atan2(shot.target.y - shot.y, shot.target.x - shot.x);
     const ux = Math.cos(angle), uy = Math.sin(angle);
     const traveled = Math.hypot(shot.x - shot.originX, shot.y - shot.originY);
@@ -639,7 +642,7 @@ export class GameRoot extends Component {
     const spotRect = (spot: Spot): HitRect => ({x:spot.x-22,y:spot.y-22,width:44,height:44});
     const tower = this.towers.find(item => item.kind === kind && (step.action !== "combo" || !partner || Math.hypot(item.x-partner.x,item.y-partner.y) <= config.range + TOWER_CONFIG[partner.kind].range));
     if (step.action === "clear") {
-      const reachable = this.obstacles.filter(obstacle => this.towers.some(item => Math.hypot(item.x-obstacle.x,item.y-obstacle.y) <= attackProfile(item.kind,item.level,item.evolutionKey).range));
+      const reachable = this.obstacles.filter(obstacle => this.towers.some(item => Math.hypot(item.x-obstacle.x,item.y-obstacle.y) <= this.baseProfile(item.kind,item.level,item.evolutionKey).range));
       const obstacle = reachable.find(item => item.spot === this.spots[numeric(step,"spotIndex")]) ?? reachable[0];
       if (!obstacle) return null;
       return result(spotRect(obstacle.spot), text(this.selectedObstacle === obstacle ? step.waitText : step.actionText));
@@ -1051,7 +1054,8 @@ export class GameRoot extends Component {
     this.battleRevision++; this.adFeedback = "";
     this.menu?.hide();
     const base=getLevelConfig(levelId);this.level={...base,availableTowers:[...(selection??base.availableTowers)]}; this.currentLevelId = this.level.id;
-    this.coins = this.level.initialCoins; this.lives = this.level.initialLives; this.wave = 0;this.ordinarySpawned=0;this.challengeSupplyTimer=0;
+    this.technology=technologySnapshot((ShopService.shared.state?.technology??[]).map(r=>r.key));this.technologyProfiles.clear();
+    this.coins = this.level.initialCoins+(this.technology.global.startCoins??0); this.lives = this.level.initialLives; this.wave = 0;this.ordinarySpawned=0;this.challengeSupplyTimer=0;
     this.inWave = false; this.paused = false; this.screen = "playing"; this.revived = false;
     this.evolutionTower = null; this.newEvolutionKeys = []; this.selectedTower = null; this.selectedSpot = null; this.selectedObstacle = null; this.queue = []; this.spawnTimer = 0;
     this.spawnInterval = 0.78; this.nextWaveTimer = globalNumber("firstWaveDelay"); this.frozenTime = 0; this.adRequesting = false;
@@ -1255,12 +1259,12 @@ export class GameRoot extends Component {
     const triple=this.challenge?.has("S01")&&tower.kind==="sprout"&&(tower.chRound??0)%this.challenge.p("S01").every===0;
     const copies=triple?this.challenge!.p("S01").shots+this.challenge!.rank(this.challengePort()):1;
     const shotProfile={...cfg,damage:cfg.damage*(triple?this.challenge!.p("S01").ratio:1)};
-    for(let copy=0;copy<copies;copy++)for(const [lane,chosen]of targets.entries())this.shots.push({challenge:this.challenge?{profile:shotProfile,round:tower.chRound??0,source:tower,damageRatio:cfg.damage/attackProfile(tower.kind,tower.level,tower.evolutionKey).damage,originalRange:attackProfile(tower.kind,tower.level,tower.evolutionKey).range}:undefined,x:tower.x+(Math.cos(tower.angle)<0?-12:12),y:tower.y-5,target:chosen,kind:tower.kind,level:tower.level,evolutionKey:tower.evolutionKey,speed:cfg.shotSpeed,originX:tower.x,originY:tower.y-5,age:0,lane:lane*copies+copy,laneCount:targets.length*copies});
+    for(let copy=0;copy<copies;copy++)for(const [lane,chosen]of targets.entries())this.shots.push({challenge:this.challenge?{profile:shotProfile,round:tower.chRound??0,source:tower,damageRatio:cfg.damage/this.baseProfile(tower.kind,tower.level,tower.evolutionKey).damage,originalRange:this.baseProfile(tower.kind,tower.level,tower.evolutionKey).range}:undefined,x:tower.x+(Math.cos(tower.angle)<0?-12:12),y:tower.y-5,target:chosen,kind:tower.kind,level:tower.level,evolutionKey:tower.evolutionKey,speed:cfg.shotSpeed,originX:tower.x,originY:tower.y-5,age:0,lane:lane*copies+copy,laneCount:targets.length*copies});
     tower.recoil=0.11;this.audio.play(tower.kind==="frost"?"frost":tower.kind==="bloom"||tower.kind==="ember"?"bloom":"sprout",tower.kind==="bloom"?0.24:0.18);return true;
   }
 
   private hit(shot: Shot, target: AttackTarget): void {
-    const cfg = shot.challenge?.profile ?? attackProfile(shot.kind,shot.level,shot.evolutionKey); const damage = cfg.damage;
+    const cfg = shot.challenge?.profile ?? this.baseProfile(shot.kind,shot.level,shot.evolutionKey); const damage = cfg.damage;
     if (!this.isEnemy(target)) {
       target.hp -= damage; target.hitFlash = globalNumber("hitFeedbackSeconds");
       this.addImpact(target, shot.kind);
@@ -1311,7 +1315,7 @@ export class GameRoot extends Component {
   /** 标记增强全队直击伤害；同类标记/灼烧取当前最强值，各自独立到期。 */
   private damageEnemy(enemy: Enemy, damage: number, kind: TowerKind, level: number, evolutionKey?: string, shot?:Shot): void {
     if(enemy.hp<=0)return;
-    const cfg = shot?.challenge?.profile ?? attackProfile(kind,level,evolutionKey);
+    const cfg = shot?.challenge?.profile ?? this.baseProfile(kind,level,evolutionKey);
     if (cfg.shred) {
       enemy.marks ??= {};enemy.marks[evolutionKey ?? kind+":"+level]={value:cfg.markRatio,remaining:cfg.markSeconds};
       enemy.markedTime=Math.max(...Object.values(enemy.marks).map(effect=>effect.remaining));
@@ -1437,9 +1441,9 @@ export class GameRoot extends Component {
     if(!tower||this.evolutionTower!==tower||!this.towers.includes(tower)||!this.canEvolve(tower)||!evolution||evolution.staffKind!==tower.kind||evolution.fromLevel!==tower.level)return;
     const cost=this.evolutionCost(evolution);
     if(this.coins<cost){this.showToast(text("ui.GameRoot.047"));return;}
-    const old=attackProfile(tower.kind,tower.level),fraction=Math.max(0,Math.min(1,tower.cooldown/old.rate));
+    const old=this.baseProfile(tower.kind,tower.level),fraction=Math.max(0,Math.min(1,tower.cooldown/old.rate));
     this.coins-=cost;tower.spent+=cost;
-    if(this.challenge&&this.challenge.freeEvolution>0)this.challenge.freeEvolution--;tower.level=evolution.toLevel;tower.evolutionKey=key;tower.cooldown=fraction*evolution.rate;
+    if(this.challenge&&this.challenge.freeEvolution>0)this.challenge.freeEvolution--;tower.level=evolution.toLevel;tower.evolutionKey=key;tower.cooldown=fraction*this.baseProfile(tower.kind,tower.level,key).rate;
     tower.burstRemaining=0;this.evolutionTower=null;
     if(this.level.mode==="adventure"&&!this.gmSessionActive&&!this.mapReview&&this.collection?.recordEvolution(key))this.newEvolutionKeys.push(key);
     this.tutorial.record("upgrade",tower.kind,tower.level);this.audio.play("upgrade",0.68);this.burst(tower.x,tower.y,"#ffc34d",18);
@@ -1459,7 +1463,7 @@ export class GameRoot extends Component {
   private upgradeCost(tower: Tower): number {
     // 二级为基础造价的 75%，三级为 100%；首关第一波收入刚好能支持一次升级。
     if(this.canEvolve(tower))return this.evolutionCost(evolutionChoices(tower.kind)[0]);
-    return Math.round(TOWER_CONFIG[tower.kind].cost * (globalNumber("upgradeCostBase") + tower.level * globalNumber("upgradeCostStep")));
+    return Math.round(TOWER_CONFIG[tower.kind].cost * (globalNumber("upgradeCostBase") + tower.level * globalNumber("upgradeCostStep"))*(1-(this.technology.global.upgradeDiscount??0)));
   }
 
   private sellRefund(tower: Tower): number {
@@ -1488,10 +1492,10 @@ export class GameRoot extends Component {
   private applyProp(kind: PropKind): void {
     this.audio.play("prop", 0.62);
     if (kind === "freeze") {
-      this.frozenTime = Math.max(this.frozenTime, globalNumber("freezeSeconds")); this.showToast(text("ui.GameRoot.050", globalNumber("freezeSeconds"))); return;
+      const seconds=globalNumber("freezeSeconds")+(this.technology.global.freezeSeconds??0);this.frozenTime = Math.max(this.frozenTime, seconds); this.showToast(text("ui.GameRoot.050", seconds)); return;
     }
     if (kind === "cash") {
-      const amount = (this.challenge?numeric(this.challenge.rule,"cashReward"):globalNumber("cashBase") + this.level.id * globalNumber("cashPerLevel")); this.addCoins(amount);
+      const amount = (this.challenge?numeric(this.challenge.rule,"cashReward"):globalNumber("cashBase") + this.level.id * globalNumber("cashPerLevel"))+(this.technology.global.cashCoins??0); this.addCoins(amount);
       this.showToast(text("ui.GameRoot.051", amount)); return;
     }
     for (let i = this.enemies.length - 1; i >= 0; i -= 1) {
@@ -1730,9 +1734,10 @@ export class GameRoot extends Component {
 
   private challengeBlocked():boolean{return Boolean(this.challenge&&(this.challenge.pending||this.challenge.browsing));}
   private addCoins(amount:number):void{this.coins+=amount;this.earned+=amount;this.challenge?.income(amount);}
-  private buildCost(kind:TowerKind):number{return this.challenge&&this.challenge.freeBuild>0?0:TOWER_CONFIG[kind].cost;}
-  private evolutionCost(e:StaffEvolution):number{return this.challenge&&this.challenge.freeEvolution>0?0:e.cost;}
-  private towerProfile(tower:Tower){return this.challenge?.profile(tower,this.challengePort())??attackProfile(tower.kind,tower.level,tower.evolutionKey);}
+  private buildCost(kind:TowerKind):number{return this.challenge&&this.challenge.freeBuild>0?0:Math.round(TOWER_CONFIG[kind].cost*(1-(this.technology.global.buildDiscount??0)));}
+  private evolutionCost(e:StaffEvolution):number{return this.challenge&&this.challenge.freeEvolution>0?0:Math.round(e.cost*(1-(this.technology.global.upgradeDiscount??0)));}
+  private baseProfile(kind:TowerKind,level:number,evolutionKey?:string){const key=kind+':'+level+':'+(evolutionKey??'');let profile=this.technologyProfiles.get(key);if(!profile){profile=technologyProfile(attackProfile(kind,level,evolutionKey),kind,this.technology);this.technologyProfiles.set(key,profile);}return profile;}
+  private towerProfile(tower:Tower){const base=this.baseProfile(tower.kind,tower.level,tower.evolutionKey);return this.challenge?.profile(tower,this.challengePort(),base)??base;}
   private challengePort():ChallengePort{return {enemies:this.enemies,towers:this.towers,obstacles:this.obstacles,queueLength:this.queue.length,coins:this.coins,pathLength:this.pathLength,wave:this.wave,inWave:this.inWave,
     addCoins:n=>this.addCoins(n),clear:(o,secondary)=>this.clearObstacle(o,secondary),impact:(e,k,from)=>this.addImpact(e,k,from),position:d=>this.pathPosition(d)};}
 

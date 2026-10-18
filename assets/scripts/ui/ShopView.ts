@@ -25,7 +25,8 @@ export class ShopView {
   private readonly points=new Map(rows("ShopPoint").map(r=>[r.key,r]));
   private readonly presentation=new ShopPresentation(key=>this.point(key),shopNumber);
   private saleAt=-Infinity;
-  constructor(private readonly root:Node,private readonly assets:UiPrefabs){}
+  constructor(private readonly root:Node,private readonly assets:UiPrefabs,private readonly openTechnology:()=>void=()=>{}){}
+  showGoodsResearch():void{this.details('research');}
   get isOverlayOpen():boolean{return this.mode!=="closed";}
   open(fresh:boolean):void {this.mode="closed";this.pickerReturn="closed";this.page=0;this.targetShelf=0;this.targetSlot=0;this.presentation.reset();this.scroll.set(0);this.saleAt=-Infinity;this.lastSold=ShopService.shared.state?.sold??0;if(fresh)this.notify(text("shop.welcome",shopNumber("welcomeCoins")));}
   /** 页头和底栏贴可见安全区，营业场景与弹窗保留配置比例。 */
@@ -71,7 +72,8 @@ export class ShopView {
     uiNode(this.root,"Floor/Content").children.slice().sort((a,b)=>Number(!a.name.startsWith("FloorTile"))-Number(!b.name.startsWith("FloorTile"))||b.position.y-a.position.y).forEach((n,i)=>n.setSiblingIndex(i));
     const overlay=uiNode(this.root,"ShopOverlay");overlay.active=this.isOverlayOpen;
     if(!this.isOverlayOpen){
-      for(const [path,tab]of [["Staff","staff"],["Upgrade","upgrade"],["Research","research"],["Uniform","uniform"]]as const)bind(uiNode(this.root,"Navigation/"+path),()=>this.details(tab));
+      for(const [path,tab]of [["Staff","staff"],["Upgrade","upgrade"],["Uniform","uniform"]]as const)bind(uiNode(this.root,"Navigation/"+path),()=>this.details(tab));
+      uiText(this.root,"Navigation/Research/Text",text("shop.technology"));bind(uiNode(this.root,"Navigation/Research"),this.openTechnology);
       bind(uiNode(this.root,"Navigation/Goods"),()=>{this.mode="shelves";});return;
     }
     const details=uiNode(overlay,"Details"),picker=uiNode(overlay,"GoodsPicker"),shelves=uiNode(overlay,"ShelfPicker");

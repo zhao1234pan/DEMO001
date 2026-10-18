@@ -1,5 +1,13 @@
 # XLSX → 客户端 CSV 配置规范
 
+## 1.22.0 金币科技（2026-10-18）
+
+- 先设计[科技方案](GOLD_TECHNOLOGY_TREE.md)，再新增TechnologyBranch／TechnologyEffect／TechnologyNode三原始XLSX，修改Global／I18／UiPrefab／UiLayout四原表，导出42客户端CSV和manifest。
+- 分支管理店员归属、顺序及图标；节点管理层级、同分支上一项前置、金币价格、冒险通关门槛、I18与效果值；效果表管理属性协议、增乘／减乘／加值方式和累计上限。代码仅保留表校验、快照及应用算法，不写本轮可调数值。
+- 科技所有权和实际支付金额存于ShopState.technology可选扩展，与经营余额同份保存；旧v3补空数组，损坏条目仅丢弃无效所有权，不发补偿金币。重置依历史实付，避免改价后复制金币。
+- UiLayout新增181节点，UiPrefab新增technology；复用已有独立PNG与九宫，图标等比适配；字体子集含新增I18。骨架工具tools/ui/create-technology-prefab.cjs，逐页Cocos截图核对，不以构建替代视觉。
+- 每局科技快照只读，按店员等级／进化缓存攻击属性；普通与挑战输出均走同一基础属性入口，挑战强化在基础之后叠加；建造、升级／进化、道具与实际出售投入各自读已配置效果。
+
 ## 1.21.0 扩关与稳定存档键（2026-10-18）
 
 - 先设计[扩关方案](LEVEL_EXPANSION_30_10.md)，修改17张原始表，导出39客户端CSV与manifest。Adventure连续1–30，Challenge31–40；专题解锁顺序仍由ChallengeTopic.key／unlockAfter管理。

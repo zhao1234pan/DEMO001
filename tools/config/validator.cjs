@@ -11,7 +11,7 @@ exports.globalString = globalString;
 exports.text = text;
 exports.parseCsv = parseCsv;
 exports.installConfigs = installConfigs;
-exports.TABLE_NAMES = ["Global", "I18", "Staff", "Enemy", "Theme", "Map", "MapPoint", "Spot", "Obstacle", "Level", "Wave", "WaveGroup", "Collection", "Audio", "Decoration", "ArtFrame", "UiPrefab", "Tutorial", "StaffBranch", "StaffForm", "LevelLoadout", "ChallengeRule", "ChallengePerk", "VisualSkin", "Goods", "ArtCut", "UiLayout", "StaffVisual", "ShopRule", "ShopGoods", "ShopStaff", "ShopUpgrade", "ShopCustomer", "ShopPoint", "ChallengeTopic", "ShopStage", "ShopResearch", "ShopUniform", "RankingEntry"];
+exports.TABLE_NAMES = ["Global", "I18", "Staff", "Enemy", "Theme", "Map", "MapPoint", "Spot", "Obstacle", "Level", "Wave", "WaveGroup", "Collection", "Audio", "Decoration", "ArtFrame", "UiPrefab", "Tutorial", "StaffBranch", "StaffForm", "LevelLoadout", "ChallengeRule", "ChallengePerk", "VisualSkin", "Goods", "ArtCut", "UiLayout", "StaffVisual", "ShopRule", "ShopGoods", "ShopStaff", "ShopUpgrade", "ShopCustomer", "ShopPoint", "ChallengeTopic", "ShopStage", "ShopResearch", "ShopUniform", "RankingEntry", "TechnologyBranch", "TechnologyEffect", "TechnologyNode"];
 let data = Object.create(null);
 let ready = false;
 let byKey = Object.create(null);
@@ -151,6 +151,42 @@ function installConfigs(sources) {
     if (!Number.isSafeInteger(initialCoins) || initialCoins < 0 || !/^[-a-zA-Z0-9_]+$/.test(setting("walletSaveKey").value))
         throw new Error("Invalid wallet setting");
     positive("UiLayout", ["width", "height", "fontSize", "lineHeight", "outlineWidth"], true);
+    const attributes = ['damage', 'range', 'rate', 'slowSeconds', 'splash', 'pierceLength', 'chainRatio', 'burnSeconds', 'markSeconds'];
+    for (const effect of next.TechnologyEffect) {
+        if (!['staff', 'global'].includes(effect.scope) || !['multiply', 'reduce', 'add'].includes(effect.operation) || numeric(effect, 'cap') <= 0)
+            throw Error('Invalid technology effect');
+        if (effect.scope === 'staff' && (!attributes.includes(effect.attribute) || effect.operation === 'add' || numeric(effect, 'cap') >= 1))
+            throw Error('Invalid technology profile protocol');
+        if (effect.scope === 'global' && (!['buildDiscount', 'upgradeDiscount', 'startCoins', 'freezeSeconds', 'cashCoins'].includes(effect.attribute) || effect.operation !== 'add' || effect.attribute.endsWith('Discount') && numeric(effect, 'cap') >= 1))
+            throw Error('Invalid global technology protocol');
+    }
+    for (const branch of next.TechnologyBranch) {
+        requireRef('I18', 'key', branch.titleKey, 'TechnologyBranch');
+        if (branch.staffKey)
+            requireRef('Staff', 'key', branch.staffKey, 'TechnologyBranch');
+        const [domain, key] = branch.iconKey.split(':');
+        if (!['menu', 'ui'].includes(domain) || !next.ArtFrame.some(r => r[domain] === key))
+            throw Error('Invalid technology icon');
+        const nodes = next.TechnologyNode.filter(r => r.branchKey === branch.key).sort((a, b) => numeric(a, 'tier') - numeric(b, 'tier'));
+        if (!nodes.length)
+            throw Error('Empty technology branch');
+        const total = {};
+        nodes.forEach((node, i) => { var _a; if (numeric(node, 'tier') !== i + 1 || node.prerequisite !== (i ? nodes[i - 1].key : ''))
+            throw Error('Invalid technology prerequisite'); if (i && numeric(node, 'unlockLevel') < numeric(nodes[i - 1], 'unlockLevel'))
+            throw Error('Technology gate decreases'); total[node.effect] = ((_a = total[node.effect]) !== null && _a !== void 0 ? _a : 0) + numeric(node, 'value'); });
+        for (const [k, v] of Object.entries(total))
+            if (v > numeric(next.TechnologyEffect.find(r => r.key === k), 'cap') + Number.EPSILON * nodes.length)
+                throw Error('Technology exceeds configured cap');
+    }
+    for (const node of next.TechnologyNode) {
+        requireRef('TechnologyBranch', 'key', node.branchKey, 'TechnologyNode');
+        requireRef('TechnologyEffect', 'key', node.effect, 'TechnologyNode');
+        for (const field of ['nameKey', 'descriptionKey'])
+            requireRef('I18', 'key', node[field], 'TechnologyNode');
+        const branch = next.TechnologyBranch.find(r => r.key === node.branchKey), effect = next.TechnologyEffect.find(r => r.key === node.effect);
+        if (Boolean(branch.staffKey) !== (effect.scope === 'staff') || !Number.isSafeInteger(numeric(node, 'cost')) || numeric(node, 'cost') <= 0 || !Number.isInteger(numeric(node, 'unlockLevel')) || numeric(node, 'unlockLevel') < 0 || numeric(node, 'unlockLevel') > Number(next.Global.find(r => r.key === 'maxLevels').value) || numeric(node, 'value') <= 0)
+            throw Error('Invalid technology node');
+    }
     for (const row of next.UiLayout) {
         if (row.fontPath && (!/^[a-zA-Z0-9_/-]+$/.test(row.fontPath) || row.fontPath.includes("..")))
             throw new Error("Invalid UI font path");

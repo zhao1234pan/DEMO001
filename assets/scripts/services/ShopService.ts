@@ -14,6 +14,7 @@ function config():ShopConfig {
     stages:rows("ShopStage").map(r=>({key:r.key,shelves:numeric(r,"shelves"),checkouts:numeric(r,"checkouts"),checkoutCap:numeric(r,"checkoutCap"),restockCap:numeric(r,"restockCap"),capacityCap:numeric(r,"capacityCap"),attractionCap:numeric(r,"attractionCap"),serviceCap:numeric(r,"serviceCap"),nameKey:r.nameKey})),
     research:rows("ShopResearch").map(r=>({key:r.key,goodsKey:r.goodsKey,tier:numeric(r,"tier"),cost:numeric(r,"cost"),priceRatio:numeric(r,"priceRatio"),minShelves:numeric(r,"minShelves")})),
     uniforms:rows("ShopUniform").map(r=>({key:r.key,staffKey:r.staffKey,cost:numeric(r,"cost"),imageKey:r.imageKey})),
+    technology:rows("TechnologyNode").map(r=>({key:r.key,prerequisite:r.prerequisite,cost:numeric(r,"cost"),unlockLevel:numeric(r,"unlockLevel")})),
     customers:rows("ShopCustomer").map(r=>({key:r.key,imageKey:r.imageKey,weight:numeric(r,"weight"),doubleChance:numeric(r,"doubleChance"),tipChance:numeric(r,"tipChance")}))};
 }
 /** 全游戏仅一个实例，经营状态和钱包在同一JSON内写入，避免扣钱与交易结果分开落盘。 */
@@ -51,6 +52,8 @@ export class ShopService {
   upgrade(key:string):boolean {this.update();const result=this.simulation?.upgrade(key,shopClearedLevel())??false;if(result)this.save();return result;}
   assign(index:number,key:string,slot=0):boolean {this.update();const result=this.simulation?.assign(index,key,shopClearedLevel(),slot)??false;if(result)this.save();return result;}
   research(key:string):boolean {this.update();const result=this.simulation?.research(key,shopClearedLevel())??false;if(result)this.save();return result;}
+  researchTechnology(key:string):boolean{this.update();const result=this.simulation?.researchTechnology(key,Math.max(shopClearedLevel(),PlatformService.getNumber("night_store_best_level",0)))??false;if(result)this.save();return result;}
+  resetTechnology():number{this.update();const refund=this.simulation?.resetTechnology()??0;if(refund)this.save();return refund;}
   buyUniform(key:string):boolean {this.update();const result=this.simulation?.buyUniform(key)??false;if(result)this.save();return result;}
   equip(key:string):boolean {this.update();const result=this.simulation?.equip(key)??false;if(result)this.save();return result;}
   save(now=Date.now()):void {if(this.state){PlatformService.setString(shopRule("saveKey"),JSON.stringify(this.state));this.savedAt=now;}}

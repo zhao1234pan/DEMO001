@@ -1,4 +1,5 @@
 import {RankingView} from "./RankingView";
+import {TechnologyView} from "./TechnologyView";
 import { ChallengeTopicsView } from "./ChallengeTopicsView";
 import { ShopView } from "./ShopView";
 import { ShopService } from "../services/ShopService";
@@ -20,7 +21,7 @@ import { AudioService } from "../services/AudioService";
 import { PlatformSettings } from "../services/PlatformSettings";
 import { UiPrefabs, uiNode, uiText, uiRect, uiColor } from "./UiPrefabs";
 
-type MenuPage = "home" | "levels" | "collection" | "settings" | "loadout" | "challenge_loadout" | "shop" | "challenge_topics" | "ranking";
+type MenuPage = "home" | "levels" | "collection" | "settings" | "loadout" | "challenge_loadout" | "shop" | "challenge_topics" | "ranking" | "technology";
 type Dialog = { kind: "entry"; entry: CollectionEntry } | { kind: "notice"; title: string; text: string };
 const W = GAME_CONFIG.prototypeLayoutWidth, H = GAME_CONFIG.prototypeLayoutHeight;
 
@@ -29,6 +30,7 @@ export class PrefabGameMenuView {
   private readonly root: Node;
   private readonly shop: ShopView;
   private readonly topics:ChallengeTopicsView;
+  private readonly technology:TechnologyView;
   private readonly ranking:RankingView;
   private readonly pages = new Map<MenuPage, Node>();
   private readonly dialogs = new Map<string, Node>();
@@ -69,7 +71,7 @@ export class PrefabGameMenuView {
   constructor(private readonly parent: Node, private readonly assets: UiPrefabs, private readonly audio: AudioService,
     private readonly collection: CollectionProgress, private readonly startLevel: (id: number, roster?: TowerKind[]) => void) {
     this.root = assets.create("menu_shell", parent);
-    for (const key of ["home", "levels", "collection", "settings", "loadout", "challenge_loadout", "shop", "challenge_topics", "ranking"] as MenuPage[]) {
+    for (const key of ["home", "levels", "collection", "settings", "loadout", "challenge_loadout", "shop", "challenge_topics", "ranking", "technology"] as MenuPage[]) {
       const node = assets.create(key, uiNode(this.root, "Pages")); this.pages.set(key, node); node.active = false;
     }
     for (const key of ["notice", "detail"]) { const node = assets.create(key, uiNode(this.root, "Dialogs")); this.dialogs.set(key, node); node.active = false; }
@@ -79,7 +81,8 @@ export class PrefabGameMenuView {
     for(const key of ['loadout','challenge_loadout'] as MenuPage[]){const page=this.pages.get(key)!;for(const slot of uiNode(page,'Candidates').children)this.preparationSlots.set(slot,{x:slot.position.x,y:slot.position.y});for(const nodePath of ['Panel','Panel/Surface','Hint','Start']){const n=uiNode(page,nodePath);this.preparationGeometry.set(n,{y:n.position.y,height:n.getComponent(UITransform)!.height});}}
     this.ranking=new RankingView(this.pages.get("ranking")!,this.assets);
     this.topics=new ChallengeTopicsView(this.pages.get("challenge_topics")!,this.assets);
-    this.shop=new ShopView(this.pages.get("shop")!,this.assets);
+    this.shop=new ShopView(this.pages.get("shop")!,this.assets,()=>this.navigate('technology'));
+    this.technology=new TechnologyView(this.pages.get('technology')!,this.assets);
     void this.platform.refresh().then(() => { if (!this.disposed) this.dirty = true; });
     this.root.active = false;
   }
@@ -117,7 +120,7 @@ export class PrefabGameMenuView {
     }
     if (unlocked !== this.unlocked) { this.unlocked = getLevelConfig(unlocked).id; this.collection.refresh(this.unlocked); this.dirty = true; }
     if(this.page==="home")uiText(this.pages.get("home")!,"CollectionCount",text("ui.homeGold",readWalletCoins()));
-    if(this.page==="shop")this.dirty=true;
+    if(this.page==="shop"||this.page==='technology')this.dirty=true;
     if (!this.dirty) return;
     this.dirty = false; this.actions.clear(); this.modalActions.clear();
     for (const [key, node] of this.pages) node.active = key === this.page;
@@ -130,6 +133,7 @@ export class PrefabGameMenuView {
     else if(this.page==="challenge_topics")this.topics.render((node,action)=>this.actions.set(node,action),id=>this.startLevel(id));
     else if(this.page==="ranking")this.ranking.render((node,action)=>this.actions.set(node,action),()=>this.navigate("challenge_topics"));
     else if(this.page==="shop")this.shop.render((node,action)=>this.actions.set(node,action));
+    else if(this.page==='technology')this.technology.render((node,action)=>this.actions.set(node,action),()=>this.navigate('shop'),()=>{this.navigate('shop');this.shop.showGoodsResearch();});
     else this.settings(page);
     this.renderDialog();
   }

@@ -1,0 +1,569 @@
+{
+  "version": "1.22.0",
+  "origin": "http://127.0.0.1:4346/",
+  "isolatedContext": true,
+  "errors": [],
+  "transition": {
+    "first": {
+      "pending": false,
+      "timer": 1.75,
+      "progress": {
+        "ratio": 1,
+        "remaining": 0,
+        "completed": 1,
+        "limit": 20,
+        "ready": true
+      }
+    },
+    "after": {
+      "pending": true,
+      "wave": 12,
+      "progress": {
+        "ratio": 1,
+        "remaining": 0,
+        "completed": 1,
+        "limit": 20,
+        "ready": true
+      },
+      "offers": [
+        "X04",
+        "S03",
+        "G04"
+      ]
+    }
+  },
+  "results": [
+    {
+      "key": "menu_shell",
+      "file": "组件/01-menu_shell.png",
+      "width": 750,
+      "height": 1334,
+      "type": "原生Cocos预制体美术状态夹具截图，不是完整游玩"
+    },
+    {
+      "key": "home",
+      "file": "组件/02-home.png",
+      "width": 750,
+      "height": 1334,
+      "type": "原生Cocos预制体美术状态夹具截图，不是完整游玩"
+    },
+    {
+      "key": "levels",
+      "file": "组件/03-levels.png",
+      "width": 750,
+      "height": 1334,
+      "type": "原生Cocos预制体美术状态夹具截图，不是完整游玩"
+    },
+    {
+      "key": "level_card",
+      "file": "组件/04-level_card.png",
+      "width": 750,
+      "height": 1334,
+      "type": "原生Cocos预制体美术状态夹具截图，不是完整游玩"
+    },
+    {
+      "key": "collection",
+      "file": "组件/05-collection.png",
+      "width": 750,
+      "height": 1334,
+      "type": "原生Cocos预制体美术状态夹具截图，不是完整游玩"
+    },
+    {
+      "key": "collection_card",
+      "file": "组件/06-collection_card.png",
+      "width": 750,
+      "height": 1334,
+      "type": "原生Cocos预制体美术状态夹具截图，不是完整游玩"
+    },
+    {
+      "key": "settings",
+      "file": "组件/07-settings.png",
+      "width": 750,
+      "height": 1334,
+      "type": "原生Cocos预制体美术状态夹具截图，不是完整游玩"
+    },
+    {
+      "key": "setting_row",
+      "file": "组件/08-setting_row.png",
+      "width": 750,
+      "height": 1334,
+      "type": "原生Cocos预制体美术状态夹具截图，不是完整游玩"
+    },
+    {
+      "key": "notice",
+      "file": "组件/09-notice.png",
+      "width": 750,
+      "height": 1334,
+      "type": "原生Cocos预制体美术状态夹具截图，不是完整游玩"
+    },
+    {
+      "key": "detail",
+      "file": "组件/10-detail.png",
+      "width": 750,
+      "height": 1334,
+      "type": "原生Cocos预制体美术状态夹具截图，不是完整游玩"
+    },
+    {
+      "key": "battle_hud",
+      "file": "组件/11-battle_hud.png",
+      "width": 750,
+      "height": 1334,
+      "type": "原生Cocos预制体美术状态夹具截图，不是完整游玩"
+    },
+    {
+      "key": "pause",
+      "file": "组件/12-pause.png",
+      "width": 750,
+      "height": 1334,
+      "type": "原生Cocos预制体美术状态夹具截图，不是完整游玩"
+    },
+    {
+      "key": "win",
+      "file": "组件/13-win.png",
+      "width": 750,
+      "height": 1334,
+      "type": "原生Cocos预制体美术状态夹具截图，不是完整游玩"
+    },
+    {
+      "key": "lose",
+      "file": "组件/14-lose.png",
+      "width": 750,
+      "height": 1334,
+      "type": "原生Cocos预制体美术状态夹具截图，不是完整游玩"
+    },
+    {
+      "key": "retry",
+      "file": "组件/15-retry.png",
+      "width": 750,
+      "height": 1334,
+      "type": "原生Cocos预制体美术状态夹具截图，不是完整游玩"
+    },
+    {
+      "key": "button",
+      "file": "组件/16-button.png",
+      "width": 750,
+      "height": 1334,
+      "type": "原生Cocos预制体美术状态夹具截图，不是完整游玩"
+    },
+    {
+      "key": "sell_button",
+      "file": "组件/17-sell_button.png",
+      "width": 750,
+      "height": 1334,
+      "type": "原生Cocos预制体美术状态夹具截图，不是完整游玩"
+    },
+    {
+      "key": "build_card",
+      "file": "组件/18-build_card.png",
+      "width": 750,
+      "height": 1334,
+      "type": "原生Cocos预制体美术状态夹具截图，不是完整游玩"
+    },
+    {
+      "key": "floating_label",
+      "file": "组件/19-floating_label.png",
+      "width": 750,
+      "height": 1334,
+      "type": "原生Cocos预制体美术状态夹具截图，不是完整游玩"
+    },
+    {
+      "key": "toast",
+      "file": "组件/20-toast.png",
+      "width": 750,
+      "height": 1334,
+      "type": "原生Cocos预制体美术状态夹具截图，不是完整游玩"
+    },
+    {
+      "key": "obstacle_info",
+      "file": "组件/21-obstacle_info.png",
+      "width": 750,
+      "height": 1334,
+      "type": "原生Cocos预制体美术状态夹具截图，不是完整游玩"
+    },
+    {
+      "key": "gm",
+      "file": "组件/22-gm.png",
+      "width": 750,
+      "height": 1334,
+      "type": "原生Cocos预制体美术状态夹具截图，不是完整游玩"
+    },
+    {
+      "key": "guide_hint",
+      "file": "组件/23-guide_hint.png",
+      "width": 750,
+      "height": 1334,
+      "type": "原生Cocos预制体美术状态夹具截图，不是完整游玩"
+    },
+    {
+      "key": "evolution_card",
+      "file": "组件/24-evolution_card.png",
+      "width": 750,
+      "height": 1334,
+      "type": "原生Cocos预制体美术状态夹具截图，不是完整游玩"
+    },
+    {
+      "key": "loadout",
+      "file": "组件/25-loadout.png",
+      "width": 750,
+      "height": 1334,
+      "type": "原生Cocos预制体美术状态夹具截图，不是完整游玩"
+    },
+    {
+      "key": "loadout_card",
+      "file": "组件/26-loadout_card.png",
+      "width": 750,
+      "height": 1334,
+      "type": "原生Cocos预制体美术状态夹具截图，不是完整游玩"
+    },
+    {
+      "key": "wave_preview",
+      "file": "组件/27-wave_preview.png",
+      "width": 750,
+      "height": 1334,
+      "type": "原生Cocos预制体美术状态夹具截图，不是完整游玩"
+    },
+    {
+      "key": "enemy_preview_card",
+      "file": "组件/28-enemy_preview_card.png",
+      "width": 750,
+      "height": 1334,
+      "type": "原生Cocos预制体美术状态夹具截图，不是完整游玩"
+    },
+    {
+      "key": "challenge_pick",
+      "file": "组件/29-challenge_pick.png",
+      "width": 750,
+      "height": 1334,
+      "type": "原生Cocos预制体美术状态夹具截图，不是完整游玩"
+    },
+    {
+      "key": "challenge_card",
+      "file": "组件/30-challenge_card.png",
+      "width": 750,
+      "height": 1334,
+      "type": "原生Cocos预制体美术状态夹具截图，不是完整游玩"
+    },
+    {
+      "key": "challenge_loadout",
+      "file": "组件/31-challenge_loadout.png",
+      "width": 750,
+      "height": 1334,
+      "type": "原生Cocos预制体美术状态夹具截图，不是完整游玩"
+    },
+    {
+      "key": "challenge_staff_card",
+      "file": "组件/32-challenge_staff_card.png",
+      "width": 750,
+      "height": 1334,
+      "type": "原生Cocos预制体美术状态夹具截图，不是完整游玩"
+    },
+    {
+      "key": "loading",
+      "file": "组件/33-loading.png",
+      "width": 750,
+      "height": 1334,
+      "type": "原生Cocos预制体美术状态夹具截图，不是完整游玩"
+    },
+    {
+      "key": "shop",
+      "file": "组件/34-shop.png",
+      "width": 750,
+      "height": 1334,
+      "type": "原生Cocos预制体美术状态夹具截图，不是完整游玩"
+    },
+    {
+      "key": "challenge_topics",
+      "file": "组件/35-challenge_topics.png",
+      "width": 750,
+      "height": 1334,
+      "type": "原生Cocos预制体美术状态夹具截图，不是完整游玩"
+    },
+    {
+      "key": "ranking",
+      "file": "组件/36-ranking.png",
+      "width": 750,
+      "height": 1334,
+      "type": "原生Cocos预制体美术状态夹具截图，不是完整游玩"
+    },
+    {
+      "key": "technology",
+      "file": "组件/37-technology.png",
+      "width": 750,
+      "height": 1334,
+      "type": "原生Cocos预制体美术状态夹具截图，不是完整游玩"
+    },
+    {
+      "key": "home",
+      "file": "完整-01-首页.png",
+      "width": 750,
+      "height": 1334,
+      "type": "完整界面原生渲染，美术状态夹具"
+    },
+    {
+      "key": "levels",
+      "file": "完整-02-冒险选关.png",
+      "width": 750,
+      "height": 1334,
+      "type": "完整界面原生渲染，美术状态夹具"
+    },
+    {
+      "key": "settings",
+      "file": "完整-03-设置.png",
+      "width": 750,
+      "height": 1334,
+      "type": "完整界面原生渲染，美术状态夹具"
+    },
+    {
+      "key": "challenge_topics",
+      "file": "完整-04-挑战专题.png",
+      "width": 750,
+      "height": 1334,
+      "type": "完整界面原生渲染，美术状态夹具"
+    },
+    {
+      "key": "ranking",
+      "file": "完整-05-排行榜.png",
+      "width": 750,
+      "height": 1334,
+      "type": "完整界面原生渲染，美术状态夹具"
+    },
+    {
+      "key": "staff",
+      "file": "完整-06-店员图鉴.png",
+      "width": 750,
+      "height": 1334,
+      "type": "完整界面原生渲染，美术状态夹具"
+    },
+    {
+      "key": "enemies",
+      "file": "完整-07-怪物图鉴.png",
+      "width": 750,
+      "height": 1334,
+      "type": "完整界面原生渲染，美术状态夹具"
+    },
+    {
+      "key": "goods",
+      "file": "完整-08-商品图鉴.png",
+      "width": 750,
+      "height": 1334,
+      "type": "完整界面原生渲染，美术状态夹具"
+    },
+    {
+      "key": "loadout",
+      "file": "完整-09-冒险配队.png",
+      "width": 750,
+      "height": 1334,
+      "type": "完整界面原生渲染，美术状态夹具"
+    },
+    {
+      "key": "challenge_loadout",
+      "file": "完整-10-挑战配队.png",
+      "width": 750,
+      "height": 1334,
+      "type": "完整界面原生渲染，美术状态夹具"
+    },
+    {
+      "key": "shop",
+      "file": "完整-11-便利店.png",
+      "width": 750,
+      "height": 1334,
+      "type": "完整界面原生渲染，美术状态夹具"
+    },
+    {
+      "key": "shop_staff",
+      "file": "完整-12-便利店员工.png",
+      "width": 750,
+      "height": 1334,
+      "type": "完整界面原生渲染，美术状态夹具"
+    },
+    {
+      "key": "shop_goods",
+      "file": "完整-13-便利店商品.png",
+      "width": 750,
+      "height": 1334,
+      "type": "完整界面原生渲染，美术状态夹具"
+    },
+    {
+      "key": "shop_upgrade",
+      "file": "完整-14-便利店升级.png",
+      "width": 750,
+      "height": 1334,
+      "type": "完整界面原生渲染，美术状态夹具"
+    },
+    {
+      "key": "detail",
+      "file": "完整-15-图鉴详情.png",
+      "width": 750,
+      "height": 1334,
+      "type": "完整界面原生渲染，美术状态夹具"
+    },
+    {
+      "key": "notice",
+      "file": "完整-16-游戏说明.png",
+      "width": 750,
+      "height": 1334,
+      "type": "完整界面原生渲染，美术状态夹具"
+    },
+    {
+      "key": "experience-battle",
+      "file": "完整-17-挑战经验条与新怪物.png",
+      "width": 750,
+      "height": 1334,
+      "type": "战斗美术状态夹具，非实际完整试玩"
+    },
+    {
+      "key": "experience-supply",
+      "file": "完整-18-经验满送达补给.png",
+      "width": 750,
+      "height": 1334,
+      "type": "经验送达与三选一状态夹具"
+    },
+    {
+      "key": "pause",
+      "file": "完整-19-暂停.png",
+      "width": 750,
+      "height": 1334,
+      "type": "结算／暂停美术状态夹具，不是通关结果"
+    },
+    {
+      "key": "win",
+      "file": "完整-20-挑战胜利.png",
+      "width": 750,
+      "height": 1334,
+      "type": "结算／暂停美术状态夹具，不是通关结果"
+    },
+    {
+      "key": "lose",
+      "file": "完整-21-挑战失败.png",
+      "width": 750,
+      "height": 1334,
+      "type": "结算／暂停美术状态夹具，不是通关结果"
+    },
+    {
+      "key": "retry",
+      "file": "完整-22-复活提示.png",
+      "width": 750,
+      "height": 1334,
+      "type": "结算／暂停美术状态夹具，不是通关结果"
+    },
+    {
+      "key": "levels_last",
+      "file": "扩展-冒险21至30关.png",
+      "width": 750,
+      "height": 1334,
+      "type": "新增关卡与图鉴美术状态夹具"
+    },
+    {
+      "key": "topics_second",
+      "file": "扩展-挑战第二页.png",
+      "width": 750,
+      "height": 1334,
+      "type": "新增关卡与图鉴美术状态夹具"
+    },
+    {
+      "key": "topics_last",
+      "file": "扩展-挑战第三页.png",
+      "width": 750,
+      "height": 1334,
+      "type": "新增关卡与图鉴美术状态夹具"
+    },
+    {
+      "key": "bosses",
+      "file": "扩展-六位首领图鉴.png",
+      "width": 750,
+      "height": 1334,
+      "type": "新增关卡与图鉴美术状态夹具"
+    },
+    {
+      "key": "enemy_last",
+      "file": "扩展-新增普通怪图鉴.png",
+      "width": 750,
+      "height": 1334,
+      "type": "新增关卡与图鉴美术状态夹具"
+    },
+    {
+      "key": "freezer_detail",
+      "file": "扩展-霜柜男爵详情.png",
+      "width": 750,
+      "height": 1334,
+      "type": "新增关卡与图鉴美术状态夹具"
+    },
+    {
+      "key": "vending_detail",
+      "file": "扩展-贩卖机大王详情.png",
+      "width": 750,
+      "height": 1334,
+      "type": "新增关卡与图鉴美术状态夹具"
+    },
+    {
+      "key": "gm",
+      "file": "扩展-GM30关入口.png",
+      "width": 750,
+      "height": 1334,
+      "type": "新增关卡与图鉴美术状态夹具"
+    },
+    {
+      "key": "topics_unlocked_1",
+      "file": "扩展-挑战已解锁第2页.png",
+      "width": 750,
+      "height": 1334,
+      "type": "隔离上下文的已解锁专题美术状态"
+    },
+    {
+      "key": "topics_unlocked_2",
+      "file": "扩展-挑战已解锁第3页.png",
+      "width": 750,
+      "height": 1334,
+      "type": "隔离上下文的已解锁专题美术状态"
+    },
+    {
+      "key": "technology_initial",
+      "file": "科技-科技研究初始.png",
+      "width": 750,
+      "height": 1334,
+      "type": "独立来源实际按钮交互，金币为展示夹具"
+    },
+    {
+      "key": "technology_funded",
+      "file": "科技-科技研究可购买.png",
+      "width": 750,
+      "height": 1334,
+      "type": "独立来源实际按钮交互，金币为展示夹具"
+    },
+    {
+      "key": "technology_bought",
+      "file": "科技-科技研究已购买.png",
+      "width": 750,
+      "height": 1334,
+      "type": "独立来源实际按钮交互，金币为展示夹具"
+    },
+    {
+      "key": "technology_second",
+      "file": "科技-科技研究第二页.png",
+      "width": 750,
+      "height": 1334,
+      "type": "独立来源实际按钮交互，金币为展示夹具"
+    },
+    {
+      "key": "technology_third",
+      "file": "科技-科技研究后勤道具.png",
+      "width": 750,
+      "height": 1334,
+      "type": "独立来源实际按钮交互，金币为展示夹具"
+    },
+    {
+      "key": "technology_confirm",
+      "file": "科技-科技重置确认.png",
+      "width": 750,
+      "height": 1334,
+      "type": "独立来源实际按钮交互，金币为展示夹具"
+    },
+    {
+      "key": "technology_reset",
+      "file": "科技-科技重置完成.png",
+      "width": 750,
+      "height": 1334,
+      "type": "独立来源实际按钮交互，金币为展示夹具"
+    }
+  ]
+}

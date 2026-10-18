@@ -5,8 +5,8 @@ const noop=()=>{},Dummy=class{},cc={Component:Dummy,_decorator:{ccclass:()=>x=>x
 const platform={PlatformService:{getNumber:(k,d)=>saved.get(k)??d,setNumber:(k,v)=>saved.set(k,v),setMaximumInteger:(k,v,max)=>saved.set(k,Math.min(max,Math.max(saved.get(k)??1,v))),getString:(k,d)=>saved.get(k)??d,setString:(k,v)=>saved.set(k,v)}};
 function load(file){file=path.resolve(file);if(cache.has(file))return cache.get(file).exports;
  if(/[\\/]PlatformService.ts$/.test(file))return platform;
- if(/[\\/]ShopService.ts$/.test(file))return {ShopService:{shared:{update:noop}}};
- if(!/[\\/](ConfigTables|CrowdFlow|GameRoot|GameConfig|LevelConfig|StaffEvolution|ChallengeRun|ChallengeTopics|LevelLoadout|TutorialGuide|CollectionData|BattleLayout).ts$/.test(file))return new Proxy({},{get:()=>Dummy});
+ if(/[\\/]ShopService.ts$/.test(file)){if(!cache.has(file))cache.set(file,{exports:{ShopService:{shared:{update:noop,state:null}}}});return cache.get(file).exports;}
+ if(!/[\\/](ConfigTables|CrowdFlow|GameRoot|GameConfig|LevelConfig|StaffEvolution|ChallengeRun|Technology|ChallengeTopics|LevelLoadout|TutorialGuide|CollectionData|BattleLayout).ts$/.test(file))return new Proxy({},{get:()=>Dummy});
  const mod={exports:{}};cache.set(file,mod);const code=ts.transpileModule(fs.readFileSync(file,'utf8'),{compilerOptions:{target:ts.ScriptTarget.ES2018,module:ts.ModuleKind.CommonJS,experimentalDecorators:true}}).outputText;
  new Function('require','module','exports',code)(id=>id==='cc'?cc:id==='cc/env'?{DEBUG:true}:id.startsWith('.')?load(path.resolve(path.dirname(file),id+'.ts')):require(id),mod,mod.exports);return mod.exports;}
 const core=load(root+'/assets/scripts/config/ConfigTables.ts');core.installConfigs(Object.fromEntries(core.TABLE_NAMES.map(k=>[k,fs.readFileSync(root+'/assets/resources/config/'+k+'.csv','utf8')])));

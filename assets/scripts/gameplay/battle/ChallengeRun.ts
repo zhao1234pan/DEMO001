@@ -94,8 +94,8 @@ export class ChallengeRun {
     const growth=this.rule.phaseFollowNextWave==='1'&&current&&next?numeric(next,'healthScale')/numeric(current,'healthScale')-1:numeric(this.rule,'phaseHealthGrowth');
     return 1+growth*Math.pow(progress,numeric(this.rule,'phaseGrowthPower'));
   }
-  profile(tower:Tower,port:ChallengePort):AttackProfile{
-    const base=attackProfile(tower.kind,tower.level,tower.evolutionKey),result={...base};let damage=0,range=0,rate=0;
+  profile(tower:Tower,port:ChallengePort,technologyBase?:AttackProfile):AttackProfile{
+    const base=technologyBase??attackProfile(tower.kind,tower.level,tower.evolutionKey),result={...base};let damage=0,range=0,rate=0;
     if(this.has('G01')&&port.inWave&&this.waveElapsed<this.p('G01').seconds)rate+=this.p('G01').rate;
     if(this.has('G02')&&port.towers.some(t=>t!==tower&&t.kind!==tower.kind&&Math.hypot(t.x-tower.x,t.y-tower.y)<=this.p('G02').radius))damage+=this.p('G02').damage;
     if(this.has('G03')&&!port.towers.some(t=>t!==tower&&Math.hypot(t.x-tower.x,t.y-tower.y)<=this.p('G03').radius)){damage+=this.p('G03').damage;range+=this.p('G03').range;}

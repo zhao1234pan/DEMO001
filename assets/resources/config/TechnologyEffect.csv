@@ -1,0 +1,15 @@
+id,key,scope,attribute,operation,cap
+1,damage,staff,damage,multiply,0.12
+2,range,staff,range,multiply,0.04
+3,rate,staff,rate,reduce,0.04
+4,slowSeconds,staff,slowSeconds,multiply,0.08
+5,splash,staff,splash,multiply,0.06
+6,pierceLength,staff,pierceLength,multiply,0.06
+7,chainRatio,staff,chainRatio,multiply,0.04
+8,burnSeconds,staff,burnSeconds,multiply,0.08
+9,markSeconds,staff,markSeconds,multiply,0.08
+10,buildDiscount,global,buildDiscount,add,0.04
+11,upgradeDiscount,global,upgradeDiscount,add,0.06
+12,startCoins,global,startCoins,add,15
+13,freezeSeconds,global,freezeSeconds,add,1.4
+14,cashCoins,global,cashCoins,add,16

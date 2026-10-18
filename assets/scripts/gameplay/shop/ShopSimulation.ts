@@ -6,8 +6,9 @@ export interface ShopImprovement {key:string;group:string;tier:number;cost:numbe
 export interface ShopStage {key:string;shelves:number;checkouts:number;checkoutCap:number;restockCap:number;capacityCap:number;attractionCap:number;serviceCap:number;nameKey:string;}
 export interface ShopResearch {key:string;goodsKey:string;tier:number;cost:number;priceRatio:number;minShelves:number;}
 export interface ShopUniform {key:string;staffKey:string;cost:number;imageKey:string;}
+export interface ShopTechnology {key:string;prerequisite:string;cost:number;unlockLevel:number;}
 export interface ShopCustomerType {key:string;imageKey:string;weight:number;doubleChance:number;tipChance:number;}
-export interface ShopConfig {rules:ShopRules;goods:ShopGoods[];staff:ShopEmployee[];upgrades:ShopImprovement[];customers:ShopCustomerType[];stages:ShopStage[];research:ShopResearch[];uniforms:ShopUniform[];}
+export interface ShopConfig {rules:ShopRules;goods:ShopGoods[];staff:ShopEmployee[];upgrades:ShopImprovement[];customers:ShopCustomerType[];stages:ShopStage[];research:ShopResearch[];uniforms:ShopUniform[];technology?:ShopTechnology[];}
 export interface ShopShelfGood {goods:string;stock:number;}
 export interface ShopShelf extends ShopShelfGood {extraGoods?:Array<ShopShelfGood|null>;}
 /** 首位沿用v3字段；额外商品位是可选扩展，旧存档无需清空或重新发放库存。 */
@@ -17,7 +18,7 @@ export function shelfStock(shelf:ShopShelf):number{return shelfGoods(shelf).redu
 export function shelfGoodCapacity(shelf:ShopShelf,good:ShopShelfGood,total:number):number{const all=shelfGoods(shelf),index=all.indexOf(good);return Math.floor(total/all.length)+(index<total%all.length?1:0);}
 export interface ShopCustomer {id:number;kind:string;phase:'enter'|'browse'|'queue'|'checkout'|'exit';remaining:number;duration:number;shelf:number;basket:string[];quote:number;wants:string[];station:number;}
 export interface ShopRestock {employee:string;shelf:number;goods:string;phase:'source'|'travel'|'unload';remaining:number;duration:number;amount:number;}
-export interface ShopState {version:number;offlineCreditRemainder:number;coins:number;lastMs:number;remainder:number;seed:number;elapsed:number;nextArrival:number;nextId:number;sold:number;income:number;hired:string[];upgrades:Record<string,number>;shelves:ShopShelf[];customers:ShopCustomer[];restockShelf:number;restockRemaining:number;restocks:ShopRestock[];research:Record<string,number>;sales:Record<string,number>;uniforms:string[];equipped:string[];}
+export interface ShopState {version:number;offlineCreditRemainder:number;coins:number;lastMs:number;remainder:number;seed:number;elapsed:number;nextArrival:number;nextId:number;sold:number;income:number;hired:string[];upgrades:Record<string,number>;shelves:ShopShelf[];customers:ShopCustomer[];restockShelf:number;restockRemaining:number;restocks:ShopRestock[];research:Record<string,number>;sales:Record<string,number>;uniforms:string[];equipped:string[];technology?:Array<{key:string;paid:number}>;}
 function capacity(c:ShopConfig,s:ShopState):number{return c.rules.shelfCapacity+(c.upgrades.find(r=>r.group==='capacity'&&r.tier===s.upgrades.capacity)?.value??0);}
 function stage(c:ShopConfig,s:ShopState):ShopStage{return c.stages.filter(r=>r.shelves<=s.shelves.length).slice(-1)[0];}
 /** 迁移只补齐新增状态，保留余额、所有权、库存、锁价订单及时间戳。 */
@@ -29,10 +30,14 @@ export function migrateShopState(c:ShopConfig,input:ShopState):ShopState {
   if(s.restockShelf>=0&&s.shelves?.[s.restockShelf]){const shelf=s.shelves[s.restockShelf];s.restocks.push({employee:s.hired?.find(k=>c.staff.some(r=>r.key===k&&['cold','hot','porter'].includes(r.role)))??s.hired?.[0],shelf:s.restockShelf,goods:shelf.goods,phase:'unload',remaining:Math.max(c.rules.tickSeconds,s.restockRemaining),duration:Math.max(c.rules.tickSeconds,s.restockRemaining),amount:Math.max(0,c.rules.shelfCapacity-shelf.stock)});}
  }
  if(s?.version===2){s.version=3;s.offlineCreditRemainder=0;}
+ // 科技扩展保持v3经营存档；只清理损坏的科技所有权，不清空商品、库存或余额。
+ if(s?.version===3){const input=Array.isArray(s.technology)?s.technology:[],accepted:Array<{key:string;paid:number}>=[];
+  let pending=(c.technology??[]).slice();while(pending.length){const remaining:ShopTechnology[]=[];for(const row of pending){const matches=input.filter(v=>v?.key===row.key&&Number.isSafeInteger(v.paid)&&v.paid>0&&v.paid<=c.rules.coinLimit);if(matches.length!==1)continue;if(row.prerequisite&&!accepted.some(v=>v.key===row.prerequisite)){remaining.push(row);continue;}accepted.push({key:row.key,paid:matches[0].paid});}if(remaining.length===pending.length)break;pending=remaining;}s.technology=accepted;}
  return s;
 }
 export function validShopState(c:ShopConfig,s:ShopState):boolean {
  if(!s||s.version!==3||!Number.isFinite(s.offlineCreditRemainder)||s.offlineCreditRemainder<0||s.offlineCreditRemainder>=1||!Number.isSafeInteger(s.coins)||s.coins<0||s.coins>c.rules.coinLimit||!Number.isFinite(s.lastMs)||s.lastMs<0)return false;
+ if(s.technology!==undefined&&(!Array.isArray(s.technology)||new Set(s.technology.map(r=>r?.key)).size!==s.technology.length||s.technology.some(r=>{const row=c.technology?.find(n=>n.key===r?.key);return !row||!Number.isSafeInteger(r.paid)||r.paid<=0||r.paid>c.rules.coinLimit||Boolean(row.prerequisite&&!s.technology!.some(v=>v.key===row.prerequisite));})))return false;
  for(const k of ['elapsed','nextArrival','restockRemaining','remainder','income']as const)if(!Number.isFinite(s[k])||s[k]<0)return false;
  for(const k of ['seed','sold','nextId']as const)if(!Number.isSafeInteger(s[k])||s[k]<0)return false;
  if(s.remainder>=c.rules.tickSeconds||s.nextId<1||!Array.isArray(s.hired)||new Set(s.hired).size!==s.hired.length||s.hired.some(k=>!c.staff.some(r=>r.key===k))||c.staff.some(r=>!r.cost&&!s.hired.includes(r.key)))return false;
@@ -53,12 +58,15 @@ export function validShopState(c:ShopConfig,s:ShopState):boolean {
  return s.restocks.every(j=>j&&s.hired.includes(j.employee)&&Number.isInteger(j.shelf)&&j.shelf>=0&&j.shelf<count&&shelfGoods(s.shelves[j.shelf]).some(g=>g.goods===j.goods)&&['source','travel','unload'].includes(j.phase)&&Number.isFinite(j.remaining)&&j.remaining>=0&&Number.isFinite(j.duration)&&j.duration>0&&Number.isInteger(j.amount)&&j.amount>=0&&j.amount<=capacity(c,s));
 }
 export function newShopState(c:ShopConfig,now:number,coins=0,grant=true):ShopState {
- const s:ShopState={version:3,offlineCreditRemainder:0,coins:Math.min(c.rules.coinLimit,coins+(grant?c.rules.welcomeCoins:0)),lastMs:now,remainder:0,seed:Math.floor(now)>>>0,elapsed:0,nextArrival:c.rules.arrivalSeconds,nextId:1,sold:0,income:0,hired:c.staff.filter(r=>!r.cost).map(r=>r.key),upgrades:{},shelves:[],customers:[],restockShelf:-1,restockRemaining:0,restocks:[],research:{},sales:{},uniforms:[],equipped:[]};
+ const s:ShopState={version:3,offlineCreditRemainder:0,coins:Math.min(c.rules.coinLimit,coins+(grant?c.rules.welcomeCoins:0)),lastMs:now,remainder:0,seed:Math.floor(now)>>>0,elapsed:0,nextArrival:c.rules.arrivalSeconds,nextId:1,sold:0,income:0,hired:c.staff.filter(r=>!r.cost).map(r=>r.key),upgrades:{},shelves:[],customers:[],restockShelf:-1,restockRemaining:0,restocks:[],research:{},sales:{},uniforms:[],equipped:[],technology:[]};
  const goods=c.goods.filter(g=>!g.unlockAfter);for(let i=0;i<c.rules.initialShelves;i++)s.shelves.push({goods:goods[i%goods.length].key,stock:c.rules.shelfCapacity});return s;
 }
 export class ShopSimulation {
  lastSale=0;
  constructor(readonly config:ShopConfig,readonly state:ShopState){}
+ /** 金币与已购节点属于同一状态，服务层整份保存，避免跨存档扣钱或重复退款。 */
+ researchTechnology(key:string,cleared:number):boolean{const row=this.config.technology?.find(r=>r.key===key),owned=this.state.technology??[];if(!row||owned.some(r=>r.key===key)||row.unlockLevel>cleared||row.prerequisite&&!owned.some(r=>r.key===row.prerequisite)||this.state.coins<row.cost)return false;this.state.coins-=row.cost;this.state.technology=[...owned,{key,paid:row.cost}];return true;}
+ resetTechnology():number{const owned=this.state.technology??[],refund=owned.reduce((n,r)=>n+r.paid,0);if(!owned.length||this.state.coins+refund>this.config.rules.coinLimit)return 0;this.state.coins+=refund;this.state.technology=[];return refund;}
  private items():Array<{shelf:ShopShelf;good:ShopShelfGood;index:number}>{const all:Array<{shelf:ShopShelf;good:ShopShelfGood;index:number}>=[];this.state.shelves.forEach((shelf,index)=>shelfGoods(shelf).forEach(good=>all.push({shelf,good,index})));return all;}
  private random():number{this.state.seed=(Math.imul(this.state.seed,1664525)+1013904223)>>>0;return this.state.seed/4294967296;}
  private choose<T>(list:T[],weight:(r:T)=>number):T{let n=this.random()*list.reduce((sum,r)=>sum+weight(r),0);return list.find(r=>(n-=weight(r))<0)??list[list.length-1];}
@@ -90,6 +98,7 @@ export class ShopSimulation {
   if(!equipment.length)costs.push(...c.research.filter(r=>goods.has(r.goodsKey)&&r.tier===(s.research[r.goodsKey]??0)+1&&r.minShelves<=s.shelves.length).map(r=>r.cost));
   if(!equipment.length)costs.push(...c.staff.filter(r=>r.cost>0&&!s.hired.includes(r.key)&&r.unlockLevel<=cleared+1).map(r=>r.cost));
   if(!equipment.length)costs.push(...c.uniforms.filter(r=>s.hired.includes(r.staffKey)&&!s.uniforms.includes(r.key)).map(r=>r.cost));
+  if(!equipment.length)costs.push(...(c.technology??[]).filter(r=>r.unlockLevel<=cleared&&!(s.technology??[]).some(v=>v.key===r.key)&&(!r.prerequisite||(s.technology??[]).some(v=>v.key===r.prerequisite))).map(r=>r.cost));
   return costs.sort((a,b)=>a-b).slice(0,c.rules.offlineBudgetPurchases).reduce((sum,cost)=>sum+cost,0)||c.rules.offlineCompleteBudget;
  }
  /** 离线订单仍按同一经营算法推进，只有新增利润折算；短段预算按时间分摊，零头持久化避免反复切后台吃掉金币。 */

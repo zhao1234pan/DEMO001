@@ -1,0 +1,22 @@
+{
+  "date": "2026-10-18",
+  "version": "1.22.0",
+  "checks": {
+    "technologyTransactionsAndBattle": 10,
+    "shopAndSave": 58,
+    "shopUi": 21,
+    "challengeMechanics": 30,
+    "total": 119,
+    "strictTypeScript": "pass",
+    "configurationExport": "42张原表与CSV一致",
+    "prefabs": 37,
+    "uiComponents": 37,
+    "uiCompleteStates": 39,
+    "pageErrors": 0
+  },
+  "fullPlaythroughRun": false,
+  "balanceSimulationRun": false,
+  "technologyUi": "technology-ui.json",
+  "buildPreview": "build-preview.json",
+  "http": "http-checks.json"
+}

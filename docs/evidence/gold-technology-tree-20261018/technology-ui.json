@@ -1,0 +1,49 @@
+{
+  "version": "1.22.0",
+  "isolatedOrigin": "http://127.0.0.1:4346/",
+  "checks": [
+    {
+      "state": "initial",
+      "balance": "便利店金币 100",
+      "summary": "已研究 0/50 项 · 冒险与挑战生效",
+      "notice": ""
+    },
+    {
+      "state": "funded",
+      "balance": "便利店金币 100000",
+      "summary": "已研究 0/50 项 · 冒险与挑战生效",
+      "notice": ""
+    },
+    {
+      "state": "bought",
+      "balance": "便利店金币 99820",
+      "summary": "已研究 1/50 项 · 冒险与挑战生效",
+      "notice": "研究完成，之后的战斗持续生效"
+    },
+    {
+      "state": "second",
+      "balance": "便利店金币 99820",
+      "summary": "已研究 1/50 项 · 冒险与挑战生效",
+      "notice": ""
+    },
+    {
+      "state": "third",
+      "balance": "便利店金币 99820",
+      "summary": "已研究 1/50 项 · 冒险与挑战生效",
+      "notice": ""
+    },
+    {
+      "state": "confirm",
+      "balance": "便利店金币 99820",
+      "summary": "已研究 1/50 项 · 冒险与挑战生效",
+      "notice": "再次点击重置，返还已投入的180金币。"
+    },
+    {
+      "state": "reset",
+      "balance": "便利店金币 100000",
+      "summary": "已研究 0/50 项 · 冒险与挑战生效",
+      "notice": "研究已重置，返还180金币"
+    }
+  ],
+  "errors": []
+}

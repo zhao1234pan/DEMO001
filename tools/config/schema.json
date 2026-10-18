@@ -563,5 +563,40 @@
       "score": "int",
       "friend": "int"
     }
+  },
+  "TechnologyBranch": {
+    "fields": {
+      "id": "int",
+      "key": "string",
+      "order": "int",
+      "staffKey": "string",
+      "titleKey": "string",
+      "iconKey": "string"
+    }
+  },
+  "TechnologyEffect": {
+    "fields": {
+      "id": "int",
+      "key": "string",
+      "scope": "string",
+      "attribute": "string",
+      "operation": "string",
+      "cap": "float"
+    }
+  },
+  "TechnologyNode": {
+    "fields": {
+      "id": "int",
+      "key": "string",
+      "branchKey": "string",
+      "tier": "int",
+      "prerequisite": "string",
+      "cost": "int",
+      "unlockLevel": "int",
+      "nameKey": "string",
+      "descriptionKey": "string",
+      "effect": "string",
+      "value": "float"
+    }
   }
 }
