@@ -1,5 +1,11 @@
 # XLSX → 客户端 CSV 配置规范
 
+## 1.19.0 挑战单次数值调整（2026-10-18）
+
+- 只修改Wave／WaveGroup／ChallengeRule／Global四原表的已有字段，不新增算法参数、字段或硬编码。WaveGroup怪种占比在原始行中离线配置，客户端继续读取已导出的普通怪组，不在运行时动态校准配方。
+- 15～29配方递进、普通血量附加增幅、20／30首领和最终波尾潮调整见[说明](CHALLENGE_BALANCE_PASS.md)。phaseHealthGrowth=0.05在phaseFollowNextWave=1时仅用于最终波；前29波仍按下一波倍率衔接。
+- 四CSV与manifest已导出同步。用户要求不做改后游戏测试；仅完成必要导表校验，未构建或更新预览。未新增配置例外。
+
 ## 1.12.0 三商品位（2026-10-17）
 
 - ShopRule.shelfGoodsSlots原始值3；UiLayout新增Slot0～2与Clear按钮及Label，三位上架文案新增于I18，Global版本1.12.0。按钮仍是既有PNG九宫，商品沿用独立SpriteFrame，字体按原始I18重新导出。
