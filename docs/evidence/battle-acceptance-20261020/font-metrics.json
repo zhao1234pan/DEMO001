@@ -1,0 +1,37 @@
+{
+  "slotWidth": "50",
+  "font": "fonts/night_shift_rounded",
+  "samples": [
+    {
+      "text": "0",
+      "width": 11.73,
+      "fontSizeAfterShrink": 17.0,
+      "missingGlyphs": false
+    },
+    {
+      "text": "999",
+      "width": 35.19,
+      "fontSizeAfterShrink": 17.0,
+      "missingGlyphs": false
+    },
+    {
+      "text": "1000",
+      "width": 43.69,
+      "fontSizeAfterShrink": 17.0,
+      "missingGlyphs": false
+    },
+    {
+      "text": "9999",
+      "width": 46.92,
+      "fontSizeAfterShrink": 17.0,
+      "missingGlyphs": false
+    },
+    {
+      "text": "99999",
+      "width": 58.65,
+      "fontSizeAfterShrink": 14.49,
+      "missingGlyphs": false
+    }
+  ],
+  "boundary": "字体advance与槽位计算，不是Cocos纹理渲染或实际截图"
+}

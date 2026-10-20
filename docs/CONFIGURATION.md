@@ -331,3 +331,7 @@ ShopRule增加offlineIncomeRatio、offlineBudgetPurchases、offlineCompleteBudge
 - 普通305波、挑战180波；普通终局提示与首领移至实际最后波；六挑战首领10／20／30、阶段140游戏秒，科技出现期限和专属／精英／速度成长按新波序管理，3倍速约25分钟。WaveGroup共46355行，id为引用键而非连续行序。
 - 七张原始表Wave／WaveGroup／ChallengeRule／ChallengePerk／I18／Global／UiLayout与CSV／manifest、三张Prefab同步；UiLayout修复两位数计数被头像覆盖。未新增运行绘图、资源或服务端配置。
 - 样本依据、配平和数据口径见[扩波设计](WAVE_PACING.md)。原始配置author的生成与诊断辅助放G:/gptwork，客户端数值只读正式原表导出的CSV。
+
+## 1.24.1 正式首通记录
+
+Global.adventureClearedSaveKey是只在正式冒险胜利写入的本地记录协议，GM重置清零。旧night_store_best_level曾记录失败到达，禁止用它推断首通、商品或科技条件；既有解锁进度保持。UiLayout管理金币组件内部五节点，I18终关文字传Global.maxLevels；Wave只修改4～10前9波普通倍率并反补首领有效倍率。经营、科技价格／效果与离线参数未改。

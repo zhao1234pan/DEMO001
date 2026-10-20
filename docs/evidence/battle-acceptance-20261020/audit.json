@@ -1,0 +1,584 @@
+{
+  "version": "1.24.1",
+  "protectedTables": [
+    "Staff",
+    "Enemy",
+    "Theme",
+    "Map",
+    "MapPoint",
+    "Spot",
+    "Obstacle",
+    "Level",
+    "WaveGroup",
+    "Collection",
+    "Audio",
+    "Decoration",
+    "ArtFrame",
+    "UiPrefab",
+    "Tutorial",
+    "StaffBranch",
+    "StaffForm",
+    "LevelLoadout",
+    "ChallengeRule",
+    "ChallengePerk",
+    "VisualSkin",
+    "Goods",
+    "ArtCut",
+    "StaffVisual",
+    "ShopRule",
+    "ShopGoods",
+    "ShopStaff",
+    "ShopUpgrade",
+    "ShopCustomer",
+    "ShopPoint",
+    "ChallengeTopic",
+    "ShopStage",
+    "ShopResearch",
+    "ShopUniform",
+    "RankingEntry",
+    "TechnologyBranch",
+    "TechnologyEffect",
+    "TechnologyNode"
+  ],
+  "protectedTablesIdentical": true,
+  "waveDiff": [
+    {
+      "id": "401",
+      "levelId": "4",
+      "wave": "1",
+      "ratio": 0.5499999999999999,
+      "bossEffectivePreserved": true
+    },
+    {
+      "id": "402",
+      "levelId": "4",
+      "wave": "2",
+      "ratio": 0.5999999999999999,
+      "bossEffectivePreserved": true
+    },
+    {
+      "id": "403",
+      "levelId": "4",
+      "wave": "3",
+      "ratio": 0.6499999987440191,
+      "bossEffectivePreserved": true
+    },
+    {
+      "id": "404",
+      "levelId": "4",
+      "wave": "4",
+      "ratio": 0.7,
+      "bossEffectivePreserved": true
+    },
+    {
+      "id": "405",
+      "levelId": "4",
+      "wave": "5",
+      "ratio": 0.7500000040535535,
+      "bossEffectivePreserved": true
+    },
+    {
+      "id": "406",
+      "levelId": "4",
+      "wave": "6",
+      "ratio": 0.7999999999999999,
+      "bossEffectivePreserved": true
+    },
+    {
+      "id": "407",
+      "levelId": "4",
+      "wave": "7",
+      "ratio": 0.8500000031917977,
+      "bossEffectivePreserved": true
+    },
+    {
+      "id": "408",
+      "levelId": "4",
+      "wave": "8",
+      "ratio": 0.9,
+      "bossEffectivePreserved": true
+    },
+    {
+      "id": "409",
+      "levelId": "4",
+      "wave": "9",
+      "ratio": 0.9499999989827962,
+      "bossEffectivePreserved": true
+    },
+    {
+      "id": "501",
+      "levelId": "5",
+      "wave": "1",
+      "ratio": 0.5499999999999999,
+      "bossEffectivePreserved": true
+    },
+    {
+      "id": "502",
+      "levelId": "5",
+      "wave": "2",
+      "ratio": 0.5999999982189728,
+      "bossEffectivePreserved": true
+    },
+    {
+      "id": "503",
+      "levelId": "5",
+      "wave": "3",
+      "ratio": 0.6499999987361419,
+      "bossEffectivePreserved": true
+    },
+    {
+      "id": "504",
+      "levelId": "5",
+      "wave": "4",
+      "ratio": 0.69999999918587,
+      "bossEffectivePreserved": true
+    },
+    {
+      "id": "505",
+      "levelId": "5",
+      "wave": "5",
+      "ratio": 0.7500000020133559,
+      "bossEffectivePreserved": true
+    },
+    {
+      "id": "506",
+      "levelId": "5",
+      "wave": "6",
+      "ratio": 0.8000000015318256,
+      "bossEffectivePreserved": true
+    },
+    {
+      "id": "507",
+      "levelId": "5",
+      "wave": "7",
+      "ratio": 0.8499999974845767,
+      "bossEffectivePreserved": true
+    },
+    {
+      "id": "508",
+      "levelId": "5",
+      "wave": "8",
+      "ratio": 0.9000000037288974,
+      "bossEffectivePreserved": true
+    },
+    {
+      "id": "509",
+      "levelId": "5",
+      "wave": "9",
+      "ratio": 0.9500000014042295,
+      "bossEffectivePreserved": true
+    },
+    {
+      "id": "601",
+      "levelId": "6",
+      "wave": "1",
+      "ratio": 0.5499999999999999,
+      "bossEffectivePreserved": true
+    },
+    {
+      "id": "602",
+      "levelId": "6",
+      "wave": "2",
+      "ratio": 0.5999999981812867,
+      "bossEffectivePreserved": true
+    },
+    {
+      "id": "603",
+      "levelId": "6",
+      "wave": "3",
+      "ratio": 0.65,
+      "bossEffectivePreserved": true
+    },
+    {
+      "id": "604",
+      "levelId": "6",
+      "wave": "4",
+      "ratio": 0.7000000000000001,
+      "bossEffectivePreserved": true
+    },
+    {
+      "id": "605",
+      "levelId": "6",
+      "wave": "5",
+      "ratio": 0.75,
+      "bossEffectivePreserved": true
+    },
+    {
+      "id": "606",
+      "levelId": "6",
+      "wave": "6",
+      "ratio": 0.7999999983539001,
+      "bossEffectivePreserved": true
+    },
+    {
+      "id": "607",
+      "levelId": "6",
+      "wave": "7",
+      "ratio": 0.8500000007588859,
+      "bossEffectivePreserved": true
+    },
+    {
+      "id": "608",
+      "levelId": "6",
+      "wave": "8",
+      "ratio": 0.8999999999999999,
+      "bossEffectivePreserved": true
+    },
+    {
+      "id": "609",
+      "levelId": "6",
+      "wave": "9",
+      "ratio": 0.9500000022002633,
+      "bossEffectivePreserved": true
+    },
+    {
+      "id": "701",
+      "levelId": "7",
+      "wave": "1",
+      "ratio": 0.5499999999999999,
+      "bossEffectivePreserved": true
+    },
+    {
+      "id": "702",
+      "levelId": "7",
+      "wave": "2",
+      "ratio": 0.5999999999999999,
+      "bossEffectivePreserved": true
+    },
+    {
+      "id": "703",
+      "levelId": "7",
+      "wave": "3",
+      "ratio": 0.6499999987440191,
+      "bossEffectivePreserved": true
+    },
+    {
+      "id": "704",
+      "levelId": "7",
+      "wave": "4",
+      "ratio": 0.7000000016911715,
+      "bossEffectivePreserved": true
+    },
+    {
+      "id": "705",
+      "levelId": "7",
+      "wave": "5",
+      "ratio": 0.750000004236038,
+      "bossEffectivePreserved": true
+    },
+    {
+      "id": "706",
+      "levelId": "7",
+      "wave": "6",
+      "ratio": 0.8,
+      "bossEffectivePreserved": true
+    },
+    {
+      "id": "707",
+      "levelId": "7",
+      "wave": "7",
+      "ratio": 0.8499999975341377,
+      "bossEffectivePreserved": true
+    },
+    {
+      "id": "708",
+      "levelId": "7",
+      "wave": "8",
+      "ratio": 0.9000000000000001,
+      "bossEffectivePreserved": true
+    },
+    {
+      "id": "709",
+      "levelId": "7",
+      "wave": "9",
+      "ratio": 0.9499999989533302,
+      "bossEffectivePreserved": true
+    },
+    {
+      "id": "801",
+      "levelId": "8",
+      "wave": "1",
+      "ratio": 0.5499999999999999,
+      "bossEffectivePreserved": true
+    },
+    {
+      "id": "802",
+      "levelId": "8",
+      "wave": "2",
+      "ratio": 0.6000000034521872,
+      "bossEffectivePreserved": true
+    },
+    {
+      "id": "803",
+      "levelId": "8",
+      "wave": "3",
+      "ratio": 0.6499999996029945,
+      "bossEffectivePreserved": true
+    },
+    {
+      "id": "804",
+      "levelId": "8",
+      "wave": "4",
+      "ratio": 0.6999999992321156,
+      "bossEffectivePreserved": true
+    },
+    {
+      "id": "805",
+      "levelId": "8",
+      "wave": "5",
+      "ratio": 0.7500000018134275,
+      "bossEffectivePreserved": true
+    },
+    {
+      "id": "806",
+      "levelId": "8",
+      "wave": "6",
+      "ratio": 0.7999999970340422,
+      "bossEffectivePreserved": true
+    },
+    {
+      "id": "807",
+      "levelId": "8",
+      "wave": "7",
+      "ratio": 0.8500000029378518,
+      "bossEffectivePreserved": true
+    },
+    {
+      "id": "808",
+      "levelId": "8",
+      "wave": "8",
+      "ratio": 0.8999999999999999,
+      "bossEffectivePreserved": true
+    },
+    {
+      "id": "809",
+      "levelId": "8",
+      "wave": "9",
+      "ratio": 0.9499999973250254,
+      "bossEffectivePreserved": true
+    },
+    {
+      "id": "901",
+      "levelId": "9",
+      "wave": "1",
+      "ratio": 0.5499999999999999,
+      "bossEffectivePreserved": true
+    },
+    {
+      "id": "902",
+      "levelId": "9",
+      "wave": "2",
+      "ratio": 0.6000000034521872,
+      "bossEffectivePreserved": true
+    },
+    {
+      "id": "903",
+      "levelId": "9",
+      "wave": "3",
+      "ratio": 0.6499999996029945,
+      "bossEffectivePreserved": true
+    },
+    {
+      "id": "904",
+      "levelId": "9",
+      "wave": "4",
+      "ratio": 0.7000000008365712,
+      "bossEffectivePreserved": true
+    },
+    {
+      "id": "905",
+      "levelId": "9",
+      "wave": "5",
+      "ratio": 0.7500000020896069,
+      "bossEffectivePreserved": true
+    },
+    {
+      "id": "906",
+      "levelId": "9",
+      "wave": "6",
+      "ratio": 0.8,
+      "bossEffectivePreserved": true
+    },
+    {
+      "id": "907",
+      "levelId": "9",
+      "wave": "7",
+      "ratio": 0.8500000024612876,
+      "bossEffectivePreserved": true
+    },
+    {
+      "id": "908",
+      "levelId": "9",
+      "wave": "8",
+      "ratio": 0.8999999999999999,
+      "bossEffectivePreserved": true
+    },
+    {
+      "id": "909",
+      "levelId": "9",
+      "wave": "9",
+      "ratio": 0.9500000031242917,
+      "bossEffectivePreserved": true
+    },
+    {
+      "id": "1001",
+      "levelId": "10",
+      "wave": "1",
+      "ratio": 0.5499999999999999,
+      "bossEffectivePreserved": true
+    },
+    {
+      "id": "1002",
+      "levelId": "10",
+      "wave": "2",
+      "ratio": 0.6000000017315544,
+      "bossEffectivePreserved": true
+    },
+    {
+      "id": "1003",
+      "levelId": "10",
+      "wave": "3",
+      "ratio": 0.6500000019974769,
+      "bossEffectivePreserved": true
+    },
+    {
+      "id": "1004",
+      "levelId": "10",
+      "wave": "4",
+      "ratio": 0.7000000008390599,
+      "bossEffectivePreserved": true
+    },
+    {
+      "id": "1005",
+      "levelId": "10",
+      "wave": "5",
+      "ratio": 0.7499999981569523,
+      "bossEffectivePreserved": true
+    },
+    {
+      "id": "1006",
+      "levelId": "10",
+      "wave": "6",
+      "ratio": 0.8000000035829662,
+      "bossEffectivePreserved": true
+    },
+    {
+      "id": "1007",
+      "levelId": "10",
+      "wave": "7",
+      "ratio": 0.8500000027633288,
+      "bossEffectivePreserved": true
+    },
+    {
+      "id": "1008",
+      "levelId": "10",
+      "wave": "8",
+      "ratio": 0.9000000007397522,
+      "bossEffectivePreserved": true
+    },
+    {
+      "id": "1009",
+      "levelId": "10",
+      "wave": "9",
+      "ratio": 0.9500000015493016,
+      "bossEffectivePreserved": true
+    }
+  ],
+  "uiChanged": [
+    "battle_hud:Header/CoinSurface",
+    "battle_hud:Header/CoinSurface/Surface",
+    "battle_hud:Header/CoinIcon/Coin",
+    "battle_hud:Header/CoinIcon/Coin/Artwork",
+    "battle_hud:Header/coin"
+  ],
+  "sourceScope": "经营收益、科技价格／效果、初始战斗金币、数量／间隔／奖励保持。只改4–10关前9波普通HP，首领有效HP保留；失败到达记录不再作为首通。",
+  "baseline": {
+    "none": {
+      "adventure": {
+        "runs": 30,
+        "wins": 5,
+        "losses": 25,
+        "timeouts": 0
+      },
+      "challenge": {
+        "runs": 10,
+        "wins": 0,
+        "losses": 10,
+        "timeouts": 0
+      }
+    },
+    "partial": {
+      "adventure": {
+        "runs": 30,
+        "wins": 8,
+        "losses": 22,
+        "timeouts": 0
+      },
+      "challenge": {
+        "runs": 10,
+        "wins": 2,
+        "losses": 8,
+        "timeouts": 0
+      }
+    },
+    "full": {
+      "adventure": {
+        "runs": 30,
+        "wins": 11,
+        "losses": 19,
+        "timeouts": 0
+      },
+      "challenge": {
+        "runs": 10,
+        "wins": 3,
+        "losses": 7,
+        "timeouts": 0
+      }
+    }
+  },
+  "final": {
+    "none": {
+      "adventure": {
+        "runs": 30,
+        "wins": 10,
+        "losses": 20,
+        "timeouts": 0
+      },
+      "challenge": {
+        "runs": 10,
+        "wins": 0,
+        "losses": 10,
+        "timeouts": 0
+      }
+    },
+    "partial": {
+      "adventure": {
+        "runs": 30,
+        "wins": 11,
+        "losses": 19,
+        "timeouts": 0
+      },
+      "challenge": {
+        "runs": 10,
+        "wins": 2,
+        "losses": 8,
+        "timeouts": 0
+      }
+    },
+    "full": {
+      "adventure": {
+        "runs": 30,
+        "wins": 11,
+        "losses": 19,
+        "timeouts": 0
+      },
+      "challenge": {
+        "runs": 10,
+        "wins": 3,
+        "losses": 7,
+        "timeouts": 0
+      }
+    }
+  },
+  "boundary": "固定策略不是玩家胜率；后段／挑战仍有失败样本，浏览器自动访问受策略限制，未做本轮原生画面验收。"
+}

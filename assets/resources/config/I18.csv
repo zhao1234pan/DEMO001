@@ -212,7 +212,7 @@ id,key,zhCN
 210,ui.GameRoot.016,返回选关
 211,ui.GameRoot.017,暂停营业
 212,ui.GameRoot.018,继续营业
-213,ui.GameRoot.019,二十夜守护完成！
+213,ui.GameRoot.019,{p0}夜守护完成！
 214,ui.GameRoot.020,顺利打烊！
 215,ui.GameRoot.021,便利店失守了
 216,ui.GameRoot.022,"赶走 {p0} 只夜间精怪
@@ -315,7 +315,7 @@ id,key,zhCN
 311,result.open,第{p0}关已解锁
 312,result.staff,新店员 {p0} 名
 313,result.collection,图鉴新增 {p0} 项
-314,result.complete,二十关全部完成
+314,result.complete,{p0}关全部完成
 315,result.progress,完成 {p0}/{p1} 波
 316,result.unlockTitle,新解锁
 317,result.noUnlock,本局记录

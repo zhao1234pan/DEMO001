@@ -1,0 +1,4704 @@
+{
+  "kind": "真实GameRoot；隔离内存存档；无渲染、广告、道具、复活或战斗资源注入；部分科技=合法进度内每分支前3层的假定快照，不代表正常玩家持有量",
+  "input": {
+    "profiles": [
+      "none",
+      "full"
+    ],
+    "ids": [
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40
+    ],
+    "strategy": {
+      "roster": [
+        "sprout",
+        "frost",
+        "bloom",
+        "scope"
+      ],
+      "tech": "build",
+      "mode": "swarm",
+      "seed": 7
+    }
+  },
+  "delta": 0.03333333333333333,
+  "sourceHashes": {
+    "assets/scripts/gameplay/battle/GameRoot.ts": "2ccc5edd9964346961f703dea1fc8c5b58ff3323e22188fd62562e596ff73c42",
+    "assets/resources/config/Wave.csv": "108fb0b4ce24c21c9be795aca6474b4c4cbfaf09912b374ccad8941e5fcbef9d",
+    "assets/resources/config/TechnologyNode.csv": "5f99f692b04c2922172558c033a4c405a087a1fd4526336c15df8a086babd0ed"
+  },
+  "results": [
+    {
+      "id": 31,
+      "mode": "challenge",
+      "roster": [
+        "sprout",
+        "frost",
+        "bloom",
+        "scope"
+      ],
+      "profile": "none",
+      "technology": [],
+      "scenario": {
+        "roster": [
+          "sprout",
+          "frost",
+          "bloom",
+          "scope"
+        ],
+        "tech": "build",
+        "mode": "swarm",
+        "seed": 7
+      },
+      "seed": 7,
+      "result": "lose",
+      "wave": 9,
+      "totalWaves": 30,
+      "seconds": 411.87,
+      "lastWaveSeconds": 21.83,
+      "speed": 3,
+      "lives": 0,
+      "picks": 9,
+      "supplyLimit": 20,
+      "coins": 81,
+      "killed": 1453,
+      "peakEnemies": 41,
+      "towers": 8,
+      "spots": 22,
+      "evolved": 4,
+      "bosses": [],
+      "events": [
+        {
+          "wave": 1,
+          "seconds": 10.03,
+          "lives": 10,
+          "coins": 108,
+          "towers": 6
+        },
+        {
+          "wave": 2,
+          "seconds": 57.53,
+          "lives": 10,
+          "coins": 67,
+          "towers": 6
+        },
+        {
+          "wave": 3,
+          "seconds": 105.07,
+          "lives": 10,
+          "coins": 106,
+          "towers": 6
+        },
+        {
+          "wave": 4,
+          "seconds": 152.57,
+          "lives": 10,
+          "coins": 101,
+          "towers": 6
+        },
+        {
+          "wave": 5,
+          "seconds": 200.03,
+          "lives": 10,
+          "coins": 76,
+          "towers": 7
+        },
+        {
+          "wave": 6,
+          "seconds": 247.53,
+          "lives": 10,
+          "coins": 24,
+          "towers": 8
+        },
+        {
+          "wave": 7,
+          "seconds": 295.03,
+          "lives": 10,
+          "coins": 100,
+          "towers": 8
+        },
+        {
+          "wave": 8,
+          "seconds": 342.53,
+          "lives": 9,
+          "coins": 17,
+          "towers": 8
+        },
+        {
+          "wave": 9,
+          "seconds": 390.03,
+          "lives": 3,
+          "coins": 36,
+          "towers": 8
+        }
+      ],
+      "nonfinite": null
+    },
+    {
+      "id": 32,
+      "mode": "challenge",
+      "roster": [
+        "sprout",
+        "frost",
+        "bloom",
+        "scope"
+      ],
+      "profile": "none",
+      "technology": [],
+      "scenario": {
+        "roster": [
+          "sprout",
+          "frost",
+          "bloom",
+          "scope"
+        ],
+        "tech": "build",
+        "mode": "swarm",
+        "seed": 7
+      },
+      "seed": 7,
+      "result": "lose",
+      "wave": 17,
+      "totalWaves": 30,
+      "seconds": 803.33,
+      "lastWaveSeconds": 29.9,
+      "speed": 3,
+      "lives": 0,
+      "picks": 13,
+      "supplyLimit": 20,
+      "coins": 80,
+      "killed": 2675,
+      "peakEnemies": 51,
+      "towers": 11,
+      "spots": 22,
+      "evolved": 8,
+      "bosses": [],
+      "events": [
+        {
+          "wave": 1,
+          "seconds": 10.03,
+          "lives": 10,
+          "coins": 40,
+          "towers": 5
+        },
+        {
+          "wave": 2,
+          "seconds": 57.53,
+          "lives": 10,
+          "coins": 58,
+          "towers": 5
+        },
+        {
+          "wave": 3,
+          "seconds": 106.83,
+          "lives": 10,
+          "coins": 30,
+          "towers": 5
+        },
+        {
+          "wave": 4,
+          "seconds": 154.3,
+          "lives": 10,
+          "coins": 23,
+          "towers": 5
+        },
+        {
+          "wave": 5,
+          "seconds": 201.8,
+          "lives": 10,
+          "coins": 49,
+          "towers": 5
+        },
+        {
+          "wave": 6,
+          "seconds": 249.3,
+          "lives": 10,
+          "coins": 73,
+          "towers": 5
+        },
+        {
+          "wave": 7,
+          "seconds": 296.8,
+          "lives": 10,
+          "coins": 58,
+          "towers": 6
+        },
+        {
+          "wave": 8,
+          "seconds": 344.3,
+          "lives": 10,
+          "coins": 41,
+          "towers": 7
+        },
+        {
+          "wave": 9,
+          "seconds": 391.8,
+          "lives": 10,
+          "coins": 98,
+          "towers": 8
+        },
+        {
+          "wave": 10,
+          "seconds": 439.27,
+          "lives": 10,
+          "coins": 64,
+          "towers": 8
+        },
+        {
+          "wave": 11,
+          "seconds": 486.77,
+          "lives": 8,
+          "coins": 103,
+          "towers": 8
+        },
+        {
+          "wave": 12,
+          "seconds": 536.03,
+          "lives": 8,
+          "coins": 142,
+          "towers": 8
+        },
+        {
+          "wave": 13,
+          "seconds": 583.5,
+          "lives": 8,
+          "coins": 16,
+          "towers": 8
+        },
+        {
+          "wave": 14,
+          "seconds": 631,
+          "lives": 8,
+          "coins": 31,
+          "towers": 9
+        },
+        {
+          "wave": 15,
+          "seconds": 678.47,
+          "lives": 8,
+          "coins": 81,
+          "towers": 9
+        },
+        {
+          "wave": 16,
+          "seconds": 725.97,
+          "lives": 7,
+          "coins": 17,
+          "towers": 11
+        },
+        {
+          "wave": 17,
+          "seconds": 773.43,
+          "lives": 6,
+          "coins": 97,
+          "towers": 11
+        }
+      ],
+      "nonfinite": null
+    },
+    {
+      "id": 33,
+      "mode": "challenge",
+      "roster": [
+        "sprout",
+        "frost",
+        "bloom",
+        "scope"
+      ],
+      "profile": "none",
+      "technology": [],
+      "scenario": {
+        "roster": [
+          "sprout",
+          "frost",
+          "bloom",
+          "scope"
+        ],
+        "tech": "build",
+        "mode": "swarm",
+        "seed": 7
+      },
+      "seed": 7,
+      "result": "lose",
+      "wave": 27,
+      "totalWaves": 30,
+      "seconds": 1266.27,
+      "lastWaveSeconds": 17.93,
+      "speed": 3,
+      "lives": 0,
+      "picks": 20,
+      "supplyLimit": 20,
+      "coins": 368,
+      "killed": 5767,
+      "peakEnemies": 39,
+      "towers": 21,
+      "spots": 21,
+      "evolved": 21,
+      "bosses": [],
+      "events": [
+        {
+          "wave": 1,
+          "seconds": 10.03,
+          "lives": 10,
+          "coins": 6,
+          "towers": 5
+        },
+        {
+          "wave": 2,
+          "seconds": 57.57,
+          "lives": 10,
+          "coins": 92,
+          "towers": 5
+        },
+        {
+          "wave": 3,
+          "seconds": 105.07,
+          "lives": 10,
+          "coins": 43,
+          "towers": 6
+        },
+        {
+          "wave": 4,
+          "seconds": 154.37,
+          "lives": 10,
+          "coins": 46,
+          "towers": 8
+        },
+        {
+          "wave": 5,
+          "seconds": 201.87,
+          "lives": 10,
+          "coins": 13,
+          "towers": 8
+        },
+        {
+          "wave": 6,
+          "seconds": 249.37,
+          "lives": 10,
+          "coins": 44,
+          "towers": 8
+        },
+        {
+          "wave": 7,
+          "seconds": 296.87,
+          "lives": 10,
+          "coins": 56,
+          "towers": 8
+        },
+        {
+          "wave": 8,
+          "seconds": 344.37,
+          "lives": 10,
+          "coins": 93,
+          "towers": 8
+        },
+        {
+          "wave": 9,
+          "seconds": 391.83,
+          "lives": 10,
+          "coins": 78,
+          "towers": 9
+        },
+        {
+          "wave": 10,
+          "seconds": 439.33,
+          "lives": 10,
+          "coins": 47,
+          "towers": 11
+        },
+        {
+          "wave": 11,
+          "seconds": 486.83,
+          "lives": 10,
+          "coins": 14,
+          "towers": 11
+        },
+        {
+          "wave": 12,
+          "seconds": 534.33,
+          "lives": 10,
+          "coins": 3,
+          "towers": 11
+        },
+        {
+          "wave": 13,
+          "seconds": 581.83,
+          "lives": 10,
+          "coins": 12,
+          "towers": 12
+        },
+        {
+          "wave": 14,
+          "seconds": 629.3,
+          "lives": 10,
+          "coins": 49,
+          "towers": 14
+        },
+        {
+          "wave": 15,
+          "seconds": 676.8,
+          "lives": 10,
+          "coins": 53,
+          "towers": 14
+        },
+        {
+          "wave": 16,
+          "seconds": 724.27,
+          "lives": 10,
+          "coins": 60,
+          "towers": 15
+        },
+        {
+          "wave": 17,
+          "seconds": 771.77,
+          "lives": 10,
+          "coins": 97,
+          "towers": 15
+        },
+        {
+          "wave": 18,
+          "seconds": 819.27,
+          "lives": 10,
+          "coins": 81,
+          "towers": 16
+        },
+        {
+          "wave": 19,
+          "seconds": 866.73,
+          "lives": 10,
+          "coins": 55,
+          "towers": 17
+        },
+        {
+          "wave": 20,
+          "seconds": 914.23,
+          "lives": 10,
+          "coins": 84,
+          "towers": 18
+        },
+        {
+          "wave": 21,
+          "seconds": 961.7,
+          "lives": 10,
+          "coins": 10,
+          "towers": 18
+        },
+        {
+          "wave": 22,
+          "seconds": 1010.97,
+          "lives": 10,
+          "coins": 115,
+          "towers": 18
+        },
+        {
+          "wave": 23,
+          "seconds": 1058.43,
+          "lives": 10,
+          "coins": 117,
+          "towers": 19
+        },
+        {
+          "wave": 24,
+          "seconds": 1105.9,
+          "lives": 10,
+          "coins": 41,
+          "towers": 21
+        },
+        {
+          "wave": 25,
+          "seconds": 1153.4,
+          "lives": 10,
+          "coins": 77,
+          "towers": 21
+        },
+        {
+          "wave": 26,
+          "seconds": 1200.87,
+          "lives": 10,
+          "coins": 75,
+          "towers": 21
+        },
+        {
+          "wave": 27,
+          "seconds": 1248.33,
+          "lives": 6,
+          "coins": 298,
+          "towers": 21
+        }
+      ],
+      "nonfinite": null
+    },
+    {
+      "id": 34,
+      "mode": "challenge",
+      "roster": [
+        "sprout",
+        "frost",
+        "bloom",
+        "scope"
+      ],
+      "profile": "none",
+      "technology": [],
+      "scenario": {
+        "roster": [
+          "sprout",
+          "frost",
+          "bloom",
+          "scope"
+        ],
+        "tech": "build",
+        "mode": "swarm",
+        "seed": 7
+      },
+      "seed": 7,
+      "result": "lose",
+      "wave": 28,
+      "totalWaves": 30,
+      "seconds": 1335.23,
+      "lastWaveSeconds": 41.23,
+      "speed": 3,
+      "lives": 0,
+      "picks": 19,
+      "supplyLimit": 20,
+      "coins": 38,
+      "killed": 5075,
+      "peakEnemies": 32,
+      "towers": 21,
+      "spots": 22,
+      "evolved": 18,
+      "bosses": [],
+      "events": [
+        {
+          "wave": 1,
+          "seconds": 10.03,
+          "lives": 10,
+          "coins": 80,
+          "towers": 5
+        },
+        {
+          "wave": 2,
+          "seconds": 57.53,
+          "lives": 10,
+          "coins": 65,
+          "towers": 5
+        },
+        {
+          "wave": 3,
+          "seconds": 105.07,
+          "lives": 10,
+          "coins": 21,
+          "towers": 5
+        },
+        {
+          "wave": 4,
+          "seconds": 152.57,
+          "lives": 10,
+          "coins": 61,
+          "towers": 5
+        },
+        {
+          "wave": 5,
+          "seconds": 200.07,
+          "lives": 10,
+          "coins": 35,
+          "towers": 6
+        },
+        {
+          "wave": 6,
+          "seconds": 247.57,
+          "lives": 10,
+          "coins": 63,
+          "towers": 6
+        },
+        {
+          "wave": 7,
+          "seconds": 296.83,
+          "lives": 10,
+          "coins": 79,
+          "towers": 7
+        },
+        {
+          "wave": 8,
+          "seconds": 344.3,
+          "lives": 10,
+          "coins": 68,
+          "towers": 8
+        },
+        {
+          "wave": 9,
+          "seconds": 391.8,
+          "lives": 10,
+          "coins": 123,
+          "towers": 8
+        },
+        {
+          "wave": 10,
+          "seconds": 439.3,
+          "lives": 10,
+          "coins": 20,
+          "towers": 8
+        },
+        {
+          "wave": 11,
+          "seconds": 486.77,
+          "lives": 10,
+          "coins": 6,
+          "towers": 8
+        },
+        {
+          "wave": 12,
+          "seconds": 534.27,
+          "lives": 10,
+          "coins": 64,
+          "towers": 8
+        },
+        {
+          "wave": 13,
+          "seconds": 581.77,
+          "lives": 10,
+          "coins": 87,
+          "towers": 9
+        },
+        {
+          "wave": 14,
+          "seconds": 629.23,
+          "lives": 10,
+          "coins": 37,
+          "towers": 10
+        },
+        {
+          "wave": 15,
+          "seconds": 676.73,
+          "lives": 10,
+          "coins": 57,
+          "towers": 11
+        },
+        {
+          "wave": 16,
+          "seconds": 724.2,
+          "lives": 10,
+          "coins": 21,
+          "towers": 11
+        },
+        {
+          "wave": 17,
+          "seconds": 771.7,
+          "lives": 10,
+          "coins": 102,
+          "towers": 11
+        },
+        {
+          "wave": 18,
+          "seconds": 819.17,
+          "lives": 10,
+          "coins": 34,
+          "towers": 12
+        },
+        {
+          "wave": 19,
+          "seconds": 866.67,
+          "lives": 10,
+          "coins": 66,
+          "towers": 14
+        },
+        {
+          "wave": 20,
+          "seconds": 914.13,
+          "lives": 10,
+          "coins": 10,
+          "towers": 15
+        },
+        {
+          "wave": 21,
+          "seconds": 961.63,
+          "lives": 10,
+          "coins": 75,
+          "towers": 15
+        },
+        {
+          "wave": 22,
+          "seconds": 1009.1,
+          "lives": 10,
+          "coins": 48,
+          "towers": 15
+        },
+        {
+          "wave": 23,
+          "seconds": 1056.6,
+          "lives": 10,
+          "coins": 141,
+          "towers": 15
+        },
+        {
+          "wave": 24,
+          "seconds": 1104.07,
+          "lives": 10,
+          "coins": 45,
+          "towers": 18
+        },
+        {
+          "wave": 25,
+          "seconds": 1151.57,
+          "lives": 10,
+          "coins": 43,
+          "towers": 18
+        },
+        {
+          "wave": 26,
+          "seconds": 1199.03,
+          "lives": 10,
+          "coins": 46,
+          "towers": 18
+        },
+        {
+          "wave": 27,
+          "seconds": 1246.53,
+          "lives": 9,
+          "coins": 32,
+          "towers": 19
+        },
+        {
+          "wave": 28,
+          "seconds": 1294,
+          "lives": 6,
+          "coins": 32,
+          "towers": 21
+        }
+      ],
+      "nonfinite": null
+    },
+    {
+      "id": 35,
+      "mode": "challenge",
+      "roster": [
+        "sprout",
+        "frost",
+        "bloom",
+        "scope"
+      ],
+      "profile": "none",
+      "technology": [],
+      "scenario": {
+        "roster": [
+          "sprout",
+          "frost",
+          "bloom",
+          "scope"
+        ],
+        "tech": "build",
+        "mode": "swarm",
+        "seed": 7
+      },
+      "seed": 7,
+      "result": "lose",
+      "wave": 19,
+      "totalWaves": 30,
+      "seconds": 866.27,
+      "lastWaveSeconds": 1.43,
+      "speed": 3,
+      "lives": 0,
+      "picks": 13,
+      "supplyLimit": 20,
+      "coins": 123,
+      "killed": 2703,
+      "peakEnemies": 37,
+      "towers": 11,
+      "spots": 22,
+      "evolved": 10,
+      "bosses": [],
+      "events": [
+        {
+          "wave": 1,
+          "seconds": 10.03,
+          "lives": 10,
+          "coins": 10,
+          "towers": 6
+        },
+        {
+          "wave": 2,
+          "seconds": 57.53,
+          "lives": 10,
+          "coins": 89,
+          "towers": 6
+        },
+        {
+          "wave": 3,
+          "seconds": 105.03,
+          "lives": 10,
+          "coins": 52,
+          "towers": 6
+        },
+        {
+          "wave": 4,
+          "seconds": 152.53,
+          "lives": 10,
+          "coins": 39,
+          "towers": 6
+        },
+        {
+          "wave": 5,
+          "seconds": 200.03,
+          "lives": 10,
+          "coins": 55,
+          "towers": 6
+        },
+        {
+          "wave": 6,
+          "seconds": 247.53,
+          "lives": 10,
+          "coins": 44,
+          "towers": 7
+        },
+        {
+          "wave": 7,
+          "seconds": 295.03,
+          "lives": 10,
+          "coins": 86,
+          "towers": 8
+        },
+        {
+          "wave": 8,
+          "seconds": 342.5,
+          "lives": 10,
+          "coins": 47,
+          "towers": 8
+        },
+        {
+          "wave": 9,
+          "seconds": 390,
+          "lives": 10,
+          "coins": 94,
+          "towers": 8
+        },
+        {
+          "wave": 10,
+          "seconds": 437.5,
+          "lives": 10,
+          "coins": 79,
+          "towers": 8
+        },
+        {
+          "wave": 11,
+          "seconds": 484.97,
+          "lives": 10,
+          "coins": 19,
+          "towers": 8
+        },
+        {
+          "wave": 12,
+          "seconds": 532.47,
+          "lives": 10,
+          "coins": 22,
+          "towers": 8
+        },
+        {
+          "wave": 13,
+          "seconds": 579.97,
+          "lives": 10,
+          "coins": 62,
+          "towers": 8
+        },
+        {
+          "wave": 14,
+          "seconds": 627.43,
+          "lives": 10,
+          "coins": 83,
+          "towers": 9
+        },
+        {
+          "wave": 15,
+          "seconds": 674.93,
+          "lives": 10,
+          "coins": 7,
+          "towers": 10
+        },
+        {
+          "wave": 16,
+          "seconds": 722.4,
+          "lives": 10,
+          "coins": 66,
+          "towers": 11
+        },
+        {
+          "wave": 17,
+          "seconds": 769.9,
+          "lives": 10,
+          "coins": 39,
+          "towers": 11
+        },
+        {
+          "wave": 18,
+          "seconds": 817.37,
+          "lives": 10,
+          "coins": 109,
+          "towers": 11
+        },
+        {
+          "wave": 19,
+          "seconds": 864.83,
+          "lives": 1,
+          "coins": 120,
+          "towers": 11
+        }
+      ],
+      "nonfinite": null
+    },
+    {
+      "id": 36,
+      "mode": "challenge",
+      "roster": [
+        "sprout",
+        "frost",
+        "bloom",
+        "scope"
+      ],
+      "profile": "none",
+      "technology": [],
+      "scenario": {
+        "roster": [
+          "sprout",
+          "frost",
+          "bloom",
+          "scope"
+        ],
+        "tech": "build",
+        "mode": "swarm",
+        "seed": 7
+      },
+      "seed": 7,
+      "result": "lose",
+      "wave": 19,
+      "totalWaves": 30,
+      "seconds": 907.1,
+      "lastWaveSeconds": 40.4,
+      "speed": 3,
+      "lives": 0,
+      "picks": 16,
+      "supplyLimit": 20,
+      "coins": 92,
+      "killed": 3760,
+      "peakEnemies": 39,
+      "towers": 15,
+      "spots": 22,
+      "evolved": 14,
+      "bosses": [],
+      "events": [
+        {
+          "wave": 1,
+          "seconds": 10.03,
+          "lives": 10,
+          "coins": 32,
+          "towers": 5
+        },
+        {
+          "wave": 2,
+          "seconds": 57.57,
+          "lives": 10,
+          "coins": 97,
+          "towers": 5
+        },
+        {
+          "wave": 3,
+          "seconds": 105.07,
+          "lives": 10,
+          "coins": 21,
+          "towers": 6
+        },
+        {
+          "wave": 4,
+          "seconds": 152.57,
+          "lives": 10,
+          "coins": 93,
+          "towers": 6
+        },
+        {
+          "wave": 5,
+          "seconds": 200.07,
+          "lives": 10,
+          "coins": 130,
+          "towers": 6
+        },
+        {
+          "wave": 6,
+          "seconds": 247.57,
+          "lives": 10,
+          "coins": 12,
+          "towers": 8
+        },
+        {
+          "wave": 7,
+          "seconds": 295.07,
+          "lives": 10,
+          "coins": 82,
+          "towers": 8
+        },
+        {
+          "wave": 8,
+          "seconds": 342.57,
+          "lives": 10,
+          "coins": 25,
+          "towers": 8
+        },
+        {
+          "wave": 9,
+          "seconds": 390.07,
+          "lives": 10,
+          "coins": 35,
+          "towers": 8
+        },
+        {
+          "wave": 10,
+          "seconds": 437.57,
+          "lives": 10,
+          "coins": 39,
+          "towers": 8
+        },
+        {
+          "wave": 11,
+          "seconds": 485.03,
+          "lives": 10,
+          "coins": 82,
+          "towers": 8
+        },
+        {
+          "wave": 12,
+          "seconds": 532.53,
+          "lives": 10,
+          "coins": 77,
+          "towers": 9
+        },
+        {
+          "wave": 13,
+          "seconds": 581.8,
+          "lives": 10,
+          "coins": 53,
+          "towers": 11
+        },
+        {
+          "wave": 14,
+          "seconds": 629.27,
+          "lives": 10,
+          "coins": 131,
+          "towers": 11
+        },
+        {
+          "wave": 15,
+          "seconds": 676.77,
+          "lives": 10,
+          "coins": 92,
+          "towers": 12
+        },
+        {
+          "wave": 16,
+          "seconds": 724.23,
+          "lives": 10,
+          "coins": 11,
+          "towers": 14
+        },
+        {
+          "wave": 17,
+          "seconds": 771.73,
+          "lives": 10,
+          "coins": 64,
+          "towers": 14
+        },
+        {
+          "wave": 18,
+          "seconds": 819.2,
+          "lives": 6,
+          "coins": 100,
+          "towers": 15
+        },
+        {
+          "wave": 19,
+          "seconds": 866.7,
+          "lives": 3,
+          "coins": 34,
+          "towers": 15
+        }
+      ],
+      "nonfinite": null
+    },
+    {
+      "id": 37,
+      "mode": "challenge",
+      "roster": [
+        "sprout",
+        "frost",
+        "bloom",
+        "scope"
+      ],
+      "profile": "none",
+      "technology": [],
+      "scenario": {
+        "roster": [
+          "sprout",
+          "frost",
+          "bloom",
+          "scope"
+        ],
+        "tech": "build",
+        "mode": "swarm",
+        "seed": 7
+      },
+      "seed": 7,
+      "result": "lose",
+      "wave": 19,
+      "totalWaves": 30,
+      "seconds": 925.8,
+      "lastWaveSeconds": 36.2,
+      "speed": 3,
+      "lives": 0,
+      "picks": 17,
+      "supplyLimit": 20,
+      "coins": 62,
+      "killed": 4026,
+      "peakEnemies": 39,
+      "towers": 18,
+      "spots": 22,
+      "evolved": 15,
+      "bosses": [],
+      "events": [
+        {
+          "wave": 1,
+          "seconds": 10.03,
+          "lives": 10,
+          "coins": 64,
+          "towers": 6
+        },
+        {
+          "wave": 2,
+          "seconds": 57.57,
+          "lives": 10,
+          "coins": 64,
+          "towers": 6
+        },
+        {
+          "wave": 3,
+          "seconds": 105.07,
+          "lives": 10,
+          "coins": 98,
+          "towers": 6
+        },
+        {
+          "wave": 4,
+          "seconds": 152.57,
+          "lives": 10,
+          "coins": 89,
+          "towers": 6
+        },
+        {
+          "wave": 5,
+          "seconds": 200.1,
+          "lives": 10,
+          "coins": 52,
+          "towers": 6
+        },
+        {
+          "wave": 6,
+          "seconds": 247.6,
+          "lives": 10,
+          "coins": 77,
+          "towers": 8
+        },
+        {
+          "wave": 7,
+          "seconds": 295.1,
+          "lives": 10,
+          "coins": 53,
+          "towers": 8
+        },
+        {
+          "wave": 8,
+          "seconds": 342.6,
+          "lives": 10,
+          "coins": 111,
+          "towers": 8
+        },
+        {
+          "wave": 9,
+          "seconds": 390.07,
+          "lives": 10,
+          "coins": 62,
+          "towers": 9
+        },
+        {
+          "wave": 10,
+          "seconds": 437.57,
+          "lives": 10,
+          "coins": 53,
+          "towers": 11
+        },
+        {
+          "wave": 11,
+          "seconds": 507.93,
+          "lives": 10,
+          "coins": 118,
+          "towers": 11
+        },
+        {
+          "wave": 12,
+          "seconds": 555.43,
+          "lives": 10,
+          "coins": 54,
+          "towers": 11
+        },
+        {
+          "wave": 13,
+          "seconds": 602.9,
+          "lives": 10,
+          "coins": 28,
+          "towers": 12
+        },
+        {
+          "wave": 14,
+          "seconds": 650.4,
+          "lives": 10,
+          "coins": 55,
+          "towers": 14
+        },
+        {
+          "wave": 15,
+          "seconds": 697.87,
+          "lives": 10,
+          "coins": 29,
+          "towers": 15
+        },
+        {
+          "wave": 16,
+          "seconds": 745.37,
+          "lives": 10,
+          "coins": 17,
+          "towers": 15
+        },
+        {
+          "wave": 17,
+          "seconds": 792.83,
+          "lives": 10,
+          "coins": 148,
+          "towers": 15
+        },
+        {
+          "wave": 18,
+          "seconds": 840.33,
+          "lives": 6,
+          "coins": 7,
+          "towers": 16
+        },
+        {
+          "wave": 19,
+          "seconds": 889.6,
+          "lives": 4,
+          "coins": 78,
+          "towers": 18
+        }
+      ],
+      "nonfinite": null
+    },
+    {
+      "id": 38,
+      "mode": "challenge",
+      "roster": [
+        "sprout",
+        "frost",
+        "bloom",
+        "scope"
+      ],
+      "profile": "none",
+      "technology": [],
+      "scenario": {
+        "roster": [
+          "sprout",
+          "frost",
+          "bloom",
+          "scope"
+        ],
+        "tech": "build",
+        "mode": "swarm",
+        "seed": 7
+      },
+      "seed": 7,
+      "result": "lose",
+      "wave": 18,
+      "totalWaves": 30,
+      "seconds": 855.23,
+      "lastWaveSeconds": 4.4,
+      "speed": 3,
+      "lives": 0,
+      "picks": 16,
+      "supplyLimit": 20,
+      "coins": 31,
+      "killed": 3606,
+      "peakEnemies": 44,
+      "towers": 18,
+      "spots": 22,
+      "evolved": 15,
+      "bosses": [],
+      "events": [
+        {
+          "wave": 1,
+          "seconds": 10.03,
+          "lives": 10,
+          "coins": 74,
+          "towers": 5
+        },
+        {
+          "wave": 2,
+          "seconds": 57.57,
+          "lives": 10,
+          "coins": 13,
+          "towers": 5
+        },
+        {
+          "wave": 3,
+          "seconds": 105.07,
+          "lives": 10,
+          "coins": 16,
+          "towers": 6
+        },
+        {
+          "wave": 4,
+          "seconds": 152.57,
+          "lives": 10,
+          "coins": 127,
+          "towers": 6
+        },
+        {
+          "wave": 5,
+          "seconds": 200.1,
+          "lives": 10,
+          "coins": 20,
+          "towers": 8
+        },
+        {
+          "wave": 6,
+          "seconds": 247.6,
+          "lives": 10,
+          "coins": 87,
+          "towers": 8
+        },
+        {
+          "wave": 7,
+          "seconds": 295.1,
+          "lives": 10,
+          "coins": 23,
+          "towers": 8
+        },
+        {
+          "wave": 8,
+          "seconds": 342.6,
+          "lives": 10,
+          "coins": 102,
+          "towers": 8
+        },
+        {
+          "wave": 9,
+          "seconds": 390.07,
+          "lives": 10,
+          "coins": 117,
+          "towers": 9
+        },
+        {
+          "wave": 10,
+          "seconds": 437.57,
+          "lives": 10,
+          "coins": 35,
+          "towers": 11
+        },
+        {
+          "wave": 11,
+          "seconds": 516.67,
+          "lives": 10,
+          "coins": 42,
+          "towers": 11
+        },
+        {
+          "wave": 12,
+          "seconds": 565.93,
+          "lives": 10,
+          "coins": 22,
+          "towers": 12
+        },
+        {
+          "wave": 13,
+          "seconds": 613.4,
+          "lives": 10,
+          "coins": 51,
+          "towers": 14
+        },
+        {
+          "wave": 14,
+          "seconds": 660.9,
+          "lives": 10,
+          "coins": 7,
+          "towers": 14
+        },
+        {
+          "wave": 15,
+          "seconds": 708.37,
+          "lives": 10,
+          "coins": 46,
+          "towers": 15
+        },
+        {
+          "wave": 16,
+          "seconds": 755.87,
+          "lives": 10,
+          "coins": 100,
+          "towers": 15
+        },
+        {
+          "wave": 17,
+          "seconds": 803.33,
+          "lives": 10,
+          "coins": 85,
+          "towers": 16
+        },
+        {
+          "wave": 18,
+          "seconds": 850.83,
+          "lives": 1,
+          "coins": 11,
+          "towers": 18
+        }
+      ],
+      "nonfinite": null
+    },
+    {
+      "id": 39,
+      "mode": "challenge",
+      "roster": [
+        "sprout",
+        "frost",
+        "bloom",
+        "scope"
+      ],
+      "profile": "none",
+      "technology": [],
+      "scenario": {
+        "roster": [
+          "sprout",
+          "frost",
+          "bloom",
+          "scope"
+        ],
+        "tech": "build",
+        "mode": "swarm",
+        "seed": 7
+      },
+      "seed": 7,
+      "result": "lose",
+      "wave": 17,
+      "totalWaves": 30,
+      "seconds": 837.17,
+      "lastWaveSeconds": 30.47,
+      "speed": 3,
+      "lives": 0,
+      "picks": 15,
+      "supplyLimit": 20,
+      "coins": 30,
+      "killed": 3357,
+      "peakEnemies": 43,
+      "towers": 15,
+      "spots": 21,
+      "evolved": 13,
+      "bosses": [],
+      "events": [
+        {
+          "wave": 1,
+          "seconds": 10.03,
+          "lives": 10,
+          "coins": 78,
+          "towers": 5
+        },
+        {
+          "wave": 2,
+          "seconds": 57.57,
+          "lives": 10,
+          "coins": 107,
+          "towers": 5
+        },
+        {
+          "wave": 3,
+          "seconds": 105.07,
+          "lives": 10,
+          "coins": 19,
+          "towers": 6
+        },
+        {
+          "wave": 4,
+          "seconds": 152.57,
+          "lives": 10,
+          "coins": 63,
+          "towers": 7
+        },
+        {
+          "wave": 5,
+          "seconds": 200.07,
+          "lives": 10,
+          "coins": 58,
+          "towers": 8
+        },
+        {
+          "wave": 6,
+          "seconds": 247.6,
+          "lives": 10,
+          "coins": 104,
+          "towers": 8
+        },
+        {
+          "wave": 7,
+          "seconds": 295.1,
+          "lives": 10,
+          "coins": 82,
+          "towers": 8
+        },
+        {
+          "wave": 8,
+          "seconds": 342.57,
+          "lives": 10,
+          "coins": 15,
+          "towers": 8
+        },
+        {
+          "wave": 9,
+          "seconds": 390.07,
+          "lives": 10,
+          "coins": 31,
+          "towers": 8
+        },
+        {
+          "wave": 10,
+          "seconds": 437.57,
+          "lives": 9,
+          "coins": 35,
+          "towers": 9
+        },
+        {
+          "wave": 11,
+          "seconds": 521.8,
+          "lives": 7,
+          "coins": 40,
+          "towers": 10
+        },
+        {
+          "wave": 12,
+          "seconds": 569.27,
+          "lives": 7,
+          "coins": 34,
+          "towers": 11
+        },
+        {
+          "wave": 13,
+          "seconds": 616.77,
+          "lives": 7,
+          "coins": 38,
+          "towers": 11
+        },
+        {
+          "wave": 14,
+          "seconds": 664.23,
+          "lives": 7,
+          "coins": 21,
+          "towers": 12
+        },
+        {
+          "wave": 15,
+          "seconds": 711.73,
+          "lives": 7,
+          "coins": 122,
+          "towers": 12
+        },
+        {
+          "wave": 16,
+          "seconds": 759.2,
+          "lives": 7,
+          "coins": 19,
+          "towers": 14
+        },
+        {
+          "wave": 17,
+          "seconds": 806.7,
+          "lives": 7,
+          "coins": 123,
+          "towers": 15
+        }
+      ],
+      "nonfinite": null
+    },
+    {
+      "id": 40,
+      "mode": "challenge",
+      "roster": [
+        "sprout",
+        "frost",
+        "bloom",
+        "scope"
+      ],
+      "profile": "none",
+      "technology": [],
+      "scenario": {
+        "roster": [
+          "sprout",
+          "frost",
+          "bloom",
+          "scope"
+        ],
+        "tech": "build",
+        "mode": "swarm",
+        "seed": 7
+      },
+      "seed": 7,
+      "result": "lose",
+      "wave": 17,
+      "totalWaves": 30,
+      "seconds": 831.77,
+      "lastWaveSeconds": 19.17,
+      "speed": 3,
+      "lives": 0,
+      "picks": 15,
+      "supplyLimit": 20,
+      "coins": 50,
+      "killed": 3105,
+      "peakEnemies": 42,
+      "towers": 15,
+      "spots": 22,
+      "evolved": 14,
+      "bosses": [],
+      "events": [
+        {
+          "wave": 1,
+          "seconds": 10.03,
+          "lives": 10,
+          "coins": 32,
+          "towers": 5
+        },
+        {
+          "wave": 2,
+          "seconds": 57.53,
+          "lives": 10,
+          "coins": 17,
+          "towers": 5
+        },
+        {
+          "wave": 3,
+          "seconds": 105.07,
+          "lives": 10,
+          "coins": 103,
+          "towers": 5
+        },
+        {
+          "wave": 4,
+          "seconds": 152.57,
+          "lives": 10,
+          "coins": 24,
+          "towers": 6
+        },
+        {
+          "wave": 5,
+          "seconds": 200.07,
+          "lives": 10,
+          "coins": 26,
+          "towers": 8
+        },
+        {
+          "wave": 6,
+          "seconds": 247.57,
+          "lives": 10,
+          "coins": 30,
+          "towers": 8
+        },
+        {
+          "wave": 7,
+          "seconds": 295.07,
+          "lives": 10,
+          "coins": 85,
+          "towers": 8
+        },
+        {
+          "wave": 8,
+          "seconds": 342.57,
+          "lives": 10,
+          "coins": 106,
+          "towers": 8
+        },
+        {
+          "wave": 9,
+          "seconds": 390.07,
+          "lives": 10,
+          "coins": 24,
+          "towers": 9
+        },
+        {
+          "wave": 10,
+          "seconds": 437.57,
+          "lives": 10,
+          "coins": 48,
+          "towers": 10
+        },
+        {
+          "wave": 11,
+          "seconds": 525.97,
+          "lives": 9,
+          "coins": 54,
+          "towers": 11
+        },
+        {
+          "wave": 12,
+          "seconds": 573.43,
+          "lives": 9,
+          "coins": 109,
+          "towers": 11
+        },
+        {
+          "wave": 13,
+          "seconds": 620.93,
+          "lives": 9,
+          "coins": 63,
+          "towers": 12
+        },
+        {
+          "wave": 14,
+          "seconds": 668.4,
+          "lives": 9,
+          "coins": 46,
+          "towers": 14
+        },
+        {
+          "wave": 15,
+          "seconds": 717.67,
+          "lives": 9,
+          "coins": 2,
+          "towers": 14
+        },
+        {
+          "wave": 16,
+          "seconds": 765.13,
+          "lives": 9,
+          "coins": 90,
+          "towers": 15
+        },
+        {
+          "wave": 17,
+          "seconds": 812.6,
+          "lives": 5,
+          "coins": 138,
+          "towers": 15
+        }
+      ],
+      "nonfinite": null
+    },
+    {
+      "id": 31,
+      "mode": "challenge",
+      "roster": [
+        "sprout",
+        "frost",
+        "bloom",
+        "scope"
+      ],
+      "profile": "full",
+      "technology": [
+        "sprout_1",
+        "sprout_2",
+        "sprout_3",
+        "sprout_4",
+        "sprout_5",
+        "frost_1",
+        "frost_2",
+        "frost_3",
+        "frost_4",
+        "frost_5",
+        "bloom_1",
+        "bloom_2",
+        "bloom_3",
+        "bloom_4",
+        "bloom_5",
+        "scope_1",
+        "scope_2",
+        "scope_3",
+        "scope_4",
+        "scope_5",
+        "spark_1",
+        "spark_2",
+        "spark_3",
+        "spark_4",
+        "spark_5",
+        "ember_1",
+        "ember_2",
+        "ember_3",
+        "ember_4",
+        "ember_5",
+        "mint_1",
+        "mint_2",
+        "mint_3",
+        "mint_4",
+        "mint_5",
+        "fan_1",
+        "fan_2",
+        "fan_3",
+        "fan_4",
+        "fan_5",
+        "logistics_1",
+        "logistics_2",
+        "logistics_3",
+        "logistics_4",
+        "logistics_5",
+        "props_1",
+        "props_2",
+        "props_3",
+        "props_4",
+        "props_5",
+        "boss_1",
+        "boss_2",
+        "boss_3",
+        "boss_4",
+        "boss_5",
+        "clearing_1",
+        "clearing_2",
+        "clearing_3",
+        "clearing_4",
+        "clearing_5",
+        "salvage_1",
+        "salvage_2",
+        "salvage_3",
+        "salvage_4",
+        "salvage_5",
+        "supply_1",
+        "supply_2",
+        "supply_3",
+        "supply_4",
+        "supply_5"
+      ],
+      "scenario": {
+        "roster": [
+          "sprout",
+          "frost",
+          "bloom",
+          "scope"
+        ],
+        "tech": "build",
+        "mode": "swarm",
+        "seed": 7
+      },
+      "seed": 7,
+      "result": "lose",
+      "wave": 16,
+      "totalWaves": 30,
+      "seconds": 749.47,
+      "lastWaveSeconds": 27,
+      "speed": 3,
+      "lives": 0,
+      "picks": 14,
+      "supplyLimit": 20,
+      "coins": 56,
+      "killed": 2747,
+      "peakEnemies": 45,
+      "towers": 11,
+      "spots": 22,
+      "evolved": 11,
+      "bosses": [],
+      "events": [
+        {
+          "wave": 1,
+          "seconds": 10.03,
+          "lives": 10,
+          "coins": 29,
+          "towers": 6
+        },
+        {
+          "wave": 2,
+          "seconds": 57.53,
+          "lives": 10,
+          "coins": 31,
+          "towers": 6
+        },
+        {
+          "wave": 3,
+          "seconds": 105.07,
+          "lives": 10,
+          "coins": 80,
+          "towers": 6
+        },
+        {
+          "wave": 4,
+          "seconds": 152.57,
+          "lives": 10,
+          "coins": 29,
+          "towers": 6
+        },
+        {
+          "wave": 5,
+          "seconds": 200.07,
+          "lives": 10,
+          "coins": 33,
+          "towers": 6
+        },
+        {
+          "wave": 6,
+          "seconds": 247.57,
+          "lives": 10,
+          "coins": 64,
+          "towers": 6
+        },
+        {
+          "wave": 7,
+          "seconds": 295.07,
+          "lives": 10,
+          "coins": 72,
+          "towers": 7
+        },
+        {
+          "wave": 8,
+          "seconds": 342.53,
+          "lives": 10,
+          "coins": 36,
+          "towers": 8
+        },
+        {
+          "wave": 9,
+          "seconds": 390.03,
+          "lives": 10,
+          "coins": 118,
+          "towers": 8
+        },
+        {
+          "wave": 10,
+          "seconds": 437.53,
+          "lives": 10,
+          "coins": 45,
+          "towers": 8
+        },
+        {
+          "wave": 11,
+          "seconds": 485.03,
+          "lives": 8,
+          "coins": 35,
+          "towers": 8
+        },
+        {
+          "wave": 12,
+          "seconds": 532.5,
+          "lives": 7,
+          "coins": 24,
+          "towers": 9
+        },
+        {
+          "wave": 13,
+          "seconds": 580,
+          "lives": 7,
+          "coins": 51,
+          "towers": 10
+        },
+        {
+          "wave": 14,
+          "seconds": 627.5,
+          "lives": 7,
+          "coins": 56,
+          "towers": 11
+        },
+        {
+          "wave": 15,
+          "seconds": 674.97,
+          "lives": 7,
+          "coins": 52,
+          "towers": 11
+        },
+        {
+          "wave": 16,
+          "seconds": 722.47,
+          "lives": 4,
+          "coins": 67,
+          "towers": 11
+        }
+      ],
+      "nonfinite": null
+    },
+    {
+      "id": 32,
+      "mode": "challenge",
+      "roster": [
+        "sprout",
+        "frost",
+        "bloom",
+        "scope"
+      ],
+      "profile": "full",
+      "technology": [
+        "sprout_1",
+        "sprout_2",
+        "sprout_3",
+        "sprout_4",
+        "sprout_5",
+        "frost_1",
+        "frost_2",
+        "frost_3",
+        "frost_4",
+        "frost_5",
+        "bloom_1",
+        "bloom_2",
+        "bloom_3",
+        "bloom_4",
+        "bloom_5",
+        "scope_1",
+        "scope_2",
+        "scope_3",
+        "scope_4",
+        "scope_5",
+        "spark_1",
+        "spark_2",
+        "spark_3",
+        "spark_4",
+        "spark_5",
+        "ember_1",
+        "ember_2",
+        "ember_3",
+        "ember_4",
+        "ember_5",
+        "mint_1",
+        "mint_2",
+        "mint_3",
+        "mint_4",
+        "mint_5",
+        "fan_1",
+        "fan_2",
+        "fan_3",
+        "fan_4",
+        "fan_5",
+        "logistics_1",
+        "logistics_2",
+        "logistics_3",
+        "logistics_4",
+        "logistics_5",
+        "props_1",
+        "props_2",
+        "props_3",
+        "props_4",
+        "props_5",
+        "boss_1",
+        "boss_2",
+        "boss_3",
+        "boss_4",
+        "boss_5",
+        "clearing_1",
+        "clearing_2",
+        "clearing_3",
+        "clearing_4",
+        "clearing_5",
+        "salvage_1",
+        "salvage_2",
+        "salvage_3",
+        "salvage_4",
+        "salvage_5",
+        "supply_1",
+        "supply_2",
+        "supply_3",
+        "supply_4",
+        "supply_5"
+      ],
+      "scenario": {
+        "roster": [
+          "sprout",
+          "frost",
+          "bloom",
+          "scope"
+        ],
+        "tech": "build",
+        "mode": "swarm",
+        "seed": 7
+      },
+      "seed": 7,
+      "result": "lose",
+      "wave": 23,
+      "totalWaves": 30,
+      "seconds": 1083.93,
+      "lastWaveSeconds": 29.13,
+      "speed": 3,
+      "lives": 0,
+      "picks": 17,
+      "supplyLimit": 20,
+      "coins": 101,
+      "killed": 3696,
+      "peakEnemies": 38,
+      "towers": 16,
+      "spots": 22,
+      "evolved": 15,
+      "bosses": [],
+      "events": [
+        {
+          "wave": 1,
+          "seconds": 10.03,
+          "lives": 10,
+          "coins": 144,
+          "towers": 5
+        },
+        {
+          "wave": 2,
+          "seconds": 57.53,
+          "lives": 10,
+          "coins": 15,
+          "towers": 5
+        },
+        {
+          "wave": 3,
+          "seconds": 105.07,
+          "lives": 10,
+          "coins": 43,
+          "towers": 5
+        },
+        {
+          "wave": 4,
+          "seconds": 152.57,
+          "lives": 10,
+          "coins": 92,
+          "towers": 5
+        },
+        {
+          "wave": 5,
+          "seconds": 200.03,
+          "lives": 10,
+          "coins": 59,
+          "towers": 6
+        },
+        {
+          "wave": 6,
+          "seconds": 247.53,
+          "lives": 10,
+          "coins": 91,
+          "towers": 6
+        },
+        {
+          "wave": 7,
+          "seconds": 295.03,
+          "lives": 10,
+          "coins": 3,
+          "towers": 7
+        },
+        {
+          "wave": 8,
+          "seconds": 342.53,
+          "lives": 10,
+          "coins": 10,
+          "towers": 8
+        },
+        {
+          "wave": 9,
+          "seconds": 390.03,
+          "lives": 10,
+          "coins": 27,
+          "towers": 8
+        },
+        {
+          "wave": 10,
+          "seconds": 437.53,
+          "lives": 10,
+          "coins": 16,
+          "towers": 8
+        },
+        {
+          "wave": 11,
+          "seconds": 485,
+          "lives": 10,
+          "coins": 51,
+          "towers": 9
+        },
+        {
+          "wave": 12,
+          "seconds": 532.5,
+          "lives": 10,
+          "coins": 6,
+          "towers": 10
+        },
+        {
+          "wave": 13,
+          "seconds": 580,
+          "lives": 10,
+          "coins": 62,
+          "towers": 11
+        },
+        {
+          "wave": 14,
+          "seconds": 627.47,
+          "lives": 10,
+          "coins": 78,
+          "towers": 11
+        },
+        {
+          "wave": 15,
+          "seconds": 674.97,
+          "lives": 10,
+          "coins": 5,
+          "towers": 11
+        },
+        {
+          "wave": 16,
+          "seconds": 722.43,
+          "lives": 10,
+          "coins": 38,
+          "towers": 12
+        },
+        {
+          "wave": 17,
+          "seconds": 769.93,
+          "lives": 10,
+          "coins": 109,
+          "towers": 12
+        },
+        {
+          "wave": 18,
+          "seconds": 817.4,
+          "lives": 10,
+          "coins": 1,
+          "towers": 14
+        },
+        {
+          "wave": 19,
+          "seconds": 864.9,
+          "lives": 10,
+          "coins": 62,
+          "towers": 14
+        },
+        {
+          "wave": 20,
+          "seconds": 912.37,
+          "lives": 9,
+          "coins": 10,
+          "towers": 15
+        },
+        {
+          "wave": 21,
+          "seconds": 959.87,
+          "lives": 6,
+          "coins": 18,
+          "towers": 15
+        },
+        {
+          "wave": 22,
+          "seconds": 1007.33,
+          "lives": 6,
+          "coins": 61,
+          "towers": 15
+        },
+        {
+          "wave": 23,
+          "seconds": 1054.8,
+          "lives": 1,
+          "coins": 8,
+          "towers": 16
+        }
+      ],
+      "nonfinite": null
+    },
+    {
+      "id": 33,
+      "mode": "challenge",
+      "roster": [
+        "sprout",
+        "frost",
+        "bloom",
+        "scope"
+      ],
+      "profile": "full",
+      "technology": [
+        "sprout_1",
+        "sprout_2",
+        "sprout_3",
+        "sprout_4",
+        "sprout_5",
+        "frost_1",
+        "frost_2",
+        "frost_3",
+        "frost_4",
+        "frost_5",
+        "bloom_1",
+        "bloom_2",
+        "bloom_3",
+        "bloom_4",
+        "bloom_5",
+        "scope_1",
+        "scope_2",
+        "scope_3",
+        "scope_4",
+        "scope_5",
+        "spark_1",
+        "spark_2",
+        "spark_3",
+        "spark_4",
+        "spark_5",
+        "ember_1",
+        "ember_2",
+        "ember_3",
+        "ember_4",
+        "ember_5",
+        "mint_1",
+        "mint_2",
+        "mint_3",
+        "mint_4",
+        "mint_5",
+        "fan_1",
+        "fan_2",
+        "fan_3",
+        "fan_4",
+        "fan_5",
+        "logistics_1",
+        "logistics_2",
+        "logistics_3",
+        "logistics_4",
+        "logistics_5",
+        "props_1",
+        "props_2",
+        "props_3",
+        "props_4",
+        "props_5",
+        "boss_1",
+        "boss_2",
+        "boss_3",
+        "boss_4",
+        "boss_5",
+        "clearing_1",
+        "clearing_2",
+        "clearing_3",
+        "clearing_4",
+        "clearing_5",
+        "salvage_1",
+        "salvage_2",
+        "salvage_3",
+        "salvage_4",
+        "salvage_5",
+        "supply_1",
+        "supply_2",
+        "supply_3",
+        "supply_4",
+        "supply_5"
+      ],
+      "scenario": {
+        "roster": [
+          "sprout",
+          "frost",
+          "bloom",
+          "scope"
+        ],
+        "tech": "build",
+        "mode": "swarm",
+        "seed": 7
+      },
+      "seed": 7,
+      "result": "win",
+      "wave": 30,
+      "totalWaves": 30,
+      "seconds": 1443.73,
+      "lastWaveSeconds": 54.77,
+      "speed": 3,
+      "lives": 1,
+      "picks": 20,
+      "supplyLimit": 20,
+      "coins": 2058,
+      "killed": 6958,
+      "peakEnemies": 39,
+      "towers": 21,
+      "spots": 21,
+      "evolved": 21,
+      "bosses": [],
+      "events": [
+        {
+          "wave": 1,
+          "seconds": 10.03,
+          "lives": 10,
+          "coins": 28,
+          "towers": 6
+        },
+        {
+          "wave": 2,
+          "seconds": 57.57,
+          "lives": 10,
+          "coins": 82,
+          "towers": 6
+        },
+        {
+          "wave": 3,
+          "seconds": 105.07,
+          "lives": 10,
+          "coins": 12,
+          "towers": 8
+        },
+        {
+          "wave": 4,
+          "seconds": 152.6,
+          "lives": 10,
+          "coins": 0,
+          "towers": 8
+        },
+        {
+          "wave": 5,
+          "seconds": 200.1,
+          "lives": 10,
+          "coins": 16,
+          "towers": 8
+        },
+        {
+          "wave": 6,
+          "seconds": 247.6,
+          "lives": 10,
+          "coins": 75,
+          "towers": 8
+        },
+        {
+          "wave": 7,
+          "seconds": 295.1,
+          "lives": 10,
+          "coins": 18,
+          "towers": 8
+        },
+        {
+          "wave": 8,
+          "seconds": 342.6,
+          "lives": 10,
+          "coins": 6,
+          "towers": 9
+        },
+        {
+          "wave": 9,
+          "seconds": 390.1,
+          "lives": 10,
+          "coins": 39,
+          "towers": 11
+        },
+        {
+          "wave": 10,
+          "seconds": 437.6,
+          "lives": 10,
+          "coins": 34,
+          "towers": 11
+        },
+        {
+          "wave": 11,
+          "seconds": 485.07,
+          "lives": 10,
+          "coins": 96,
+          "towers": 11
+        },
+        {
+          "wave": 12,
+          "seconds": 532.57,
+          "lives": 10,
+          "coins": 83,
+          "towers": 12
+        },
+        {
+          "wave": 13,
+          "seconds": 580.07,
+          "lives": 10,
+          "coins": 54,
+          "towers": 14
+        },
+        {
+          "wave": 14,
+          "seconds": 627.57,
+          "lives": 10,
+          "coins": 76,
+          "towers": 14
+        },
+        {
+          "wave": 15,
+          "seconds": 675.03,
+          "lives": 10,
+          "coins": 97,
+          "towers": 15
+        },
+        {
+          "wave": 16,
+          "seconds": 722.53,
+          "lives": 10,
+          "coins": 56,
+          "towers": 15
+        },
+        {
+          "wave": 17,
+          "seconds": 770.03,
+          "lives": 10,
+          "coins": 89,
+          "towers": 16
+        },
+        {
+          "wave": 18,
+          "seconds": 817.5,
+          "lives": 10,
+          "coins": 45,
+          "towers": 18
+        },
+        {
+          "wave": 19,
+          "seconds": 865,
+          "lives": 10,
+          "coins": 44,
+          "towers": 18
+        },
+        {
+          "wave": 20,
+          "seconds": 914.27,
+          "lives": 10,
+          "coins": 43,
+          "towers": 19
+        },
+        {
+          "wave": 21,
+          "seconds": 961.73,
+          "lives": 10,
+          "coins": 36,
+          "towers": 20
+        },
+        {
+          "wave": 22,
+          "seconds": 1009.23,
+          "lives": 10,
+          "coins": 60,
+          "towers": 21
+        },
+        {
+          "wave": 23,
+          "seconds": 1056.7,
+          "lives": 10,
+          "coins": 97,
+          "towers": 21
+        },
+        {
+          "wave": 24,
+          "seconds": 1104.17,
+          "lives": 10,
+          "coins": 390,
+          "towers": 21
+        },
+        {
+          "wave": 25,
+          "seconds": 1151.63,
+          "lives": 10,
+          "coins": 700,
+          "towers": 21
+        },
+        {
+          "wave": 26,
+          "seconds": 1199.1,
+          "lives": 10,
+          "coins": 984,
+          "towers": 21
+        },
+        {
+          "wave": 27,
+          "seconds": 1246.57,
+          "lives": 10,
+          "coins": 1242,
+          "towers": 21
+        },
+        {
+          "wave": 28,
+          "seconds": 1294.03,
+          "lives": 10,
+          "coins": 1457,
+          "towers": 21
+        },
+        {
+          "wave": 29,
+          "seconds": 1341.5,
+          "lives": 10,
+          "coins": 1666,
+          "towers": 21
+        },
+        {
+          "wave": 30,
+          "seconds": 1388.97,
+          "lives": 7,
+          "coins": 1865,
+          "towers": 21
+        }
+      ],
+      "nonfinite": null
+    },
+    {
+      "id": 34,
+      "mode": "challenge",
+      "roster": [
+        "sprout",
+        "frost",
+        "bloom",
+        "scope"
+      ],
+      "profile": "full",
+      "technology": [
+        "sprout_1",
+        "sprout_2",
+        "sprout_3",
+        "sprout_4",
+        "sprout_5",
+        "frost_1",
+        "frost_2",
+        "frost_3",
+        "frost_4",
+        "frost_5",
+        "bloom_1",
+        "bloom_2",
+        "bloom_3",
+        "bloom_4",
+        "bloom_5",
+        "scope_1",
+        "scope_2",
+        "scope_3",
+        "scope_4",
+        "scope_5",
+        "spark_1",
+        "spark_2",
+        "spark_3",
+        "spark_4",
+        "spark_5",
+        "ember_1",
+        "ember_2",
+        "ember_3",
+        "ember_4",
+        "ember_5",
+        "mint_1",
+        "mint_2",
+        "mint_3",
+        "mint_4",
+        "mint_5",
+        "fan_1",
+        "fan_2",
+        "fan_3",
+        "fan_4",
+        "fan_5",
+        "logistics_1",
+        "logistics_2",
+        "logistics_3",
+        "logistics_4",
+        "logistics_5",
+        "props_1",
+        "props_2",
+        "props_3",
+        "props_4",
+        "props_5",
+        "boss_1",
+        "boss_2",
+        "boss_3",
+        "boss_4",
+        "boss_5",
+        "clearing_1",
+        "clearing_2",
+        "clearing_3",
+        "clearing_4",
+        "clearing_5",
+        "salvage_1",
+        "salvage_2",
+        "salvage_3",
+        "salvage_4",
+        "salvage_5",
+        "supply_1",
+        "supply_2",
+        "supply_3",
+        "supply_4",
+        "supply_5"
+      ],
+      "scenario": {
+        "roster": [
+          "sprout",
+          "frost",
+          "bloom",
+          "scope"
+        ],
+        "tech": "build",
+        "mode": "swarm",
+        "seed": 7
+      },
+      "seed": 7,
+      "result": "win",
+      "wave": 30,
+      "totalWaves": 30,
+      "seconds": 1439.53,
+      "lastWaveSeconds": 50.57,
+      "speed": 3,
+      "lives": 10,
+      "picks": 20,
+      "supplyLimit": 20,
+      "coins": 170,
+      "killed": 5668,
+      "peakEnemies": 25,
+      "towers": 22,
+      "spots": 22,
+      "evolved": 22,
+      "bosses": [],
+      "events": [
+        {
+          "wave": 1,
+          "seconds": 10.03,
+          "lives": 10,
+          "coins": 72,
+          "towers": 5
+        },
+        {
+          "wave": 2,
+          "seconds": 57.57,
+          "lives": 10,
+          "coins": 29,
+          "towers": 5
+        },
+        {
+          "wave": 3,
+          "seconds": 105.07,
+          "lives": 10,
+          "coins": 95,
+          "towers": 6
+        },
+        {
+          "wave": 4,
+          "seconds": 152.57,
+          "lives": 10,
+          "coins": 8,
+          "towers": 6
+        },
+        {
+          "wave": 5,
+          "seconds": 200.07,
+          "lives": 10,
+          "coins": 134,
+          "towers": 6
+        },
+        {
+          "wave": 6,
+          "seconds": 247.57,
+          "lives": 10,
+          "coins": 15,
+          "towers": 8
+        },
+        {
+          "wave": 7,
+          "seconds": 295.07,
+          "lives": 10,
+          "coins": 104,
+          "towers": 8
+        },
+        {
+          "wave": 8,
+          "seconds": 342.57,
+          "lives": 10,
+          "coins": 90,
+          "towers": 8
+        },
+        {
+          "wave": 9,
+          "seconds": 390.07,
+          "lives": 10,
+          "coins": 118,
+          "towers": 8
+        },
+        {
+          "wave": 10,
+          "seconds": 437.53,
+          "lives": 10,
+          "coins": 13,
+          "towers": 8
+        },
+        {
+          "wave": 11,
+          "seconds": 485.03,
+          "lives": 10,
+          "coins": 144,
+          "towers": 8
+        },
+        {
+          "wave": 12,
+          "seconds": 532.53,
+          "lives": 10,
+          "coins": 76,
+          "towers": 9
+        },
+        {
+          "wave": 13,
+          "seconds": 580,
+          "lives": 10,
+          "coins": 46,
+          "towers": 11
+        },
+        {
+          "wave": 14,
+          "seconds": 627.5,
+          "lives": 10,
+          "coins": 98,
+          "towers": 11
+        },
+        {
+          "wave": 15,
+          "seconds": 674.97,
+          "lives": 10,
+          "coins": 97,
+          "towers": 11
+        },
+        {
+          "wave": 16,
+          "seconds": 722.47,
+          "lives": 10,
+          "coins": 13,
+          "towers": 12
+        },
+        {
+          "wave": 17,
+          "seconds": 771.73,
+          "lives": 10,
+          "coins": 50,
+          "towers": 13
+        },
+        {
+          "wave": 18,
+          "seconds": 819.2,
+          "lives": 10,
+          "coins": 53,
+          "towers": 14
+        },
+        {
+          "wave": 19,
+          "seconds": 866.7,
+          "lives": 10,
+          "coins": 25,
+          "towers": 15
+        },
+        {
+          "wave": 20,
+          "seconds": 914.17,
+          "lives": 10,
+          "coins": 80,
+          "towers": 15
+        },
+        {
+          "wave": 21,
+          "seconds": 961.67,
+          "lives": 10,
+          "coins": 43,
+          "towers": 15
+        },
+        {
+          "wave": 22,
+          "seconds": 1009.13,
+          "lives": 10,
+          "coins": 49,
+          "towers": 16
+        },
+        {
+          "wave": 23,
+          "seconds": 1056.63,
+          "lives": 10,
+          "coins": 1,
+          "towers": 18
+        },
+        {
+          "wave": 24,
+          "seconds": 1104.1,
+          "lives": 10,
+          "coins": 19,
+          "towers": 18
+        },
+        {
+          "wave": 25,
+          "seconds": 1151.57,
+          "lives": 10,
+          "coins": 3,
+          "towers": 18
+        },
+        {
+          "wave": 26,
+          "seconds": 1199.07,
+          "lives": 10,
+          "coins": 3,
+          "towers": 19
+        },
+        {
+          "wave": 27,
+          "seconds": 1246.53,
+          "lives": 10,
+          "coins": 46,
+          "towers": 21
+        },
+        {
+          "wave": 28,
+          "seconds": 1294.03,
+          "lives": 10,
+          "coins": 42,
+          "towers": 21
+        },
+        {
+          "wave": 29,
+          "seconds": 1341.5,
+          "lives": 10,
+          "coins": 10,
+          "towers": 21
+        },
+        {
+          "wave": 30,
+          "seconds": 1388.97,
+          "lives": 10,
+          "coins": 125,
+          "towers": 22
+        }
+      ],
+      "nonfinite": null
+    },
+    {
+      "id": 35,
+      "mode": "challenge",
+      "roster": [
+        "sprout",
+        "frost",
+        "bloom",
+        "scope"
+      ],
+      "profile": "full",
+      "technology": [
+        "sprout_1",
+        "sprout_2",
+        "sprout_3",
+        "sprout_4",
+        "sprout_5",
+        "frost_1",
+        "frost_2",
+        "frost_3",
+        "frost_4",
+        "frost_5",
+        "bloom_1",
+        "bloom_2",
+        "bloom_3",
+        "bloom_4",
+        "bloom_5",
+        "scope_1",
+        "scope_2",
+        "scope_3",
+        "scope_4",
+        "scope_5",
+        "spark_1",
+        "spark_2",
+        "spark_3",
+        "spark_4",
+        "spark_5",
+        "ember_1",
+        "ember_2",
+        "ember_3",
+        "ember_4",
+        "ember_5",
+        "mint_1",
+        "mint_2",
+        "mint_3",
+        "mint_4",
+        "mint_5",
+        "fan_1",
+        "fan_2",
+        "fan_3",
+        "fan_4",
+        "fan_5",
+        "logistics_1",
+        "logistics_2",
+        "logistics_3",
+        "logistics_4",
+        "logistics_5",
+        "props_1",
+        "props_2",
+        "props_3",
+        "props_4",
+        "props_5",
+        "boss_1",
+        "boss_2",
+        "boss_3",
+        "boss_4",
+        "boss_5",
+        "clearing_1",
+        "clearing_2",
+        "clearing_3",
+        "clearing_4",
+        "clearing_5",
+        "salvage_1",
+        "salvage_2",
+        "salvage_3",
+        "salvage_4",
+        "salvage_5",
+        "supply_1",
+        "supply_2",
+        "supply_3",
+        "supply_4",
+        "supply_5"
+      ],
+      "scenario": {
+        "roster": [
+          "sprout",
+          "frost",
+          "bloom",
+          "scope"
+        ],
+        "tech": "build",
+        "mode": "swarm",
+        "seed": 7
+      },
+      "seed": 7,
+      "result": "lose",
+      "wave": 24,
+      "totalWaves": 30,
+      "seconds": 1143.53,
+      "lastWaveSeconds": 39.47,
+      "speed": 3,
+      "lives": 0,
+      "picks": 17,
+      "supplyLimit": 20,
+      "coins": 30,
+      "killed": 3960,
+      "peakEnemies": 32,
+      "towers": 17,
+      "spots": 22,
+      "evolved": 15,
+      "bosses": [],
+      "events": [
+        {
+          "wave": 1,
+          "seconds": 10.03,
+          "lives": 10,
+          "coins": 83,
+          "towers": 6
+        },
+        {
+          "wave": 2,
+          "seconds": 59.33,
+          "lives": 10,
+          "coins": 104,
+          "towers": 6
+        },
+        {
+          "wave": 3,
+          "seconds": 106.83,
+          "lives": 10,
+          "coins": 19,
+          "towers": 6
+        },
+        {
+          "wave": 4,
+          "seconds": 154.33,
+          "lives": 10,
+          "coins": 5,
+          "towers": 7
+        },
+        {
+          "wave": 5,
+          "seconds": 201.83,
+          "lives": 10,
+          "coins": 40,
+          "towers": 8
+        },
+        {
+          "wave": 6,
+          "seconds": 249.33,
+          "lives": 10,
+          "coins": 24,
+          "towers": 8
+        },
+        {
+          "wave": 7,
+          "seconds": 296.83,
+          "lives": 10,
+          "coins": 85,
+          "towers": 8
+        },
+        {
+          "wave": 8,
+          "seconds": 344.3,
+          "lives": 10,
+          "coins": 95,
+          "towers": 8
+        },
+        {
+          "wave": 9,
+          "seconds": 391.8,
+          "lives": 10,
+          "coins": 7,
+          "towers": 8
+        },
+        {
+          "wave": 10,
+          "seconds": 439.3,
+          "lives": 10,
+          "coins": 56,
+          "towers": 8
+        },
+        {
+          "wave": 11,
+          "seconds": 486.77,
+          "lives": 10,
+          "coins": 75,
+          "towers": 8
+        },
+        {
+          "wave": 12,
+          "seconds": 534.27,
+          "lives": 10,
+          "coins": 99,
+          "towers": 9
+        },
+        {
+          "wave": 13,
+          "seconds": 581.77,
+          "lives": 10,
+          "coins": 14,
+          "towers": 9
+        },
+        {
+          "wave": 14,
+          "seconds": 629.23,
+          "lives": 10,
+          "coins": 65,
+          "towers": 10
+        },
+        {
+          "wave": 15,
+          "seconds": 676.73,
+          "lives": 10,
+          "coins": 21,
+          "towers": 11
+        },
+        {
+          "wave": 16,
+          "seconds": 724.2,
+          "lives": 10,
+          "coins": 94,
+          "towers": 11
+        },
+        {
+          "wave": 17,
+          "seconds": 771.7,
+          "lives": 10,
+          "coins": 112,
+          "towers": 11
+        },
+        {
+          "wave": 18,
+          "seconds": 819.17,
+          "lives": 10,
+          "coins": 28,
+          "towers": 12
+        },
+        {
+          "wave": 19,
+          "seconds": 866.67,
+          "lives": 10,
+          "coins": 46,
+          "towers": 14
+        },
+        {
+          "wave": 20,
+          "seconds": 914.13,
+          "lives": 10,
+          "coins": 40,
+          "towers": 15
+        },
+        {
+          "wave": 21,
+          "seconds": 961.63,
+          "lives": 10,
+          "coins": 4,
+          "towers": 15
+        },
+        {
+          "wave": 22,
+          "seconds": 1009.1,
+          "lives": 5,
+          "coins": 59,
+          "towers": 15
+        },
+        {
+          "wave": 23,
+          "seconds": 1056.6,
+          "lives": 3,
+          "coins": 8,
+          "towers": 16
+        },
+        {
+          "wave": 24,
+          "seconds": 1104.07,
+          "lives": 1,
+          "coins": 63,
+          "towers": 16
+        }
+      ],
+      "nonfinite": null
+    },
+    {
+      "id": 36,
+      "mode": "challenge",
+      "roster": [
+        "sprout",
+        "frost",
+        "bloom",
+        "scope"
+      ],
+      "profile": "full",
+      "technology": [
+        "sprout_1",
+        "sprout_2",
+        "sprout_3",
+        "sprout_4",
+        "sprout_5",
+        "frost_1",
+        "frost_2",
+        "frost_3",
+        "frost_4",
+        "frost_5",
+        "bloom_1",
+        "bloom_2",
+        "bloom_3",
+        "bloom_4",
+        "bloom_5",
+        "scope_1",
+        "scope_2",
+        "scope_3",
+        "scope_4",
+        "scope_5",
+        "spark_1",
+        "spark_2",
+        "spark_3",
+        "spark_4",
+        "spark_5",
+        "ember_1",
+        "ember_2",
+        "ember_3",
+        "ember_4",
+        "ember_5",
+        "mint_1",
+        "mint_2",
+        "mint_3",
+        "mint_4",
+        "mint_5",
+        "fan_1",
+        "fan_2",
+        "fan_3",
+        "fan_4",
+        "fan_5",
+        "logistics_1",
+        "logistics_2",
+        "logistics_3",
+        "logistics_4",
+        "logistics_5",
+        "props_1",
+        "props_2",
+        "props_3",
+        "props_4",
+        "props_5",
+        "boss_1",
+        "boss_2",
+        "boss_3",
+        "boss_4",
+        "boss_5",
+        "clearing_1",
+        "clearing_2",
+        "clearing_3",
+        "clearing_4",
+        "clearing_5",
+        "salvage_1",
+        "salvage_2",
+        "salvage_3",
+        "salvage_4",
+        "salvage_5",
+        "supply_1",
+        "supply_2",
+        "supply_3",
+        "supply_4",
+        "supply_5"
+      ],
+      "scenario": {
+        "roster": [
+          "sprout",
+          "frost",
+          "bloom",
+          "scope"
+        ],
+        "tech": "build",
+        "mode": "swarm",
+        "seed": 7
+      },
+      "seed": 7,
+      "result": "lose",
+      "wave": 29,
+      "totalWaves": 30,
+      "seconds": 1380.9,
+      "lastWaveSeconds": 41.17,
+      "speed": 3,
+      "lives": 0,
+      "picks": 20,
+      "supplyLimit": 20,
+      "coins": 838,
+      "killed": 5766,
+      "peakEnemies": 42,
+      "towers": 22,
+      "spots": 22,
+      "evolved": 22,
+      "bosses": [],
+      "events": [
+        {
+          "wave": 1,
+          "seconds": 10.03,
+          "lives": 10,
+          "coins": 49,
+          "towers": 6
+        },
+        {
+          "wave": 2,
+          "seconds": 57.57,
+          "lives": 10,
+          "coins": 24,
+          "towers": 6
+        },
+        {
+          "wave": 3,
+          "seconds": 105.07,
+          "lives": 10,
+          "coins": 80,
+          "towers": 6
+        },
+        {
+          "wave": 4,
+          "seconds": 152.6,
+          "lives": 10,
+          "coins": 129,
+          "towers": 6
+        },
+        {
+          "wave": 5,
+          "seconds": 200.1,
+          "lives": 10,
+          "coins": 15,
+          "towers": 8
+        },
+        {
+          "wave": 6,
+          "seconds": 247.6,
+          "lives": 10,
+          "coins": 9,
+          "towers": 8
+        },
+        {
+          "wave": 7,
+          "seconds": 295.1,
+          "lives": 10,
+          "coins": 48,
+          "towers": 8
+        },
+        {
+          "wave": 8,
+          "seconds": 342.6,
+          "lives": 10,
+          "coins": 64,
+          "towers": 8
+        },
+        {
+          "wave": 9,
+          "seconds": 390.07,
+          "lives": 10,
+          "coins": 84,
+          "towers": 8
+        },
+        {
+          "wave": 10,
+          "seconds": 437.57,
+          "lives": 10,
+          "coins": 9,
+          "towers": 9
+        },
+        {
+          "wave": 11,
+          "seconds": 485.07,
+          "lives": 10,
+          "coins": 72,
+          "towers": 9
+        },
+        {
+          "wave": 12,
+          "seconds": 532.53,
+          "lives": 10,
+          "coins": 46,
+          "towers": 11
+        },
+        {
+          "wave": 13,
+          "seconds": 580.03,
+          "lives": 10,
+          "coins": 33,
+          "towers": 11
+        },
+        {
+          "wave": 14,
+          "seconds": 627.53,
+          "lives": 10,
+          "coins": 20,
+          "towers": 12
+        },
+        {
+          "wave": 15,
+          "seconds": 675,
+          "lives": 10,
+          "coins": 26,
+          "towers": 14
+        },
+        {
+          "wave": 16,
+          "seconds": 722.5,
+          "lives": 10,
+          "coins": 53,
+          "towers": 15
+        },
+        {
+          "wave": 17,
+          "seconds": 770,
+          "lives": 10,
+          "coins": 104,
+          "towers": 15
+        },
+        {
+          "wave": 18,
+          "seconds": 817.47,
+          "lives": 10,
+          "coins": 34,
+          "towers": 16
+        },
+        {
+          "wave": 19,
+          "seconds": 864.97,
+          "lives": 10,
+          "coins": 92,
+          "towers": 18
+        },
+        {
+          "wave": 20,
+          "seconds": 912.43,
+          "lives": 10,
+          "coins": 51,
+          "towers": 18
+        },
+        {
+          "wave": 21,
+          "seconds": 959.93,
+          "lives": 10,
+          "coins": 43,
+          "towers": 18
+        },
+        {
+          "wave": 22,
+          "seconds": 1007.4,
+          "lives": 10,
+          "coins": 75,
+          "towers": 19
+        },
+        {
+          "wave": 23,
+          "seconds": 1054.9,
+          "lives": 10,
+          "coins": 26,
+          "towers": 21
+        },
+        {
+          "wave": 24,
+          "seconds": 1102.37,
+          "lives": 10,
+          "coins": 72,
+          "towers": 21
+        },
+        {
+          "wave": 25,
+          "seconds": 1149.83,
+          "lives": 10,
+          "coins": 82,
+          "towers": 21
+        },
+        {
+          "wave": 26,
+          "seconds": 1197.33,
+          "lives": 10,
+          "coins": 29,
+          "towers": 22
+        },
+        {
+          "wave": 27,
+          "seconds": 1244.8,
+          "lives": 10,
+          "coins": 269,
+          "towers": 22
+        },
+        {
+          "wave": 28,
+          "seconds": 1292.27,
+          "lives": 10,
+          "coins": 484,
+          "towers": 22
+        },
+        {
+          "wave": 29,
+          "seconds": 1339.73,
+          "lives": 10,
+          "coins": 690,
+          "towers": 22
+        }
+      ],
+      "nonfinite": null
+    },
+    {
+      "id": 37,
+      "mode": "challenge",
+      "roster": [
+        "sprout",
+        "frost",
+        "bloom",
+        "scope"
+      ],
+      "profile": "full",
+      "technology": [
+        "sprout_1",
+        "sprout_2",
+        "sprout_3",
+        "sprout_4",
+        "sprout_5",
+        "frost_1",
+        "frost_2",
+        "frost_3",
+        "frost_4",
+        "frost_5",
+        "bloom_1",
+        "bloom_2",
+        "bloom_3",
+        "bloom_4",
+        "bloom_5",
+        "scope_1",
+        "scope_2",
+        "scope_3",
+        "scope_4",
+        "scope_5",
+        "spark_1",
+        "spark_2",
+        "spark_3",
+        "spark_4",
+        "spark_5",
+        "ember_1",
+        "ember_2",
+        "ember_3",
+        "ember_4",
+        "ember_5",
+        "mint_1",
+        "mint_2",
+        "mint_3",
+        "mint_4",
+        "mint_5",
+        "fan_1",
+        "fan_2",
+        "fan_3",
+        "fan_4",
+        "fan_5",
+        "logistics_1",
+        "logistics_2",
+        "logistics_3",
+        "logistics_4",
+        "logistics_5",
+        "props_1",
+        "props_2",
+        "props_3",
+        "props_4",
+        "props_5",
+        "boss_1",
+        "boss_2",
+        "boss_3",
+        "boss_4",
+        "boss_5",
+        "clearing_1",
+        "clearing_2",
+        "clearing_3",
+        "clearing_4",
+        "clearing_5",
+        "salvage_1",
+        "salvage_2",
+        "salvage_3",
+        "salvage_4",
+        "salvage_5",
+        "supply_1",
+        "supply_2",
+        "supply_3",
+        "supply_4",
+        "supply_5"
+      ],
+      "scenario": {
+        "roster": [
+          "sprout",
+          "frost",
+          "bloom",
+          "scope"
+        ],
+        "tech": "build",
+        "mode": "swarm",
+        "seed": 7
+      },
+      "seed": 7,
+      "result": "lose",
+      "wave": 27,
+      "totalWaves": 30,
+      "seconds": 1297.73,
+      "lastWaveSeconds": 13.8,
+      "speed": 3,
+      "lives": 0,
+      "picks": 20,
+      "supplyLimit": 20,
+      "coins": 1075,
+      "killed": 6022,
+      "peakEnemies": 43,
+      "towers": 22,
+      "spots": 22,
+      "evolved": 22,
+      "bosses": [],
+      "events": [
+        {
+          "wave": 1,
+          "seconds": 10.03,
+          "lives": 10,
+          "coins": 75,
+          "towers": 6
+        },
+        {
+          "wave": 2,
+          "seconds": 57.57,
+          "lives": 10,
+          "coins": 40,
+          "towers": 6
+        },
+        {
+          "wave": 3,
+          "seconds": 105.07,
+          "lives": 10,
+          "coins": 29,
+          "towers": 6
+        },
+        {
+          "wave": 4,
+          "seconds": 152.6,
+          "lives": 10,
+          "coins": 7,
+          "towers": 6
+        },
+        {
+          "wave": 5,
+          "seconds": 200.1,
+          "lives": 10,
+          "coins": 57,
+          "towers": 8
+        },
+        {
+          "wave": 6,
+          "seconds": 247.6,
+          "lives": 10,
+          "coins": 38,
+          "towers": 8
+        },
+        {
+          "wave": 7,
+          "seconds": 295.1,
+          "lives": 10,
+          "coins": 93,
+          "towers": 8
+        },
+        {
+          "wave": 8,
+          "seconds": 342.6,
+          "lives": 10,
+          "coins": 48,
+          "towers": 9
+        },
+        {
+          "wave": 9,
+          "seconds": 390.1,
+          "lives": 10,
+          "coins": 49,
+          "towers": 11
+        },
+        {
+          "wave": 10,
+          "seconds": 437.6,
+          "lives": 10,
+          "coins": 101,
+          "towers": 11
+        },
+        {
+          "wave": 11,
+          "seconds": 493.5,
+          "lives": 10,
+          "coins": 93,
+          "towers": 11
+        },
+        {
+          "wave": 12,
+          "seconds": 541,
+          "lives": 10,
+          "coins": 11,
+          "towers": 13
+        },
+        {
+          "wave": 13,
+          "seconds": 588.5,
+          "lives": 10,
+          "coins": 75,
+          "towers": 14
+        },
+        {
+          "wave": 14,
+          "seconds": 636,
+          "lives": 10,
+          "coins": 14,
+          "towers": 15
+        },
+        {
+          "wave": 15,
+          "seconds": 683.47,
+          "lives": 10,
+          "coins": 32,
+          "towers": 15
+        },
+        {
+          "wave": 16,
+          "seconds": 730.97,
+          "lives": 10,
+          "coins": 53,
+          "towers": 16
+        },
+        {
+          "wave": 17,
+          "seconds": 778.47,
+          "lives": 10,
+          "coins": 8,
+          "towers": 18
+        },
+        {
+          "wave": 18,
+          "seconds": 825.93,
+          "lives": 10,
+          "coins": 3,
+          "towers": 18
+        },
+        {
+          "wave": 19,
+          "seconds": 873.43,
+          "lives": 10,
+          "coins": 121,
+          "towers": 18
+        },
+        {
+          "wave": 20,
+          "seconds": 920.9,
+          "lives": 10,
+          "coins": 98,
+          "towers": 19
+        },
+        {
+          "wave": 21,
+          "seconds": 997.33,
+          "lives": 9,
+          "coins": 29,
+          "towers": 21
+        },
+        {
+          "wave": 22,
+          "seconds": 1046.6,
+          "lives": 9,
+          "coins": 61,
+          "towers": 21
+        },
+        {
+          "wave": 23,
+          "seconds": 1094.07,
+          "lives": 9,
+          "coins": 72,
+          "towers": 22
+        },
+        {
+          "wave": 24,
+          "seconds": 1141.53,
+          "lives": 9,
+          "coins": 309,
+          "towers": 22
+        },
+        {
+          "wave": 25,
+          "seconds": 1189,
+          "lives": 9,
+          "coins": 541,
+          "towers": 22
+        },
+        {
+          "wave": 26,
+          "seconds": 1236.47,
+          "lives": 9,
+          "coins": 788,
+          "towers": 22
+        },
+        {
+          "wave": 27,
+          "seconds": 1283.93,
+          "lives": 1,
+          "coins": 1016,
+          "towers": 22
+        }
+      ],
+      "nonfinite": null
+    },
+    {
+      "id": 38,
+      "mode": "challenge",
+      "roster": [
+        "sprout",
+        "frost",
+        "bloom",
+        "scope"
+      ],
+      "profile": "full",
+      "technology": [
+        "sprout_1",
+        "sprout_2",
+        "sprout_3",
+        "sprout_4",
+        "sprout_5",
+        "frost_1",
+        "frost_2",
+        "frost_3",
+        "frost_4",
+        "frost_5",
+        "bloom_1",
+        "bloom_2",
+        "bloom_3",
+        "bloom_4",
+        "bloom_5",
+        "scope_1",
+        "scope_2",
+        "scope_3",
+        "scope_4",
+        "scope_5",
+        "spark_1",
+        "spark_2",
+        "spark_3",
+        "spark_4",
+        "spark_5",
+        "ember_1",
+        "ember_2",
+        "ember_3",
+        "ember_4",
+        "ember_5",
+        "mint_1",
+        "mint_2",
+        "mint_3",
+        "mint_4",
+        "mint_5",
+        "fan_1",
+        "fan_2",
+        "fan_3",
+        "fan_4",
+        "fan_5",
+        "logistics_1",
+        "logistics_2",
+        "logistics_3",
+        "logistics_4",
+        "logistics_5",
+        "props_1",
+        "props_2",
+        "props_3",
+        "props_4",
+        "props_5",
+        "boss_1",
+        "boss_2",
+        "boss_3",
+        "boss_4",
+        "boss_5",
+        "clearing_1",
+        "clearing_2",
+        "clearing_3",
+        "clearing_4",
+        "clearing_5",
+        "salvage_1",
+        "salvage_2",
+        "salvage_3",
+        "salvage_4",
+        "salvage_5",
+        "supply_1",
+        "supply_2",
+        "supply_3",
+        "supply_4",
+        "supply_5"
+      ],
+      "scenario": {
+        "roster": [
+          "sprout",
+          "frost",
+          "bloom",
+          "scope"
+        ],
+        "tech": "build",
+        "mode": "swarm",
+        "seed": 7
+      },
+      "seed": 7,
+      "result": "lose",
+      "wave": 28,
+      "totalWaves": 30,
+      "seconds": 1376.27,
+      "lastWaveSeconds": 41.73,
+      "speed": 3,
+      "lives": 0,
+      "picks": 20,
+      "supplyLimit": 20,
+      "coins": 1939,
+      "killed": 6357,
+      "peakEnemies": 38,
+      "towers": 22,
+      "spots": 22,
+      "evolved": 22,
+      "bosses": [],
+      "events": [
+        {
+          "wave": 1,
+          "seconds": 10.03,
+          "lives": 10,
+          "coins": 65,
+          "towers": 6
+        },
+        {
+          "wave": 2,
+          "seconds": 57.57,
+          "lives": 10,
+          "coins": 36,
+          "towers": 6
+        },
+        {
+          "wave": 3,
+          "seconds": 105.07,
+          "lives": 10,
+          "coins": 83,
+          "towers": 6
+        },
+        {
+          "wave": 4,
+          "seconds": 152.6,
+          "lives": 10,
+          "coins": 76,
+          "towers": 6
+        },
+        {
+          "wave": 5,
+          "seconds": 200.1,
+          "lives": 10,
+          "coins": 18,
+          "towers": 8
+        },
+        {
+          "wave": 6,
+          "seconds": 247.6,
+          "lives": 10,
+          "coins": 74,
+          "towers": 8
+        },
+        {
+          "wave": 7,
+          "seconds": 295.1,
+          "lives": 10,
+          "coins": 13,
+          "towers": 9
+        },
+        {
+          "wave": 8,
+          "seconds": 342.6,
+          "lives": 10,
+          "coins": 135,
+          "towers": 9
+        },
+        {
+          "wave": 9,
+          "seconds": 390.1,
+          "lives": 10,
+          "coins": 92,
+          "towers": 11
+        },
+        {
+          "wave": 10,
+          "seconds": 439.37,
+          "lives": 10,
+          "coins": 37,
+          "towers": 11
+        },
+        {
+          "wave": 11,
+          "seconds": 498.2,
+          "lives": 10,
+          "coins": 33,
+          "towers": 12
+        },
+        {
+          "wave": 12,
+          "seconds": 545.7,
+          "lives": 10,
+          "coins": 43,
+          "towers": 14
+        },
+        {
+          "wave": 13,
+          "seconds": 593.2,
+          "lives": 10,
+          "coins": 30,
+          "towers": 15
+        },
+        {
+          "wave": 14,
+          "seconds": 640.7,
+          "lives": 10,
+          "coins": 62,
+          "towers": 15
+        },
+        {
+          "wave": 15,
+          "seconds": 688.17,
+          "lives": 10,
+          "coins": 29,
+          "towers": 16
+        },
+        {
+          "wave": 16,
+          "seconds": 735.67,
+          "lives": 10,
+          "coins": 12,
+          "towers": 17
+        },
+        {
+          "wave": 17,
+          "seconds": 783.17,
+          "lives": 10,
+          "coins": 49,
+          "towers": 18
+        },
+        {
+          "wave": 18,
+          "seconds": 830.63,
+          "lives": 10,
+          "coins": 132,
+          "towers": 18
+        },
+        {
+          "wave": 19,
+          "seconds": 878.13,
+          "lives": 10,
+          "coins": 48,
+          "towers": 20
+        },
+        {
+          "wave": 20,
+          "seconds": 925.6,
+          "lives": 10,
+          "coins": 68,
+          "towers": 21
+        },
+        {
+          "wave": 21,
+          "seconds": 1002.23,
+          "lives": 10,
+          "coins": 96,
+          "towers": 21
+        },
+        {
+          "wave": 22,
+          "seconds": 1049.73,
+          "lives": 10,
+          "coins": 138,
+          "towers": 22
+        },
+        {
+          "wave": 23,
+          "seconds": 1097.2,
+          "lives": 10,
+          "coins": 418,
+          "towers": 22
+        },
+        {
+          "wave": 24,
+          "seconds": 1144.67,
+          "lives": 10,
+          "coins": 684,
+          "towers": 22
+        },
+        {
+          "wave": 25,
+          "seconds": 1192.13,
+          "lives": 10,
+          "coins": 945,
+          "towers": 22
+        },
+        {
+          "wave": 26,
+          "seconds": 1239.6,
+          "lives": 10,
+          "coins": 1220,
+          "towers": 22
+        },
+        {
+          "wave": 27,
+          "seconds": 1287.07,
+          "lives": 10,
+          "coins": 1504,
+          "towers": 22
+        },
+        {
+          "wave": 28,
+          "seconds": 1334.53,
+          "lives": 10,
+          "coins": 1761,
+          "towers": 22
+        }
+      ],
+      "nonfinite": null
+    },
+    {
+      "id": 39,
+      "mode": "challenge",
+      "roster": [
+        "sprout",
+        "frost",
+        "bloom",
+        "scope"
+      ],
+      "profile": "full",
+      "technology": [
+        "sprout_1",
+        "sprout_2",
+        "sprout_3",
+        "sprout_4",
+        "sprout_5",
+        "frost_1",
+        "frost_2",
+        "frost_3",
+        "frost_4",
+        "frost_5",
+        "bloom_1",
+        "bloom_2",
+        "bloom_3",
+        "bloom_4",
+        "bloom_5",
+        "scope_1",
+        "scope_2",
+        "scope_3",
+        "scope_4",
+        "scope_5",
+        "spark_1",
+        "spark_2",
+        "spark_3",
+        "spark_4",
+        "spark_5",
+        "ember_1",
+        "ember_2",
+        "ember_3",
+        "ember_4",
+        "ember_5",
+        "mint_1",
+        "mint_2",
+        "mint_3",
+        "mint_4",
+        "mint_5",
+        "fan_1",
+        "fan_2",
+        "fan_3",
+        "fan_4",
+        "fan_5",
+        "logistics_1",
+        "logistics_2",
+        "logistics_3",
+        "logistics_4",
+        "logistics_5",
+        "props_1",
+        "props_2",
+        "props_3",
+        "props_4",
+        "props_5",
+        "boss_1",
+        "boss_2",
+        "boss_3",
+        "boss_4",
+        "boss_5",
+        "clearing_1",
+        "clearing_2",
+        "clearing_3",
+        "clearing_4",
+        "clearing_5",
+        "salvage_1",
+        "salvage_2",
+        "salvage_3",
+        "salvage_4",
+        "salvage_5",
+        "supply_1",
+        "supply_2",
+        "supply_3",
+        "supply_4",
+        "supply_5"
+      ],
+      "scenario": {
+        "roster": [
+          "sprout",
+          "frost",
+          "bloom",
+          "scope"
+        ],
+        "tech": "build",
+        "mode": "swarm",
+        "seed": 7
+      },
+      "seed": 7,
+      "result": "lose",
+      "wave": 27,
+      "totalWaves": 30,
+      "seconds": 1317.87,
+      "lastWaveSeconds": 18.37,
+      "speed": 3,
+      "lives": 0,
+      "picks": 20,
+      "supplyLimit": 20,
+      "coins": 1281,
+      "killed": 5747,
+      "peakEnemies": 43,
+      "towers": 21,
+      "spots": 21,
+      "evolved": 21,
+      "bosses": [],
+      "events": [
+        {
+          "wave": 1,
+          "seconds": 10.03,
+          "lives": 10,
+          "coins": 41,
+          "towers": 6
+        },
+        {
+          "wave": 2,
+          "seconds": 57.57,
+          "lives": 10,
+          "coins": 70,
+          "towers": 6
+        },
+        {
+          "wave": 3,
+          "seconds": 105.07,
+          "lives": 10,
+          "coins": 73,
+          "towers": 6
+        },
+        {
+          "wave": 4,
+          "seconds": 152.6,
+          "lives": 10,
+          "coins": 42,
+          "towers": 8
+        },
+        {
+          "wave": 5,
+          "seconds": 200.1,
+          "lives": 10,
+          "coins": 114,
+          "towers": 8
+        },
+        {
+          "wave": 6,
+          "seconds": 247.6,
+          "lives": 10,
+          "coins": 38,
+          "towers": 8
+        },
+        {
+          "wave": 7,
+          "seconds": 295.1,
+          "lives": 10,
+          "coins": 134,
+          "towers": 8
+        },
+        {
+          "wave": 8,
+          "seconds": 342.6,
+          "lives": 10,
+          "coins": 92,
+          "towers": 9
+        },
+        {
+          "wave": 9,
+          "seconds": 390.1,
+          "lives": 10,
+          "coins": 32,
+          "towers": 11
+        },
+        {
+          "wave": 10,
+          "seconds": 437.6,
+          "lives": 10,
+          "coins": 120,
+          "towers": 11
+        },
+        {
+          "wave": 11,
+          "seconds": 491.57,
+          "lives": 10,
+          "coins": 109,
+          "towers": 11
+        },
+        {
+          "wave": 12,
+          "seconds": 539.07,
+          "lives": 10,
+          "coins": 8,
+          "towers": 13
+        },
+        {
+          "wave": 13,
+          "seconds": 586.57,
+          "lives": 10,
+          "coins": 56,
+          "towers": 14
+        },
+        {
+          "wave": 14,
+          "seconds": 634.07,
+          "lives": 10,
+          "coins": 5,
+          "towers": 15
+        },
+        {
+          "wave": 15,
+          "seconds": 681.53,
+          "lives": 10,
+          "coins": 31,
+          "towers": 15
+        },
+        {
+          "wave": 16,
+          "seconds": 729.03,
+          "lives": 10,
+          "coins": 68,
+          "towers": 16
+        },
+        {
+          "wave": 17,
+          "seconds": 776.5,
+          "lives": 10,
+          "coins": 76,
+          "towers": 18
+        },
+        {
+          "wave": 18,
+          "seconds": 824,
+          "lives": 10,
+          "coins": 112,
+          "towers": 18
+        },
+        {
+          "wave": 19,
+          "seconds": 871.47,
+          "lives": 10,
+          "coins": 61,
+          "towers": 19
+        },
+        {
+          "wave": 20,
+          "seconds": 918.97,
+          "lives": 10,
+          "coins": 16,
+          "towers": 19
+        },
+        {
+          "wave": 21,
+          "seconds": 1014.67,
+          "lives": 10,
+          "coins": 49,
+          "towers": 21
+        },
+        {
+          "wave": 22,
+          "seconds": 1062.13,
+          "lives": 10,
+          "coins": 26,
+          "towers": 21
+        },
+        {
+          "wave": 23,
+          "seconds": 1109.63,
+          "lives": 10,
+          "coins": 283,
+          "towers": 21
+        },
+        {
+          "wave": 24,
+          "seconds": 1157.1,
+          "lives": 10,
+          "coins": 529,
+          "towers": 21
+        },
+        {
+          "wave": 25,
+          "seconds": 1204.57,
+          "lives": 10,
+          "coins": 764,
+          "towers": 21
+        },
+        {
+          "wave": 26,
+          "seconds": 1252.03,
+          "lives": 10,
+          "coins": 1000,
+          "towers": 21
+        },
+        {
+          "wave": 27,
+          "seconds": 1299.5,
+          "lives": 4,
+          "coins": 1223,
+          "towers": 21
+        }
+      ],
+      "nonfinite": null
+    },
+    {
+      "id": 40,
+      "mode": "challenge",
+      "roster": [
+        "sprout",
+        "frost",
+        "bloom",
+        "scope"
+      ],
+      "profile": "full",
+      "technology": [
+        "sprout_1",
+        "sprout_2",
+        "sprout_3",
+        "sprout_4",
+        "sprout_5",
+        "frost_1",
+        "frost_2",
+        "frost_3",
+        "frost_4",
+        "frost_5",
+        "bloom_1",
+        "bloom_2",
+        "bloom_3",
+        "bloom_4",
+        "bloom_5",
+        "scope_1",
+        "scope_2",
+        "scope_3",
+        "scope_4",
+        "scope_5",
+        "spark_1",
+        "spark_2",
+        "spark_3",
+        "spark_4",
+        "spark_5",
+        "ember_1",
+        "ember_2",
+        "ember_3",
+        "ember_4",
+        "ember_5",
+        "mint_1",
+        "mint_2",
+        "mint_3",
+        "mint_4",
+        "mint_5",
+        "fan_1",
+        "fan_2",
+        "fan_3",
+        "fan_4",
+        "fan_5",
+        "logistics_1",
+        "logistics_2",
+        "logistics_3",
+        "logistics_4",
+        "logistics_5",
+        "props_1",
+        "props_2",
+        "props_3",
+        "props_4",
+        "props_5",
+        "boss_1",
+        "boss_2",
+        "boss_3",
+        "boss_4",
+        "boss_5",
+        "clearing_1",
+        "clearing_2",
+        "clearing_3",
+        "clearing_4",
+        "clearing_5",
+        "salvage_1",
+        "salvage_2",
+        "salvage_3",
+        "salvage_4",
+        "salvage_5",
+        "supply_1",
+        "supply_2",
+        "supply_3",
+        "supply_4",
+        "supply_5"
+      ],
+      "scenario": {
+        "roster": [
+          "sprout",
+          "frost",
+          "bloom",
+          "scope"
+        ],
+        "tech": "build",
+        "mode": "swarm",
+        "seed": 7
+      },
+      "seed": 7,
+      "result": "lose",
+      "wave": 18,
+      "totalWaves": 30,
+      "seconds": 869.13,
+      "lastWaveSeconds": 19.43,
+      "speed": 3,
+      "lives": 0,
+      "picks": 16,
+      "supplyLimit": 20,
+      "coins": 81,
+      "killed": 3493,
+      "peakEnemies": 41,
+      "towers": 17,
+      "spots": 22,
+      "evolved": 15,
+      "bosses": [],
+      "events": [
+        {
+          "wave": 1,
+          "seconds": 10.03,
+          "lives": 10,
+          "coins": 49,
+          "towers": 6
+        },
+        {
+          "wave": 2,
+          "seconds": 57.57,
+          "lives": 10,
+          "coins": 75,
+          "towers": 6
+        },
+        {
+          "wave": 3,
+          "seconds": 105.07,
+          "lives": 10,
+          "coins": 59,
+          "towers": 6
+        },
+        {
+          "wave": 4,
+          "seconds": 152.6,
+          "lives": 10,
+          "coins": 17,
+          "towers": 7
+        },
+        {
+          "wave": 5,
+          "seconds": 200.1,
+          "lives": 10,
+          "coins": 61,
+          "towers": 8
+        },
+        {
+          "wave": 6,
+          "seconds": 247.6,
+          "lives": 10,
+          "coins": 138,
+          "towers": 8
+        },
+        {
+          "wave": 7,
+          "seconds": 295.1,
+          "lives": 10,
+          "coins": 89,
+          "towers": 8
+        },
+        {
+          "wave": 8,
+          "seconds": 342.6,
+          "lives": 10,
+          "coins": 28,
+          "towers": 9
+        },
+        {
+          "wave": 9,
+          "seconds": 391.87,
+          "lives": 10,
+          "coins": 7,
+          "towers": 11
+        },
+        {
+          "wave": 10,
+          "seconds": 439.33,
+          "lives": 10,
+          "coins": 23,
+          "towers": 11
+        },
+        {
+          "wave": 11,
+          "seconds": 517.3,
+          "lives": 10,
+          "coins": 54,
+          "towers": 11
+        },
+        {
+          "wave": 12,
+          "seconds": 564.8,
+          "lives": 10,
+          "coins": 85,
+          "towers": 12
+        },
+        {
+          "wave": 13,
+          "seconds": 612.27,
+          "lives": 10,
+          "coins": 61,
+          "towers": 14
+        },
+        {
+          "wave": 14,
+          "seconds": 659.77,
+          "lives": 10,
+          "coins": 97,
+          "towers": 15
+        },
+        {
+          "wave": 15,
+          "seconds": 707.23,
+          "lives": 10,
+          "coins": 100,
+          "towers": 15
+        },
+        {
+          "wave": 16,
+          "seconds": 754.73,
+          "lives": 10,
+          "coins": 63,
+          "towers": 15
+        },
+        {
+          "wave": 17,
+          "seconds": 802.2,
+          "lives": 10,
+          "coins": 11,
+          "towers": 16
+        },
+        {
+          "wave": 18,
+          "seconds": 849.7,
+          "lives": 6,
+          "coins": 5,
+          "towers": 17
+        }
+      ],
+      "nonfinite": null
+    }
+  ]
+}

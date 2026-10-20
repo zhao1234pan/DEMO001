@@ -802,8 +802,8 @@ export class GameRoot extends Component {
   }
 
   private readUnlockedLevel(): number {
-    const saved=PlatformService.getNumber("night_store_unlocked_level",1),cleared=PlatformService.getNumber("night_store_best_level",0);
-    // 旧版终关的解锁值被旧上限截断；扩关后按真实通关记录接续下一关。
+    const saved=PlatformService.getNumber("night_store_unlocked_level",1),cleared=PlatformService.getNumber(globalString("adventureClearedSaveKey"),0);
+    // 历史best也曾在失败时写入，只可信任正式胜利记录；已解锁的旧进度不回退。
     const unlocked=Math.floor(Math.max(1,Math.min(GAME_CONFIG.maxLevels,Math.max(saved,cleared+1))));
     if(unlocked>saved)PlatformService.setMaximumInteger("night_store_unlocked_level",unlocked,GAME_CONFIG.maxLevels);
     return getLevelConfig(unlocked).id;
@@ -826,6 +826,7 @@ export class GameRoot extends Component {
     if (!DEBUG) return;
     PlatformService.setNumber("night_store_unlocked_level", 1);
     PlatformService.setNumber("night_store_best_level", 0);
+    PlatformService.setNumber(globalString("adventureClearedSaveKey"),0);
     PlatformService.setNumber("night_store_game_speed", 1);
     for (const row of rows("Tutorial")) PlatformService.setNumber("night_store_tutorial_" + row.id, 0);
     ShopService.shared.reset();resetChallengeTopics();
@@ -949,12 +950,12 @@ export class GameRoot extends Component {
     } else {
       const win = this.screen === "win";
       this.setLabelPosition("overlayPrimary", 195, win || this.revived ? 420 : 412);
-      this.setLabel("overlayTitle", win ? (this.level.mode === "challenge" ? text("challenge.win") : this.level.id === GAME_CONFIG.maxLevels ? text("ui.GameRoot.019") : text("ui.GameRoot.020")) : text("ui.GameRoot.021"));
+      this.setLabel("overlayTitle", win ? (this.level.mode === "challenge" ? text("challenge.win") : this.level.id === GAME_CONFIG.maxLevels ? text("ui.GameRoot.019",GAME_CONFIG.maxLevels) : text("ui.GameRoot.020")) : text("ui.GameRoot.021"));
       this.setLabel("overlayStats", text("result.stats", this.lives, this.level.initialLives,
         (this.level.obstacles?.length ?? 0) - this.obstacles.length, this.level.obstacles?.length ?? 0, this.defeated, this.earned));
       if (win) {
         const progress = this.resultNextLevel ? text("result.open", this.resultNextLevel)
-          : this.level.mode === "adventure" && this.level.id === GAME_CONFIG.maxLevels ? text("result.complete")
+          : this.level.mode === "adventure" && this.level.id === GAME_CONFIG.maxLevels ? text("result.complete",GAME_CONFIG.maxLevels)
           : text("result.progress", this.wave, this.level.waves.length);
         const details = [this.challenge?text("challenge.result",this.wave,this.level.waves.length,this.challenge.selected.length):progress];
         if(this.challenge&&!this.gmSessionActive&&nextChallengeTopic(this.level.id)&&challengeTopicUnlocked(numeric(nextChallengeTopic(this.level.id)!,"levelId")))details.push(text("topics.opened",text(nextChallengeTopic(this.level.id)!.titleKey)));
@@ -1146,7 +1147,6 @@ export class GameRoot extends Component {
         if (this.lives <= 0) {
           this.lives = 0; this.screen = "lose"; this.cancelPendingAttacks();
           this.audio.play("lose", 0.82);
-          if (!this.gmSessionActive && this.level.mode === "adventure") PlatformService.setMaximumInteger("night_store_best_level", this.level.id, GAME_CONFIG.maxLevels);
           return;
         }
       }
@@ -1189,8 +1189,10 @@ export class GameRoot extends Component {
         this.audio.play("win", 0.8);
         if(!this.gmSessionActive&&!this.mapReview&&this.level.mode==="challenge")completeChallengeTopic(this.level.id);
         // GM 选关用于隔离测试，通关不能污染玩家的正式解锁进度。
-        if (!this.gmSessionActive && this.level.mode === "adventure") {
+        if (!this.gmSessionActive && !this.mapReview && this.level.mode === "adventure") {
           const previous = this.readUnlockedLevel();
+          PlatformService.setMaximumInteger(globalString("adventureClearedSaveKey"),this.currentLevelId,GAME_CONFIG.maxLevels);
+          PlatformService.setMaximumInteger("night_store_best_level",this.currentLevelId,GAME_CONFIG.maxLevels);
           this.collection?.refresh(previous);
           const knownStaff = this.collection?.readState().staff ?? [];
           PlatformService.setMaximumInteger("night_store_unlocked_level", this.currentLevelId + 1, GAME_CONFIG.maxLevels);

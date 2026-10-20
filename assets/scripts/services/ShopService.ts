@@ -3,7 +3,8 @@ import { PlatformService } from "./PlatformService";
 import { ShopConfig, ShopSimulation, ShopState, newShopState, validShopState, migrateShopState } from "../gameplay/shop/ShopSimulation";
 export function shopRule(key:string):string {const r=rows("ShopRule").find(r=>r.key===key);if(!r)throw new Error("Missing shop rule: "+key);return r.value;}
 export function shopNumber(key:string):number {return Number(shopRule(key));}
-export function shopClearedLevel():number {return Math.max(0,Math.floor(PlatformService.getNumber("night_store_unlocked_level",1))-1);}
+/** 旧解锁进度保留，终关用正式首通补齐；历史best曾记录失败到达，不能作为通关依据。 */
+export function shopClearedLevel():number {return Math.max(0,Math.min(globalNumber("maxLevels"),Math.max(Math.floor(PlatformService.getNumber("night_store_unlocked_level",1))-1,Math.floor(PlatformService.getNumber(globalString("adventureClearedSaveKey"),0)))));}
 export function shopGoodsUnlocked(key:string):boolean {const row=rows("ShopGoods").find(r=>r.goodsKey===key);return Boolean(row&&numeric(row,"unlockAfter")<=shopClearedLevel());}
 function config():ShopConfig {
   const rules:Record<string,number>={};for(const r of rows("ShopRule"))if(Number.isFinite(Number(r.value)))rules[r.key]=Number(r.value);
@@ -52,7 +53,7 @@ export class ShopService {
   upgrade(key:string):boolean {this.update();const result=this.simulation?.upgrade(key,shopClearedLevel())??false;if(result)this.save();return result;}
   assign(index:number,key:string,slot=0):boolean {this.update();const result=this.simulation?.assign(index,key,shopClearedLevel(),slot)??false;if(result)this.save();return result;}
   research(key:string):boolean {this.update();const result=this.simulation?.research(key,shopClearedLevel())??false;if(result)this.save();return result;}
-  researchTechnology(key:string):boolean{this.update();const result=this.simulation?.researchTechnology(key,Math.max(shopClearedLevel(),PlatformService.getNumber("night_store_best_level",0)))??false;if(result)this.save();return result;}
+  researchTechnology(key:string):boolean{this.update();const result=this.simulation?.researchTechnology(key,shopClearedLevel())??false;if(result)this.save();return result;}
   buyUniform(key:string):boolean {this.update();const result=this.simulation?.buyUniform(key)??false;if(result)this.save();return result;}
   equip(key:string):boolean {this.update();const result=this.simulation?.equip(key)??false;if(result)this.save();return result;}
   save(now=Date.now()):void {if(this.state){PlatformService.setString(shopRule("saveKey"),JSON.stringify(this.state));this.savedAt=now;}}

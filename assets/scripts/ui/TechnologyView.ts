@@ -1,7 +1,6 @@
 import {Color,Node,Sprite} from 'cc';
 import {numeric,rows,text} from '../config/ConfigTables';
 import {ShopService,shopClearedLevel} from '../services/ShopService';
-import {PlatformService} from '../services/PlatformService';
 import {UiPrefabs,uiNode,uiText} from './UiPrefabs';
 /** 配置驱动科技树；选节点只查看，确认研究才扣局外金币。 */
 export class TechnologyView{
@@ -9,7 +8,7 @@ export class TechnologyView{
  constructor(private readonly root:Node,private readonly assets:UiPrefabs){}
  render(bind:(n:Node,a:()=>void)=>void,back:()=>void,legacy:()=>void):void{
   const service=ShopService.shared,state=service.state;if(!state)return;
-  const branches=rows('TechnologyBranch').slice().sort((a,b)=>numeric(a,'order')-numeric(b,'order')),overview=uiNode(this.root,'Overview'),detail=uiNode(this.root,'Detail'),slots=uiNode(overview,'Cards').children,owned=state.technology??[],has=(key:string)=>owned.some(r=>r.key===key),cleared=Math.max(shopClearedLevel(),PlatformService.getNumber('night_store_best_level',0)),pages=Math.ceil(branches.length/slots.length),nodes=rows('TechnologyNode');
+  const branches=rows('TechnologyBranch').slice().sort((a,b)=>numeric(a,'order')-numeric(b,'order')),overview=uiNode(this.root,'Overview'),detail=uiNode(this.root,'Detail'),slots=uiNode(overview,'Cards').children,owned=state.technology??[],has=(key:string)=>owned.some(r=>r.key===key),cleared=shopClearedLevel(),pages=Math.ceil(branches.length/slots.length),nodes=rows('TechnologyNode');
   this.page=Math.min(pages-1,Math.max(0,this.page));const visible=branches.slice(this.page*slots.length,(this.page+1)*slots.length),branchNodes=(key:string)=>nodes.filter(r=>r.branchKey===key).sort((a,b)=>numeric(a,'tier')-numeric(b,'tier'));
   const image=(n:Node,key:string)=>{if(this.images.get(n)!==key){this.assets.bindImage(n,key);this.images.set(n,key);}};
   overview.active=!this.branch;detail.active=Boolean(this.branch);
