@@ -556,7 +556,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": -19,
+      "y": -22,
       "z": 0
     },
     "_lrot": {
@@ -891,7 +891,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": -198,
+      "y": -201,
       "z": 0
     },
     "_lrot": {
@@ -941,8 +941,8 @@
     "__type__": "cc.UITransform",
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 354,
-      "height": 29
+      "width": 330,
+      "height": 28
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -971,7 +971,7 @@
     "_verticalAlign": 1,
     "_fontSize": 17,
     "_actualFontSize": 17,
-    "_lineHeight": 23,
+    "_lineHeight": 21,
     "_fontFamily": "NightShiftRounded",
     "_overflow": 2,
     "_enableWrapText": true,
@@ -1039,7 +1039,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": -237,
+      "y": -242,
       "z": 0
     },
     "_lrot": {
@@ -1089,8 +1089,8 @@
     "__type__": "cc.UITransform",
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 182,
-      "height": 46
+      "width": 204,
+      "height": 50
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -1300,8 +1300,8 @@
     "__type__": "cc.UITransform",
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 182,
-      "height": 46
+      "width": 204,
+      "height": 50
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -1421,8 +1421,8 @@
     "__type__": "cc.UITransform",
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 182,
-      "height": 46
+      "width": 204,
+      "height": 50
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -1487,7 +1487,7 @@
     },
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": 13,
+      "x": 14,
       "y": 0,
       "z": 0
     },
@@ -1538,8 +1538,8 @@
     "__type__": "cc.UITransform",
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 139,
-      "height": 37
+      "width": 158,
+      "height": 39
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -1566,9 +1566,9 @@
     "_string": "",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_fontSize": 23,
-    "_actualFontSize": 23,
-    "_lineHeight": 30,
+    "_fontSize": 22,
+    "_actualFontSize": 22,
+    "_lineHeight": 26,
     "_fontFamily": "NightShiftRounded",
     "_overflow": 2,
     "_enableWrapText": true,
@@ -1587,12 +1587,12 @@
     "_cacheMode": 0,
     "_isBold": false,
     "_enableOutline": true,
-    "_outlineWidth": 2.4,
+    "_outlineWidth": 1.1,
     "_outlineColor": {
       "__type__": "cc.Color",
-      "r": 152,
-      "g": 82,
-      "b": 14,
+      "r": 138,
+      "g": 78,
+      "b": 22,
       "a": 255
     }
   },
@@ -1626,7 +1626,7 @@
     },
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": -67,
+      "x": -79,
       "y": 0,
       "z": 0
     },
@@ -1677,8 +1677,8 @@
     "__type__": "cc.UITransform",
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 18,
-      "height": 18
+      "width": 17,
+      "height": 20
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -1744,7 +1744,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": -273,
+      "y": -281,
       "z": 0
     },
     "_lrot": {
@@ -6353,7 +6353,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": 150,
+      "y": 148,
       "z": 0
     },
     "_lrot": {
@@ -6403,8 +6403,8 @@
     "__type__": "cc.UITransform",
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 359,
-      "height": 28
+      "width": 358,
+      "height": 27
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -6428,12 +6428,12 @@
     },
     "_id": "",
     "__type__": "cc.Label",
-    "_string": "专属强化会随夜班进度成长",
+    "_string": "请选择一份补给，助你轻松渡过夜班！",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
     "_fontSize": 14,
     "_actualFontSize": 14,
-    "_lineHeight": 21,
+    "_lineHeight": 18,
     "_fontFamily": "NightShiftRounded",
     "_overflow": 2,
     "_enableWrapText": true,

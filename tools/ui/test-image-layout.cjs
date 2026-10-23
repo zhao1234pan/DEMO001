@@ -14,8 +14,9 @@ test('画布模式保留圆形头像的原有构图',()=>{assert.deepEqual(fitUi
 test('所有93个图像槽位外层禁画、内层独立显示并有配置；全部Label仍用统一字体',()=>{
  let slots=0;for(const row of core.rows('UiPrefab')){const a=JSON.parse(fs.readFileSync(root+'/assets/resources/'+row.path+'.prefab'));for(const c of a){if(c.frameKey){slots++;assert.ok(c.image);const n=a[c.node.__id__],picture=a[c.image.__id__],parentSprite=n._components.map(r=>a[r.__id__]).find(o=>o.__type__==='cc.Sprite');assert.equal(parentSprite._enabled,false);assert.equal(picture._parent.__id__,c.node.__id__);assert.ok(['canvas','content','feet'].includes(c.fitMode));assert.ok(c.fill>0&&c.fill<=1);}if(c.__type__==='cc.Label'){assert.equal(c._isSystemFontUsed,false);assert.ok(c._font?.__uuid__);}}}assert.equal(slots,93);
 });
-test('原有界面节点坐标、大小、字体和顺序保留；首页图片继续画布适配',()=>{
- for(const row of core.rows('UiPrefab')){
+test('用户确认的首页与图鉴坐标、大小、字体和顺序保留；首页图片继续画布适配',()=>{
+ // 其余页面已获2026-10-23逐页精修授权；冻结要求只适用于用户确认的布局。
+ for(const row of core.rows('UiPrefab').filter(r=>['home','collection'].includes(r.key))){
   const before=JSON.parse(cp.execFileSync('git',['show','bc9deab:assets/resources/'+row.path+'.prefab'],{cwd:root,encoding:'utf8',maxBuffer:16*1024*1024})),after=JSON.parse(fs.readFileSync(root+'/assets/resources/'+row.path+'.prefab'));
   function records(a){const m=new Map();function walk(n,p){if(n._name==='ImageArtwork')return;const cs=n._components.map(r=>a[r.__id__]),t=cs.find(c=>c.__type__==='cc.UITransform'),l=cs.find(c=>c.__type__==='cc.Label');m.set(p,{pos:n._lpos,scale:n._lscale,active:n._active,size:t?._contentSize,anchor:t?._anchorPoint,label:l?{font:l._font,fontSize:l._fontSize,color:l._color,outline:l._outlineWidth}:null,children:n._children.map(r=>a[r.__id__]._name).filter(n=>n!=='ImageArtwork')});for(const r of n._children){const c=a[r.__id__];walk(c,p+'/'+c._name);}}walk(a[1],'');return m;}assert.deepEqual(records(after),records(before),row.key);
   if(row.key==='home')for(const c of after.filter(c=>c.frameKey)){assert.equal(c.fitMode,'canvas');assert.equal(c.fill,1);}

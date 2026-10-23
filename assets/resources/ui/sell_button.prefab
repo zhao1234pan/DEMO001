@@ -421,17 +421,17 @@
     "__prefab": {
       "__id__": 22
     },
-    "key": "window_flat",
+    "key": "button_gold",
     "padding": 0,
     "image": {
       "__id__": 46
     },
     "previewFrame": {
-      "__uuid__": "c1209586-340e-43f1-90ed-06715a0d6778@f9941",
+      "__uuid__": "aa084ffe-a9d1-4d4a-ac91-3a6ca75f36ae@f9941",
       "__expectedType__": "cc.SpriteFrame"
     },
     "_id": "",
-    "resizeMode": "stretch"
+    "resizeMode": "height"
   },
   {
     "__type__": "cc.CompPrefabInfo",
@@ -752,8 +752,8 @@
     "__type__": "cc.UITransform",
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 92,
-      "height": 44
+      "width": 84,
+      "height": 34
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -789,9 +789,9 @@
     "_isSystemFontUsed": false,
     "_color": {
       "__type__": "cc.Color",
-      "r": 92,
-      "g": 48,
-      "b": 32,
+      "r": 255,
+      "g": 255,
+      "b": 255,
       "a": 255
     },
     "_font": {
@@ -800,8 +800,15 @@
     },
     "_cacheMode": 0,
     "_isBold": false,
-    "_enableOutline": false,
-    "_outlineWidth": 0
+    "_enableOutline": true,
+    "_outlineWidth": 1,
+    "_outlineColor": {
+      "__type__": "cc.Color",
+      "r": 138,
+      "g": 78,
+      "b": 22,
+      "a": 255
+    }
   },
   {
     "__type__": "cc.CompPrefabInfo",

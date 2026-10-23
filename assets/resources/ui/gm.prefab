@@ -535,17 +535,17 @@
     "__prefab": {
       "__id__": 22
     },
-    "key": "window_flat",
+    "key": "button_green",
     "padding": 0,
     "image": {
       "__id__": 876
     },
     "previewFrame": {
-      "__uuid__": "c1209586-340e-43f1-90ed-06715a0d6778@f9941",
+      "__uuid__": "f0cdadb6-124e-4695-9c8b-1c40fc8d149a@f9941",
       "__expectedType__": "cc.SpriteFrame"
     },
     "_id": "",
-    "resizeMode": "stretch"
+    "resizeMode": "height"
   },
   {
     "__type__": "cc.CompPrefabInfo",
@@ -13897,17 +13897,17 @@
     "__prefab": {
       "__id__": 727
     },
-    "key": "window_flat",
+    "key": "button_green",
     "padding": 0,
     "image": {
       "__id__": 1071
     },
     "previewFrame": {
-      "__uuid__": "c1209586-340e-43f1-90ed-06715a0d6778@f9941",
+      "__uuid__": "f0cdadb6-124e-4695-9c8b-1c40fc8d149a@f9941",
       "__expectedType__": "cc.SpriteFrame"
     },
     "_id": "",
-    "resizeMode": "stretch"
+    "resizeMode": "height"
   },
   {
     "__type__": "cc.CompPrefabInfo",
@@ -14138,18 +14138,18 @@
     "_string": "解锁怪物",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_fontSize": 14,
-    "_actualFontSize": 14,
-    "_lineHeight": 18,
+    "_fontSize": 13,
+    "_actualFontSize": 13,
+    "_lineHeight": 17,
     "_fontFamily": "NightShiftRounded",
     "_overflow": 2,
     "_enableWrapText": true,
     "_isSystemFontUsed": false,
     "_color": {
       "__type__": "cc.Color",
-      "r": 92,
-      "g": 48,
-      "b": 32,
+      "r": 255,
+      "g": 255,
+      "b": 255,
       "a": 255
     },
     "_font": {
@@ -14158,8 +14158,15 @@
     },
     "_cacheMode": 0,
     "_isBold": false,
-    "_enableOutline": false,
-    "_outlineWidth": 0
+    "_enableOutline": true,
+    "_outlineWidth": 1,
+    "_outlineColor": {
+      "__type__": "cc.Color",
+      "r": 50,
+      "g": 102,
+      "b": 59,
+      "a": 255
+    }
   },
   {
     "__type__": "cc.CompPrefabInfo",
@@ -14381,17 +14388,17 @@
     "__prefab": {
       "__id__": 753
     },
-    "key": "window_flat",
+    "key": "button_green",
     "padding": 0,
     "image": {
       "__id__": 1077
     },
     "previewFrame": {
-      "__uuid__": "c1209586-340e-43f1-90ed-06715a0d6778@f9941",
+      "__uuid__": "f0cdadb6-124e-4695-9c8b-1c40fc8d149a@f9941",
       "__expectedType__": "cc.SpriteFrame"
     },
     "_id": "",
-    "resizeMode": "stretch"
+    "resizeMode": "height"
   },
   {
     "__type__": "cc.CompPrefabInfo",
@@ -14622,18 +14629,18 @@
     "_string": "解锁 BOSS",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_fontSize": 14,
-    "_actualFontSize": 14,
-    "_lineHeight": 18,
+    "_fontSize": 13,
+    "_actualFontSize": 13,
+    "_lineHeight": 17,
     "_fontFamily": "NightShiftRounded",
     "_overflow": 2,
     "_enableWrapText": true,
     "_isSystemFontUsed": false,
     "_color": {
       "__type__": "cc.Color",
-      "r": 92,
-      "g": 48,
-      "b": 32,
+      "r": 255,
+      "g": 255,
+      "b": 255,
       "a": 255
     },
     "_font": {
@@ -14642,8 +14649,15 @@
     },
     "_cacheMode": 0,
     "_isBold": false,
-    "_enableOutline": false,
-    "_outlineWidth": 0
+    "_enableOutline": true,
+    "_outlineWidth": 1,
+    "_outlineColor": {
+      "__type__": "cc.Color",
+      "r": 50,
+      "g": 102,
+      "b": 59,
+      "a": 255
+    }
   },
   {
     "__type__": "cc.CompPrefabInfo",
@@ -14865,17 +14879,17 @@
     "__prefab": {
       "__id__": 779
     },
-    "key": "window_flat",
+    "key": "button_green",
     "padding": 0,
     "image": {
       "__id__": 1083
     },
     "previewFrame": {
-      "__uuid__": "c1209586-340e-43f1-90ed-06715a0d6778@f9941",
+      "__uuid__": "f0cdadb6-124e-4695-9c8b-1c40fc8d149a@f9941",
       "__expectedType__": "cc.SpriteFrame"
     },
     "_id": "",
-    "resizeMode": "stretch"
+    "resizeMode": "height"
   },
   {
     "__type__": "cc.CompPrefabInfo",
@@ -15106,18 +15120,18 @@
     "_string": "解锁店员",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_fontSize": 14,
-    "_actualFontSize": 14,
-    "_lineHeight": 18,
+    "_fontSize": 13,
+    "_actualFontSize": 13,
+    "_lineHeight": 17,
     "_fontFamily": "NightShiftRounded",
     "_overflow": 2,
     "_enableWrapText": true,
     "_isSystemFontUsed": false,
     "_color": {
       "__type__": "cc.Color",
-      "r": 92,
-      "g": 48,
-      "b": 32,
+      "r": 255,
+      "g": 255,
+      "b": 255,
       "a": 255
     },
     "_font": {
@@ -15126,8 +15140,15 @@
     },
     "_cacheMode": 0,
     "_isBold": false,
-    "_enableOutline": false,
-    "_outlineWidth": 0
+    "_enableOutline": true,
+    "_outlineWidth": 1,
+    "_outlineColor": {
+      "__type__": "cc.Color",
+      "r": 50,
+      "g": 102,
+      "b": 59,
+      "a": 255
+    }
   },
   {
     "__type__": "cc.CompPrefabInfo",
@@ -15349,17 +15370,17 @@
     "__prefab": {
       "__id__": 805
     },
-    "key": "window_flat",
+    "key": "button_green",
     "padding": 0,
     "image": {
       "__id__": 1089
     },
     "previewFrame": {
-      "__uuid__": "c1209586-340e-43f1-90ed-06715a0d6778@f9941",
+      "__uuid__": "f0cdadb6-124e-4695-9c8b-1c40fc8d149a@f9941",
       "__expectedType__": "cc.SpriteFrame"
     },
     "_id": "",
-    "resizeMode": "stretch"
+    "resizeMode": "height"
   },
   {
     "__type__": "cc.CompPrefabInfo",
@@ -15590,18 +15611,18 @@
     "_string": "解锁全部图鉴",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_fontSize": 14,
-    "_actualFontSize": 14,
-    "_lineHeight": 18,
+    "_fontSize": 13,
+    "_actualFontSize": 13,
+    "_lineHeight": 17,
     "_fontFamily": "NightShiftRounded",
     "_overflow": 2,
     "_enableWrapText": true,
     "_isSystemFontUsed": false,
     "_color": {
       "__type__": "cc.Color",
-      "r": 92,
-      "g": 48,
-      "b": 32,
+      "r": 255,
+      "g": 255,
+      "b": 255,
       "a": 255
     },
     "_font": {
@@ -15610,8 +15631,15 @@
     },
     "_cacheMode": 0,
     "_isBold": false,
-    "_enableOutline": false,
-    "_outlineWidth": 0
+    "_enableOutline": true,
+    "_outlineWidth": 1,
+    "_outlineColor": {
+      "__type__": "cc.Color",
+      "r": 50,
+      "g": 102,
+      "b": 59,
+      "a": 255
+    }
   },
   {
     "__type__": "cc.CompPrefabInfo",
@@ -15833,17 +15861,17 @@
     "__prefab": {
       "__id__": 831
     },
-    "key": "window_flat",
+    "key": "button_green",
     "padding": 0,
     "image": {
       "__id__": 1095
     },
     "previewFrame": {
-      "__uuid__": "c1209586-340e-43f1-90ed-06715a0d6778@f9941",
+      "__uuid__": "f0cdadb6-124e-4695-9c8b-1c40fc8d149a@f9941",
       "__expectedType__": "cc.SpriteFrame"
     },
     "_id": "",
-    "resizeMode": "stretch"
+    "resizeMode": "height"
   },
   {
     "__type__": "cc.CompPrefabInfo",
@@ -16074,18 +16102,18 @@
     "_string": "恢复正式图鉴",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_fontSize": 14,
-    "_actualFontSize": 14,
-    "_lineHeight": 18,
+    "_fontSize": 13,
+    "_actualFontSize": 13,
+    "_lineHeight": 17,
     "_fontFamily": "NightShiftRounded",
     "_overflow": 2,
     "_enableWrapText": true,
     "_isSystemFontUsed": false,
     "_color": {
       "__type__": "cc.Color",
-      "r": 92,
-      "g": 48,
-      "b": 32,
+      "r": 255,
+      "g": 255,
+      "b": 255,
       "a": 255
     },
     "_font": {
@@ -16094,8 +16122,15 @@
     },
     "_cacheMode": 0,
     "_isBold": false,
-    "_enableOutline": false,
-    "_outlineWidth": 0
+    "_enableOutline": true,
+    "_outlineWidth": 1,
+    "_outlineColor": {
+      "__type__": "cc.Color",
+      "r": 50,
+      "g": 102,
+      "b": 59,
+      "a": 255
+    }
   },
   {
     "__type__": "cc.CompPrefabInfo",
@@ -16317,17 +16352,17 @@
     "__prefab": {
       "__id__": 857
     },
-    "key": "window_flat",
+    "key": "button_gold",
     "padding": 0,
     "image": {
       "__id__": 1101
     },
     "previewFrame": {
-      "__uuid__": "c1209586-340e-43f1-90ed-06715a0d6778@f9941",
+      "__uuid__": "aa084ffe-a9d1-4d4a-ac91-3a6ca75f36ae@f9941",
       "__expectedType__": "cc.SpriteFrame"
     },
     "_id": "",
-    "resizeMode": "stretch"
+    "resizeMode": "height"
   },
   {
     "__type__": "cc.CompPrefabInfo",
@@ -16558,18 +16593,18 @@
     "_string": "重置进度",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_fontSize": 14,
-    "_actualFontSize": 14,
-    "_lineHeight": 18,
+    "_fontSize": 13,
+    "_actualFontSize": 13,
+    "_lineHeight": 17,
     "_fontFamily": "NightShiftRounded",
     "_overflow": 2,
     "_enableWrapText": true,
     "_isSystemFontUsed": false,
     "_color": {
       "__type__": "cc.Color",
-      "r": 92,
-      "g": 48,
-      "b": 32,
+      "r": 255,
+      "g": 255,
+      "b": 255,
       "a": 255
     },
     "_font": {
@@ -16578,8 +16613,15 @@
     },
     "_cacheMode": 0,
     "_isBold": false,
-    "_enableOutline": false,
-    "_outlineWidth": 0
+    "_enableOutline": true,
+    "_outlineWidth": 1,
+    "_outlineColor": {
+      "__type__": "cc.Color",
+      "r": 50,
+      "g": 102,
+      "b": 59,
+      "a": 255
+    }
   },
   {
     "__type__": "cc.CompPrefabInfo",

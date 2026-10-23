@@ -26,6 +26,8 @@ export class ChallengeView {
     this.cards.forEach((node,i)=>{
       const card=run.card(list[i]);node.active=Boolean(card);if(!card)return;
       uiText(node,'Title',card.name);uiText(node,'Description',card.description);this.assets.bindImage(uiNode(node,'Icon'),'ui:'+card.icon);
+      // 已持有补给只供查看，不能继续显示“选择”造成可再次领取的错觉。
+      uiNode(node,'Select').active=run.pending;uiNode(node,'SelectText').active=run.pending;
       uiNode(node,'Staff').active=Boolean(card.staff);
       const description=uiNode(node,'Description'),box=uiNode(node,card.staff?'StaffDescriptionBox':'GlobalDescriptionBox');description.setPosition(box.position);description.getComponent(UITransform)!.setContentSize(box.getComponent(UITransform)!.contentSize);
       if(card.staff){uiText(node,'Staff/Text',text('challenge.enhanceStaff',TOWER_CONFIG[card.staff as TowerKind].name));this.assets.bindImage(uiNode(node,'Staff/Icon'),'ui:'+card.staff);}

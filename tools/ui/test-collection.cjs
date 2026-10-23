@@ -44,4 +44,17 @@ test('首页仅按用户新要求整体右移金币栏，其余确认布局和�
 test('图鉴层级为台面→角色→姓名牌→姓名，页签标题保留用户位置',()=>{const rank=require(root+'/tools/ui/repair-art-layout.cjs').rank;assert.ok(rank('Shelf')<rank('Cards'));assert.ok(rank('Portrait','collection_card')<rank('Tag','collection_card'));assert.ok(rank('Tag','collection_card')<rank('Name','collection_card'));const page=prefab('collection');near(uiNode(page,'Title').position.y,205.882);for(const key of ['Tab-staff','Tab-enemies','Tab-goods'])near(uiNode(page,key).position.y,160.968);});
 test('商品图鉴显示实际研发售价与销量，只读不更改经营',()=>{const {ShopService}=load(root+'/assets/scripts/services/ShopService.ts'),service=ShopService.shared;service.open(1000000);service.state.coins=100000;service.simulation.research('bread_1',7);service.state.sales.bread=12;const before=JSON.stringify(service.state);menu.dialog={kind:'entry',entry:COLLECTION_ENTRIES.find(e=>e.goodsKey==='bread')};menu.detailUniform=false;menu.renderDialog();const d=menu.dialogs.get('detail');assert.ok(uiNode(d,'Known/Stat0').getComponent(Label).string.includes('Lv.1'));assert.ok(uiNode(d,'Known/Stat1').getComponent(Label).string.includes('12'));assert.equal(uiNode(d,'Uniform').active,false);assert.equal(JSON.stringify(service.state),before);});
 test('制服图鉴区分拥有状态，切回基础外观不影响战斗进化',()=>{const {ShopService}=load(root+'/assets/scripts/services/ShopService.ts'),service=ShopService.shared;menu.collection.isEvolutionUnlocked=()=>false;menu.dialog={kind:'entry',entry:COLLECTION_ENTRIES.find(e=>e.staffKind==='sprout')};menu.detailLevel=1;menu.detailUniform=true;menu.renderDialog();const d=menu.dialogs.get('detail');assert.equal(uiNode(d,'Known').active,false);assert.equal(uiNode(d,'Portrait').silhouette,true);assert.ok(service.simulation.buyUniform('sprout'));const before=JSON.stringify(service.state);menu.renderDialog();assert.equal(uiNode(d,'Known').active,true);assert.equal(uiNode(d,'Portrait').boundImage,'skin:shop_uniform_sprout');assert.equal(uiNode(d,'Known/Stat0').active,false);menu.modalActions.get(uiNode(d,'Base2'))();menu.renderDialog();assert.equal(menu.detailUniform,false);assert.notEqual(uiNode(d,'Portrait').boundImage,'skin:shop_uniform_sprout');assert.equal(JSON.stringify(service.state),before);});
+test('锁定缩略图不露下层草地，解锁重绘能恢复',()=>{
+ const original=menu.routePreview;menu.routePreview=()=>{};assets.bindSkin=()=>{};
+ try{menu.levelPage=1;menu.unlocked=5;menu.levels(menu.pages.get('levels'));
+  for(const [i,card]of menu.levelCards.entries()){assert.equal(uiNode(card,'Thumbnail').active,i===0);assert.equal(uiNode(card,'LockedThumbnail').active,i!==0);}
+  menu.unlocked=8;menu.levels(menu.pages.get('levels'));assert.ok(menu.levelCards.every(card=>uiNode(card,'Thumbnail').active&&!uiNode(card,'LockedThumbnail').active));
+ }finally{menu.routePreview=original;}
+});
+test('长详情缩小后遮罩覆盖全画布，切回短详情也不累积变形',()=>{
+ for(const entry of [COLLECTION_ENTRIES.find(e=>e.staffKind==='sprout'),COLLECTION_ENTRIES.find(e=>e.goodsKey==='bread')]){
+  menu.dialog={kind:'entry',entry};menu.detailLevel=1;menu.detailBaseLevel=1;menu.detailUniform=false;menu.renderDialog();
+  const page=menu.dialogs.get('detail'),dim=uiNode(page,'Dim').getComponent(UITransform);near(dim.width*page.scale.x,390);near(dim.height*page.scale.y,H);
+ }
+});
 console.log(JSON.stringify({passed,type:'模型与序列化数据检查；非真实浏览器运行'}));

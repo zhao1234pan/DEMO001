@@ -201,6 +201,8 @@ export class PrefabGameMenuView {
       uiText(card, "LockedState", text("ui.GameMenuView.018", id - 1));
       uiNode(card, "LockedState").active = !unlocked; uiNode(card, "State").active = unlocked;
       uiColor(card, "Thumbnail", theme.ground);
+      // 锁定卡只保留浅色底板，避免草地图从圆角的四个角露出来。
+      uiNode(card, "Thumbnail").active = unlocked;
       uiNode(card, "LockedThumbnail").active = !unlocked;
       this.routePreview(card, level, unlocked);
       this.bind(card, "", () => {
@@ -385,7 +387,9 @@ export class PrefabGameMenuView {
     } else rows.push([uiNode(page, "Unknown/Title")], [measured("Unknown/Hint")]);
     const heights = rows.map(row => Math.max(...row.map(node => node.getComponent(UITransform)!.height)));
     const height = padding * 2 + heights.reduce((sum, value) => sum + value, 0) + gap * (rows.length - 1);
-    page.setScale(Math.min(1,(H-24)/height),Math.min(1,(H-24)/height),1);
+    const scale=Math.min(1,(H-24)/height);page.setScale(scale,scale,1);
+    // 长详情缩小时，遮罩仍铺满整个画布，避免四边漏亮。
+    uiNode(page,"Dim").getComponent(UITransform)!.setContentSize(W/scale,H/scale);
     let y = height / 2 - padding;
     rows.forEach((row, index) => { for (const node of row) node.setPosition(node.position.x, y - heights[index] / 2); y -= heights[index] + gap; });
     const panel = uiNode(page, "Panel"); panel.setPosition(panel.position.x, 0);

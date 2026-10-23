@@ -200,7 +200,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 118,
-      "height": 31
+      "height": 30
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -227,9 +227,9 @@
     "_string": "LOADING...",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_fontSize": 24,
-    "_actualFontSize": 24,
-    "_lineHeight": 28,
+    "_fontSize": 18,
+    "_actualFontSize": 18,
+    "_lineHeight": 22,
     "_fontFamily": "NightShiftRounded",
     "_overflow": 2,
     "_enableWrapText": true,
@@ -255,7 +255,7 @@
       "b": 161,
       "a": 255
     },
-    "_outlineWidth": 2
+    "_outlineWidth": 1.25
   },
   {
     "__type__": "cc.CompPrefabInfo",
@@ -736,7 +736,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 258,
-      "height": 20
+      "height": 26
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -966,7 +966,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 252,
-      "height": 15
+      "height": 22
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -1052,7 +1052,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 252,
-      "height": 15
+      "height": 22
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -1195,8 +1195,8 @@
     "__type__": "cc.UITransform",
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 24,
-      "height": 24
+      "width": 28,
+      "height": 28
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -1374,7 +1374,7 @@
     },
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": -70,
+      "x": -74,
       "y": -211,
       "z": 0
     },
@@ -1425,8 +1425,8 @@
     "__type__": "cc.UITransform",
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 23,
-      "height": 23
+      "width": 22,
+      "height": 22
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -1604,7 +1604,7 @@
     },
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": 70,
+      "x": 74,
       "y": -211,
       "z": 0
     },
@@ -1655,8 +1655,8 @@
     "__type__": "cc.UITransform",
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 23,
-      "height": 23
+      "width": 22,
+      "height": 22
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -1827,7 +1827,7 @@
     },
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": -118,
+      "x": -114,
       "y": -245,
       "z": 0
     },
@@ -1910,7 +1910,7 @@
     },
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": 118,
+      "x": 114,
       "y": -245,
       "z": 0
     },

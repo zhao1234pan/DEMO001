@@ -204,17 +204,17 @@
     "__prefab": {
       "__id__": 11
     },
-    "key": "window_flat",
+    "key": "counter_green",
     "padding": 0,
     "image": {
       "__id__": 18
     },
     "previewFrame": {
-      "__uuid__": "c1209586-340e-43f1-90ed-06715a0d6778@f9941",
+      "__uuid__": "f065929e-205c-45ae-974d-6c7e704a0e9c@f9941",
       "__expectedType__": "cc.SpriteFrame"
     },
     "_id": "",
-    "resizeMode": "stretch"
+    "resizeMode": "height"
   },
   {
     "__type__": "cc.CompPrefabInfo",
@@ -293,8 +293,8 @@
     "__type__": "cc.UITransform",
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 164,
-      "height": 30
+      "width": 152,
+      "height": 26
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",

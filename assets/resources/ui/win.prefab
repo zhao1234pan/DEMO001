@@ -599,13 +599,13 @@
     "__prefab": {
       "__id__": 29
     },
-    "key": "window_flat",
+    "key": "window_cream",
     "padding": 0,
     "image": {
       "__id__": 332
     },
     "previewFrame": {
-      "__uuid__": "c1209586-340e-43f1-90ed-06715a0d6778@f9941",
+      "__uuid__": "89d6e125-1f54-4484-ad15-bea51596dade@f9941",
       "__expectedType__": "cc.SpriteFrame"
     },
     "_id": "",
@@ -1780,7 +1780,7 @@
     "__type__": "cc.UITransform",
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 169,
+      "width": 182,
       "height": 43
     },
     "_anchorPoint": {
@@ -1808,9 +1808,9 @@
     "_string": "顺利打烊！",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_fontSize": 28,
-    "_actualFontSize": 28,
-    "_lineHeight": 36,
+    "_fontSize": 27,
+    "_actualFontSize": 27,
+    "_lineHeight": 31,
     "_fontFamily": "NightShiftRounded",
     "_overflow": 2,
     "_enableWrapText": true,
@@ -1829,7 +1829,7 @@
     "_cacheMode": 0,
     "_isBold": false,
     "_enableOutline": true,
-    "_outlineWidth": 2.4,
+    "_outlineWidth": 2,
     "_outlineColor": {
       "__type__": "cc.Color",
       "r": 255,
@@ -1933,7 +1933,7 @@
     "__type__": "cc.UITransform",
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 303,
+      "width": 288,
       "height": 38
     },
     "_anchorPoint": {
@@ -2768,8 +2768,8 @@
     "__type__": "cc.UITransform",
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 225,
-      "height": 43
+      "width": 218,
+      "height": 36
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -2798,7 +2798,7 @@
     "_verticalAlign": 1,
     "_fontSize": 20,
     "_actualFontSize": 20,
-    "_lineHeight": 27,
+    "_lineHeight": 24,
     "_fontFamily": "NightShiftRounded",
     "_overflow": 2,
     "_enableWrapText": true,
@@ -2817,12 +2817,12 @@
     "_cacheMode": 0,
     "_isBold": false,
     "_enableOutline": true,
-    "_outlineWidth": 1.6,
+    "_outlineWidth": 1.1,
     "_outlineColor": {
       "__type__": "cc.Color",
-      "r": 152,
-      "g": 82,
-      "b": 14,
+      "r": 138,
+      "g": 78,
+      "b": 22,
       "a": 255
     }
   },
@@ -4583,8 +4583,8 @@
     "__type__": "cc.UITransform",
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 225,
-      "height": 43
+      "width": 218,
+      "height": 36
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -4613,7 +4613,7 @@
     "_verticalAlign": 1,
     "_fontSize": 20,
     "_actualFontSize": 20,
-    "_lineHeight": 27,
+    "_lineHeight": 24,
     "_fontFamily": "NightShiftRounded",
     "_overflow": 2,
     "_enableWrapText": true,
@@ -4632,12 +4632,12 @@
     "_cacheMode": 0,
     "_isBold": false,
     "_enableOutline": true,
-    "_outlineWidth": 1.6,
+    "_outlineWidth": 1.1,
     "_outlineColor": {
       "__type__": "cc.Color",
-      "r": 43,
+      "r": 50,
       "g": 102,
-      "b": 52,
+      "b": 59,
       "a": 255
     }
   },

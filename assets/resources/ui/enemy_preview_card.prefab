@@ -535,7 +535,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": -30.5,
+      "y": -28,
       "z": 0
     },
     "_lrot": {
@@ -585,8 +585,8 @@
     "__type__": "cc.UITransform",
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 64,
-      "height": 18
+      "width": 60,
+      "height": 16
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -615,7 +615,7 @@
     "_verticalAlign": 1,
     "_fontSize": 10,
     "_actualFontSize": 10,
-    "_lineHeight": 16,
+    "_lineHeight": 14,
     "_fontFamily": "NightShiftRounded",
     "_overflow": 2,
     "_enableWrapText": true,

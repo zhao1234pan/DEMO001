@@ -192,7 +192,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 350,
-      "height": 292
+      "height": 316
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -219,13 +219,13 @@
     "__prefab": {
       "__id__": 11
     },
-    "key": "window_flat",
+    "key": "window_cream",
     "padding": 0,
     "image": {
       "__id__": 215
     },
     "previewFrame": {
-      "__uuid__": "c1209586-340e-43f1-90ed-06715a0d6778@f9941",
+      "__uuid__": "89d6e125-1f54-4484-ad15-bea51596dade@f9941",
       "__expectedType__": "cc.SpriteFrame"
     },
     "_id": "",
@@ -271,7 +271,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 150,
-      "y": 126,
+      "y": 139,
       "z": 0
     },
     "_lrot": {
@@ -879,7 +879,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": 107,
+      "y": 116,
       "z": 0
     },
     "_lrot": {
@@ -929,7 +929,7 @@
     "__type__": "cc.UITransform",
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 260,
+      "width": 240,
       "height": 38
     },
     "_anchorPoint": {
@@ -957,18 +957,18 @@
     "_string": "设置",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_fontSize": 28,
-    "_actualFontSize": 28,
-    "_lineHeight": 33,
+    "_fontSize": 26,
+    "_actualFontSize": 26,
+    "_lineHeight": 30,
     "_fontFamily": "NightShiftRounded",
     "_overflow": 2,
     "_enableWrapText": true,
     "_isSystemFontUsed": false,
     "_color": {
       "__type__": "cc.Color",
-      "r": 92,
-      "g": 48,
-      "b": 32,
+      "r": 7,
+      "g": 91,
+      "b": 68,
       "a": 255
     },
     "_font": {
@@ -1327,17 +1327,17 @@
     "__prefab": {
       "__id__": 70
     },
-    "key": "window_flat",
+    "key": "counter_green",
     "padding": 0,
     "image": {
       "__id__": 230
     },
     "previewFrame": {
-      "__uuid__": "c1209586-340e-43f1-90ed-06715a0d6778@f9941",
+      "__uuid__": "f065929e-205c-45ae-974d-6c7e704a0e9c@f9941",
       "__expectedType__": "cc.SpriteFrame"
     },
     "_id": "",
-    "resizeMode": "stretch"
+    "resizeMode": "height"
   },
   {
     "__type__": "cc.CompPrefabInfo",
@@ -2792,17 +2792,17 @@
     "__prefab": {
       "__id__": 148
     },
-    "key": "window_flat",
+    "key": "counter_green",
     "padding": 0,
     "image": {
       "__id__": 248
     },
     "previewFrame": {
-      "__uuid__": "c1209586-340e-43f1-90ed-06715a0d6778@f9941",
+      "__uuid__": "f065929e-205c-45ae-974d-6c7e704a0e9c@f9941",
       "__expectedType__": "cc.SpriteFrame"
     },
     "_id": "",
-    "resizeMode": "stretch"
+    "resizeMode": "height"
   },
   {
     "__type__": "cc.CompPrefabInfo",
@@ -3955,7 +3955,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": -126,
+      "y": -137,
       "z": 0
     },
     "_lrot": {
@@ -4005,8 +4005,8 @@
     "__type__": "cc.UITransform",
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 315,
-      "height": 22
+      "width": 300,
+      "height": 20
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -4033,9 +4033,9 @@
     "_string": "",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_fontSize": 12,
-    "_actualFontSize": 12,
-    "_lineHeight": 17,
+    "_fontSize": 11,
+    "_actualFontSize": 11,
+    "_lineHeight": 15,
     "_fontFamily": "NightShiftRounded",
     "_overflow": 2,
     "_enableWrapText": true,

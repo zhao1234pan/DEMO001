@@ -1016,13 +1016,13 @@
     "__prefab": {
       "__id__": 54
     },
-    "key": "window_flat",
+    "key": "round_8",
     "padding": 0,
     "image": {
       "__id__": 146
     },
     "previewFrame": {
-      "__uuid__": "c1209586-340e-43f1-90ed-06715a0d6778@f9941",
+      "__uuid__": "7a97f06d-748c-4c89-842e-05b3b32f4d49@f9941",
       "__expectedType__": "cc.SpriteFrame"
     },
     "_id": "",
@@ -1736,7 +1736,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": -45,
+      "y": -43,
       "z": 0
     },
     "_lrot": {
@@ -1786,7 +1786,7 @@
     "__type__": "cc.UITransform",
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 134,
+      "width": 128,
       "height": 26
     },
     "_anchorPoint": {
@@ -1871,7 +1871,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": -71,
+      "y": -69,
       "z": 0
     },
     "_lrot": {
@@ -1921,7 +1921,7 @@
     "__type__": "cc.UITransform",
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 134,
+      "width": 128,
       "height": 22
     },
     "_anchorPoint": {
@@ -2006,7 +2006,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": -71,
+      "y": -69,
       "z": 0
     },
     "_lrot": {
@@ -2056,7 +2056,7 @@
     "__type__": "cc.UITransform",
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 134,
+      "width": 128,
       "height": 22
     },
     "_anchorPoint": {
@@ -3169,9 +3169,9 @@
     "_customMaterial": null,
     "_color": {
       "__type__": "cc.Color",
-      "r": 255,
-      "g": 255,
-      "b": 255,
+      "r": 242,
+      "g": 239,
+      "b": 223,
       "a": 255
     },
     "_srcBlendFactor": 2,
