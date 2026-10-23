@@ -1,5 +1,12 @@
 # XLSX → 客户端 CSV 配置规范
 
+## 1.25.0 可见边界与图片槽位
+
+- ArtFrame与VisualSkin新增contentX／contentY／contentWidth／contentHeight四个int，表示独立PNG左上为原点的可见区域；先测量和写原始XLSX，再导表，不修改原图。构建核对actual alpha边界，换图不更新边界会报错。
+- UiLayout新增imageFit（空／canvas／content／feet）及imageFill（0～1）；空适用于非图片节点，启用适配时fill必须大于0。93个图片外层与新ImageArtwork子层均有布局记录；父层保留热区，子层负责显示。首页和圆形头像用canvas／1，其他用途由原表指定。
+- 可见边界alpha阈值8和差分threshold=0.1／忽略抗锯齿属于作者工具测量协议，代码保留其技术常量，不是游戏数值或美观评分；不生成服务端配置。UiImage默认字段仅供旧组件兼容占位，实际边界必须由原表覆盖，不能据默认画布猜切。
+- 图片适配纯算法由UiImageLayout.ts生成tools/ui/image-layout.cjs，使用regenerate-validator.cjs一并更新；客户端与离线审阅共用。源表、42CSV、manifest及工具同次纳入Git。使用步骤见[工具说明](../tools/ui/visual/README.md)。
+
 ## 1.24.0 统一控件与科技期HP配置
 
 - 先写[设计](TECHNOLOGY_LEVEL_BALANCE.md)，再改Global／I18／UiLayout／Wave四原表；42CSV及版本清单同步，无新字段／资源／图集。

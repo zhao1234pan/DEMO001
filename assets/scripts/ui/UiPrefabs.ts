@@ -15,7 +15,8 @@ export class UiPrefabs {
   private readonly nativeFrames: SpriteFrame[] = [];
   private readonly skinRows = new Map(rows("VisualSkin").map(row=>[row.key,row]));
   private readonly sprites = new Set<Sprite>();
-  private readonly imageBounds=new Map<Node,{width:number;height:number}>();
+  private imageBounds=new WeakMap<Node,{width:number;height:number}>();
+  private readonly contentRects=new Map<string,{x:number;y:number;width:number;height:number}>();
   private readonly roundedRows=Array.from(this.skinRows.keys()).filter(key=>key.startsWith("round_")).map(key=>({key,radius:Number(key.slice(6).replace("p","."))}));
   private constructor() {}
 
@@ -38,12 +39,12 @@ export class UiPrefabs {
       const art=await Promise.all(rows("ArtFrame").map(row=>new Promise<void>((resolve,reject)=>{
         bundle.load(row.assetPath,SpriteFrame,(error,frame)=>{if(error||!frame){reject(error||new Error(row.assetPath));return;}
           frame.addRef();result.nativeFrames.push(frame);result.frames.set("frame:"+row.id,frame);
-          for(const domain of ["menu","ui","battle","scenery"])if(row[domain])result.frames.set(domain+":"+row[domain],frame);advanced();resolve();
+          for(const domain of ["menu","ui","battle","scenery"])if(row[domain])result.frames.set(domain+":"+row[domain],frame);const rect={x:numeric(row,"contentX"),y:numeric(row,"contentY"),width:numeric(row,"contentWidth"),height:numeric(row,"contentHeight")};result.contentRects.set("frame:"+row.id,rect);for(const domain of ["menu","ui","battle","scenery"])if(row[domain])result.contentRects.set(domain+":"+row[domain],rect);advanced();resolve();
         });
       }).then(()=>null,error=>error)));
       if(art.some(error=>error))throw art.find(error=>error);
       const skins=await Promise.all(rows("VisualSkin").map(row=>new Promise<void>((resolve,reject)=>{
-        bundle.load(row.path,SpriteFrame,(error,frame)=>{if(error||!frame){reject(error||new Error(row.path));return;}frame.addRef();result.nativeFrames.push(frame);result.frames.set("skin:"+row.key,frame);if(row.group==="ui/icons/goods")result.frames.set("menu:"+row.key,frame);advanced();resolve();});
+        bundle.load(row.path,SpriteFrame,(error,frame)=>{if(error||!frame){reject(error||new Error(row.path));return;}frame.addRef();result.nativeFrames.push(frame);result.frames.set("skin:"+row.key,frame);const rect={x:numeric(row,"contentX"),y:numeric(row,"contentY"),width:numeric(row,"contentWidth"),height:numeric(row,"contentHeight")};result.contentRects.set("skin:"+row.key,rect);if(row.group==="ui/icons/goods"){result.frames.set("menu:"+row.key,frame);result.contentRects.set("menu:"+row.key,rect);}advanced();resolve();});
       }).then(()=>null,error=>error)));
       if(skins.some(error=>error))throw skins.find(error=>error);
       return result;
@@ -68,12 +69,16 @@ export class UiPrefabs {
   bindImage(node: Node, key: string, silhouette = false): void {
     const frame = this.frames.get(key);
     if (!frame) throw new Error(`Unknown UI image: ${key}`);
-    const sprite = node.getComponent(Sprite)!;
+    const binding=node.getComponent(UiImage),sprite = this.imageSprite(node);
     this.sprites.add(sprite); sprite.spriteFrame = frame; sprite.color = silhouette ? Color.BLACK : Color.WHITE;
+    sprite.type=Sprite.Type.SIMPLE;sprite.sizeMode=Sprite.SizeMode.CUSTOM;sprite.trim=false;
+    if(binding?.image){binding.place(frame,this.contentRects.get(key)??{x:0,y:0,width:frame.rect.width,height:frame.rect.height});return;}
     // 固定图标只在预制体给定的框内等比缩放，换画像时不累积缩小。
     const transform=node.getComponent(UITransform)!;let bounds=this.imageBounds.get(node);if(!bounds){bounds={width:transform.width,height:transform.height};this.imageBounds.set(node,bounds);}
     const scale=Math.min(bounds.width/frame.rect.width,bounds.height/frame.rect.height);transform.setContentSize(frame.rect.width*scale,frame.rect.height*scale);
   }
+  /** 图片与槽位分层，变灰作用于实际图像，不影响父节点热区。 */
+  imageSprite(node:Node):Sprite {return node.getComponent(UiImage)?.sprite??node.getComponent(Sprite)!;}
   rounded(radius:number):string {
     // 半径由现有界面/效果几何决定；从资源表中的共享圆角皮肤选取最近尺寸。
     let best=this.roundedRows[0];for(const row of this.roundedRows)if(Math.abs(row.radius-radius)<Math.abs(best.radius-radius))best=row;return best.key;
@@ -91,7 +96,7 @@ export class UiPrefabs {
     this.disposed = true;
     // Node.destroy 延迟到帧末，先解除 Sprite 引用再释放共享PNG。
     for (const sprite of this.sprites) if (sprite.isValid) sprite.spriteFrame = null;
-    this.sprites.clear();this.imageBounds.clear();
+    this.sprites.clear();this.imageBounds=new WeakMap();this.contentRects.clear();
     for(const frame of this.nativeFrames)frame.decRef();this.nativeFrames.length=0;
     this.frames.clear();
 
@@ -112,7 +117,7 @@ export function uiColor(root: Node, path: string, value: string): void {
   const node = uiNode(root, path), color = new Color(); Color.fromHEX(color, value);
   const skin = node.getComponent(UiSkin);
   if (skin) { skin.image!.getComponent(Sprite)!.color=color; }
-  else { const visual = node.getComponent(Label) ?? node.getComponent(Sprite); if (visual) visual.color = color; }
+  else { const visual = node.getComponent(Label) ?? node.getComponent(UiImage)?.sprite ?? node.getComponent(Sprite); if (visual) visual.color = color; }
 }
 /** 从节点实际变换反算命中区域；调整预制体后显示和命中一同更新。 */
 export function uiRect(node: Node, coordinateRoot: Node, width: number, height: number): HitRect {

@@ -1,0 +1,37 @@
+/* 固定槽位、反复换图、实际绑定与可见边界回归；不冒充引擎截图。 */
+const fs=require('fs'),path=require('path'),assert=require('assert/strict'),cp=require('child_process');
+const root=path.resolve(__dirname,'../..'),ts=require(process.argv[2]||'typescript'),core=require('../config/validator.cjs'),{fitUiImage}=require('./image-layout.cjs'),{contentBounds}=require('../art/content-bounds.cjs');
+const sources={};for(const n of core.TABLE_NAMES)sources[n]=fs.readFileSync(root+'/assets/resources/config/'+n+'.csv','utf8');core.installConfigs(sources);
+let count=0;const test=(name,f)=>{f();count++;console.log('PASS '+name);},near=(a,b)=>assert.ok(Math.abs(a-b)<1e-7,`${a} != ${b}`);
+test('全部资源在窄／方／高槽位中等比适配，可见像素不越框，落脚线一致',()=>{
+ for(const table of ['ArtFrame','VisualSkin'])for(const row of core.rows(table))for(const[w,h]of [[28,28],[80,45],[45,80]])for(const mode of ['content','feet']){
+  const sw=+(row.canvasWidth||row.width),sh=+(row.canvasHeight||row.height),r={x:+row.contentX,y:+row.contentY,width:+row.contentWidth,height:+row.contentHeight},p=fitUiImage(w,h,sw,sh,r,mode,.93),sx=p.width/sw,sy=p.height/sh;
+  near(sx,sy);const left=p.x+(r.x-sw/2)*sx,right=left+r.width*sx,top=p.y+(sh/2-r.y)*sy,bottom=top-r.height*sy;
+  assert.ok(left>=-w/2-1e-8&&right<=w/2+1e-8&&top<=h/2+1e-8&&bottom>=-h/2-1e-8);if(mode==='feet')near(bottom,-h*.93/2);
+ }
+});
+test('画布模式保留圆形头像的原有构图',()=>{assert.deepEqual(fitUiImage(100,80,256,256,{x:20,y:40,width:180,height:160},'canvas',1),{x:0,y:0,width:80,height:80});});
+test('所有93个图像槽位外层禁画、内层独立显示并有配置；全部Label仍用统一字体',()=>{
+ let slots=0;for(const row of core.rows('UiPrefab')){const a=JSON.parse(fs.readFileSync(root+'/assets/resources/'+row.path+'.prefab'));for(const c of a){if(c.frameKey){slots++;assert.ok(c.image);const n=a[c.node.__id__],picture=a[c.image.__id__],parentSprite=n._components.map(r=>a[r.__id__]).find(o=>o.__type__==='cc.Sprite');assert.equal(parentSprite._enabled,false);assert.equal(picture._parent.__id__,c.node.__id__);assert.ok(['canvas','content','feet'].includes(c.fitMode));assert.ok(c.fill>0&&c.fill<=1);}if(c.__type__==='cc.Label'){assert.equal(c._isSystemFontUsed,false);assert.ok(c._font?.__uuid__);}}}assert.equal(slots,93);
+});
+test('原有界面节点坐标、大小、字体和顺序保留；首页图片继续画布适配',()=>{
+ for(const row of core.rows('UiPrefab')){
+  const before=JSON.parse(cp.execFileSync('git',['show','bc9deab:assets/resources/'+row.path+'.prefab'],{cwd:root,encoding:'utf8',maxBuffer:16*1024*1024})),after=JSON.parse(fs.readFileSync(root+'/assets/resources/'+row.path+'.prefab'));
+  function records(a){const m=new Map();function walk(n,p){if(n._name==='ImageArtwork')return;const cs=n._components.map(r=>a[r.__id__]),t=cs.find(c=>c.__type__==='cc.UITransform'),l=cs.find(c=>c.__type__==='cc.Label');m.set(p,{pos:n._lpos,scale:n._lscale,active:n._active,size:t?._contentSize,anchor:t?._anchorPoint,label:l?{font:l._font,fontSize:l._fontSize,color:l._color,outline:l._outlineWidth}:null,children:n._children.map(r=>a[r.__id__]._name).filter(n=>n!=='ImageArtwork')});for(const r of n._children){const c=a[r.__id__];walk(c,p+'/'+c._name);}}walk(a[1],'');return m;}assert.deepEqual(records(after),records(before),row.key);
+  if(row.key==='home')for(const c of after.filter(c=>c.frameKey)){assert.equal(c.fitMode,'canvas');assert.equal(c.fill,1);}
+ }
+});
+class Component{getComponent(t){return this.node.getComponent(t);}}class Node{constructor(){this.components=[];this.position={x:0,y:0,z:0};this.scale={x:1,y:1,z:1};this.isValid=true;}getComponent(t){return this.components.find(c=>c instanceof t)||null;}addComponent(t){const c=new t();c.node=this;this.components.push(c);return c;}setPosition(x,y,z){this.position={x,y,z};}}
+class Sprite extends Component{static Type={SIMPLE:0};static SizeMode={CUSTOM:0};}class UITransform extends Component{constructor(){super();this.width=80;this.height=60;this.anchorX=this.anchorY=.5;}setContentSize(width,height){Object.assign(this,{width,height});}}
+class Label extends Component{};class Color{static WHITE='white';static BLACK='black';static fromHEX(target,value){target.hex=value;}}
+const cc={Component,Node,Sprite,UITransform,Label,Color,_decorator:{ccclass:()=>k=>k,executeInEditMode:k=>k,requireComponent:()=>k=>k,property:(...a)=>a.length>=2?undefined:()=>undefined}},cache=new Map();
+function load(file){file=path.resolve(file);if(cache.has(file))return cache.get(file).exports;const m={exports:{}};cache.set(file,m);const requireLocal=id=>id==='cc'?cc:id==='cc/env'?{EDITOR:false,DEBUG:true}:id.endsWith('/config/ConfigTables')||id==='../config/ConfigTables'?core:id.startsWith('.')?load(path.resolve(path.dirname(file),id+'.ts')):require(id);new Function('require','module','exports',ts.transpileModule(fs.readFileSync(file,'utf8'),{compilerOptions:{target:ts.ScriptTarget.ES2018,module:ts.ModuleKind.CommonJS,experimentalDecorators:true}}).outputText)(requireLocal,m,m.exports);return m.exports;}
+test('运行时反复换基础／进化／商品图片不累积缩放、不移动槽位，剪影状态可恢复',()=>{
+ const {UiPrefabs}=load(root+'/assets/scripts/ui/UiPrefabs.ts'),{UiImage}=load(root+'/assets/scripts/ui/UiImage.ts'),assets=new UiPrefabs(),slot=new Node(),box=slot.addComponent(UITransform),parentSprite=slot.addComponent(Sprite),binding=slot.addComponent(UiImage),picture=new Node(),imageTransform=picture.addComponent(UITransform),sprite=picture.addComponent(Sprite);binding.image=picture;binding.fitMode='feet';binding.fill=.93;parentSprite.enabled=false;slot.setPosition(54,61,0);
+ const keys=['menu:sprout','menu:frost_level2','menu:mint_dual','skin:goods_jelly'];for(const key of keys){assets.frames.set(key,{rect:{width:256,height:256}});const r=key.startsWith('skin:')?core.rows('VisualSkin').find(r=>'skin:'+r.key===key):core.rows('ArtFrame').find(r=>'menu:'+r.menu===key);assets.contentRects.set(key,{x:+r.contentX,y:+r.contentY,width:+r.contentWidth,height:+r.contentHeight});}
+ const before={position:{...slot.position},width:box.width,height:box.height};let first;
+ for(let i=0;i<40;i++){assets.bindImage(slot,keys[i%4],i%2===0);assert.equal(sprite.color,i%2===0?'black':'white');assert.equal(assets.imageSprite(slot),sprite);if(i===0)first={position:{...picture.position},width:imageTransform.width,height:imageTransform.height};if(i===36)assert.deepEqual({position:picture.position,width:imageTransform.width,height:imageTransform.height},first);assert.deepEqual({position:slot.position,width:box.width,height:box.height},before);}
+});
+test('共享改色接口作用于独立图片层，避免只给禁画父Sprite染色',()=>{const{uiColor}=load(root+'/assets/scripts/ui/UiPrefabs.ts'),{UiImage}=load(root+'/assets/scripts/ui/UiImage.ts'),slot=new Node(),picture=new Node(),parentSprite=slot.addComponent(Sprite),sprite=picture.addComponent(Sprite),binding=slot.addComponent(UiImage);binding.image=picture;slot.getChildByName=()=>slot;uiColor(slot,'Icon','#123456');assert.equal(sprite.color.hex,'#123456');assert.equal(parentSprite.color,undefined);});
+test('篡改可见边界及空图像策略会被导表校验拒绝',()=>{for(const [table,field,value]of [['ArtFrame','contentWidth','0'],['VisualSkin','contentX','99999'],['UiLayout','imageFit','stretch']]){const next={...sources},rows=core.parseCsv(next[table]),fields=Object.keys(rows[0]);rows[0][field]=value;const encode=v=>'"'+String(v??'').replaceAll('"','""')+'"';next[table]=fields.join(',')+'\n'+rows.map(r=>fields.map(k=>encode(r[k])).join(',')).join('\n');assert.throws(()=>core.installConfigs(next),/Invalid UI/);core.installConfigs(sources);}});
+console.log(JSON.stringify({passed:count,source:'实际适配算法、绑定代码与Prefab数据；非浏览器画面'}));

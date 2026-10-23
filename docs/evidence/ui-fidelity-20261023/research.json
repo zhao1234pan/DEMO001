@@ -1,0 +1,29 @@
+{
+  "date": "2026-10-23",
+  "repositories": [
+    "https://github.com/lambertlbss/cocos",
+    "https://github.com/wanghaisheng/cocos-creator-ui-ai-generation",
+    "https://github.com/lovell/sharp",
+    "https://github.com/mapbox/pixelmatch",
+    "https://github.com/gemini-testing/looks-same"
+  ],
+  "used": [
+    {
+      "name": "sharp",
+      "version": "0.35.5",
+      "license": "Apache-2.0"
+    },
+    {
+      "name": "pixelmatch",
+      "version": "7.2.0",
+      "license": "ISC"
+    },
+    {
+      "name": "pngjs",
+      "version": "7.0.0",
+      "license": "MIT"
+    }
+  ],
+  "runtimeDependenciesAdded": false,
+  "browserPolicyBypassed": false
+}

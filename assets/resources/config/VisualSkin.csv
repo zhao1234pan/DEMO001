@@ -1,195 +1,195 @@
-id,key,path,group,mode,width,height,left,right,top,bottom,padding,note,resizeMode
-1,disc,ui/skins/common/disc/spriteFrame,ui/skins/common,simple,128,128,0,0,0,0,0,共享可替换皮肤,contain
-2,round_0,ui/skins/common/round_0/spriteFrame,ui/skins/common,simple,4,4,0,0,0,0,0,共享可替换皮肤,stretch
-3,round_1,ui/skins/common/round_1/spriteFrame,ui/skins/common,sliced,4,4,1,1,1,1,0,共享可替换皮肤,stretch
-4,round_1p5,ui/skins/common/round_1p5/spriteFrame,ui/skins/common,sliced,6,6,2,2,2,2,0,共享可替换皮肤,stretch
-5,round_2,ui/skins/common/round_2/spriteFrame,ui/skins/common,sliced,6,6,2,2,2,2,0,共享可替换皮肤,stretch
-6,round_2p5,ui/skins/common/round_2p5/spriteFrame,ui/skins/common,sliced,8,8,3,3,3,3,0,共享可替换皮肤,stretch
-7,round_3,ui/skins/common/round_3/spriteFrame,ui/skins/common,sliced,8,8,3,3,3,3,0,共享可替换皮肤,stretch
-8,round_4,ui/skins/common/round_4/spriteFrame,ui/skins/common,sliced,10,10,4,4,4,4,0,共享可替换皮肤,stretch
-9,round_5,ui/skins/common/round_5/spriteFrame,ui/skins/common,sliced,12,12,5,5,5,5,0,共享可替换皮肤,stretch
-10,round_6,ui/skins/common/round_6/spriteFrame,ui/skins/common,sliced,14,14,6,6,6,6,0,共享可替换皮肤,stretch
-11,round_8,ui/skins/common/round_8/spriteFrame,ui/skins/common,sliced,18,18,8,8,8,8,0,共享可替换皮肤,stretch
-12,round_10,ui/skins/common/round_10/spriteFrame,ui/skins/common,sliced,22,22,10,10,10,10,0,共享可替换皮肤,stretch
-13,round_13,ui/skins/common/round_13/spriteFrame,ui/skins/common,sliced,28,28,13,13,13,13,0,共享可替换皮肤,stretch
-14,round_14,ui/skins/common/round_14/spriteFrame,ui/skins/common,sliced,30,30,14,14,14,14,0,共享可替换皮肤,stretch
-15,round_16,ui/skins/common/round_16/spriteFrame,ui/skins/common,sliced,34,34,16,16,16,16,0,共享可替换皮肤,stretch
-16,round_20,ui/skins/common/round_20/spriteFrame,ui/skins/common,sliced,42,42,20,20,20,20,0,共享可替换皮肤,stretch
-17,outline_8_2,ui/skins/borders/outline_8_2/spriteFrame,ui/skins/borders,sliced,22,22,10,10,10,10,2,共享可替换皮肤,stretch
-18,outline_10_2,ui/skins/borders/outline_10_2/spriteFrame,ui/skins/borders,sliced,26,26,12,12,12,12,2,共享可替换皮肤,stretch
-19,outline_16_2,ui/skins/borders/outline_16_2/spriteFrame,ui/skins/borders,sliced,38,38,18,18,18,18,2,共享可替换皮肤,stretch
-20,ring,gameplay/effects/ring/spriteFrame,gameplay/effects,simple,256,256,0,0,0,0,0,共享可替换皮肤,contain
-21,range_ring,gameplay/effects/range_ring/spriteFrame,gameplay/effects,simple,256,256,0,0,0,0,0,共享可替换皮肤,contain
-22,shot_ring,gameplay/effects/shot_ring/spriteFrame,gameplay/effects,simple,256,256,0,0,0,0,0,共享可替换皮肤,contain
-23,frost_shard,gameplay/projectiles/frost_shard/spriteFrame,gameplay/projectiles,simple,128,80,0,0,0,0,0,共享可替换皮肤,contain
-24,outline_14_1p8,ui/skins/borders/outline_14_1p8/spriteFrame,ui/skins/borders,sliced,34,34,16,16,16,16,2,共享可替换皮肤,stretch
-25,shape_7c9f638f0a,ui/skins/symbols/shape_7c9f638f0a/spriteFrame,ui/skins/symbols,simple,84,16,0,0,0,0,3,Highlight，原预制体 battle_hud.prefab,contain
-26,shape_10f273c7ff,ui/skins/symbols/shape_10f273c7ff/spriteFrame,ui/skins/symbols,simple,48,16,0,0,0,0,3,Highlight，原预制体 battle_hud.prefab,contain
-27,shape_aa65f74e17,ui/skins/symbols/shape_aa65f74e17/spriteFrame,ui/skins/symbols,simple,56,16,0,0,0,0,3,Highlight，原预制体 battle_hud.prefab,contain
-28,shape_174ccb03a7,ui/skins/symbols/shape_174ccb03a7/spriteFrame,ui/skins/symbols,simple,80,64,0,0,0,0,3,Heart，原预制体 battle_hud.prefab,contain
-29,round_18,ui/skins/common/round_18/spriteFrame,ui/skins/common,sliced,38,38,18,18,18,18,0,共享可替换皮肤,stretch
-30,round_15,ui/skins/common/round_15/spriteFrame,ui/skins/common,sliced,32,32,15,15,15,15,0,共享可替换皮肤,stretch
-31,outline_5_1p8,ui/skins/borders/outline_5_1p8/spriteFrame,ui/skins/borders,sliced,16,16,7,7,7,7,2,共享可替换皮肤,stretch
-32,outline_13_1p8,ui/skins/borders/outline_13_1p8/spriteFrame,ui/skins/borders,sliced,32,32,15,15,15,15,2,共享可替换皮肤,stretch
-33,shape_84d2036dc1,ui/skins/symbols/shape_84d2036dc1/spriteFrame,ui/skins/symbols,simple,136,16,0,0,0,0,3,Highlight，原预制体 battle_hud.prefab,contain
-34,round_9,ui/skins/common/round_9/spriteFrame,ui/skins/common,sliced,20,20,9,9,9,9,0,共享可替换皮肤,stretch
-35,outline_16_1p8,ui/skins/borders/outline_16_1p8/spriteFrame,ui/skins/borders,sliced,38,38,18,18,18,18,2,共享可替换皮肤,stretch
-36,shape_34531faf13,ui/skins/symbols/shape_34531faf13/spriteFrame,ui/skins/symbols,simple,76,16,0,0,0,0,3,Highlight，原预制体 build_card.prefab,contain
-37,shape_c5f65c98b6,ui/skins/symbols/shape_c5f65c98b6/spriteFrame,ui/skins/symbols,simple,152,16,0,0,0,0,3,Highlight，原预制体 button.prefab,contain
-38,round_40,ui/skins/common/round_40/spriteFrame,ui/skins/common,sliced,82,82,40,40,40,40,0,共享可替换皮肤,stretch
-39,shape_544998b285,ui/skins/symbols/shape_544998b285/spriteFrame,ui/skins/symbols,simple,42,42,0,0,0,0,2,Play，原预制体 challenge_pick.prefab,contain
-40,round_25,ui/skins/common/round_25/spriteFrame,ui/skins/common,sliced,52,52,25,25,25,25,0,共享可替换皮肤,stretch
-41,round_12,ui/skins/common/round_12/spriteFrame,ui/skins/common,sliced,26,26,12,12,12,12,0,共享可替换皮肤,stretch
-42,round_24,ui/skins/common/round_24/spriteFrame,ui/skins/common,sliced,50,50,24,24,24,24,0,共享可替换皮肤,stretch
-43,round_11,ui/skins/common/round_11/spriteFrame,ui/skins/common,sliced,24,24,11,11,11,11,0,共享可替换皮肤,stretch
-44,shape_879420dc0b,ui/skins/symbols/shape_879420dc0b/spriteFrame,ui/skins/symbols,simple,112,112,0,0,0,0,4,Tooth0，原预制体 home.prefab,contain
-45,shape_f3905dc24d,ui/skins/symbols/shape_f3905dc24d/spriteFrame,ui/skins/symbols,simple,112,112,0,0,0,0,4,Tooth1，原预制体 home.prefab,contain
-46,shape_b3665c1d45,ui/skins/symbols/shape_b3665c1d45/spriteFrame,ui/skins/symbols,simple,112,112,0,0,0,0,4,Tooth2，原预制体 home.prefab,contain
-47,shape_c40152e557,ui/skins/symbols/shape_c40152e557/spriteFrame,ui/skins/symbols,simple,112,112,0,0,0,0,4,Tooth3，原预制体 home.prefab,contain
-48,shape_a4685d65a6,ui/skins/symbols/shape_a4685d65a6/spriteFrame,ui/skins/symbols,simple,112,112,0,0,0,0,4,Tooth4，原预制体 home.prefab,contain
-49,shape_6e8296e572,ui/skins/symbols/shape_6e8296e572/spriteFrame,ui/skins/symbols,simple,112,112,0,0,0,0,4,Tooth5，原预制体 home.prefab,contain
-50,shape_a886e0fc5b,ui/skins/symbols/shape_a886e0fc5b/spriteFrame,ui/skins/symbols,simple,112,112,0,0,0,0,4,Tooth6，原预制体 home.prefab,contain
-51,shape_933e4e7edb,ui/skins/symbols/shape_933e4e7edb/spriteFrame,ui/skins/symbols,simple,112,112,0,0,0,0,4,Tooth7，原预制体 home.prefab,contain
-52,shape_0d1d14c16e,ui/skins/symbols/shape_0d1d14c16e/spriteFrame,ui/skins/symbols,simple,48,48,0,0,0,0,4,GearRing，原预制体 home.prefab,contain
-53,round_24p5,ui/skins/common/round_24p5/spriteFrame,ui/skins/common,sliced,52,52,25,25,25,25,0,共享可替换皮肤,stretch
-54,shape_4d22f9bb82,ui/skins/symbols/shape_4d22f9bb82/spriteFrame,ui/skins/symbols,simple,48,48,0,0,0,0,4,Ring，原预制体 level_card.prefab,contain
-55,round_4p6,ui/skins/common/round_4p6/spriteFrame,ui/skins/common,sliced,12,12,5,5,5,5,0,共享可替换皮肤,stretch
-56,round_26,ui/skins/common/round_26/spriteFrame,ui/skins/common,sliced,54,54,26,26,26,26,0,共享可替换皮肤,stretch
-57,outline_26_1p8,ui/skins/borders/outline_26_1p8/spriteFrame,ui/skins/borders,sliced,58,58,28,28,28,28,2,共享可替换皮肤,stretch
-58,shape_68dd104b57,ui/skins/symbols/shape_68dd104b57/spriteFrame,ui/skins/symbols,simple,544,16,0,0,0,0,3,Highlight，原预制体 lose.prefab,contain
-59,shape_f3936d303b,ui/skins/symbols/shape_f3936d303b/spriteFrame,ui/skins/symbols,simple,448,16,0,0,0,0,3,Highlight，原预制体 lose.prefab,contain
-60,outline_24_1p8,ui/skins/borders/outline_24_1p8/spriteFrame,ui/skins/borders,sliced,54,54,26,26,26,26,2,共享可替换皮肤,stretch
-61,shape_f48e01acad,ui/skins/symbols/shape_f48e01acad/spriteFrame,ui/skins/symbols,simple,476,16,0,0,0,0,3,Highlight，原预制体 pause.prefab,contain
-62,shape_2ec48d18f7,ui/skins/symbols/shape_2ec48d18f7/spriteFrame,ui/skins/symbols,simple,448,16,0,0,0,0,3,Highlight，原预制体 pause.prefab,contain
-63,round_23,ui/skins/common/round_23/spriteFrame,ui/skins/common,sliced,48,48,23,23,23,23,0,共享可替换皮肤,stretch
-64,map_1,gameplay/maps/map_1/spriteFrame,gameplay/maps,simple,780,1388,0,0,0,0,0,第1关，路线来自Map/MapPoint/Spot/Theme,stretch
-65,map_2,gameplay/maps/map_2/spriteFrame,gameplay/maps,simple,780,1388,0,0,0,0,0,第2关，路线来自Map/MapPoint/Spot/Theme,stretch
-66,map_3,gameplay/maps/map_3/spriteFrame,gameplay/maps,simple,780,1388,0,0,0,0,0,第3关，路线来自Map/MapPoint/Spot/Theme,stretch
-67,map_4,gameplay/maps/map_4/spriteFrame,gameplay/maps,simple,780,1388,0,0,0,0,0,第4关，路线来自Map/MapPoint/Spot/Theme,stretch
-68,map_5,gameplay/maps/map_5/spriteFrame,gameplay/maps,simple,780,1388,0,0,0,0,0,第5关，路线来自Map/MapPoint/Spot/Theme,stretch
-69,map_6,gameplay/maps/map_6/spriteFrame,gameplay/maps,simple,780,1388,0,0,0,0,0,第6关，路线来自Map/MapPoint/Spot/Theme,stretch
-70,map_7,gameplay/maps/map_7/spriteFrame,gameplay/maps,simple,780,1388,0,0,0,0,0,第7关，路线来自Map/MapPoint/Spot/Theme,stretch
-71,map_8,gameplay/maps/map_8/spriteFrame,gameplay/maps,simple,780,1388,0,0,0,0,0,第8关，路线来自Map/MapPoint/Spot/Theme,stretch
-72,map_9,gameplay/maps/map_9/spriteFrame,gameplay/maps,simple,780,1388,0,0,0,0,0,第9关，路线来自Map/MapPoint/Spot/Theme,stretch
-73,map_10,gameplay/maps/map_10/spriteFrame,gameplay/maps,simple,780,1388,0,0,0,0,0,第10关，路线来自Map/MapPoint/Spot/Theme,stretch
-74,map_11,gameplay/maps/map_11/spriteFrame,gameplay/maps,simple,780,1388,0,0,0,0,0,第11关，路线来自Map/MapPoint/Spot/Theme,stretch
-75,map_12,gameplay/maps/map_12/spriteFrame,gameplay/maps,simple,780,1388,0,0,0,0,0,第12关，路线来自Map/MapPoint/Spot/Theme,stretch
-76,map_13,gameplay/maps/map_13/spriteFrame,gameplay/maps,simple,780,1388,0,0,0,0,0,第13关，路线来自Map/MapPoint/Spot/Theme,stretch
-77,map_14,gameplay/maps/map_14/spriteFrame,gameplay/maps,simple,780,1388,0,0,0,0,0,第14关，路线来自Map/MapPoint/Spot/Theme,stretch
-78,map_15,gameplay/maps/map_15/spriteFrame,gameplay/maps,simple,780,1388,0,0,0,0,0,第15关，路线来自Map/MapPoint/Spot/Theme,stretch
-79,map_16,gameplay/maps/map_16/spriteFrame,gameplay/maps,simple,780,1388,0,0,0,0,0,第16关，路线来自Map/MapPoint/Spot/Theme,stretch
-80,map_17,gameplay/maps/map_17/spriteFrame,gameplay/maps,simple,780,1388,0,0,0,0,0,第17关，路线来自Map/MapPoint/Spot/Theme,stretch
-81,map_18,gameplay/maps/map_18/spriteFrame,gameplay/maps,simple,780,1388,0,0,0,0,0,第18关，路线来自Map/MapPoint/Spot/Theme,stretch
-82,map_19,gameplay/maps/map_19/spriteFrame,gameplay/maps,simple,780,1388,0,0,0,0,0,第19关，路线来自Map/MapPoint/Spot/Theme,stretch
-83,map_20,gameplay/maps/map_20/spriteFrame,gameplay/maps,simple,780,1388,0,0,0,0,0,第20关，路线来自Map/MapPoint/Spot/Theme,stretch
-84,map_21,gameplay/maps/map_21/spriteFrame,gameplay/maps,simple,780,1388,0,0,0,0,0,第21关，路线来自Map/MapPoint/Spot/Theme,stretch
-85,home_city,ui/backgrounds/home_city/spriteFrame,ui/backgrounds,simple,941,1672,0,0,0,0,0,2026-10-07用户UI参考；PNG可替换,cover
-86,loading_blue,ui/backgrounds/loading_blue/spriteFrame,ui/backgrounds,simple,941,1672,0,0,0,0,0,2026-10-07用户UI参考；PNG可替换,cover
-87,window_cream,ui/skins/redesign/window_cream/spriteFrame,ui/skins/redesign,sliced,322,320,102,102,102,102,0,2026-10-07用户UI参考；PNG可替换,stretch
-88,button_gold,ui/skins/redesign/button_gold/spriteFrame,ui/skins/redesign,sliced,350,144,46,46,46,46,0,2026-10-07用户UI参考；PNG可替换,height
-89,button_green,ui/skins/redesign/button_green/spriteFrame,ui/skins/redesign,sliced,335,144,46,46,46,46,0,2026-10-07用户UI参考；PNG可替换,height
-90,circle_cream,ui/skins/redesign/circle_cream/spriteFrame,ui/skins/redesign,simple,256,256,0,0,0,0,0,2026-10-07用户UI参考；PNG可替换,contain
-91,tab_normal,ui/skins/redesign/tab_normal/spriteFrame,ui/skins/redesign,sliced,349,135,43,43,43,43,0,2026-10-07用户UI参考；PNG可替换,height
-92,tab_selected,ui/skins/redesign/tab_selected/spriteFrame,ui/skins/redesign,sliced,334,131,42,42,42,42,0,2026-10-07用户UI参考；PNG可替换,height
-93,close_red,ui/skins/redesign/close_red/spriteFrame,ui/skins/redesign,simple,256,256,0,0,0,0,0,2026-10-07用户UI参考；PNG可替换,contain
-94,shelf,ui/skins/redesign/shelf/spriteFrame,ui/skins/redesign,sliced,357,92,30,30,14,14,0,2026-10-07用户UI参考；PNG可替换,height
-95,name_tag,ui/skins/redesign/name_tag/spriteFrame,ui/skins/redesign,sliced,318,125,40,40,40,40,0,2026-10-07用户UI参考；PNG可替换,height
-96,night_banner,ui/skins/redesign/night_banner/spriteFrame,ui/skins/redesign,simple,506,187,0,0,0,0,0,2026-10-07用户UI参考；PNG可替换,contain
-97,window_mint,ui/skins/redesign/window_mint/spriteFrame,ui/skins/redesign,sliced,243,244,78,78,78,78,0,2026-10-07用户UI参考；PNG可替换,stretch
-98,button_disabled,ui/skins/redesign/button_disabled/spriteFrame,ui/skins/redesign,sliced,298,132,42,42,42,42,0,2026-10-07用户UI参考；PNG可替换,height
-99,book_frame,ui/windows/book_frame/spriteFrame,ui/windows,sliced,1086,1448,109,109,246,101,0,2026-10-07用户UI参考；PNG可替换,stretch
-100,icon_heart,ui/icons/common/icon_heart/spriteFrame,ui/icons/common,simple,256,256,0,0,0,0,0,2026-10-07用户UI参考；PNG可替换,contain
-101,icon_coin,ui/icons/common/icon_coin/spriteFrame,ui/icons/common,simple,256,256,0,0,0,0,0,2026-10-07用户UI参考；PNG可替换,contain
-102,icon_book,ui/icons/common/icon_book/spriteFrame,ui/icons/common,simple,256,256,0,0,0,0,0,2026-10-07用户UI参考；PNG可替换,contain
-103,icon_gear,ui/icons/common/icon_gear/spriteFrame,ui/icons/common,simple,256,256,0,0,0,0,0,2026-10-07用户UI参考；PNG可替换,contain
-104,icon_store,ui/icons/common/icon_store/spriteFrame,ui/icons/common,simple,256,256,0,0,0,0,0,2026-10-07用户UI参考；PNG可替换,contain
-105,icon_trophy,ui/icons/common/icon_trophy/spriteFrame,ui/icons/common,simple,256,256,0,0,0,0,0,2026-10-07用户UI参考；PNG可替换,contain
-106,icon_avatar,ui/icons/common/icon_avatar/spriteFrame,ui/icons/common,simple,256,256,0,0,0,0,0,2026-10-07用户UI参考；PNG可替换,contain
-107,icon_check,ui/icons/common/icon_check/spriteFrame,ui/icons/common,simple,256,256,0,0,0,0,0,2026-10-07用户UI参考；PNG可替换,contain
-108,icon_freeze,ui/icons/common/icon_freeze/spriteFrame,ui/icons/common,simple,256,256,0,0,0,0,0,2026-10-07用户UI参考；PNG可替换,contain
-109,icon_broom,ui/icons/common/icon_broom/spriteFrame,ui/icons/common,simple,256,256,0,0,0,0,0,2026-10-07用户UI参考；PNG可替换,contain
-110,icon_menu,ui/icons/common/icon_menu/spriteFrame,ui/icons/common,simple,256,256,0,0,0,0,0,2026-10-07用户UI参考；PNG可替换,contain
-111,icon_pause,ui/icons/common/icon_pause/spriteFrame,ui/icons/common,simple,256,256,0,0,0,0,0,2026-10-07用户UI参考；PNG可替换,contain
-112,goods_cola,ui/icons/goods/goods_cola/spriteFrame,ui/icons/goods,simple,256,256,0,0,0,0,0,2026-10-07用户UI参考；PNG可替换,contain
-113,goods_bread,ui/icons/goods/goods_bread/spriteFrame,ui/icons/goods,simple,256,256,0,0,0,0,0,2026-10-07用户UI参考；PNG可替换,contain
-114,goods_noodles,ui/icons/goods/goods_noodles/spriteFrame,ui/icons/goods,simple,256,256,0,0,0,0,0,2026-10-07用户UI参考；PNG可替换,contain
-115,goods_milk,ui/icons/goods/goods_milk/spriteFrame,ui/icons/goods,simple,256,256,0,0,0,0,0,2026-10-07用户UI参考；PNG可替换,contain
-116,goods_chips,ui/icons/goods/goods_chips/spriteFrame,ui/icons/goods,simple,256,256,0,0,0,0,0,2026-10-07用户UI参考；PNG可替换,contain
-117,goods_cookies,ui/icons/goods/goods_cookies/spriteFrame,ui/icons/goods,simple,256,256,0,0,0,0,0,2026-10-07用户UI参考；PNG可替换,contain
-118,goods_jelly,ui/icons/goods/goods_jelly/spriteFrame,ui/icons/goods,simple,256,256,0,0,0,0,0,2026-10-07用户UI参考；PNG可替换,contain
-119,goods_water,ui/icons/goods/goods_water/spriteFrame,ui/icons/goods,simple,256,256,0,0,0,0,0,2026-10-07用户UI参考；PNG可替换,contain
-120,goods_rice,ui/icons/goods/goods_rice/spriteFrame,ui/icons/goods,simple,256,256,0,0,0,0,0,2026-10-07用户UI参考；PNG可替换,contain
-121,courtyard_ground,gameplay/maps/courtyard_ground/spriteFrame,gameplay/maps,simple,1254,1254,0,0,0,0,0,2026-10-07用户UI参考；PNG可替换,cover
-122,home_adventure,ui/windows/home/home_adventure/spriteFrame,ui/windows/home,sliced,685,212,100,100,55,55,0,2026-10-07逐页参考还原；独立专用PNG,height
-123,home_challenge,ui/windows/home/home_challenge/spriteFrame,ui/windows/home,sliced,683,212,100,100,55,55,0,2026-10-07逐页参考还原；独立专用PNG,height
-124,loading_track,ui/hud/loading/loading_track/spriteFrame,ui/hud/loading,sliced,702,81,50,50,20,20,0,2026-10-07逐页参考还原；独立专用PNG,height
-125,loading_fill,ui/hud/loading/loading_fill/spriteFrame,ui/hud/loading,sliced,704,79,38,38,20,20,0,2026-10-07逐页参考还原；独立专用PNG,stretch
-126,loading_paw,ui/hud/loading/loading_paw/spriteFrame,ui/hud/loading,simple,256,256,0,0,0,0,0,2026-10-07逐页参考还原；独立专用PNG,contain
-127,loading_title_paw,ui/hud/loading/loading_title_paw/spriteFrame,ui/hud/loading,simple,256,256,0,0,0,0,0,2026-10-07逐页参考还原；独立专用PNG,contain
-128,counter_white,ui/hud/counters/counter_white/spriteFrame,ui/hud/counters,sliced,398,135,64,64,28,28,0,2026-10-07逐页参考还原；独立专用PNG,height
-129,window_flat,ui/windows/common/window_flat/spriteFrame,ui/windows/common,sliced,716,326,48,48,48,48,0,2026-10-07逐页参考还原；独立专用PNG,stretch
-130,portrait_normal,ui/windows/loadout/portrait_normal/spriteFrame,ui/windows/loadout,simple,256,256,0,0,0,0,0,2026-10-07逐页参考还原；独立专用PNG,contain
-131,portrait_selected,ui/windows/loadout/portrait_selected/spriteFrame,ui/windows/loadout,simple,256,256,0,0,0,0,0,2026-10-07逐页参考还原；独立专用PNG,contain
-132,preview_ground,ui/windows/adventure/preview_ground/spriteFrame,ui/windows/adventure,simple,256,256,0,0,0,0,0,缩略图底纹仅在卡片内适配，不能cover溢出,stretch
-133,mint_pill,ui/windows/common/mint_pill/spriteFrame,ui/windows/common,sliced,616,166,90,90,28,28,0,单独生成完整PNG；淡绿圆角按钮/选卡标题,height
-134,counter_green,ui/hud/counters/counter_green/spriteFrame,ui/hud/counters,sliced,616,166,90,90,28,28,0,单独生成完整PNG；战斗白底绿边计数框,height
-135,rank_star,gameplay/effects/rank_star/spriteFrame,gameplay/effects,simple,256,256,0,0,0,0,0,单张透明等级星星PNG,contain
-136,shop_interior,ui/windows/shop/shop_interior/spriteFrame,ui/windows/shop,simple,1024,1536,0,0,0,0,0,单张完整PNG，内置图像生成；固定便利店内景,cover
-137,shop_floor,ui/windows/shop/shop_floor/spriteFrame,ui/windows/shop,simple,1024,1536,0,0,0,0,0,独立PNG；统一俯视斜角便利店视角,cover
-138,shop_shelf,ui/windows/shop/shop_shelf/spriteFrame,ui/windows/shop,simple,1254,1254,0,0,0,0,0,独立PNG；统一俯视斜角便利店视角,contain
-139,shop_checkout,ui/windows/shop/shop_checkout/spriteFrame,ui/windows/shop,simple,1254,1254,0,0,0,0,0,独立PNG；统一俯视斜角便利店视角,contain
-140,map_22,gameplay/maps/map_22/spriteFrame,gameplay/maps,simple,780,1388,0,0,0,0,0,挑战专题急件专场；复用成熟路线并烘焙独立PNG,stretch
-141,map_23,gameplay/maps/map_23/spriteFrame,gameplay/maps,simple,780,1388,0,0,0,0,0,挑战专题仓库清点；复用成熟路线并烘焙独立PNG,stretch
-142,map_24,gameplay/maps/map_24/spriteFrame,gameplay/maps,simple,780,1388,0,0,0,0,0,挑战专题零钱狂欢；复用成熟路线并烘焙独立PNG,stretch
-143,map_25,gameplay/maps/map_25/spriteFrame,gameplay/maps,simple,780,1388,0,0,0,0,0,挑战专题迷你流水线；复用成熟路线并烘焙独立PNG,stretch
-144,map_26,gameplay/maps/map_26/spriteFrame,gameplay/maps,simple,780,1388,0,0,0,0,0,挑战专题午夜压轴；复用成熟路线并烘焙独立PNG,stretch
-145,shop_entrance,ui/windows/shop/shop_entrance/spriteFrame,ui/windows/shop,simple,1254,1254,0,0,0,0,0,商店表现独立PNG；完整透明画布，无图集切片,contain
-146,shop_bag,ui/windows/shop/shop_bag/spriteFrame,ui/windows/shop,simple,1254,1254,0,0,0,0,0,商店表现独立PNG；完整透明画布，无图集切片,contain
-147,shop_crate,ui/windows/shop/shop_crate/spriteFrame,ui/windows/shop,simple,1254,1254,0,0,0,0,0,商店表现独立PNG；完整透明画布，无图集切片,contain
-148,shop_uniform_sprout,ui/windows/shop/uniforms/sprout/spriteFrame,ui/windows/shop/uniforms,simple,512,512,0,0,0,0,0,独立制服PNG，统一透明画布与脚底，完整源图归档,contain
-149,shop_uniform_frost,ui/windows/shop/uniforms/frost/spriteFrame,ui/windows/shop/uniforms,simple,512,512,0,0,0,0,0,独立制服PNG，统一透明画布与脚底，完整源图归档,contain
-150,shop_uniform_bloom,ui/windows/shop/uniforms/bloom/spriteFrame,ui/windows/shop/uniforms,simple,512,512,0,0,0,0,0,独立制服PNG，统一透明画布与脚底，完整源图归档,contain
-151,shop_uniform_scope,ui/windows/shop/uniforms/scope/spriteFrame,ui/windows/shop/uniforms,simple,512,512,0,0,0,0,0,独立制服PNG，统一透明画布与脚底，完整源图归档,contain
-152,shop_uniform_spark,ui/windows/shop/uniforms/spark/spriteFrame,ui/windows/shop/uniforms,simple,512,512,0,0,0,0,0,独立制服PNG，统一透明画布与脚底，完整源图归档,contain
-153,shop_uniform_ember,ui/windows/shop/uniforms/ember/spriteFrame,ui/windows/shop/uniforms,simple,512,512,0,0,0,0,0,独立制服PNG，统一透明画布与脚底，完整源图归档,contain
-154,shop_uniform_mint,ui/windows/shop/uniforms/mint/spriteFrame,ui/windows/shop/uniforms,simple,512,512,0,0,0,0,0,独立制服PNG，统一透明画布与脚底，完整源图归档,contain
-155,shop_uniform_fan,ui/windows/shop/uniforms/fan/spriteFrame,ui/windows/shop/uniforms,simple,512,512,0,0,0,0,0,独立制服PNG，统一透明画布与脚底，完整源图归档,contain
-156,shop_room_v2,ui/windows/shop/reference/room/spriteFrame,ui/windows/shop/reference,simple,941,1672,0,0,0,0,0,用户效果图参考；内置imagegen独立PNG；完整源图保留,cover
-157,shop_shelf_v2,ui/windows/shop/reference/shelf/spriteFrame,ui/windows/shop/reference,simple,512,576,0,0,0,0,0,用户效果图参考；内置imagegen独立PNG；完整源图保留,contain
-158,shop_counter_v2,ui/windows/shop/reference/counter/spriteFrame,ui/windows/shop/reference,simple,768,512,0,0,0,0,0,用户效果图参考；内置imagegen独立PNG；完整源图保留,contain
-159,shop_nav_staff,ui/windows/shop/reference/nav_staff/spriteFrame,ui/windows/shop/reference,simple,512,512,0,0,0,0,0,用户效果图参考；内置imagegen独立PNG；完整源图保留,contain
-160,shop_nav_upgrade,ui/windows/shop/reference/nav_upgrade/spriteFrame,ui/windows/shop/reference,simple,512,512,0,0,0,0,0,用户效果图参考；内置imagegen独立PNG；完整源图保留,contain
-161,shop_nav_goods,ui/windows/shop/reference/nav_goods/spriteFrame,ui/windows/shop/reference,simple,512,512,0,0,0,0,0,用户效果图参考；内置imagegen独立PNG；完整源图保留,contain
-162,shop_nav_research,ui/windows/shop/reference/nav_research/spriteFrame,ui/windows/shop/reference,simple,512,512,0,0,0,0,0,用户效果图参考；内置imagegen独立PNG；完整源图保留,contain
-163,shop_nav_uniform,ui/windows/shop/reference/nav_uniform/spriteFrame,ui/windows/shop/reference,simple,512,512,0,0,0,0,0,用户效果图参考；内置imagegen独立PNG；完整源图保留,contain
-164,adventure_banner_v2,ui/windows/modes/adventure_banner/spriteFrame,ui/windows/modes,simple,1024,320,0,0,0,0,0,用户模式效果图参考；内置imagegen独立PNG；不使用图集,contain
-165,challenge_banner_v2,ui/windows/modes/challenge_banner/spriteFrame,ui/windows/modes,simple,1024,320,0,0,0,0,0,用户模式效果图参考；内置imagegen独立PNG；不使用图集,contain
-166,ranking_banner_v2,ui/windows/modes/ranking_banner/spriteFrame,ui/windows/modes,simple,1024,320,0,0,0,0,0,用户模式效果图参考；内置imagegen独立PNG；不使用图集,contain
-167,topic_opening,ui/windows/modes/topic_opening/spriteFrame,ui/windows/modes,simple,384,384,0,0,0,0,0,用户模式效果图参考；内置imagegen独立PNG；不使用图集,contain
-168,topic_express,ui/windows/modes/topic_express/spriteFrame,ui/windows/modes,simple,384,384,0,0,0,0,0,用户模式效果图参考；内置imagegen独立PNG；不使用图集,contain
-169,topic_warehouse,ui/windows/modes/topic_warehouse/spriteFrame,ui/windows/modes,simple,384,384,0,0,0,0,0,用户模式效果图参考；内置imagegen独立PNG；不使用图集,contain
-170,topic_coins,ui/windows/modes/topic_coins/spriteFrame,ui/windows/modes,simple,384,384,0,0,0,0,0,用户模式效果图参考；内置imagegen独立PNG；不使用图集,contain
-171,topic_mini,ui/windows/modes/topic_mini/spriteFrame,ui/windows/modes,simple,384,384,0,0,0,0,0,用户模式效果图参考；内置imagegen独立PNG；不使用图集,contain
-172,topic_midnight,ui/windows/modes/topic_midnight/spriteFrame,ui/windows/modes,simple,384,384,0,0,0,0,0,用户模式效果图参考；内置imagegen独立PNG；不使用图集,contain
-173,shop_goods_card_v2,ui/windows/shop/reference/goods_card/spriteFrame,ui/windows/shop/reference,sliced,512,640,128,128,128,128,0,独立淡绿圆角竖卡；内部不透明；九宫保持圆角,stretch
-174,topic_freezer,gameplay/enemies/characters/enemy_freezer/spriteFrame,gameplay/enemies,simple,256,256,0,0,0,0,0,独立新角色PNG复用于专题缩略图，保持比例,contain
-175,topic_gifts,gameplay/enemies/characters/enemy_popcorn/spriteFrame,gameplay/enemies,simple,256,256,0,0,0,0,0,独立新角色PNG复用于专题缩略图，保持比例,contain
-176,topic_storm,gameplay/enemies/characters/enemy_frostdonut/spriteFrame,gameplay/enemies,simple,256,256,0,0,0,0,0,独立新角色PNG复用于专题缩略图，保持比例,contain
-177,topic_dawn,gameplay/enemies/characters/enemy_vending/spriteFrame,gameplay/enemies,simple,256,256,0,0,0,0,0,独立新角色PNG复用于专题缩略图，保持比例,contain
-178,map_27,gameplay/maps/map_27/spriteFrame,gameplay/maps,simple,780,1388,0,0,0,0,0,第27关，路线来自原始地图表,stretch
-179,map_28,gameplay/maps/map_28/spriteFrame,gameplay/maps,simple,780,1388,0,0,0,0,0,第28关，路线来自原始地图表,stretch
-180,map_29,gameplay/maps/map_29/spriteFrame,gameplay/maps,simple,780,1388,0,0,0,0,0,第29关，路线来自原始地图表,stretch
-181,map_30,gameplay/maps/map_30/spriteFrame,gameplay/maps,simple,780,1388,0,0,0,0,0,第30关，路线来自原始地图表,stretch
-182,map_31,gameplay/maps/map_31/spriteFrame,gameplay/maps,simple,780,1388,0,0,0,0,0,第31关，路线来自原始地图表,stretch
-183,map_32,gameplay/maps/map_32/spriteFrame,gameplay/maps,simple,780,1388,0,0,0,0,0,第32关，路线来自原始地图表,stretch
-184,map_33,gameplay/maps/map_33/spriteFrame,gameplay/maps,simple,780,1388,0,0,0,0,0,第33关，路线来自原始地图表,stretch
-185,map_34,gameplay/maps/map_34/spriteFrame,gameplay/maps,simple,780,1388,0,0,0,0,0,第34关，路线来自原始地图表,stretch
-186,map_35,gameplay/maps/map_35/spriteFrame,gameplay/maps,simple,780,1388,0,0,0,0,0,第35关，路线来自原始地图表,stretch
-187,map_36,gameplay/maps/map_36/spriteFrame,gameplay/maps,simple,780,1388,0,0,0,0,0,第36关，路线来自原始地图表,stretch
-188,map_37,gameplay/maps/map_37/spriteFrame,gameplay/maps,simple,780,1388,0,0,0,0,0,第37关，路线来自原始地图表,stretch
-189,map_38,gameplay/maps/map_38/spriteFrame,gameplay/maps,simple,780,1388,0,0,0,0,0,第38关，路线来自原始地图表,stretch
-190,map_39,gameplay/maps/map_39/spriteFrame,gameplay/maps,simple,780,1388,0,0,0,0,0,第39关，路线来自原始地图表,stretch
-191,map_40,gameplay/maps/map_40/spriteFrame,gameplay/maps,simple,780,1388,0,0,0,0,0,第40关，路线来自原始地图表,stretch
-192,tech_banner,ui/windows/technology/tech_banner/spriteFrame,ui/windows/technology,simple,640,160,0,0,0,0,0,内置image_gen独立制作；科技重设计,contain
-193,tech_card,ui/windows/technology/tech_card/spriteFrame,ui/windows/technology,sliced,512,448,48,48,48,48,0,内置image_gen独立制作；科技重设计,stretch
-194,tech_badge,ui/windows/technology/tech_badge/spriteFrame,ui/windows/technology,simple,256,256,0,0,0,0,0,内置image_gen独立制作；科技重设计,contain
+id,key,path,group,mode,width,height,left,right,top,bottom,padding,note,resizeMode,contentX,contentY,contentWidth,contentHeight
+1,disc,ui/skins/common/disc/spriteFrame,ui/skins/common,simple,128,128,0,0,0,0,0,共享可替换皮肤,contain,1,1,126,126
+2,round_0,ui/skins/common/round_0/spriteFrame,ui/skins/common,simple,4,4,0,0,0,0,0,共享可替换皮肤,stretch,0,0,4,4
+3,round_1,ui/skins/common/round_1/spriteFrame,ui/skins/common,sliced,4,4,1,1,1,1,0,共享可替换皮肤,stretch,0,0,4,4
+4,round_1p5,ui/skins/common/round_1p5/spriteFrame,ui/skins/common,sliced,6,6,2,2,2,2,0,共享可替换皮肤,stretch,0,0,6,6
+5,round_2,ui/skins/common/round_2/spriteFrame,ui/skins/common,sliced,6,6,2,2,2,2,0,共享可替换皮肤,stretch,0,0,6,6
+6,round_2p5,ui/skins/common/round_2p5/spriteFrame,ui/skins/common,sliced,8,8,3,3,3,3,0,共享可替换皮肤,stretch,0,0,8,8
+7,round_3,ui/skins/common/round_3/spriteFrame,ui/skins/common,sliced,8,8,3,3,3,3,0,共享可替换皮肤,stretch,0,0,8,8
+8,round_4,ui/skins/common/round_4/spriteFrame,ui/skins/common,sliced,10,10,4,4,4,4,0,共享可替换皮肤,stretch,0,0,10,10
+9,round_5,ui/skins/common/round_5/spriteFrame,ui/skins/common,sliced,12,12,5,5,5,5,0,共享可替换皮肤,stretch,0,0,12,12
+10,round_6,ui/skins/common/round_6/spriteFrame,ui/skins/common,sliced,14,14,6,6,6,6,0,共享可替换皮肤,stretch,0,0,14,14
+11,round_8,ui/skins/common/round_8/spriteFrame,ui/skins/common,sliced,18,18,8,8,8,8,0,共享可替换皮肤,stretch,0,0,18,18
+12,round_10,ui/skins/common/round_10/spriteFrame,ui/skins/common,sliced,22,22,10,10,10,10,0,共享可替换皮肤,stretch,0,0,22,22
+13,round_13,ui/skins/common/round_13/spriteFrame,ui/skins/common,sliced,28,28,13,13,13,13,0,共享可替换皮肤,stretch,0,0,28,28
+14,round_14,ui/skins/common/round_14/spriteFrame,ui/skins/common,sliced,30,30,14,14,14,14,0,共享可替换皮肤,stretch,0,0,30,30
+15,round_16,ui/skins/common/round_16/spriteFrame,ui/skins/common,sliced,34,34,16,16,16,16,0,共享可替换皮肤,stretch,0,0,34,34
+16,round_20,ui/skins/common/round_20/spriteFrame,ui/skins/common,sliced,42,42,20,20,20,20,0,共享可替换皮肤,stretch,0,0,42,42
+17,outline_8_2,ui/skins/borders/outline_8_2/spriteFrame,ui/skins/borders,sliced,22,22,10,10,10,10,2,共享可替换皮肤,stretch,1,1,20,20
+18,outline_10_2,ui/skins/borders/outline_10_2/spriteFrame,ui/skins/borders,sliced,26,26,12,12,12,12,2,共享可替换皮肤,stretch,1,1,24,24
+19,outline_16_2,ui/skins/borders/outline_16_2/spriteFrame,ui/skins/borders,sliced,38,38,18,18,18,18,2,共享可替换皮肤,stretch,1,1,36,36
+20,ring,gameplay/effects/ring/spriteFrame,gameplay/effects,simple,256,256,0,0,0,0,0,共享可替换皮肤,contain,1,1,254,254
+21,range_ring,gameplay/effects/range_ring/spriteFrame,gameplay/effects,simple,256,256,0,0,0,0,0,共享可替换皮肤,contain,1,1,254,254
+22,shot_ring,gameplay/effects/shot_ring/spriteFrame,gameplay/effects,simple,256,256,0,0,0,0,0,共享可替换皮肤,contain,1,1,254,254
+23,frost_shard,gameplay/projectiles/frost_shard/spriteFrame,gameplay/projectiles,simple,128,80,0,0,0,0,0,共享可替换皮肤,contain,12,28,80,24
+24,outline_14_1p8,ui/skins/borders/outline_14_1p8/spriteFrame,ui/skins/borders,sliced,34,34,16,16,16,16,2,共享可替换皮肤,stretch,1,1,32,32
+25,shape_7c9f638f0a,ui/skins/symbols/shape_7c9f638f0a/spriteFrame,ui/skins/symbols,simple,84,16,0,0,0,0,3,Highlight，原预制体 battle_hud.prefab,contain,5,7,74,2
+26,shape_10f273c7ff,ui/skins/symbols/shape_10f273c7ff/spriteFrame,ui/skins/symbols,simple,48,16,0,0,0,0,3,Highlight，原预制体 battle_hud.prefab,contain,5,7,38,2
+27,shape_aa65f74e17,ui/skins/symbols/shape_aa65f74e17/spriteFrame,ui/skins/symbols,simple,56,16,0,0,0,0,3,Highlight，原预制体 battle_hud.prefab,contain,5,7,46,2
+28,shape_174ccb03a7,ui/skins/symbols/shape_174ccb03a7/spriteFrame,ui/skins/symbols,simple,80,64,0,0,0,0,3,Heart，原预制体 battle_hud.prefab,contain,19,15,42,35
+29,round_18,ui/skins/common/round_18/spriteFrame,ui/skins/common,sliced,38,38,18,18,18,18,0,共享可替换皮肤,stretch,0,0,38,38
+30,round_15,ui/skins/common/round_15/spriteFrame,ui/skins/common,sliced,32,32,15,15,15,15,0,共享可替换皮肤,stretch,0,0,32,32
+31,outline_5_1p8,ui/skins/borders/outline_5_1p8/spriteFrame,ui/skins/borders,sliced,16,16,7,7,7,7,2,共享可替换皮肤,stretch,1,1,14,14
+32,outline_13_1p8,ui/skins/borders/outline_13_1p8/spriteFrame,ui/skins/borders,sliced,32,32,15,15,15,15,2,共享可替换皮肤,stretch,1,1,30,30
+33,shape_84d2036dc1,ui/skins/symbols/shape_84d2036dc1/spriteFrame,ui/skins/symbols,simple,136,16,0,0,0,0,3,Highlight，原预制体 battle_hud.prefab,contain,5,7,126,2
+34,round_9,ui/skins/common/round_9/spriteFrame,ui/skins/common,sliced,20,20,9,9,9,9,0,共享可替换皮肤,stretch,0,0,20,20
+35,outline_16_1p8,ui/skins/borders/outline_16_1p8/spriteFrame,ui/skins/borders,sliced,38,38,18,18,18,18,2,共享可替换皮肤,stretch,1,1,36,36
+36,shape_34531faf13,ui/skins/symbols/shape_34531faf13/spriteFrame,ui/skins/symbols,simple,76,16,0,0,0,0,3,Highlight，原预制体 build_card.prefab,contain,5,7,66,2
+37,shape_c5f65c98b6,ui/skins/symbols/shape_c5f65c98b6/spriteFrame,ui/skins/symbols,simple,152,16,0,0,0,0,3,Highlight，原预制体 button.prefab,contain,5,7,142,2
+38,round_40,ui/skins/common/round_40/spriteFrame,ui/skins/common,sliced,82,82,40,40,40,40,0,共享可替换皮肤,stretch,0,0,82,82
+39,shape_544998b285,ui/skins/symbols/shape_544998b285/spriteFrame,ui/skins/symbols,simple,42,42,0,0,0,0,2,Play，原预制体 challenge_pick.prefab,contain,9,5,26,32
+40,round_25,ui/skins/common/round_25/spriteFrame,ui/skins/common,sliced,52,52,25,25,25,25,0,共享可替换皮肤,stretch,0,0,52,52
+41,round_12,ui/skins/common/round_12/spriteFrame,ui/skins/common,sliced,26,26,12,12,12,12,0,共享可替换皮肤,stretch,0,0,26,26
+42,round_24,ui/skins/common/round_24/spriteFrame,ui/skins/common,sliced,50,50,24,24,24,24,0,共享可替换皮肤,stretch,0,0,50,50
+43,round_11,ui/skins/common/round_11/spriteFrame,ui/skins/common,sliced,24,24,11,11,11,11,0,共享可替换皮肤,stretch,0,0,24,24
+44,shape_879420dc0b,ui/skins/symbols/shape_879420dc0b/spriteFrame,ui/skins/symbols,simple,112,112,0,0,0,0,4,Tooth0，原预制体 home.prefab,contain,68,52,18,8
+45,shape_f3905dc24d,ui/skins/symbols/shape_f3905dc24d/spriteFrame,ui/skins/symbols,simple,112,112,0,0,0,0,4,Tooth1，原预制体 home.prefab,contain,63,63,16,16
+46,shape_b3665c1d45,ui/skins/symbols/shape_b3665c1d45/spriteFrame,ui/skins/symbols,simple,112,112,0,0,0,0,4,Tooth2，原预制体 home.prefab,contain,52,68,8,18
+47,shape_c40152e557,ui/skins/symbols/shape_c40152e557/spriteFrame,ui/skins/symbols,simple,112,112,0,0,0,0,4,Tooth3，原预制体 home.prefab,contain,33,63,16,16
+48,shape_a4685d65a6,ui/skins/symbols/shape_a4685d65a6/spriteFrame,ui/skins/symbols,simple,112,112,0,0,0,0,4,Tooth4，原预制体 home.prefab,contain,26,52,18,8
+49,shape_6e8296e572,ui/skins/symbols/shape_6e8296e572/spriteFrame,ui/skins/symbols,simple,112,112,0,0,0,0,4,Tooth5，原预制体 home.prefab,contain,33,33,16,16
+50,shape_a886e0fc5b,ui/skins/symbols/shape_a886e0fc5b/spriteFrame,ui/skins/symbols,simple,112,112,0,0,0,0,4,Tooth6，原预制体 home.prefab,contain,52,26,8,18
+51,shape_933e4e7edb,ui/skins/symbols/shape_933e4e7edb/spriteFrame,ui/skins/symbols,simple,112,112,0,0,0,0,4,Tooth7，原预制体 home.prefab,contain,63,33,16,16
+52,shape_0d1d14c16e,ui/skins/symbols/shape_0d1d14c16e/spriteFrame,ui/skins/symbols,simple,48,48,0,0,0,0,4,GearRing，原预制体 home.prefab,contain,4,4,40,40
+53,round_24p5,ui/skins/common/round_24p5/spriteFrame,ui/skins/common,sliced,52,52,25,25,25,25,0,共享可替换皮肤,stretch,0,0,52,52
+54,shape_4d22f9bb82,ui/skins/symbols/shape_4d22f9bb82/spriteFrame,ui/skins/symbols,simple,48,48,0,0,0,0,4,Ring，原预制体 level_card.prefab,contain,4,4,40,40
+55,round_4p6,ui/skins/common/round_4p6/spriteFrame,ui/skins/common,sliced,12,12,5,5,5,5,0,共享可替换皮肤,stretch,0,0,12,12
+56,round_26,ui/skins/common/round_26/spriteFrame,ui/skins/common,sliced,54,54,26,26,26,26,0,共享可替换皮肤,stretch,0,0,54,54
+57,outline_26_1p8,ui/skins/borders/outline_26_1p8/spriteFrame,ui/skins/borders,sliced,58,58,28,28,28,28,2,共享可替换皮肤,stretch,1,1,56,56
+58,shape_68dd104b57,ui/skins/symbols/shape_68dd104b57/spriteFrame,ui/skins/symbols,simple,544,16,0,0,0,0,3,Highlight，原预制体 lose.prefab,contain,5,7,534,2
+59,shape_f3936d303b,ui/skins/symbols/shape_f3936d303b/spriteFrame,ui/skins/symbols,simple,448,16,0,0,0,0,3,Highlight，原预制体 lose.prefab,contain,5,7,438,2
+60,outline_24_1p8,ui/skins/borders/outline_24_1p8/spriteFrame,ui/skins/borders,sliced,54,54,26,26,26,26,2,共享可替换皮肤,stretch,1,1,52,52
+61,shape_f48e01acad,ui/skins/symbols/shape_f48e01acad/spriteFrame,ui/skins/symbols,simple,476,16,0,0,0,0,3,Highlight，原预制体 pause.prefab,contain,5,7,466,2
+62,shape_2ec48d18f7,ui/skins/symbols/shape_2ec48d18f7/spriteFrame,ui/skins/symbols,simple,448,16,0,0,0,0,3,Highlight，原预制体 pause.prefab,contain,43,7,362,2
+63,round_23,ui/skins/common/round_23/spriteFrame,ui/skins/common,sliced,48,48,23,23,23,23,0,共享可替换皮肤,stretch,0,0,48,48
+64,map_1,gameplay/maps/map_1/spriteFrame,gameplay/maps,simple,780,1388,0,0,0,0,0,第1关，路线来自Map/MapPoint/Spot/Theme,stretch,24,172,732,1024
+65,map_2,gameplay/maps/map_2/spriteFrame,gameplay/maps,simple,780,1388,0,0,0,0,0,第2关，路线来自Map/MapPoint/Spot/Theme,stretch,24,172,732,1024
+66,map_3,gameplay/maps/map_3/spriteFrame,gameplay/maps,simple,780,1388,0,0,0,0,0,第3关，路线来自Map/MapPoint/Spot/Theme,stretch,24,172,732,1024
+67,map_4,gameplay/maps/map_4/spriteFrame,gameplay/maps,simple,780,1388,0,0,0,0,0,第4关，路线来自Map/MapPoint/Spot/Theme,stretch,24,172,728,1024
+68,map_5,gameplay/maps/map_5/spriteFrame,gameplay/maps,simple,780,1388,0,0,0,0,0,第5关，路线来自Map/MapPoint/Spot/Theme,stretch,24,172,732,1024
+69,map_6,gameplay/maps/map_6/spriteFrame,gameplay/maps,simple,780,1388,0,0,0,0,0,第6关，路线来自Map/MapPoint/Spot/Theme,stretch,24,172,732,1024
+70,map_7,gameplay/maps/map_7/spriteFrame,gameplay/maps,simple,780,1388,0,0,0,0,0,第7关，路线来自Map/MapPoint/Spot/Theme,stretch,24,172,732,1024
+71,map_8,gameplay/maps/map_8/spriteFrame,gameplay/maps,simple,780,1388,0,0,0,0,0,第8关，路线来自Map/MapPoint/Spot/Theme,stretch,24,172,732,1024
+72,map_9,gameplay/maps/map_9/spriteFrame,gameplay/maps,simple,780,1388,0,0,0,0,0,第9关，路线来自Map/MapPoint/Spot/Theme,stretch,24,172,732,1024
+73,map_10,gameplay/maps/map_10/spriteFrame,gameplay/maps,simple,780,1388,0,0,0,0,0,第10关，路线来自Map/MapPoint/Spot/Theme,stretch,24,172,732,1024
+74,map_11,gameplay/maps/map_11/spriteFrame,gameplay/maps,simple,780,1388,0,0,0,0,0,第11关，路线来自Map/MapPoint/Spot/Theme,stretch,24,172,732,1024
+75,map_12,gameplay/maps/map_12/spriteFrame,gameplay/maps,simple,780,1388,0,0,0,0,0,第12关，路线来自Map/MapPoint/Spot/Theme,stretch,24,172,732,1024
+76,map_13,gameplay/maps/map_13/spriteFrame,gameplay/maps,simple,780,1388,0,0,0,0,0,第13关，路线来自Map/MapPoint/Spot/Theme,stretch,24,172,732,1024
+77,map_14,gameplay/maps/map_14/spriteFrame,gameplay/maps,simple,780,1388,0,0,0,0,0,第14关，路线来自Map/MapPoint/Spot/Theme,stretch,24,172,732,1024
+78,map_15,gameplay/maps/map_15/spriteFrame,gameplay/maps,simple,780,1388,0,0,0,0,0,第15关，路线来自Map/MapPoint/Spot/Theme,stretch,24,172,732,1024
+79,map_16,gameplay/maps/map_16/spriteFrame,gameplay/maps,simple,780,1388,0,0,0,0,0,第16关，路线来自Map/MapPoint/Spot/Theme,stretch,24,172,732,1024
+80,map_17,gameplay/maps/map_17/spriteFrame,gameplay/maps,simple,780,1388,0,0,0,0,0,第17关，路线来自Map/MapPoint/Spot/Theme,stretch,24,172,732,1024
+81,map_18,gameplay/maps/map_18/spriteFrame,gameplay/maps,simple,780,1388,0,0,0,0,0,第18关，路线来自Map/MapPoint/Spot/Theme,stretch,24,172,732,1024
+82,map_19,gameplay/maps/map_19/spriteFrame,gameplay/maps,simple,780,1388,0,0,0,0,0,第19关，路线来自Map/MapPoint/Spot/Theme,stretch,24,172,732,1024
+83,map_20,gameplay/maps/map_20/spriteFrame,gameplay/maps,simple,780,1388,0,0,0,0,0,第20关，路线来自Map/MapPoint/Spot/Theme,stretch,24,172,732,1024
+84,map_21,gameplay/maps/map_21/spriteFrame,gameplay/maps,simple,780,1388,0,0,0,0,0,第21关，路线来自Map/MapPoint/Spot/Theme,stretch,24,172,732,1024
+85,home_city,ui/backgrounds/home_city/spriteFrame,ui/backgrounds,simple,941,1672,0,0,0,0,0,2026-10-07用户UI参考；PNG可替换,cover,0,0,941,1672
+86,loading_blue,ui/backgrounds/loading_blue/spriteFrame,ui/backgrounds,simple,941,1672,0,0,0,0,0,2026-10-07用户UI参考；PNG可替换,cover,0,0,941,1672
+87,window_cream,ui/skins/redesign/window_cream/spriteFrame,ui/skins/redesign,sliced,322,320,102,102,102,102,0,2026-10-07用户UI参考；PNG可替换,stretch,8,8,305,303
+88,button_gold,ui/skins/redesign/button_gold/spriteFrame,ui/skins/redesign,sliced,350,144,46,46,46,46,0,2026-10-07用户UI参考；PNG可替换,height,9,9,332,126
+89,button_green,ui/skins/redesign/button_green/spriteFrame,ui/skins/redesign,sliced,335,144,46,46,46,46,0,2026-10-07用户UI参考；PNG可替换,height,9,9,318,126
+90,circle_cream,ui/skins/redesign/circle_cream/spriteFrame,ui/skins/redesign,simple,256,256,0,0,0,0,0,2026-10-07用户UI参考；PNG可替换,contain,9,10,238,236
+91,tab_normal,ui/skins/redesign/tab_normal/spriteFrame,ui/skins/redesign,sliced,349,135,43,43,43,43,0,2026-10-07用户UI参考；PNG可替换,height,9,9,331,117
+92,tab_selected,ui/skins/redesign/tab_selected/spriteFrame,ui/skins/redesign,sliced,334,131,42,42,42,42,0,2026-10-07用户UI参考；PNG可替换,height,10,9,316,112
+93,close_red,ui/skins/redesign/close_red/spriteFrame,ui/skins/redesign,simple,256,256,0,0,0,0,0,2026-10-07用户UI参考；PNG可替换,contain,10,9,238,239
+94,shelf,ui/skins/redesign/shelf/spriteFrame,ui/skins/redesign,sliced,357,92,30,30,14,14,0,2026-10-07用户UI参考；PNG可替换,height,9,9,339,74
+95,name_tag,ui/skins/redesign/name_tag/spriteFrame,ui/skins/redesign,sliced,318,125,40,40,40,40,0,2026-10-07用户UI参考；PNG可替换,height,9,9,299,107
+96,night_banner,ui/skins/redesign/night_banner/spriteFrame,ui/skins/redesign,simple,506,187,0,0,0,0,0,2026-10-07用户UI参考；PNG可替换,contain,9,9,489,169
+97,window_mint,ui/skins/redesign/window_mint/spriteFrame,ui/skins/redesign,sliced,243,244,78,78,78,78,0,2026-10-07用户UI参考；PNG可替换,stretch,9,9,226,226
+98,button_disabled,ui/skins/redesign/button_disabled/spriteFrame,ui/skins/redesign,sliced,298,132,42,42,42,42,0,2026-10-07用户UI参考；PNG可替换,height,9,9,281,114
+99,book_frame,ui/windows/book_frame/spriteFrame,ui/windows,sliced,1086,1448,109,109,246,101,0,2026-10-07用户UI参考；PNG可替换,stretch,32,30,1025,1392
+100,icon_heart,ui/icons/common/icon_heart/spriteFrame,ui/icons/common,simple,256,256,0,0,0,0,0,2026-10-07用户UI参考；PNG可替换,contain,9,23,238,210
+101,icon_coin,ui/icons/common/icon_coin/spriteFrame,ui/icons/common,simple,256,256,0,0,0,0,0,2026-10-07用户UI参考；PNG可替换,contain,9,27,238,202
+102,icon_book,ui/icons/common/icon_book/spriteFrame,ui/icons/common,simple,256,256,0,0,0,0,0,2026-10-07用户UI参考；PNG可替换,contain,9,41,238,173
+103,icon_gear,ui/icons/common/icon_gear/spriteFrame,ui/icons/common,simple,256,256,0,0,0,0,0,2026-10-07用户UI参考；PNG可替换,contain,12,9,232,238
+104,icon_store,ui/icons/common/icon_store/spriteFrame,ui/icons/common,simple,256,256,0,0,0,0,0,2026-10-07用户UI参考；PNG可替换,contain,8,16,239,224
+105,icon_trophy,ui/icons/common/icon_trophy/spriteFrame,ui/icons/common,simple,256,256,0,0,0,0,0,2026-10-07用户UI参考；PNG可替换,contain,9,9,237,238
+106,icon_avatar,ui/icons/common/icon_avatar/spriteFrame,ui/icons/common,simple,256,256,0,0,0,0,0,2026-10-07用户UI参考；PNG可替换,contain,8,28,240,200
+107,icon_check,ui/icons/common/icon_check/spriteFrame,ui/icons/common,simple,256,256,0,0,0,0,0,2026-10-07用户UI参考；PNG可替换,contain,9,9,238,237
+108,icon_freeze,ui/icons/common/icon_freeze/spriteFrame,ui/icons/common,simple,256,256,0,0,0,0,0,2026-10-07用户UI参考；PNG可替换,contain,45,9,166,238
+109,icon_broom,ui/icons/common/icon_broom/spriteFrame,ui/icons/common,simple,256,256,0,0,0,0,0,2026-10-07用户UI参考；PNG可替换,contain,32,9,192,238
+110,icon_menu,ui/icons/common/icon_menu/spriteFrame,ui/icons/common,simple,256,256,0,0,0,0,0,2026-10-07用户UI参考；PNG可替换,contain,9,9,239,237
+111,icon_pause,ui/icons/common/icon_pause/spriteFrame,ui/icons/common,simple,256,256,0,0,0,0,0,2026-10-07用户UI参考；PNG可替换,contain,9,9,238,238
+112,goods_cola,ui/icons/goods/goods_cola/spriteFrame,ui/icons/goods,simple,256,256,0,0,0,0,0,2026-10-07用户UI参考；PNG可替换,contain,41,8,174,240
+113,goods_bread,ui/icons/goods/goods_bread/spriteFrame,ui/icons/goods,simple,256,256,0,0,0,0,0,2026-10-07用户UI参考；PNG可替换,contain,8,16,239,224
+114,goods_noodles,ui/icons/goods/goods_noodles/spriteFrame,ui/icons/goods,simple,256,256,0,0,0,0,0,2026-10-07用户UI参考；PNG可替换,contain,9,13,238,230
+115,goods_milk,ui/icons/goods/goods_milk/spriteFrame,ui/icons/goods,simple,256,256,0,0,0,0,0,2026-10-07用户UI参考；PNG可替换,contain,23,9,210,238
+116,goods_chips,ui/icons/goods/goods_chips/spriteFrame,ui/icons/goods,simple,256,256,0,0,0,0,0,2026-10-07用户UI参考；PNG可替换,contain,9,9,237,238
+117,goods_cookies,ui/icons/goods/goods_cookies/spriteFrame,ui/icons/goods,simple,256,256,0,0,0,0,0,2026-10-07用户UI参考；PNG可替换,contain,9,32,238,192
+118,goods_jelly,ui/icons/goods/goods_jelly/spriteFrame,ui/icons/goods,simple,256,256,0,0,0,0,0,2026-10-07用户UI参考；PNG可替换,contain,9,57,238,142
+119,goods_water,ui/icons/goods/goods_water/spriteFrame,ui/icons/goods,simple,256,256,0,0,0,0,0,2026-10-07用户UI参考；PNG可替换,contain,67,9,121,238
+120,goods_rice,ui/icons/goods/goods_rice/spriteFrame,ui/icons/goods,simple,256,256,0,0,0,0,0,2026-10-07用户UI参考；PNG可替换,contain,9,25,238,206
+121,courtyard_ground,gameplay/maps/courtyard_ground/spriteFrame,gameplay/maps,simple,1254,1254,0,0,0,0,0,2026-10-07用户UI参考；PNG可替换,cover,0,0,1254,1254
+122,home_adventure,ui/windows/home/home_adventure/spriteFrame,ui/windows/home,sliced,685,212,100,100,55,55,0,2026-10-07逐页参考还原；独立专用PNG,height,8,8,669,196
+123,home_challenge,ui/windows/home/home_challenge/spriteFrame,ui/windows/home,sliced,683,212,100,100,55,55,0,2026-10-07逐页参考还原；独立专用PNG,height,8,8,667,196
+124,loading_track,ui/hud/loading/loading_track/spriteFrame,ui/hud/loading,sliced,702,81,50,50,20,20,0,2026-10-07逐页参考还原；独立专用PNG,height,8,8,686,65
+125,loading_fill,ui/hud/loading/loading_fill/spriteFrame,ui/hud/loading,sliced,704,79,38,38,20,20,0,2026-10-07逐页参考还原；独立专用PNG,stretch,8,8,688,63
+126,loading_paw,ui/hud/loading/loading_paw/spriteFrame,ui/hud/loading,simple,256,256,0,0,0,0,0,2026-10-07逐页参考还原；独立专用PNG,contain,8,20,240,216
+127,loading_title_paw,ui/hud/loading/loading_title_paw/spriteFrame,ui/hud/loading,simple,256,256,0,0,0,0,0,2026-10-07逐页参考还原；独立专用PNG,contain,15,8,226,240
+128,counter_white,ui/hud/counters/counter_white/spriteFrame,ui/hud/counters,sliced,398,135,64,64,28,28,0,2026-10-07逐页参考还原；独立专用PNG,height,8,8,382,119
+129,window_flat,ui/windows/common/window_flat/spriteFrame,ui/windows/common,sliced,716,326,48,48,48,48,0,2026-10-07逐页参考还原；独立专用PNG,stretch,8,8,700,310
+130,portrait_normal,ui/windows/loadout/portrait_normal/spriteFrame,ui/windows/loadout,simple,256,256,0,0,0,0,0,2026-10-07逐页参考还原；独立专用PNG,contain,8,10,240,235
+131,portrait_selected,ui/windows/loadout/portrait_selected/spriteFrame,ui/windows/loadout,simple,256,256,0,0,0,0,0,2026-10-07逐页参考还原；独立专用PNG,contain,8,9,240,238
+132,preview_ground,ui/windows/adventure/preview_ground/spriteFrame,ui/windows/adventure,simple,256,256,0,0,0,0,0,缩略图底纹仅在卡片内适配，不能cover溢出,stretch,0,0,256,256
+133,mint_pill,ui/windows/common/mint_pill/spriteFrame,ui/windows/common,sliced,616,166,90,90,28,28,0,单独生成完整PNG；淡绿圆角按钮/选卡标题,height,8,19,600,127
+134,counter_green,ui/hud/counters/counter_green/spriteFrame,ui/hud/counters,sliced,616,166,90,90,28,28,0,单独生成完整PNG；战斗白底绿边计数框,height,8,17,600,132
+135,rank_star,gameplay/effects/rank_star/spriteFrame,gameplay/effects,simple,256,256,0,0,0,0,0,单张透明等级星星PNG,contain,9,8,236,231
+136,shop_interior,ui/windows/shop/shop_interior/spriteFrame,ui/windows/shop,simple,1024,1536,0,0,0,0,0,单张完整PNG，内置图像生成；固定便利店内景,cover,0,0,1024,1536
+137,shop_floor,ui/windows/shop/shop_floor/spriteFrame,ui/windows/shop,simple,1024,1536,0,0,0,0,0,独立PNG；统一俯视斜角便利店视角,cover,0,0,1024,1536
+138,shop_shelf,ui/windows/shop/shop_shelf/spriteFrame,ui/windows/shop,simple,1254,1254,0,0,0,0,0,独立PNG；统一俯视斜角便利店视角,contain,62,198,1131,836
+139,shop_checkout,ui/windows/shop/shop_checkout/spriteFrame,ui/windows/shop,simple,1254,1254,0,0,0,0,0,独立PNG；统一俯视斜角便利店视角,contain,65,300,1124,687
+140,map_22,gameplay/maps/map_22/spriteFrame,gameplay/maps,simple,780,1388,0,0,0,0,0,挑战专题急件专场；复用成熟路线并烘焙独立PNG,stretch,24,172,732,1024
+141,map_23,gameplay/maps/map_23/spriteFrame,gameplay/maps,simple,780,1388,0,0,0,0,0,挑战专题仓库清点；复用成熟路线并烘焙独立PNG,stretch,24,172,732,1024
+142,map_24,gameplay/maps/map_24/spriteFrame,gameplay/maps,simple,780,1388,0,0,0,0,0,挑战专题零钱狂欢；复用成熟路线并烘焙独立PNG,stretch,24,172,732,1024
+143,map_25,gameplay/maps/map_25/spriteFrame,gameplay/maps,simple,780,1388,0,0,0,0,0,挑战专题迷你流水线；复用成熟路线并烘焙独立PNG,stretch,24,172,732,1024
+144,map_26,gameplay/maps/map_26/spriteFrame,gameplay/maps,simple,780,1388,0,0,0,0,0,挑战专题午夜压轴；复用成熟路线并烘焙独立PNG,stretch,24,172,728,1024
+145,shop_entrance,ui/windows/shop/shop_entrance/spriteFrame,ui/windows/shop,simple,1254,1254,0,0,0,0,0,商店表现独立PNG；完整透明画布，无图集切片,contain,282,80,691,1059
+146,shop_bag,ui/windows/shop/shop_bag/spriteFrame,ui/windows/shop,simple,1254,1254,0,0,0,0,0,商店表现独立PNG；完整透明画布，无图集切片,contain,283,194,687,826
+147,shop_crate,ui/windows/shop/shop_crate/spriteFrame,ui/windows/shop,simple,1254,1254,0,0,0,0,0,商店表现独立PNG；完整透明画布，无图集切片,contain,115,226,1024,802
+148,shop_uniform_sprout,ui/windows/shop/uniforms/sprout/spriteFrame,ui/windows/shop/uniforms,simple,512,512,0,0,0,0,0,独立制服PNG，统一透明画布与脚底，完整源图归档,contain,91,56,360,393
+149,shop_uniform_frost,ui/windows/shop/uniforms/frost/spriteFrame,ui/windows/shop/uniforms,simple,512,512,0,0,0,0,0,独立制服PNG，统一透明画布与脚底，完整源图归档,contain,53,39,425,423
+150,shop_uniform_bloom,ui/windows/shop/uniforms/bloom/spriteFrame,ui/windows/shop/uniforms,simple,512,512,0,0,0,0,0,独立制服PNG，统一透明画布与脚底，完整源图归档,contain,83,28,346,444
+151,shop_uniform_scope,ui/windows/shop/uniforms/scope/spriteFrame,ui/windows/shop/uniforms,simple,512,512,0,0,0,0,0,独立制服PNG，统一透明画布与脚底，完整源图归档,contain,52,50,401,405
+152,shop_uniform_spark,ui/windows/shop/uniforms/spark/spriteFrame,ui/windows/shop/uniforms,simple,512,512,0,0,0,0,0,独立制服PNG，统一透明画布与脚底，完整源图归档,contain,54,70,388,372
+153,shop_uniform_ember,ui/windows/shop/uniforms/ember/spriteFrame,ui/windows/shop/uniforms,simple,512,512,0,0,0,0,0,独立制服PNG，统一透明画布与脚底，完整源图归档,contain,71,44,383,440
+154,shop_uniform_mint,ui/windows/shop/uniforms/mint/spriteFrame,ui/windows/shop/uniforms,simple,512,512,0,0,0,0,0,独立制服PNG，统一透明画布与脚底，完整源图归档,contain,67,46,416,438
+155,shop_uniform_fan,ui/windows/shop/uniforms/fan/spriteFrame,ui/windows/shop/uniforms,simple,512,512,0,0,0,0,0,独立制服PNG，统一透明画布与脚底，完整源图归档,contain,29,55,454,428
+156,shop_room_v2,ui/windows/shop/reference/room/spriteFrame,ui/windows/shop/reference,simple,941,1672,0,0,0,0,0,用户效果图参考；内置imagegen独立PNG；完整源图保留,cover,0,0,941,1672
+157,shop_shelf_v2,ui/windows/shop/reference/shelf/spriteFrame,ui/windows/shop/reference,simple,512,576,0,0,0,0,0,用户效果图参考；内置imagegen独立PNG；完整源图保留,contain,45,86,427,401
+158,shop_counter_v2,ui/windows/shop/reference/counter/spriteFrame,ui/windows/shop/reference,simple,768,512,0,0,0,0,0,用户效果图参考；内置imagegen独立PNG；完整源图保留,contain,42,45,695,370
+159,shop_nav_staff,ui/windows/shop/reference/nav_staff/spriteFrame,ui/windows/shop/reference,simple,512,512,0,0,0,0,0,用户效果图参考；内置imagegen独立PNG；完整源图保留,contain,86,100,359,348
+160,shop_nav_upgrade,ui/windows/shop/reference/nav_upgrade/spriteFrame,ui/windows/shop/reference,simple,512,512,0,0,0,0,0,用户效果图参考；内置imagegen独立PNG；完整源图保留,contain,96,121,334,296
+161,shop_nav_goods,ui/windows/shop/reference/nav_goods/spriteFrame,ui/windows/shop/reference,simple,512,512,0,0,0,0,0,用户效果图参考；内置imagegen独立PNG；完整源图保留,contain,117,93,283,314
+162,shop_nav_research,ui/windows/shop/reference/nav_research/spriteFrame,ui/windows/shop/reference,simple,512,512,0,0,0,0,0,用户效果图参考；内置imagegen独立PNG；完整源图保留,contain,99,80,350,336
+163,shop_nav_uniform,ui/windows/shop/reference/nav_uniform/spriteFrame,ui/windows/shop/reference,simple,512,512,0,0,0,0,0,用户效果图参考；内置imagegen独立PNG；完整源图保留,contain,53,87,407,319
+164,adventure_banner_v2,ui/windows/modes/adventure_banner/spriteFrame,ui/windows/modes,simple,1024,320,0,0,0,0,0,用户模式效果图参考；内置imagegen独立PNG；不使用图集,contain,65,42,894,211
+165,challenge_banner_v2,ui/windows/modes/challenge_banner/spriteFrame,ui/windows/modes,simple,1024,320,0,0,0,0,0,用户模式效果图参考；内置imagegen独立PNG；不使用图集,contain,60,13,890,233
+166,ranking_banner_v2,ui/windows/modes/ranking_banner/spriteFrame,ui/windows/modes,simple,1024,320,0,0,0,0,0,用户模式效果图参考；内置imagegen独立PNG；不使用图集,contain,114,43,828,211
+167,topic_opening,ui/windows/modes/topic_opening/spriteFrame,ui/windows/modes,simple,384,384,0,0,0,0,0,用户模式效果图参考；内置imagegen独立PNG；不使用图集,contain,0,0,384,384
+168,topic_express,ui/windows/modes/topic_express/spriteFrame,ui/windows/modes,simple,384,384,0,0,0,0,0,用户模式效果图参考；内置imagegen独立PNG；不使用图集,contain,0,0,384,384
+169,topic_warehouse,ui/windows/modes/topic_warehouse/spriteFrame,ui/windows/modes,simple,384,384,0,0,0,0,0,用户模式效果图参考；内置imagegen独立PNG；不使用图集,contain,0,0,384,384
+170,topic_coins,ui/windows/modes/topic_coins/spriteFrame,ui/windows/modes,simple,384,384,0,0,0,0,0,用户模式效果图参考；内置imagegen独立PNG；不使用图集,contain,0,0,384,384
+171,topic_mini,ui/windows/modes/topic_mini/spriteFrame,ui/windows/modes,simple,384,384,0,0,0,0,0,用户模式效果图参考；内置imagegen独立PNG；不使用图集,contain,0,0,384,384
+172,topic_midnight,ui/windows/modes/topic_midnight/spriteFrame,ui/windows/modes,simple,384,384,0,0,0,0,0,用户模式效果图参考；内置imagegen独立PNG；不使用图集,contain,0,0,384,384
+173,shop_goods_card_v2,ui/windows/shop/reference/goods_card/spriteFrame,ui/windows/shop/reference,sliced,512,640,128,128,128,128,0,独立淡绿圆角竖卡；内部不透明；九宫保持圆角,stretch,0,0,512,640
+174,topic_freezer,gameplay/enemies/characters/enemy_freezer/spriteFrame,gameplay/enemies,simple,256,256,0,0,0,0,0,独立新角色PNG复用于专题缩略图，保持比例,contain,8,13,240,235
+175,topic_gifts,gameplay/enemies/characters/enemy_popcorn/spriteFrame,gameplay/enemies,simple,256,256,0,0,0,0,0,独立新角色PNG复用于专题缩略图，保持比例,contain,23,8,210,240
+176,topic_storm,gameplay/enemies/characters/enemy_frostdonut/spriteFrame,gameplay/enemies,simple,256,256,0,0,0,0,0,独立新角色PNG复用于专题缩略图，保持比例,contain,8,17,240,231
+177,topic_dawn,gameplay/enemies/characters/enemy_vending/spriteFrame,gameplay/enemies,simple,256,256,0,0,0,0,0,独立新角色PNG复用于专题缩略图，保持比例,contain,9,8,237,240
+178,map_27,gameplay/maps/map_27/spriteFrame,gameplay/maps,simple,780,1388,0,0,0,0,0,第27关，路线来自原始地图表,stretch,24,172,732,1024
+179,map_28,gameplay/maps/map_28/spriteFrame,gameplay/maps,simple,780,1388,0,0,0,0,0,第28关，路线来自原始地图表,stretch,24,172,732,1024
+180,map_29,gameplay/maps/map_29/spriteFrame,gameplay/maps,simple,780,1388,0,0,0,0,0,第29关，路线来自原始地图表,stretch,24,172,732,1024
+181,map_30,gameplay/maps/map_30/spriteFrame,gameplay/maps,simple,780,1388,0,0,0,0,0,第30关，路线来自原始地图表,stretch,24,172,732,1024
+182,map_31,gameplay/maps/map_31/spriteFrame,gameplay/maps,simple,780,1388,0,0,0,0,0,第31关，路线来自原始地图表,stretch,24,172,732,1024
+183,map_32,gameplay/maps/map_32/spriteFrame,gameplay/maps,simple,780,1388,0,0,0,0,0,第32关，路线来自原始地图表,stretch,24,172,732,1024
+184,map_33,gameplay/maps/map_33/spriteFrame,gameplay/maps,simple,780,1388,0,0,0,0,0,第33关，路线来自原始地图表,stretch,24,172,732,1024
+185,map_34,gameplay/maps/map_34/spriteFrame,gameplay/maps,simple,780,1388,0,0,0,0,0,第34关，路线来自原始地图表,stretch,24,172,732,1024
+186,map_35,gameplay/maps/map_35/spriteFrame,gameplay/maps,simple,780,1388,0,0,0,0,0,第35关，路线来自原始地图表,stretch,24,172,732,1024
+187,map_36,gameplay/maps/map_36/spriteFrame,gameplay/maps,simple,780,1388,0,0,0,0,0,第36关，路线来自原始地图表,stretch,24,172,732,1024
+188,map_37,gameplay/maps/map_37/spriteFrame,gameplay/maps,simple,780,1388,0,0,0,0,0,第37关，路线来自原始地图表,stretch,24,172,732,1024
+189,map_38,gameplay/maps/map_38/spriteFrame,gameplay/maps,simple,780,1388,0,0,0,0,0,第38关，路线来自原始地图表,stretch,24,172,728,1024
+190,map_39,gameplay/maps/map_39/spriteFrame,gameplay/maps,simple,780,1388,0,0,0,0,0,第39关，路线来自原始地图表,stretch,24,172,732,1024
+191,map_40,gameplay/maps/map_40/spriteFrame,gameplay/maps,simple,780,1388,0,0,0,0,0,第40关，路线来自原始地图表,stretch,24,172,732,1024
+192,tech_banner,ui/windows/technology/tech_banner/spriteFrame,ui/windows/technology,simple,640,160,0,0,0,0,0,内置image_gen独立制作；科技重设计,contain,48,8,542,144
+193,tech_card,ui/windows/technology/tech_card/spriteFrame,ui/windows/technology,sliced,512,448,48,48,48,48,0,内置image_gen独立制作；科技重设计,stretch,9,32,494,382
+194,tech_badge,ui/windows/technology/tech_badge/spriteFrame,ui/windows/technology,simple,256,256,0,0,0,0,0,内置image_gen独立制作；科技重设计,contain,8,8,240,240

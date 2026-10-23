@@ -17,6 +17,12 @@ function check(root,core,strict=true){
   if(!record||record.target!==file||record.cut!==crypto.createHash('sha256').update(JSON.stringify(row)).digest('hex')||record.sha256!==crypto.createHash('sha256').update(b).digest('hex'))throw Error('切图PNG或配置已过期：'+row.key);
   if(+row.padding){const a=require('./png-alpha.cjs').alpha(b);for(let y=0;y<a.h;y++)for(let x=0;x<a.w;x++)if((x<+row.padding||x>=a.w-row.padding||y<+row.padding||y>=a.h-row.padding)&&a.get(x,y))throw Error('PNG透明留白不足：'+row.key);}
  }
+ const measured=new Map();
+ for(const table of ['ArtFrame','VisualSkin'])for(const row of core.rows(table)){
+  const file=path.join(root,'assets/art',(row.assetPath||row.path).replace('/spriteFrame','.png'));
+  let bounds=measured.get(file);if(!bounds){try{bounds=require('./content-bounds.cjs').contentBounds(fs.readFileSync(file));}catch(error){throw Error('PNG可见边界读取失败：'+file+'；'+error.message);}measured.set(file,bounds);}
+  for(const[k,v]of Object.entries(bounds))if(Number(row[k])!==v)throw Error('UI可见边界与PNG不一致，请测量后更新原始XLSX：'+(row.assetPath||row.path));
+ }
  for(const row of core.rows('ArtFrame'))if(+row.canvasWidth!==+row.canvasHeight)throw Error('替换角色画布必须为正方形：'+row.id);
  const families=new Map();for(const row of core.rows('ArtFrame')){const group=path.dirname(path.dirname(row.assetPath)),size=row.canvasWidth+'x'+row.canvasHeight;if(families.has(group)&&families.get(group)!==size)throw Error('同族角色画布不一致：'+group);families.set(group,size);}
  return {frames:core.rows('ArtFrame').length,skins:core.rows('VisualSkin').length};

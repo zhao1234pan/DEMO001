@@ -44,6 +44,12 @@ export function installConfigs(sources: Record<string, string>): void {
   for(const row of next.RankingEntry){requireRef("I18","key",row.nameKey,"RankingEntry");requireRef("VisualSkin","key",row.portraitKey,"RankingEntry");if(!["0","1"].includes(row.friend)||!Number.isSafeInteger(numeric(row,"score")))throw Error("Invalid ranking preview entry");}
   for(const key of ["rankingPreview","rankingAdventureWeight","rankingChallengeWeight"]){requireRef("Global","key",key,"RankingEntry");const value=numeric(next.Global.find(r=>r.key===key)!,"value");if(!Number.isSafeInteger(value)||value<0||(key==="rankingPreview"?value>1:value===0))throw Error("Invalid ranking display rule");}
   positive("VisualSkin",["width","height"]); positive("VisualSkin",["left","right","top","bottom","padding"],true);
+  for(const table of ["ArtFrame","VisualSkin"] as const)for(const row of next[table]){
+    const width=numeric(row,table==="ArtFrame"?"canvasWidth":"width"),height=numeric(row,table==="ArtFrame"?"canvasHeight":"height");
+    for(const field of ["contentX","contentY","contentWidth","contentHeight"])if(!Number.isSafeInteger(numeric(row,field)))throw Error("Invalid UI content bounds");
+    if(numeric(row,"contentX")<0||numeric(row,"contentY")<0||numeric(row,"contentWidth")<=0||numeric(row,"contentHeight")<=0||numeric(row,"contentX")+numeric(row,"contentWidth")>width||numeric(row,"contentY")+numeric(row,"contentHeight")>height)throw Error("Invalid UI content bounds");
+  }
+  for(const row of next.UiLayout)if(!["","canvas","content","feet"].includes(row.imageFit)||!Number.isFinite(numeric(row,"imageFill"))||numeric(row,"imageFill")<0||numeric(row,"imageFill")>1||row.imageFit&&numeric(row,"imageFill")===0)throw Error("Invalid UI image policy");
   for(const row of next.VisualSkin) {
     if(!["stretch","height","contain","cover"].includes(row.resizeMode))throw new Error("Invalid skin resize mode");
     if(!["simple","sliced"].includes(row.mode)||!/^[-a-zA-Z0-9_/]+\/spriteFrame$/.test(row.path)||row.path.includes(".."))throw new Error("Invalid skin mode/path");

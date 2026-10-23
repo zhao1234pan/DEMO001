@@ -1,5 +1,12 @@
 # UI资源与层级规范
 
+## 2026-10-23 可见区域与固定槽位
+
+- 同画布仍可能有不同留白。ArtFrame／VisualSkin原始XLSX记录PNG的contentX／contentY／contentWidth／contentHeight；换图后重新测量并导表，构建核对实际alpha边界。测量协议alpha≥8，不修改PNG像素。
+- 可换图节点的外层保留布局、热区、移动和缩放；UiImage通过独立ImageArtwork子节点呈现。外层Sprite禁画，图片必须先于携带物、文字和状态；换图不得改变外层UITransform。
+- UiLayout.imageFit／imageFill决定适配。完整立绘可用feet对齐落脚线，普通图标用content居中；已确认首页与圆形头像保持canvas／1。不得把完整立绘规则套到全部头像，不强行拉伸图像。
+- 原设计图与同状态运行截图建立对照，Pixelmatch定位变化后仍须人工复核。离线预览、结构门禁、构建成功不等于完成实屏还原；不能自动接受有缺陷的当前画面为新基线。见[方案与限制](UI_FIDELITY_PIPELINE.md)。
+
 ## 2026-10-18 科技同族控件统一
 
 - 1.24.0总览取消末尾宽卡，7行卡与详情节点统一330×58；普通／选中同一PNG，不用不同透明留白或九宫轮廓的素材切状态。

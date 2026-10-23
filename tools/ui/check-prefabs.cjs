@@ -46,10 +46,15 @@ function check(root,core,sync=false){
    }
    if(object.__type__===imageType){
     const node=data[object.node.__id__];if(!node._components.some(r=>data[r.__id__].__type__==='cc.Sprite'))throw Error('UiImage未绑定Sprite：'+row.path);
+    if(!object.image||data[object.image.__id__]?._parent?.__id__!==object.node.__id__)throw Error('UI图片缺少独立槽位子节点：'+row.path+'/'+node._name);
+    const slot=node._components.map(r=>data[r.__id__]).find(c=>c.__type__==='cc.Sprite'),picture=data[object.image.__id__],imageSprite=picture._components.map(r=>data[r.__id__]).find(c=>c.__type__==='cc.Sprite');
+    if(slot._enabled!==false||!imageSprite||imageSprite._enabled===false||imageSprite._sizeMode!==0||imageSprite._type!==0)throw Error('UI图片重复绘制或比例设置错误：'+row.path+'/'+node._name);
+    if(node._children[0].__id__!==object.image.__id__)throw Error('UI图片遮住携带物或状态标记：'+row.path+'/'+node._name);
     images++;const [domain,key]=object.frameKey.split(':'),frame=frames.find(r=>domain==='frame'?r.id===key:r[domain]===key);if(!frame)throw Error('预制体缺少独立PNG：'+object.frameKey);
     const image=path.join(root,'assets/art',frame.assetPath.replace('/spriteFrame','.png'));
     const uuid=JSON.parse(fs.readFileSync(image+'.meta','utf8')).uuid+'@f9941';
     if(object.previewFrame?.__uuid__!==uuid){if(!sync)throw Error('预制体图片预览已过期，请重新导表：'+row.path+'/'+object.frameKey);object.previewFrame={__uuid__:uuid,__expectedType__:'cc.SpriteFrame'};changed=true;}
+    for(const field of ['contentX','contentY','contentWidth','contentHeight'])if(object[field]!==Number(frame[field])){if(!sync)throw Error('UI可见边界预览已过期：'+row.path+'/'+object.frameKey);object[field]=Number(frame[field]);changed=true;}
     if('previewTexture'in object){delete object.previewTexture;delete object.previewRect;changed=true;}
 
    }

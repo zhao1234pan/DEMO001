@@ -134,6 +134,18 @@ function installConfigs(sources) {
     }
     positive("VisualSkin", ["width", "height"]);
     positive("VisualSkin", ["left", "right", "top", "bottom", "padding"], true);
+    for (const table of ["ArtFrame", "VisualSkin"])
+        for (const row of next[table]) {
+            const width = numeric(row, table === "ArtFrame" ? "canvasWidth" : "width"), height = numeric(row, table === "ArtFrame" ? "canvasHeight" : "height");
+            for (const field of ["contentX", "contentY", "contentWidth", "contentHeight"])
+                if (!Number.isSafeInteger(numeric(row, field)))
+                    throw Error("Invalid UI content bounds");
+            if (numeric(row, "contentX") < 0 || numeric(row, "contentY") < 0 || numeric(row, "contentWidth") <= 0 || numeric(row, "contentHeight") <= 0 || numeric(row, "contentX") + numeric(row, "contentWidth") > width || numeric(row, "contentY") + numeric(row, "contentHeight") > height)
+                throw Error("Invalid UI content bounds");
+        }
+    for (const row of next.UiLayout)
+        if (!["", "canvas", "content", "feet"].includes(row.imageFit) || !Number.isFinite(numeric(row, "imageFill")) || numeric(row, "imageFill") < 0 || numeric(row, "imageFill") > 1 || row.imageFit && numeric(row, "imageFill") === 0)
+            throw Error("Invalid UI image policy");
     for (const row of next.VisualSkin) {
         if (!["stretch", "height", "contain", "cover"].includes(row.resizeMode))
             throw new Error("Invalid skin resize mode");

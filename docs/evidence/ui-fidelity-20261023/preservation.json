@@ -1,0 +1,258 @@
+{
+  "tables": [
+    {
+      "table": "Global",
+      "oldRows": 52,
+      "newRows": 52,
+      "originalFieldsPreserved": true
+    },
+    {
+      "table": "I18",
+      "oldRows": 1137,
+      "newRows": 1137,
+      "originalFieldsPreserved": true
+    },
+    {
+      "table": "Staff",
+      "oldRows": 8,
+      "newRows": 8,
+      "originalFieldsPreserved": true
+    },
+    {
+      "table": "Enemy",
+      "oldRows": 30,
+      "newRows": 30,
+      "originalFieldsPreserved": true
+    },
+    {
+      "table": "Theme",
+      "oldRows": 4,
+      "newRows": 4,
+      "originalFieldsPreserved": true
+    },
+    {
+      "table": "Map",
+      "oldRows": 31,
+      "newRows": 31,
+      "originalFieldsPreserved": true
+    },
+    {
+      "table": "MapPoint",
+      "oldRows": 264,
+      "newRows": 264,
+      "originalFieldsPreserved": true
+    },
+    {
+      "table": "Spot",
+      "oldRows": 673,
+      "newRows": 673,
+      "originalFieldsPreserved": true
+    },
+    {
+      "table": "Obstacle",
+      "oldRows": 309,
+      "newRows": 309,
+      "originalFieldsPreserved": true
+    },
+    {
+      "table": "Level",
+      "oldRows": 40,
+      "newRows": 40,
+      "originalFieldsPreserved": true
+    },
+    {
+      "table": "Wave",
+      "oldRows": 805,
+      "newRows": 805,
+      "originalFieldsPreserved": true
+    },
+    {
+      "table": "WaveGroup",
+      "oldRows": 76211,
+      "newRows": 76211,
+      "originalFieldsPreserved": true
+    },
+    {
+      "table": "Collection",
+      "oldRows": 38,
+      "newRows": 38,
+      "originalFieldsPreserved": true
+    },
+    {
+      "table": "Audio",
+      "oldRows": 12,
+      "newRows": 12,
+      "originalFieldsPreserved": true
+    },
+    {
+      "table": "Decoration",
+      "oldRows": 63,
+      "newRows": 63,
+      "originalFieldsPreserved": true
+    },
+    {
+      "table": "ArtFrame",
+      "oldRows": 118,
+      "newRows": 118,
+      "originalFieldsPreserved": true
+    },
+    {
+      "table": "UiPrefab",
+      "oldRows": 37,
+      "newRows": 37,
+      "originalFieldsPreserved": true
+    },
+    {
+      "table": "Tutorial",
+      "oldRows": 6,
+      "newRows": 6,
+      "originalFieldsPreserved": true
+    },
+    {
+      "table": "StaffBranch",
+      "oldRows": 16,
+      "newRows": 16,
+      "originalFieldsPreserved": true
+    },
+    {
+      "table": "StaffForm",
+      "oldRows": 16,
+      "newRows": 16,
+      "originalFieldsPreserved": true
+    },
+    {
+      "table": "LevelLoadout",
+      "oldRows": 40,
+      "newRows": 40,
+      "originalFieldsPreserved": true
+    },
+    {
+      "table": "ChallengeRule",
+      "oldRows": 10,
+      "newRows": 10,
+      "originalFieldsPreserved": true
+    },
+    {
+      "table": "ChallengePerk",
+      "oldRows": 35,
+      "newRows": 35,
+      "originalFieldsPreserved": true
+    },
+    {
+      "table": "VisualSkin",
+      "oldRows": 194,
+      "newRows": 194,
+      "originalFieldsPreserved": true
+    },
+    {
+      "table": "Goods",
+      "oldRows": 9,
+      "newRows": 9,
+      "originalFieldsPreserved": true
+    },
+    {
+      "table": "ArtCut",
+      "oldRows": 142,
+      "newRows": 142,
+      "originalFieldsPreserved": true
+    },
+    {
+      "table": "UiLayout",
+      "oldRows": 2932,
+      "newRows": 3025,
+      "originalFieldsPreserved": true
+    },
+    {
+      "table": "StaffVisual",
+      "oldRows": 32,
+      "newRows": 32,
+      "originalFieldsPreserved": true
+    },
+    {
+      "table": "ShopRule",
+      "oldRows": 49,
+      "newRows": 49,
+      "originalFieldsPreserved": true
+    },
+    {
+      "table": "ShopGoods",
+      "oldRows": 9,
+      "newRows": 9,
+      "originalFieldsPreserved": true
+    },
+    {
+      "table": "ShopStaff",
+      "oldRows": 8,
+      "newRows": 8,
+      "originalFieldsPreserved": true
+    },
+    {
+      "table": "ShopUpgrade",
+      "oldRows": 44,
+      "newRows": 44,
+      "originalFieldsPreserved": true
+    },
+    {
+      "table": "ShopCustomer",
+      "oldRows": 3,
+      "newRows": 3,
+      "originalFieldsPreserved": true
+    },
+    {
+      "table": "ShopPoint",
+      "oldRows": 35,
+      "newRows": 35,
+      "originalFieldsPreserved": true
+    },
+    {
+      "table": "ChallengeTopic",
+      "oldRows": 10,
+      "newRows": 10,
+      "originalFieldsPreserved": true
+    },
+    {
+      "table": "ShopStage",
+      "oldRows": 4,
+      "newRows": 4,
+      "originalFieldsPreserved": true
+    },
+    {
+      "table": "ShopResearch",
+      "oldRows": 45,
+      "newRows": 45,
+      "originalFieldsPreserved": true
+    },
+    {
+      "table": "ShopUniform",
+      "oldRows": 8,
+      "newRows": 8,
+      "originalFieldsPreserved": true
+    },
+    {
+      "table": "RankingEntry",
+      "oldRows": 8,
+      "newRows": 8,
+      "originalFieldsPreserved": true
+    },
+    {
+      "table": "TechnologyBranch",
+      "oldRows": 14,
+      "newRows": 14,
+      "originalFieldsPreserved": true
+    },
+    {
+      "table": "TechnologyEffect",
+      "oldRows": 18,
+      "newRows": 18,
+      "originalFieldsPreserved": true
+    },
+    {
+      "table": "TechnologyNode",
+      "oldRows": 70,
+      "newRows": 70,
+      "originalFieldsPreserved": true
+    }
+  ],
+  "pngMetaFontsUnchanged": true,
+  "gameplayValuesUnchanged": true
+}

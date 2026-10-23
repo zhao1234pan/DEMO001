@@ -203,7 +203,11 @@
       "scenery": "string",
       "assetPath": "string",
       "canvasWidth": "int",
-      "canvasHeight": "int"
+      "canvasHeight": "int",
+      "contentX": "int",
+      "contentY": "int",
+      "contentWidth": "int",
+      "contentHeight": "int"
     }
   },
   "UiPrefab": {
@@ -365,7 +369,11 @@
       "bottom": "int",
       "padding": "int",
       "note": "string",
-      "resizeMode": "string"
+      "resizeMode": "string",
+      "contentX": "int",
+      "contentY": "int",
+      "contentWidth": "int",
+      "contentHeight": "int"
     }
   },
   "Goods": {
@@ -422,7 +430,9 @@
       "active": "int",
       "skinKey": "string",
       "note": "string",
-      "fontPath": "string"
+      "fontPath": "string",
+      "imageFit": "string",
+      "imageFill": "float"
     }
   },
   "StaffVisual": {

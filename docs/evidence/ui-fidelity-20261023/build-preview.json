@@ -1,0 +1,4219 @@
+{
+  "version": "1.25.0",
+  "source": "G:\\gptwork\\ui-fidelity-20261023-web-build\\web-mobile",
+  "live": "G:\\gptwork\\shop-reference-ui-ship-web-build\\web-mobile",
+  "backup": "G:\\gptwork\\ui-fidelity-20261023\\previous-preview-1.25.0-first-build",
+  "baselineBackup": "G:\\gptwork\\ui-fidelity-20261023\\previous-preview",
+  "verifiedFiles": 1051,
+  "csvCount": 42,
+  "creatorExitCode": 36,
+  "webFinished": true,
+  "storageReadOrWritten": false,
+  "browserVisualCheck": "先前URL安全策略阻止自动访问，未绕过；本轮没有真实引擎页面截图",
+  "files": [
+    {
+      "path": "application.js",
+      "sha256": "3876486e03ffd49f5cb8bce6d5a23b7ec392a533487229483a3b2429530093f2"
+    },
+    {
+      "path": "assets/battle_art/config.json",
+      "sha256": "1c25f3da751cd120755781ff79b6972547f22e8ed6cae44717af966588b61f3c"
+    },
+    {
+      "path": "assets/battle_art/import/00/001a6f67-0eca-4d99-97b7-10dfe0af4832.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/00/001a6f67-0eca-4d99-97b7-10dfe0af4832@f9941.json",
+      "sha256": "6c247493d37514f5c96a05f62e88a6fe860d8fbdf5f2d19bdcd6b6ced10e8295"
+    },
+    {
+      "path": "assets/battle_art/import/01/019f3e85-cd98-4169-8361-c4732a36c0c1.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/01/019f3e85-cd98-4169-8361-c4732a36c0c1@f9941.json",
+      "sha256": "7dbc3d059ccca57a4eb8d5989654f97602757623cfd8ff8845239a8ef6dad6f3"
+    },
+    {
+      "path": "assets/battle_art/import/01/01a51172-13c2-48ef-a210-4b8bf0db8cdc.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/01/01a51172-13c2-48ef-a210-4b8bf0db8cdc@f9941.json",
+      "sha256": "47573433c75e057fa04e40c0cbe5a980fd2eca5a199fbdbaf0b20e1d3311869d"
+    },
+    {
+      "path": "assets/battle_art/import/03/033449aa-2760-4c51-a7c9-79ba9c00c7bc.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/03/033449aa-2760-4c51-a7c9-79ba9c00c7bc@f9941.json",
+      "sha256": "11e364a554d94ed5ec0c7b6efc3d733d67ff3e03ac06254ded1b023ef68ada7f"
+    },
+    {
+      "path": "assets/battle_art/import/03/03452ac3-531b-4650-a075-c7777b8b52fb.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/03/03452ac3-531b-4650-a075-c7777b8b52fb@f9941.json",
+      "sha256": "5c2f99b7a51904700259e12de9fd5199de421a66b8bc9037ed6b0f5b3dcc6ea7"
+    },
+    {
+      "path": "assets/battle_art/import/04/04273fd6-1c54-41e1-8c5c-81d45a9c1fc9.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/04/04273fd6-1c54-41e1-8c5c-81d45a9c1fc9@f9941.json",
+      "sha256": "fc0dcf3f7d0962456d12c701d95583b1eacbcffbe94280171cf1069c00d27d26"
+    },
+    {
+      "path": "assets/battle_art/import/06/06198400f.json",
+      "sha256": "e2765aeea62161bd6ef1a959661667ee2758797094067556e95f73d4cb406120"
+    },
+    {
+      "path": "assets/battle_art/import/06/065c2cc5-83aa-4d3d-857d-e78a5e8fee1c.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/06/065c2cc5-83aa-4d3d-857d-e78a5e8fee1c@f9941.json",
+      "sha256": "2f56a99d8c4b626c358c305863d7a5c94123213dc3c3bf4f49273413d29e75a1"
+    },
+    {
+      "path": "assets/battle_art/import/07/07196cb6-91b9-4283-b0e1-a0cda34b99de.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/07/07196cb6-91b9-4283-b0e1-a0cda34b99de@f9941.json",
+      "sha256": "31e7ea6cf205aca3b1587c2142f6dcfd0c0a434b7bffbf0beb121b65b36c4b09"
+    },
+    {
+      "path": "assets/battle_art/import/07/07d6adb0-6f56-4025-b485-4285aa3984f8.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/07/07d6adb0-6f56-4025-b485-4285aa3984f8@f9941.json",
+      "sha256": "dc468bbd21775419b95fd4a2889c3e2ea9a6db942d75367c8cf127e8d5e5800a"
+    },
+    {
+      "path": "assets/battle_art/import/08/08d7c3f3-7152-4512-b4b6-45a61bb3519d.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/08/08d7c3f3-7152-4512-b4b6-45a61bb3519d@f9941.json",
+      "sha256": "1f624aaab2a03048a0c360bcbfae111c54baac9f7cbc690918f8758e8a54065a"
+    },
+    {
+      "path": "assets/battle_art/import/09/09704ccd-5595-4374-bdc9-8f9e8736c482.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/09/09704ccd-5595-4374-bdc9-8f9e8736c482@f9941.json",
+      "sha256": "53639c5743b97a7c74f6862ff26d39d5ed49d7f93ffcb3e636c9f7a3e9dc8f9e"
+    },
+    {
+      "path": "assets/battle_art/import/09/09922f5e-ae18-42e3-aee8-376d88520a20.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/09/09922f5e-ae18-42e3-aee8-376d88520a20@f9941.json",
+      "sha256": "33771edfb51e83fc303f0c9b7b3d3728095b18b6720a0e91468dbdf554535b50"
+    },
+    {
+      "path": "assets/battle_art/import/0a/0aea276f-f6b0-460b-ab17-de5f302bb760.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/0a/0aea276f-f6b0-460b-ab17-de5f302bb760@f9941.json",
+      "sha256": "368cd27777a9d0ffc9d3544576e379756d1954ea4edf8ce37f89bc5d4b8e1213"
+    },
+    {
+      "path": "assets/battle_art/import/0b/0b66ab1f-0439-4360-b8e1-7424acf1202c.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/0b/0b66ab1f-0439-4360-b8e1-7424acf1202c@f9941.json",
+      "sha256": "e0d8b7eca0d2904ad16235b18795d8c72438d51bb043a670c40fee4e1978ed43"
+    },
+    {
+      "path": "assets/battle_art/import/0c/0c1971ad-27f1-47cd-81d9-821e6e669aee.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/0c/0c1971ad-27f1-47cd-81d9-821e6e669aee@f9941.json",
+      "sha256": "229240e50a163869004ae05351e32932bb51d08662d2cb70cdc4dcb1e66fc3f8"
+    },
+    {
+      "path": "assets/battle_art/import/0c/0c75a5b2-05cb-483f-991d-7cf17b138168.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/0c/0c75a5b2-05cb-483f-991d-7cf17b138168@f9941.json",
+      "sha256": "f2e40083e719c42201f7ebeac684c2cb7e240aa51ffecc53ff81be670b354e6b"
+    },
+    {
+      "path": "assets/battle_art/import/0c/0cb2ed79-c238-4e5f-92cd-ba947af0609e.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/0c/0cb2ed79-c238-4e5f-92cd-ba947af0609e@f9941.json",
+      "sha256": "d061e6371820f2e69fdffa1cd59d58d11b2a09f523da26f2c4f8bdbd51935c5a"
+    },
+    {
+      "path": "assets/battle_art/import/10/10ee857b-8915-45de-9cc5-babe33910041.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/10/10ee857b-8915-45de-9cc5-babe33910041@f9941.json",
+      "sha256": "0b944190f522c3358d455ae03792f3e37c1534a0b4856d27927b45ca70937318"
+    },
+    {
+      "path": "assets/battle_art/import/11/110302b0-e77a-4ef6-a6e5-e01222cf705d.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/11/110302b0-e77a-4ef6-a6e5-e01222cf705d@f9941.json",
+      "sha256": "6d1699e1f15696725e5272cc2f4c25cb6413eb869ab105d3857ace948a78a3f4"
+    },
+    {
+      "path": "assets/battle_art/import/11/1185cb63-3049-4b1f-97c5-aa880ebbd6c5.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/11/1185cb63-3049-4b1f-97c5-aa880ebbd6c5@f9941.json",
+      "sha256": "a3e7c1c92f8c462e9bca8a189c716a666d55c9a500ce9f408e4f58698eb4b1a8"
+    },
+    {
+      "path": "assets/battle_art/import/13/133779f1-5d8e-450c-afe9-25d2c56ffd0d.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/13/133779f1-5d8e-450c-afe9-25d2c56ffd0d@f9941.json",
+      "sha256": "71d683d172c100f96366cc888228bd9724493333018a03e54bab7c8fae92c9d9"
+    },
+    {
+      "path": "assets/battle_art/import/15/1521b54b-fc7b-4dc2-92fd-a3317bd66243.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/15/1521b54b-fc7b-4dc2-92fd-a3317bd66243@f9941.json",
+      "sha256": "64ef2bcc6a1aa3b61014095d0eb40db575a255eab23fc89abf99e751ed88a4ec"
+    },
+    {
+      "path": "assets/battle_art/import/16/162084b8-a68c-4606-b518-6b8c5e7c5d0c.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/16/162084b8-a68c-4606-b518-6b8c5e7c5d0c@f9941.json",
+      "sha256": "737abd8fe8e8b0380840104d65dd0c8f84e6ceefbadbe9ab09fa9095fc995401"
+    },
+    {
+      "path": "assets/battle_art/import/16/16475ef2-ca7c-4eb9-b105-16c2cda70e04.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/16/16475ef2-ca7c-4eb9-b105-16c2cda70e04@f9941.json",
+      "sha256": "acfec4ae141a06e822a3d0787aeb867ca6a9b801ce1a1d79d6011601938f3f1c"
+    },
+    {
+      "path": "assets/battle_art/import/17/175568da-81ac-47c0-9aee-0f9b88f97ebb.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/17/175568da-81ac-47c0-9aee-0f9b88f97ebb@f9941.json",
+      "sha256": "6a6aecdc3e3dc0720d6b095c4f04ce49c2ce245553de8ee0a452324c3388c8d3"
+    },
+    {
+      "path": "assets/battle_art/import/17/178bcb0f-ca2d-4a19-8464-ab2f1b509340.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/17/178bcb0f-ca2d-4a19-8464-ab2f1b509340@f9941.json",
+      "sha256": "9c574821f1b9647b3ff8c3053ddd56bb84c670d6fb35808e6f9eac358d24b33c"
+    },
+    {
+      "path": "assets/battle_art/import/19/197b7715-091d-47db-9c2a-e11621a84a91.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/19/197b7715-091d-47db-9c2a-e11621a84a91@f9941.json",
+      "sha256": "9894ecc5c69a2211806696e8d281436192dfe26f5d0cdfefbc19bdb492ba50b2"
+    },
+    {
+      "path": "assets/battle_art/import/19/1989bb61-bd4a-413d-b65d-964fa2dcad97.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/19/1989bb61-bd4a-413d-b65d-964fa2dcad97@f9941.json",
+      "sha256": "849a3ce54c9582401eed5e770fe98c730a87afe6eff52b9650085484791b7f1c"
+    },
+    {
+      "path": "assets/battle_art/import/1a/1a296038-ab08-4bab-8a63-55e04f1260fc.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/1a/1a296038-ab08-4bab-8a63-55e04f1260fc@f9941.json",
+      "sha256": "8ed325120128e78c8d4f8616219559d48b5cd431fde858cf12c60757e90b6b2c"
+    },
+    {
+      "path": "assets/battle_art/import/1a/1a6b6ac9-75f4-417e-93ef-5df73e5cb53a.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/1a/1a6b6ac9-75f4-417e-93ef-5df73e5cb53a@f9941.json",
+      "sha256": "3cd64f8bb7e68e68c482d040d7207b9058fe56b382e589ad22d2eecbd97906dd"
+    },
+    {
+      "path": "assets/battle_art/import/1a/1a897f10-699a-456c-8cfe-b8858ebb44f9.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/1a/1a897f10-699a-456c-8cfe-b8858ebb44f9@f9941.json",
+      "sha256": "126a6298e65327dd607d80e344242078fb67409b771709ee32545e705ee42429"
+    },
+    {
+      "path": "assets/battle_art/import/1b/1b187b97-97c5-4447-946a-967364b7b901.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/1b/1b187b97-97c5-4447-946a-967364b7b901@f9941.json",
+      "sha256": "b95a971ed3cd5dc1fd99dd369fa94f00ffcad129337ba1d7403f504db6ed2095"
+    },
+    {
+      "path": "assets/battle_art/import/1b/1bc38bee-a0ab-4fa9-b71f-cdf836e62b52.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/1b/1bc38bee-a0ab-4fa9-b71f-cdf836e62b52@f9941.json",
+      "sha256": "39d990fb1de12ec4ba1d31c35bfc0b7f09379092dfd208c0454ae8b32eba91b4"
+    },
+    {
+      "path": "assets/battle_art/import/1c/1c08fc0e-8f3a-4df6-a8bb-c923564faecc.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/1c/1c08fc0e-8f3a-4df6-a8bb-c923564faecc@f9941.json",
+      "sha256": "2294d1fa5300f7afb2001a4622be16ffbf66d570dd0a6bd75d5449fdab7a1be0"
+    },
+    {
+      "path": "assets/battle_art/import/1c/1c1cd857-4ff3-4365-a333-e30efb6e1b98.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/1c/1c1cd857-4ff3-4365-a333-e30efb6e1b98@f9941.json",
+      "sha256": "aaa086d4f5a4ce16e4035e47d0380f0f462272fda73ac400f278800e89669c31"
+    },
+    {
+      "path": "assets/battle_art/import/1c/1c5e20ec-17d5-4701-94f3-bc645c44f097.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/1c/1c5e20ec-17d5-4701-94f3-bc645c44f097@f9941.json",
+      "sha256": "013afcab42dd05f2df96c903c94fd50a740b1edf2d253441fcd2a17332b49780"
+    },
+    {
+      "path": "assets/battle_art/import/1c/1c9a5378-daa0-455a-975a-7fd91509b1e4.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/1c/1c9a5378-daa0-455a-975a-7fd91509b1e4@f9941.json",
+      "sha256": "66269d320856128629519428f7331f8879ad5c2ce53ec3b3ed682b170993d915"
+    },
+    {
+      "path": "assets/battle_art/import/1c/1c9d78ef-7bbe-4c0c-9ece-a144a0b7ed48.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/1c/1c9d78ef-7bbe-4c0c-9ece-a144a0b7ed48@f9941.json",
+      "sha256": "4e2e1813c4e6d60fd397f2fde638bfeb0b3be873958e1ed80e4da8254ace1947"
+    },
+    {
+      "path": "assets/battle_art/import/1e/1e5a8f98-8890-48fc-b896-14aab80d08f8.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/1e/1e5a8f98-8890-48fc-b896-14aab80d08f8@f9941.json",
+      "sha256": "3633a148c7c2e94468f71223436e3d9c881543b75780ee20e1e33c781e4faaf0"
+    },
+    {
+      "path": "assets/battle_art/import/1e/1eaaa25b-8ef3-436a-b49f-e5c020ffe1a9.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/1e/1eaaa25b-8ef3-436a-b49f-e5c020ffe1a9@f9941.json",
+      "sha256": "363d144a246538e31d68b4e782bb64ff95995de761a5586699ecff068d66d512"
+    },
+    {
+      "path": "assets/battle_art/import/1f/1f0fb02b-339c-4152-a5fc-73ec6739602f.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/1f/1f0fb02b-339c-4152-a5fc-73ec6739602f@f9941.json",
+      "sha256": "32e1a156c123a5d46bb960bec5b723bc6a2d01c4f66412a0e0de1a10f26fddc9"
+    },
+    {
+      "path": "assets/battle_art/import/21/2102d03f-184f-4250-8440-2a2ef7bfa79e.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/21/2102d03f-184f-4250-8440-2a2ef7bfa79e@f9941.json",
+      "sha256": "6b063a26cd7343f3091a1dbf2ba7717a8f8250dae95570f4399330108656edb9"
+    },
+    {
+      "path": "assets/battle_art/import/22/22875013-92f7-40ed-9e7b-a1861aa52566.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/22/22875013-92f7-40ed-9e7b-a1861aa52566@f9941.json",
+      "sha256": "c465d081a589f77e6a589036586bb8c04e23976d1e8113411d0b6371a11d67d8"
+    },
+    {
+      "path": "assets/battle_art/import/23/232c9729-dd72-4186-b93a-017ced4410cf.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/23/232c9729-dd72-4186-b93a-017ced4410cf@f9941.json",
+      "sha256": "cd9cd1cd809ac236ddadbdb430edde2a4e498cf02dd92dbaa590fdeca0e1db14"
+    },
+    {
+      "path": "assets/battle_art/import/23/234fd7c3-7763-4d1c-8377-d702f398f9a8.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/23/234fd7c3-7763-4d1c-8377-d702f398f9a8@f9941.json",
+      "sha256": "7ba29d488a9a6840d5bdc7a9ef1deaa7e00a366677c3d8b255cbd084c87355d4"
+    },
+    {
+      "path": "assets/battle_art/import/24/24356d14-976d-47d5-a5fa-d8d645ca4e8b.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/24/24356d14-976d-47d5-a5fa-d8d645ca4e8b@f9941.json",
+      "sha256": "528a765e6885fd71f4edb9d01fac0c317959d40066e90655fa392a6167d9d9e3"
+    },
+    {
+      "path": "assets/battle_art/import/24/24b54ca1-1f48-494f-a0e0-a231c4c99437.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/24/24b54ca1-1f48-494f-a0e0-a231c4c99437@f9941.json",
+      "sha256": "848c48608086735813c9e6353f7061fb7e6de121234684e0d9b5973803584b0b"
+    },
+    {
+      "path": "assets/battle_art/import/26/26538b90-c1d5-45f5-b3a8-61c8aa8d7d57.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/26/26538b90-c1d5-45f5-b3a8-61c8aa8d7d57@f9941.json",
+      "sha256": "0d6c4708bfb7d6817761e5ffd7018446f8cfe436231c12a10507501e9b5aa98b"
+    },
+    {
+      "path": "assets/battle_art/import/26/2691cbaa-47c5-4ee5-8ee4-c079aa1a0f97.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/26/2691cbaa-47c5-4ee5-8ee4-c079aa1a0f97@f9941.json",
+      "sha256": "ac3fae27d0e676588ad5e85786c1cbb5b341fdd0b078cacdf00444cd6e3e4e5f"
+    },
+    {
+      "path": "assets/battle_art/import/26/26ba28cc-4198-4987-affa-a46d2bd4df30.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/26/26ba28cc-4198-4987-affa-a46d2bd4df30@f9941.json",
+      "sha256": "48fe867aad5a2e7d78207e0f918b3f2b28cc1835a7be004c6e41e168b417e28a"
+    },
+    {
+      "path": "assets/battle_art/import/28/287109ce-b50b-43e5-8e7b-2523dd70136c.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/28/287109ce-b50b-43e5-8e7b-2523dd70136c@f9941.json",
+      "sha256": "54c9528ab59d3cb16dcec5e1f56cee6cdf5395fa13ff8b8cce175aef80cf2c09"
+    },
+    {
+      "path": "assets/battle_art/import/28/287cd005-e7ec-4aeb-b6c6-7a65814de512.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/28/287cd005-e7ec-4aeb-b6c6-7a65814de512@f9941.json",
+      "sha256": "2229c39e21de237edac2696d93c837dd2fd054638ba49fdae27deedf17fa1a67"
+    },
+    {
+      "path": "assets/battle_art/import/28/28958b9e-7b03-42bb-a6e3-7035a6991edf.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/28/28958b9e-7b03-42bb-a6e3-7035a6991edf@f9941.json",
+      "sha256": "bf6d11070afb059ac62b3fe65900d6f8ca4ad13d611165db937fea29a13db6a8"
+    },
+    {
+      "path": "assets/battle_art/import/28/28ec35e8-7694-472a-94ba-09e5539661e8.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/28/28ec35e8-7694-472a-94ba-09e5539661e8@f9941.json",
+      "sha256": "e609ccf4b26efe9f6a273b50e1072855b6e18f068de0f7285721582a0fac13cd"
+    },
+    {
+      "path": "assets/battle_art/import/28/28ffad79-02dd-4b0c-8495-e363b5073e5e.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/28/28ffad79-02dd-4b0c-8495-e363b5073e5e@f9941.json",
+      "sha256": "048bec50f253a033cfca0ddb5c4f8aa7fb2a4285f7d08adaac1bc10c69606efa"
+    },
+    {
+      "path": "assets/battle_art/import/2b/2b57d66c-fe9c-42d4-b674-eb40fa9b90ef.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/2b/2b57d66c-fe9c-42d4-b674-eb40fa9b90ef@f9941.json",
+      "sha256": "0420202f46fbc51fa91955ba16c04216596f99821d7edf11e274985fc1c7d429"
+    },
+    {
+      "path": "assets/battle_art/import/2d/2d2292b3-72a8-44e3-9de8-1eda4b0d91ac.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/2d/2d2292b3-72a8-44e3-9de8-1eda4b0d91ac@f9941.json",
+      "sha256": "8362d2dd190db1b44b77b71da88ba5dda9581abf9a911445d4dd730168252dbd"
+    },
+    {
+      "path": "assets/battle_art/import/2d/2d32214d-08d1-4560-8f48-9c01083c0d83.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/2d/2d32214d-08d1-4560-8f48-9c01083c0d83@f9941.json",
+      "sha256": "c29d0b0e086da4f0679654ef7009d5acb304093eac87388fc694821c9b4816d7"
+    },
+    {
+      "path": "assets/battle_art/import/2d/2d92fb21-d3c2-4ffa-96f4-1e1f741a0f52.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/2d/2d92fb21-d3c2-4ffa-96f4-1e1f741a0f52@f9941.json",
+      "sha256": "c813341606ff066b57d4c84b6c51cf95272174c5e34eb5090ccd5c32dd773619"
+    },
+    {
+      "path": "assets/battle_art/import/2e/2ea64852-7b33-43aa-b988-0d34515bd73c.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/2e/2ea64852-7b33-43aa-b988-0d34515bd73c@f9941.json",
+      "sha256": "9254a52abde1b158e6fa9c5f4f66944fc7caaf3ff6bb253534abfeaf3170f58a"
+    },
+    {
+      "path": "assets/battle_art/import/2e/2edcc2a2-6912-4e4d-ae69-775f52fd0173.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/2e/2edcc2a2-6912-4e4d-ae69-775f52fd0173@f9941.json",
+      "sha256": "3e9319e83e1cfddb58a3c8af4488bd9402ed25c7158eb62478bb6d082a34fac7"
+    },
+    {
+      "path": "assets/battle_art/import/2f/2f2b5500-043e-4ec5-8d83-3ed88d570b07.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/2f/2f2b5500-043e-4ec5-8d83-3ed88d570b07@f9941.json",
+      "sha256": "df429c496e125a6be182608cfad57a3e2c5bd6b63882a0da7186054e5e56732e"
+    },
+    {
+      "path": "assets/battle_art/import/30/306fbd92-fb79-4c87-b004-4b4e792bc167.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/30/306fbd92-fb79-4c87-b004-4b4e792bc167@f9941.json",
+      "sha256": "c8d12b338a24056824a7184b8b7ade15ae6fa024e807393c6cc805c950227236"
+    },
+    {
+      "path": "assets/battle_art/import/32/3258a35e-e795-4f48-b1e3-11cfb1aabf8e.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/32/3258a35e-e795-4f48-b1e3-11cfb1aabf8e@f9941.json",
+      "sha256": "dd95f0409fca32579d4bfc220c379f0d4f93644c36ed19f134f30475e87bed81"
+    },
+    {
+      "path": "assets/battle_art/import/32/32b27850-9a9d-4f77-a5e7-257a35d3c851.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/32/32b27850-9a9d-4f77-a5e7-257a35d3c851@f9941.json",
+      "sha256": "eb3566a82609ddf2ae70fc37aeb3488514ac2001737c7b49a0e0dcd1f56331d0"
+    },
+    {
+      "path": "assets/battle_art/import/32/32eb9c9c-6193-45c2-8082-326159aa8526.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/32/32eb9c9c-6193-45c2-8082-326159aa8526@f9941.json",
+      "sha256": "433da63ff483909e8b0f4b324ad3ad6a07959d6565c14b08330fdc96b02f8e43"
+    },
+    {
+      "path": "assets/battle_art/import/33/3342975a-0ff2-43d4-af4d-a2d3663bece9.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/33/3342975a-0ff2-43d4-af4d-a2d3663bece9@f9941.json",
+      "sha256": "5997c9f5d01bd12bbafc555e824a00386b48ba33a0b723f8f2118eef282eda73"
+    },
+    {
+      "path": "assets/battle_art/import/34/3475a089-e200-48f6-b600-db156302c6e1.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/34/3475a089-e200-48f6-b600-db156302c6e1@f9941.json",
+      "sha256": "95bba78fd3ccc44a423a44f85102b170ee35e04e93f9fd78a1c1a37c258099ca"
+    },
+    {
+      "path": "assets/battle_art/import/35/35ae900d-ca33-4444-aac2-a7c1da754c1a.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/35/35ae900d-ca33-4444-aac2-a7c1da754c1a@f9941.json",
+      "sha256": "ab183ae14c99946f75088c28414a6c8f2abc4e64a57692e4e82282110e822cde"
+    },
+    {
+      "path": "assets/battle_art/import/37/37a875da-bbf3-4cc7-a8c2-f55293812e76.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/37/37a875da-bbf3-4cc7-a8c2-f55293812e76@f9941.json",
+      "sha256": "e0e008ed2c817efb6a3b6c9a818da5565e8b65500e5266ef970a1a370d0120d7"
+    },
+    {
+      "path": "assets/battle_art/import/38/385390c2-62d8-45d6-a2dd-391c3eefb919.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/38/385390c2-62d8-45d6-a2dd-391c3eefb919@f9941.json",
+      "sha256": "7cde1c14e22d93138a38096dfdabcc403770a7606ab5b667fbafc85e50becccd"
+    },
+    {
+      "path": "assets/battle_art/import/39/3923b68b-a794-4a46-85fd-6fee15101364.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/39/3923b68b-a794-4a46-85fd-6fee15101364@f9941.json",
+      "sha256": "c5d54b00e574126847fccf1b575453f9ef9319f2db7dca97d2046a5d54296c07"
+    },
+    {
+      "path": "assets/battle_art/import/39/39b6a9d3-9740-407c-b0bd-332612a23d94.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/39/39b6a9d3-9740-407c-b0bd-332612a23d94@f9941.json",
+      "sha256": "696cdfa5977ee0d39ff21978255c4f27f8b7c23ac8f99ac8a4f5398845a31546"
+    },
+    {
+      "path": "assets/battle_art/import/3b/3b35e823-2086-483f-9625-4ad9ef0d3097.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/3b/3b35e823-2086-483f-9625-4ad9ef0d3097@f9941.json",
+      "sha256": "dc62039bdc5467682305ba97dd6f723f49276f5d9afdbc2bf825700d8a1e13ae"
+    },
+    {
+      "path": "assets/battle_art/import/3e/3eb5d65e-2633-4856-91bb-ba1c19867e70.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/3e/3eb5d65e-2633-4856-91bb-ba1c19867e70@f9941.json",
+      "sha256": "a30604e72d238bed5653d1943e3643619f8b192de5bbeb0d26711393a2f86cde"
+    },
+    {
+      "path": "assets/battle_art/import/3f/3fac71a4-8334-4961-b66d-b95633e73468.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/3f/3fac71a4-8334-4961-b66d-b95633e73468@f9941.json",
+      "sha256": "984fbefc7a718066ae7f5034f984ef14b7d913ee9797b263f0656360efd7f2bc"
+    },
+    {
+      "path": "assets/battle_art/import/41/413e2e90-f09a-42ed-b61e-17594f919886.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/41/413e2e90-f09a-42ed-b61e-17594f919886@f9941.json",
+      "sha256": "69fe05bd1353dfe3cc04a63448a3dfb9fbac39da21871b60210caa9246242f24"
+    },
+    {
+      "path": "assets/battle_art/import/44/445363c9-4b8c-4b04-955a-9f0786a1439d.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/44/445363c9-4b8c-4b04-955a-9f0786a1439d@f9941.json",
+      "sha256": "64bb9144b0e6ff3242be7017deccde01b31818d38a2ab5e95632993f298f81c5"
+    },
+    {
+      "path": "assets/battle_art/import/45/456c5823-7ae5-40aa-93b6-d99bfde74acf.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/45/456c5823-7ae5-40aa-93b6-d99bfde74acf@f9941.json",
+      "sha256": "dc228e12e342ba9e6350d4a5dcfcc57dd597ef2e6d58cc672050ee5a9c865d07"
+    },
+    {
+      "path": "assets/battle_art/import/46/464c6bfb-73b0-45d6-b598-96cac1ac554c.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/46/464c6bfb-73b0-45d6-b598-96cac1ac554c@f9941.json",
+      "sha256": "5db1c8fa28bb5e21f9694c532bdb7f9a0c5865b42e925b8ad6d505c3e6d2b5fc"
+    },
+    {
+      "path": "assets/battle_art/import/46/46ea0dd6-0baa-4279-a444-681735451d93.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/46/46ea0dd6-0baa-4279-a444-681735451d93@f9941.json",
+      "sha256": "c81c1ec7f1b4899f6dce821e4032f493a0dda91631535ee046a4b5ac2508cccb"
+    },
+    {
+      "path": "assets/battle_art/import/47/47148a77-d368-40d0-b314-1271ff357b91.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/47/47148a77-d368-40d0-b314-1271ff357b91@f9941.json",
+      "sha256": "c9eb5d93ca0eea8176294df2f16f050d20bf161250904e6176ac5e036df27ec7"
+    },
+    {
+      "path": "assets/battle_art/import/47/47e2ac5b-167c-4200-9d63-8145ec60b1e6.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/47/47e2ac5b-167c-4200-9d63-8145ec60b1e6@f9941.json",
+      "sha256": "4e4145db98781cf3228b53eb1628e4c71f99e0b79191e8886998360d5a5a509b"
+    },
+    {
+      "path": "assets/battle_art/import/48/482c409e-2dd6-439c-b46c-0e6119a7db97.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/48/482c409e-2dd6-439c-b46c-0e6119a7db97@f9941.json",
+      "sha256": "50673516f577115c15b0d791871bcebe060596f2cb6ce87a9feddbf124dc7f8d"
+    },
+    {
+      "path": "assets/battle_art/import/48/485d9ffe-0c01-485e-b23e-e69b5fbafdc4.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/48/485d9ffe-0c01-485e-b23e-e69b5fbafdc4@f9941.json",
+      "sha256": "193983d57ba5d339ef42ad44f0383ab8abe09d1df68b4134bac998c034f8b021"
+    },
+    {
+      "path": "assets/battle_art/import/48/48f1fb92-3df2-47e4-b2bf-179b92cc1d25.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/48/48f1fb92-3df2-47e4-b2bf-179b92cc1d25@f9941.json",
+      "sha256": "e0bf0a098466db55d80d74fa8c5604d260881cd706eac53cc83a3d4fa47ce8ce"
+    },
+    {
+      "path": "assets/battle_art/import/49/494b8a3a-2885-4245-8741-b08b57054126.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/49/494b8a3a-2885-4245-8741-b08b57054126@f9941.json",
+      "sha256": "ecdd63b2a0ef4850e8a8812aa0a3da4df3a49e30cbaa430b63f9690cd814e9d8"
+    },
+    {
+      "path": "assets/battle_art/import/49/49a26987-906a-470a-bf4f-cbcc510934f7.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/49/49a26987-906a-470a-bf4f-cbcc510934f7@f9941.json",
+      "sha256": "6108d639c320ad4fa6d3840b1d73d95fd5b3383b292eb524fee816ba683748e4"
+    },
+    {
+      "path": "assets/battle_art/import/49/49eef578-ee4a-45db-a20c-78bf22e99b18.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/49/49eef578-ee4a-45db-a20c-78bf22e99b18@f9941.json",
+      "sha256": "51798fe9c98694d28662c32655ae543a96e3872b2c83263902cf807b44815072"
+    },
+    {
+      "path": "assets/battle_art/import/4a/4a488e30-efeb-45fa-af2a-a71057a2bb39.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/4a/4a488e30-efeb-45fa-af2a-a71057a2bb39@f9941.json",
+      "sha256": "d889e9e1e468bca0371514f110c7ce774cd4d314b34a54a287e87da81239caba"
+    },
+    {
+      "path": "assets/battle_art/import/4b/4b5ebe07-31f4-4dc2-bfd9-2173f27de46f.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/4b/4b5ebe07-31f4-4dc2-bfd9-2173f27de46f@f9941.json",
+      "sha256": "6a405f6252380cc51f5df422bfd56e61611733e2d44f2373b565ad3af86ad3dc"
+    },
+    {
+      "path": "assets/battle_art/import/4b/4b73879e-e733-48d9-b045-fe5eba49ce8c.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/4b/4b73879e-e733-48d9-b045-fe5eba49ce8c@f9941.json",
+      "sha256": "fbe2573541743bfc9236beb91fb708ca5b9eaeb20f62f5362aa77ade49c5260a"
+    },
+    {
+      "path": "assets/battle_art/import/4b/4b88c53c-69d8-49f4-9c5f-3efa5141f4ba.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/4b/4b88c53c-69d8-49f4-9c5f-3efa5141f4ba@f9941.json",
+      "sha256": "c95125d0062fed78dea549b6d07a8bafca4eebd6f5d8ef4115428181ff0c6a8e"
+    },
+    {
+      "path": "assets/battle_art/import/4c/4c45abf1-a1fa-42b6-9807-5557e89e28bc.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/4c/4c45abf1-a1fa-42b6-9807-5557e89e28bc@f9941.json",
+      "sha256": "2bdd7364fc915852aee2002c4030216bd547dc818f7218b81994fd96b8cb3f73"
+    },
+    {
+      "path": "assets/battle_art/import/4c/4cabe27d-8027-4450-b190-273ca1c81745.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/4c/4cabe27d-8027-4450-b190-273ca1c81745@f9941.json",
+      "sha256": "1231306b2eb4933f39e7205cab4dea7db86aff3584ce31d543b25a02ed87afea"
+    },
+    {
+      "path": "assets/battle_art/import/50/5075703b-c463-4a63-b36f-0ebc10a42c9a.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/50/5075703b-c463-4a63-b36f-0ebc10a42c9a@f9941.json",
+      "sha256": "d17757cd43d607e22abdae1e74f03d50108ffb59c5bd8d0a9e492ab2e02f38c7"
+    },
+    {
+      "path": "assets/battle_art/import/50/509c587b-06c7-4a5a-a967-3de5f47d6cd4.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/50/509c587b-06c7-4a5a-a967-3de5f47d6cd4@f9941.json",
+      "sha256": "42b520a06e68ccc299516444f8f89dceda5b9f17d925c24a7b6a784822665710"
+    },
+    {
+      "path": "assets/battle_art/import/50/50b2deee-ab95-493f-907d-a40c3858675d.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/50/50b2deee-ab95-493f-907d-a40c3858675d@f9941.json",
+      "sha256": "f8a9851b2bd6f1804afc18ac46c724b8d9aa648d07afc22a18f12e84cfa489a5"
+    },
+    {
+      "path": "assets/battle_art/import/52/5221c066-757a-4b1a-b5de-ff00a401ed55.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/52/5221c066-757a-4b1a-b5de-ff00a401ed55@f9941.json",
+      "sha256": "43fd535c0c62c1c76bc39fc4160c751c0646282375e1a04064b6af74c6414dd2"
+    },
+    {
+      "path": "assets/battle_art/import/53/53fc4e30-24fe-427f-ac5b-8daf4d615693.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/53/53fc4e30-24fe-427f-ac5b-8daf4d615693@f9941.json",
+      "sha256": "6165d0e31d14a0bdeade97b9bcf8a1b67320a430cb0f862a57fc58a3a251dbaf"
+    },
+    {
+      "path": "assets/battle_art/import/54/549892f3-f370-41d4-895f-9e17128211ea.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/54/549892f3-f370-41d4-895f-9e17128211ea@f9941.json",
+      "sha256": "0b2feacadd0f1397d28db5788d61d64518a3ad748f8570bd29683604e2d1c777"
+    },
+    {
+      "path": "assets/battle_art/import/56/56dcf421-0f61-438e-8724-12a260c45209.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/56/56dcf421-0f61-438e-8724-12a260c45209@f9941.json",
+      "sha256": "fca47144bc97ea077a1df134bde3a645039fafe179277c1de14a51e5172cc23d"
+    },
+    {
+      "path": "assets/battle_art/import/57/575d2daf-568d-4969-a46a-54db6a32c1ea.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/57/575d2daf-568d-4969-a46a-54db6a32c1ea@f9941.json",
+      "sha256": "e770c4a195267617b4f041567957c1ee9e2a6c15bb282d739dc8173cc3f97197"
+    },
+    {
+      "path": "assets/battle_art/import/57/57c6e343-8160-4b56-8a82-93b6bb615321.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/57/57c6e343-8160-4b56-8a82-93b6bb615321@f9941.json",
+      "sha256": "407b2d055886aa644860bfdd1b6217d6848ce5f550e6dff6f1df57b11ad2151d"
+    },
+    {
+      "path": "assets/battle_art/import/58/586f7aa4-f561-4f62-affd-d817e0618547.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/58/586f7aa4-f561-4f62-affd-d817e0618547@f9941.json",
+      "sha256": "afc49676e8d1d9838024084b7cbcd1efbd2332f6b009f1d5da086cf81a96b3e4"
+    },
+    {
+      "path": "assets/battle_art/import/58/58a0b3ee-53dc-40f5-a525-17b7fad4f74f.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/58/58a0b3ee-53dc-40f5-a525-17b7fad4f74f@f9941.json",
+      "sha256": "57e554d0ccf4d15df38a56e75600f59f761ccdc90de4a76b7a5dd6a9a6a3bba1"
+    },
+    {
+      "path": "assets/battle_art/import/59/59c643b1-00cf-4e99-809a-3bc57ed55681.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/59/59c643b1-00cf-4e99-809a-3bc57ed55681@f9941.json",
+      "sha256": "efe747a7c179b6f142282b644fa3c26e40944721061a43e9d1f049dc9cd1d22d"
+    },
+    {
+      "path": "assets/battle_art/import/5a/5a69b78b-3e71-4f55-929f-7b074af5b049.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/5a/5a69b78b-3e71-4f55-929f-7b074af5b049@f9941.json",
+      "sha256": "a16da7cf5e4db31a9d0f0c9f39733187cbf5d2b122724436f887ab816e839e27"
+    },
+    {
+      "path": "assets/battle_art/import/5a/5a77d735-8968-42ed-af62-73843079e8c6.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/5a/5a77d735-8968-42ed-af62-73843079e8c6@f9941.json",
+      "sha256": "aa877004288667bc07b97de91519de993f64ef0ab89535ec74bf58e20c345af8"
+    },
+    {
+      "path": "assets/battle_art/import/5b/5b5a894b-117a-43a1-a340-1c8d1dc8c813.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/5b/5b5a894b-117a-43a1-a340-1c8d1dc8c813@f9941.json",
+      "sha256": "486e8da83da12e4a864efb78635ec5a62bf25840acb9222a350eb332b0b3fe5a"
+    },
+    {
+      "path": "assets/battle_art/import/5b/5bacf99c-c656-4673-b623-55cd2aa91085.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/5b/5bacf99c-c656-4673-b623-55cd2aa91085@f9941.json",
+      "sha256": "3ff8630eff36bd93221023133c30dd09784b5730d1038fbfa2e5f4c79dafd825"
+    },
+    {
+      "path": "assets/battle_art/import/5b/5bb21119-818e-4fac-aa09-4fec96f78107.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/5b/5bb21119-818e-4fac-aa09-4fec96f78107@f9941.json",
+      "sha256": "f3ac993154b242e542e02d0b5a1a94e613ace5010f8e22c0aada0df09a2eece2"
+    },
+    {
+      "path": "assets/battle_art/import/5c/5c1e3517-87bc-4fa8-8d3f-c4d4c5ae9027.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/5c/5c1e3517-87bc-4fa8-8d3f-c4d4c5ae9027@f9941.json",
+      "sha256": "ab3febebc412ee8297ebc02c1732c2106153580a2fe0968c7908ffafea71ce6d"
+    },
+    {
+      "path": "assets/battle_art/import/5c/5c76e30b-79ca-4f9c-b5b2-465e13d3f8da.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/5c/5c76e30b-79ca-4f9c-b5b2-465e13d3f8da@f9941.json",
+      "sha256": "6b3be9af49257352d257e6d7e413cb3207e6ff68cc29d084288ba92d5a94a788"
+    },
+    {
+      "path": "assets/battle_art/import/5e/5e89658b-0037-4e67-af18-0ab098f33c64.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/5e/5e89658b-0037-4e67-af18-0ab098f33c64@f9941.json",
+      "sha256": "ab9326866603dbef0d22f9f566bcac0b5709da0098e9dd58ca946279b8e7c978"
+    },
+    {
+      "path": "assets/battle_art/import/5f/5f8b97d3-e5ee-496c-90e4-b2b9e9893483.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/5f/5f8b97d3-e5ee-496c-90e4-b2b9e9893483@f9941.json",
+      "sha256": "a668daab6cdc97e7c8859b40004f8b42389c26f0db0a8dcf64c318b7059e07b3"
+    },
+    {
+      "path": "assets/battle_art/import/5f/5f91fea5-3647-42a5-b305-f6759a727761.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/5f/5f91fea5-3647-42a5-b305-f6759a727761@f9941.json",
+      "sha256": "16a60201c9ed007c446c2bca7c2f1957db773eef4a1a63ef914088fa68a4af3c"
+    },
+    {
+      "path": "assets/battle_art/import/60/60121af8-8636-4548-9c03-fb83a84e4ce0.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/60/60121af8-8636-4548-9c03-fb83a84e4ce0@f9941.json",
+      "sha256": "10fd1f629b97957f13a53e009535c834ed1586dc3b5fdd09ac6a8b8da58491ae"
+    },
+    {
+      "path": "assets/battle_art/import/61/612b2d0a-e30e-4204-88cf-8f60da37ae98.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/61/612b2d0a-e30e-4204-88cf-8f60da37ae98@f9941.json",
+      "sha256": "a61bbfb6f7929f992f46c1c922ebfb3d249fa9d2f7dac9e824d2f0541e740c7d"
+    },
+    {
+      "path": "assets/battle_art/import/61/619a5eb3-1c5c-4b72-907e-9e77909bec51.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/61/619a5eb3-1c5c-4b72-907e-9e77909bec51@f9941.json",
+      "sha256": "4a10995c07dd12dfe19b3d264cecd069aad6405b378aec66f19f2be802133a5e"
+    },
+    {
+      "path": "assets/battle_art/import/61/61bbb36c-2d13-42a5-9b14-4ab87dfd1c59.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/61/61bbb36c-2d13-42a5-9b14-4ab87dfd1c59@f9941.json",
+      "sha256": "181eded0dc583036c2b92e04a71f6184dddddc83e48ebb04c3b1cb592dffd0c4"
+    },
+    {
+      "path": "assets/battle_art/import/62/621878bf-c52c-4f57-906a-f84438cbd4f2.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/62/621878bf-c52c-4f57-906a-f84438cbd4f2@f9941.json",
+      "sha256": "1bef48f173eef0f4cb5c6e49df1f90de246ee79f1d2f36c1cd5a197e2f59ddc8"
+    },
+    {
+      "path": "assets/battle_art/import/62/621c52e6-332d-4657-b22e-dcb09e6e6bd2.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/62/621c52e6-332d-4657-b22e-dcb09e6e6bd2@f9941.json",
+      "sha256": "16444e12099dc49049adc3bdb7ee71afbfe16a1ea14aa9ade26c9959326b14cf"
+    },
+    {
+      "path": "assets/battle_art/import/62/6261d383-1c1d-461a-af14-e952e060e0d9.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/62/6261d383-1c1d-461a-af14-e952e060e0d9@f9941.json",
+      "sha256": "c3fbcc159cd881535a333012af8ae8612dc22f67bb5d3e96d9509f6db4525193"
+    },
+    {
+      "path": "assets/battle_art/import/62/62bc748f-69a2-4930-aa94-1a770fad61bd.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/62/62bc748f-69a2-4930-aa94-1a770fad61bd@f9941.json",
+      "sha256": "c8d43f3d6e1352de7ac19111e76004a7daca6d8fbbbf5676390f1dfbbe216a2e"
+    },
+    {
+      "path": "assets/battle_art/import/64/6487b846-adea-432d-abab-4ecfddc8a91b.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/64/6487b846-adea-432d-abab-4ecfddc8a91b@f9941.json",
+      "sha256": "cc1f8e199cad9eee7e8cf6fc5021fb3c54a16d6cc904080782166231f1074479"
+    },
+    {
+      "path": "assets/battle_art/import/64/64f58c0a-b4f1-411b-8103-ec05d5f14207.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/64/64f58c0a-b4f1-411b-8103-ec05d5f14207@f9941.json",
+      "sha256": "bdb9761c6123b2904684e963cfd76501291b59149f4ecd3c333064f67224b59f"
+    },
+    {
+      "path": "assets/battle_art/import/65/650b98a3-bae3-4a5f-8b61-01a51d7e8f01.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/65/650b98a3-bae3-4a5f-8b61-01a51d7e8f01@f9941.json",
+      "sha256": "1954ad9ce648f08c1b897c0166737124193dc1bd27e0560a33f998b558ab7b6b"
+    },
+    {
+      "path": "assets/battle_art/import/67/675f6d94-e6ba-4369-9212-3fe0b776d203.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/67/675f6d94-e6ba-4369-9212-3fe0b776d203@f9941.json",
+      "sha256": "4660530e43cd8b6bb20777c3b564ce4b19bcf9dbdbb1202d9303a8ac1f1f18f5"
+    },
+    {
+      "path": "assets/battle_art/import/68/680ae613-26d1-42aa-a318-8f907197dd3d.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/68/680ae613-26d1-42aa-a318-8f907197dd3d@f9941.json",
+      "sha256": "9933a8a5c29ad5248c54194a62c83b7fd81b9ec10f185df8e13065031cea8795"
+    },
+    {
+      "path": "assets/battle_art/import/69/6915987e-6fcf-4521-b0b5-33b57e458682.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/69/6915987e-6fcf-4521-b0b5-33b57e458682@f9941.json",
+      "sha256": "c4857759872edd809c0221af35a5bac82192ece4043c44bc7d6a99f3ac5ed4d4"
+    },
+    {
+      "path": "assets/battle_art/import/69/693bb2d6-2913-4b7c-b2db-80fc26bb950d.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/69/693bb2d6-2913-4b7c-b2db-80fc26bb950d@f9941.json",
+      "sha256": "5bde6e50e68967c69fa578af3d1b190e5672b15f02f7a0026d2f93385c69b79d"
+    },
+    {
+      "path": "assets/battle_art/import/6a/6a632b6d-025f-4a31-9507-d451c1c1430c.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/6a/6a632b6d-025f-4a31-9507-d451c1c1430c@f9941.json",
+      "sha256": "6021fac1b7a43d4431375cfe19c600fe5f236712aec0bceb35ff23a6adb524d7"
+    },
+    {
+      "path": "assets/battle_art/import/6c/6ca85ce7-bcdf-4eed-98f6-8b9e6d802554.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/6c/6ca85ce7-bcdf-4eed-98f6-8b9e6d802554@f9941.json",
+      "sha256": "ca1c38b3b83d1df20d2589915303a96273eaa6ca268140d93bd83ee303e3917b"
+    },
+    {
+      "path": "assets/battle_art/import/6c/6cc8cda4-dea4-4eb5-95f4-1850a6dda26f.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/6c/6cc8cda4-dea4-4eb5-95f4-1850a6dda26f@f9941.json",
+      "sha256": "ed99f66cf4067f6c95f26395f2c43c34d3f18b8de3e37b4b5efbb4a02f39a3a6"
+    },
+    {
+      "path": "assets/battle_art/import/6c/6cf90fd7-bb84-45fa-b846-e1f72f86d6a6.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/6c/6cf90fd7-bb84-45fa-b846-e1f72f86d6a6@f9941.json",
+      "sha256": "1544030aa57eaa51ecef6b6977113848f80eb4ad9396a4c886bfab978d8d5a1d"
+    },
+    {
+      "path": "assets/battle_art/import/6f/6ff2e58f-5f72-4c71-a33c-73e3c801af3c.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/6f/6ff2e58f-5f72-4c71-a33c-73e3c801af3c@f9941.json",
+      "sha256": "7f2a7771753ae5a5915c2fd783e9e42ffbb9f8b0b5a9e5047f0aa8f8070fb613"
+    },
+    {
+      "path": "assets/battle_art/import/71/7140ee7d-d6cd-4f1a-9461-8399e4c5d486.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/71/7140ee7d-d6cd-4f1a-9461-8399e4c5d486@f9941.json",
+      "sha256": "4225a329f48a9dd4604cb3321203874f0ad5f76c76e18f6fe18458415588868a"
+    },
+    {
+      "path": "assets/battle_art/import/71/719e8265-e4ae-4e5b-9527-164852d94a69.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/71/719e8265-e4ae-4e5b-9527-164852d94a69@f9941.json",
+      "sha256": "62014e5a0c58e1ffc716ab51f924983b2f2cceeb8569896fcf681c3588fb18c1"
+    },
+    {
+      "path": "assets/battle_art/import/72/722e065a-56a6-43de-8ba4-c8d2565f6975.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/72/722e065a-56a6-43de-8ba4-c8d2565f6975@f9941.json",
+      "sha256": "92c74c75bb24d7b9ce1a53185fdb505d39c272660767bc5f7e7b6b5d87283445"
+    },
+    {
+      "path": "assets/battle_art/import/72/72b7fc86-dc04-411f-86a1-5d7437a4b988.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/72/72b7fc86-dc04-411f-86a1-5d7437a4b988@f9941.json",
+      "sha256": "f9dbb22d734549702e3423d34b2ef0a3fac1015babbfe5fc02d3c69fedbf0a17"
+    },
+    {
+      "path": "assets/battle_art/import/76/76faca26-8006-40b3-91f6-4bd70225dbd6.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/76/76faca26-8006-40b3-91f6-4bd70225dbd6@f9941.json",
+      "sha256": "9ff7b8534b7ca37b0a8c1b9efb064a2d35afd07161feb92e74cc6bc3f4911102"
+    },
+    {
+      "path": "assets/battle_art/import/77/7728ecb8-b907-4505-b0e1-ffaa0611c880.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/77/7728ecb8-b907-4505-b0e1-ffaa0611c880@f9941.json",
+      "sha256": "80da80f757782c0d4b6e95b16626df4ceceed06d71f76f6b9a5475807fa709e3"
+    },
+    {
+      "path": "assets/battle_art/import/77/776327b9-2ed8-468c-bf41-d49d82e12ae4.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/77/776327b9-2ed8-468c-bf41-d49d82e12ae4@f9941.json",
+      "sha256": "c216738bb14f1bd83bb3b786cb8398e54ac741f25aae8281fb0f6edcd35d56a0"
+    },
+    {
+      "path": "assets/battle_art/import/79/7994b811-2bb9-4eb1-a909-ec79a8530211.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/79/7994b811-2bb9-4eb1-a909-ec79a8530211@f9941.json",
+      "sha256": "0f225e32355b08e14c20c82822834062eed32b0244f8702c7b16c3fa7d9b85f0"
+    },
+    {
+      "path": "assets/battle_art/import/7a/7a724e79-8997-471a-9c28-8e0a0d4e088e.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/7a/7a724e79-8997-471a-9c28-8e0a0d4e088e@f9941.json",
+      "sha256": "1f4b7b45617f18f8fd6593e07eccd5f5c9e7af9b1dfc41e3292bd698d18a8260"
+    },
+    {
+      "path": "assets/battle_art/import/7a/7a97f06d-748c-4c89-842e-05b3b32f4d49.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/7a/7a97f06d-748c-4c89-842e-05b3b32f4d49@f9941.json",
+      "sha256": "5bc6382e95d7d2fe67fcaa22858a0ea0d125b5a175c3ef00da946e848d74a64d"
+    },
+    {
+      "path": "assets/battle_art/import/7b/7b80d05b-b8b3-4a5a-a382-e562d01e1946.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/7b/7b80d05b-b8b3-4a5a-a382-e562d01e1946@f9941.json",
+      "sha256": "0860f2941e3b6d0eaf4792bf6b8bb0d96e5941b61ad274e3b1348e508deeb8a0"
+    },
+    {
+      "path": "assets/battle_art/import/7b/7bdbdbbb-e68d-4b1e-ad79-e11a774bf17c.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/7b/7bdbdbbb-e68d-4b1e-ad79-e11a774bf17c@f9941.json",
+      "sha256": "8d515b485afa91490f690ddf77043755d9b422f6bc28b0f6dd051a04b6af7a8b"
+    },
+    {
+      "path": "assets/battle_art/import/7c/7cb61377-d720-44ac-bdf3-3b3ad5eb56e2.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/7c/7cb61377-d720-44ac-bdf3-3b3ad5eb56e2@f9941.json",
+      "sha256": "cef8144ea68e33fdf2ab0903f6511a8b8db3b2403f370274ee611989f39b6116"
+    },
+    {
+      "path": "assets/battle_art/import/7e/7ee83f27-7cc9-4124-bc51-cefb647dedc0.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/7e/7ee83f27-7cc9-4124-bc51-cefb647dedc0@f9941.json",
+      "sha256": "47ac564fdca1c772ef263b48942f79488b8ceab58e1d8bc2ef609c6d6051b1b2"
+    },
+    {
+      "path": "assets/battle_art/import/7f/7fdb8024-557e-4683-a6bc-a2ee6ae93758.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/7f/7fdb8024-557e-4683-a6bc-a2ee6ae93758@f9941.json",
+      "sha256": "d014b92041a628c592bc61f980bff97ef32c739f093b24d370e1285e216f2186"
+    },
+    {
+      "path": "assets/battle_art/import/81/8178a5c3-0838-4917-a154-41ba3b6d9f8c.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/81/8178a5c3-0838-4917-a154-41ba3b6d9f8c@f9941.json",
+      "sha256": "dfc2e484c37199453104a840ff943ab72efdd9bb4b77815d6ba208e47a673833"
+    },
+    {
+      "path": "assets/battle_art/import/81/818c6a16-4fa7-4dfd-8540-379f947c1d28.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/81/818c6a16-4fa7-4dfd-8540-379f947c1d28@f9941.json",
+      "sha256": "09daedd098788939b10730c90f6f20e41c2dbf94e35447d17939ca239b086bfe"
+    },
+    {
+      "path": "assets/battle_art/import/81/81b6a6ce-0ae7-484a-98d5-edb0e99bf102.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/81/81b6a6ce-0ae7-484a-98d5-edb0e99bf102@f9941.json",
+      "sha256": "717389db6485b80c75befb04465d202bb427f68978e810c82491ad19be2872eb"
+    },
+    {
+      "path": "assets/battle_art/import/83/833a997a-7196-496d-ba89-656ee5a6c11c.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/83/833a997a-7196-496d-ba89-656ee5a6c11c@f9941.json",
+      "sha256": "267759474954cb3066bd2a86fa3c1dad7161b3d0774d618d0e8a461609af29ed"
+    },
+    {
+      "path": "assets/battle_art/import/84/849bb6df-1dc8-452d-a585-c574647861b0.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/84/849bb6df-1dc8-452d-a585-c574647861b0@f9941.json",
+      "sha256": "e9f169f681cb6b693f271e08d9261efabba1eb03e4201dc6fa9e511071beca12"
+    },
+    {
+      "path": "assets/battle_art/import/85/858f45fc-cf77-42e9-b1b8-6ea96e4a6ac6.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/85/858f45fc-cf77-42e9-b1b8-6ea96e4a6ac6@f9941.json",
+      "sha256": "7e2e321bce23e6fe95c8ef6fe9ee6d7f8d3359b82eb14540c93d30c5a35541f9"
+    },
+    {
+      "path": "assets/battle_art/import/85/85ce06af-446b-4cb5-ad74-7e11e45b9f4b.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/85/85ce06af-446b-4cb5-ad74-7e11e45b9f4b@f9941.json",
+      "sha256": "ecfbc22a253b347b14ae959ed08ee35b3a9fbbdbb0e6ed4ec0907b014a1134b6"
+    },
+    {
+      "path": "assets/battle_art/import/86/865cc0c6-758c-4a7b-bb8e-e8145ab30308.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/86/865cc0c6-758c-4a7b-bb8e-e8145ab30308@f9941.json",
+      "sha256": "256c52355d3fc1b6fb78deb151c954e6daffa414bf864ca4aa7486c27e303ce8"
+    },
+    {
+      "path": "assets/battle_art/import/86/8672a4f6-0e2b-45d1-b81f-6bbb1207ec4b.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/86/8672a4f6-0e2b-45d1-b81f-6bbb1207ec4b@f9941.json",
+      "sha256": "8d54ced2af9ab7e1bb2efc392b39ec956ca3aa1f8a3ac5f6ea2c7c51bdab5a96"
+    },
+    {
+      "path": "assets/battle_art/import/86/86e8fbe5-c323-4e9d-a0d3-ffd6e893a168.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/86/86e8fbe5-c323-4e9d-a0d3-ffd6e893a168@f9941.json",
+      "sha256": "78389a6aa23bcaea703dcd14f239723274fe8c0b6f9ec6efa8bc87b5480c39fb"
+    },
+    {
+      "path": "assets/battle_art/import/88/88ca6a4d-4434-4a34-a507-72e359ef70ec.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/88/88ca6a4d-4434-4a34-a507-72e359ef70ec@f9941.json",
+      "sha256": "d96a4c3b8f96e2afe43d558da23982eb5cd971d6e39f5ca4c24d866bbfa79173"
+    },
+    {
+      "path": "assets/battle_art/import/89/89171596-1fc3-4c4f-a6e3-f509b62c0345.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/89/89171596-1fc3-4c4f-a6e3-f509b62c0345@f9941.json",
+      "sha256": "218e8dff9dc1ee4c1dbb0c6f6687d52b44c6cef2e4ca45230e774ddf79d6b0dd"
+    },
+    {
+      "path": "assets/battle_art/import/89/89d6e125-1f54-4484-ad15-bea51596dade.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/89/89d6e125-1f54-4484-ad15-bea51596dade@f9941.json",
+      "sha256": "a2a5927e17afb52968cc54a7cc9ce5dad81feb55d1af67f3f85d220f86a7890e"
+    },
+    {
+      "path": "assets/battle_art/import/8a/8abc5643-a088-4aa2-bf8b-bb4b7c2e5a0b.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/8a/8abc5643-a088-4aa2-bf8b-bb4b7c2e5a0b@f9941.json",
+      "sha256": "81a3943fa75cf055242ea6c02011a0cc927b13c4c6d8a6de23832431f9c86f3a"
+    },
+    {
+      "path": "assets/battle_art/import/8b/8be6b165-3f51-4190-b560-1ba1896d79dd.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/8b/8be6b165-3f51-4190-b560-1ba1896d79dd@f9941.json",
+      "sha256": "d33491e6296b844b73390111fba70b957480d1b617f86f38874e5b99654bb4b7"
+    },
+    {
+      "path": "assets/battle_art/import/8c/8c2df942-4945-4da7-a69e-5273936b209e.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/8c/8c2df942-4945-4da7-a69e-5273936b209e@f9941.json",
+      "sha256": "e6ecf5424177fac3368a66fb37a8d8462fb2f85b69258408f19c52b17f6e2ab5"
+    },
+    {
+      "path": "assets/battle_art/import/8c/8ce3b2a8-1426-46e4-b03e-feaaba97257e.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/8c/8ce3b2a8-1426-46e4-b03e-feaaba97257e@f9941.json",
+      "sha256": "39c6d641e0bff75c20dcf1b8eabeb93ac976c88dad50cccc99d47db185572e3b"
+    },
+    {
+      "path": "assets/battle_art/import/8d/8d049f11-461c-470e-b90c-52e4188b6c82.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/8d/8d049f11-461c-470e-b90c-52e4188b6c82@f9941.json",
+      "sha256": "d3da540282a407a878a7c902dcd499110cb6b51aee32eae63b8af25d8e70d83b"
+    },
+    {
+      "path": "assets/battle_art/import/8d/8d49633a-ea7b-4080-92f9-fc4469f4cd99.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/8d/8d49633a-ea7b-4080-92f9-fc4469f4cd99@f9941.json",
+      "sha256": "df3056cdbfa65590fb0a004594599a015285bd79a8aafb4cbcf75e7fa59ee8be"
+    },
+    {
+      "path": "assets/battle_art/import/8e/8ed7c7c6-d198-427e-ada8-d78f86da9e1e.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/8e/8ed7c7c6-d198-427e-ada8-d78f86da9e1e@f9941.json",
+      "sha256": "d1f92b8050705809f0db7a1702a20abe94406c4ae92a59830da9c841dfb5d08f"
+    },
+    {
+      "path": "assets/battle_art/import/8f/8f221106-d0d2-47c2-bbf7-ea33bf30f07e.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/8f/8f221106-d0d2-47c2-bbf7-ea33bf30f07e@f9941.json",
+      "sha256": "d1c09936fec854c799d73b150a5bf3385d5ce40ff5bb07e593c616bc1fc764fc"
+    },
+    {
+      "path": "assets/battle_art/import/91/9119cef5-a85f-40b3-9e70-bac6470ef121.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/91/9119cef5-a85f-40b3-9e70-bac6470ef121@f9941.json",
+      "sha256": "56d127cb4eef952bae8dc895d59e776ac7a7ad6832ef3f4857db585c67065b4f"
+    },
+    {
+      "path": "assets/battle_art/import/91/913757b2-c0d0-4467-ad73-0c5451023e89.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/91/913757b2-c0d0-4467-ad73-0c5451023e89@f9941.json",
+      "sha256": "e5c6dbde2b10c5cc7728ebeb898ca0c4c49e69f2282eaf95a6650b40794891a2"
+    },
+    {
+      "path": "assets/battle_art/import/93/936867af-8cf7-4c2d-8ce5-57570f699fd6.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/93/936867af-8cf7-4c2d-8ce5-57570f699fd6@f9941.json",
+      "sha256": "2921d84f892b46459b480de72bdef3c05e164c7153a6d57a22b01b829aebe6aa"
+    },
+    {
+      "path": "assets/battle_art/import/94/94906f72-c601-4ed3-9eb3-a8ba4b3a89da.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/94/94906f72-c601-4ed3-9eb3-a8ba4b3a89da@f9941.json",
+      "sha256": "2dbebb1a43319c1ae6be47302ddea8271f950a14def3e7fd76fcbc168a13ee35"
+    },
+    {
+      "path": "assets/battle_art/import/95/951e5539-1fc8-49a2-9bca-ee9f27bd01cf.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/95/951e5539-1fc8-49a2-9bca-ee9f27bd01cf@f9941.json",
+      "sha256": "fdcf0928f2b311ef690851ca53d2f38ec6a8a943a026ef11f8046e80eebdd63f"
+    },
+    {
+      "path": "assets/battle_art/import/96/96de2ba7-5c4b-4f69-9d72-65d67265fc9a.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/96/96de2ba7-5c4b-4f69-9d72-65d67265fc9a@f9941.json",
+      "sha256": "a3a568861a2b159ecf6b1cff8eff99aaad50bd1ef69a780729ad3183d260353c"
+    },
+    {
+      "path": "assets/battle_art/import/96/96efe970-845b-4e7c-bd7b-b6e0e9204cda.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/96/96efe970-845b-4e7c-bd7b-b6e0e9204cda@f9941.json",
+      "sha256": "84d611be490ce1bdbff8e11d12f6253454cf03b2c0be79beceb85bc260a5c0d7"
+    },
+    {
+      "path": "assets/battle_art/import/97/979ddcb9-20c6-4053-b32a-d7c772047d54.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/97/979ddcb9-20c6-4053-b32a-d7c772047d54@f9941.json",
+      "sha256": "07d8dbe4c9378de577b6ee67b006d8b2350b8ffb3bd66f399e81e6daec7f004b"
+    },
+    {
+      "path": "assets/battle_art/import/99/9993f74a-70b9-40f9-a07d-fc5566951c3f.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/99/9993f74a-70b9-40f9-a07d-fc5566951c3f@f9941.json",
+      "sha256": "75c89e3453dc8d27c7697116636307f006c5493d0c7060dff67eb5651f96cf90"
+    },
+    {
+      "path": "assets/battle_art/import/9a/9a0f9860-968d-4a00-89fe-072bfe0e8979.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/9a/9a0f9860-968d-4a00-89fe-072bfe0e8979@f9941.json",
+      "sha256": "5e3e9a41528ae4e5ddabdd09f1df53c5297b25ff225aafd3fcaec5704ae08fca"
+    },
+    {
+      "path": "assets/battle_art/import/9a/9a85c18d-984e-4d4a-b602-5f109846842f.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/9a/9a85c18d-984e-4d4a-b602-5f109846842f@f9941.json",
+      "sha256": "c2a6858dca66563600f78da3f339e651469995c0aefaaf19dc5ed65a4a6cd6ad"
+    },
+    {
+      "path": "assets/battle_art/import/9c/9c2f309a-b5f4-4d17-b28f-3d2c5fa66739.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/9c/9c2f309a-b5f4-4d17-b28f-3d2c5fa66739@f9941.json",
+      "sha256": "d4fb621e9e65a79c54e1f6b77251a1c4987a8494ad7b3dd52870c818dc8afbf6"
+    },
+    {
+      "path": "assets/battle_art/import/9d/9df9dbd6-4dc6-4951-9276-06fbe8658308.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/9d/9df9dbd6-4dc6-4951-9276-06fbe8658308@f9941.json",
+      "sha256": "368e9d23b02ec6fd29f38db9afdbf4d3eb9f81d014ea6baad62688cc02103d64"
+    },
+    {
+      "path": "assets/battle_art/import/9e/9e177c17-2a1d-4812-bfb7-91a9978c707c.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/9e/9e177c17-2a1d-4812-bfb7-91a9978c707c@f9941.json",
+      "sha256": "f5117a0403a0762a51c4e0c3b93a99b43b3bf044282f3d09c932c8ec92be38e3"
+    },
+    {
+      "path": "assets/battle_art/import/9f/9fbc4de7-948d-463d-8f4d-4d170f9a254f.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/9f/9fbc4de7-948d-463d-8f4d-4d170f9a254f@f9941.json",
+      "sha256": "d9eee4c8bb894adc70ad0633a35896f1cfc3379a80201d3f0ad3961a4467b4d0"
+    },
+    {
+      "path": "assets/battle_art/import/9f/9fe803d5-e930-4f10-a6cc-29d98b49b541.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/9f/9fe803d5-e930-4f10-a6cc-29d98b49b541@f9941.json",
+      "sha256": "b95b5733f2a2fadf1386086bd7e5439bdab5e73aa53cbcb0af91c5d6a7ea2726"
+    },
+    {
+      "path": "assets/battle_art/import/a0/a02cde8b-6d26-4714-9d2f-d80a059b97e0.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/a0/a02cde8b-6d26-4714-9d2f-d80a059b97e0@f9941.json",
+      "sha256": "9bbccfb72a1d8d4d9dd9102736502c00bcd8c5212a82c9ef17c3598af80f43bd"
+    },
+    {
+      "path": "assets/battle_art/import/a1/a11193c5-7434-4d34-a574-b0248e37533b.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/a1/a11193c5-7434-4d34-a574-b0248e37533b@f9941.json",
+      "sha256": "2f23907cfbc733a36d0cb11c6dbf5b11d2f098614f626ce1e45282cf631578bc"
+    },
+    {
+      "path": "assets/battle_art/import/a2/a2161c28-b76e-4ea6-9c5f-4d3972290840.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/a2/a2161c28-b76e-4ea6-9c5f-4d3972290840@f9941.json",
+      "sha256": "8b08c319b008063d9c01565ef89a9786abe87a4bfb49c24cb15d77ebe73cced3"
+    },
+    {
+      "path": "assets/battle_art/import/a4/a46e683b-d093-4c6f-b318-fc9f5f0c526a.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/a4/a46e683b-d093-4c6f-b318-fc9f5f0c526a@f9941.json",
+      "sha256": "3399c730d2726088624b9348d3e91e3a6ad7d416477d19e14876ee69d90fa585"
+    },
+    {
+      "path": "assets/battle_art/import/a7/a759b852-44e0-4f28-bb46-7767cca0348d.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/a7/a759b852-44e0-4f28-bb46-7767cca0348d@f9941.json",
+      "sha256": "3772188b023f652bb6cbaa59e8aea3d57e0e9883a166bcc8072dfe0f0272656c"
+    },
+    {
+      "path": "assets/battle_art/import/a7/a7b277f4-31d3-4342-9e0a-af5fc1f987da.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/a7/a7b277f4-31d3-4342-9e0a-af5fc1f987da@f9941.json",
+      "sha256": "f4e284f6bb5f514ecbc966f7f7c0e1a048a7bfa73b240c0cd5929e37d8e198fe"
+    },
+    {
+      "path": "assets/battle_art/import/aa/aa084ffe-a9d1-4d4a-ac91-3a6ca75f36ae.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/aa/aa084ffe-a9d1-4d4a-ac91-3a6ca75f36ae@f9941.json",
+      "sha256": "a5971d6c54a4d27efa134869b363d8734b68280e2ba46686cdb8a3834776db40"
+    },
+    {
+      "path": "assets/battle_art/import/ab/ab95fc81-a653-4f11-87a8-154b16897fbd.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/ab/ab95fc81-a653-4f11-87a8-154b16897fbd@f9941.json",
+      "sha256": "9660138c514e2582e46487174450ff5275320457f2fdbd66c352b045fbb549f8"
+    },
+    {
+      "path": "assets/battle_art/import/ab/abd44480-3208-4ef4-b296-82b4cb52a5c4.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/ab/abd44480-3208-4ef4-b296-82b4cb52a5c4@f9941.json",
+      "sha256": "5556e72a6acad263e7b91f44d905df3d617fe83917f01138fc068bbbbbbb6856"
+    },
+    {
+      "path": "assets/battle_art/import/ac/ace38d28-de51-42e0-b464-d3ccfd9ebdf3.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/ac/ace38d28-de51-42e0-b464-d3ccfd9ebdf3@f9941.json",
+      "sha256": "320bed9128e7ec9cb41f7ecf29adc9a5ae0011039ba5e8bba3f996507db7b3f2"
+    },
+    {
+      "path": "assets/battle_art/import/ad/ad567292-7c32-46b4-8a0f-ae187866e1b9.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/ad/ad567292-7c32-46b4-8a0f-ae187866e1b9@f9941.json",
+      "sha256": "b95ea8af9d3a3f3570e79899116f2feb1e59f1763f9dcc9c8c16c058ecd8707d"
+    },
+    {
+      "path": "assets/battle_art/import/ae/ae00cae6-e344-45a5-bdb8-fbf921e094e7.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/ae/ae00cae6-e344-45a5-bdb8-fbf921e094e7@f9941.json",
+      "sha256": "25d6ba2846942984243185b833081e9c082b8c78ea29361a8677ed217c00c425"
+    },
+    {
+      "path": "assets/battle_art/import/af/af369264-0be1-4ed5-b039-8f415867a167.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/af/af369264-0be1-4ed5-b039-8f415867a167@f9941.json",
+      "sha256": "5dd7e28a42de4c3bc1a00765f429d8cc0f703159acc2383359ea97176733f1f8"
+    },
+    {
+      "path": "assets/battle_art/import/af/afbc9e95-efa8-4c03-be95-ceaf743fb27c.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/af/afbc9e95-efa8-4c03-be95-ceaf743fb27c@f9941.json",
+      "sha256": "aac3bf1664eb9bd31fec511e63a6b2822fbdf435619b76bdb6cc2c39bb9959b4"
+    },
+    {
+      "path": "assets/battle_art/import/b0/b0bad99f-808b-4424-912c-c690b0d9d73e.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/b0/b0bad99f-808b-4424-912c-c690b0d9d73e@f9941.json",
+      "sha256": "b8efed6412a1a393792e61b4f882e1e116a29c7c1eb1dc6bdc932b126815f00a"
+    },
+    {
+      "path": "assets/battle_art/import/b3/b36da191-acf2-4976-bb0e-8141e291d7ea.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/b3/b36da191-acf2-4976-bb0e-8141e291d7ea@f9941.json",
+      "sha256": "a4e95f2c0be2607b81482ad770003210f35d4b296e3717ca01107c7b99f37775"
+    },
+    {
+      "path": "assets/battle_art/import/b4/b4809db9-b467-49a8-9b61-5cc396436e3c.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/b4/b4809db9-b467-49a8-9b61-5cc396436e3c@f9941.json",
+      "sha256": "411925e9a0859eb8dc9e69b3fde3090dd1f2893a9af5c4b416788e5e496dc773"
+    },
+    {
+      "path": "assets/battle_art/import/b6/b61984b0-a580-45d0-96ee-3a628390aa22.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/b6/b61984b0-a580-45d0-96ee-3a628390aa22@f9941.json",
+      "sha256": "aa2a86579b95a2fe2ad6d666f8f9077f5f7e9e2cf87afecd2b98f578cbc7a384"
+    },
+    {
+      "path": "assets/battle_art/import/b6/b620361b-3498-475a-b40a-36ba7b70940a.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/b6/b620361b-3498-475a-b40a-36ba7b70940a@f9941.json",
+      "sha256": "3521b629d499acf38d243aee3bd46ab4ae6af061dc66db4583149c220d11b423"
+    },
+    {
+      "path": "assets/battle_art/import/b7/b7290721-719d-414c-8790-30603a38f1ba.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/b7/b7290721-719d-414c-8790-30603a38f1ba@f9941.json",
+      "sha256": "080ed9034b1d1349cf7d8f3ac51e09e7695b7883773999c3d84aa26a234df5be"
+    },
+    {
+      "path": "assets/battle_art/import/b7/b73baa7b-6f62-4b72-b11b-64d8248af6d5.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/b7/b73baa7b-6f62-4b72-b11b-64d8248af6d5@f9941.json",
+      "sha256": "b518ee2b2ec80150187239a20255ebce5ff31dedf3457c8f4e9910aa91ab336b"
+    },
+    {
+      "path": "assets/battle_art/import/b8/b8a4f3d0-4be3-4025-86f7-c9700bec9f7c.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/b8/b8a4f3d0-4be3-4025-86f7-c9700bec9f7c@f9941.json",
+      "sha256": "4681ebb3c1f81221b692b9a9df099f289baa91b266dcff3e604bbee672195967"
+    },
+    {
+      "path": "assets/battle_art/import/b8/b8fce2a2-9e7d-4097-b4ed-218743d5148e.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/b8/b8fce2a2-9e7d-4097-b4ed-218743d5148e@f9941.json",
+      "sha256": "f5df5cc1aa517bebbb353609294b3b26111ac490ef2adf25001b57321336020c"
+    },
+    {
+      "path": "assets/battle_art/import/ba/ba86e25e-fe54-4a58-ac22-733f662cd91d.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/ba/ba86e25e-fe54-4a58-ac22-733f662cd91d@f9941.json",
+      "sha256": "51b6ea4022c7faa879c39d58fb172cf93fd365a6c6a8da343c6d25745a7b72db"
+    },
+    {
+      "path": "assets/battle_art/import/bb/bb6f2b7d-6a29-49aa-b296-165b9312a1d3.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/bb/bb6f2b7d-6a29-49aa-b296-165b9312a1d3@f9941.json",
+      "sha256": "f467baee235794137e1aaa70459cca0abf62129b9aae0c6ee48bb89046d97411"
+    },
+    {
+      "path": "assets/battle_art/import/bb/bbd0a1b2-d545-4c1f-92de-bbfb53e27b59.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/bb/bbd0a1b2-d545-4c1f-92de-bbfb53e27b59@f9941.json",
+      "sha256": "08c6972b8fa78926052562b5d1ba61c85823695e4c9c9fc639b554d1f80a0e30"
+    },
+    {
+      "path": "assets/battle_art/import/bd/bd773997-cd8b-4981-ba3a-32112c5328bd.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/bd/bd773997-cd8b-4981-ba3a-32112c5328bd@f9941.json",
+      "sha256": "766052caaafc29d3de148d8507b1a94d13e4303221e5fc45fb98bbce0a5454a1"
+    },
+    {
+      "path": "assets/battle_art/import/be/be293468-2dff-426d-936d-4172e8eedbe1.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/be/be293468-2dff-426d-936d-4172e8eedbe1@f9941.json",
+      "sha256": "2ec53bd8c825fd9bd82b4852771a432a10fd139917716bb4d7b254b1417bd8e3"
+    },
+    {
+      "path": "assets/battle_art/import/c0/c0764dcd-70a4-4c15-8501-b6caf760337c.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/c0/c0764dcd-70a4-4c15-8501-b6caf760337c@f9941.json",
+      "sha256": "86a758499a4ad462ba79bf0f3edccafd55350d3107c31934e695ef8418f14b85"
+    },
+    {
+      "path": "assets/battle_art/import/c0/c078487c-ac43-43d3-8c1d-214421684e3e.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/c0/c078487c-ac43-43d3-8c1d-214421684e3e@f9941.json",
+      "sha256": "61bd5b64f81d92c01780f9ea22bf442f68647dab8d7bc3564d1ab255f7f3ce81"
+    },
+    {
+      "path": "assets/battle_art/import/c0/c0c06134-f932-4dcb-883c-73b96eb6b566.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/c0/c0c06134-f932-4dcb-883c-73b96eb6b566@f9941.json",
+      "sha256": "171c540ccfe6d5c4d1f7a024637a0fde475f84f56e65c09d11fda51f1e380592"
+    },
+    {
+      "path": "assets/battle_art/import/c1/c11d464e-bcce-4a77-aad9-0c3675a1c445.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/c1/c11d464e-bcce-4a77-aad9-0c3675a1c445@f9941.json",
+      "sha256": "853a7c58e9dd0e932dd7cf61f235fecfada5876b814c611d4631e1b12ad8c67f"
+    },
+    {
+      "path": "assets/battle_art/import/c1/c1209586-340e-43f1-90ed-06715a0d6778.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/c1/c1209586-340e-43f1-90ed-06715a0d6778@f9941.json",
+      "sha256": "bbd953201810fa2763836189cd1d851ae30af81c41ea8b2766f050d06da8425b"
+    },
+    {
+      "path": "assets/battle_art/import/c1/c1bf95ac-bd81-4c88-8f4f-2a434b5ef2a6.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/c1/c1bf95ac-bd81-4c88-8f4f-2a434b5ef2a6@f9941.json",
+      "sha256": "b69b73297e70507957a15c381f8669c6f3bff2fe23958c26ffd25b3c2d4d0e17"
+    },
+    {
+      "path": "assets/battle_art/import/c1/c1cf9487-a247-4f18-8124-30cf089f7484.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/c1/c1cf9487-a247-4f18-8124-30cf089f7484@f9941.json",
+      "sha256": "a8f0e3a987be00b6a7e6b557339357870a5cea905a7a5d9ce6980a9ef5488472"
+    },
+    {
+      "path": "assets/battle_art/import/c2/c274ab13-955f-41bd-b6c2-dfbe53bfb464.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/c2/c274ab13-955f-41bd-b6c2-dfbe53bfb464@f9941.json",
+      "sha256": "7c9c0794f643f0317a3e25c9c5c83a01abc8a517e06d5ed0cd2d01ec4770d0e0"
+    },
+    {
+      "path": "assets/battle_art/import/c4/c41fe116-df63-4a28-b5c6-d3551cef0b64.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/c4/c41fe116-df63-4a28-b5c6-d3551cef0b64@f9941.json",
+      "sha256": "f91c490214f5921a1709cd66ae6be000239ad6eb08851bee8fe52d829d77cdaf"
+    },
+    {
+      "path": "assets/battle_art/import/c4/c433f21b-f67e-4924-b9af-a0c578f608c9.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/c4/c433f21b-f67e-4924-b9af-a0c578f608c9@f9941.json",
+      "sha256": "f1bbf8997620e3fbde3aefa18fa1a1613957d56f11bd0f77b72797ab7df32b63"
+    },
+    {
+      "path": "assets/battle_art/import/c6/c692d21d-bf15-46ef-8837-1ae2c1d4f061.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/c6/c692d21d-bf15-46ef-8837-1ae2c1d4f061@f9941.json",
+      "sha256": "84aaa9054910f68a1982aa466ac64a593407de47e7041704dcdfca1fa6c4a37b"
+    },
+    {
+      "path": "assets/battle_art/import/c7/c7896c66-67e4-40b2-8551-fda76f67ac41.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/c7/c7896c66-67e4-40b2-8551-fda76f67ac41@f9941.json",
+      "sha256": "7bf270c69072465c3aa8d8addba338cef783a39fccc29adf18732b3323a44909"
+    },
+    {
+      "path": "assets/battle_art/import/c8/c8551ba2-fc82-481c-9425-386d97e52a2a.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/c8/c8551ba2-fc82-481c-9425-386d97e52a2a@f9941.json",
+      "sha256": "fbbe5d510b47d28e347b2335698c4b48c3309192a16d66ebda55dbd57ce70bcc"
+    },
+    {
+      "path": "assets/battle_art/import/c8/c8ac2f12-74d0-4028-b048-39bb02b66560.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/c8/c8ac2f12-74d0-4028-b048-39bb02b66560@f9941.json",
+      "sha256": "35db00f842a1eda606e34c7efc27efdc29e47d35dca35e02c9251d259f451844"
+    },
+    {
+      "path": "assets/battle_art/import/ca/cabc7555-e9a8-4648-bcde-9bcdbb1821af.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/ca/cabc7555-e9a8-4648-bcde-9bcdbb1821af@f9941.json",
+      "sha256": "a280961d8ecf8beb3f4cd3b250dfdcf08f2f5e6ffe7f77d437f9937491f61f64"
+    },
+    {
+      "path": "assets/battle_art/import/cb/cb31ce4e-bdbb-41dc-87b7-8f0f04341cda.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/cb/cb31ce4e-bdbb-41dc-87b7-8f0f04341cda@f9941.json",
+      "sha256": "0ef871abe35a0a4b658dc38c4f02e402fe278b2a5e454f74131f20bdb13df799"
+    },
+    {
+      "path": "assets/battle_art/import/cb/cb3a28b6-1b47-411d-a3e2-ba66c5813122.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/cb/cb3a28b6-1b47-411d-a3e2-ba66c5813122@f9941.json",
+      "sha256": "19792c2ed16c89bade1cf4f4ef297927db0e0d34fa688fd17f4302732056c768"
+    },
+    {
+      "path": "assets/battle_art/import/cb/cb718c0b-147a-4a7b-98b4-b530ceed7c38.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/cb/cb718c0b-147a-4a7b-98b4-b530ceed7c38@f9941.json",
+      "sha256": "b3c7e0e3bc152a82d4995601103134b1b174f6583ea2a8b4514334ba27f907bd"
+    },
+    {
+      "path": "assets/battle_art/import/cb/cba30412-8329-40c0-80ab-44274284f797.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/cb/cba30412-8329-40c0-80ab-44274284f797@f9941.json",
+      "sha256": "8ca9feb159427a81531ac928936e519c2286f08e555abdc5fd739358d612b807"
+    },
+    {
+      "path": "assets/battle_art/import/cb/cbec4b4e-19f8-426b-aca4-d96ad85f2efd.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/cb/cbec4b4e-19f8-426b-aca4-d96ad85f2efd@f9941.json",
+      "sha256": "86c0d97f266f13bd71ef90cc4dd3593c891a64e0576b09158a8879bee986841c"
+    },
+    {
+      "path": "assets/battle_art/import/cc/cce3465a-0a29-4492-9230-b56c4aee6f26.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/cc/cce3465a-0a29-4492-9230-b56c4aee6f26@f9941.json",
+      "sha256": "e5b88540b899fe1334018ea3bfa353c7ca914a24612ae910b0933f7f44496f20"
+    },
+    {
+      "path": "assets/battle_art/import/cd/cdfc5c32-a415-49d0-a6df-03ebe091ae48.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/cd/cdfc5c32-a415-49d0-a6df-03ebe091ae48@f9941.json",
+      "sha256": "6f316988732bf932f3146f77e68c7698a8a9cd4c22b1208d1a08139fc9faacc8"
+    },
+    {
+      "path": "assets/battle_art/import/ce/ce4da6b9-313a-41f5-a45c-d8a50ff5bf64.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/ce/ce4da6b9-313a-41f5-a45c-d8a50ff5bf64@f9941.json",
+      "sha256": "e7df39d8b8f54b608dcff840b555eb702466683bae88b6ed11a7b4507ccbf829"
+    },
+    {
+      "path": "assets/battle_art/import/ce/ceaa8817-6b54-45f1-b2d6-bf39a5c44b00.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/ce/ceaa8817-6b54-45f1-b2d6-bf39a5c44b00@f9941.json",
+      "sha256": "96d39f44d827bd1a3df452997336a5dd040cb311d6b4749d67520d61de0151db"
+    },
+    {
+      "path": "assets/battle_art/import/cf/cf7ad327-11e1-4f09-88ad-f8e81d6eb24d.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/cf/cf7ad327-11e1-4f09-88ad-f8e81d6eb24d@f9941.json",
+      "sha256": "1a57685eea3640a2450b739a33b7faef29455cb47501388963e39cd11dbad663"
+    },
+    {
+      "path": "assets/battle_art/import/d0/d0036265-81dd-490b-9d16-ef7892223673.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/d0/d0036265-81dd-490b-9d16-ef7892223673@f9941.json",
+      "sha256": "635f85bd45a536b10457ae3f995eecef3f80b4b12c571c8e17de0b3be7731269"
+    },
+    {
+      "path": "assets/battle_art/import/d0/d0cf562b-2546-4a10-923f-e96fc1cd9757.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/d0/d0cf562b-2546-4a10-923f-e96fc1cd9757@f9941.json",
+      "sha256": "d8d1d3c71b0245c55416c8cd9e94841f1c9625208431e4cbef2c73eddee65bb0"
+    },
+    {
+      "path": "assets/battle_art/import/d1/d1776b2c-11f3-4f8f-97f5-7738676a79dd.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/d1/d1776b2c-11f3-4f8f-97f5-7738676a79dd@f9941.json",
+      "sha256": "56899c80d1636bdf184f049c54a3d2487ef68a324ed7bc408250eaed6e729ad2"
+    },
+    {
+      "path": "assets/battle_art/import/d1/d1787aa5-a092-4302-9611-463f4b472214.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/d1/d1787aa5-a092-4302-9611-463f4b472214@f9941.json",
+      "sha256": "2bcfaa0c92380a431801faa7536b98aae2719716ff1ae201ea5eaf027f624f82"
+    },
+    {
+      "path": "assets/battle_art/import/d1/d189b220-cbc4-4e32-9561-5f0312fe3a83.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/d1/d189b220-cbc4-4e32-9561-5f0312fe3a83@f9941.json",
+      "sha256": "5aeaec578298a91b2d527d024667749a45d2f44cbeffee414c88d1305e40d964"
+    },
+    {
+      "path": "assets/battle_art/import/d1/d1f2b53e-e424-4ec8-825c-1b97e754e59a.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/d1/d1f2b53e-e424-4ec8-825c-1b97e754e59a@f9941.json",
+      "sha256": "f9bf2c404006e24bc07ff74d43b0564cf89b912fde5068c232b41c864e435946"
+    },
+    {
+      "path": "assets/battle_art/import/d2/d214642e-9e46-4fe8-96f1-3367a6a2fa63.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/d2/d214642e-9e46-4fe8-96f1-3367a6a2fa63@f9941.json",
+      "sha256": "7fcdb0e877c33fd16c41a4bae317c07c233f9a4d3f11820a34293f9aba743c11"
+    },
+    {
+      "path": "assets/battle_art/import/d2/d2b2c11c-3628-4420-892c-766c5ef49d29.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/d2/d2b2c11c-3628-4420-892c-766c5ef49d29@f9941.json",
+      "sha256": "89be4b9fe9ee0bdd3c1ddd88cc9073fa05954c5cef92da2e38eb6fe9bc254eaa"
+    },
+    {
+      "path": "assets/battle_art/import/d2/d2ecf811-9ac7-4e11-805f-5fd432d25386.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/d2/d2ecf811-9ac7-4e11-805f-5fd432d25386@f9941.json",
+      "sha256": "630cd5723d30c3213b778b1a56d0ce43952ee7b1fa0de0994694aab09fe2bbd4"
+    },
+    {
+      "path": "assets/battle_art/import/d3/d3533b2d-cc55-4796-965c-73df15a7f72d.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/d3/d3533b2d-cc55-4796-965c-73df15a7f72d@f9941.json",
+      "sha256": "edb525e59513dc767de89dc46b62dbcb814628757f6a7a2bef11f84af268f6d6"
+    },
+    {
+      "path": "assets/battle_art/import/d5/d50dea3c-6ada-47d3-85f3-f5285b06bb1c.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/d5/d50dea3c-6ada-47d3-85f3-f5285b06bb1c@f9941.json",
+      "sha256": "1e0c2f36d2868003e686c1c04fdd893575538bb624ee761da78ee5701db0930d"
+    },
+    {
+      "path": "assets/battle_art/import/d6/d686588b-04a6-4a6e-b1c7-edd4db1e63b3.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/d6/d686588b-04a6-4a6e-b1c7-edd4db1e63b3@f9941.json",
+      "sha256": "ca018f75fe8c8c6ef330f9adbeef352b80c652aac92cd12c319543643edf0b8b"
+    },
+    {
+      "path": "assets/battle_art/import/d7/d7cced2a-e767-4bab-a81e-5983204a7097.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/d7/d7cced2a-e767-4bab-a81e-5983204a7097@f9941.json",
+      "sha256": "9eea99d61f3662f5173eb2a813f6cf914692fa7337d499c994e4ff7732629290"
+    },
+    {
+      "path": "assets/battle_art/import/d7/d7d2d4ac-b876-4677-b41f-48a34d7398aa.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/d7/d7d2d4ac-b876-4677-b41f-48a34d7398aa@f9941.json",
+      "sha256": "63789d47d7ece409d28b9c0cb819bd3a43a1315e3d971a26493c762161597c04"
+    },
+    {
+      "path": "assets/battle_art/import/d9/d9176414-6e57-4f54-a7ad-3c269815c5a9.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/d9/d9176414-6e57-4f54-a7ad-3c269815c5a9@f9941.json",
+      "sha256": "d0ac87356dfdcbd7dd12b80b941ab9f64b20d5d53467a26072206e10871a120b"
+    },
+    {
+      "path": "assets/battle_art/import/d9/d9ec829e-eed0-4a04-8d52-784ba454214f.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/d9/d9ec829e-eed0-4a04-8d52-784ba454214f@f9941.json",
+      "sha256": "03fb60a8f477e95df8951f5d74e855ae4ebc4eec1a785d82c1d28bf6bd2ddbe8"
+    },
+    {
+      "path": "assets/battle_art/import/da/da4baeae-e63b-4f22-978b-74315423c55a.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/da/da4baeae-e63b-4f22-978b-74315423c55a@f9941.json",
+      "sha256": "0d6b765da893c19a03d0413dce0d6e17536eba0ce827de7427e737f099bb6ee6"
+    },
+    {
+      "path": "assets/battle_art/import/da/da4c9c1d-9a14-4a81-a2b0-5e3404c13812.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/da/da4c9c1d-9a14-4a81-a2b0-5e3404c13812@f9941.json",
+      "sha256": "05a3442906f6b05726fa847af3755c495980663a285070a742b7a79ebb74ef7d"
+    },
+    {
+      "path": "assets/battle_art/import/da/dae888c0-696f-4e0c-aafd-f8eb73852597.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/da/dae888c0-696f-4e0c-aafd-f8eb73852597@f9941.json",
+      "sha256": "3becb4f2119a23fbe66a4178d05a97293a694df3569a943b0b87fe4b6b375d25"
+    },
+    {
+      "path": "assets/battle_art/import/df/df5624d4-8d02-489b-a52d-f4fa7c8e284f.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/df/df5624d4-8d02-489b-a52d-f4fa7c8e284f@f9941.json",
+      "sha256": "d5236b22c7a917d5c0ed32e759a8c1e92000880ffe89b82c8c13e53494e72d68"
+    },
+    {
+      "path": "assets/battle_art/import/e1/e1696f79-05aa-4216-bbd2-93dae8ff9589.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/e1/e1696f79-05aa-4216-bbd2-93dae8ff9589@f9941.json",
+      "sha256": "ad6bf7be731e76bc40527483fe150eaf5932e83cafcdc2c823ef08ee945c1ed5"
+    },
+    {
+      "path": "assets/battle_art/import/e1/e1c45357-3f38-4c70-806a-0d75dfbbfc8a.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/e1/e1c45357-3f38-4c70-806a-0d75dfbbfc8a@f9941.json",
+      "sha256": "7f9bfa6a6bd6265ba6a18bda8923ab24d9db31b30474741bac3769a42a2ce472"
+    },
+    {
+      "path": "assets/battle_art/import/e3/e34e8946-1f4a-4a52-b9b8-6681d74898df.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/e3/e34e8946-1f4a-4a52-b9b8-6681d74898df@f9941.json",
+      "sha256": "edf34868ce29375dbc855bb6fc510b0096ab1c17b7bddf4d61daa70608093d4b"
+    },
+    {
+      "path": "assets/battle_art/import/e3/e3606ff8-bcf3-4536-841b-eb0088bee84f.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/e3/e3606ff8-bcf3-4536-841b-eb0088bee84f@f9941.json",
+      "sha256": "645c7c2596b7cc86abd2797a9244637ae319e1b03404f7d551509188911ce18a"
+    },
+    {
+      "path": "assets/battle_art/import/e4/e4579b73-c64a-4592-a379-6861d52732e2.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/e4/e4579b73-c64a-4592-a379-6861d52732e2@f9941.json",
+      "sha256": "22491e0a81b43e30278b078ab6502c7ebdcde92e4d698d3dbabd78f2af28ab42"
+    },
+    {
+      "path": "assets/battle_art/import/e4/e485bf90-3072-49c1-8c6c-251b8c9b99a3.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/e4/e485bf90-3072-49c1-8c6c-251b8c9b99a3@f9941.json",
+      "sha256": "7f5cbb4e1ec7cdf92762ed261ccaab6edeafc62a605fc53a61fd9e754833a3a7"
+    },
+    {
+      "path": "assets/battle_art/import/e6/e65a29ba-7518-447d-9ac5-15fe69884af9.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/e6/e65a29ba-7518-447d-9ac5-15fe69884af9@f9941.json",
+      "sha256": "ea2058224c1a0b7360d82718893f03db4c4db4dd67d1572da21dbed0a844e345"
+    },
+    {
+      "path": "assets/battle_art/import/e7/e71e43bc-d0dd-4460-837e-fcb9a068b81f.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/e7/e71e43bc-d0dd-4460-837e-fcb9a068b81f@f9941.json",
+      "sha256": "a22079ced00a31bc0621e7cf1a531ae63303c45173d9d31163b66637eb77b0c4"
+    },
+    {
+      "path": "assets/battle_art/import/e7/e793299f-9524-4983-8209-21a2894dccee.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/e7/e793299f-9524-4983-8209-21a2894dccee@f9941.json",
+      "sha256": "ac68f1d984d33dd462e1d2c236f4e185adec6b6faf156a51b9c0e0763ce85416"
+    },
+    {
+      "path": "assets/battle_art/import/e7/e79f0082-b7ae-4b39-8683-5ff2694cec66.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/e7/e79f0082-b7ae-4b39-8683-5ff2694cec66@f9941.json",
+      "sha256": "a4c6ef6d4542ea14676ec87e5dec5e9de9fa399ae8f46d6740664fe31d464d22"
+    },
+    {
+      "path": "assets/battle_art/import/e7/e7a41758-b27d-4e56-81af-7746835c08f9.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/e7/e7a41758-b27d-4e56-81af-7746835c08f9@f9941.json",
+      "sha256": "3824b3a586f4f15a3d3b4101584269e9fbfaa3d849def28c8c8c37329279f28e"
+    },
+    {
+      "path": "assets/battle_art/import/e7/e7f4e299-a38d-44e7-9590-54121373c8c1.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/e7/e7f4e299-a38d-44e7-9590-54121373c8c1@f9941.json",
+      "sha256": "e861252dfd7620f34449c0006c04882e4b441523619b19807074df41a59eafdf"
+    },
+    {
+      "path": "assets/battle_art/import/e8/e82c1324-9557-45c8-b891-a46c27a8735d.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/e8/e82c1324-9557-45c8-b891-a46c27a8735d@f9941.json",
+      "sha256": "81436c2b9b60f69aa905789215b46a308ae9e81ac02adb4b15b48b1efad3f576"
+    },
+    {
+      "path": "assets/battle_art/import/e8/e84701b7-7399-4b14-a2d9-0b5e05c151ae.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/e8/e84701b7-7399-4b14-a2d9-0b5e05c151ae@f9941.json",
+      "sha256": "4a8d798b49b0c1e474f2a49d5fe20c6054b790dc632f9c9ba7e01c16b7dc2982"
+    },
+    {
+      "path": "assets/battle_art/import/e8/e8bf2b58-2b81-4d1b-afef-b4c081574100.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/e8/e8bf2b58-2b81-4d1b-afef-b4c081574100@f9941.json",
+      "sha256": "08eed7121a3129210aa22a2ac4f73a525c4a0ced807a0b681d137e4ea67d570f"
+    },
+    {
+      "path": "assets/battle_art/import/e9/e977521d-a04e-4875-b977-a77c316c5edc.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/e9/e977521d-a04e-4875-b977-a77c316c5edc@f9941.json",
+      "sha256": "5c9fbcc3101acf537442ed3bb19b514976096c85e4932a3a3323bb9fcebcb938"
+    },
+    {
+      "path": "assets/battle_art/import/ea/ea02ea59-bf2e-42c3-9e49-fc4c07d135c2.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/ea/ea02ea59-bf2e-42c3-9e49-fc4c07d135c2@f9941.json",
+      "sha256": "681bd266a92467206997cd010b239d2ac792f23830204a2369c9666fb40a7fb5"
+    },
+    {
+      "path": "assets/battle_art/import/ea/ea3b0c72-d517-486c-9b13-cae603034d50.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/ea/ea3b0c72-d517-486c-9b13-cae603034d50@f9941.json",
+      "sha256": "f24308d6c81fccf340a063ea53ee1575572f0371b49f13c4a08936845b3f605e"
+    },
+    {
+      "path": "assets/battle_art/import/ea/ea5391d5-d228-4427-b0f3-57b5ea0c2eae.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/ea/ea5391d5-d228-4427-b0f3-57b5ea0c2eae@f9941.json",
+      "sha256": "f25206e084cb8b71555f1f7c188717b1c90ddd46538905f39a132dcad4d47db8"
+    },
+    {
+      "path": "assets/battle_art/import/eb/eb3505c4-f8b0-4d66-ba36-612ac5547d3f.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/eb/eb3505c4-f8b0-4d66-ba36-612ac5547d3f@f9941.json",
+      "sha256": "9afde9783bdeaa4269e2073c346615a4d89529d5c3ae02b5ad10d7b211fa43f8"
+    },
+    {
+      "path": "assets/battle_art/import/eb/eb91213e-7634-4df6-86fe-f8fd891a1e5d.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/eb/eb91213e-7634-4df6-86fe-f8fd891a1e5d@f9941.json",
+      "sha256": "0eaff348f555e0a316a3770b47b92ccf7a279c8d84db5b4d7626538f4d6b641a"
+    },
+    {
+      "path": "assets/battle_art/import/ec/ec69d4bf-e7b9-44d4-945f-7468168a8761.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/ec/ec69d4bf-e7b9-44d4-945f-7468168a8761@f9941.json",
+      "sha256": "2534003037fdba8d9e407cd5add03228b939a67e24152166d5531016275fc936"
+    },
+    {
+      "path": "assets/battle_art/import/ee/ee8224d2-495e-4fef-9608-67c3bc4d6702.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/ee/ee8224d2-495e-4fef-9608-67c3bc4d6702@f9941.json",
+      "sha256": "b901f7906587377ba95c950bdca32b6c5769841a83c6f5099bf8ec3f055728a8"
+    },
+    {
+      "path": "assets/battle_art/import/ee/eea2f6a1-950f-4bbe-9b41-f7bbf65510c9.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/ee/eea2f6a1-950f-4bbe-9b41-f7bbf65510c9@f9941.json",
+      "sha256": "6787c88bd7b5dcf36d8a08251bdf26fa77372d6144f40faf31beb086db9c0aa4"
+    },
+    {
+      "path": "assets/battle_art/import/f0/f004de69-5a1b-4ddd-a026-7895ee41f597.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/f0/f004de69-5a1b-4ddd-a026-7895ee41f597@f9941.json",
+      "sha256": "d1d5d7431ff31c2d1950508b90ba03d19964dd85bdd3f166fbdd0ad0e387e7da"
+    },
+    {
+      "path": "assets/battle_art/import/f0/f065929e-205c-45ae-974d-6c7e704a0e9c.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/f0/f065929e-205c-45ae-974d-6c7e704a0e9c@f9941.json",
+      "sha256": "a49fd713940bea3baeca058e91a24e37565f1d4c434ccf7c057b66694cc1e977"
+    },
+    {
+      "path": "assets/battle_art/import/f0/f0cdadb6-124e-4695-9c8b-1c40fc8d149a.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/f0/f0cdadb6-124e-4695-9c8b-1c40fc8d149a@f9941.json",
+      "sha256": "a60bedf1c92bf092a85649e8fbb49222939f5caa2881b436551661f2a05393ba"
+    },
+    {
+      "path": "assets/battle_art/import/f0/f0ed494d-42c2-482f-8bab-f7072cd0dd24.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/f0/f0ed494d-42c2-482f-8bab-f7072cd0dd24@f9941.json",
+      "sha256": "6cac6cc9b1555e4464357c86dc82276d3fcfd403838b1991d61f70083702fe5f"
+    },
+    {
+      "path": "assets/battle_art/import/f3/f3c95f38-6f23-4ad4-8328-e5fa1211ed24.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/f3/f3c95f38-6f23-4ad4-8328-e5fa1211ed24@f9941.json",
+      "sha256": "158278ed76993bce5e2287f9401dab0398c13e466168d81f236d4f6d282a3d27"
+    },
+    {
+      "path": "assets/battle_art/import/f3/f3cb0a31-f1bf-4f79-81ce-a8050e36b3fe.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/f3/f3cb0a31-f1bf-4f79-81ce-a8050e36b3fe@f9941.json",
+      "sha256": "21d84be0ffe0bd7f372b35a67531887916657204087bb35283bfb5b6321b3882"
+    },
+    {
+      "path": "assets/battle_art/import/f5/f5c886fd-e8a8-4ace-9fe2-17ee02393cd7.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/f5/f5c886fd-e8a8-4ace-9fe2-17ee02393cd7@f9941.json",
+      "sha256": "f3d1b6829514ae189fb96029b7e7540a44120ec056195a5ed43ef7937af8d4fd"
+    },
+    {
+      "path": "assets/battle_art/import/f6/f603f48d-d7f9-43d3-b45f-5c3a780e35cc.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/f6/f603f48d-d7f9-43d3-b45f-5c3a780e35cc@f9941.json",
+      "sha256": "3fbed6fefa252b70f07ae8c187082a95c53929024947f5dc6375a57f73d15cba"
+    },
+    {
+      "path": "assets/battle_art/import/f6/f62dfbe0-50fa-4b64-904f-069c667e46bc.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/f6/f62dfbe0-50fa-4b64-904f-069c667e46bc@f9941.json",
+      "sha256": "b988c5842407d35683a17528a7017d5584a5a6198f3afc53170d9caea87c2df9"
+    },
+    {
+      "path": "assets/battle_art/import/f6/f69c44cc-e6cc-4f8a-bbf9-5b6b1cc56cd6.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/f6/f69c44cc-e6cc-4f8a-bbf9-5b6b1cc56cd6@f9941.json",
+      "sha256": "da2d4e60d9a66a984fe159725f665e2f3980d484c8c3a1828442012f4830cc05"
+    },
+    {
+      "path": "assets/battle_art/import/f8/f8959827-ed3f-4c07-bab3-a83c8e8601c7.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/f8/f8959827-ed3f-4c07-bab3-a83c8e8601c7@f9941.json",
+      "sha256": "8ccda48f0d5cdabd08e0d16a83759fd351c145e00c95c8046927579da1a91e33"
+    },
+    {
+      "path": "assets/battle_art/import/f9/f9c3b2e2-98bc-4bf2-a9e0-18d7c36092eb.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/f9/f9c3b2e2-98bc-4bf2-a9e0-18d7c36092eb@f9941.json",
+      "sha256": "c7bd217daa2e126fbf458a0f58d80e4d6514fcb91772cb75006662fdc9b0dbf7"
+    },
+    {
+      "path": "assets/battle_art/import/fa/fac2b26c-e3fc-48ba-b228-ccc288093786.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/fa/fac2b26c-e3fc-48ba-b228-ccc288093786@f9941.json",
+      "sha256": "5a4cf3a5a0133ff7f623ef7769a222356900113b2068171347a1edc3278adc5b"
+    },
+    {
+      "path": "assets/battle_art/import/fa/fadca1f5-3d41-456c-ae25-f9fc398e83a9.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/fa/fadca1f5-3d41-456c-ae25-f9fc398e83a9@f9941.json",
+      "sha256": "3899bac2e635397d95c383ee62df16224f2a3964ffe4c0097cece5a451d6d2c4"
+    },
+    {
+      "path": "assets/battle_art/import/fb/fb24eef2-3c0f-4978-aa04-cc5d5cb1dc63.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/fb/fb24eef2-3c0f-4978-aa04-cc5d5cb1dc63@f9941.json",
+      "sha256": "e77f92d77834dfabc2669ffc1058abd0f596f0d4b375ed3379ca528877ec4312"
+    },
+    {
+      "path": "assets/battle_art/import/fd/fd0ae617-2a4d-417b-9425-0a724e20be93.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/fd/fd0ae617-2a4d-417b-9425-0a724e20be93@f9941.json",
+      "sha256": "b883798f3640ee9f220163937df902c8ef3e7af0b86a65c8a7fa64ac7d5d418f"
+    },
+    {
+      "path": "assets/battle_art/import/ff/ff2b081f-4a69-4863-8190-50f70f89ca56.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/ff/ff2b081f-4a69-4863-8190-50f70f89ca56@f9941.json",
+      "sha256": "57d376125ab8751672c0d3c2fb8d88e190cf418e925c06537b9330844e3ad847"
+    },
+    {
+      "path": "assets/battle_art/import/ff/ffdc8830-25be-477b-a764-54930485aae9.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/ff/ffdc8830-25be-477b-a764-54930485aae9@f9941.json",
+      "sha256": "c9c3a49502cef06c84aa1e8df96830c330aba7450a7e3f331555a67c1c21164b"
+    },
+    {
+      "path": "assets/battle_art/import/ff/fff12fff-81cb-409d-926d-69923912f9ae.json",
+      "sha256": "60928632edcd22b5694a8c22de01de0d2cbb6f374103242a99a4394cc767f44d"
+    },
+    {
+      "path": "assets/battle_art/import/ff/fff12fff-81cb-409d-926d-69923912f9ae@f9941.json",
+      "sha256": "8d2ab79c9250771536977ea1c37ecada9ac4739f2d815d0f4a6cefc9867f408f"
+    },
+    {
+      "path": "assets/battle_art/index.js",
+      "sha256": "ad442165e27a3d5724aa1ef62669b1630aaceb520aef5930b6f2ab1f1e20d4c7"
+    },
+    {
+      "path": "assets/battle_art/native/00/001a6f67-0eca-4d99-97b7-10dfe0af4832.png",
+      "sha256": "f3c64f3c211937ef1bf7b29ffe6caf568c9a01a175a6313a377b93015fff09e6"
+    },
+    {
+      "path": "assets/battle_art/native/01/019f3e85-cd98-4169-8361-c4732a36c0c1.png",
+      "sha256": "0191b60f4706c2266d18df4e9dba76c4e3401e499fc057f383b2052920f85b2f"
+    },
+    {
+      "path": "assets/battle_art/native/01/01a51172-13c2-48ef-a210-4b8bf0db8cdc.png",
+      "sha256": "04de5b9c612e7a6d1b4b652b2a5c566381289aac0386440bb89cc2a63346d0fd"
+    },
+    {
+      "path": "assets/battle_art/native/03/033449aa-2760-4c51-a7c9-79ba9c00c7bc.png",
+      "sha256": "148c028687dc29f00e743b0c2e175b425f464092b73cc2e307ce533eb2f28907"
+    },
+    {
+      "path": "assets/battle_art/native/03/03452ac3-531b-4650-a075-c7777b8b52fb.png",
+      "sha256": "9919ea27c9af7e79999c4b5c5883eb50f1ce21611a91fa080ca5a15b4d7f6316"
+    },
+    {
+      "path": "assets/battle_art/native/04/04273fd6-1c54-41e1-8c5c-81d45a9c1fc9.png",
+      "sha256": "2a0e080c7d73f870c967dc1879a6f9c01ae9ac58fb4d9292d0e6fc72776527a0"
+    },
+    {
+      "path": "assets/battle_art/native/06/065c2cc5-83aa-4d3d-857d-e78a5e8fee1c.png",
+      "sha256": "eed35b6e2e5ce45d07560c0c39586128aff7ed66f381b13d4bd5ae8420fe8496"
+    },
+    {
+      "path": "assets/battle_art/native/07/07196cb6-91b9-4283-b0e1-a0cda34b99de.png",
+      "sha256": "17fc908b64ce7c8a5e2df16f3555c7a28942d361240c0f15f2bd2ab35754d7bc"
+    },
+    {
+      "path": "assets/battle_art/native/07/07d6adb0-6f56-4025-b485-4285aa3984f8.png",
+      "sha256": "4c046c3f66d965ea1d187cd13f2d07575f9751d3de33ab1ea2f3ad546594413d"
+    },
+    {
+      "path": "assets/battle_art/native/08/08d7c3f3-7152-4512-b4b6-45a61bb3519d.png",
+      "sha256": "3368bb371fe9f5327df14f412d5050cc307a47185fad0d8382e77202c51d9b00"
+    },
+    {
+      "path": "assets/battle_art/native/09/09704ccd-5595-4374-bdc9-8f9e8736c482.png",
+      "sha256": "26360de7da9a5c22821a30c24df39038754ab40363635953a260d1d7a66bf540"
+    },
+    {
+      "path": "assets/battle_art/native/09/09922f5e-ae18-42e3-aee8-376d88520a20.png",
+      "sha256": "f84a49c5876031867d02b99757afa3da42922ad6da0090d1c198c330cfc412f0"
+    },
+    {
+      "path": "assets/battle_art/native/0a/0aea276f-f6b0-460b-ab17-de5f302bb760.png",
+      "sha256": "f20d120ade2c1cd2f150fae2b680fbecdfb488467dfe7788d8ca17210131a121"
+    },
+    {
+      "path": "assets/battle_art/native/0b/0b66ab1f-0439-4360-b8e1-7424acf1202c.png",
+      "sha256": "df407cc9d8a3c7982e30f99332d7832043c41adffc9450251299fec2062a8181"
+    },
+    {
+      "path": "assets/battle_art/native/0c/0c1971ad-27f1-47cd-81d9-821e6e669aee.png",
+      "sha256": "214d48e7e7538e589f991f5fbc3ea884828052faa94023962d43e9ceb2d80905"
+    },
+    {
+      "path": "assets/battle_art/native/0c/0c75a5b2-05cb-483f-991d-7cf17b138168.png",
+      "sha256": "4d6f67ac9779e14d223b67105c1e25cc8f11fb779f80f3f0f4b78448a2268f4f"
+    },
+    {
+      "path": "assets/battle_art/native/0c/0cb2ed79-c238-4e5f-92cd-ba947af0609e.png",
+      "sha256": "f093663c8f7b92171a7a1fa6d1447facbea64dcfb4501024d581bf51f8952a31"
+    },
+    {
+      "path": "assets/battle_art/native/10/10ee857b-8915-45de-9cc5-babe33910041.png",
+      "sha256": "2f2e593580eb6a14159ff098edf0e4d1bdf8a5a56378ba2ea7f82a36056368bb"
+    },
+    {
+      "path": "assets/battle_art/native/11/110302b0-e77a-4ef6-a6e5-e01222cf705d.png",
+      "sha256": "0d4b7ac901f24c5e276ded69676bbfcf06b57c116c1721eda0836bbf4fc9fb3f"
+    },
+    {
+      "path": "assets/battle_art/native/11/1185cb63-3049-4b1f-97c5-aa880ebbd6c5.png",
+      "sha256": "96ed411b9dda69d383cc993ee8683070e8017dd936767487db4509d5969657cd"
+    },
+    {
+      "path": "assets/battle_art/native/13/133779f1-5d8e-450c-afe9-25d2c56ffd0d.png",
+      "sha256": "3c2eaf17d23a3205988a1d3da3f8eb81cd5fc583f59a537167fdcae47d487994"
+    },
+    {
+      "path": "assets/battle_art/native/15/1521b54b-fc7b-4dc2-92fd-a3317bd66243.png",
+      "sha256": "6a454a8d2a88b0178be0616344ddd96441d77d19ec743c62fd85f6fa0b71f1e8"
+    },
+    {
+      "path": "assets/battle_art/native/16/162084b8-a68c-4606-b518-6b8c5e7c5d0c.png",
+      "sha256": "bfc10f3901b1616ffc352192b25b9a43353f8754abd4d876e8866095bafd02aa"
+    },
+    {
+      "path": "assets/battle_art/native/16/16475ef2-ca7c-4eb9-b105-16c2cda70e04.png",
+      "sha256": "c5ec2e827a5b12c0a8c48fa73e681e2b21a0c0148b12405b119de3fc84ea7759"
+    },
+    {
+      "path": "assets/battle_art/native/17/175568da-81ac-47c0-9aee-0f9b88f97ebb.png",
+      "sha256": "3d848d1a4011f895114f935f236ff7ee5226586a92abedccbd91cf2354ee5928"
+    },
+    {
+      "path": "assets/battle_art/native/17/178bcb0f-ca2d-4a19-8464-ab2f1b509340.png",
+      "sha256": "700462d8b98b44bb299b71fa4dfefd057266715f77ee9031c18253d8352f7135"
+    },
+    {
+      "path": "assets/battle_art/native/19/197b7715-091d-47db-9c2a-e11621a84a91.png",
+      "sha256": "a7c13c0e16109388aef8798a9ce90040ca2278cf382ef4541fc347026d68c611"
+    },
+    {
+      "path": "assets/battle_art/native/19/1989bb61-bd4a-413d-b65d-964fa2dcad97.png",
+      "sha256": "b5c0618d97c013df1c84269f6ab541766e016aa2deb2ce56535343f557ef1b60"
+    },
+    {
+      "path": "assets/battle_art/native/1a/1a296038-ab08-4bab-8a63-55e04f1260fc.png",
+      "sha256": "8ecf439eb03d16886b18de149bdce8c9cd893bd074f1b5f9c5b7057331cedf37"
+    },
+    {
+      "path": "assets/battle_art/native/1a/1a6b6ac9-75f4-417e-93ef-5df73e5cb53a.png",
+      "sha256": "488151080a92dc76dd2e20992b35e767aec5c4095e16753a33e3b32f862ea5a6"
+    },
+    {
+      "path": "assets/battle_art/native/1a/1a897f10-699a-456c-8cfe-b8858ebb44f9.png",
+      "sha256": "2af0d2da068bd84e1c55d93e78beef2301ae97db2ab0cc463ef8f46b3156d0ca"
+    },
+    {
+      "path": "assets/battle_art/native/1b/1b187b97-97c5-4447-946a-967364b7b901.png",
+      "sha256": "3763450642cf5efb95445962925d2425e69d4333ef142e6ce54ea27f9beb66d4"
+    },
+    {
+      "path": "assets/battle_art/native/1b/1bc38bee-a0ab-4fa9-b71f-cdf836e62b52.png",
+      "sha256": "fcfa6692901a64075892e2fb480e9e7983193c9e7869ed95e3d870fe992d588c"
+    },
+    {
+      "path": "assets/battle_art/native/1c/1c08fc0e-8f3a-4df6-a8bb-c923564faecc.png",
+      "sha256": "7dbce69c648a2a89f623442e3857d94b8b760e470ed164c1e9086446bee20560"
+    },
+    {
+      "path": "assets/battle_art/native/1c/1c1cd857-4ff3-4365-a333-e30efb6e1b98.png",
+      "sha256": "3abf10025205cf2b6ad4bff35cae9248fe0b81fe77b7079dec3b3f53bedc438f"
+    },
+    {
+      "path": "assets/battle_art/native/1c/1c5e20ec-17d5-4701-94f3-bc645c44f097.png",
+      "sha256": "a5567c76d1211b4c3916c15edaa25be5b18320a5dccdbc8d159b8dee73d5a23a"
+    },
+    {
+      "path": "assets/battle_art/native/1c/1c9a5378-daa0-455a-975a-7fd91509b1e4.png",
+      "sha256": "4c4dafd704d6117070978ddc09747de3bbfb471819971bc9097082c3d7e4926a"
+    },
+    {
+      "path": "assets/battle_art/native/1c/1c9d78ef-7bbe-4c0c-9ece-a144a0b7ed48.png",
+      "sha256": "a5fdd7f513195e1e3ee22a9f3686400e8f517487ba9009f2d48adc0da13fd98b"
+    },
+    {
+      "path": "assets/battle_art/native/1e/1e5a8f98-8890-48fc-b896-14aab80d08f8.png",
+      "sha256": "1162704295f78fd3c97c92760e22b7c19a93cfe2e6b82282b8f8eb7dc494e37c"
+    },
+    {
+      "path": "assets/battle_art/native/1e/1eaaa25b-8ef3-436a-b49f-e5c020ffe1a9.png",
+      "sha256": "29165244b1c2dac638d4cfba81ed3f4df26ef9c46f21df75973271c2ead6bb3b"
+    },
+    {
+      "path": "assets/battle_art/native/1f/1f0fb02b-339c-4152-a5fc-73ec6739602f.png",
+      "sha256": "6561e18fb97fb90acb7861420348f4c7672b6e3a19ff0136dfac9f6ac2b54e62"
+    },
+    {
+      "path": "assets/battle_art/native/21/2102d03f-184f-4250-8440-2a2ef7bfa79e.png",
+      "sha256": "ca6a66f7ff853ebc348a0d258b020b14ce532bbf37d6218ad25b8b262bf0a59c"
+    },
+    {
+      "path": "assets/battle_art/native/22/22875013-92f7-40ed-9e7b-a1861aa52566.png",
+      "sha256": "e4b0dbe92e7c5400599c6a430e1f2dfd96cf5d170d1cef99727b7c0b67e27334"
+    },
+    {
+      "path": "assets/battle_art/native/23/232c9729-dd72-4186-b93a-017ced4410cf.png",
+      "sha256": "3de2739d106963f0badb8cc21ea6c2bc43de7ffb8a9140e5aba1b52186f02cdb"
+    },
+    {
+      "path": "assets/battle_art/native/23/234fd7c3-7763-4d1c-8377-d702f398f9a8.png",
+      "sha256": "e883dcc5201a0f9e3f8345ca4b39a0170e48d30c55ecbd13ac97ddac44217caa"
+    },
+    {
+      "path": "assets/battle_art/native/24/24356d14-976d-47d5-a5fa-d8d645ca4e8b.png",
+      "sha256": "6f235ec82b68d7a72d1df0017755c299f4fd9781ab5b9102a1e5a7b48680c604"
+    },
+    {
+      "path": "assets/battle_art/native/24/24b54ca1-1f48-494f-a0e0-a231c4c99437.png",
+      "sha256": "fe661da43bc6926ca5d315fe616a04ecb2a37f56efb9a715746248ce8b18793b"
+    },
+    {
+      "path": "assets/battle_art/native/26/26538b90-c1d5-45f5-b3a8-61c8aa8d7d57.png",
+      "sha256": "5caac403093308a9fb1b52450e7e1edc625c9f80751aa20068fc3ebd23fbf40e"
+    },
+    {
+      "path": "assets/battle_art/native/26/2691cbaa-47c5-4ee5-8ee4-c079aa1a0f97.png",
+      "sha256": "cff3cd3a99960b7e750ff6be0f72b23275bb5b76b6627a53f41d6ebc9c8999ed"
+    },
+    {
+      "path": "assets/battle_art/native/26/26ba28cc-4198-4987-affa-a46d2bd4df30.png",
+      "sha256": "96eda17c0fafe85e76cba173c24e494503e76d45048b579435bc51670ee39da2"
+    },
+    {
+      "path": "assets/battle_art/native/28/287109ce-b50b-43e5-8e7b-2523dd70136c.png",
+      "sha256": "b207719798f4b1824496e6f2c4222a0b793b37e337a2504cb6b15555c9dfd55f"
+    },
+    {
+      "path": "assets/battle_art/native/28/287cd005-e7ec-4aeb-b6c6-7a65814de512.png",
+      "sha256": "6fd591a0a886fcdb4b8f802aa20147dc20676e10514c08d3ea72f99243314218"
+    },
+    {
+      "path": "assets/battle_art/native/28/28958b9e-7b03-42bb-a6e3-7035a6991edf.png",
+      "sha256": "eb6f39b99d5e9188d20117548ebc7faf252818bd223be3842aa914f30583c748"
+    },
+    {
+      "path": "assets/battle_art/native/28/28ec35e8-7694-472a-94ba-09e5539661e8.png",
+      "sha256": "ad1908daa616e4c32130415b9059526fd4d290e5e3092670c0154ccd3ac8df94"
+    },
+    {
+      "path": "assets/battle_art/native/28/28ffad79-02dd-4b0c-8495-e363b5073e5e.png",
+      "sha256": "8e7b89fb6fd0340bee48c78203f660737f5f30dca76515cac0ced2aebbf9c35a"
+    },
+    {
+      "path": "assets/battle_art/native/2b/2b57d66c-fe9c-42d4-b674-eb40fa9b90ef.png",
+      "sha256": "b648cbc99eab0b9c2ef17c0cd77d4425102052f69f245e08100c98092beaea1c"
+    },
+    {
+      "path": "assets/battle_art/native/2d/2d2292b3-72a8-44e3-9de8-1eda4b0d91ac.png",
+      "sha256": "d88f46d6e61484f19932c0191cf3aff646232b0932bb72c0351bcebf47bc8ca6"
+    },
+    {
+      "path": "assets/battle_art/native/2d/2d32214d-08d1-4560-8f48-9c01083c0d83.png",
+      "sha256": "0add387d8c42450b9b1240229ee3f7aad90e3508ccf7294f9fdb95d9cd8d4e6d"
+    },
+    {
+      "path": "assets/battle_art/native/2d/2d92fb21-d3c2-4ffa-96f4-1e1f741a0f52.png",
+      "sha256": "87666d52b51c81969d388ce8d7658194b17a2b73f92c9a75874d8c00492e1b60"
+    },
+    {
+      "path": "assets/battle_art/native/2e/2ea64852-7b33-43aa-b988-0d34515bd73c.png",
+      "sha256": "6206c232dfd63188b7bbdb84c3d94071db2e74ddb3df1ed99f8f8b9affc9bfb3"
+    },
+    {
+      "path": "assets/battle_art/native/2e/2edcc2a2-6912-4e4d-ae69-775f52fd0173.png",
+      "sha256": "9bb502c9746d2db28ab7c78b26581cfc697617cbfe7413897e8b65f90cbc43a8"
+    },
+    {
+      "path": "assets/battle_art/native/2f/2f2b5500-043e-4ec5-8d83-3ed88d570b07.png",
+      "sha256": "96ed411b9dda69d383cc993ee8683070e8017dd936767487db4509d5969657cd"
+    },
+    {
+      "path": "assets/battle_art/native/30/306fbd92-fb79-4c87-b004-4b4e792bc167.png",
+      "sha256": "f79b64865e7bf7843b86a1a4833b1d03e2c1ad20b2dea199be88bda75715a3c2"
+    },
+    {
+      "path": "assets/battle_art/native/32/3258a35e-e795-4f48-b1e3-11cfb1aabf8e.png",
+      "sha256": "702ac5a79138c402626fa50d42246a3616840e1251ed2828eddd74221ea6a84d"
+    },
+    {
+      "path": "assets/battle_art/native/32/32b27850-9a9d-4f77-a5e7-257a35d3c851.png",
+      "sha256": "11f472567644db636b11865dcd8e29708ea14befa2728e3dec5d5deaaf3c2b83"
+    },
+    {
+      "path": "assets/battle_art/native/32/32eb9c9c-6193-45c2-8082-326159aa8526.png",
+      "sha256": "d6eada5e92157bd2d9452a78d06828aaa02e892f5c8dacc242d5a4d89c3844f6"
+    },
+    {
+      "path": "assets/battle_art/native/33/3342975a-0ff2-43d4-af4d-a2d3663bece9.png",
+      "sha256": "314f154a5e9e1780c2c65a180bb4c327cef633ade1edbd69d447392619baaa72"
+    },
+    {
+      "path": "assets/battle_art/native/34/3475a089-e200-48f6-b600-db156302c6e1.png",
+      "sha256": "a5b359f5ea2d4be0793102070088e43cb3ef4de6a3fd21cbfa05e8e456fd2f51"
+    },
+    {
+      "path": "assets/battle_art/native/35/35ae900d-ca33-4444-aac2-a7c1da754c1a.png",
+      "sha256": "26360de7da9a5c22821a30c24df39038754ab40363635953a260d1d7a66bf540"
+    },
+    {
+      "path": "assets/battle_art/native/37/37a875da-bbf3-4cc7-a8c2-f55293812e76.png",
+      "sha256": "f323f8ec9c72a3678c52a5ffce147ce4a21f8c211787a1f957bb420cafa221d5"
+    },
+    {
+      "path": "assets/battle_art/native/38/385390c2-62d8-45d6-a2dd-391c3eefb919.png",
+      "sha256": "25d46e4edd3ede75a29b4012b48277f8c7bf32415eb6046278cc176810eadc84"
+    },
+    {
+      "path": "assets/battle_art/native/39/3923b68b-a794-4a46-85fd-6fee15101364.png",
+      "sha256": "f57a4f8447cefacde59eeedb8796edaeb2b97504b631ae1c244010a10b614fcd"
+    },
+    {
+      "path": "assets/battle_art/native/39/39b6a9d3-9740-407c-b0bd-332612a23d94.png",
+      "sha256": "39bb814fc84d02057e5b4802e145241bcd4aa156bfaba1d72c403cac563bd7fd"
+    },
+    {
+      "path": "assets/battle_art/native/3b/3b35e823-2086-483f-9625-4ad9ef0d3097.png",
+      "sha256": "ddf1daf0ce9eb9b704089c15ff66099ca39fea1bb1ef66141d2c1861d0abdafa"
+    },
+    {
+      "path": "assets/battle_art/native/3e/3eb5d65e-2633-4856-91bb-ba1c19867e70.png",
+      "sha256": "900dd0effa5cd4e5469dd4aba055dfbfb8ba0ea868b27ba08c93836431320f4e"
+    },
+    {
+      "path": "assets/battle_art/native/3f/3fac71a4-8334-4961-b66d-b95633e73468.png",
+      "sha256": "ece77524b1073d7fa1eeea4c719a7dffc1b89d2d32120c29bc25c4451302ff4f"
+    },
+    {
+      "path": "assets/battle_art/native/41/413e2e90-f09a-42ed-b61e-17594f919886.png",
+      "sha256": "92115092a66ce62164c551e4d20de9e16f0671fd6e553eab310209ba72c4c5ca"
+    },
+    {
+      "path": "assets/battle_art/native/44/445363c9-4b8c-4b04-955a-9f0786a1439d.png",
+      "sha256": "55018151d7828bd8c6115b762c18019b9fc69dbd4abe79086636245e8320fc7c"
+    },
+    {
+      "path": "assets/battle_art/native/45/456c5823-7ae5-40aa-93b6-d99bfde74acf.png",
+      "sha256": "540414ae7cdba4e3314c4439b0daca90902779cb600143a1445438b0cd1b8f17"
+    },
+    {
+      "path": "assets/battle_art/native/46/464c6bfb-73b0-45d6-b598-96cac1ac554c.png",
+      "sha256": "ffa2e3fc8497d89c84c7210548baeb1bfe5b602ed996ddb6146a9c146fd937b9"
+    },
+    {
+      "path": "assets/battle_art/native/46/46ea0dd6-0baa-4279-a444-681735451d93.png",
+      "sha256": "a2c436017c486d007fd97128ca3f772c15319adff6bbe8fde53f81577d49152f"
+    },
+    {
+      "path": "assets/battle_art/native/47/47148a77-d368-40d0-b314-1271ff357b91.png",
+      "sha256": "205c4dcd9d459af9def14593c9eba59cf9c7a271f1acddab302023a4a1a97e03"
+    },
+    {
+      "path": "assets/battle_art/native/47/47e2ac5b-167c-4200-9d63-8145ec60b1e6.png",
+      "sha256": "a884781d7302315aa72e2071ae9bae001b6d2dfe636d0f2d2cccc94b38430742"
+    },
+    {
+      "path": "assets/battle_art/native/48/482c409e-2dd6-439c-b46c-0e6119a7db97.png",
+      "sha256": "67e8e0c51df61ae4abc40d05ccc39d705135db1f7666ef8c0010646b3919a63e"
+    },
+    {
+      "path": "assets/battle_art/native/48/485d9ffe-0c01-485e-b23e-e69b5fbafdc4.png",
+      "sha256": "5d6e05c3246f0d96a9883a427269a947c7c2967da7f615a32a88a9d7f9ca42ef"
+    },
+    {
+      "path": "assets/battle_art/native/48/48f1fb92-3df2-47e4-b2bf-179b92cc1d25.png",
+      "sha256": "01e5f2f089a4bc7e95c997989be6caca99242e085fa178575b1aafa7daac3276"
+    },
+    {
+      "path": "assets/battle_art/native/49/494b8a3a-2885-4245-8741-b08b57054126.png",
+      "sha256": "3699e3a623378eec8db20d3df51943aac9862c8265d0d3241ff5ecab6b6e101b"
+    },
+    {
+      "path": "assets/battle_art/native/49/49a26987-906a-470a-bf4f-cbcc510934f7.png",
+      "sha256": "e446c20e99ca0c608ea2442d6329caf1d3e2532d001208768f4809163ecdd80d"
+    },
+    {
+      "path": "assets/battle_art/native/49/49eef578-ee4a-45db-a20c-78bf22e99b18.png",
+      "sha256": "ec6c9f6e237ece2b25615c8583c0821083d9974a844802ab5fc6a37b3ea87252"
+    },
+    {
+      "path": "assets/battle_art/native/4a/4a488e30-efeb-45fa-af2a-a71057a2bb39.png",
+      "sha256": "8a96803b040c711c7b5d3edbe3373f1be654c6c68ba8ba6e94b6e3886e1eda04"
+    },
+    {
+      "path": "assets/battle_art/native/4b/4b5ebe07-31f4-4dc2-bfd9-2173f27de46f.png",
+      "sha256": "aa84ca2f42df0df362fe37ae17d67173859359e623919838ea97659791a40151"
+    },
+    {
+      "path": "assets/battle_art/native/4b/4b73879e-e733-48d9-b045-fe5eba49ce8c.png",
+      "sha256": "78d802305b416fda4e1c3319f4ae99599435da0361383d60ee22e7490422be42"
+    },
+    {
+      "path": "assets/battle_art/native/4b/4b88c53c-69d8-49f4-9c5f-3efa5141f4ba.png",
+      "sha256": "6fb4a6c6a112889fae53bb08bd3d35ed47a482c49323c41967e9a75b3498f3bc"
+    },
+    {
+      "path": "assets/battle_art/native/4c/4c45abf1-a1fa-42b6-9807-5557e89e28bc.png",
+      "sha256": "1b5c9ad9c2e860a1d0ac9af9aacde1c0729c4f66d44b82f831a2a147cde2bada"
+    },
+    {
+      "path": "assets/battle_art/native/4c/4cabe27d-8027-4450-b190-273ca1c81745.png",
+      "sha256": "e35efd13672089c9360541f57781ab1827e24cc1999d3fdf7cb5726ad98e440d"
+    },
+    {
+      "path": "assets/battle_art/native/50/5075703b-c463-4a63-b36f-0ebc10a42c9a.png",
+      "sha256": "8be91582f03770c8fd662c960e18405ded898a597d531870c44dcbff824761d8"
+    },
+    {
+      "path": "assets/battle_art/native/50/509c587b-06c7-4a5a-a967-3de5f47d6cd4.png",
+      "sha256": "163e6428e60a8b231bc81b9133f02ff2dfb5b1f1308eef3f757b29d2a7ace227"
+    },
+    {
+      "path": "assets/battle_art/native/50/50b2deee-ab95-493f-907d-a40c3858675d.png",
+      "sha256": "46ae25bef848bc9ce096473a2c548096a88c55523ebe62ac03abade1c09130e7"
+    },
+    {
+      "path": "assets/battle_art/native/52/5221c066-757a-4b1a-b5de-ff00a401ed55.png",
+      "sha256": "6637769062462a0729b7fd1e110a7176fa8e5a68ad564ddc50811936669adb6b"
+    },
+    {
+      "path": "assets/battle_art/native/53/53fc4e30-24fe-427f-ac5b-8daf4d615693.png",
+      "sha256": "e43a85254bd09a24cc7847d0d44345eb12724929fead41bbf94191380cbc7ca8"
+    },
+    {
+      "path": "assets/battle_art/native/54/549892f3-f370-41d4-895f-9e17128211ea.png",
+      "sha256": "0ba884700866a6fb5aee948968ac72a0aabfbdf7ad91f45f835f403297c5e212"
+    },
+    {
+      "path": "assets/battle_art/native/56/56dcf421-0f61-438e-8724-12a260c45209.png",
+      "sha256": "7e6ec29edc2dc06e13112344bc9e46e4d92847afd970c022b4a6a98468fc7fc4"
+    },
+    {
+      "path": "assets/battle_art/native/57/575d2daf-568d-4969-a46a-54db6a32c1ea.png",
+      "sha256": "a224f321c90e53dbd266ceea3bc5ee4740e759751b79bf353ffd36c2be0d40ba"
+    },
+    {
+      "path": "assets/battle_art/native/57/57c6e343-8160-4b56-8a82-93b6bb615321.png",
+      "sha256": "de52e3cfcfae66fdda7ed3626993bdd1c193ec20c23b77af6e460c529fe499cc"
+    },
+    {
+      "path": "assets/battle_art/native/58/586f7aa4-f561-4f62-affd-d817e0618547.png",
+      "sha256": "4f0f35df17c27691ad6981252ae164c7196d856b462b10bab0201f5d6ed295ed"
+    },
+    {
+      "path": "assets/battle_art/native/58/58a0b3ee-53dc-40f5-a525-17b7fad4f74f.png",
+      "sha256": "18c15afbe0ae8a77eabba7ebfd91cd3ca3688767d465af42a48ff6cea2351cb2"
+    },
+    {
+      "path": "assets/battle_art/native/59/59c643b1-00cf-4e99-809a-3bc57ed55681.png",
+      "sha256": "bc322d9dddef4ab51fda6385751eff314bf8187e40b503df5297ee1ae18e08c0"
+    },
+    {
+      "path": "assets/battle_art/native/5a/5a69b78b-3e71-4f55-929f-7b074af5b049.png",
+      "sha256": "754c7498ee71802d801eac3ebbfdf0d6ac8835b4e8fdc8199eb2c4a397e7cfde"
+    },
+    {
+      "path": "assets/battle_art/native/5a/5a77d735-8968-42ed-af62-73843079e8c6.png",
+      "sha256": "9e78e42d9adb2fa001204ce09cc3b4b75c2f26670193832749ef9b4b01467847"
+    },
+    {
+      "path": "assets/battle_art/native/5b/5b5a894b-117a-43a1-a340-1c8d1dc8c813.png",
+      "sha256": "281957aad53427399801a12e897fbd60866f605776ed76c1c0937b68d41aa1d1"
+    },
+    {
+      "path": "assets/battle_art/native/5b/5bacf99c-c656-4673-b623-55cd2aa91085.png",
+      "sha256": "81b7f5d6ff452ba8f3f47128f48f7dc98a27bed7db7ac60a2604cbea8f0c781b"
+    },
+    {
+      "path": "assets/battle_art/native/5b/5bb21119-818e-4fac-aa09-4fec96f78107.png",
+      "sha256": "5562c02e792973c5e791432301604017524cb7776f976a4b9af112bb30b34860"
+    },
+    {
+      "path": "assets/battle_art/native/5c/5c1e3517-87bc-4fa8-8d3f-c4d4c5ae9027.png",
+      "sha256": "fa30d284c006474758b5910056da3554f08df54b7aad74d06b63010e0a3151f8"
+    },
+    {
+      "path": "assets/battle_art/native/5c/5c76e30b-79ca-4f9c-b5b2-465e13d3f8da.png",
+      "sha256": "039daea8699cafaba35a1724f03e756d8d32061941b4f99fd5d0d0a81befb8fc"
+    },
+    {
+      "path": "assets/battle_art/native/5e/5e89658b-0037-4e67-af18-0ab098f33c64.png",
+      "sha256": "ee765be5b1be91812318ef8c08768101eb64e02b732f9310f3a855df7899261f"
+    },
+    {
+      "path": "assets/battle_art/native/5f/5f8b97d3-e5ee-496c-90e4-b2b9e9893483.png",
+      "sha256": "c01dd5c79619ea668f68485a46269b9b31c42af269b4d305240b139f40616950"
+    },
+    {
+      "path": "assets/battle_art/native/5f/5f91fea5-3647-42a5-b305-f6759a727761.png",
+      "sha256": "5f57a0551fe8a1e5b62aa7c549cc38a1e4b88d3e076a295911786c5f4d8fb07e"
+    },
+    {
+      "path": "assets/battle_art/native/60/60121af8-8636-4548-9c03-fb83a84e4ce0.png",
+      "sha256": "c62a0929b4b3dd3e275532a39c52f0d6eb71a0efe2bea2599ed394f0153dd375"
+    },
+    {
+      "path": "assets/battle_art/native/61/612b2d0a-e30e-4204-88cf-8f60da37ae98.png",
+      "sha256": "863bca2940a5b686475197543d2d8a0bc36a67f104e150b8d69cd17835de5a69"
+    },
+    {
+      "path": "assets/battle_art/native/61/619a5eb3-1c5c-4b72-907e-9e77909bec51.png",
+      "sha256": "fdba41a0c77a2431a182b4ce59229e49b6f0f609eb0b4da52d8209090cca2f06"
+    },
+    {
+      "path": "assets/battle_art/native/61/61bbb36c-2d13-42a5-9b14-4ab87dfd1c59.png",
+      "sha256": "c5748f594bd682251f1a6cc87de7c8650b3baa119d3a88b0ca953fc9ded6d075"
+    },
+    {
+      "path": "assets/battle_art/native/62/621878bf-c52c-4f57-906a-f84438cbd4f2.png",
+      "sha256": "9e3d98ee324903d81c23a2e1add15b66ee2432e645da68781e5b3e578d14080d"
+    },
+    {
+      "path": "assets/battle_art/native/62/621c52e6-332d-4657-b22e-dcb09e6e6bd2.png",
+      "sha256": "2cbca2f3473d178897670bdd270c00babba3af9d1a37fecabe2293877eef7dfc"
+    },
+    {
+      "path": "assets/battle_art/native/62/6261d383-1c1d-461a-af14-e952e060e0d9.png",
+      "sha256": "b207719798f4b1824496e6f2c4222a0b793b37e337a2504cb6b15555c9dfd55f"
+    },
+    {
+      "path": "assets/battle_art/native/62/62bc748f-69a2-4930-aa94-1a770fad61bd.png",
+      "sha256": "5241a38fe1c084d8ce4e899fc6b496bbaa098cd007ecdeb02d955c222c1a79ef"
+    },
+    {
+      "path": "assets/battle_art/native/64/6487b846-adea-432d-abab-4ecfddc8a91b.png",
+      "sha256": "bb804b45947783e18e3c0e90360f75b11527434de39191d19caa7b907a2dccb0"
+    },
+    {
+      "path": "assets/battle_art/native/64/64f58c0a-b4f1-411b-8103-ec05d5f14207.png",
+      "sha256": "796d41c814c9d9e30f68eb63c9781404e9d902645fbbb1a7af65c7e5bc4499c5"
+    },
+    {
+      "path": "assets/battle_art/native/65/650b98a3-bae3-4a5f-8b61-01a51d7e8f01.png",
+      "sha256": "b6dd11ac8714bdd39e99a63aa314034fbac7657b1e5c20d4250f9b0057e6f643"
+    },
+    {
+      "path": "assets/battle_art/native/67/675f6d94-e6ba-4369-9212-3fe0b776d203.png",
+      "sha256": "aa6566faf8abfdc9c11d97c161dca3568324fe53a50afadbd2906a247d1f823b"
+    },
+    {
+      "path": "assets/battle_art/native/68/680ae613-26d1-42aa-a318-8f907197dd3d.png",
+      "sha256": "a355b9aa47fac5596d799e30618b4d2b312c6ef7b48f3b52abb48e0b905a5319"
+    },
+    {
+      "path": "assets/battle_art/native/69/6915987e-6fcf-4521-b0b5-33b57e458682.png",
+      "sha256": "9c66bb7b53a066f4858c11abff5534d0fb55af2dad5757fb180c7de305bb42f8"
+    },
+    {
+      "path": "assets/battle_art/native/69/693bb2d6-2913-4b7c-b2db-80fc26bb950d.png",
+      "sha256": "e8145aebbfa68c82a3368874d083419f3c01c28f0f9f1ab1ee8b0ece8847d9da"
+    },
+    {
+      "path": "assets/battle_art/native/6a/6a632b6d-025f-4a31-9507-d451c1c1430c.png",
+      "sha256": "692884214abcecad42168b8be2ff8f461183ed7b57032ae947083c006fb5d696"
+    },
+    {
+      "path": "assets/battle_art/native/6c/6ca85ce7-bcdf-4eed-98f6-8b9e6d802554.png",
+      "sha256": "4b9c93b8569d9a0f7111d94a2e30eee1cf5085ffea6d40678054bd2e86925843"
+    },
+    {
+      "path": "assets/battle_art/native/6c/6cc8cda4-dea4-4eb5-95f4-1850a6dda26f.png",
+      "sha256": "69ac2983edca8c81e639894346399455dcc9b5681d7c2883183c9818869bb25e"
+    },
+    {
+      "path": "assets/battle_art/native/6c/6cf90fd7-bb84-45fa-b846-e1f72f86d6a6.png",
+      "sha256": "3aa1c44162af9005932dac029e7f8d096111dd8c87b2297db4245343f2c92e40"
+    },
+    {
+      "path": "assets/battle_art/native/6f/6ff2e58f-5f72-4c71-a33c-73e3c801af3c.png",
+      "sha256": "ac2efbb5ad9525914366cdc8f87b6f798ac61844760056e48b6f93d98a839927"
+    },
+    {
+      "path": "assets/battle_art/native/71/7140ee7d-d6cd-4f1a-9461-8399e4c5d486.png",
+      "sha256": "d35d50a865adfc26a853df0cd846b80506792ad64f8ec405a9cb78f95d3a954b"
+    },
+    {
+      "path": "assets/battle_art/native/71/719e8265-e4ae-4e5b-9527-164852d94a69.png",
+      "sha256": "a23fd0cf76cca418063ad5447593760ebe00ad3b405a22ce02c4564fc75c249f"
+    },
+    {
+      "path": "assets/battle_art/native/72/722e065a-56a6-43de-8ba4-c8d2565f6975.png",
+      "sha256": "4ad709991a02dfc7b7c66bc6c2089aaa807964bc0b7801be8db7e40a592f8849"
+    },
+    {
+      "path": "assets/battle_art/native/72/72b7fc86-dc04-411f-86a1-5d7437a4b988.png",
+      "sha256": "6263f65e6d838e829c48046cc32e5ad3ae3f3396be3b2897d1dd748e179264d0"
+    },
+    {
+      "path": "assets/battle_art/native/76/76faca26-8006-40b3-91f6-4bd70225dbd6.png",
+      "sha256": "266dcc065f8825b7c069714f6556daaea6dec52c8825e5a89600206b433392f6"
+    },
+    {
+      "path": "assets/battle_art/native/77/7728ecb8-b907-4505-b0e1-ffaa0611c880.png",
+      "sha256": "e72c769293c87178ce61e6217dc52961d3b4e5fa0bab8ed88e413ac7fcac1d28"
+    },
+    {
+      "path": "assets/battle_art/native/77/776327b9-2ed8-468c-bf41-d49d82e12ae4.png",
+      "sha256": "7d56994221bb25ab6b24b5f00a56883313552545ff7a4590ee7d005c51440572"
+    },
+    {
+      "path": "assets/battle_art/native/79/7994b811-2bb9-4eb1-a909-ec79a8530211.png",
+      "sha256": "76a31c964b6df3a15e12ecd13baa0bac3b4f644e6997b6c166ceee30e80bf4c5"
+    },
+    {
+      "path": "assets/battle_art/native/7a/7a724e79-8997-471a-9c28-8e0a0d4e088e.png",
+      "sha256": "3d338d68bbe14b526f68add9ea8e2347b4dc9e0a545b705305ebaa23a5703556"
+    },
+    {
+      "path": "assets/battle_art/native/7a/7a97f06d-748c-4c89-842e-05b3b32f4d49.png",
+      "sha256": "651f8b0d9fe666f2e6b587ba11d93e613016ac8f8ecc31dc3a063322994971d1"
+    },
+    {
+      "path": "assets/battle_art/native/7b/7b80d05b-b8b3-4a5a-a382-e562d01e1946.png",
+      "sha256": "810ef31495fa3bc2233f4738f388ddbf64879c4f41e4cb3b8c4517f161ed1ad1"
+    },
+    {
+      "path": "assets/battle_art/native/7b/7bdbdbbb-e68d-4b1e-ad79-e11a774bf17c.png",
+      "sha256": "f12c180cb424eaa3b63e8da3902fc58bf53675d2178d315ab4f0245b3dced530"
+    },
+    {
+      "path": "assets/battle_art/native/7c/7cb61377-d720-44ac-bdf3-3b3ad5eb56e2.png",
+      "sha256": "433e44c5d988fdedbc3acfb03d390beaac87bbdd0ae6c12cf7df0347531c7294"
+    },
+    {
+      "path": "assets/battle_art/native/7e/7ee83f27-7cc9-4124-bc51-cefb647dedc0.png",
+      "sha256": "e16721c21b9f637142ce984fe76d6728d1958471df29b33de2da602b507aab2f"
+    },
+    {
+      "path": "assets/battle_art/native/7f/7fdb8024-557e-4683-a6bc-a2ee6ae93758.png",
+      "sha256": "3559e332c3b15d0e844199705def3e04703a851874be3040462db69639cf1600"
+    },
+    {
+      "path": "assets/battle_art/native/81/8178a5c3-0838-4917-a154-41ba3b6d9f8c.png",
+      "sha256": "405089a977e3daa84e5cc0a739d111cd8acfe2d29bf4865c300734f3e2816975"
+    },
+    {
+      "path": "assets/battle_art/native/81/818c6a16-4fa7-4dfd-8540-379f947c1d28.png",
+      "sha256": "3d060a23ec7e663ae43c7a3f8e7ebaea958d76ee020af58112966ad7a6843cfa"
+    },
+    {
+      "path": "assets/battle_art/native/81/81b6a6ce-0ae7-484a-98d5-edb0e99bf102.png",
+      "sha256": "5453388199f501db6276cfb427efc611abeae40b08721fbda27c422a6486006b"
+    },
+    {
+      "path": "assets/battle_art/native/83/833a997a-7196-496d-ba89-656ee5a6c11c.png",
+      "sha256": "55018151d7828bd8c6115b762c18019b9fc69dbd4abe79086636245e8320fc7c"
+    },
+    {
+      "path": "assets/battle_art/native/84/849bb6df-1dc8-452d-a585-c574647861b0.png",
+      "sha256": "25201ca0b00d102b3447cb270d75ad49451b29b13c8f762ec1bac9251bb9ed3b"
+    },
+    {
+      "path": "assets/battle_art/native/85/858f45fc-cf77-42e9-b1b8-6ea96e4a6ac6.png",
+      "sha256": "ef01dc1ccc54ed7455e5060ae9136aa0a8632f3730dbd7d039dbb0abf960e134"
+    },
+    {
+      "path": "assets/battle_art/native/85/85ce06af-446b-4cb5-ad74-7e11e45b9f4b.png",
+      "sha256": "632b575221b73ac0ed26fdc5a74d01dc5da4c2b50afc3e4523d57913ab3dcb8b"
+    },
+    {
+      "path": "assets/battle_art/native/86/865cc0c6-758c-4a7b-bb8e-e8145ab30308.png",
+      "sha256": "62277ec513e27ae61e5657f8dfab701445fc34ef47c9f4bd6a5ff668e1237708"
+    },
+    {
+      "path": "assets/battle_art/native/86/8672a4f6-0e2b-45d1-b81f-6bbb1207ec4b.png",
+      "sha256": "d5c020c55adcea1e6206858900123d52b49094b5d2dd6d98dd0bc18a7f3b31a6"
+    },
+    {
+      "path": "assets/battle_art/native/86/86e8fbe5-c323-4e9d-a0d3-ffd6e893a168.png",
+      "sha256": "2a5484d2a751b0bf24f8f64b96ad46c8f96d6f8a017c8af7f3101a1cf2fb9a6a"
+    },
+    {
+      "path": "assets/battle_art/native/88/88ca6a4d-4434-4a34-a507-72e359ef70ec.png",
+      "sha256": "04de5b9c612e7a6d1b4b652b2a5c566381289aac0386440bb89cc2a63346d0fd"
+    },
+    {
+      "path": "assets/battle_art/native/89/89171596-1fc3-4c4f-a6e3-f509b62c0345.png",
+      "sha256": "a0b9877b4adafbc6a85c57d25fe624927dff4fc92c0830d80c70f08fae8d0549"
+    },
+    {
+      "path": "assets/battle_art/native/89/89d6e125-1f54-4484-ad15-bea51596dade.png",
+      "sha256": "769e58de6e98c54be1191d7737aca208b8599b03e3b099e7fae0d3afdec7f958"
+    },
+    {
+      "path": "assets/battle_art/native/8a/8abc5643-a088-4aa2-bf8b-bb4b7c2e5a0b.png",
+      "sha256": "6cfe0f29a138c22f4455800ee92ef4d046345b2ed59ce5327135472ee4b9ffc3"
+    },
+    {
+      "path": "assets/battle_art/native/8b/8be6b165-3f51-4190-b560-1ba1896d79dd.png",
+      "sha256": "03ff707cfcd86c74859b151dbd43fdeeebcc4ff97d721913cb659fa6b1c7ac47"
+    },
+    {
+      "path": "assets/battle_art/native/8c/8c2df942-4945-4da7-a69e-5273936b209e.png",
+      "sha256": "f85037d6a30555cb78519e4b28156380e79db7a0633909af7947dd74686653f4"
+    },
+    {
+      "path": "assets/battle_art/native/8c/8ce3b2a8-1426-46e4-b03e-feaaba97257e.png",
+      "sha256": "11f9467e4fc48aeba66392eac83bfc1564c3952bfd70783143e0dec6a722e7c3"
+    },
+    {
+      "path": "assets/battle_art/native/8d/8d049f11-461c-470e-b90c-52e4188b6c82.png",
+      "sha256": "3dbd4d3e2a15729971f60317f1105d9696c47faf3bb3d3b6f462dab5db9e9116"
+    },
+    {
+      "path": "assets/battle_art/native/8d/8d49633a-ea7b-4080-92f9-fc4469f4cd99.png",
+      "sha256": "b80590a0c44c11e70d35413749cf6d63a32b30e9103da47a466900868365e6af"
+    },
+    {
+      "path": "assets/battle_art/native/8e/8ed7c7c6-d198-427e-ada8-d78f86da9e1e.png",
+      "sha256": "4c8157f8984f203572b8f553a4aa3f625e799bc335a73c695b4569212bd2d7cd"
+    },
+    {
+      "path": "assets/battle_art/native/8f/8f221106-d0d2-47c2-bbf7-ea33bf30f07e.png",
+      "sha256": "702ac5a79138c402626fa50d42246a3616840e1251ed2828eddd74221ea6a84d"
+    },
+    {
+      "path": "assets/battle_art/native/91/9119cef5-a85f-40b3-9e70-bac6470ef121.png",
+      "sha256": "ef85abb68443c26c58e3bfe3ee25431d3a83cc520d7961b195938df87eabde7c"
+    },
+    {
+      "path": "assets/battle_art/native/91/913757b2-c0d0-4467-ad73-0c5451023e89.png",
+      "sha256": "fc6d293d92ce21776bf5fc6b72e9b90c273cf6f2f29cc012cedfed8d96c1bb15"
+    },
+    {
+      "path": "assets/battle_art/native/93/936867af-8cf7-4c2d-8ce5-57570f699fd6.png",
+      "sha256": "6fc55990866e787ae709b0940e46be8d48af1e835e99056f1c926f22029ac802"
+    },
+    {
+      "path": "assets/battle_art/native/94/94906f72-c601-4ed3-9eb3-a8ba4b3a89da.png",
+      "sha256": "58a942d04c2976a2ef9915f71bdc63f1d08ab7a7ac1aa421c784ca52a2e25ab8"
+    },
+    {
+      "path": "assets/battle_art/native/95/951e5539-1fc8-49a2-9bca-ee9f27bd01cf.png",
+      "sha256": "ca6a66f7ff853ebc348a0d258b020b14ce532bbf37d6218ad25b8b262bf0a59c"
+    },
+    {
+      "path": "assets/battle_art/native/96/96de2ba7-5c4b-4f69-9d72-65d67265fc9a.png",
+      "sha256": "b9cfbbc0205b0d8641269dbb30740166fe002f5cb1ae63acb6ffdfec8b906065"
+    },
+    {
+      "path": "assets/battle_art/native/96/96efe970-845b-4e7c-bd7b-b6e0e9204cda.png",
+      "sha256": "306ae93203ed9c7b9a0cacdb06a7d44bb5a54652e95a2017ba6ad53a866f3de4"
+    },
+    {
+      "path": "assets/battle_art/native/97/979ddcb9-20c6-4053-b32a-d7c772047d54.png",
+      "sha256": "906cfbe3114a5412f0fbc30f3a50232f6a1d29404ea4454cecc8e9ff924dc0fa"
+    },
+    {
+      "path": "assets/battle_art/native/99/9993f74a-70b9-40f9-a07d-fc5566951c3f.png",
+      "sha256": "0c3716059b5e9ba33ccc7f9851e38118bf76b847b57c67efddd9a04236a34213"
+    },
+    {
+      "path": "assets/battle_art/native/9a/9a0f9860-968d-4a00-89fe-072bfe0e8979.png",
+      "sha256": "50992ccf802511798c60b2039aebaa99daa90cd16f9948e87bcc996a31d0f423"
+    },
+    {
+      "path": "assets/battle_art/native/9a/9a85c18d-984e-4d4a-b602-5f109846842f.png",
+      "sha256": "d010b8e7e604587c129908b435016c15e3ad2f4c989615134b45fa382378e797"
+    },
+    {
+      "path": "assets/battle_art/native/9c/9c2f309a-b5f4-4d17-b28f-3d2c5fa66739.png",
+      "sha256": "996c5cae9d3cb09bcbc56536798f98ad958d56d75c388d3bb1913e707d617411"
+    },
+    {
+      "path": "assets/battle_art/native/9d/9df9dbd6-4dc6-4951-9276-06fbe8658308.png",
+      "sha256": "77d243a01a010ce1ade34cc5d30ae3b526107c394f85ecab58198b03a4b48aa7"
+    },
+    {
+      "path": "assets/battle_art/native/9e/9e177c17-2a1d-4812-bfb7-91a9978c707c.png",
+      "sha256": "f7e75eb2df5fcd035241ffe8333bda62a8565b7a898ca523ed727f9ff6cf03a8"
+    },
+    {
+      "path": "assets/battle_art/native/9f/9fbc4de7-948d-463d-8f4d-4d170f9a254f.png",
+      "sha256": "88858d6e4322e0de76b83002e932afc71e0b1b9dcaad06b8cf465fa854e14409"
+    },
+    {
+      "path": "assets/battle_art/native/9f/9fe803d5-e930-4f10-a6cc-29d98b49b541.png",
+      "sha256": "7c47a66483b8d48fd0b6b84a66d2991e4bd28ad83e15e46f14b6d5f7d3aee4b0"
+    },
+    {
+      "path": "assets/battle_art/native/a0/a02cde8b-6d26-4714-9d2f-d80a059b97e0.png",
+      "sha256": "aa4dac4cf3015d59829b40bd998de23c17827aed55dbf4f3a19d915e5eac8948"
+    },
+    {
+      "path": "assets/battle_art/native/a1/a11193c5-7434-4d34-a574-b0248e37533b.png",
+      "sha256": "6df0009426c7a9aab01c05b5b68837252272212671e7b33f74c441179bc042e5"
+    },
+    {
+      "path": "assets/battle_art/native/a2/a2161c28-b76e-4ea6-9c5f-4d3972290840.png",
+      "sha256": "7bda30aaaeab68b392f79d26248453864d3ff29d54f5c90e93a862e1052da943"
+    },
+    {
+      "path": "assets/battle_art/native/a4/a46e683b-d093-4c6f-b318-fc9f5f0c526a.png",
+      "sha256": "6854a02fcd0ded3d2287b002e71c895ebb618fd77a3d31814ba72d1a991b3f4f"
+    },
+    {
+      "path": "assets/battle_art/native/a7/a759b852-44e0-4f28-bb46-7767cca0348d.png",
+      "sha256": "ed9743b4d02b59830d431c8ad44d0ef7dee2b238b2991705a21dd95fc130d25f"
+    },
+    {
+      "path": "assets/battle_art/native/a7/a7b277f4-31d3-4342-9e0a-af5fc1f987da.png",
+      "sha256": "6eafc8445b05c82d42e5e3a1e315157ee89f81a3d1a4a30df198c011855920de"
+    },
+    {
+      "path": "assets/battle_art/native/aa/aa084ffe-a9d1-4d4a-ac91-3a6ca75f36ae.png",
+      "sha256": "c7e62aebc57bc99374a2579d5933f742ee98ad34f54b74c4c85fce485c0f773e"
+    },
+    {
+      "path": "assets/battle_art/native/ab/ab95fc81-a653-4f11-87a8-154b16897fbd.png",
+      "sha256": "06159ac59ac8a8a28cee4a8060e4fff092e1e9bd81ced186da86c6273178bab4"
+    },
+    {
+      "path": "assets/battle_art/native/ab/abd44480-3208-4ef4-b296-82b4cb52a5c4.png",
+      "sha256": "71db303da6096862b9a3a1eef1bb42b13488f6c64955e8a28b183f03ef8338ca"
+    },
+    {
+      "path": "assets/battle_art/native/ac/ace38d28-de51-42e0-b464-d3ccfd9ebdf3.png",
+      "sha256": "1cb42ba7f4eb6a0f698f9cca9efd3c33fc001fde6074f1350eac90e4e8d07d86"
+    },
+    {
+      "path": "assets/battle_art/native/ad/ad567292-7c32-46b4-8a0f-ae187866e1b9.png",
+      "sha256": "cb12e76eadeebf643b7ba02bc45b7d04a0a4aa10801fe8e289de20b14ee69495"
+    },
+    {
+      "path": "assets/battle_art/native/ae/ae00cae6-e344-45a5-bdb8-fbf921e094e7.png",
+      "sha256": "cb5323aed96959daaf27bdc7852c4a695cadc2ba5e767bd19faf6524c2e77dd3"
+    },
+    {
+      "path": "assets/battle_art/native/af/af369264-0be1-4ed5-b039-8f415867a167.png",
+      "sha256": "e466d4e09de60b0f72a1f2c7f7b23357d5a99739ff042ab66fdc934f71e17062"
+    },
+    {
+      "path": "assets/battle_art/native/af/afbc9e95-efa8-4c03-be95-ceaf743fb27c.png",
+      "sha256": "cf984907c44338cc6d14ea627a7a3bde02be46657f989e56c2ca56abfb8e3cbb"
+    },
+    {
+      "path": "assets/battle_art/native/b0/b0bad99f-808b-4424-912c-c690b0d9d73e.png",
+      "sha256": "742d7d0bfd29d5a6e9b6b821a734773983adf2ce6542f7fe2af2a48c60991dde"
+    },
+    {
+      "path": "assets/battle_art/native/b3/b36da191-acf2-4976-bb0e-8141e291d7ea.png",
+      "sha256": "5e16a1a10ac4fff9d646b2e9947743bcd22a4f43a02666e9faba94a6b28dd0ec"
+    },
+    {
+      "path": "assets/battle_art/native/b4/b4809db9-b467-49a8-9b61-5cc396436e3c.png",
+      "sha256": "71db303da6096862b9a3a1eef1bb42b13488f6c64955e8a28b183f03ef8338ca"
+    },
+    {
+      "path": "assets/battle_art/native/b6/b61984b0-a580-45d0-96ee-3a628390aa22.png",
+      "sha256": "9ca76870df84489991d00cba3a347c5b42c538b01bc45c2e630eaf3f34024b0b"
+    },
+    {
+      "path": "assets/battle_art/native/b6/b620361b-3498-475a-b40a-36ba7b70940a.png",
+      "sha256": "8ecf439eb03d16886b18de149bdce8c9cd893bd074f1b5f9c5b7057331cedf37"
+    },
+    {
+      "path": "assets/battle_art/native/b7/b7290721-719d-414c-8790-30603a38f1ba.png",
+      "sha256": "fa0447f8302455a6f9f05de40a65ed5db6315f1eec0f92fb334549e43abed534"
+    },
+    {
+      "path": "assets/battle_art/native/b7/b73baa7b-6f62-4b72-b11b-64d8248af6d5.png",
+      "sha256": "b2e1b5df3f797e874f0cc38e57900f72f545f6bd6a6c3b45efc5e22609a3a1a1"
+    },
+    {
+      "path": "assets/battle_art/native/b8/b8a4f3d0-4be3-4025-86f7-c9700bec9f7c.png",
+      "sha256": "0ff87347e678e323ffca3a0b9e8f728f584f6408aa14e13c2fd2cbc8c0f868c9"
+    },
+    {
+      "path": "assets/battle_art/native/b8/b8fce2a2-9e7d-4097-b4ed-218743d5148e.png",
+      "sha256": "fb486f2e4d529dd39be028fb577e99c3cb41b11dad587c689e6f59e35d5efc47"
+    },
+    {
+      "path": "assets/battle_art/native/ba/ba86e25e-fe54-4a58-ac22-733f662cd91d.png",
+      "sha256": "da92779533f986674185e8b69cbf7d20b68372c8caf01ae5aae2cc992c832f5c"
+    },
+    {
+      "path": "assets/battle_art/native/bb/bb6f2b7d-6a29-49aa-b296-165b9312a1d3.png",
+      "sha256": "96ed411b9dda69d383cc993ee8683070e8017dd936767487db4509d5969657cd"
+    },
+    {
+      "path": "assets/battle_art/native/bb/bbd0a1b2-d545-4c1f-92de-bbfb53e27b59.png",
+      "sha256": "843f13e3cbac43816a7be8c0c2d2e475c2b93258ca0b032ef2abe0a828e9f352"
+    },
+    {
+      "path": "assets/battle_art/native/bd/bd773997-cd8b-4981-ba3a-32112c5328bd.png",
+      "sha256": "bbdcbbb27269822e5d0b03ee11a670fd0e73bbf3ec6fed66fdae33d3a63f83df"
+    },
+    {
+      "path": "assets/battle_art/native/be/be293468-2dff-426d-936d-4172e8eedbe1.png",
+      "sha256": "65350a38d4c9fb21686b6cd616c73034170525a820933ad8fc10118759a40645"
+    },
+    {
+      "path": "assets/battle_art/native/c0/c0764dcd-70a4-4c15-8501-b6caf760337c.png",
+      "sha256": "d1ed609c2c9a7ca3c784be8fb887d805b37a2a4f4252d53c0c815a2cc3331407"
+    },
+    {
+      "path": "assets/battle_art/native/c0/c078487c-ac43-43d3-8c1d-214421684e3e.png",
+      "sha256": "cb779705481636604577d130a5f2452f205558dda99c427fcac5d1f73ef76cb2"
+    },
+    {
+      "path": "assets/battle_art/native/c0/c0c06134-f932-4dcb-883c-73b96eb6b566.png",
+      "sha256": "d2e6fc0696085e1eb7fc2bcb9a587194fe8d39b10e042242117ef078a740ad3e"
+    },
+    {
+      "path": "assets/battle_art/native/c1/c11d464e-bcce-4a77-aad9-0c3675a1c445.png",
+      "sha256": "afc257904ce9d0206687a44b816669f7ac903573aaaec3fa2ef0eb282444c1bf"
+    },
+    {
+      "path": "assets/battle_art/native/c1/c1209586-340e-43f1-90ed-06715a0d6778.png",
+      "sha256": "2becbc803ddfe5db0b8318b715354247aad16afbef2b4175ea94a15a51609553"
+    },
+    {
+      "path": "assets/battle_art/native/c1/c1bf95ac-bd81-4c88-8f4f-2a434b5ef2a6.png",
+      "sha256": "0e38ffa444ca2464064efcdb6ee9970ffde983f4cd01ff0cecd300872921fbea"
+    },
+    {
+      "path": "assets/battle_art/native/c1/c1cf9487-a247-4f18-8124-30cf089f7484.png",
+      "sha256": "f90307cf2d7de5a14ca00c5b0df7ca20a867a70f4da1ac65804270512adea86d"
+    },
+    {
+      "path": "assets/battle_art/native/c2/c274ab13-955f-41bd-b6c2-dfbe53bfb464.png",
+      "sha256": "e917f91d669be1f685292076856d9a587ee45848d942acf1ab911a843aa5e45b"
+    },
+    {
+      "path": "assets/battle_art/native/c4/c41fe116-df63-4a28-b5c6-d3551cef0b64.png",
+      "sha256": "810ef31495fa3bc2233f4738f388ddbf64879c4f41e4cb3b8c4517f161ed1ad1"
+    },
+    {
+      "path": "assets/battle_art/native/c4/c433f21b-f67e-4924-b9af-a0c578f608c9.png",
+      "sha256": "96a1ad6eb4b02428fad20db2a6deee5d860ef78990a447550a70184635b25de7"
+    },
+    {
+      "path": "assets/battle_art/native/c6/c692d21d-bf15-46ef-8837-1ae2c1d4f061.png",
+      "sha256": "d5364443fd624f01d9ed3baf3d14f3cb08e59917311b4825e9406c53933a3711"
+    },
+    {
+      "path": "assets/battle_art/native/c7/c7896c66-67e4-40b2-8551-fda76f67ac41.png",
+      "sha256": "9eb29255c1a4c047faa1b96578733803ab0905a5271bd034e0cf6be1b8aef44d"
+    },
+    {
+      "path": "assets/battle_art/native/c8/c8551ba2-fc82-481c-9425-386d97e52a2a.png",
+      "sha256": "36578d331e57c807a50e679b9abe7a46753bd9a0bc4af07f3fa3cdc8ae994502"
+    },
+    {
+      "path": "assets/battle_art/native/c8/c8ac2f12-74d0-4028-b048-39bb02b66560.png",
+      "sha256": "462748f0f18b441eb96489c70f6fab60aeea3ab53c2adb6702249b456949d6fc"
+    },
+    {
+      "path": "assets/battle_art/native/ca/cabc7555-e9a8-4648-bcde-9bcdbb1821af.png",
+      "sha256": "e0123d2c9e6576a7105896162d707fffeeea46f2d73615d1233b640926be45f0"
+    },
+    {
+      "path": "assets/battle_art/native/cb/cb31ce4e-bdbb-41dc-87b7-8f0f04341cda.png",
+      "sha256": "ee43fe9c23332e4be63abf5e596a0d9df1721bad924f29facc6dafd9a54fe3ec"
+    },
+    {
+      "path": "assets/battle_art/native/cb/cb3a28b6-1b47-411d-a3e2-ba66c5813122.png",
+      "sha256": "071c67bebcf57014bee00c7bc29d4debd9be065637292d21bc7fe38bcfe4a34d"
+    },
+    {
+      "path": "assets/battle_art/native/cb/cb718c0b-147a-4a7b-98b4-b530ceed7c38.png",
+      "sha256": "3288231a0912fa3c694faf8c4d2de0d4b1f14d822322ed762d04ad4d8e54caea"
+    },
+    {
+      "path": "assets/battle_art/native/cb/cba30412-8329-40c0-80ab-44274284f797.png",
+      "sha256": "2f87b5215275784f81d429fe47fe5e5504e896983d38d94857589117da24c7e4"
+    },
+    {
+      "path": "assets/battle_art/native/cb/cbec4b4e-19f8-426b-aca4-d96ad85f2efd.png",
+      "sha256": "4e8fb509e9de04a8fa86b7427f5a2890e02f287b70205f4aa17f92563f123764"
+    },
+    {
+      "path": "assets/battle_art/native/cc/cce3465a-0a29-4492-9230-b56c4aee6f26.png",
+      "sha256": "1fd46e93b83872583eb1ed776ce63bf53b2db7d3b4efccbc4cec1c060dd4f7ef"
+    },
+    {
+      "path": "assets/battle_art/native/cd/cdfc5c32-a415-49d0-a6df-03ebe091ae48.png",
+      "sha256": "3796e9cc31ba079946c68d24500cd49aef8c124a556632c228391b344583c833"
+    },
+    {
+      "path": "assets/battle_art/native/ce/ce4da6b9-313a-41f5-a45c-d8a50ff5bf64.png",
+      "sha256": "30df3be7fe3afd5bf2ee75a247deb2b4d62134e3d871f326663f1c54373b02ba"
+    },
+    {
+      "path": "assets/battle_art/native/ce/ceaa8817-6b54-45f1-b2d6-bf39a5c44b00.png",
+      "sha256": "bcf14dc24e28341baa82877139f43029d2d4570314f81b700d6b04772cb62a72"
+    },
+    {
+      "path": "assets/battle_art/native/cf/cf7ad327-11e1-4f09-88ad-f8e81d6eb24d.png",
+      "sha256": "ddada5042045d532ac6eac9adff15b452157dde5ada9232da2131327028887c0"
+    },
+    {
+      "path": "assets/battle_art/native/d0/d0036265-81dd-490b-9d16-ef7892223673.png",
+      "sha256": "97d6517b9d28614d47addbffb82b681eb43e18f6b371caa427cd1d86837f0341"
+    },
+    {
+      "path": "assets/battle_art/native/d0/d0cf562b-2546-4a10-923f-e96fc1cd9757.png",
+      "sha256": "75de59b91263328956f78e55ccc6f347598f42d748bd069e2751702afd441ec1"
+    },
+    {
+      "path": "assets/battle_art/native/d1/d1776b2c-11f3-4f8f-97f5-7738676a79dd.png",
+      "sha256": "fdba41a0c77a2431a182b4ce59229e49b6f0f609eb0b4da52d8209090cca2f06"
+    },
+    {
+      "path": "assets/battle_art/native/d1/d1787aa5-a092-4302-9611-463f4b472214.png",
+      "sha256": "fea4473fb36753aced81defaeea5195fd1a08c153af586b4bd1d41f90922c848"
+    },
+    {
+      "path": "assets/battle_art/native/d1/d189b220-cbc4-4e32-9561-5f0312fe3a83.png",
+      "sha256": "67f624e3512c0bd7b2688842757bc934f6cd7a3a7005fff9db0a0bcc5c17390f"
+    },
+    {
+      "path": "assets/battle_art/native/d1/d1f2b53e-e424-4ec8-825c-1b97e754e59a.png",
+      "sha256": "64b90c1fd3d04dfb7af8d144f709c3f10ff89111ece43bfc5cfe54459a86cc3e"
+    },
+    {
+      "path": "assets/battle_art/native/d2/d214642e-9e46-4fe8-96f1-3367a6a2fa63.png",
+      "sha256": "954067f934520c8aa5e7862429215aca6b455f42a9ece1ee29176e21359158f1"
+    },
+    {
+      "path": "assets/battle_art/native/d2/d2b2c11c-3628-4420-892c-766c5ef49d29.png",
+      "sha256": "4f90f5b2c7057ec3d981aa49549613c3fa1596d42e2f707c92ad0dad56c3fade"
+    },
+    {
+      "path": "assets/battle_art/native/d2/d2ecf811-9ac7-4e11-805f-5fd432d25386.png",
+      "sha256": "54a698b2762bb26e702988090ae443ccf60776d5f4c9619092c99ae8d8277f47"
+    },
+    {
+      "path": "assets/battle_art/native/d3/d3533b2d-cc55-4796-965c-73df15a7f72d.png",
+      "sha256": "5f9a7f190fc52fa5fbd1e644bb4ee3c44333cdb62ad8d255027e7b5ec9fb2f6c"
+    },
+    {
+      "path": "assets/battle_art/native/d5/d50dea3c-6ada-47d3-85f3-f5285b06bb1c.png",
+      "sha256": "17517d16a381ea71d7954e2e878981c00ec56ac049396e5203bf6dca77fa3abd"
+    },
+    {
+      "path": "assets/battle_art/native/d6/d686588b-04a6-4a6e-b1c7-edd4db1e63b3.png",
+      "sha256": "7c47a66483b8d48fd0b6b84a66d2991e4bd28ad83e15e46f14b6d5f7d3aee4b0"
+    },
+    {
+      "path": "assets/battle_art/native/d7/d7cced2a-e767-4bab-a81e-5983204a7097.png",
+      "sha256": "73eaa3656cf751299d2657f2286a44c2a8e39093ca235aaf0f992041dba04d01"
+    },
+    {
+      "path": "assets/battle_art/native/d7/d7d2d4ac-b876-4677-b41f-48a34d7398aa.png",
+      "sha256": "f58f789ab347f0cd9f12b61d58fd4ca4da2368adc47cd60420d4aa6b2872c8d8"
+    },
+    {
+      "path": "assets/battle_art/native/d9/d9176414-6e57-4f54-a7ad-3c269815c5a9.png",
+      "sha256": "e062c3cd1465e0c7e089a333003310431443bdf21a9514d0a2abf45302111c8f"
+    },
+    {
+      "path": "assets/battle_art/native/d9/d9ec829e-eed0-4a04-8d52-784ba454214f.png",
+      "sha256": "49e22347abe1c520fa818c8d9cddc0afb52bd3a0298b8b54616f68c6eeebddf5"
+    },
+    {
+      "path": "assets/battle_art/native/da/da4baeae-e63b-4f22-978b-74315423c55a.png",
+      "sha256": "d8c6cb88e2b6532f0d5e0ae051f8d5776e1bd8626b64eed43a04d36e31c817aa"
+    },
+    {
+      "path": "assets/battle_art/native/da/da4c9c1d-9a14-4a81-a2b0-5e3404c13812.png",
+      "sha256": "e443971a645ae8c95c8d2f5ea8ddb5f1b1f55ec0cacc1a3d3a1b823e77256d0a"
+    },
+    {
+      "path": "assets/battle_art/native/da/dae888c0-696f-4e0c-aafd-f8eb73852597.png",
+      "sha256": "dc07c75c3b0f338fdcdc226981c3793183bf3f6cd5941dfd03ddf3faf578cc48"
+    },
+    {
+      "path": "assets/battle_art/native/df/df5624d4-8d02-489b-a52d-f4fa7c8e284f.png",
+      "sha256": "bcc4402bbaf47f39a49b379994f5fc46cebd5a54b7b2b68dd76af7481deaa936"
+    },
+    {
+      "path": "assets/battle_art/native/e1/e1696f79-05aa-4216-bbd2-93dae8ff9589.png",
+      "sha256": "21cc0fb01c52c400cce73e890e145410cb50b821bf845a44859f660563b044cb"
+    },
+    {
+      "path": "assets/battle_art/native/e1/e1c45357-3f38-4c70-806a-0d75dfbbfc8a.png",
+      "sha256": "c6129da9ec239c630b8c50774769ad139039d7e9ca984e7af61a83a2a1c36ce4"
+    },
+    {
+      "path": "assets/battle_art/native/e3/e34e8946-1f4a-4a52-b9b8-6681d74898df.png",
+      "sha256": "6cfe0f29a138c22f4455800ee92ef4d046345b2ed59ce5327135472ee4b9ffc3"
+    },
+    {
+      "path": "assets/battle_art/native/e3/e3606ff8-bcf3-4536-841b-eb0088bee84f.png",
+      "sha256": "5f57a0551fe8a1e5b62aa7c549cc38a1e4b88d3e076a295911786c5f4d8fb07e"
+    },
+    {
+      "path": "assets/battle_art/native/e4/e4579b73-c64a-4592-a379-6861d52732e2.png",
+      "sha256": "58d0c5b1f3bcd0cf8827a6504d940d4063397af3973b80a0eceb1d87ef7a63c9"
+    },
+    {
+      "path": "assets/battle_art/native/e4/e485bf90-3072-49c1-8c6c-251b8c9b99a3.png",
+      "sha256": "03dc02fcbd22d14473e94532fa0fc0d4306769e0ca941dde6f79de73fdd143ba"
+    },
+    {
+      "path": "assets/battle_art/native/e6/e65a29ba-7518-447d-9ac5-15fe69884af9.png",
+      "sha256": "788c2bff7cbd2b1b8f6260d8f2ba95f1d1c5413f7d1d1b21cb5e6278f9320c65"
+    },
+    {
+      "path": "assets/battle_art/native/e7/e71e43bc-d0dd-4460-837e-fcb9a068b81f.png",
+      "sha256": "04de5b9c612e7a6d1b4b652b2a5c566381289aac0386440bb89cc2a63346d0fd"
+    },
+    {
+      "path": "assets/battle_art/native/e7/e793299f-9524-4983-8209-21a2894dccee.png",
+      "sha256": "18c15afbe0ae8a77eabba7ebfd91cd3ca3688767d465af42a48ff6cea2351cb2"
+    },
+    {
+      "path": "assets/battle_art/native/e7/e79f0082-b7ae-4b39-8683-5ff2694cec66.png",
+      "sha256": "590151c632f5b4b54000a239c28d70d0420ffaf8e264f5c8a0b4a0165d23db88"
+    },
+    {
+      "path": "assets/battle_art/native/e7/e7a41758-b27d-4e56-81af-7746835c08f9.png",
+      "sha256": "f583c8b327347e736b758dc07264e4463c7997458f18dba34f9f1da5fd547255"
+    },
+    {
+      "path": "assets/battle_art/native/e7/e7f4e299-a38d-44e7-9590-54121373c8c1.png",
+      "sha256": "a848759639e3d51a6c0431ba9c0cf1878adb3a355fc1950dd499217ba7b6c3b5"
+    },
+    {
+      "path": "assets/battle_art/native/e8/e82c1324-9557-45c8-b891-a46c27a8735d.png",
+      "sha256": "a5567c76d1211b4c3916c15edaa25be5b18320a5dccdbc8d159b8dee73d5a23a"
+    },
+    {
+      "path": "assets/battle_art/native/e8/e84701b7-7399-4b14-a2d9-0b5e05c151ae.png",
+      "sha256": "d6a7a374582228dfcc608dc4b46117f17cafe6eb52eb2605b3f4e38dee9a0d83"
+    },
+    {
+      "path": "assets/battle_art/native/e8/e8bf2b58-2b81-4d1b-afef-b4c081574100.png",
+      "sha256": "8edf15be6910fce8dfe0dfc7fa6d3defc7dac9667bbf0c9edad9e080e49f8768"
+    },
+    {
+      "path": "assets/battle_art/native/e9/e977521d-a04e-4875-b977-a77c316c5edc.png",
+      "sha256": "5241a38fe1c084d8ce4e899fc6b496bbaa098cd007ecdeb02d955c222c1a79ef"
+    },
+    {
+      "path": "assets/battle_art/native/ea/ea02ea59-bf2e-42c3-9e49-fc4c07d135c2.png",
+      "sha256": "33864ac3cd51f936c3c0cfd0ceb1fde4145b0e2b8d00ca03c5e5c9c60952bcaa"
+    },
+    {
+      "path": "assets/battle_art/native/ea/ea3b0c72-d517-486c-9b13-cae603034d50.png",
+      "sha256": "74cb0a78ef6a494caaca50ec1992d8ee853ed71a4ccf81cb657e1340216d8314"
+    },
+    {
+      "path": "assets/battle_art/native/ea/ea5391d5-d228-4427-b0f3-57b5ea0c2eae.png",
+      "sha256": "fd17ee43bcf1ab5d375224d14e1ee9428b3c7e71553e2c76bf939f2d625e32fc"
+    },
+    {
+      "path": "assets/battle_art/native/eb/eb3505c4-f8b0-4d66-ba36-612ac5547d3f.png",
+      "sha256": "1690197823b1fe29fd5046efe91c4291bc3d9c77ec6aa66f481a6516fb4a2f07"
+    },
+    {
+      "path": "assets/battle_art/native/eb/eb91213e-7634-4df6-86fe-f8fd891a1e5d.png",
+      "sha256": "858d2648212896c02772802eb14202be19529e567aa84323569b086881b6befa"
+    },
+    {
+      "path": "assets/battle_art/native/ec/ec69d4bf-e7b9-44d4-945f-7468168a8761.png",
+      "sha256": "3ca09d57c7068f2713eff82a8ed81e0e98ba5921768cbb6a597d308fe9809baf"
+    },
+    {
+      "path": "assets/battle_art/native/ee/ee8224d2-495e-4fef-9608-67c3bc4d6702.png",
+      "sha256": "1a1173fc264c86f6a7c4f98930d2ea93ac9be9506858b513c244088f58bd0a58"
+    },
+    {
+      "path": "assets/battle_art/native/ee/eea2f6a1-950f-4bbe-9b41-f7bbf65510c9.png",
+      "sha256": "71db303da6096862b9a3a1eef1bb42b13488f6c64955e8a28b183f03ef8338ca"
+    },
+    {
+      "path": "assets/battle_art/native/f0/f004de69-5a1b-4ddd-a026-7895ee41f597.png",
+      "sha256": "2fc9ada885e6b6be1fb60fbb5074e99ede600680f30e9f1214684e07edc1eabc"
+    },
+    {
+      "path": "assets/battle_art/native/f0/f065929e-205c-45ae-974d-6c7e704a0e9c.png",
+      "sha256": "c0f9facd7b9629a865bcd2bf33354b719d03e3cfd46a0240f18d93d21f03fba1"
+    },
+    {
+      "path": "assets/battle_art/native/f0/f0cdadb6-124e-4695-9c8b-1c40fc8d149a.png",
+      "sha256": "9bd142b67de021ad28e9e191976b6bac9ac03686efaf65693e309ad82260840f"
+    },
+    {
+      "path": "assets/battle_art/native/f0/f0ed494d-42c2-482f-8bab-f7072cd0dd24.png",
+      "sha256": "7d90b700fc4c7212742715458e58bd4a69ca169d6e5a6e604e44c9c80d1f787a"
+    },
+    {
+      "path": "assets/battle_art/native/f3/f3c95f38-6f23-4ad4-8328-e5fa1211ed24.png",
+      "sha256": "db215a87d1a3dfcf7aca18c12bdfd9b9a5160e2455c215998007f535ebf736c8"
+    },
+    {
+      "path": "assets/battle_art/native/f3/f3cb0a31-f1bf-4f79-81ce-a8050e36b3fe.png",
+      "sha256": "0b18bd6c861121898f707a5a9b99d4403bb6e1b849307478a25e35746e7ceeef"
+    },
+    {
+      "path": "assets/battle_art/native/f5/f5c886fd-e8a8-4ace-9fe2-17ee02393cd7.png",
+      "sha256": "a1b836c714958bfe8a8f498961c66eb7495fd1c7f17d07e7cb644475291e10c9"
+    },
+    {
+      "path": "assets/battle_art/native/f6/f603f48d-d7f9-43d3-b45f-5c3a780e35cc.png",
+      "sha256": "fb3d51a27b91a2357c2b64a13997b93c2dfb13d5736d4300f2b0629053efd7db"
+    },
+    {
+      "path": "assets/battle_art/native/f6/f62dfbe0-50fa-4b64-904f-069c667e46bc.png",
+      "sha256": "0bc5da8d5fa61432392c245f89cc5f06f95db570a3efc4389627b0acc1673ae2"
+    },
+    {
+      "path": "assets/battle_art/native/f6/f69c44cc-e6cc-4f8a-bbf9-5b6b1cc56cd6.png",
+      "sha256": "2723163dba81b12a1f1fbd44d137065fa7fd7fd1c902c849bcfa928fb8a0b275"
+    },
+    {
+      "path": "assets/battle_art/native/f8/f8959827-ed3f-4c07-bab3-a83c8e8601c7.png",
+      "sha256": "9e12bf1026d6316c4cf3863162b3fb976f6aec95521040b445e793ee1e180167"
+    },
+    {
+      "path": "assets/battle_art/native/f9/f9c3b2e2-98bc-4bf2-a9e0-18d7c36092eb.png",
+      "sha256": "b2d5f06630c929c12ab80d6c96391a277d49ba34acfb511a3741628d33a4da02"
+    },
+    {
+      "path": "assets/battle_art/native/fa/fac2b26c-e3fc-48ba-b228-ccc288093786.png",
+      "sha256": "c77e32cc5285c750c22535297fc485b409d4f33bae730a87786bbb4bcbc06d21"
+    },
+    {
+      "path": "assets/battle_art/native/fa/fadca1f5-3d41-456c-ae25-f9fc398e83a9.png",
+      "sha256": "947f6e72d31faa993db6afa7dd61045d4f28110af8ba6e8e2b9f359843f4d6a1"
+    },
+    {
+      "path": "assets/battle_art/native/fb/fb24eef2-3c0f-4978-aa04-cc5d5cb1dc63.png",
+      "sha256": "96ed411b9dda69d383cc993ee8683070e8017dd936767487db4509d5969657cd"
+    },
+    {
+      "path": "assets/battle_art/native/fd/fd0ae617-2a4d-417b-9425-0a724e20be93.png",
+      "sha256": "f3a5b73af6058bc5a579ccd59b8896eb29684e98ead3fef4c204e76644d3fb30"
+    },
+    {
+      "path": "assets/battle_art/native/ff/ff2b081f-4a69-4863-8190-50f70f89ca56.png",
+      "sha256": "3a08c93484959dd988d5ae1906268e48f53813317bf96d3cedf9087ac5b1c109"
+    },
+    {
+      "path": "assets/battle_art/native/ff/ffdc8830-25be-477b-a764-54930485aae9.png",
+      "sha256": "7b0b64bb3644a95b7d2c98b4da81e531e294a76df38964492d6cef92dd58958f"
+    },
+    {
+      "path": "assets/battle_art/native/ff/fff12fff-81cb-409d-926d-69923912f9ae.png",
+      "sha256": "5a01ce60ab7624b0ddc652db479edd39225aff030e8ccb7a8303c26eb0073434"
+    },
+    {
+      "path": "assets/internal/config.json",
+      "sha256": "dd27418acbed024a7854eaf49c58b76b808aa6b066f4813587ba81a4de2854e5"
+    },
+    {
+      "path": "assets/internal/import/04/04f923b60.json",
+      "sha256": "954df1cc306adb765d6585cc62dee4284e4e75f0194f9fb78220354808609ea2"
+    },
+    {
+      "path": "assets/internal/index.js",
+      "sha256": "d842bf596127320ad8cd42ce506a2817cd8a6402fbec6735e6b13af359a40757"
+    },
+    {
+      "path": "assets/main/config.json",
+      "sha256": "b0d1cd38470887bca8f807c0f101167033f79465bc1d671c0e3feb58f1bb3ef1"
+    },
+    {
+      "path": "assets/main/import/ba/ba21476f-2866-4f81-9c4d-6e359316e448.json",
+      "sha256": "0a34e9263b215bb661d6334db6a255497c6cdac1f1c40b130f50bf9d91f4dd39"
+    },
+    {
+      "path": "assets/main/import/e5/e5b6646d-6245-405e-a983-5e58b2d32c2c.json",
+      "sha256": "bfe2fe33e9dce0afba048156be38a69634c015e77427adad7b9b681e70aa4cf8"
+    },
+    {
+      "path": "assets/main/import/fd/fd8ec536-a354-4a17-9c74-4f3883c378c8.json",
+      "sha256": "c2eee4552a460ed97591f527e127b95c811d5f796b9448f3f705974af9beba9d"
+    },
+    {
+      "path": "assets/main/index.js",
+      "sha256": "d007350c88c7c4ba77336880e522426c838f291e52efc091969fd49bde0960ec"
+    },
+    {
+      "path": "assets/resources/config.json",
+      "sha256": "fcda13b0451ad732b908bef38484c10dbc817b8da636167907597d7f613b248a"
+    },
+    {
+      "path": "assets/resources/import/01/0108c670-eebc-4069-a547-eb7d7ee16e41.json",
+      "sha256": "054b1cee21df1e44e62530629ecb83b00112421fadea49f183a6e470b608e04e"
+    },
+    {
+      "path": "assets/resources/import/01/016a139e-bdbe-43cc-9569-7cd74977b2c2.json",
+      "sha256": "0c0d685e97e04a60754fe0a74972f0de57c6f38f87465a7723fde468d5710897"
+    },
+    {
+      "path": "assets/resources/import/01/017ac0d2-073a-4172-9540-5f8fe658fe3a.json",
+      "sha256": "9f8151e116e0924f27cf0c16eee92914edf8ee651fcb92e8f577ec2f96242c43"
+    },
+    {
+      "path": "assets/resources/import/03/03230745e.json",
+      "sha256": "35572144de53ce2fbf9c612848bd98fadbb624fd9e6c7bea01378f9dceb3b967"
+    },
+    {
+      "path": "assets/resources/import/03/0325f375-5422-4db9-a458-72562f004ee0.json",
+      "sha256": "3c10d1846cf8ce994df09bba6ae64963b3a6efa1e1679840d90d9e00ac236999"
+    },
+    {
+      "path": "assets/resources/import/06/06fa29c6-a919-405e-8eab-142c66d3ae20.json",
+      "sha256": "cdf4020ed455acc8651cea8fa28db54d34f09b2e3f2c6ed07a22617b98534381"
+    },
+    {
+      "path": "assets/resources/import/0c/0c6538d1-3f1e-4e73-afc1-ad4ec0b449ef.json",
+      "sha256": "9a40563cf0ad29ab20fca296c0139820d6cb020b0241882cc43f572dbb72f187"
+    },
+    {
+      "path": "assets/resources/import/14/1490d7c7-f2ce-4ae9-9587-c7bd7b01477a.json",
+      "sha256": "70b2a0384a06b19eaa5f72e546d3e0e419f8f544216be095ad8ed45f0e705cc1"
+    },
+    {
+      "path": "assets/resources/import/1a/1aaff315-253d-4eb1-a14f-9ff8ecacfc7e.json",
+      "sha256": "2f6919560d83a7092818c2f6dc0bbec847a3a0089b870353a61da8f2e690d276"
+    },
+    {
+      "path": "assets/resources/import/1b/1b40565f-018b-49af-abd4-d5263bbca625.json",
+      "sha256": "7f84317d6add5a29983fd684a443ae00d5aa8cad3f915c10021e864f5a3a125f"
+    },
+    {
+      "path": "assets/resources/import/1b/1bccd367-e4df-4a98-a963-b7f6fb758561.json",
+      "sha256": "7c59ee6ea9de1ad7f9fbf320cfa10e41529e3323819ba64185975bc98e888d57"
+    },
+    {
+      "path": "assets/resources/import/20/20eca643-aee7-41c2-8128-7c51e7b3d7aa.json",
+      "sha256": "c69ea523685e645edbe8d1edcf106b9218e2f5d051d43910f1e6808bbcdce98e"
+    },
+    {
+      "path": "assets/resources/import/28/28193615-e39e-4465-893c-044c5de68410.json",
+      "sha256": "40a4e82afd27ef18c2c39ac06da63c2a2e0188d4536f7690aeb8bd848467fd20"
+    },
+    {
+      "path": "assets/resources/import/29/29cb6604-68b7-44e3-a2a7-d9e02ae068bf.json",
+      "sha256": "6761e45a15eba7093062052f7f5effe0125eea600f649d7fcfbbf5ab49067ebe"
+    },
+    {
+      "path": "assets/resources/import/2a/2a9d1cc1-024b-4abc-a01d-034c697c225b.json",
+      "sha256": "ef0347d05835f0002ce734271bca9db67746bf5eefc630d2f1cf69698ae194b2"
+    },
+    {
+      "path": "assets/resources/import/2e/2eff0247-352a-4b30-a4c4-ca35fb3f4de6.json",
+      "sha256": "9359a2bcbc2b7d30d8ec355173b77dca1ea1ccdde16ade51726923eeb34440ec"
+    },
+    {
+      "path": "assets/resources/import/30/30e2b59f-9618-4195-a18d-084859d7cc23.json",
+      "sha256": "fd9095cf26979d774be1b9fd085733843f368398fc665723e480b6c63027cf77"
+    },
+    {
+      "path": "assets/resources/import/31/31c0cad7-2157-413d-95c2-66334b3f65e2.json",
+      "sha256": "80c5f386242b9a346b0e127f82fa4a7b3df441645b4dfffc77876e60bd212144"
+    },
+    {
+      "path": "assets/resources/import/31/31ef9ddb-dfd3-4397-b8d4-6cd7da205246.json",
+      "sha256": "0ebe90450c5d77260615b0d30575d6d8796a0e6648c1a78672f6d50a3c4dbbf3"
+    },
+    {
+      "path": "assets/resources/import/33/33574422-c6f9-4831-aab0-295ff71c4081.json",
+      "sha256": "93840425f1ca931f4461676f79564fdf9967f0287eab1642d373bb993ef9eaca"
+    },
+    {
+      "path": "assets/resources/import/33/335a8d62-260a-4520-910b-2705da66fe8c.json",
+      "sha256": "3dfff94e2921582a040838bdc9a3d5ab5823b3c3f3626917653f21ebaad0553b"
+    },
+    {
+      "path": "assets/resources/import/34/348d0974-217b-488e-a2ec-5aed5b0fdd94.json",
+      "sha256": "dede2d4ec8fe08a5db254f2534f58685ce21d93c6ddc0ed08b18b661dccafe7c"
+    },
+    {
+      "path": "assets/resources/import/36/368c2685-f73a-4c77-aeab-2c650b7a42ac.json",
+      "sha256": "90258b0456dd95585ceef096abdd22b4e7cabeb624a02dd3e78f7d59ee2e6d75"
+    },
+    {
+      "path": "assets/resources/import/38/383a1f8b-64c9-425d-b2bf-96f8a3918062.json",
+      "sha256": "0e6e3d112bef5f8420dde4245b7f60957903ba4daebd32f7af76fff1b86144dd"
+    },
+    {
+      "path": "assets/resources/import/38/38a9e83e-d6e7-4d3c-bfd5-1ab77e65086d.json",
+      "sha256": "bbecec79f73f1f5c76f01312079ec0252c1832524229c50b086737a4128b3e95"
+    },
+    {
+      "path": "assets/resources/import/3d/3da52372-0d93-4cb6-b360-bd0ab36d03fd.json",
+      "sha256": "083a672880c0c075ab46076984b6dedca58ace22345ee954b04e0ae89c144a27"
+    },
+    {
+      "path": "assets/resources/import/44/4409640f-0883-4b3e-afd9-f2cd6d9c0a34.json",
+      "sha256": "568d8cb7923456844d1f84e0d49e41d8c96aeebbc3d1ea58d8c8b4add1c33f44"
+    },
+    {
+      "path": "assets/resources/import/45/456e7aee-c78a-41ba-86a6-d7981937d81a.json",
+      "sha256": "42f584ba606ddcc58cfd36488a48f41044232672ac43bfa4c72043308e9fd5e9"
+    },
+    {
+      "path": "assets/resources/import/45/45973653-27d4-4aed-862b-2217aeda9d6f.json",
+      "sha256": "279acacae03202516471caafab78381ca0cf99517650c02f3b5d063b94f247e1"
+    },
+    {
+      "path": "assets/resources/import/45/45d1fd67-9fe5-4ac0-a5d2-a3a6ffe158c9.json",
+      "sha256": "d59fc37d8d9f0e832137671192fe4f96aa60a4f2c321e5751d26f78f09022cf1"
+    },
+    {
+      "path": "assets/resources/import/46/460de9e1-30d6-4d21-bccb-c3f7d5765cf5.json",
+      "sha256": "7645e2ccf229fbfc174c750167b2a2f4dc98d1b40b0d1dd78da7de41e9131267"
+    },
+    {
+      "path": "assets/resources/import/47/4714fd52-cd0c-4abf-a6df-1cef573ac4be.json",
+      "sha256": "d0acbb8118fa89c1f4a386de35a319bdce71975a75f14f846d1efd3a4b91d974"
+    },
+    {
+      "path": "assets/resources/import/48/48a485d7-0e56-43ca-a2f6-3b828d3aa051.json",
+      "sha256": "06c92c0a6dadca51ae508d12e1454b33dc965350e5bec6a7e6865af066d11518"
+    },
+    {
+      "path": "assets/resources/import/49/4938af36-a5da-48c9-944a-761160f50062.json",
+      "sha256": "65231e12ce6d0762fdee74e0293535f5cf083a2b4f94e4d97946ff8dcc71996f"
+    },
+    {
+      "path": "assets/resources/import/49/4961361f-5c4b-4365-a062-48bf6cfef2ea.json",
+      "sha256": "766233ace147957af50187037bf92346e56c95237ecf204b7069da3a59fc949b"
+    },
+    {
+      "path": "assets/resources/import/4c/4c8c67fc-5dae-4e2a-982e-a492c2edab97.json",
+      "sha256": "3b739df4b1e105a37592c5bffabededdbd7b52ed47ad77582979843fe04345be"
+    },
+    {
+      "path": "assets/resources/import/50/50a881d6-dd30-4e13-b84b-615fc905f883.json",
+      "sha256": "a5861bf78955c7d9679d7b29baf40c76c06457d52d7f00ed67935c695778904e"
+    },
+    {
+      "path": "assets/resources/import/59/592e05de-5076-467e-b817-287fd67d44f0.json",
+      "sha256": "fb81f4ef45b391a6c111c7f4bd362ca3fd4e178596cfa0e130caaf37dc425600"
+    },
+    {
+      "path": "assets/resources/import/5c/5cc9a1a2-8073-440b-a7b8-bd05d47d99c4.json",
+      "sha256": "0e48a5e2516e72f3ce69b77567d1d7696299fbcdbc299a2be8a095a4ff4774a0"
+    },
+    {
+      "path": "assets/resources/import/5d/5d15c6d2-2e85-4c49-a69f-f285f961ceae.json",
+      "sha256": "86f61278050a08b3f5cbcffbfe743ebf18545df8aa08f11a728edcabc1ef4ffb"
+    },
+    {
+      "path": "assets/resources/import/66/66b0a2f1-e276-4f6c-9447-373ec64f2c7b.json",
+      "sha256": "c79d738a09a95f77cb69275d7dd1b80b356378436d55e75fb49cc67e944bfe47"
+    },
+    {
+      "path": "assets/resources/import/67/67d00672-6490-46e6-bff1-1ffa49730c5e.json",
+      "sha256": "a00432342b15c042524300f37db9524ea5551d51555d685d97ee0203b17db2d9"
+    },
+    {
+      "path": "assets/resources/import/69/693a320d-3845-48d5-b2f9-0c64ae0027d1.json",
+      "sha256": "ef91c66bd82d3ee8fe2db8b36449a5e39ca1547962fab6777444eef8e0caae08"
+    },
+    {
+      "path": "assets/resources/import/69/69408bf2-4c26-4178-81eb-7519bce9dffa.json",
+      "sha256": "9903c93feff581e68dfb60b5209550b42b860f95f674070f1efd096bd215bbf1"
+    },
+    {
+      "path": "assets/resources/import/70/7054fe92-30d8-490d-b596-60948302894f.json",
+      "sha256": "21a2f2cade9f2b212775659f42c8667f4cce64a79e36d18ab7f95f2ac46fb5b0"
+    },
+    {
+      "path": "assets/resources/import/71/71833705-0d92-4439-ad4e-474a4ad61343.json",
+      "sha256": "200abecec84300e4acddb98c3b8d67ddd91b3ddba88505f6045eb4793ddf3cfe"
+    },
+    {
+      "path": "assets/resources/import/72/72e3be2e-1476-4ed3-86d9-cb91ffe87508.json",
+      "sha256": "e6d8edce2f925d2838e0c467ee57a0cb1f57f05382d8da0b4f19b220408dae5a"
+    },
+    {
+      "path": "assets/resources/import/73/738d8ccf-63a3-4d3f-a7e7-3fdabd52cc8d.json",
+      "sha256": "defb719cefb7ba20beb625a9f500fde0f3710ee948b00381ebe68744b878334a"
+    },
+    {
+      "path": "assets/resources/import/75/750a9923-f0ce-448b-9240-76f0cd0a2c9b.json",
+      "sha256": "0a6d9c2a6d1879438aa6dae48928ca2b64739b94f3f0a5e2b384ae12076bdf42"
+    },
+    {
+      "path": "assets/resources/import/7b/7bc1ecdc-1df0-45e2-b660-19659233813e.json",
+      "sha256": "295cac246f42b5016048f6b145c332794b84d6fad0246d974cb03421b3c1cc34"
+    },
+    {
+      "path": "assets/resources/import/7c/7ce200d5-1838-4bde-8e6a-2b901c89c9bd.json",
+      "sha256": "27121bfde34703d9d6a9ab42fc716acf9249c0aa85c4e3681a72da9afd97b622"
+    },
+    {
+      "path": "assets/resources/import/81/816483c6-0633-4d39-a977-39bcb0f98af7.json",
+      "sha256": "c5773c556af4df7435640aba3787d7bcec29f0aeee59fd831bd8f31e0f2b2e56"
+    },
+    {
+      "path": "assets/resources/import/84/841aae56-8ca7-46ff-9b20-113f6dc1e4bd.json",
+      "sha256": "65a099f3354dd52de131034029e6a3d893dd6027e438af96e5aa2b3d509d0ad2"
+    },
+    {
+      "path": "assets/resources/import/8b/8b8ff9a1-6762-4f3e-a416-c779dd6dc32f.json",
+      "sha256": "dbde89fd6baae7d5731e96d3883a2f7a6613251595836556a3ba5d297e64a647"
+    },
+    {
+      "path": "assets/resources/import/90/90840f4d-5e9b-46f7-8fd8-be9c3c4ee92e.json",
+      "sha256": "c0062d63f521efcfb4030e2402fe76298a470f39a217a78f662db29d06527e9c"
+    },
+    {
+      "path": "assets/resources/import/91/91687400-1d6d-4a2c-9331-36488cfad2c8.json",
+      "sha256": "82a8ea127d97b625aa7b9ce2f7edccc9db563639aa33903b9dc990099dac6e55"
+    },
+    {
+      "path": "assets/resources/import/94/94598be1-bfd9-4a72-8bc7-228b46bcbe95.json",
+      "sha256": "8a9ce8e1524981dc3526d656f0bcf70a3db6eaa2160b7a93f126ef6d04503ead"
+    },
+    {
+      "path": "assets/resources/import/96/965d8635-b7fb-4b6c-afe5-0f8fa240abc6.json",
+      "sha256": "963c118f37f0e336c189fef55a7687f7e4e5a39db630e203fbd3415321d4d7d9"
+    },
+    {
+      "path": "assets/resources/import/99/99ed40b1-1857-488f-a796-cb2bc248ea60.json",
+      "sha256": "1fcf0ef02f643f6cffb1ab76e85fb7089fd6a99d2cf6ab91ecb1433032e59e83"
+    },
+    {
+      "path": "assets/resources/import/9b/9be88150-aad1-4889-99a4-f827dd36ad9b.json",
+      "sha256": "5708ee0922496d240a0862e7ba4e540257314b48b1aa80c826c71a875349d8b2"
+    },
+    {
+      "path": "assets/resources/import/9d/9d74ad87-ff34-4d43-80d6-54bd5f1711ed.json",
+      "sha256": "ed7d3a597af3f79ad4b7528b77d29e1dda970dfbeabaf9a284efcebf9c4224fe"
+    },
+    {
+      "path": "assets/resources/import/9e/9e24cec0-bc0f-403f-ad0d-91bb4035f99f.json",
+      "sha256": "1c224a17cbacc533cd1b20bb65af271bdd9fd50ffae33f198443a86c37e52355"
+    },
+    {
+      "path": "assets/resources/import/9f/9f6769b6-3eaf-4581-8efe-053b161a1c73.json",
+      "sha256": "67a9acb40c8d8686cbcc8a81fde52f58328e9eec9a5d76c06a4b45e647ebe0fe"
+    },
+    {
+      "path": "assets/resources/import/a2/a2742fef-bc6d-431f-a28b-1299ceee063a.json",
+      "sha256": "bca0349b76623b6b49d8897d87ca93c4c06ed7b6cff6f579e7d113116ec00e04"
+    },
+    {
+      "path": "assets/resources/import/a5/a5fd86d7-c2b5-4448-a776-cadbff5bdfdd.json",
+      "sha256": "49df60a322e6ff64c1afaa51e78e4ee6950c6f6a29ff99a8103ec5c1f24b726e"
+    },
+    {
+      "path": "assets/resources/import/a6/a60df269-ef23-43c7-a4c7-28efac0be9c4.json",
+      "sha256": "57d1bffa66c1b62048f97bb042f11931e0252a7b74afb39a2c4e872a35982659"
+    },
+    {
+      "path": "assets/resources/import/a7/a72de676-482f-4a7d-ad37-a2003a9212ec.json",
+      "sha256": "d784bc9746ba76fb4ff061ec703912ea7af2e50566cfa0375712341cc49396e8"
+    },
+    {
+      "path": "assets/resources/import/a7/a7565a71-7c9d-4d9d-a2e6-ba5397679c85.json",
+      "sha256": "b0c098a70b53d279574e0be78dcdb3cc20a8871da449a68a6259ea737b15cc07"
+    },
+    {
+      "path": "assets/resources/import/b0/b09b5c71-5d94-4ed4-ad3c-cc383b20fced.json",
+      "sha256": "f96dc6eaf69167137be41723e0bf54a7bb200e0b745cb216b3dcab4e7bce8a3c"
+    },
+    {
+      "path": "assets/resources/import/b0/b0e82733-9dbb-4136-96cf-9a5151899881.json",
+      "sha256": "09102a37494d7320f249923301b1765735625b90e5ee04196e54e816a52b9f07"
+    },
+    {
+      "path": "assets/resources/import/b2/b22217b5-72e8-4884-8dbf-3df205b70edd.json",
+      "sha256": "d4faabad4443d1a4ebf161ead504c85c9629dbbf1125539bae2b64f34432cd85"
+    },
+    {
+      "path": "assets/resources/import/b4/b4c8d989-c867-40dd-a48f-c58db0b57caa.json",
+      "sha256": "78a3646087b09c3c05e48bc27def8f5523dc74ea2d4272500fb6e91ae6cbec0b"
+    },
+    {
+      "path": "assets/resources/import/b5/b575646e-cfa1-455a-97d2-2f314857f4da.json",
+      "sha256": "351eb01dd8e36c2fdeb897f5fa6693082b4f036fc9ecfc1e6629536253de890c"
+    },
+    {
+      "path": "assets/resources/import/b8/b86ef002-e8ae-48aa-a711-5b50bc6487e1.json",
+      "sha256": "619fb5115f30154c8cb21d066b4a5e3f63b7497b3197b1532ee3b38e9fe56103"
+    },
+    {
+      "path": "assets/resources/import/bd/bde9ea0c-5e70-44fb-b40f-7f3b55f618d7.json",
+      "sha256": "68a9c26f50e7d38f9bc30353315803806cace2ee4d024d6847b999f9e57c39e7"
+    },
+    {
+      "path": "assets/resources/import/c4/c40d6e70-cb78-4490-83a0-05f43e6207e6.json",
+      "sha256": "30d93749c8aaae34788c6a9ffff8468ed4de3b9f9d2941321479608ca7f9389f"
+    },
+    {
+      "path": "assets/resources/import/c8/c808202f-e4a8-4477-826e-5264a7b42497.json",
+      "sha256": "0d870571e6fe6daface88eb2c0833098c38069c25e44b4453e52f618d3115f22"
+    },
+    {
+      "path": "assets/resources/import/c8/c834bde6-a4b9-471c-8d39-f23ef57c1d93.json",
+      "sha256": "b26709fbb9ff75db4787f05e52518a3395b11d8f184f993ffc2fe997d934bc29"
+    },
+    {
+      "path": "assets/resources/import/cd/cd9f9af4-3c05-4d5d-9b67-2362c4a05edb.json",
+      "sha256": "d7d7c650a9d1c92e716a11404d5abd38b4d78f487bf6b0641e7e2b1d6cae6a98"
+    },
+    {
+      "path": "assets/resources/import/d2/d2b2ac0d-da51-405a-b9b4-de4eeb08d5a2.json",
+      "sha256": "4020c3815cdf75eafa68fc4f19218aa82d54e5b2cb10b02c32f2ea13d338c4b7"
+    },
+    {
+      "path": "assets/resources/import/d5/d5fc7858-7bbf-447e-a3e8-e4441d235129.json",
+      "sha256": "6375fc6377ba0d8a414e1b3848059e3a70d25ed60b569110b42e38f1adb3fd37"
+    },
+    {
+      "path": "assets/resources/import/d6/d63db90c-d21a-4cd4-a6e2-32ac55d8ca02.json",
+      "sha256": "033e3c8fa2328dfa7aa16e062b4a6b67d113b1454a6a2d008ba2982ed07150f0"
+    },
+    {
+      "path": "assets/resources/import/d8/d8fe458d-91d9-4962-a540-a24091b44233.json",
+      "sha256": "391d18c23eb6911689b494a032b2eeaab928c3ef4ab1c020dfc8a954e54e8808"
+    },
+    {
+      "path": "assets/resources/import/df/dfd3667d-0739-4cd0-aa22-1a2953b18e79.json",
+      "sha256": "7e2fb3a4fea50fbf19ea1cda2bedb6ccbba10a1a15bcf56e6d413cef87ae5d1b"
+    },
+    {
+      "path": "assets/resources/import/e1/e146f17a-7b3f-4434-b0ce-bc4bfa9cf122.json",
+      "sha256": "761d566732418a24639ed9b9436f10f99007f8249c650642f408637bfb95ad7f"
+    },
+    {
+      "path": "assets/resources/import/e2/e24152f0-b3a5-403a-a29e-e2f1144aa2a7.json",
+      "sha256": "720c817cd4deede7d10115e4995754fed7b45c77e56bfad74843e178513955f1"
+    },
+    {
+      "path": "assets/resources/import/e5/e5d98430-0887-4d1d-93a0-428a9de11b3b.json",
+      "sha256": "587eed020bc2fbef0e74fc1bce2236f0b89f5101811f72e0e64246e5c4034522"
+    },
+    {
+      "path": "assets/resources/import/e6/e60874ae-e2b3-490e-a030-ad305c84927d.json",
+      "sha256": "1dfb96e622c2fd093b143f9fcddbbb8e6218f0eca30e95dd7ab8918ff0dce97e"
+    },
+    {
+      "path": "assets/resources/import/e7/e7c74a12-9caa-4294-b073-3434d15a7bcc.json",
+      "sha256": "d984986d88496260f87a99cd805ecbef5df3d72effec8c392bda4b2a92dec587"
+    },
+    {
+      "path": "assets/resources/import/eb/eb1a92f5-13e9-4b8d-aaa1-c4966b4c6e9b.json",
+      "sha256": "524ea512cc3234e9f4aa4fce52b2aec035628fbd0f57bf40df1a7fc3ab60f741"
+    },
+    {
+      "path": "assets/resources/import/ed/ed05639a-8de4-49e7-a871-7aa219305c0c.json",
+      "sha256": "935896678c46b5a77483c3f2a9a8ac7087010326ba1dc615e8841d736802543e"
+    },
+    {
+      "path": "assets/resources/import/f0/f0257b6e-7ad0-4305-9993-678f302bfac0.json",
+      "sha256": "acabcb4bd065b4a4c5a50fc2dcb5f031c657166a842a649317b6c1bc7c65a1c4"
+    },
+    {
+      "path": "assets/resources/index.js",
+      "sha256": "a8a8842dba5661964a271fa0d82e5d00ba102dcbfe02407a66ed1a15dd5335bf"
+    },
+    {
+      "path": "assets/resources/native/1a/1aaff315-253d-4eb1-a14f-9ff8ecacfc7e.wav",
+      "sha256": "61cbd03ee231cdc10800b96250d9bcc5a9548b5e01e58c705bf2646bbd013213"
+    },
+    {
+      "path": "assets/resources/native/31/31ef9ddb-dfd3-4397-b8d4-6cd7da205246.wav",
+      "sha256": "418c416e5b38d4cd3dadd85187c408eccc81c9d67cde44d053e75c4aa472174e"
+    },
+    {
+      "path": "assets/resources/native/33/335a8d62-260a-4520-910b-2705da66fe8c.wav",
+      "sha256": "815e2dd4bc68a8e741b769d5eebd43595ca97372fdf6907c50722f2ad057ee8d"
+    },
+    {
+      "path": "assets/resources/native/49/4938af36-a5da-48c9-944a-761160f50062.mp3",
+      "sha256": "5486508cd9213d3c77f06a65755bc9f7bb5cc4dff93644bcf9850be70682be62"
+    },
+    {
+      "path": "assets/resources/native/4c/4c8c67fc-5dae-4e2a-982e-a492c2edab97.wav",
+      "sha256": "235f8e619165c854e5fc620a8817398986dc8936428600096715ebf4ea0208f0"
+    },
+    {
+      "path": "assets/resources/native/59/592e05de-5076-467e-b817-287fd67d44f0.wav",
+      "sha256": "cdf234736dc177210ffd41a20ad9529e006f9d819381481e12f72e57938c1101"
+    },
+    {
+      "path": "assets/resources/native/67/67d00672-6490-46e6-bff1-1ffa49730c5e.wav",
+      "sha256": "36d5d0ed1f6369c0ab6d8a4872fd0fd1229d5c82ba8c0daa481d5091b9b9b50b"
+    },
+    {
+      "path": "assets/resources/native/69/69408bf2-4c26-4178-81eb-7519bce9dffa.wav",
+      "sha256": "64110838117ad145e8d2369febfcd3332b2b8d043d4a5006fdcadd7b4ae5caf6"
+    },
+    {
+      "path": "assets/resources/native/99/99ed40b1-1857-488f-a796-cb2bc248ea60.wav",
+      "sha256": "cf49d5396699cd70d7b1df01c95f6acd85ba4bd23a7f888de1f3540e1423c7f6"
+    },
+    {
+      "path": "assets/resources/native/b0/b0e82733-9dbb-4136-96cf-9a5151899881.wav",
+      "sha256": "aaae4231cf8b6c41bf68d635233da668b24581af5b43720ea465c253c8ea7c37"
+    },
+    {
+      "path": "assets/resources/native/d2/d2b2ac0d-da51-405a-b9b4-de4eeb08d5a2.wav",
+      "sha256": "c310c2136e8f23e7dcb599abb0dcd96799f5aa9bb493476ad61eaa1e77d0885c"
+    },
+    {
+      "path": "assets/resources/native/eb/eb1a92f5-13e9-4b8d-aaa1-c4966b4c6e9b.wav",
+      "sha256": "6ca2406fcaf77c3e9fffdd3f450435c6fbbab02cbb4b0005df5a27d0a7451dab"
+    },
+    {
+      "path": "assets/resources/native/f4/f490dbdc-ebf6-49b2-b9b8-e3dbebb4ea52/night_shift_rounded.ttf",
+      "sha256": "252d97eeb1059e2c414110953580b6d24fb6eb2ae056819b6ba61d7c3654040b"
+    },
+    {
+      "path": "cocos-js/assets/spine-CC34fKUR.wasm",
+      "sha256": "b3d705bd391da35dcf0980c1d8c526f609ad64ac12652dd8c0bf3b20a626f2f2"
+    },
+    {
+      "path": "cocos-js/assets/spine.js.mem-pbmhlDdv.bin",
+      "sha256": "7a22a12630af3de76efe992d68fdcc25f072d663ccb569d7369cbe2d91e8147e"
+    },
+    {
+      "path": "cocos-js/cc.js",
+      "sha256": "578c9a9cea7541f2078651b4f96211a84fb691d6c6ecf7291d02975e791cfe4a"
+    },
+    {
+      "path": "cocos-js/spine-DfhiCve8.js",
+      "sha256": "5cc979ee57bf369f40dc936650c526d119b99bbc9357a1382c36f7b98b963a20"
+    },
+    {
+      "path": "cocos-js/spine.asm-CxUwFpAn.js",
+      "sha256": "a6c8a025c86ff48b5907120301066eabc4f62c56b33cf03646552c9179af6634"
+    },
+    {
+      "path": "cocos-js/spine.js-Daiw-Blo.js",
+      "sha256": "d1820c7bb49a1a6d92fe38b8f1b3b8ea5ddf976c04c269180f6b180c2c8e9e18"
+    },
+    {
+      "path": "cocos-js/spine.wasm-CqLXokmv.js",
+      "sha256": "b282cb6d41436cc5b14e6f91aa95b2f9e8759f36dc10cd06ac385eccdbddde09"
+    },
+    {
+      "path": "cocos-js/_virtual_cc-DPceWclo.js",
+      "sha256": "d18d04fb9c314295f65d6ada3692a6c6b729e7933ef25b9e8979e17a68bfdd5f"
+    },
+    {
+      "path": "index.html",
+      "sha256": "6a1b6c89fa67f1e13cf72e00bd54bace2252446469858e3ac072e11d3225858b"
+    },
+    {
+      "path": "index.js",
+      "sha256": "4317cb547b4d105f69346b925d961df7f951002fd5a4aaae807a361aa1ad49cd"
+    },
+    {
+      "path": "src/chunks/bundle.js",
+      "sha256": "9866fe82b50410af4b238c4fcf8f3b9c1d0af398b7f875e320b6bdbd272bdd56"
+    },
+    {
+      "path": "src/effect.bin",
+      "sha256": "b0d92f8307e3109abe8af8a863d68feb58cf4f49cf000b1d48fbb3dc3ad45556"
+    },
+    {
+      "path": "src/import-map.json",
+      "sha256": "ae84a42bfd0fe767a4141f7cd4e120b85ced56a55baf02bd48835d20bc6996f4"
+    },
+    {
+      "path": "src/polyfills.bundle.js",
+      "sha256": "f1e4ced3322168d6b9915e782e4c1cf1055d75f66f2b38e7fcd60f48cf89082b"
+    },
+    {
+      "path": "src/settings.json",
+      "sha256": "1ab952ccb1ca0c89e058017cf8b2be3d7e097cb965e9feb82d9d6008c74517b2"
+    },
+    {
+      "path": "src/system.bundle.js",
+      "sha256": "e8cf7e3328a5de61f0599f0bbcb1314680e7435e148ed8d5a3bc9fb5f8c4d8c5"
+    },
+    {
+      "path": "style.css",
+      "sha256": "b9dac5de1b7792243a6432dfe553901f0a235f41edb42c719d482d1c17016a2f"
+    }
+  ]
+}
