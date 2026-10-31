@@ -1,8 +1,8 @@
 {
   "product": "叮咚夜班开始",
   "version": "1.26.0",
-  "sourceCommit": "50ac472c9e63e470c0b8b3218dd25e7c8ba1c98c",
-  "clientSourceSha256": "1f2369aa598ed811db48fde21106a55cb02752c6765a005d1c467c8acf96dfab",
+  "sourceCommit": "d58afa5dbf73c59e3a22562db8473b48fb55e5b2",
+  "clientSourceSha256": "dbc5f09e1648edc8ef7175e720e140e332b021119dfaff5aa8d3cab1eb676dd0",
   "debug": false,
   "buildConfig": {
     "startScene": "e5b6646d-6245-405e-a983-5e58b2d32c2c",
@@ -13,8 +13,8 @@
   },
   "creatorExit": "36",
   "archive": "G:\\gptwork\\dingdong-ui-refresh-20261031\\叮咚夜班开始-1.26.0-TapTap自测.zip",
-  "archiveSha256": "da1c326a8ecb40c34b865920f51266693fe78c9b0976fbf85efe468e511026dc",
-  "archiveBytes": 39278214,
+  "archiveSha256": "00caa12fb89b6e5001db7a240d0e5d0d82a2879905379ebc62d18d87e842f670",
+  "archiveBytes": 39278408,
   "entry": "dingdong-night-shift/index.html",
   "files": 1051,
   "csvVerified": 42,
@@ -4651,8 +4651,8 @@
     },
     {
       "path": "assets/main/index.js",
-      "bytes": 327328,
-      "sha256": "c918687b5164d9092474d9ff2c4adbba216c7d210294bae9c6bbf292ab86fb37"
+      "bytes": 327775,
+      "sha256": "e633d8f4bb1de7e2442b2278c987343c729b4879074c348a478a41d9ad4adf6d"
     },
     {
       "path": "assets/resources/config.json",
@@ -4741,8 +4741,8 @@
     },
     {
       "path": "assets/resources/import/30/30e2b59f-9618-4195-a18d-084859d7cc23.json",
-      "bytes": 159294,
-      "sha256": "f2e62e7eb0ddaab010500a93efb422830e4acd57334d4ad6f3bfc691d196a96d"
+      "bytes": 159302,
+      "sha256": "6adac33deafa3579f820c78e700c72cae3d6bba739fc47b87560bd149719eefe"
     },
     {
       "path": "assets/resources/import/31/31c0cad7-2157-413d-95c2-66334b3f65e2.json",
@@ -4796,8 +4796,8 @@
     },
     {
       "path": "assets/resources/import/45/456e7aee-c78a-41ba-86a6-d7981937d81a.json",
-      "bytes": 530495,
-      "sha256": "8c6b09d3415551c7a646033d14ae9f8e27fa437541a047619a697c8a5c09b80b"
+      "bytes": 530500,
+      "sha256": "72049798bdbb033c5f8df86970682f35cf060ad40caf1bd869ac28696777b8e6"
     },
     {
       "path": "assets/resources/import/45/45973653-27d4-4aed-862b-2217aeda9d6f.json",
@@ -4851,8 +4851,8 @@
     },
     {
       "path": "assets/resources/import/5c/5cc9a1a2-8073-440b-a7b8-bd05d47d99c4.json",
-      "bytes": 3630,
-      "sha256": "92758641929e60ff7d1ae2df0db2ccf8ce9c4f9923eef6b19485f0e06634087c"
+      "bytes": 3746,
+      "sha256": "7325a83ff284658f54acd6509588c0f4e1cd8b2673d671f46dc53ede79951d09"
     },
     {
       "path": "assets/resources/import/5d/5d15c6d2-2e85-4c49-a69f-f285f961ceae.json",
@@ -4986,8 +4986,8 @@
     },
     {
       "path": "assets/resources/import/a6/a60df269-ef23-43c7-a4c7-28efac0be9c4.json",
-      "bytes": 44853,
-      "sha256": "4a62dc213b7ead257b6a0b14a06d80fc10f716a5a83bc57615e88b892cd7fe79"
+      "bytes": 44852,
+      "sha256": "de3ea2aaa4f891c786f55d0991f00c963185cbe523dd2594215579d568928191"
     },
     {
       "path": "assets/resources/import/a7/a72de676-482f-4a7d-ad37-a2003a9212ec.json",
@@ -5087,7 +5087,7 @@
     {
       "path": "assets/resources/import/e2/e24152f0-b3a5-403a-a29e-e2f1144aa2a7.json",
       "bytes": 7126,
-      "sha256": "4c2ac261c746d4238ba09bca2f7f6c5ac6bb67aa3305b3cf310cef9611ce74b2"
+      "sha256": "c5404920721e2932c1e7407bd6c0e79f531a5f344850d0375de7ef7865c6d71e"
     },
     {
       "path": "assets/resources/import/e5/e5d98430-0887-4d1d-93a0-428a9de11b3b.json",
@@ -5275,5 +5275,5 @@
       "sha256": "b9dac5de1b7792243a6432dfe553901f0a235f41edb42c719d482d1c17016a2f"
     }
   ],
-  "limits": "构建/解压/配置一致性；没有本轮真实引擎/手机运行；平台上传尚未确认"
+  "limits": "ZIP CRC/逐文件验读/配置一致性；没有本轮真实引擎或手机运行；平台上传尚未确认"
 }
