@@ -21,8 +21,10 @@ export class ChallengeView {
     if(!this.panel.active){this.signature='';return;}
     const key=JSON.stringify([run.pending,run.offers,run.selected,run.refreshLeft,run.refreshBusy,run.refreshFeedback,this.page]);if(this.signature===key)return;this.signature=key;
     if(run.pending)this.page=0;const list=run.pending?run.offers:run.selected.slice(this.page*this.cards.length,(this.page+1)*this.cards.length);
-    uiText(this.panel,'Title',text(run.pending?'challenge.pick':'challenge.inventory',run.selected.length));
-    uiText(this.panel,'Count',run.pending?text('challenge.pickCount',run.completedChoices.length+1,run.supplyLimit):run.selected.length?'':text('challenge.empty'));
+    // 数量放进原有计数条，避免查看20份已选补给时把标题挤出装饰牌。
+    uiText(this.panel,'Title',text('challenge.pick'));
+    uiText(this.panel,'Count',run.pending?text('challenge.pickCount',run.completedChoices.length+1,run.supplyLimit):text(run.selected.length?'challenge.inventory':'challenge.empty',run.selected.length));
+    uiNode(this.panel,'SupplyHint').active=run.pending;
     this.cards.forEach((node,i)=>{
       const card=run.card(list[i]);node.active=Boolean(card);if(!card)return;
       uiText(node,'Title',card.name);uiText(node,'Description',card.description);this.assets.bindImage(uiNode(node,'Icon'),'ui:'+card.icon);

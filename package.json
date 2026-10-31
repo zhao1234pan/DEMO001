@@ -17,6 +17,7 @@
     "ui:test": "node tools/ui/test-collection.cjs",
     "shop:test": "node tools/gameplay/test-shop.cjs",
     "ui:layout:test": "node tools/ui/test-page-layout.cjs",
-    "ui:experience:test": "node tools/ui/test-ui-experience.cjs"
+    "ui:experience:test": "node tools/ui/test-ui-experience.cjs",
+    "ui:supply:test": "node tools/ui/test-challenge-view.cjs"
   }
 }

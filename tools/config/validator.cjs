@@ -120,7 +120,7 @@ function installConfigs(sources) {
                 throw new Error(`Out of range: ${name}/${row.id}/${field}`);
         } };
     // 紧凑金币单位必须降序、引用真实文案；坏配置在导表时失败，不留到钱包显示时。
-    for (const key of ['uiCoinDisplayUnits', 'uiCoinDisplayDecimals'])
+    for (const key of ['uiCoinDisplayUnits', 'uiCoinDisplayDecimals', 'uiBattleCoinDigits'])
         requireRef('Global', 'key', key, 'UI');
     let previousUnit = Infinity;
     for (const item of next.Global.find(r => r.key === 'uiCoinDisplayUnits').value.split('|')) {
@@ -133,6 +133,9 @@ function installConfigs(sources) {
     const coinDecimals = numeric(next.Global.find(r => r.key === 'uiCoinDisplayDecimals'), 'value');
     if (!Number.isSafeInteger(coinDecimals) || coinDecimals < 0 || coinDecimals > 2)
         throw Error('Invalid UI coin display decimals');
+    const battleDigits = numeric(next.Global.find(r => r.key === 'uiBattleCoinDigits'), 'value');
+    if (!Number.isSafeInteger(battleDigits) || battleDigits < 2 || battleDigits > 6)
+        throw Error('Invalid UI battle coin digits');
     positive("RankingEntry", ["score"], true);
     for (const row of next.RankingEntry) {
         requireRef("I18", "key", row.nameKey, "RankingEntry");

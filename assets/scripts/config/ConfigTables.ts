@@ -41,7 +41,7 @@ export function installConfigs(sources: Record<string, string>): void {
   for (const name of TABLE_NAMES) { const keys = new Set<string>(); for (const row of next[name]) { if ("key" in row) { if (!row.key || keys.has(row.key)) throw new Error("Duplicate/empty key: " + name + "/" + row.key); keys.add(row.key); } } }
   const positive = (name: string, fields: string[], zero = false) => { for (const row of next[name]) for (const field of fields) { const n = numeric(row, field); if (zero ? n < 0 : n <= 0) throw new Error(`Out of range: ${name}/${row.id}/${field}`); } };
   // 紧凑金币单位必须降序、引用真实文案；坏配置在导表时失败，不留到钱包显示时。
-  for(const key of ['uiCoinDisplayUnits','uiCoinDisplayDecimals'])requireRef('Global','key',key,'UI');
+  for(const key of ['uiCoinDisplayUnits','uiCoinDisplayDecimals','uiBattleCoinDigits'])requireRef('Global','key',key,'UI');
   let previousUnit=Infinity;
   for(const item of next.Global.find(r=>r.key==='uiCoinDisplayUnits')!.value.split('|')){
     const [threshold,key,...extra]=item.split(':'),unit=Number(threshold);
@@ -50,6 +50,8 @@ export function installConfigs(sources: Record<string, string>): void {
   }
   const coinDecimals=numeric(next.Global.find(r=>r.key==='uiCoinDisplayDecimals')!,'value');
   if(!Number.isSafeInteger(coinDecimals)||coinDecimals<0||coinDecimals>2)throw Error('Invalid UI coin display decimals');
+  const battleDigits=numeric(next.Global.find(r=>r.key==='uiBattleCoinDigits')!,'value');
+  if(!Number.isSafeInteger(battleDigits)||battleDigits<2||battleDigits>6)throw Error('Invalid UI battle coin digits');
   positive("RankingEntry",["score"],true);
   for(const row of next.RankingEntry){requireRef("I18","key",row.nameKey,"RankingEntry");requireRef("VisualSkin","key",row.portraitKey,"RankingEntry");if(!["0","1"].includes(row.friend)||!Number.isSafeInteger(numeric(row,"score")))throw Error("Invalid ranking preview entry");}
   for(const key of ["rankingPreview","rankingAdventureWeight","rankingChallengeWeight"]){requireRef("Global","key",key,"RankingEntry");const value=numeric(next.Global.find(r=>r.key===key)!,"value");if(!Number.isSafeInteger(value)||value<0||(key==="rankingPreview"?value>1:value===0))throw Error("Invalid ranking display rule");}

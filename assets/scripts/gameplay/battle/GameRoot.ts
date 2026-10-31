@@ -1,6 +1,7 @@
 import {challengeTopic,challengeTopicUnlocked,completeChallengeTopic,nextChallengeTopic,resetChallengeTopics} from "../../services/ChallengeTopics";
 import { ShopService } from "../../services/ShopService";
 import { LoadingView } from "../../ui/LoadingView";
+import { battleUiCoins } from "../../ui/UiNumber";
 import { PngSurface } from "../../ui/PngSurface";
 import { ChallengeRun, ChallengePort, ChallengeShot, challengeRule } from "./ChallengeRun";
 import {TechnologySnapshot,technologySnapshot,technologyProfile} from "./Technology";
@@ -870,7 +871,7 @@ export class GameRoot extends Component {
     for (const key of this.labels.keys()) if (key.startsWith("home-")) this.showLabel(key, false);
     this.setLabel("level", this.level.mode === "challenge" ? text("challenge.hud") : text("ui.GameRoot.008", this.level.id, this.gmSessionActive && !this.mapReview ? "·GM" : ""));
     this.setLabel("wave", text("ui.GameRoot.009", this.wave, this.level.waves.length));
-    this.setLabel("coin", `${this.coins}`); this.setLabel("lives", `${this.lives}`);
+    this.setLabel("coin", battleUiCoins(this.coins)); this.setLabel("lives", `${this.lives}`);
     this.setLabel("speed", `×${this.gameSpeed}`); this.setLabel("pause", this.paused ? "▶" : "Ⅱ");
     ["wave", "coin", "lives", "speed"].forEach((key) => this.showLabel(key, !this.gmPanelOpen));
     ["title","level","pause"].forEach(key=>this.showLabel(key,false));

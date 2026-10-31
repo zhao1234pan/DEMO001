@@ -12,3 +12,9 @@ export function compactUiCoins(value:number):string {
   }
   return String(amount);
 }
+
+/** 战斗中常见余额仍显示精确整数，超出固定槽位再使用同一套配置单位。 */
+export function battleUiCoins(value:number):string {
+  const amount=Number.isFinite(value)?Math.max(0,Math.floor(value)):0;
+  return String(amount).length<=globalNumber('uiBattleCoinDigits')?String(amount):compactUiCoins(amount);
+}

@@ -18,5 +18,6 @@ test('建造、首领与来客预告的内部文字分行留白，不只检查�
  below(box('build_card','Title'),box('build_card','Icon'),1);below(box('build_card','Cost'),box('build_card','Title'),2);inside(box('build_card','Cost'),box('build_card','@'),4);
  below(box('battle_hud','Boss/State'),box('battle_hud','Boss/Name'),2);below(box('battle_hud','Boss/Track'),box('battle_hud','Boss/State'),2);
  below(box('enemy_preview_card','Name'),box('enemy_preview_card','Icon'),2);below(box('enemy_preview_card','Boss'),box('enemy_preview_card','Name'),2);inside(box('enemy_preview_card','Boss'),box('enemy_preview_card','@'));
+ const p='battle_hud';assert.ok(box(p,'Header/coin').right+2<=box(p,'Header/HeartIcon').left);assert.ok(box(p,'Header/HeartIcon').right+2<=box(p,'Header/lives').left);for(const n of ['Header/Speed','Header/Pause'])assert.ok(+row(p,n).height>=44);
 });
 console.log(JSON.stringify({passed,scope:'跨控件边界、间距与显示契约；非实际渲染'}));

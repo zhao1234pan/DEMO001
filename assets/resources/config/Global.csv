@@ -53,3 +53,4 @@ id,key,type,value,note
 56,adventureClearedSaveKey,string,night_store_cleared_level_v1,仅正式冒险胜利写入；历史best到达记录不作为首通依据
 57,uiCoinDisplayUnits,string,1000000000000:ui.coin.trillion|100000000:ui.coin.hundredMillion|10000:ui.coin.tenThousand|1000:ui.coin.thousand,紧凑钱包单位；管理弹窗仍展示精确金币
 58,uiCoinDisplayDecimals,float,1,紧凑钱包不足100个单位时的最大小数位数，向下截断
+59,uiBattleCoinDigits,float,5,战斗钱包保留五位精确数字，超过时只压缩显示，不改真实金币

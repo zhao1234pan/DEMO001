@@ -2,7 +2,7 @@
   {
     "name": "配置一致",
     "status": 0,
-    "stdout": "UI布局表：3028个节点。\nUI资源校验：37个预制体，3028个节点。\n42张表校验通过，XLSX 与 CSV 一致。\n日志：G:\\gptwork\\config-export\\run-NKWwIs\n",
+    "stdout": "UI布局表：3028个节点。\nUI资源校验：37个预制体，3028个节点。\n42张表校验通过，XLSX 与 CSV 一致。\n日志：G:\\gptwork\\config-export\\run-KmOxbP\n",
     "stderr": ""
   },
   {
@@ -20,13 +20,13 @@
   {
     "name": "配置31",
     "status": 0,
-    "stdout": "PASS CSV 保留引号、逗号与换行\nPASS 完整原始表与CSV一致\nPASS 校验器源码LF与CRLF换行不影响跨机导表\nPASS 手改CSV会阻止构建且不覆盖文件\nPASS 工作簿版本改变必须重新导表\nPASS 格位偏离网格时拒绝配置\nPASS 孤立格位时拒绝配置\nPASS 网格间距必须为正数\nPASS 反馈参数越界或非整数时拒绝配置\nPASS 首领或结算关键节点缺失时阻止构建\nPASS 缺少预制体阻止校验\nPASS 缺少运行时绑定节点阻止校验\nPASS I18预览过期可同步且保留手工布局\nPASS 独立PNG预览过期阻止构建并可同步\nPASS 进化连发周期、费用整数和减速组合非法时拒绝\nPASS 进化攻击参数非法时拒绝\nPASS 进化形态归属、图片缺失和排序重复时拒绝\nPASS 进化卡与图鉴缩略图缺失时阻止构建\nPASS 配队拒绝重复、提前解锁与超量默认阵容\nPASS 店员解锁关、定位文本与排序必须有效\nPASS 配队逐关规则不可缺失或重复\nPASS 配队卡和预告节点缺失时阻止构建\nPASS 挑战候选时间、奖励与首领倍率配置错误时阻止构建\nPASS 强化参数缺字段、类型错误、负阈值与错误引用被拒绝\nPASS 挑战界面和卡牌缺少绑定时阻止构建\nPASS 商品图鉴拒绝缺失文案、图片与非法解锁关\nPASS 未同步校验器会阻止导出\nPASS 原生布局被修改或漏配节点时阻止构建\nPASS 等级形象重复槽位、错误分支归属、丢图与非法尺寸被拒绝\nPASS 等级星星参数非数字或负数时阻止加载\nPASS 图鉴滚动与局外余额非法配置阻止加载\n31项通过；隔离证据：G:\\gptwork\\config-export\\regression-UZKQxe\n",
+    "stdout": "PASS CSV 保留引号、逗号与换行\nPASS 完整原始表与CSV一致\nPASS 校验器源码LF与CRLF换行不影响跨机导表\nPASS 手改CSV会阻止构建且不覆盖文件\nPASS 工作簿版本改变必须重新导表\nPASS 格位偏离网格时拒绝配置\nPASS 孤立格位时拒绝配置\nPASS 网格间距必须为正数\nPASS 反馈参数越界或非整数时拒绝配置\nPASS 首领或结算关键节点缺失时阻止构建\nPASS 缺少预制体阻止校验\nPASS 缺少运行时绑定节点阻止校验\nPASS I18预览过期可同步且保留手工布局\nPASS 独立PNG预览过期阻止构建并可同步\nPASS 进化连发周期、费用整数和减速组合非法时拒绝\nPASS 进化攻击参数非法时拒绝\nPASS 进化形态归属、图片缺失和排序重复时拒绝\nPASS 进化卡与图鉴缩略图缺失时阻止构建\nPASS 配队拒绝重复、提前解锁与超量默认阵容\nPASS 店员解锁关、定位文本与排序必须有效\nPASS 配队逐关规则不可缺失或重复\nPASS 配队卡和预告节点缺失时阻止构建\nPASS 挑战候选时间、奖励与首领倍率配置错误时阻止构建\nPASS 强化参数缺字段、类型错误、负阈值与错误引用被拒绝\nPASS 挑战界面和卡牌缺少绑定时阻止构建\nPASS 商品图鉴拒绝缺失文案、图片与非法解锁关\nPASS 未同步校验器会阻止导出\nPASS 原生布局被修改或漏配节点时阻止构建\nPASS 等级形象重复槽位、错误分支归属、丢图与非法尺寸被拒绝\nPASS 等级星星参数非数字或负数时阻止加载\nPASS 图鉴滚动与局外余额非法配置阻止加载\n31项通过；隔离证据：G:\\gptwork\\config-export\\regression-cHG9u6\n",
     "stderr": ""
   },
   {
     "name": "PNG资源12",
     "status": 0,
-    "stdout": "PASS 全部原生切片、源图签名和预制体引用有效\nPASS 拒绝恢复Graphics或关闭packable\nPASS 拒绝不可打包的角色meta\nPASS 地图源布局变化必须重烘焙\nPASS 拒绝九宫边距与XLSX导出不一致\nPASS 拒绝预制体组件指向其他节点\nPASS 切图源文件变化会阻止构建\nPASS 切图被手改或重复旧图会阻止构建\nPASS 横幅移到地图背景之后会阻止构建\nPASS 按钮表面盖住文字会阻止构建\nPASS 固定比例模式与原始表不一致会阻止构建\nPASS meta仍保留旧裁切尺寸时会阻止构建\n12项资源回归通过；隔离证据：G:\\gptwork\\png-regression-z3CUgE\n",
+    "stdout": "PASS 全部原生切片、源图签名和预制体引用有效\nPASS 拒绝恢复Graphics或关闭packable\nPASS 拒绝不可打包的角色meta\nPASS 地图源布局变化必须重烘焙\nPASS 拒绝九宫边距与XLSX导出不一致\nPASS 拒绝预制体组件指向其他节点\nPASS 切图源文件变化会阻止构建\nPASS 切图被手改或重复旧图会阻止构建\nPASS 横幅移到地图背景之后会阻止构建\nPASS 按钮表面盖住文字会阻止构建\nPASS 固定比例模式与原始表不一致会阻止构建\nPASS meta仍保留旧裁切尺寸时会阻止构建\n12项资源回归通过；隔离证据：G:\\gptwork\\png-regression-cjMRTh\n",
     "stderr": ""
   },
   {
@@ -78,9 +78,21 @@
     "stderr": ""
   },
   {
-    "name": "跨页8",
+    "name": "跨页9",
     "status": 0,
     "stdout": "PASS 冒险和挑战分页完整位于面板内，底边和两侧留出安全距离\nPASS 挑战四张卡的图、标题、规则、操作互不挤压，底部不碰分页\nPASS 排行榜页签、奖牌、领奖台、列表和我的成绩各留间隔\nPASS 经营条目只显示一层底板，底板不覆盖邻行，姓名和按钮分开\nPASS 补给正文、店员行、分隔线和选择按钮不相交\nPASS 首领信息与挑战补给、来客预告两个入口分开\nPASS 加载进度从0到100，爪形端头全程留在条槽内\nPASS 彩色主要操作的文字保持白字描边，图标不冒充文字\nPASS 建造、首领与来客预告的内部文字分行留白，不只检查面板外框\n{\"passed\":9,\"scope\":\"跨控件边界、间距与显示契约；非实际渲染\"}\n",
+    "stderr": ""
+  },
+  {
+    "name": "体验6",
+    "status": 0,
+    "stdout": "PASS 常用界面固定字号，确认版首页/图鉴与隐藏错误模板保留独立规格\nPASS 浅底正文清除描边，关键操作保留用户要求的白字细描边\nPASS 经营图文与操作分列，科技状态与效果分列，避免内部相交\nPASS 详情滚动拥有PNG裁切和固定标题，关闭不在裁切子树内\nPASS 零值、单位边界与大额金币显示紧凑，精确数值不被改写\nPASS 金币显示坏配置在导表阶段拒绝，不污染正式配置\n{\"passed\":6,\"scope\":\"固定字号/内部安全区/滚动结构/紧凑金币算法；非实际画面\"}\n",
+    "stderr": ""
+  },
+  {
+    "name": "补给显示3",
+    "status": 0,
+    "stdout": "PASS 第20次待选与20份已持有共用标题，数量在独立计数条\nPASS 专属与通用说明反复切换时重读完整原表框，不累积位移\nPASS 刷新忙碌、耗尽和空库存的可见操作相互独立\n{\"passed\":3,\"scope\":\"ChallengeView真实呈现代码+隔离状态；非引擎截图或广告实测\"}\n",
     "stderr": ""
   }
 ]
