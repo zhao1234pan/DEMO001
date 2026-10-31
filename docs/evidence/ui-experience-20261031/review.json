@@ -5,7 +5,7 @@
   "pairs": 54,
   "prefabs": 37,
   "layoutRows": 3028,
-  "changedRows": 637,
+  "changedRows": 646,
   "changedPrefabs": [
     "battle_hud",
     "build_card",
@@ -42,8 +42,8 @@
     "win"
   ],
   "font": {
-    "cases": 1332,
-    "measured": 1300,
+    "cases": 1438,
+    "measured": 1406,
     "excluded": 32,
     "overflow": 0,
     "method": "Pillow授权圆体字形与配置行高；非Cocos实际字框",
