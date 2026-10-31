@@ -14,4 +14,9 @@ test('补给正文、店员行、分隔线和选择按钮不相交',()=>{const p
 test('首领信息与挑战补给、来客预告两个入口分开',()=>{below(box('battle_hud','PreviewEntry'),box('challenge_pick','Entry'),6);assert.ok(box('battle_hud','Boss').right+12<=box('battle_hud','PreviewEntry').left);});
 test('加载进度从0到100，爪形端头全程留在条槽内',()=>{const p='loading',track=box(p,'Track'),a=+row(p,'ProgressStart').x,b=+row(p,'ProgressEnd').x,half=+row(p,'EndPaw').width/2;for(let i=0;i<=100;i++){const x=a+(b-a)*i/100;assert.ok(x-half>=track.left&&x+half<=track.right);}assert.ok(+row(p,'Fill').height<+row(p,'Track').height);});
 test('彩色主要操作的文字保持白字描边，图标不冒充文字',()=>{for(const [p,n]of [['levels','Previous/Text'],['challenge_topics','Next/Text'],['challenge_card','SelectText'],['challenge_pick','Refresh/Text'],['loadout','Start/Text'],['challenge_loadout','Start/Text'],['win','Primary/overlayPrimary'],['win','Home/overlayHome'],['technology','Detail/Buy/Text']]){const r=row(p,n);assert.equal(r.color,'#ffffff');assert.ok(+r.outlineWidth>0);assert.equal(r.fontPath,'fonts/night_shift_rounded');}});
+test('建造、首领与来客预告的内部文字分行留白，不只检查面板外框',()=>{
+ below(box('build_card','Title'),box('build_card','Icon'),1);below(box('build_card','Cost'),box('build_card','Title'),2);inside(box('build_card','Cost'),box('build_card','@'),4);
+ below(box('battle_hud','Boss/State'),box('battle_hud','Boss/Name'),2);below(box('battle_hud','Boss/Track'),box('battle_hud','Boss/State'),2);
+ below(box('enemy_preview_card','Name'),box('enemy_preview_card','Icon'),2);below(box('enemy_preview_card','Boss'),box('enemy_preview_card','Name'),2);inside(box('enemy_preview_card','Boss'),box('enemy_preview_card','@'));
+});
 console.log(JSON.stringify({passed,scope:'跨控件边界、间距与显示契约；非实际渲染'}));

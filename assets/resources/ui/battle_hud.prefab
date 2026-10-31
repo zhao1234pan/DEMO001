@@ -4941,9 +4941,9 @@
     "_verticalAlign": 1,
     "_fontSize": 18,
     "_actualFontSize": 18,
-    "_lineHeight": 24,
+    "_lineHeight": 22,
     "_fontFamily": "NightShiftRounded",
-    "_overflow": 2,
+    "_overflow": 1,
     "_enableWrapText": true,
     "_isSystemFontUsed": false,
     "_color": {
@@ -4967,7 +4967,7 @@
       "b": 52,
       "a": 255
     },
-    "_outlineWidth": 1.6
+    "_outlineWidth": 1
   },
   {
     "__type__": "cc.CompPrefabInfo",
@@ -5784,18 +5784,18 @@
     "_string": "Ⅱ",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_fontSize": 21,
-    "_actualFontSize": 21,
-    "_lineHeight": 25,
+    "_fontSize": 20,
+    "_actualFontSize": 20,
+    "_lineHeight": 24,
     "_fontFamily": "NightShiftRounded",
-    "_overflow": 2,
+    "_overflow": 1,
     "_enableWrapText": true,
     "_isSystemFontUsed": false,
     "_color": {
       "__type__": "cc.Color",
-      "r": 92,
-      "g": 48,
-      "b": 32,
+      "r": 87,
+      "g": 53,
+      "b": 35,
       "a": 255
     },
     "_font": {
@@ -5915,18 +5915,18 @@
     "_string": "叮咚夜班开始",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_fontSize": 15,
-    "_actualFontSize": 15,
-    "_lineHeight": 19,
+    "_fontSize": 14,
+    "_actualFontSize": 14,
+    "_lineHeight": 18,
     "_fontFamily": "NightShiftRounded",
-    "_overflow": 2,
+    "_overflow": 1,
     "_enableWrapText": true,
     "_isSystemFontUsed": false,
     "_color": {
       "__type__": "cc.Color",
-      "r": 92,
-      "g": 48,
-      "b": 32,
+      "r": 87,
+      "g": 53,
+      "b": 35,
       "a": 255
     },
     "_font": {
@@ -6061,18 +6061,18 @@
     "_string": "",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_fontSize": 13,
-    "_actualFontSize": 13,
-    "_lineHeight": 17,
+    "_fontSize": 12,
+    "_actualFontSize": 12,
+    "_lineHeight": 16,
     "_fontFamily": "NightShiftRounded",
-    "_overflow": 2,
+    "_overflow": 1,
     "_enableWrapText": true,
     "_isSystemFontUsed": false,
     "_color": {
       "__type__": "cc.Color",
-      "r": 92,
-      "g": 48,
-      "b": 32,
+      "r": 87,
+      "g": 53,
+      "b": 35,
       "a": 255
     },
     "_font": {
@@ -6189,18 +6189,18 @@
     "_string": "",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_fontSize": 17,
-    "_actualFontSize": 17,
-    "_lineHeight": 22,
+    "_fontSize": 16,
+    "_actualFontSize": 16,
+    "_lineHeight": 20,
     "_fontFamily": "NightShiftRounded",
-    "_overflow": 2,
+    "_overflow": 1,
     "_enableWrapText": true,
     "_isSystemFontUsed": false,
     "_color": {
       "__type__": "cc.Color",
-      "r": 76,
-      "g": 28,
-      "b": 18,
+      "r": 87,
+      "g": 53,
+      "b": 35,
       "a": 255
     },
     "_font": {
@@ -6471,18 +6471,18 @@
     "_string": "",
     "_horizontalAlign": 2,
     "_verticalAlign": 1,
-    "_fontSize": 17,
-    "_actualFontSize": 17,
-    "_lineHeight": 22,
+    "_fontSize": 16,
+    "_actualFontSize": 16,
+    "_lineHeight": 20,
     "_fontFamily": "NightShiftRounded",
-    "_overflow": 2,
+    "_overflow": 1,
     "_enableWrapText": false,
     "_isSystemFontUsed": false,
     "_color": {
       "__type__": "cc.Color",
-      "r": 76,
-      "g": 28,
-      "b": 18,
+      "r": 87,
+      "g": 53,
+      "b": 35,
       "a": 255
     },
     "_font": {
@@ -6599,18 +6599,18 @@
     "_string": "",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_fontSize": 19,
-    "_actualFontSize": 19,
-    "_lineHeight": 24,
+    "_fontSize": 18,
+    "_actualFontSize": 18,
+    "_lineHeight": 22,
     "_fontFamily": "NightShiftRounded",
-    "_overflow": 2,
+    "_overflow": 1,
     "_enableWrapText": true,
     "_isSystemFontUsed": false,
     "_color": {
       "__type__": "cc.Color",
-      "r": 76,
-      "g": 28,
-      "b": 18,
+      "r": 87,
+      "g": 53,
+      "b": 35,
       "a": 255
     },
     "_font": {
@@ -10092,9 +10092,9 @@
     "_verticalAlign": 1,
     "_fontSize": 18,
     "_actualFontSize": 18,
-    "_lineHeight": 23,
+    "_lineHeight": 22,
     "_fontFamily": "NightShiftRounded",
-    "_overflow": 2,
+    "_overflow": 1,
     "_enableWrapText": true,
     "_isSystemFontUsed": false,
     "_color": {
@@ -10111,7 +10111,7 @@
     "_cacheMode": 0,
     "_isBold": false,
     "_enableOutline": true,
-    "_outlineWidth": 2,
+    "_outlineWidth": 1,
     "_outlineColor": {
       "__type__": "cc.Color",
       "r": 92,
@@ -11339,9 +11339,9 @@
     "_verticalAlign": 1,
     "_fontSize": 18,
     "_actualFontSize": 18,
-    "_lineHeight": 23,
+    "_lineHeight": 22,
     "_fontFamily": "NightShiftRounded",
-    "_overflow": 2,
+    "_overflow": 1,
     "_enableWrapText": true,
     "_isSystemFontUsed": false,
     "_color": {
@@ -11358,7 +11358,7 @@
     "_cacheMode": 0,
     "_isBold": false,
     "_enableOutline": true,
-    "_outlineWidth": 2,
+    "_outlineWidth": 1,
     "_outlineColor": {
       "__type__": "cc.Color",
       "r": 92,
@@ -12586,9 +12586,9 @@
     "_verticalAlign": 1,
     "_fontSize": 18,
     "_actualFontSize": 18,
-    "_lineHeight": 23,
+    "_lineHeight": 22,
     "_fontFamily": "NightShiftRounded",
-    "_overflow": 2,
+    "_overflow": 1,
     "_enableWrapText": true,
     "_isSystemFontUsed": false,
     "_color": {
@@ -12605,7 +12605,7 @@
     "_cacheMode": 0,
     "_isBold": false,
     "_enableOutline": true,
-    "_outlineWidth": 2,
+    "_outlineWidth": 1,
     "_outlineColor": {
       "__type__": "cc.Color",
       "r": 92,
@@ -12932,9 +12932,9 @@
     "_verticalAlign": 1,
     "_fontSize": 20,
     "_actualFontSize": 20,
-    "_lineHeight": 25,
+    "_lineHeight": 24,
     "_fontFamily": "NightShiftRounded",
-    "_overflow": 2,
+    "_overflow": 1,
     "_enableWrapText": true,
     "_isSystemFontUsed": false,
     "_color": {
@@ -12958,7 +12958,7 @@
       "b": 37,
       "a": 255
     },
-    "_outlineWidth": 1.4
+    "_outlineWidth": 1
   },
   {
     "__type__": "cc.CompPrefabInfo",
@@ -13065,18 +13065,18 @@
     "_string": "",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_fontSize": 13,
-    "_actualFontSize": 13,
-    "_lineHeight": 17,
+    "_fontSize": 12,
+    "_actualFontSize": 12,
+    "_lineHeight": 16,
     "_fontFamily": "NightShiftRounded",
-    "_overflow": 2,
+    "_overflow": 1,
     "_enableWrapText": true,
     "_isSystemFontUsed": false,
     "_color": {
       "__type__": "cc.Color",
-      "r": 92,
-      "g": 48,
-      "b": 32,
+      "r": 87,
+      "g": 53,
+      "b": 35,
       "a": 255
     },
     "_font": {
@@ -13696,7 +13696,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 27,
-      "y": 13,
+      "y": 14,
       "z": 0
     },
     "_lrot": {
@@ -13747,7 +13747,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 184,
-      "height": 23
+      "height": 20
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -13776,16 +13776,16 @@
     "_verticalAlign": 1,
     "_fontSize": 16,
     "_actualFontSize": 16,
-    "_lineHeight": 22,
+    "_lineHeight": 20,
     "_fontFamily": "NightShiftRounded",
-    "_overflow": 2,
+    "_overflow": 1,
     "_enableWrapText": true,
     "_isSystemFontUsed": false,
     "_color": {
       "__type__": "cc.Color",
-      "r": 92,
-      "g": 48,
-      "b": 32,
+      "r": 87,
+      "g": 53,
+      "b": 35,
       "a": 255
     },
     "_font": {
@@ -13824,7 +13824,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 27,
-      "y": -6,
+      "y": -7,
       "z": 0
     },
     "_lrot": {
@@ -13875,7 +13875,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 184,
-      "height": 21
+      "height": 16
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -13902,18 +13902,18 @@
     "_string": "",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_fontSize": 13,
-    "_actualFontSize": 13,
-    "_lineHeight": 19,
+    "_fontSize": 12,
+    "_actualFontSize": 12,
+    "_lineHeight": 16,
     "_fontFamily": "NightShiftRounded",
-    "_overflow": 2,
+    "_overflow": 1,
     "_enableWrapText": true,
     "_isSystemFontUsed": false,
     "_color": {
       "__type__": "cc.Color",
-      "r": 92,
-      "g": 48,
-      "b": 32,
+      "r": 87,
+      "g": 53,
+      "b": 35,
       "a": 255
     },
     "_font": {
@@ -14905,18 +14905,18 @@
     "_string": "",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_fontSize": 13,
-    "_actualFontSize": 13,
-    "_lineHeight": 19,
+    "_fontSize": 12,
+    "_actualFontSize": 12,
+    "_lineHeight": 16,
     "_fontFamily": "NightShiftRounded",
-    "_overflow": 2,
+    "_overflow": 1,
     "_enableWrapText": true,
     "_isSystemFontUsed": false,
     "_color": {
       "__type__": "cc.Color",
-      "r": 92,
-      "g": 48,
-      "b": 32,
+      "r": 87,
+      "g": 53,
+      "b": 35,
       "a": 255
     },
     "_font": {
@@ -26263,8 +26263,8 @@
     "_actualFontSize": 12,
     "_fontSize": 12,
     "_fontFamily": "NightShiftRounded",
-    "_lineHeight": 17,
-    "_overflow": 2,
+    "_lineHeight": 16,
+    "_overflow": 1,
     "_enableWrapText": true,
     "_font": {
       "__uuid__": "f490dbdc-ebf6-49b2-b9b8-e3dbebb4ea52",

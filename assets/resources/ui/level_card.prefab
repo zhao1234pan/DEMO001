@@ -1551,18 +1551,18 @@
     "_string": "",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_fontSize": 11,
-    "_actualFontSize": 11,
-    "_lineHeight": 17,
+    "_fontSize": 12,
+    "_actualFontSize": 12,
+    "_lineHeight": 16,
     "_fontFamily": "NightShiftRounded",
-    "_overflow": 2,
+    "_overflow": 1,
     "_enableWrapText": true,
     "_isSystemFontUsed": false,
     "_color": {
       "__type__": "cc.Color",
-      "r": 92,
-      "g": 48,
-      "b": 32,
+      "r": 87,
+      "g": 53,
+      "b": 35,
       "a": 255
     },
     "_font": {
@@ -1683,7 +1683,7 @@
     "_actualFontSize": 14,
     "_lineHeight": 18,
     "_fontFamily": "NightShiftRounded",
-    "_overflow": 2,
+    "_overflow": 1,
     "_enableWrapText": true,
     "_isSystemFontUsed": false,
     "_color": {
@@ -1818,7 +1818,7 @@
     "_actualFontSize": 16,
     "_lineHeight": 20,
     "_fontFamily": "NightShiftRounded",
-    "_overflow": 2,
+    "_overflow": 1,
     "_enableWrapText": true,
     "_isSystemFontUsed": false,
     "_color": {
@@ -1953,7 +1953,7 @@
     "_actualFontSize": 12,
     "_lineHeight": 16,
     "_fontFamily": "NightShiftRounded",
-    "_overflow": 2,
+    "_overflow": 1,
     "_enableWrapText": true,
     "_isSystemFontUsed": false,
     "_color": {
@@ -2088,7 +2088,7 @@
     "_actualFontSize": 12,
     "_lineHeight": 16,
     "_fontFamily": "NightShiftRounded",
-    "_overflow": 2,
+    "_overflow": 1,
     "_enableWrapText": true,
     "_isSystemFontUsed": false,
     "_color": {

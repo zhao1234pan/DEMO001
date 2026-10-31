@@ -51,6 +51,8 @@ export class PrefabGameMenuView {
   private readonly collectionRows: Node[] = [];
   private detailUniform=false;
   private readonly collectionScroll = new CollectionScrollState();
+  private readonly detailScroll = new CollectionScrollState();
+  private detailSignature = '';
   private focusBoss = false;
   private page: MenuPage = "home";
   get isLandingPage():boolean{return (this.page==="home"||(this.page==="shop"&&!this.shop.isOverlayOpen))&&!this.dialog;}
@@ -89,7 +91,7 @@ export class PrefabGameMenuView {
   show(unlocked: number, page: MenuPage = "home", focusLevel = unlocked): void {
     this.navigationRevision++; this.unlocked = getLevelConfig(unlocked).id; this.collection.refresh(this.unlocked);
     this.page = page; this.levelPage = Math.floor((getLevelConfig(focusLevel).id - 1) / this.levelCards.length);
-    this.dialog = null; this.collectionScroll.end(); this.active = true; this.root.active = true; this.dirty = true;
+    this.dialog = null; this.collectionScroll.end(); this.detailScroll.end(); this.detailSignature=''; this.active = true; this.root.active = true; this.dirty = true;
   }
   showPreparation(unlocked:number,id:number):void {
     this.show(unlocked,getLevelConfig(id).mode==="challenge"?"challenge_loadout":"loadout",id);this.preparationId=id;this.selection=readLoadout(id,unlocked);this.replacementSlot=-1;this.selectionHint="";
@@ -97,7 +99,7 @@ export class PrefabGameMenuView {
   showCollection(unlocked: number, tab: CollectionTab): void {
     this.tab = tab==="bosses"?"enemies":tab; this.focusBoss = tab === "bosses"; this.collectionScroll.set(0); this.show(unlocked, "collection");
   }
-  hide(): void { if (!this.active) return; this.navigationRevision++; this.active = false; this.root.active = false; this.dialog = null; this.collectionScroll.end(); }
+  hide(): void { if (!this.active) return; this.navigationRevision++; this.active = false; this.root.active = false; this.dialog = null; this.collectionScroll.end(); this.detailScroll.end(); this.detailSignature=''; }
   render(unlocked: number, top: number, bottom: number): void {
     if (!this.active || this.disposed) return;
     if (this.top !== top || this.bottom !== bottom) {
@@ -145,6 +147,7 @@ export class PrefabGameMenuView {
       if (!node.activeInHierarchy) continue;
       if(this.page==="shop"&&!this.shop.allowPress(node,x,y,this.parent,W,H))continue;
       if (this.page === "collection" && !this.dialog && this.collectionCards.includes(node) && !this.inCollectionViewport(x, y)) continue;
+      if (this.dialog?.kind === "entry" && this.isDetailContent(node) && !this.inDetailViewport(x,y)) continue;
       const rect = uiRect(node, this.parent, W, H);
       if (x >= rect.x && x <= rect.x + rect.width && y >= rect.y && y <= rect.y + rect.height) {
         this.audio.play("build", 0.24); action(); this.dirty = true; return;
@@ -236,18 +239,27 @@ export class PrefabGameMenuView {
     return uiRect(viewport, this.parent, W, H).height / viewport.getComponent(UITransform)!.height;
   }
   beginScroll(x: number, y: number): void {
+    if(this.dialog?.kind==='entry'){
+      this.detailScroll.end();if(this.inDetailViewport(x,y))this.detailScroll.begin(y/this.detailViewportScale());return;
+    }
     if(this.page==="shop"){this.shop.beginScroll(x,y,this.parent,W,H);return;}
     this.collectionScroll.end();
     if (this.inCollectionViewport(x, y)) this.collectionScroll.begin(y / this.collectionViewportScale());
   }
   moveScroll(x: number, y: number): void {
+    if(this.dialog?.kind==='entry'){
+      this.detailScroll.move(y/this.detailViewportScale(),globalNumber('touchTravelTolerance')/this.detailViewportScale());this.positionDetailContent();return;
+    }
     if(this.page==="shop"){this.shop.moveScroll(y,this.parent,W,H);return;}
     if (!this.active || this.page !== "collection" || this.dialog) return;
     this.collectionScroll.move(y / this.collectionViewportScale(), globalNumber("touchTravelTolerance") / this.collectionViewportScale());
     this.positionCollectionContent();
   }
-  endScroll(): void { this.collectionScroll.end();this.shop.endScroll(); }
+  endScroll(): void { this.collectionScroll.end();this.detailScroll.end();this.shop.endScroll(); }
   wheelScroll(x: number, y: number, amount: number): void {
+    if(this.dialog?.kind==='entry'){
+      if(this.inDetailViewport(x,y)){this.detailScroll.end();this.detailScroll.set(this.detailScroll.offset-amount*globalNumber('collectionWheelScale'));this.positionDetailContent();}return;
+    }
     if(this.page==="shop"){this.shop.wheelScroll(x,y,amount,this.parent,W,H);return;}
     if (!this.inCollectionViewport(x, y)) return;
     this.collectionScroll.end();
@@ -334,66 +346,88 @@ export class PrefabGameMenuView {
     for (const node of this.dialogs.values()) node.active = false;
     const dialog = this.dialog; if (!dialog) return;
     const page = this.dialogs.get(dialog.kind === "notice" ? "notice" : "detail")!; page.active = true;
-    this.bind(page, "Close", () => { this.dialog = null; }, true);
+    this.bind(page, "Close", () => { this.dialog = null; this.detailScroll.end(); this.detailSignature=''; }, true);
     if (dialog.kind === "notice") { uiText(page, "Title", dialog.title); uiText(page, "Body", dialog.text); return; }
     const entry=dialog.entry,trial=(this.page==="loadout"||this.page==="challenge_loadout")&&getLevelConfig(this.preparationId).mode==="challenge"&&Boolean(entry.staffKind),ownerKnown=trial||this.collection.isUnlocked(entry),choices=entry.staffKind?evolutionChoices(entry.staffKind):[];
     const uniform=entry.staffKind?rows("ShopUniform").find(r=>r.staffKey===entry.staffKind):undefined,uniformOwned=Boolean(uniform&&ShopService.shared.state?.uniforms.includes(uniform.key));
     const evolution=!this.detailUniform&&choices.length&&this.detailLevel>1?choices[this.detailLevel-2]:undefined;
     const unlocked=ownerKnown&&(this.detailUniform?uniformOwned:trial||!evolution||this.collection.isEvolutionUnlocked(evolution.key));
     uiText(page,"Title",unlocked?(evolution?text("ui.evolution.name",entry.name,evolution.name):entry.name):text("ui.evolution.locked"));
+    const content=uiNode(page,'ScrollViewport/Content');
+    const signature=[entry.id,this.detailLevel,this.detailBaseLevel,this.detailUniform,unlocked].join('/');
+    if(signature!==this.detailSignature){this.detailScroll.end();this.detailScroll.set(0);this.detailSignature=signature;}
     const portrait = entry.staffKind ? staffVisual(entry.staffKind, evolution ? evolution.toLevel : this.detailBaseLevel, evolution?.key).portraitImageKey : entry.imageKey;
-    this.assets.bindImage(uiNode(page,"Portrait"),this.detailUniform&&uniform?"skin:"+uniform.imageKey:"menu:"+portrait,!unlocked);
-    const uniformButton=uiNode(page,"Uniform");uniformButton.active=ownerKnown&&Boolean(uniform)&&!trial;if(uniformButton.active){uiText(uniformButton,"Text",text("shop.uniformDetail",uniformOwned?1:0));this.bind(page,"Uniform",()=>{this.detailUniform=!this.detailUniform;},true);}
-    uiNode(page,"Known").active=unlocked;uiNode(page,"Unknown").active=!unlocked;
-    uiText(page,"Unknown/Hint",this.detailUniform?text("shop.uniformDescription"):evolution?text("ui.evolution.lockedHint"):entry.unlockHint);
+    this.assets.bindImage(uiNode(content,"Portrait"),this.detailUniform&&uniform?"skin:"+uniform.imageKey:"menu:"+portrait,!unlocked);
+    const uniformButton=uiNode(content,"Uniform");uniformButton.active=ownerKnown&&Boolean(uniform)&&!trial;if(uniformButton.active){uiText(uniformButton,"Text",text("shop.uniformDetail",uniformOwned?1:0));this.bind(content,"Uniform",()=>{this.detailUniform=!this.detailUniform;},true);}
+    uiNode(content,"Known").active=unlocked;uiNode(content,"Unknown").active=!unlocked;
+    uiText(content,"Unknown/Hint",this.detailUniform?text("shop.uniformDescription"):evolution?text("ui.evolution.lockedHint"):entry.unlockHint);
     for(const level of [1,2,3]){
-      const key="Level"+level,button=uiNode(page,key);button.active=ownerKnown&&Boolean(entry.staffKind);
+      const key="Level"+level,button=uiNode(content,key);button.active=ownerKnown&&Boolean(entry.staffKind);
       if(!button.active)continue;
       const e=choices[level-2],known=trial||!e||this.collection.isEvolutionUnlocked(e.key);
       const title=choices.length?(level===1?text("ui.evolution.base"):known?e.name:text("ui.evolution.locked")):text(["ui.opt.staffLevel1","ui.opt.staffLevel2","ui.opt.staffLevel3"][level-1]);
       uiText(button,"Text",title);this.assets.bindImage(uiNode(button,"Icon"),"menu:"+(e?.imageKey??entry.imageKey),!known);
-      uiColor(button,"Surface",this.detailLevel===level?"#96bb77":"#efe7c8");this.bind(page,key,()=>{this.detailLevel=level;this.detailUniform=false;},true);
+      uiColor(button,"Surface",this.detailLevel===level?"#96bb77":"#efe7c8");this.bind(content,key,()=>{this.detailLevel=level;this.detailUniform=false;},true);
     }
     for(const level of [1,2]){
-      const button=uiNode(page,"Base"+level);button.active=ownerKnown&&choices.length>0&&this.detailLevel===1;
-      if(button.active){uiText(button,"Text",text("ui.evolution.base"+level));uiColor(button,"Surface",this.detailBaseLevel===level?"#96bb77":"#efe7c8");this.bind(page,"Base"+level,()=>{this.detailBaseLevel=level;this.detailUniform=false;},true);}
+      const button=uiNode(content,"Base"+level);button.active=ownerKnown&&choices.length>0&&this.detailLevel===1;
+      if(button.active){uiText(button,"Text",text("ui.evolution.base"+level));uiColor(button,"Surface",this.detailBaseLevel===level?"#96bb77":"#efe7c8");this.bind(content,"Base"+level,()=>{this.detailBaseLevel=level;this.detailUniform=false;},true);}
     }
     if(unlocked){
-      uiText(page,"Known/Category",this.detailUniform?text("shop.uniformOwned"):evolution?text("ui.evolution.profile"):entry.category);
-      uiText(page,"Known/Traits",this.detailUniform?text("shop.uniformDescription"):evolution?evolutionTraits(evolution):entry.traits);
+      uiText(content,"Known/Category",this.detailUniform?text("shop.uniformOwned"):evolution?text("ui.evolution.profile"):entry.category);
+      uiText(content,"Known/Traits",this.detailUniform?text("shop.uniformDescription"):evolution?evolutionTraits(evolution):entry.traits);
       const sim=ShopService.shared.simulation;
       const stats=this.detailUniform?[]:evolution?evolutionStats(evolution):entry.goodsKey?[{label:text("shop.researchLevel",sim?.state.research[entry.goodsKey]??0),value:text("shop.price",sim?.price(entry.goodsKey)??rows("ShopGoods").find(r=>r.key===entry.goodsKey)!.price)},{label:text("shop.soldUnits"),value:String(sim?.state.sales[entry.goodsKey]??0)}]:entry.staffKind?staffStats(entry.staffKind,choices.length?this.detailBaseLevel:this.detailLevel):entry.stats;
-      uiNode(page,"Known/Stats").active=false;for(let i=0;i<4;i++)uiNode(page,"Known/Stat"+i).active=i<stats.length;stats.forEach((item,index)=>uiText(page,"Known/Stat"+index,item.label+"\n"+item.value));
-      uiNode(page,"Known/Note").active=false;uiText(page,"Known/Story",this.detailUniform?text(rows("ShopStaff").find(r=>r.staffKey===entry.staffKind)!.roleKey):evolution?evolution.story:entry.story);
+      uiNode(content,"Known/Stats").active=false;for(let i=0;i<4;i++)uiNode(content,"Known/Stat"+i).active=i<stats.length;stats.forEach((item,index)=>uiText(content,"Known/Stat"+index,item.label+"\n"+item.value));
+      uiNode(content,"Known/Note").active=false;uiText(content,"Known/Story",this.detailUniform?text(rows("ShopStaff").find(r=>r.staffKey===entry.staffKind)!.roleKey):evolution?evolution.story:entry.story);
     }
     this.layoutDetail(page,unlocked,ownerKnown&&Boolean(entry.staffKind));
   }
-  /** 按实际行高排列内容；无等级切换的怪物详情不占用店员按钮的位置。 */
+  /** 标题与关闭固定；完整信息按实际行高排进裁切区，长详情不缩小整页。 */
   private layoutDetail(page: Node, unlocked: boolean, staff: boolean): void {
     const spacing = uiNode(page, "LayoutSpacing").getComponent(UITransform)!;
     const gap = spacing.height, padding = spacing.width;
-    const rows: Node[][] = [[uiNode(page, "Title"), uiNode(page, "Close")], [uiNode(page, "Portrait"), uiNode(page, "PictureBackground")]];
+    const viewport=uiNode(page,'ScrollViewport'),content=uiNode(viewport,'Content');
+    const rows: Node[][] = [[uiNode(content, "Portrait"), uiNode(content, "PictureBackground")]];
     const measured = (path: string): Node => {
-      const node = uiNode(page, path), label = node.getComponent(Label)!;
+      const node = uiNode(content, path), label = node.getComponent(Label)!;
       label.overflow = Label.Overflow.RESIZE_HEIGHT; label.updateRenderData(true);
       return node;
     };
-    if(staff){rows.push([1,2,3].map(level=>uiNode(page,"Level"+level)));if(uiNode(page,"Base1").active)rows.push([uiNode(page,"Base1"),uiNode(page,"Base2")]);}
-    if(uiNode(page,"Uniform").active)rows.push([uiNode(page,"Uniform")]);
+    if(staff){rows.push([1,2,3].map(level=>uiNode(content,"Level"+level)));if(uiNode(content,"Base1").active)rows.push([uiNode(content,"Base1"),uiNode(content,"Base2")]);}
+    if(uiNode(content,"Uniform").active)rows.push([uiNode(content,"Uniform")]);
     if (unlocked) {
       rows.push([measured("Known/Category")], [measured("Known/Traits")]);
-      for(const paths of [["Known/Stat0","Known/Stat1"],["Known/Stat2","Known/Stat3"]]){const nodes=paths.map(p=>uiNode(page,p)).filter(n=>n.active);if(nodes.length)rows.push(nodes);}
-      rows.push([uiNode(page,"Known/Rule")],[measured("Known/Story")]);
-    } else rows.push([uiNode(page, "Unknown/Title")], [measured("Unknown/Hint")]);
+      for(const paths of [["Known/Stat0","Known/Stat1"],["Known/Stat2","Known/Stat3"]]){const nodes=paths.map(p=>measured(p)).filter(n=>n.active);if(nodes.length)rows.push(nodes);}
+      rows.push([uiNode(content,"Known/Rule")],[measured("Known/Story")]);
+    } else rows.push([uiNode(content, "Unknown/Title")], [measured("Unknown/Hint")]);
     const heights = rows.map(row => Math.max(...row.map(node => node.getComponent(UITransform)!.height)));
     const height = padding * 2 + heights.reduce((sum, value) => sum + value, 0) + gap * (rows.length - 1);
-    const scale=Math.min(1,(H-24)/height);page.setScale(scale,scale,1);
-    // 长详情缩小时，遮罩仍铺满整个画布，避免四边漏亮。
-    uiNode(page,"Dim").getComponent(UITransform)!.setContentSize(W/scale,H/scale);
-    let y = height / 2 - padding;
+    // 详情保持单位比例；全屏遮罩尺寸仍由render按真实可见区域设置。
+    page.setScale(1,1,1);
+    let y = -padding;
     rows.forEach((row, index) => { for (const node of row) node.setPosition(node.position.x, y - heights[index] / 2); y -= heights[index] + gap; });
-    const panel = uiNode(page, "Panel"); panel.setPosition(panel.position.x, 0);
-    for (const node of [panel, ...panel.children]) node.getComponent(UITransform)!.height = height;
+    content.getComponent(UITransform)!.height=height;
+    this.detailScroll.resize(height,viewport.getComponent(UITransform)!.height);
+    uiNode(page,'ScrollHint').active=this.detailScroll.maximum>0;this.positionDetailContent();
+  }
+
+  private isDetailContent(node:Node):boolean {
+    const content=uiNode(this.dialogs.get('detail')!,'ScrollViewport/Content');
+    for(let n:Node|null=node;n;n=n.parent)if(n===content)return true;return false;
+  }
+  private inDetailViewport(x:number,y:number):boolean {
+    if(!this.active||this.disposed||this.dialog?.kind!=='entry')return false;
+    const rect=uiRect(uiNode(this.dialogs.get('detail')!,'ScrollViewport'),this.parent,W,H);
+    return x>=rect.x&&x<=rect.x+rect.width&&y>=rect.y&&y<=rect.y+rect.height;
+  }
+  private detailViewportScale():number {
+    const viewport=uiNode(this.dialogs.get('detail')!,'ScrollViewport');
+    return uiRect(viewport,this.parent,W,H).height/viewport.getComponent(UITransform)!.height;
+  }
+  private positionDetailContent():void {
+    const viewport=uiNode(this.dialogs.get('detail')!,'ScrollViewport'),content=uiNode(viewport,'Content');
+    content.setPosition(0,viewport.getComponent(UITransform)!.height/2+this.detailScroll.offset);
   }
 
 }

@@ -749,11 +749,11 @@
     "_string": "排行榜",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_actualFontSize": 22,
-    "_fontSize": 22,
+    "_actualFontSize": 20,
+    "_fontSize": 20,
     "_fontFamily": "NightShiftRounded",
-    "_lineHeight": 26,
-    "_overflow": 2,
+    "_lineHeight": 24,
+    "_overflow": 1,
     "_enableWrapText": true,
     "_font": {
       "__uuid__": "f490dbdc-ebf6-49b2-b9b8-e3dbebb4ea52",
@@ -774,7 +774,7 @@
       "b": 37,
       "a": 255
     },
-    "_outlineWidth": 1.4,
+    "_outlineWidth": 1,
     "_enableShadow": false,
     "_shadowColor": {
       "__type__": "cc.Color",
@@ -1183,11 +1183,11 @@
     "_string": "返回",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_actualFontSize": 17,
-    "_fontSize": 17,
+    "_actualFontSize": 16,
+    "_fontSize": 16,
     "_fontFamily": "NightShiftRounded",
-    "_lineHeight": 21,
-    "_overflow": 2,
+    "_lineHeight": 20,
+    "_overflow": 1,
     "_enableWrapText": true,
     "_font": {
       "__uuid__": "f490dbdc-ebf6-49b2-b9b8-e3dbebb4ea52",
@@ -1208,7 +1208,7 @@
       "b": 37,
       "a": 255
     },
-    "_outlineWidth": 1.3,
+    "_outlineWidth": 1,
     "_enableShadow": false,
     "_shadowColor": {
       "__type__": "cc.Color",
@@ -1576,7 +1576,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 272,
-      "height": 22
+      "height": 24
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -1606,19 +1606,19 @@
     "_dstBlendFactor": 4,
     "_color": {
       "__type__": "cc.Color",
-      "r": 92,
-      "g": 48,
-      "b": 32,
+      "r": 87,
+      "g": 53,
+      "b": 35,
       "a": 255
     },
     "_string": "演示榜单 · 尚未接入联网排名",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_actualFontSize": 11,
-    "_fontSize": 11,
+    "_actualFontSize": 12,
+    "_fontSize": 12,
     "_fontFamily": "NightShiftRounded",
-    "_lineHeight": 15,
-    "_overflow": 2,
+    "_lineHeight": 18,
+    "_overflow": 1,
     "_enableWrapText": true,
     "_font": {
       "__uuid__": "f490dbdc-ebf6-49b2-b9b8-e3dbebb4ea52",
@@ -2052,7 +2052,7 @@
     "_fontSize": 18,
     "_fontFamily": "NightShiftRounded",
     "_lineHeight": 22,
-    "_overflow": 2,
+    "_overflow": 1,
     "_enableWrapText": true,
     "_font": {
       "__uuid__": "f490dbdc-ebf6-49b2-b9b8-e3dbebb4ea52",
@@ -2073,7 +2073,7 @@
       "b": 37,
       "a": 255
     },
-    "_outlineWidth": 1.2,
+    "_outlineWidth": 1,
     "_enableShadow": false,
     "_shadowColor": {
       "__type__": "cc.Color",
@@ -2486,7 +2486,7 @@
     "_fontSize": 18,
     "_fontFamily": "NightShiftRounded",
     "_lineHeight": 22,
-    "_overflow": 2,
+    "_overflow": 1,
     "_enableWrapText": true,
     "_font": {
       "__uuid__": "f490dbdc-ebf6-49b2-b9b8-e3dbebb4ea52",
@@ -2507,7 +2507,7 @@
       "b": 37,
       "a": 255
     },
-    "_outlineWidth": 1.2,
+    "_outlineWidth": 1,
     "_enableShadow": false,
     "_shadowColor": {
       "__type__": "cc.Color",
@@ -3354,19 +3354,19 @@
     "_dstBlendFactor": 4,
     "_color": {
       "__type__": "cc.Color",
-      "r": 92,
-      "g": 48,
-      "b": 32,
+      "r": 87,
+      "g": 53,
+      "b": 35,
       "a": 255
     },
     "_string": "",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_actualFontSize": 21,
-    "_fontSize": 21,
+    "_actualFontSize": 20,
+    "_fontSize": 20,
     "_fontFamily": "NightShiftRounded",
-    "_lineHeight": 25,
-    "_overflow": 2,
+    "_lineHeight": 24,
+    "_overflow": 1,
     "_enableWrapText": true,
     "_font": {
       "__uuid__": "f490dbdc-ebf6-49b2-b9b8-e3dbebb4ea52",
@@ -3763,9 +3763,9 @@
     "_dstBlendFactor": 4,
     "_color": {
       "__type__": "cc.Color",
-      "r": 92,
-      "g": 48,
-      "b": 32,
+      "r": 87,
+      "g": 53,
+      "b": 35,
       "a": 255
     },
     "_string": "",
@@ -3775,7 +3775,7 @@
     "_fontSize": 12,
     "_fontFamily": "NightShiftRounded",
     "_lineHeight": 16,
-    "_overflow": 2,
+    "_overflow": 1,
     "_enableWrapText": true,
     "_font": {
       "__uuid__": "f490dbdc-ebf6-49b2-b9b8-e3dbebb4ea52",
@@ -4172,19 +4172,19 @@
     "_dstBlendFactor": 4,
     "_color": {
       "__type__": "cc.Color",
-      "r": 92,
-      "g": 48,
-      "b": 32,
+      "r": 87,
+      "g": 53,
+      "b": 35,
       "a": 255
     },
     "_string": "",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_actualFontSize": 13,
-    "_fontSize": 13,
+    "_actualFontSize": 12,
+    "_fontSize": 12,
     "_fontFamily": "NightShiftRounded",
-    "_lineHeight": 17,
-    "_overflow": 2,
+    "_lineHeight": 16,
+    "_overflow": 1,
     "_enableWrapText": true,
     "_font": {
       "__uuid__": "f490dbdc-ebf6-49b2-b9b8-e3dbebb4ea52",
@@ -4938,19 +4938,19 @@
     "_dstBlendFactor": 4,
     "_color": {
       "__type__": "cc.Color",
-      "r": 92,
-      "g": 48,
-      "b": 32,
+      "r": 87,
+      "g": 53,
+      "b": 35,
       "a": 255
     },
     "_string": "",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_actualFontSize": 21,
-    "_fontSize": 21,
+    "_actualFontSize": 20,
+    "_fontSize": 20,
     "_fontFamily": "NightShiftRounded",
-    "_lineHeight": 25,
-    "_overflow": 2,
+    "_lineHeight": 24,
+    "_overflow": 1,
     "_enableWrapText": true,
     "_font": {
       "__uuid__": "f490dbdc-ebf6-49b2-b9b8-e3dbebb4ea52",
@@ -5347,9 +5347,9 @@
     "_dstBlendFactor": 4,
     "_color": {
       "__type__": "cc.Color",
-      "r": 92,
-      "g": 48,
-      "b": 32,
+      "r": 87,
+      "g": 53,
+      "b": 35,
       "a": 255
     },
     "_string": "",
@@ -5359,7 +5359,7 @@
     "_fontSize": 12,
     "_fontFamily": "NightShiftRounded",
     "_lineHeight": 16,
-    "_overflow": 2,
+    "_overflow": 1,
     "_enableWrapText": true,
     "_font": {
       "__uuid__": "f490dbdc-ebf6-49b2-b9b8-e3dbebb4ea52",
@@ -5756,19 +5756,19 @@
     "_dstBlendFactor": 4,
     "_color": {
       "__type__": "cc.Color",
-      "r": 92,
-      "g": 48,
-      "b": 32,
+      "r": 87,
+      "g": 53,
+      "b": 35,
       "a": 255
     },
     "_string": "",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_actualFontSize": 13,
-    "_fontSize": 13,
+    "_actualFontSize": 12,
+    "_fontSize": 12,
     "_fontFamily": "NightShiftRounded",
-    "_lineHeight": 17,
-    "_overflow": 2,
+    "_lineHeight": 16,
+    "_overflow": 1,
     "_enableWrapText": true,
     "_font": {
       "__uuid__": "f490dbdc-ebf6-49b2-b9b8-e3dbebb4ea52",
@@ -6522,19 +6522,19 @@
     "_dstBlendFactor": 4,
     "_color": {
       "__type__": "cc.Color",
-      "r": 92,
-      "g": 48,
-      "b": 32,
+      "r": 87,
+      "g": 53,
+      "b": 35,
       "a": 255
     },
     "_string": "",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_actualFontSize": 21,
-    "_fontSize": 21,
+    "_actualFontSize": 20,
+    "_fontSize": 20,
     "_fontFamily": "NightShiftRounded",
-    "_lineHeight": 25,
-    "_overflow": 2,
+    "_lineHeight": 24,
+    "_overflow": 1,
     "_enableWrapText": true,
     "_font": {
       "__uuid__": "f490dbdc-ebf6-49b2-b9b8-e3dbebb4ea52",
@@ -6931,9 +6931,9 @@
     "_dstBlendFactor": 4,
     "_color": {
       "__type__": "cc.Color",
-      "r": 92,
-      "g": 48,
-      "b": 32,
+      "r": 87,
+      "g": 53,
+      "b": 35,
       "a": 255
     },
     "_string": "",
@@ -6943,7 +6943,7 @@
     "_fontSize": 12,
     "_fontFamily": "NightShiftRounded",
     "_lineHeight": 16,
-    "_overflow": 2,
+    "_overflow": 1,
     "_enableWrapText": true,
     "_font": {
       "__uuid__": "f490dbdc-ebf6-49b2-b9b8-e3dbebb4ea52",
@@ -7340,19 +7340,19 @@
     "_dstBlendFactor": 4,
     "_color": {
       "__type__": "cc.Color",
-      "r": 92,
-      "g": 48,
-      "b": 32,
+      "r": 87,
+      "g": 53,
+      "b": 35,
       "a": 255
     },
     "_string": "",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_actualFontSize": 13,
-    "_fontSize": 13,
+    "_actualFontSize": 12,
+    "_fontSize": 12,
     "_fontFamily": "NightShiftRounded",
-    "_lineHeight": 17,
-    "_overflow": 2,
+    "_lineHeight": 16,
+    "_overflow": 1,
     "_enableWrapText": true,
     "_font": {
       "__uuid__": "f490dbdc-ebf6-49b2-b9b8-e3dbebb4ea52",
@@ -7865,9 +7865,9 @@
     "_dstBlendFactor": 4,
     "_color": {
       "__type__": "cc.Color",
-      "r": 92,
-      "g": 48,
-      "b": 32,
+      "r": 87,
+      "g": 53,
+      "b": 35,
       "a": 255
     },
     "_string": "",
@@ -7877,7 +7877,7 @@
     "_fontSize": 18,
     "_fontFamily": "NightShiftRounded",
     "_lineHeight": 22,
-    "_overflow": 2,
+    "_overflow": 1,
     "_enableWrapText": true,
     "_font": {
       "__uuid__": "f490dbdc-ebf6-49b2-b9b8-e3dbebb4ea52",
@@ -8274,19 +8274,19 @@
     "_dstBlendFactor": 4,
     "_color": {
       "__type__": "cc.Color",
-      "r": 92,
-      "g": 48,
-      "b": 32,
+      "r": 87,
+      "g": 53,
+      "b": 35,
       "a": 255
     },
     "_string": "",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_actualFontSize": 13,
-    "_fontSize": 13,
+    "_actualFontSize": 12,
+    "_fontSize": 12,
     "_fontFamily": "NightShiftRounded",
-    "_lineHeight": 17,
-    "_overflow": 2,
+    "_lineHeight": 16,
+    "_overflow": 1,
     "_enableWrapText": true,
     "_font": {
       "__uuid__": "f490dbdc-ebf6-49b2-b9b8-e3dbebb4ea52",
@@ -8683,19 +8683,19 @@
     "_dstBlendFactor": 4,
     "_color": {
       "__type__": "cc.Color",
-      "r": 92,
-      "g": 48,
-      "b": 32,
+      "r": 87,
+      "g": 53,
+      "b": 35,
       "a": 255
     },
     "_string": "",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_actualFontSize": 13,
-    "_fontSize": 13,
+    "_actualFontSize": 12,
+    "_fontSize": 12,
     "_fontFamily": "NightShiftRounded",
-    "_lineHeight": 17,
-    "_overflow": 2,
+    "_lineHeight": 16,
+    "_overflow": 1,
     "_enableWrapText": true,
     "_font": {
       "__uuid__": "f490dbdc-ebf6-49b2-b9b8-e3dbebb4ea52",
@@ -9107,9 +9107,9 @@
     "_dstBlendFactor": 4,
     "_color": {
       "__type__": "cc.Color",
-      "r": 92,
-      "g": 48,
-      "b": 32,
+      "r": 87,
+      "g": 53,
+      "b": 35,
       "a": 255
     },
     "_string": "",
@@ -9119,7 +9119,7 @@
     "_fontSize": 18,
     "_fontFamily": "NightShiftRounded",
     "_lineHeight": 22,
-    "_overflow": 2,
+    "_overflow": 1,
     "_enableWrapText": true,
     "_font": {
       "__uuid__": "f490dbdc-ebf6-49b2-b9b8-e3dbebb4ea52",
@@ -9516,19 +9516,19 @@
     "_dstBlendFactor": 4,
     "_color": {
       "__type__": "cc.Color",
-      "r": 92,
-      "g": 48,
-      "b": 32,
+      "r": 87,
+      "g": 53,
+      "b": 35,
       "a": 255
     },
     "_string": "",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_actualFontSize": 13,
-    "_fontSize": 13,
+    "_actualFontSize": 12,
+    "_fontSize": 12,
     "_fontFamily": "NightShiftRounded",
-    "_lineHeight": 17,
-    "_overflow": 2,
+    "_lineHeight": 16,
+    "_overflow": 1,
     "_enableWrapText": true,
     "_font": {
       "__uuid__": "f490dbdc-ebf6-49b2-b9b8-e3dbebb4ea52",
@@ -9925,19 +9925,19 @@
     "_dstBlendFactor": 4,
     "_color": {
       "__type__": "cc.Color",
-      "r": 92,
-      "g": 48,
-      "b": 32,
+      "r": 87,
+      "g": 53,
+      "b": 35,
       "a": 255
     },
     "_string": "",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_actualFontSize": 13,
-    "_fontSize": 13,
+    "_actualFontSize": 12,
+    "_fontSize": 12,
     "_fontFamily": "NightShiftRounded",
-    "_lineHeight": 17,
-    "_overflow": 2,
+    "_lineHeight": 16,
+    "_overflow": 1,
     "_enableWrapText": true,
     "_font": {
       "__uuid__": "f490dbdc-ebf6-49b2-b9b8-e3dbebb4ea52",
@@ -10349,9 +10349,9 @@
     "_dstBlendFactor": 4,
     "_color": {
       "__type__": "cc.Color",
-      "r": 92,
-      "g": 48,
-      "b": 32,
+      "r": 87,
+      "g": 53,
+      "b": 35,
       "a": 255
     },
     "_string": "",
@@ -10361,7 +10361,7 @@
     "_fontSize": 18,
     "_fontFamily": "NightShiftRounded",
     "_lineHeight": 22,
-    "_overflow": 2,
+    "_overflow": 1,
     "_enableWrapText": true,
     "_font": {
       "__uuid__": "f490dbdc-ebf6-49b2-b9b8-e3dbebb4ea52",
@@ -10758,19 +10758,19 @@
     "_dstBlendFactor": 4,
     "_color": {
       "__type__": "cc.Color",
-      "r": 92,
-      "g": 48,
-      "b": 32,
+      "r": 87,
+      "g": 53,
+      "b": 35,
       "a": 255
     },
     "_string": "",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_actualFontSize": 13,
-    "_fontSize": 13,
+    "_actualFontSize": 12,
+    "_fontSize": 12,
     "_fontFamily": "NightShiftRounded",
-    "_lineHeight": 17,
-    "_overflow": 2,
+    "_lineHeight": 16,
+    "_overflow": 1,
     "_enableWrapText": true,
     "_font": {
       "__uuid__": "f490dbdc-ebf6-49b2-b9b8-e3dbebb4ea52",
@@ -11167,19 +11167,19 @@
     "_dstBlendFactor": 4,
     "_color": {
       "__type__": "cc.Color",
-      "r": 92,
-      "g": 48,
-      "b": 32,
+      "r": 87,
+      "g": 53,
+      "b": 35,
       "a": 255
     },
     "_string": "",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_actualFontSize": 13,
-    "_fontSize": 13,
+    "_actualFontSize": 12,
+    "_fontSize": 12,
     "_fontFamily": "NightShiftRounded",
-    "_lineHeight": 17,
-    "_overflow": 2,
+    "_lineHeight": 16,
+    "_overflow": 1,
     "_enableWrapText": true,
     "_font": {
       "__uuid__": "f490dbdc-ebf6-49b2-b9b8-e3dbebb4ea52",
@@ -11591,9 +11591,9 @@
     "_dstBlendFactor": 4,
     "_color": {
       "__type__": "cc.Color",
-      "r": 92,
-      "g": 48,
-      "b": 32,
+      "r": 87,
+      "g": 53,
+      "b": 35,
       "a": 255
     },
     "_string": "",
@@ -11603,7 +11603,7 @@
     "_fontSize": 18,
     "_fontFamily": "NightShiftRounded",
     "_lineHeight": 22,
-    "_overflow": 2,
+    "_overflow": 1,
     "_enableWrapText": true,
     "_font": {
       "__uuid__": "f490dbdc-ebf6-49b2-b9b8-e3dbebb4ea52",
@@ -12000,19 +12000,19 @@
     "_dstBlendFactor": 4,
     "_color": {
       "__type__": "cc.Color",
-      "r": 92,
-      "g": 48,
-      "b": 32,
+      "r": 87,
+      "g": 53,
+      "b": 35,
       "a": 255
     },
     "_string": "",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_actualFontSize": 13,
-    "_fontSize": 13,
+    "_actualFontSize": 12,
+    "_fontSize": 12,
     "_fontFamily": "NightShiftRounded",
-    "_lineHeight": 17,
-    "_overflow": 2,
+    "_lineHeight": 16,
+    "_overflow": 1,
     "_enableWrapText": true,
     "_font": {
       "__uuid__": "f490dbdc-ebf6-49b2-b9b8-e3dbebb4ea52",
@@ -12409,19 +12409,19 @@
     "_dstBlendFactor": 4,
     "_color": {
       "__type__": "cc.Color",
-      "r": 92,
-      "g": 48,
-      "b": 32,
+      "r": 87,
+      "g": 53,
+      "b": 35,
       "a": 255
     },
     "_string": "",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_actualFontSize": 13,
-    "_fontSize": 13,
+    "_actualFontSize": 12,
+    "_fontSize": 12,
     "_fontFamily": "NightShiftRounded",
-    "_lineHeight": 17,
-    "_overflow": 2,
+    "_lineHeight": 16,
+    "_overflow": 1,
     "_enableWrapText": true,
     "_font": {
       "__uuid__": "f490dbdc-ebf6-49b2-b9b8-e3dbebb4ea52",
@@ -12833,9 +12833,9 @@
     "_dstBlendFactor": 4,
     "_color": {
       "__type__": "cc.Color",
-      "r": 92,
-      "g": 48,
-      "b": 32,
+      "r": 87,
+      "g": 53,
+      "b": 35,
       "a": 255
     },
     "_string": "",
@@ -12845,7 +12845,7 @@
     "_fontSize": 18,
     "_fontFamily": "NightShiftRounded",
     "_lineHeight": 22,
-    "_overflow": 2,
+    "_overflow": 1,
     "_enableWrapText": true,
     "_font": {
       "__uuid__": "f490dbdc-ebf6-49b2-b9b8-e3dbebb4ea52",
@@ -13242,19 +13242,19 @@
     "_dstBlendFactor": 4,
     "_color": {
       "__type__": "cc.Color",
-      "r": 92,
-      "g": 48,
-      "b": 32,
+      "r": 87,
+      "g": 53,
+      "b": 35,
       "a": 255
     },
     "_string": "",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_actualFontSize": 13,
-    "_fontSize": 13,
+    "_actualFontSize": 12,
+    "_fontSize": 12,
     "_fontFamily": "NightShiftRounded",
-    "_lineHeight": 17,
-    "_overflow": 2,
+    "_lineHeight": 16,
+    "_overflow": 1,
     "_enableWrapText": true,
     "_font": {
       "__uuid__": "f490dbdc-ebf6-49b2-b9b8-e3dbebb4ea52",
@@ -13651,19 +13651,19 @@
     "_dstBlendFactor": 4,
     "_color": {
       "__type__": "cc.Color",
-      "r": 92,
-      "g": 48,
-      "b": 32,
+      "r": 87,
+      "g": 53,
+      "b": 35,
       "a": 255
     },
     "_string": "",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_actualFontSize": 13,
-    "_fontSize": 13,
+    "_actualFontSize": 12,
+    "_fontSize": 12,
     "_fontFamily": "NightShiftRounded",
-    "_lineHeight": 17,
-    "_overflow": 2,
+    "_lineHeight": 16,
+    "_overflow": 1,
     "_enableWrapText": true,
     "_font": {
       "__uuid__": "f490dbdc-ebf6-49b2-b9b8-e3dbebb4ea52",
@@ -13999,7 +13999,7 @@
     },
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": -119,
+      "x": -128,
       "y": 0,
       "z": 0
     },
@@ -14050,8 +14050,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 61,
-      "height": 31
+      "width": 42,
+      "height": 36
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -14081,19 +14081,19 @@
     "_dstBlendFactor": 4,
     "_color": {
       "__type__": "cc.Color",
-      "r": 92,
-      "g": 48,
-      "b": 32,
+      "r": 87,
+      "g": 53,
+      "b": 35,
       "a": 255
     },
     "_string": "我的成绩",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_actualFontSize": 13,
-    "_fontSize": 13,
+    "_actualFontSize": 12,
+    "_fontSize": 12,
     "_fontFamily": "NightShiftRounded",
-    "_lineHeight": 17,
-    "_overflow": 2,
+    "_lineHeight": 16,
+    "_overflow": 1,
     "_enableWrapText": true,
     "_font": {
       "__uuid__": "f490dbdc-ebf6-49b2-b9b8-e3dbebb4ea52",
@@ -14430,8 +14430,8 @@
     },
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": -17,
-      "y": 10,
+      "x": -10,
+      "y": 12,
       "z": 0
     },
     "_lrot": {
@@ -14481,7 +14481,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 98,
+      "width": 168,
       "height": 20
     },
     "_anchorPoint": {
@@ -14512,19 +14512,19 @@
     "_dstBlendFactor": 4,
     "_color": {
       "__type__": "cc.Color",
-      "r": 92,
-      "g": 48,
-      "b": 32,
+      "r": 87,
+      "g": 53,
+      "b": 35,
       "a": 255
     },
     "_string": "我的便利店",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_actualFontSize": 13,
-    "_fontSize": 13,
+    "_actualFontSize": 14,
+    "_fontSize": 14,
     "_fontFamily": "NightShiftRounded",
-    "_lineHeight": 17,
-    "_overflow": 2,
+    "_lineHeight": 18,
+    "_overflow": 1,
     "_enableWrapText": true,
     "_font": {
       "__uuid__": "f490dbdc-ebf6-49b2-b9b8-e3dbebb4ea52",
@@ -14609,7 +14609,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": -10,
-      "y": -10,
+      "y": -11,
       "z": 0
     },
     "_lrot": {
@@ -14659,8 +14659,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 139,
-      "height": 18
+      "width": 168,
+      "height": 20
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -14690,19 +14690,19 @@
     "_dstBlendFactor": 4,
     "_color": {
       "__type__": "cc.Color",
-      "r": 92,
-      "g": 48,
-      "b": 32,
+      "r": 87,
+      "g": 53,
+      "b": 35,
       "a": 255
     },
     "_string": "",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_actualFontSize": 9,
-    "_fontSize": 9,
+    "_actualFontSize": 12,
+    "_fontSize": 12,
     "_fontFamily": "NightShiftRounded",
-    "_lineHeight": 13,
-    "_overflow": 2,
+    "_lineHeight": 16,
+    "_overflow": 1,
     "_enableWrapText": true,
     "_font": {
       "__uuid__": "f490dbdc-ebf6-49b2-b9b8-e3dbebb4ea52",
@@ -15017,7 +15017,7 @@
     },
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": 113,
+      "x": 123,
       "y": 0,
       "z": 0
     },
@@ -15068,7 +15068,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 64,
+      "width": 54,
       "height": 31
     },
     "_anchorPoint": {
@@ -15099,9 +15099,9 @@
     "_dstBlendFactor": 4,
     "_color": {
       "__type__": "cc.Color",
-      "r": 92,
-      "g": 48,
-      "b": 32,
+      "r": 87,
+      "g": 53,
+      "b": 35,
       "a": 255
     },
     "_string": "",
@@ -15111,7 +15111,7 @@
     "_fontSize": 16,
     "_fontFamily": "NightShiftRounded",
     "_lineHeight": 20,
-    "_overflow": 2,
+    "_overflow": 1,
     "_enableWrapText": true,
     "_font": {
       "__uuid__": "f490dbdc-ebf6-49b2-b9b8-e3dbebb4ea52",
@@ -15609,19 +15609,19 @@
     "_dstBlendFactor": 4,
     "_color": {
       "__type__": "cc.Color",
-      "r": 92,
-      "g": 48,
-      "b": 32,
+      "r": 87,
+      "g": 53,
+      "b": 35,
       "a": 255
     },
     "_string": "排行榜暂未联网",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_actualFontSize": 19,
-    "_fontSize": 19,
+    "_actualFontSize": 18,
+    "_fontSize": 18,
     "_fontFamily": "NightShiftRounded",
-    "_lineHeight": 23,
-    "_overflow": 2,
+    "_lineHeight": 22,
+    "_overflow": 1,
     "_enableWrapText": true,
     "_font": {
       "__uuid__": "f490dbdc-ebf6-49b2-b9b8-e3dbebb4ea52",
@@ -15709,7 +15709,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": -43,
+      "y": -50,
       "z": 0
     },
     "_lrot": {
@@ -15760,7 +15760,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 280,
-      "height": 42
+      "height": 44
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -15790,9 +15790,9 @@
     "_dstBlendFactor": 4,
     "_color": {
       "__type__": "cc.Color",
-      "r": 92,
-      "g": 48,
-      "b": 32,
+      "r": 87,
+      "g": 53,
+      "b": 35,
       "a": 255
     },
     "_string": "个人成绩已保留，联网排名将在平台接入后开放。",
@@ -15802,7 +15802,7 @@
     "_fontSize": 12,
     "_fontFamily": "NightShiftRounded",
     "_lineHeight": 16,
-    "_overflow": 2,
+    "_overflow": 1,
     "_enableWrapText": true,
     "_font": {
       "__uuid__": "f490dbdc-ebf6-49b2-b9b8-e3dbebb4ea52",
@@ -16232,11 +16232,11 @@
     "_string": "去挑战",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_actualFontSize": 19,
-    "_fontSize": 19,
+    "_actualFontSize": 18,
+    "_fontSize": 18,
     "_fontFamily": "NightShiftRounded",
-    "_lineHeight": 23,
-    "_overflow": 2,
+    "_lineHeight": 22,
+    "_overflow": 1,
     "_enableWrapText": true,
     "_font": {
       "__uuid__": "f490dbdc-ebf6-49b2-b9b8-e3dbebb4ea52",
@@ -16257,7 +16257,7 @@
       "b": 37,
       "a": 255
     },
-    "_outlineWidth": 1.3,
+    "_outlineWidth": 1,
     "_enableShadow": false,
     "_shadowColor": {
       "__type__": "cc.Color",

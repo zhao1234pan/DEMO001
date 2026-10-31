@@ -2,7 +2,7 @@ id,key,type,value,note
 1,gameName,string,game.name,游戏名I18键
 6,maxLevels,float,30,当前关卡上限
 7,rewardAdUnitId,string,replace-with-douyin-ad-unit-id,抖音激励视频广告位
-8,version,string,1.25.1,客户端版本
+8,version,string,1.26.0,客户端版本
 9,upgradeDamage,float,0.52,升级伤害增幅
 10,upgradeRange,float,0.08,升级射程增幅
 11,upgradeRate,float,0.12,升级攻速增幅
@@ -51,3 +51,5 @@ id,key,type,value,note
 54,rankingAdventureWeight,float,1000,每个冒险解锁进度的展示评分
 55,rankingChallengeWeight,float,5000,每个已通关挑战专题的展示评分
 56,adventureClearedSaveKey,string,night_store_cleared_level_v1,仅正式冒险胜利写入；历史best到达记录不作为首通依据
+57,uiCoinDisplayUnits,string,1000000000000:ui.coin.trillion|100000000:ui.coin.hundredMillion|10000:ui.coin.tenThousand|1000:ui.coin.thousand,紧凑钱包单位；管理弹窗仍展示精确金币
+58,uiCoinDisplayDecimals,float,1,紧凑钱包不足100个单位时的最大小数位数，向下截断

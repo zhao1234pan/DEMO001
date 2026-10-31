@@ -327,7 +327,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 86,
-      "height": 37
+      "height": 44
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -534,7 +534,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 86,
-      "height": 37
+      "height": 44
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -651,7 +651,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 86,
-      "height": 37
+      "height": 44
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -766,8 +766,8 @@
     "__type__": "cc.UITransform",
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 78,
-      "height": 33
+      "width": 68,
+      "height": 30
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -794,11 +794,11 @@
     "_string": "返回",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_fontSize": 17,
-    "_actualFontSize": 17,
-    "_lineHeight": 21,
+    "_fontSize": 16,
+    "_actualFontSize": 16,
+    "_lineHeight": 22,
     "_fontFamily": "NightShiftRounded",
-    "_overflow": 2,
+    "_overflow": 1,
     "_enableWrapText": true,
     "_isSystemFontUsed": false,
     "_color": {
@@ -815,7 +815,7 @@
     "_cacheMode": 0,
     "_isBold": false,
     "_enableOutline": true,
-    "_outlineWidth": 1.3,
+    "_outlineWidth": 1,
     "_outlineColor": {
       "__type__": "cc.Color",
       "r": 106,
@@ -950,11 +950,11 @@
     "_string": "冒险模式",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_fontSize": 22,
-    "_actualFontSize": 22,
-    "_lineHeight": 26,
+    "_fontSize": 24,
+    "_actualFontSize": 24,
+    "_lineHeight": 30,
     "_fontFamily": "NightShiftRounded",
-    "_overflow": 2,
+    "_overflow": 1,
     "_enableWrapText": true,
     "_isSystemFontUsed": false,
     "_color": {
@@ -971,7 +971,7 @@
     "_cacheMode": 0,
     "_isBold": false,
     "_enableOutline": true,
-    "_outlineWidth": 1.2,
+    "_outlineWidth": 1,
     "_outlineColor": {
       "__type__": "cc.Color",
       "r": 106,
@@ -1076,7 +1076,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 274,
-      "height": 22
+      "height": 24
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -1105,16 +1105,16 @@
     "_verticalAlign": 1,
     "_fontSize": 12,
     "_actualFontSize": 12,
-    "_lineHeight": 16,
+    "_lineHeight": 18,
     "_fontFamily": "NightShiftRounded",
-    "_overflow": 2,
+    "_overflow": 1,
     "_enableWrapText": true,
     "_isSystemFontUsed": false,
     "_color": {
       "__type__": "cc.Color",
-      "r": 92,
-      "g": 48,
-      "b": 32,
+      "r": 87,
+      "g": 53,
+      "b": 35,
       "a": 255
     },
     "_font": {
@@ -1601,7 +1601,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": -102,
-      "y": -269,
+      "y": -265,
       "z": 0
     },
     "_lrot": {
@@ -1652,7 +1652,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 100,
-      "height": 40
+      "height": 44
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -1859,7 +1859,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 100,
-      "height": 40
+      "height": 44
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -1976,7 +1976,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 100,
-      "height": 40
+      "height": 44
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -2091,8 +2091,8 @@
     "__type__": "cc.UITransform",
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 88,
-      "height": 32
+      "width": 84,
+      "height": 30
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -2121,9 +2121,9 @@
     "_verticalAlign": 1,
     "_fontSize": 18,
     "_actualFontSize": 18,
-    "_lineHeight": 22,
+    "_lineHeight": 24,
     "_fontFamily": "NightShiftRounded",
-    "_overflow": 2,
+    "_overflow": 1,
     "_enableWrapText": true,
     "_isSystemFontUsed": false,
     "_color": {
@@ -2275,11 +2275,11 @@
     "_string": "上一页",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_fontSize": 15,
-    "_actualFontSize": 15,
-    "_lineHeight": 19,
+    "_fontSize": 14,
+    "_actualFontSize": 14,
+    "_lineHeight": 18,
     "_fontFamily": "NightShiftRounded",
-    "_overflow": 2,
+    "_overflow": 1,
     "_enableWrapText": true,
     "_isSystemFontUsed": false,
     "_color": {
@@ -2296,7 +2296,7 @@
     "_cacheMode": 0,
     "_isBold": false,
     "_enableOutline": true,
-    "_outlineWidth": 1.6,
+    "_outlineWidth": 1,
     "_outlineColor": {
       "__type__": "cc.Color",
       "r": 43,
@@ -2363,7 +2363,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 102,
-      "y": -269,
+      "y": -265,
       "z": 0
     },
     "_lrot": {
@@ -2414,7 +2414,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 100,
-      "height": 40
+      "height": 44
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -2621,7 +2621,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 100,
-      "height": 40
+      "height": 44
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -2738,7 +2738,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 100,
-      "height": 40
+      "height": 44
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -2853,8 +2853,8 @@
     "__type__": "cc.UITransform",
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 88,
-      "height": 32
+      "width": 84,
+      "height": 30
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -2883,9 +2883,9 @@
     "_verticalAlign": 1,
     "_fontSize": 18,
     "_actualFontSize": 18,
-    "_lineHeight": 22,
+    "_lineHeight": 24,
     "_fontFamily": "NightShiftRounded",
-    "_overflow": 2,
+    "_overflow": 1,
     "_enableWrapText": true,
     "_isSystemFontUsed": false,
     "_color": {
@@ -3037,11 +3037,11 @@
     "_string": "下一页",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_fontSize": 15,
-    "_actualFontSize": 15,
-    "_lineHeight": 19,
+    "_fontSize": 14,
+    "_actualFontSize": 14,
+    "_lineHeight": 18,
     "_fontFamily": "NightShiftRounded",
-    "_overflow": 2,
+    "_overflow": 1,
     "_enableWrapText": true,
     "_isSystemFontUsed": false,
     "_color": {
@@ -3058,7 +3058,7 @@
     "_cacheMode": 0,
     "_isBold": false,
     "_enableOutline": true,
-    "_outlineWidth": 1.6,
+    "_outlineWidth": 1,
     "_outlineColor": {
       "__type__": "cc.Color",
       "r": 43,
@@ -3112,7 +3112,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": -269,
+      "y": -265,
       "z": 0
     },
     "_lrot": {
@@ -3194,14 +3194,14 @@
     "_actualFontSize": 18,
     "_lineHeight": 22,
     "_fontFamily": "NightShiftRounded",
-    "_overflow": 2,
+    "_overflow": 1,
     "_enableWrapText": true,
     "_isSystemFontUsed": false,
     "_color": {
       "__type__": "cc.Color",
-      "r": 92,
-      "g": 48,
-      "b": 32,
+      "r": 87,
+      "g": 53,
+      "b": 35,
       "a": 255
     },
     "_font": {
@@ -3328,18 +3328,18 @@
     "_string": "点击关卡图片，从开局开始挑战",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_fontSize": 13,
-    "_actualFontSize": 13,
-    "_lineHeight": 19,
+    "_fontSize": 12,
+    "_actualFontSize": 12,
+    "_lineHeight": 16,
     "_fontFamily": "NightShiftRounded",
-    "_overflow": 2,
+    "_overflow": 1,
     "_enableWrapText": true,
     "_isSystemFontUsed": false,
     "_color": {
       "__type__": "cc.Color",
-      "r": 92,
-      "g": 48,
-      "b": 32,
+      "r": 87,
+      "g": 53,
+      "b": 35,
       "a": 255
     },
     "_font": {

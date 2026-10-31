@@ -114,7 +114,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 120,
-      "height": 310
+      "height": 364
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -204,7 +204,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 120,
-      "height": 310
+      "height": 364
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -294,7 +294,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 118,
-      "height": 366
+      "height": 364
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -415,7 +415,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 120,
-      "height": 310
+      "height": 364
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -485,7 +485,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": 124,
+      "y": 156,
       "z": 0
     },
     "_lrot": {
@@ -602,7 +602,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": 124,
+      "y": 156,
       "z": 0
     },
     "_lrot": {
@@ -653,7 +653,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 100,
-      "height": 31
+      "height": 28
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -684,14 +684,14 @@
     "_actualFontSize": 18,
     "_lineHeight": 22,
     "_fontFamily": "NightShiftRounded",
-    "_overflow": 2,
+    "_overflow": 1,
     "_enableWrapText": true,
     "_isSystemFontUsed": false,
     "_color": {
       "__type__": "cc.Color",
-      "r": 75,
-      "g": 28,
-      "b": 18,
+      "r": 87,
+      "g": 53,
+      "b": 35,
       "a": 255
     },
     "_font": {
@@ -734,7 +734,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": 62,
+      "y": 101,
       "z": 0
     },
     "_lrot": {
@@ -784,8 +784,8 @@
     "__type__": "cc.UITransform",
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 88,
-      "height": 88
+      "width": 72,
+      "height": 72
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -858,7 +858,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": 62,
+      "y": 101,
       "z": 0
     },
     "_lrot": {
@@ -908,8 +908,8 @@
     "__type__": "cc.UITransform",
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 84,
-      "height": 84
+      "width": 68,
+      "height": 68
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -1002,7 +1002,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": -38,
+      "y": -33,
       "z": 0
     },
     "_lrot": {
@@ -1053,7 +1053,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 100,
-      "height": 108
+      "height": 180
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -1080,18 +1080,18 @@
     "_string": "",
     "_horizontalAlign": 1,
     "_verticalAlign": 0,
-    "_fontSize": 13,
-    "_actualFontSize": 13,
-    "_lineHeight": 17,
+    "_fontSize": 14,
+    "_actualFontSize": 14,
+    "_lineHeight": 20,
     "_fontFamily": "NightShiftRounded",
-    "_overflow": 2,
+    "_overflow": 1,
     "_enableWrapText": true,
     "_isSystemFontUsed": false,
     "_color": {
       "__type__": "cc.Color",
-      "r": 75,
-      "g": 28,
-      "b": 18,
+      "r": 87,
+      "g": 53,
+      "b": 35,
       "a": 255
     },
     "_font": {
@@ -1137,7 +1137,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": -98,
+      "y": -113,
       "z": 0
     },
     "_lrot": {
@@ -1188,7 +1188,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 108,
-      "height": 30
+      "height": 24
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -1401,8 +1401,8 @@
     "__type__": "cc.UITransform",
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 28,
-      "height": 28
+      "width": 24,
+      "height": 24
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -1546,7 +1546,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 66,
-      "height": 26
+      "height": 22
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -1577,14 +1577,14 @@
     "_actualFontSize": 12,
     "_lineHeight": 16,
     "_fontFamily": "NightShiftRounded",
-    "_overflow": 2,
+    "_overflow": 1,
     "_enableWrapText": true,
     "_isSystemFontUsed": false,
     "_color": {
       "__type__": "cc.Color",
-      "r": 75,
-      "g": 28,
-      "b": 18,
+      "r": 87,
+      "g": 53,
+      "b": 35,
       "a": 255
     },
     "_font": {
@@ -2142,7 +2142,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": -130,
+      "y": -153,
       "z": 0
     },
     "_lrot": {
@@ -2193,7 +2193,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 96,
-      "height": 32
+      "height": 36
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -2371,7 +2371,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": -130,
+      "y": -153,
       "z": 0
     },
     "_lrot": {
@@ -2421,7 +2421,7 @@
     "__type__": "cc.UITransform",
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 90,
+      "width": 88,
       "height": 28
     },
     "_anchorPoint": {
@@ -2449,11 +2449,11 @@
     "_string": "选择",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_fontSize": 19,
-    "_actualFontSize": 19,
-    "_lineHeight": 23,
+    "_fontSize": 20,
+    "_actualFontSize": 20,
+    "_lineHeight": 24,
     "_fontFamily": "NightShiftRounded",
-    "_overflow": 2,
+    "_overflow": 1,
     "_enableWrapText": true,
     "_isSystemFontUsed": false,
     "_color": {
@@ -2477,7 +2477,7 @@
       "b": 59,
       "a": 255
     },
-    "_outlineWidth": 1.1
+    "_outlineWidth": 1
   },
   {
     "__type__": "cc.CompPrefabInfo",
@@ -2521,7 +2521,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": -32,
+      "y": -13,
       "z": 0
     },
     "_lrot": {
@@ -2572,7 +2572,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 100,
-      "height": 88
+      "height": 140
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -2604,7 +2604,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": -48,
+      "y": -33,
       "z": 0
     },
     "_lrot": {
@@ -2655,7 +2655,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 100,
-      "height": 120
+      "height": 180
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
