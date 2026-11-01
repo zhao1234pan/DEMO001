@@ -1,0 +1,10 @@
+{
+  "ok": false,
+  "error": {
+    "type": "api",
+    "subtype": "failed_precondition",
+    "code": 422,
+    "message": "TapTap refused the request in the current state: 当前状态不允许本次操作（该应用的自测能力已被封禁）"
+  },
+  "_capture": "从本次CLI标准错误中实际返回的JSON转录；该命令的标准输出文件为空，没有再次请求或绕过受限接口。"
+}
