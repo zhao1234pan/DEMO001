@@ -1,0 +1,36 @@
+{
+  "ok": true,
+  "data": {
+    "result": {
+      "list": [
+        {
+          "commit_time": 1793501311,
+          "package_id": 409713,
+          "package_size": 39309410,
+          "publish_time": 0,
+          "stage": "dev",
+          "user_package_version": "1.26.0"
+        }
+      ],
+      "page": 1,
+      "page_size": 20,
+      "total": 1
+    },
+    "status": "completed"
+  },
+  "meta": {
+    "catalog": {
+      "source_version": "1.0.63",
+      "digest": "sha256:3694f6321c1799097dec3d1fa95059caecf783f18911cdd12ff46cf0d037b95e",
+      "loaded_from": "embedded"
+    }
+  },
+  "_notice": {
+    "update_check": {
+      "command": "taptap-cli update --check --json",
+      "message": "Automatic update check could not complete; run: taptap-cli update --check --json",
+      "reason": "timeout",
+      "status": "unavailable"
+    }
+  }
+}

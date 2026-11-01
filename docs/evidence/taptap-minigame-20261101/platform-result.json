@@ -1,0 +1,31 @@
+{
+  "date": "2026-11-01",
+  "appId": 951086,
+  "developerId": 105428,
+  "version": "1.26.0",
+  "packageType": "mini_app",
+  "archiveBytes": 39309410,
+  "archiveSha256": "6eb6e568784bde96625c42a2ebc0d5a84135ae7e6acdb34582d76b65aa18e2e9",
+  "cliTaskId": "38cebfcf-1017-4dd7-a49f-61e9734b1dab",
+  "uploadTaskId": "3tibnrpy9epclwpiohelhndgah0jcj4x",
+  "artifactId": 35285,
+  "parseStatus": "success",
+  "uploadCompleted": true,
+  "packageId": 409713,
+  "stage": "dev",
+  "publishedTime": 0,
+  "packageListTotal": 1,
+  "selftestQr": {
+    "generated": false,
+    "httpStatus": 422,
+    "subtype": "failed_precondition",
+    "message": "当前状态不允许本次操作（该应用的自测能力已被封禁）",
+    "retryOrBypassAttempted": false
+  },
+  "reviewOrPrecheckCalled": false,
+  "publishCalled": false,
+  "appProfileOrPrimaryPackageBindingChanged": false,
+  "gameplayOrUiChanged": false,
+  "actualHostOrMobilePlaytest": false,
+  "next": "平台解除应用951086的自测限制后再获取开发包409713的二维码；原因及解除方式需平台确认，不推测为包体或资质错误"
+}

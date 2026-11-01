@@ -1,0 +1,23 @@
+{
+  "ok": true,
+  "data": {
+    "cliTaskId": "38cebfcf-1017-4dd7-a49f-61e9734b1dab",
+    "enableSplit": false,
+    "fileName": "game.zip",
+    "miniAppArtifactId": 35285,
+    "nextStep": "Tap mini-app artifact is ready. Inspect it with package-management list-mini-app-packages before any later package binding; this upload does not create or bind a package.",
+    "packageRecordStatus": "artifact_only",
+    "packageSize": 39309410,
+    "parseStatus": "success",
+    "phase": "ready",
+    "taskId": "3tibnrpy9epclwpiohelhndgah0jcj4x"
+  },
+  "_notice": {
+    "update_check": {
+      "command": "taptap-cli update --check --json",
+      "message": "Automatic update check could not complete; run: taptap-cli update --check --json",
+      "reason": "timeout",
+      "status": "unavailable"
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "ok": true,
+  "data": {
+    "result": {
+      "artifact_id": 35285,
+      "enable_split": false,
+      "error": null,
+      "file_size": 39309410,
+      "package_id": null,
+      "status": "ready"
+    },
+    "status": "completed"
+  },
+  "meta": {
+    "catalog": {
+      "source_version": "1.0.63",
+      "digest": "sha256:3694f6321c1799097dec3d1fa95059caecf783f18911cdd12ff46cf0d037b95e",
+      "loaded_from": "embedded"
+    }
+  },
+  "_notice": {
+    "update_check": {
+      "command": "taptap-cli update --check --json",
+      "message": "Automatic update check could not complete; run: taptap-cli update --check --json",
+      "reason": "timeout",
+      "status": "unavailable"
+    }
+  }
+}
