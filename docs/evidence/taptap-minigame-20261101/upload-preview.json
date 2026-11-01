@@ -1,0 +1,22 @@
+{
+  "ok": true,
+  "dry_run": true,
+  "data": {
+    "appId": 951086,
+    "developerId": 105428,
+    "filePath": "tap-official-1/game.zip",
+    "networkRequests": 0,
+    "nextStep": "rerun with --yes to execute upload-mini-app-package",
+    "operation": "upload-mini-app-package",
+    "requiresConfirmation": true,
+    "status": "preview"
+  },
+  "_notice": {
+    "update_check": {
+      "command": "taptap-cli update --check --json",
+      "message": "Automatic update check could not complete; run: taptap-cli update --check --json",
+      "reason": "timeout",
+      "status": "unavailable"
+    }
+  }
+}

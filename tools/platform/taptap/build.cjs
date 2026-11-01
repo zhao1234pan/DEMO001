@@ -6,6 +6,10 @@ function scratchPath(value){
  assert.ok(absolute.toLowerCase().startsWith((parent+path.sep).toLowerCase()),'输出必须是非系统盘gptwork内的子目录');
  assert.ok(!absolute.toLowerCase().startsWith(root.toLowerCase()+path.sep),'构建缓存不得放在工程中');
  if(process.platform==='win32')assert.notEqual(path.parse(absolute).root.toLowerCase(),(process.env.SystemDrive||'C:').toLowerCase()+path.sep,'构建缓存不得放在系统盘');
+ for(let current=absolute;;current=path.dirname(current)){
+  if(fs.existsSync(current))assert.ok(!fs.lstatSync(current).isSymbolicLink(),'输出目录祖先不得包含链接或目录联接');
+  if(current===path.dirname(current))break;
+ }
  return absolute;
 }
 function csvVersion(){

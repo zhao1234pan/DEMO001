@@ -3,10 +3,11 @@ import pathlib, stat, sys, zipfile
 
 archive = pathlib.Path(sys.argv[1]).resolve()
 target = pathlib.Path(sys.argv[2]).resolve()
-assert not target.exists(), "解压目录必须是新的临时目录"
+if target.exists():
+    raise ValueError("解压目录必须是新的临时目录")
 with zipfile.ZipFile(archive) as z:
     for item in z.infolist():
         destination = (target / item.filename).resolve()
-        assert destination.is_relative_to(target), item.filename
-        assert not stat.S_ISLNK(item.external_attr >> 16), item.filename
+        if not destination.is_relative_to(target) or stat.S_ISLNK(item.external_attr >> 16):
+            raise ValueError("拒绝越界路径或链接：" + item.filename)
     z.extractall(target)

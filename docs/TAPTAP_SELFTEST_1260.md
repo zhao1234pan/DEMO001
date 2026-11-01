@@ -1,5 +1,7 @@
 # 1.26.0 TapTap自测准备与上传受阻记录
 
+后续路线已修正：项目使用Cocos3.8.8，转用官方Tap小游戏专用构建；本文件仅保留H5尝试历史。最新进度见[TAPTAP_MINIGAME_SELFTEST_1260.md](TAPTAP_MINIGAME_SELFTEST_1260.md)，不再等待H5入口作为主要上传路线。
+
 2026-10-31准备，2026-11-01续传，本机pc-a。按`taptap-h5-release`技能核对；用户只授权更新自测包，不提审、不上线。
 
 ## 身份与产物

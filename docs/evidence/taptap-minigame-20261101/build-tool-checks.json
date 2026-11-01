@@ -1,0 +1,17 @@
+{
+  "results": [
+    {
+      "case": "good",
+      "passed": true
+    },
+    {
+      "case": "traversal",
+      "passed": true
+    },
+    {
+      "case": "link",
+      "passed": true
+    }
+  ],
+  "noOutsideWrites": true
+}
