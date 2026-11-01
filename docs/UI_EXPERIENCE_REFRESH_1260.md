@@ -63,4 +63,4 @@
 
 - 最终客户端提交d58afa5，220项回归通过；预览/生产Web均Finished、退出36。首次配置子进程超时的构建退出34，未拿失败产物更新试玩；调整本机构建PATH后重跑成功，门禁没有关闭。
 - 试玩http://127.0.0.1:4344/?v=1.26.0；1051文件SHA和42CSV核对、15HTTP一致；先前试玩保留为备份，不读取玩家存储。
-- 正式自测ZIP与完整清单见[产物记录](evidence/ui-experience-20261031/production-package.json)，本地ZIP已验读，但TapTap登录未完成、未上传。继续步骤见[自测记录](TAPTAP_SELFTEST_1260.md)。未提审、未上线，未合并main。
+- 正式自测ZIP与完整清单见[产物记录](evidence/ui-experience-20261031/production-package.json)，本地ZIP已验读。11月1日TapTap登录完成，上传受应用类型限制，尚无包号；继续步骤见[自测记录](TAPTAP_SELFTEST_1260.md)。未提审、未上线，未合并main。

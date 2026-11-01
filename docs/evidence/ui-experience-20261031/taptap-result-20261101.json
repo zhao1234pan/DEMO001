@@ -1,0 +1,56 @@
+{
+  "date": "2026-11-01",
+  "product": "叮咚夜班开始",
+  "version": "1.26.0",
+  "developerNameFromAppList": "慕ling",
+  "developerId": 105428,
+  "appId": 951086,
+  "scope": "只上传自测；不提审、不上线",
+  "authenticationCompleted": true,
+  "production": {
+    "sourceCommit": "d58afa5dbf73c59e3a22562db8473b48fb55e5b2",
+    "debug": false,
+    "filesReverified": 1051,
+    "archiveBytes": 39278408,
+    "archiveSha256": "00caa12fb89b6e5001db7a240d0e5d0d82a2879905379ebc62d18d87e842f670"
+  },
+  "mcp": {
+    "package": "@taptap/instant-games-open-mcp",
+    "version": "1.24.14",
+    "prepareMatchedAppAndDirectory": true,
+    "screenOrientation": 1,
+    "compressedBytesReportedByTool": 39402598,
+    "getUploadParameters": {
+      "httpStatus": 400,
+      "error": "该游戏不是关卡类型"
+    },
+    "getAppStatus": {
+      "httpStatus": 400,
+      "error": "该游戏不符合关卡或已通过备案的 H5 游戏条件，无法通过此接口获取状态"
+    }
+  },
+  "cli": {
+    "version": "2026.10.31",
+    "server": "https://developer.taptap.cn",
+    "appNameReverified": true,
+    "availablePackageTypes": ["apk", "mini_app"],
+    "h5UploadExecuted": false
+  },
+  "afterForcedAppRefresh": {
+    "onlineVersion": "V-20260929",
+    "draftVersion": "V-20260929",
+    "onlineRawStatus": 0,
+    "draftRawStatus": 0,
+    "sameAsBeforeUploadAttempt": true,
+    "note": "不把原始状态0解释为已发布或已通过审核"
+  },
+  "packageId": null,
+  "h5VersionId": null,
+  "selftestUrl": null,
+  "uploadedSuccessfully": false,
+  "reviewOrPrecheckCalled": false,
+  "publishCalled": false,
+  "profileOrPrimaryPackageBindingChanged": false,
+  "appTypeChanged": false,
+  "next": "用户稍后查看网页后台是否仍有旧H5上传入口；确认后继续，或由平台修正应用H5管理能力"
+}

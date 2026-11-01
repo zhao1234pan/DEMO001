@@ -6,4 +6,4 @@
 - 字形报告是Pillow字宽和原表行框测量，自动增高详情和固定隐藏模板不判固定高度越界。
 - 回归原始结果见checks.json；字体报告见font-report.json；39份业务CSV保持，详见review.json。
 - 最终预览/生产Web Finished、退出36（既有诊断保留）；包体哈希及1051文件见production-package.json，试玩复制见preview-package.json，15HTTP签名见http-checks.json。
-- TapTap尚未登录完成，未上传/提审/上线，实际状态见../../TAPTAP_SELFTEST_1260.md。包体生成不等于平台或实机通过。
+- 11月1日TapTap登录完成，上传被非关卡类型拒绝；CLI未返回H5包体类型。尚未上传成功、未提审/上线，见taptap-result-20261101.json与../../TAPTAP_SELFTEST_1260.md。包体生成不等于平台或实机通过。
