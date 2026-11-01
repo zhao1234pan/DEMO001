@@ -1,5 +1,9 @@
 # XLSX → 客户端 CSV 配置规范
 
+## 1.26.0 Tap构建协议例外（2026-11-01）
+
+`tools/platform/taptap/official-converter.json`仅锁定第三方官方构建依赖的版本、下载地址和SHA；不承载游戏数值/文案/运行资源。Cocos平台构建字段继承既有`settings/builds/wechatgame.json`，本机程序位置和临时输出由命令参数提供，属于引擎/工具协议，不进入客户端CSV。游戏版本仍读取Global.xlsx→Global.csv；本轮无新增业务字段，无新增原表或服务端配置。包装器固定使用官方默认的不分包转换模式，路径与ZIP边界属于技术校验；未来可调业务内容仍先修改XLSX，不借构建JSON绕开原表。
+
 ## 1.25.0 可见边界与图片槽位
 
 - ArtFrame与VisualSkin新增contentX／contentY／contentWidth／contentHeight四个int，表示独立PNG左上为原点的可见区域；先测量和写原始XLSX，再导表，不修改原图。构建核对actual alpha边界，换图不更新边界会报错。

@@ -1,0 +1,9 @@
+{
+  "version": "1.2.2",
+  "documentation": "https://developer.taptap.cn/minigameapidoc/dev/engine/Cocos-Laya-Egret/",
+  "url": "https://app-res.tapimg.com/file/2026-04-14/67e7d94f5e586596dab061816d1c509d.zip",
+  "sha256": "6b8a9a3cc62b6c54cefab397097babb771d9d99f90442cddff06310a4c9ed73f",
+  "directory": "taptap-minigame-tools",
+  "entry": "dist/converter-ts.js",
+  "note": "官方构建依赖仅下载到本机gptwork并验签，不修改插件源码，不作为运行资源或图集。"
+}
