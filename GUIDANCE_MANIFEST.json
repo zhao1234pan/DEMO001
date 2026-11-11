@@ -1,5 +1,5 @@
 {
-  "version": "2026-11-11.4",
+  "version": "2026-11-11.5",
   "date": "2026-11-11",
   "canonical_repository": "zhao1234pan/DEMO007",
   "canonical_branch": "main",
@@ -13,23 +13,23 @@
     "DEMO007"
   ],
   "files": {
-    "docs/team/CHANGELOG.md": "902af897c1a767e0ff1c71aa8d080b035409f5306da2cafc64c66d109d7c17d0",
-    "docs/team/EXPERIENCE_REGISTER.md": "2eee84c78536a874d658157101bbcbba156d5ad001ef008576ceb7e54d5907a4",
-    "docs/team/GLOBAL_AGENTS.md": "19b8c0717f28dc1be0456353b15877177090cd031a4dd297bebc2f78a301c699",
-    "docs/team/handbook/ACCEPTANCE_AND_DELIVERY.md": "3cd912207ad41663ae3856e3685210b7b400961c15201da4fcc237f558756e75",
-    "docs/team/handbook/ENGINE_AND_ASSETS.md": "2b21c34bdf8e3974dfdc8f41bdaa93553c258b48eba01fe1136bac2c1b7c1c13",
-    "docs/team/handbook/GAMEPLAY_AND_UI.md": "b7451779519cc4ba83f3e8c3355ce35345b4dee77ab11a784773d4d4b7da1352",
-    "docs/team/handbook/SOFTWARE_COPYRIGHT.md": "386f06cb235f3435840b59993334cc2ba07e892b5cf5d90a19fe168ca853b305",
-    "docs/team/handbook/TAPTAP_RELEASE.md": "6a4105216b8ab6c8159e37da8000e52dd08f23683a6488e74ca54c7873672558",
-    "docs/team/handbook/WECHAT_RELEASE.md": "93ccd4ae8508c7c6007ad80edef57307dc1b0f976b69fc2fa25cdef05d17b9bc",
-    "docs/team/MAINTENANCE.md": "ed628a9020e3a0b9837cc880df3d8553402aa3e7258ce8b155446e605779a5f9",
-    "docs/team/README.md": "a1fb3bd932a74c0ef00bdeb1cade31e1843ac1d2427b00855e80e5174c639974",
+    "docs/team/CHANGELOG.md": "cb7d3e5439c3bb2301e510e7c7f23b7267f618045d861e6d7767acbe5a7eb7a8",
+    "docs/team/EXPERIENCE_REGISTER.md": "4f3723a787fb64ecde8b412de1e373d62a249be4de64d3f33b00aac610beb827",
+    "docs/team/GLOBAL_AGENTS.md": "b0ccd0033ed444015f3c13f811a64824f16d0f5cf19909a3a6208a4cdb03ef82",
+    "docs/team/handbook/ACCEPTANCE_AND_DELIVERY.md": "ed2a314f2658bdede45d8b3cbed554dfcac97884c2d1e3f151404c9e4dedbaef",
+    "docs/team/handbook/ENGINE_AND_ASSETS.md": "546f01ce70ddbd313785063dd90920e5ec77cf9a9c1cba6a780a33db2553bab2",
+    "docs/team/handbook/GAMEPLAY_AND_UI.md": "c1850acf80363e618ebc1bf134b3cbc5c404b4d8f583ba0e69bc0330a9616713",
+    "docs/team/handbook/SOFTWARE_COPYRIGHT.md": "2a28c3a89789feea9b4bc30885bf037ec1d6927b65c07f5ac1a06a882f42c676",
+    "docs/team/handbook/TAPTAP_RELEASE.md": "3021577954e70f938212c79a775b4dbe8fcfdd4d35b65678fa69dee1708311d6",
+    "docs/team/handbook/WECHAT_RELEASE.md": "5427176a9bed051d1369ffb7462c9d1d8803cf2fb17d0dfeb582180f7d031034",
+    "docs/team/MAINTENANCE.md": "44d1b616b6d3d6c279685f74a25897b5497eabfeff55a5b661b509cbbe3538ad",
+    "docs/team/README.md": "4ffddfb3f5646b0863000c40f8fc873ccfba47c28642bbc521031daf438c9c44",
     "docs/team/templates/LESSON_RECORD.md": "5f9a0ee1dd0966c0c9786663d2ff79b8ed9b8ed7e9b2276097ebcbf43812f8d0",
     "docs/team/templates/PROJECT_HANDOFF.md": "c4e3339a835a3f20108adcd92faea22d58260f013bddc9e07c45883f824598ac",
-    "docs/team/TWO_COMPUTER_WORKFLOW.md": "538bf32cd8278559406e6d7d3d2196d85f3efb26a580467af4b87c30ee6175ce",
-    "GAME_DEVELOPMENT.md": "f51f22ffdf21260024803f4bc7f8738660c9250fe8b7d8f25229bc28cd930d75",
-    "GIT_WORKFLOW.md": "d2cb36d07cdeda891a20712ab4f37a6f45fad91c5a06d6c462f1e53b40b9d265",
+    "docs/team/TWO_COMPUTER_WORKFLOW.md": "5ac97fab0196052a12ddd795e02c10508ab11299ea6aa6b04b9ec286e42501c9",
+    "GAME_DEVELOPMENT.md": "08835fa508df1b9014a220a1671b84996a15062e7eeefd8c0550b32096293b7e",
+    "GIT_WORKFLOW.md": "a785ef55c13a67fa737c52fbcfa58779a4a805a7e972c36ceeed2ff1724fdffa",
     "tools/maintain-game-guidance.py": "9400d9acf886c48283d3a1a633f173fd1d851161b44fe17b5c05458a95e7fc0d",
-    "tools/sync-game-guidance.py": "4f861e32089d067432527718e26c9ddcc91eaa413814ba0eb3c92e7ac2c07c1f"
+    "tools/sync-game-guidance.py": "d62b52675344581089c1540f87a7a33eeb835d15f99b1461e4ea0c346ef59a82"
   }
 }
