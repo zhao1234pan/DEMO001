@@ -1,6 +1,6 @@
 # 游戏制作与发行规范
 
-规范版本：2026-11-11.5。适用于 zhao1234pan 的 DEMO001～DEMO007。Git 执行范围见 [GIT_WORKFLOW.md](GIT_WORKFLOW.md)。
+规范版本：2026-11-12.1。适用于 zhao1234pan 的 DEMO001～DEMO007。Git 执行范围见 [GIT_WORKFLOW.md](GIT_WORKFLOW.md)。
 
 ## 按任务读取
 
