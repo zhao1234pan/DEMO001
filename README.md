@@ -1,5 +1,11 @@
 # 叮咚夜班开始
 
+<!-- game-guidance-readme:begin -->
+## 游戏制作与发行规范
+
+统一入口：[GAME_DEVELOPMENT.md](GAME_DEVELOPMENT.md)。玩法/UI、工程资源、软著、微信、TapTap 与验收按任务分章读取；Git 范围见 [GIT_WORKFLOW.md](GIT_WORKFLOW.md)。版本与文件摘要见 GUIDANCE_MANIFEST.json。
+<!-- game-guidance-readme:end -->
+
 以“森林夜班便利店”为世界观主题的原创竖屏动物轻塔防小游戏，使用 Cocos Creator 3.8.8 开发，目标平台为抖音小游戏，商业模式为 IAA。
 
 > 正式中文名称统一为「叮咚夜班开始」，名称本身不包含感叹号、空格或书名号，用于与抖音后台和软著简称对齐。“守护芽芽”为早期工程代号；历史测试与截图中的旧名不用于新申报材料。项目只借鉴塔防品类的基础机制，不使用《保卫萝卜》的名称、角色、美术、关卡或音频素材。
