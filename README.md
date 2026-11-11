@@ -1,5 +1,11 @@
 # 守护芽芽
 
+<!-- game-guidance-readme:begin -->
+## 游戏制作与发行规范
+
+统一入口：[GAME_DEVELOPMENT.md](GAME_DEVELOPMENT.md)。玩法/UI、工程资源、软著、微信、TapTap 与验收按任务分章读取；Git 范围见 [GIT_WORKFLOW.md](GIT_WORKFLOW.md)。版本与文件摘要见 GUIDANCE_MANIFEST.json。
+<!-- game-guidance-readme:end -->
+
 以“森林夜班便利店”为世界观主题的原创竖屏动物轻塔防小游戏，使用 Cocos Creator 3.8.8 开发，目标平台为抖音小游戏，商业模式为 IAA。
 
 > “守护芽芽”是当前工作名。项目只借鉴塔防品类的基础机制，不使用《保卫萝卜》的名称、角色、美术、关卡或音频素材。
