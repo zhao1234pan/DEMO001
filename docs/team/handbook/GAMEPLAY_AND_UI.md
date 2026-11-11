@@ -1,6 +1,6 @@
 # 游戏制作经验
 
-规范版本：2026-11-11.4。项目依据见[案例记录](../EXPERIENCE_REGISTER.md)，双机使用方法见[协作说明](../TWO_COMPUTER_WORKFLOW.md)。
+规范版本：2026-11-11.5。项目依据见[案例记录](../EXPERIENCE_REGISTER.md)，双机使用方法见[协作说明](../TWO_COMPUTER_WORKFLOW.md)。
 
 ## 核心体验先于内容规模
 
