@@ -1,6 +1,6 @@
 # TapTap 接入与发行
 
-版本：2026-11-13.1。经验依据：E-TAP-01～09，见[经验条目](../EXPERIENCE_REGISTER.md)。
+版本：2026-11-14.1。经验依据：E-TAP-01～09，见[经验条目](../EXPERIENCE_REGISTER.md)。
 
 ## 先确定目标形态与应用能力
 
