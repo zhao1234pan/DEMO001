@@ -1,6 +1,6 @@
 # 游戏经验与发行手册
 
-规范版本：2026-11-13.1。统一入口是仓库根 [GAME_DEVELOPMENT.md](../../GAME_DEVELOPMENT.md)，按任务读取相应分章，不把全部历史记录塞进 AGENTS.md。
+规范版本：2026-11-14.1。统一入口是仓库根 [GAME_DEVELOPMENT.md](../../GAME_DEVELOPMENT.md)，按任务读取相应分章，不把全部历史记录塞进 AGENTS.md。
 
 - [Git 操作范围](../../GIT_WORKFLOW.md)：Biu 三仓库与个人仓库分别执行。
 - [经验条目](EXPERIENCE_REGISTER.md)：问题、处理与后续检查。
