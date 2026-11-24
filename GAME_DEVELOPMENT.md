@@ -1,6 +1,6 @@
 # 游戏制作与发行规范
 
-规范版本：2026-11-20.1。适用于 zhao1234pan 的 DEMO001～DEMO007。Git 执行范围见 [GIT_WORKFLOW.md](GIT_WORKFLOW.md)。
+规范版本：2026-11-24.1。适用于 zhao1234pan 的 DEMO001～DEMO007。Git 执行范围见 [GIT_WORKFLOW.md](GIT_WORKFLOW.md)。
 
 ## 按任务读取
 
@@ -11,6 +11,7 @@
 | 软著初次申请、材料补全、补正、冻结版本 | [软著材料](docs/team/handbook/SOFTWARE_COPYRIGHT.md) |
 | 微信账号准备、材料、分包、上传、审核、正式入口 | [微信发行](docs/team/handbook/WECHAT_RELEASE.md) |
 | Tap H5、Tap 小游戏、商店资料、广告与上线 | [TapTap 发行](docs/team/handbook/TAPTAP_RELEASE.md) |
+| 虎扑 Shaper H5 包体、请求门禁与投稿截图 | [虎扑投稿核对](docs/team/handbook/ACCEPTANCE_AND_DELIVERY.md#虎扑-shaper-投稿核对) |
 | 图文、录像、测试结果、发布状态的最终核对 | [验收与交付](docs/team/handbook/ACCEPTANCE_AND_DELIVERY.md) |
 | 查经验来源、规则由来、遗漏和以后怎么补 | [经验条目](docs/team/EXPERIENCE_REGISTER.md)与[维护方法](docs/team/MAINTENANCE.md) |
 | 换电脑、换分支、接续未完成工作 | [双机协作](docs/team/TWO_COMPUTER_WORKFLOW.md) |
